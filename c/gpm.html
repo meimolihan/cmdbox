@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="description" content="gpm:提供文字模式下的滑鼠事件处理 - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
+    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,gpm,提供文字模式下的滑鼠事件处理">
+    <title>gpm 命令，gpm 命令详解：提供文字模式下的滑鼠事件处理 - Cmdbox 命令搜索引擎</title>
+    <link rel="shortcut icon" href="../img/favicon.ico">
+    <!-- SEO -->
+    <link rel="canonical" href="/../c/gpm.html">
+    <meta property="og:title" content="gpm 命令">
+    <meta property="og:description" content="提供文字模式下的滑鼠事件处理 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="/../c/gpm.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="gpm 命令">
+    <meta name="twitter:description" content="提供文字模式下的滑鼠事件处理 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mpxi7oh6">
+    <!-- 跳转到主内容（无障碍） -->
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #667eea;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 0 0 8px 8px;
+        z-index: 10000;
+        font-weight: bold;
+        text-decoration: none;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+    <style>
+      html[data-color-mode="light"] body {
+        background-color: #f5f7fa !important;
+      }
+      html[data-color-mode="light"] .markdown-body {
+        background-color: #f5f7fa !important;
+        --color-canvas-default: #f5f7fa !important;
+      }
+      html[data-color-mode="light"] .header .search .query {
+        background-color: #f5f7fa !important;
+        background: linear-gradient(#f5f7fa,#f5f7fa) padding-box, linear-gradient(135deg, #667eea 0%, #764ba2 100%) border-box !important;
+        color: #333 !important;
+      }
+      /* 日间模式 Footer 样式 */
+      html[data-color-mode="light"] .footer-grid {
+        background: #ffffff !important;
+        border: 1px solid #d0d7de !important;
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+        padding: 16px !important;
+      }
+      html[data-color-mode="light"] .footer-item {
+        color: #24292f !important;
+        border-color: rgba(102, 126, 234, 0.2) !important;
+        background: transparent !important;
+        transition: all 0.2s ease !important;
+        padding: 8px 6px !important;
+        border-radius: 6px !important;
+        font-size: 13px !important;
+      }
+      html[data-color-mode="light"] .footer-item:hover {
+        background: rgba(102, 126, 234, 0.08) !important;
+        color: #667eea !important;
+        border-color: #667eea !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important;
+      }
+      html[data-color-mode="light"] .footer-icon {
+        color: #57606a !important;
+        width: 14px !important;
+        height: 14px !important;
+      }
+      html[data-color-mode="light"] .footer-count {
+        font-weight: 700 !important;
+        font-size: 13px !important;
+      }
+      html[data-color-mode="light"] .footer-text {
+        color: #24292f !important;
+        font-size: 13px !important;
+      }
+      /* Github 按钮悬停效果和其他一样 */
+      html[data-color-mode="light"] .footer-item.github-btn:hover {
+        background: #f6f8fa !important;
+        color: #0969da !important;
+        border-color: #d0d7de !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+      }
+      html[data-color-mode="light"] .footer-item.github-btn:hover .footer-icon {
+        color: #0969da !important;
+      }
+      html:not([data-color-mode]) body,
+      html[data-color-mode="dark"] body {
+        background-color: #0d1117 !important;
+      }
+      #dark-overlay {
+        display: none;
+      }
+      html[data-color-mode="dark"] #dark-overlay {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        pointer-events: none;
+      }
+      html:not([data-color-mode]) .markdown-body,
+      html[data-color-mode="dark"] .markdown-body {
+        background-color: #0d1117 !important;
+        --color-canvas-default: #0d1117 !important;
+      }
+      html:not([data-color-mode]) .header .search .query,
+      html[data-color-mode="dark"] .header .search .query {
+        background-color: #0d1117 !important;
+        background: linear-gradient(#0d1117,#0d1117) padding-box, linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%) border-box !important;
+        color: #c9d1d9 !important;
+      }
+    </style>
+    <script src="../js/dt.js?v=mpxi7oh6"></script>
+    <!-- 壁纸切换功能 -->
+    <style>
+      /* 壁纸背景 */
+      body.wallpaper-random {
+        background-image: url('https://api.meimolihan.eu.org/') !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-repeat: no-repeat !important;
+        background-attachment: fixed !important;
+        background-color: transparent !important;
+      }
+      /* 斜纹纹理叠加 - 复刻参考图效果 */
+      body.wallpaper-random::before,
+      body.wallpaper-local::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.25;
+        background-color: rgba(20, 35, 70, 0.03);
+        background-image:
+          repeating-linear-gradient(
+            60deg,
+            rgba(20, 35, 70, 0.35) 0px,
+            rgba(20, 35, 70, 0.35) 1px,
+            transparent 1px,
+            transparent 3px
+          );
+        mix-blend-mode: multiply;
+      }
+      /* 文章详情页不显示纹理 - 使用 isolation 阻止 mix-blend-mode 穿透 */
+      body.wallpaper-random markdown-style .markdown-body,
+      body.wallpaper-local markdown-style .markdown-body,
+      body.wallpaper-random .markdown-body,
+      body.wallpaper-local .markdown-body {
+        background-color: #f5f7fa !important;
+        background-image: none !important;
+        isolation: isolate;
+        position: relative;
+        z-index: 1;
+        border-radius: 15px;
+      }
+      body.wallpaper-random markdown-style .markdown-body::before,
+      body.wallpaper-local markdown-style .markdown-body::before,
+      body.wallpaper-random .markdown-body::before,
+      body.wallpaper-local .markdown-body::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-color: #f5f7fa;
+        z-index: -1;
+        border-radius: 15px;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style .markdown-body,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style .markdown-body,
+      html[data-color-mode="dark"] body.wallpaper-random .markdown-body,
+      html[data-color-mode="dark"] body.wallpaper-local .markdown-body {
+        background-color: #0d1117 !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style .markdown-body::before,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style .markdown-body::before,
+      html[data-color-mode="dark"] body.wallpaper-random .markdown-body::before,
+      html[data-color-mode="dark"] body.wallpaper-local .markdown-body::before {
+        background-color: #0d1117;
+      }
+      /* 隐藏原生遮罩背景 (warpper::before) */
+      body.wallpaper-random .warpper::before,
+      body.wallpaper-local .warpper::before {
+        display: none !important;
+      }
+      body.wallpaper-random .warpper {
+        background: transparent !important;
+      }
+      body.wallpaper-local .warpper {
+        background: transparent !important;
+      }
+
+      /* 随机模式 Header - 夜间模式黑色半透明磨砂 */
+      html[data-color-mode="dark"] body.wallpaper-random .header,
+      html:not([data-color-mode]) body.wallpaper-random .header {
+        background: rgba(13, 17, 23, 0.55) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border: 1px solid rgba(255,255,255,0.08) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .header_list,
+      html:not([data-color-mode]) body.wallpaper-random .header_list {
+        background: rgba(13, 17, 23, 0.55) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+      }
+      /* 本地模式 Header 夜间模式 - 黑色半透明磨砂 */
+      html[data-color-mode="dark"] body.wallpaper-local .header,
+      html:not([data-color-mode]) body.wallpaper-local .header {
+        background: rgba(13, 17, 23, 0.55) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+      }
+
+      /* 日间模式 Header - 白色半透明磨砂 */
+      html[data-color-mode="light"] body.wallpaper-random .header {
+        background: rgba(255, 255, 255, 0.55) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .header_list {
+        background: rgba(255, 255, 255, 0.55) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-local .header {
+        background: rgba(255, 255, 255, 0.55) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(102, 126, 234, 0.1) !important;
+        border-radius: 15px !important;
+      }
+
+      /* 随机模式文章内容背景 - 夜间模式毛玻璃 + 圆角15px - 更透明 */
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style .markdown-body,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style .markdown-body {
+        background: rgba(13, 17, 23, 0.35) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border: 1px solid rgba(255,255,255,0.06) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style .markdown-body,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style .markdown-body {
+        background: rgba(13, 17, 23, 0.35) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border: 1px solid rgba(255,255,255,0.06) !important;
+        border-radius: 15px !important;
+      }
+
+      /* 随机模式代码块背景 - 夜间模式圆角15px - 更透明 */
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style pre,
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style code,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style pre,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style code,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style pre,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style code,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style pre,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style code {
+        background: rgba(22, 27, 34, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-radius: 15px !important;
+      }
+
+      /* 浅色模式文章内容背景 - 毛玻璃效果 + 圆角15px - 更透明 */
+      html[data-color-mode="light"] body.wallpaper-random markdown-style .markdown-body,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style .markdown-body {
+        background: rgba(255, 255, 255, 0.45) !important;
+        backdrop-filter: blur(14px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(14px) saturate(180%) !important;
+        border: 1px solid rgba(88, 166, 255, 0.12) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style pre,
+      html[data-color-mode="light"] body.wallpaper-random markdown-style code,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style pre,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style code {
+        background: rgba(88, 166, 255, 0.05) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-radius: 15px !important;
+      }
+
+      /* 浅色模式 - 引用块、表格等卡片样式 - 更透明 */
+      html[data-color-mode="light"] body.wallpaper-random markdown-style blockquote,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style blockquote {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-left: 4px solid rgba(102, 126, 234, 0.4) !important;
+        border-radius: 12px !important;
+        padding: 16px 20px !important;
+        margin: 16px 0 !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style table,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style table {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style table th,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style table th {
+        background: rgba(102, 126, 234, 0.06) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style table tr:hover,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style table tr:hover {
+        background: rgba(102, 126, 234, 0.04) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style .highlight,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style .highlight {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(102, 126, 234, 0.1) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style details,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style details {
+        background: rgba(255, 255, 255, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border: 1px solid rgba(102, 126, 234, 0.1) !important;
+        border-radius: 12px !important;
+        padding: 12px 16px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random markdown-style summary,
+      html[data-color-mode="light"] body.wallpaper-local markdown-style summary {
+        background: transparent !important;
+      }
+
+      /* 暗色模式 - 引用块、表格等卡片样式 - 更透明 */
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style blockquote,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style blockquote,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style blockquote,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style blockquote {
+        background: rgba(22, 27, 34, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-left: 4px solid rgba(88, 166, 255, 0.4) !important;
+        border-radius: 12px !important;
+        padding: 16px 20px !important;
+        margin: 16px 0 !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style table,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style table,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style table,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style table {
+        background: rgba(22, 27, 34, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style table th,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style table th,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style table th,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style table th {
+        background: rgba(88, 166, 255, 0.06) !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style table tr:hover,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style table tr:hover,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style table tr:hover,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style table tr:hover {
+        background: rgba(88, 166, 255, 0.04) !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style .highlight,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style .highlight,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style .highlight,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style .highlight {
+        background: rgba(22, 27, 34, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style details,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style details,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style details,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style details {
+        background: rgba(22, 27, 34, 0.35) !important;
+        backdrop-filter: blur(10px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 12px !important;
+        padding: 12px 16px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style summary,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style summary,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style summary,
+      html:not([data-color-mode]) body.wallpaper-local markdown-style summary {
+        background: transparent !important;
+      }
+      /* Logo 适应浅色模式 */
+      html[data-color-mode="light"] body.wallpaper-random .header .logo svg,
+      html[data-color-mode="light"] body.wallpaper-local .header .logo svg {
+        fill: #667eea !important;
+        filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.3)) !important;
+      }
+      body.wallpaper-random .header .logo svg,
+      body.wallpaper-local .header .logo svg {
+        fill: rgba(255,255,255,0.95) !important;
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5)) !important;
+      }
+      /* 搜索框保持原样（不做任何覆盖） */
+      /* 主题切换按钮适配 - 壁纸模式下保持渐变背景 */
+      html[data-color-mode="dark"] body.wallpaper-random #theme-toggle,
+      html[data-color-mode="dark"] body.wallpaper-local #theme-toggle,
+      html:not([data-color-mode]) body.wallpaper-random #theme-toggle,
+      html:not([data-color-mode]) body.wallpaper-local #theme-toggle {
+        background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%) !important;
+        box-shadow: 0 4px 16px rgba(88, 166, 255, 0.3) !important;
+        border-radius: 50% !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random #theme-toggle:hover,
+      html[data-color-mode="dark"] body.wallpaper-local #theme-toggle:hover,
+      html:not([data-color-mode]) body.wallpaper-random #theme-toggle:hover,
+      html:not([data-color-mode]) body.wallpaper-local #theme-toggle:hover {
+        box-shadow: 0 6px 24px rgba(88, 166, 255, 0.4) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random #theme-toggle,
+      html[data-color-mode="light"] body.wallpaper-local #theme-toggle {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3) !important;
+        border-radius: 50% !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random #theme-toggle:hover,
+      html[data-color-mode="light"] body.wallpaper-local #theme-toggle:hover {
+        box-shadow: 0 6px 24px rgba(102, 126, 234, 0.4) !important;
+      }
+
+      /* 搜索下拉 - 夜间模式毛玻璃 + 圆角15px */
+      html[data-color-mode="dark"] body.wallpaper-random .search-list,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list,
+      html:not([data-color-mode]) body.wallpaper-random .search-list,
+      html:not([data-color-mode]) body.wallpaper-local .search-list {
+        background: rgba(13,17,23,0.66) !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        border-color: rgba(255,255,255,0.1) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .search-list,
+      html[data-color-mode="light"] body.wallpaper-local .search-list {
+        background: rgba(255,255,255,0.85) !important;
+        backdrop-filter: blur(16px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+        border-color: rgba(88,166,255,0.15) !important;
+        border-radius: 15px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .search-list li,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list li,
+      html:not([data-color-mode]) body.wallpaper-random .search-list li,
+      html:not([data-color-mode]) body.wallpaper-local .search-list li {
+        border-color: rgba(255,255,255,0.07) !important;
+      }
+      /* 壁纸模式 - 命令卡片 */
+      html[data-color-mode="dark"] body.wallpaper-random .search-list li.command-item,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list li.command-item,
+      html:not([data-color-mode]) body.wallpaper-random .search-list li.command-item,
+      html:not([data-color-mode]) body.wallpaper-local .search-list li.command-item {
+        background: rgba(88, 166, 255, 0.08) !important;
+        border-color: rgba(88, 166, 255, 0.2) !important;
+        border-left-color: rgba(88, 166, 255, 0.5) !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .search-list li.command-item:hover,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list li.command-item:hover,
+      html:not([data-color-mode]) body.wallpaper-random .search-list li.command-item:hover,
+      html:not([data-color-mode]) body.wallpaper-local .search-list li.command-item:hover {
+        background: rgba(88, 166, 255, 0.15) !important;
+        border-left-color: #58a6ff !important;
+      }
+      /* 壁纸模式 - 脚本卡片 */
+      html[data-color-mode="dark"] body.wallpaper-random .search-list li.script-item,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list li.script-item,
+      html:not([data-color-mode]) body.wallpaper-random .search-list li.script-item,
+      html:not([data-color-mode]) body.wallpaper-local .search-list li.script-item {
+        background: rgba(240, 147, 251, 0.08) !important;
+        border-color: rgba(240, 147, 251, 0.2) !important;
+        border-left-color: rgba(240, 147, 251, 0.5) !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .search-list li.script-item:hover,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list li.script-item:hover,
+      html:not([data-color-mode]) body.wallpaper-random .search-list li.script-item:hover,
+      html:not([data-color-mode]) body.wallpaper-local .search-list li.script-item:hover {
+        background: rgba(240, 147, 251, 0.15) !important;
+        border-left-color: #f093fb !important;
+      }
+      /* 明亮壁纸模式 - 命令卡片 */
+      html[data-color-mode="light"] body.wallpaper-random .search-list li.command-item,
+      html[data-color-mode="light"] body.wallpaper-local .search-list li.command-item {
+        background: rgba(102, 126, 234, 0.08) !important;
+        border-color: rgba(102, 126, 234, 0.2) !important;
+        border-left-color: rgba(102, 126, 234, 0.5) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .search-list li.command-item:hover,
+      html[data-color-mode="light"] body.wallpaper-local .search-list li.command-item:hover {
+        background: rgba(102, 126, 234, 0.15) !important;
+        border-left-color: #667eea !important;
+      }
+      /* 明亮壁纸模式 - 脚本卡片 */
+      html[data-color-mode="light"] body.wallpaper-random .search-list li.script-item,
+      html[data-color-mode="light"] body.wallpaper-local .search-list li.script-item {
+        background: rgba(240, 147, 251, 0.08) !important;
+        border-color: rgba(240, 147, 251, 0.2) !important;
+        border-left-color: rgba(240, 147, 251, 0.5) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .search-list li.script-item:hover,
+      html[data-color-mode="light"] body.wallpaper-local .search-list li.script-item:hover {
+        background: rgba(240, 147, 251, 0.15) !important;
+        border-left-color: #f093fb !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .search-list a,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list a,
+      html:not([data-color-mode]) body.wallpaper-random .search-list a,
+      html:not([data-color-mode]) body.wallpaper-local .search-list a {
+        color: rgba(255,255,255,0.85) !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .search-list a:hover,
+      html[data-color-mode="dark"] body.wallpaper-local .search-list a:hover,
+      html:not([data-color-mode]) body.wallpaper-random .search-list a:hover,
+      html:not([data-color-mode]) body.wallpaper-local .search-list a:hover {
+        background: rgba(255,255,255,0.08) !important;
+      }
+      body.wallpaper-random .search-list a strong,
+      body.wallpaper-local .search-list a strong {
+        color: #ffd700 !important;
+      }
+
+      /* Footer 透明 */
+      body.wallpaper-random .footer,
+      body.wallpaper-local .footer {
+        background: transparent !important;
+        border-top: none !important;
+        border-radius: 0 !important;
+      }
+      body.wallpaper-random .footer-grid,
+      body.wallpaper-local .footer-grid {
+        background: rgba(0,0,0,0.66) !important;
+        backdrop-filter: blur(12px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(255,255,255,0.1) !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .footer-grid,
+      html[data-color-mode="light"] body.wallpaper-local .footer-grid {
+        background: rgba(255,255,255,0.72) !important;
+        backdrop-filter: blur(12px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+        border: 1px solid rgba(88,166,255,0.15) !important;
+        border-radius: 15px !important;
+      }
+      /* 夜间模式保持原样式 */
+      html[data-color-mode="dark"] body.wallpaper-random .footer-item,
+      html[data-color-mode="dark"] body.wallpaper-local .footer-item,
+      html:not([data-color-mode]) body.wallpaper-random .footer-item,
+      html:not([data-color-mode]) body.wallpaper-local .footer-item {
+        background: transparent !important;
+        border-color: transparent !important;
+        color: rgba(255,255,255,0.85) !important;
+        padding: 8px 6px !important;
+        font-size: 13px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .footer-item:hover,
+      html[data-color-mode="dark"] body.wallpaper-local .footer-item:hover,
+      html:not([data-color-mode]) body.wallpaper-random .footer-item:hover,
+      html:not([data-color-mode]) body.wallpaper-local .footer-item:hover {
+        background: rgba(255,255,255,0.1) !important;
+        border-color: rgba(255,255,255,0.15) !important;
+        color: #fff !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .footer-icon,
+      html[data-color-mode="dark"] body.wallpaper-local .footer-icon,
+      html:not([data-color-mode]) body.wallpaper-random .footer-icon,
+      html:not([data-color-mode]) body.wallpaper-local .footer-icon {
+        width: 14px !important;
+        height: 14px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .footer-count,
+      html[data-color-mode="dark"] body.wallpaper-local .footer-count,
+      html:not([data-color-mode]) body.wallpaper-random .footer-count,
+      html:not([data-color-mode]) body.wallpaper-local .footer-count {
+        font-size: 13px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .footer-text,
+      html[data-color-mode="dark"] body.wallpaper-local .footer-text,
+      html:not([data-color-mode]) body.wallpaper-random .footer-text,
+      html:not([data-color-mode]) body.wallpaper-local .footer-text {
+        font-size: 13px !important;
+      }
+      /* 日间模式 */
+      html[data-color-mode="light"] body.wallpaper-random .footer-item,
+      html[data-color-mode="light"] body.wallpaper-local .footer-item {
+        background: transparent !important;
+        border-color: transparent !important;
+        color: rgba(255,255,255,0.85) !important;
+        padding: 8px 6px !important;
+        font-size: 13px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .footer-item:hover,
+      html[data-color-mode="light"] body.wallpaper-local .footer-item:hover {
+        background: rgba(255,255,255,0.1) !important;
+        border-color: rgba(255,255,255,0.15) !important;
+        color: #fff !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .footer-icon,
+      html[data-color-mode="light"] body.wallpaper-local .footer-icon {
+        color: rgba(255,255,255,0.7) !important;
+        width: 14px !important;
+        height: 14px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .footer-count,
+      html[data-color-mode="light"] body.wallpaper-local .footer-count {
+        color: #ffd700 !important;
+        font-size: 13px !important;
+      }
+      html[data-color-mode="light"] body.wallpaper-random .footer-text,
+      html[data-color-mode="light"] body.wallpaper-local .footer-text {
+        font-size: 13px !important;
+      }
+      body.wallpaper-random .footer-icon,
+      body.wallpaper-local .footer-icon {
+        color: rgba(255,255,255,0.7) !important;
+        width: 14px !important;
+        height: 14px !important;
+      }
+      body.wallpaper-random .footer-count,
+      body.wallpaper-local .footer-count {
+        color: #ffd700 !important;
+        font-size: 13px !important;
+      }
+      body.wallpaper-random .footer-text,
+      body.wallpaper-local .footer-text {
+        font-size: 13px !important;
+      }
+
+      /* 壁纸切换按钮 */
+      #wallpaper-toggle {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        z-index: 99998;
+        border: none;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        box-shadow: 0 4px 14px rgba(102,126,234,0.4);
+        transition: all 0.3s ease;
+        text-decoration: none;
+        user-select: none;
+      }
+      #wallpaper-toggle:hover {
+        transform: scale(1.06);
+        box-shadow: 0 6px 20px rgba(102,126,234,0.55);
+      }
+      #wallpaper-toggle:active {
+        transform: scale(0.96);
+      }
+      /* 暗色模式壁纸切换按钮 */
+      html[data-color-mode="dark"] #wallpaper-toggle,
+      html:not([data-color-mode]) #wallpaper-toggle {
+        background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%);
+        box-shadow: 0 4px 14px rgba(88,166,255,0.4);
+        color: #fff;
+      }
+      html[data-color-mode="dark"] #wallpaper-toggle:hover,
+      html:not([data-color-mode]) #wallpaper-toggle:hover {
+        box-shadow: 0 6px 20px rgba(88,166,255,0.55);
+      }
+      /* 壁纸模式激活时按钮样式 */
+      body.wallpaper-random #wallpaper-toggle,
+      body.wallpaper-local #wallpaper-toggle {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        box-shadow: 0 4px 14px rgba(102,126,234,0.4) !important;
+        color: #333 !important;
+      }
+      body.wallpaper-random #wallpaper-toggle:hover,
+      body.wallpaper-local #wallpaper-toggle:hover {
+        box-shadow: 0 6px 20px rgba(102,126,234,0.55) !important;
+      }
+      /* 壁纸模式暗色模式按钮样式 */
+      html[data-color-mode="dark"] body.wallpaper-random #wallpaper-toggle,
+      html[data-color-mode="dark"] body.wallpaper-local #wallpaper-toggle,
+      html:not([data-color-mode]) body.wallpaper-random #wallpaper-toggle,
+      html:not([data-color-mode]) body.wallpaper-local #wallpaper-toggle {
+        background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%) !important;
+        box-shadow: 0 4px 14px rgba(88,166,255,0.4) !important;
+        color: #fff !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random #wallpaper-toggle:hover,
+      html[data-color-mode="dark"] body.wallpaper-local #wallpaper-toggle:hover,
+      html:not([data-color-mode]) body.wallpaper-random #wallpaper-toggle:hover,
+      html:not([data-color-mode]) body.wallpaper-local #wallpaper-toggle:hover {
+        box-shadow: 0 6px 20px rgba(88,166,255,0.55) !important;
+      }
+      /* 壁纸模式搜索按钮样式 */
+      body.wallpaper-random .enter-input button,
+      body.wallpaper-local .enter-input button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        border-radius: 0 8px 8px 0 !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random .enter-input button,
+      html[data-color-mode="dark"] body.wallpaper-local .enter-input button,
+      html:not([data-color-mode]) body.wallpaper-random .enter-input button,
+      html:not([data-color-mode]) body.wallpaper-local .enter-input button {
+        background: linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%) !important;
+      }
+      /* 移动端适配 - 右上角，只在首页显示 */
+      @media screen and (max-width: 479px) {
+        #wallpaper-toggle {
+          top: 10px;
+          right: 10px;
+          padding: 5px 10px;
+          font-size: 11px;
+          z-index: 99998;
+          border-radius: 16px;
+        }
+        /* 非首页隐藏壁纸切换按钮 */
+        body:not(.home-page) #wallpaper-toggle {
+          display: none !important;
+        }
+        /* 手机端文章内容更宽 */
+        .markdown-body, 
+        #main-content {
+          padding-left: 8px !important;
+          padding-right: 8px !important;
+          max-width: 100% !important;
+        }
+        /* 壁纸模式下文章内容更宽 */
+        body.wallpaper-random .markdown-body,
+        body.wallpaper-local .markdown-body,
+        body.wallpaper-random #main-content,
+        body.wallpaper-local #main-content {
+          margin-left: 5px !important;
+          margin-right: 5px !important;
+          padding: 12px 8px !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<div id="dark-overlay"></div>
+<a class="skip-link" href="#main-content">跳转到主内容</a>
+<div id="theme-toggle" style="position:fixed;left:80px;bottom:80px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:99998;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;box-shadow:0 4px 15px rgba(102,126,234,0.4);border:none;overflow:hidden;" onclick="toggleTheme()">
+  <div id="sun-bg" style="width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;transform:scale(1.4);">
+    <svg id="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="#fff">
+      <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+    </svg>
+  </div>
+  <div id="moon-bg" style="width:32px;height:32px;border-radius:50%;display:none;align-items:center;justify-content:center;">
+    <svg id="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="#fff">
+      <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+    </svg>
+  </div>
+</div>
+<!-- 壁纸切换按钮 -->
+<div id="wallpaper-toggle" onclick="toggleWallpaper()" title="切换壁纸">
+  <svg id="wallpaper-icon-random" width="15" height="15" viewBox="0 0 24 24" fill="none">
+    <defs>
+      <linearGradient id="wallpaperGradRandom" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#f093fb;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="url(#wallpaperGradRandom)" stroke-width="2" fill="none"/>
+    <circle cx="8.5" cy="8.5" r="1.5" fill="#f093fb"/>
+    <polyline points="21 15 16 10 5 21" stroke="url(#wallpaperGradRandom)" stroke-width="2" fill="none"/>
+  </svg>
+  <svg id="wallpaper-icon-local" width="15" height="15" viewBox="0 0 24 24" fill="none" style="display:none;">
+    <defs>
+      <linearGradient id="wallpaperGradLocal" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#58a6ff;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#79c0ff;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="url(#wallpaperGradLocal)" stroke-width="2" fill="none"/>
+    <line x1="3" y1="9" x2="21" y2="9" stroke="url(#wallpaperGradLocal)" stroke-width="2"/>
+    <line x1="3" y1="15" x2="21" y2="15" stroke="url(#wallpaperGradLocal)" stroke-width="2"/>
+    <line x1="9" y1="3" x2="9" y2="21" stroke="url(#wallpaperGradLocal)" stroke-width="2"/>
+    <line x1="15" y1="3" x2="15" y2="21" stroke="url(#wallpaperGradLocal)" stroke-width="2"/>
+  </svg>
+  <span id="wallpaper-label">随机</span>
+</div>
+<script>
+function toggleTheme() {
+  const html = document.documentElement;
+  const sunBg = document.getElementById('sun-bg');
+  const moonBg = document.getElementById('moon-bg');
+  const themeToggle = document.getElementById('theme-toggle');
+  if (html.getAttribute('data-color-mode') === 'dark') {
+    html.setAttribute('data-color-mode', 'light');
+    localStorage.setItem('_dark_mode_theme_', 'light');
+    sunBg.style.display = 'none';
+    moonBg.style.display = 'flex';
+    themeToggle.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+    themeToggle.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+  } else {
+    html.setAttribute('data-color-mode', 'dark');
+    localStorage.setItem('_dark_mode_theme_', 'dark');
+    sunBg.style.display = 'flex';
+    moonBg.style.display = 'none';
+    themeToggle.style.background = 'linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';
+    themeToggle.style.boxShadow = '0 4px 15px rgba(88, 166, 255, 0.4)';
+  }
+}
+const savedTheme = localStorage.getItem('_dark_mode_theme_');
+const sunBg = document.getElementById('sun-bg');
+const moonBg = document.getElementById('moon-bg');
+const themeToggle = document.getElementById('theme-toggle');
+if (savedTheme === 'dark' || savedTheme === null) {
+  document.documentElement.setAttribute('data-color-mode', 'dark');
+  document.getElementById('sun-bg').style.display = 'flex';
+  document.getElementById('moon-bg').style.display = 'none';
+  themeToggle.style.background = 'linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';
+  themeToggle.style.boxShadow = '0 4px 15px rgba(88, 166, 255, 0.4)';
+} else if (savedTheme === 'light') {
+  document.documentElement.setAttribute('data-color-mode', 'light');
+  sunBg.style.display = 'none';
+  moonBg.style.display = 'flex';
+  themeToggle.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+  themeToggle.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+}
+</script>
+<script>
+/* 壁纸切换功能 */
+const WALLPAPER_API = 'https://api.meimolihan.eu.org/';
+const HONEYCOMB_BG = 'linear-gradient(30deg, rgba(102, 126, 234, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.05) 87.5%), linear-gradient(150deg, rgba(102, 126, 234, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.05) 87.5%), linear-gradient(30deg, rgba(102, 126, 234, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.05) 87.5%), linear-gradient(150deg, rgba(102, 126, 234, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(102, 126, 234, 0.05) 87.5%), linear-gradient(60deg, rgba(118, 75, 162, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(118, 75, 162, 0.04) 75%), linear-gradient(60deg, rgba(118, 75, 162, 0.04) 25%, transparent 25.5%, transparent 75%, rgba(118, 75, 162, 0.04) 75%)';
+
+function toggleWallpaper() {
+  const isRandom = document.body.classList.contains('wallpaper-random');
+  const isLocal = document.body.classList.contains('wallpaper-local');
+  if (isRandom || isLocal) {
+    // 关闭壁纸，切换到另一个模式
+    document.body.classList.remove('wallpaper-random');
+    document.body.classList.remove('wallpaper-local');
+    if (isRandom) {
+      // 从随机切换到本地
+      applyHoneycombBg();
+      localStorage.setItem('_wallpaper_mode_', 'local');
+      syncWallpaperUI(false);
+    } else {
+      // 从本地切换到随机
+      document.body.classList.add('wallpaper-random');
+      localStorage.setItem('_wallpaper_ts_', Date.now());
+      applyWallpaperBg();
+      localStorage.setItem('_wallpaper_mode_', 'on');
+      syncWallpaperUI(true);
+    }
+  } else {
+    // 首次开启随机壁纸
+    document.body.classList.add('wallpaper-random');
+    localStorage.setItem('_wallpaper_ts_', Date.now());
+    applyWallpaperBg();
+    localStorage.setItem('_wallpaper_mode_', 'on');
+    syncWallpaperUI(true);
+  }
+}
+
+// 页面加载时恢复壁纸状态，并监控 body 背景变化
+(function initWallpaper() {
+  const mode = localStorage.getItem('_wallpaper_mode_');
+  if (mode !== 'on' && mode !== 'local') return;
+
+  // 延迟设置，让 body 先完成渲染
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      if (mode === 'on') {
+        document.body.classList.add('wallpaper-random');
+        applyWallpaperBg();
+        syncWallpaperUI(true);
+      } else if (mode === 'local') {
+        applyHoneycombBg();
+        syncWallpaperUI(false);
+      }
+    });
+  });
+
+  // 监控 body.style 的变化，被覆盖时自动恢复
+  var wallpaperObserver = new MutationObserver(function(records) {
+    for (var i = 0; i < records.length; i++) {
+      var rec = records[i];
+      if (rec.type === 'attributes' && rec.attributeName === 'style') {
+        var currentBg = document.body.style.backgroundImage;
+        if (!currentBg || currentBg === 'none' || currentBg === '') {
+          if (mode === 'on') applyWallpaperBg();
+          else if (mode === 'local') applyHoneycombBg();
+        }
+      }
+    }
+  });
+  wallpaperObserver.observe(document.body, { attributes: true });
+
+  // 备用：定期检查（每 200ms），防止其他方式覆盖背景
+  setInterval(function() {
+    var currentMode = localStorage.getItem('_wallpaper_mode_');
+    if (document.body.classList.contains('wallpaper-random')) {
+      var bg = document.body.style.backgroundImage;
+      if (!bg || bg === 'none' || bg === '') {
+        applyWallpaperBg();
+      }
+    } else if (currentMode === 'local') {
+      var bg = document.body.style.backgroundImage;
+      if (!bg || bg === 'none' || bg === '') {
+        applyHoneycombBg();
+      }
+    }
+  }, 200);
+})();
+
+function applyWallpaperBg() {
+  var ts = localStorage.getItem('_wallpaper_ts_') || Date.now();
+  var bgUrl = "url('" + WALLPAPER_API + "?t=" + ts + "')";
+  document.body.style.backgroundImage = bgUrl;
+  document.documentElement.style.backgroundImage = bgUrl;
+  document.body.classList.add('wallpaper-random');
+}
+
+function applyHoneycombBg() {
+  document.body.classList.add('wallpaper-local');
+  document.body.style.backgroundImage = HONEYCOMB_BG;
+  document.body.style.backgroundSize = '56px 98px';
+  document.body.style.backgroundPosition = '0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px';
+  document.documentElement.style.backgroundImage = HONEYCOMB_BG;
+  document.documentElement.style.backgroundSize = '56px 98px';
+  document.documentElement.style.backgroundPosition = '0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px';
+}
+
+function syncWallpaperUI(isOn) {
+  var icoR = document.getElementById('wallpaper-icon-random');
+  var icoL = document.getElementById('wallpaper-icon-local');
+  var lbl = document.getElementById('wallpaper-label');
+  if (!icoR || !icoL || !lbl) return;
+  if (isOn) {
+    icoR.style.display = 'none';
+    icoL.style.display = '';
+    lbl.textContent = '本地';
+  } else {
+    icoR.style.display = '';
+    icoL.style.display = 'none';
+    lbl.textContent = '随机';
+  }
+}
+</script>
+<div class="header header_list">
+  <div class="header_inner">
+      <div class="logo">
+          <a href="../index.html" title="Cmdbox">
+            <svg width="183px" height="48px" viewBox="0 0 183 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <!-- kenny wang <wowohoo@qq.com> https://github.com/jaywcjlove --> <title>logo</title> <desc>Cmdbox Logo. https://github.com/jaywcjlove</desc><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g transform="translate(-576.000000, -261.000000)" fill="currentColor"> <g id="logo" transform="translate(576.000000, 261.000000)"> <path d="M20.4917792,0.000336524232 C20.1886146,-0.000100520225 19.8723998,0.0124863601 19.542641,0.0387964365 C11.2083649,0.710004944 13.4186692,9.51473754 13.2949769,12.4631618 C13.1427718,14.6193207 12.7056049,16.3185233 11.2226825,18.426428 C9.48047033,20.4982285 7.02763261,23.8514609 5.86566251,27.3420607 C5.3172635,28.9894735 5.05630425,30.6686289 5.29730805,32.2578406 C5.22181299,32.325447 5.14994103,32.3962788 5.08160039,32.469239 C4.57008792,33.0153217 4.19213625,33.6769851 3.77100458,34.1224689 C3.37755968,34.5149436 2.81698897,34.6642292 2.20097918,34.8852382 C1.58472464,35.1063477 0.908127379,35.4323261 0.497432332,36.2204265 C0.497432332,36.2204265 0.497432332,36.2207368 0.49712203,36.2207368 C0.496684986,36.222048 0.495373852,36.2233591 0.494936808,36.2246702 L0.494936808,36.2246702 C0.123151829,36.919077 0.233680372,37.718746 0.347224522,38.4596325 C0.460773043,39.2004972 0.575720105,39.9005856 0.423139144,40.3755699 C-0.0645762474,41.7086473 -0.126850712,42.6307542 0.216491414,43.2996202 C0.560563403,43.9698759 1.2680029,44.2657113 2.06756262,44.432706 C3.66668644,44.7666954 5.83232039,44.6837094 7.53908826,45.5883128 L7.68579097,45.3115063 L7.54060917,45.5891344 C9.36778716,46.5444437 11.2201913,46.8837519 12.698079,46.5461831 C13.7695766,46.3014513 14.6393781,45.6634363 15.0860725,44.6816946 C16.2420201,44.6760567 17.5104717,44.1864315 19.5423657,44.0745568 C20.9208039,43.9635213 22.6427241,44.564051 24.6233484,44.4540775 C24.6751207,44.6689591 24.750052,44.8756375 24.8526175,45.0720452 C24.8539287,45.0742305 24.8548028,45.0759786 24.8556769,45.0780328 C25.6234722,46.6133699 27.0500902,47.3156173 28.570428,47.1956355 C30.0927718,47.075492 31.711331,46.1778551 33.0196848,44.6208231 L32.7798304,44.4192582 L33.0215204,44.618616 C34.2685787,43.1065034 36.3384911,42.4794975 37.7110118,41.6516741 C38.3972721,41.2377581 38.9541192,40.7194802 38.9971462,39.966706 C39.0401514,39.2142991 38.5984218,38.3711223 37.5826868,37.2436088 L37.5823765,37.2432985 C37.5820662,37.2428614 37.5815024,37.2424244 37.5810654,37.2415503 C37.2473295,36.8644028 37.0881185,36.1654026 36.91702,35.4210285 C36.7460395,34.6771089 36.5551865,33.8746254 35.9444344,33.3545687 L35.9444344,33.3545687 C35.9431233,33.3532575 35.9418121,33.3523835 35.940938,33.3515094 L35.940938,33.3515094 C35.6978714,33.1397045 35.4452772,32.9959518 35.1909042,32.8993694 C36.0400422,30.3810493 35.7068789,27.8734149 34.8497254,25.6073831 C33.7977638,22.8263338 31.9611937,20.4030752 30.5585738,18.7453569 C28.9885703,16.7650385 27.4529665,14.8848863 27.4832187,12.1079627 C27.5299825,7.86977213 27.9494053,0.0101787654 20.4914689,0 L20.4917792,0.000336524232 Z M21.5014393,6.5296802 C21.9246338,6.5296802 22.2860696,6.65372652 22.6573476,6.92320377 C23.0345213,7.1969553 23.3062494,7.53965497 23.5252523,8.01821865 C23.7401952,8.48461502 23.843613,8.94086321 23.8537568,9.48229573 C23.8537568,9.49649968 23.8537568,9.50864951 23.8576902,9.52285346 C23.8616236,10.0784681 23.7664397,10.5509481 23.5555483,11.0335676 C23.4352081,11.3089536 23.2970146,11.540089 23.1316064,11.7401941 C23.0754506,11.7132285 23.0171357,11.6873118 22.9566488,11.6624396 L22.9566488,11.6624396 C22.5373789,11.4828667 22.2157491,11.3685884 21.9476879,11.2755722 C22.044856,11.158772 22.1257661,11.0202464 22.1969169,10.8470719 C22.3043949,10.5854877 22.3571155,10.3299784 22.367255,10.025813 C22.367255,10.0136631 22.3711884,10.00348 22.3711884,9.98931975 C22.3772633,9.69732161 22.3387597,9.44789596 22.2535753,9.19239103 C22.1643483,8.92472316 22.0507955,8.73208707 21.886541,8.57188842 C21.722291,8.41168541 21.5580366,8.33869024 21.361336,8.33260221 C21.3521143,8.33216517 21.3429364,8.33216517 21.3338459,8.33216517 C21.1488275,8.33260221 20.9881699,8.39616596 20.8219532,8.53532529 C20.6475593,8.6813331 20.5177834,8.86788115 20.4103054,9.12744186 C20.3028318,9.38699819 20.2501067,9.64452664 20.239976,9.95073309 C20.2377908,9.96288293 20.2377908,9.97306607 20.2377908,9.9852159 C20.2342945,10.1535261 20.2449584,10.307711 20.2709188,10.4574381 C19.8923378,10.2687966 19.535574,10.1401875 19.2007499,10.0604924 C19.181651,9.91570835 19.1706375,9.76629596 19.1670975,9.61007442 L19.1670975,9.56750629 C19.1610225,9.01391519 19.2522643,8.53941165 19.4651836,8.05679657 C19.6781029,7.57417712 19.9417194,7.2274173 20.3128051,6.94555422 C20.6838952,6.66369114 21.0488973,6.53391079 21.4808239,6.52985938 L21.5010154,6.52985938 L21.5014393,6.5296802 Z M15.7091362,6.98827969 C15.9898804,6.98871673 16.2410892,7.0827381 16.5009296,7.29023807 C16.7828014,7.51531597 16.9957164,7.80326271 17.1741616,8.20882685 C17.3526112,8.614391 17.4479175,9.01995077 17.4742757,9.49851445 L17.4742757,9.50244785 C17.4870374,9.70344023 17.485464,9.89263677 17.469643,10.0758677 C17.4141165,10.091645 17.3597045,10.1087334 17.3064069,10.1270762 C17.0036968,10.2312719 16.7369205,10.373272 16.5044085,10.5268101 C16.5271785,10.366205 16.5305437,10.2032486 16.5131057,10.0215605 C16.5109204,10.0114211 16.5109204,10.0032921 16.5109204,9.99319633 C16.4865771,9.75189098 16.435893,9.54911109 16.3507218,9.34429895 C16.2594713,9.131384 16.1580813,8.98132478 16.0242452,8.86573527 C15.9029566,8.76098882 15.7883592,8.71289208 15.6622806,8.71384046 C15.6492567,8.71384046 15.636058,8.71427751 15.6227281,8.71558864 C15.4807804,8.72773848 15.3631674,8.79669098 15.251638,8.93255936 C15.1401086,9.068419 15.0671091,9.23672919 15.0143884,9.4597792 C14.9616634,9.68284232 14.9474682,9.90184967 14.9697706,10.1532945 C14.9697706,10.1634339 14.9719558,10.1715629 14.9719558,10.1816586 C14.9962992,10.4249963 15.0449553,10.6277718 15.1321501,10.8325883 C15.2213771,11.0434797 15.3247905,11.1935346 15.4586266,11.3091153 C15.481047,11.3284764 15.5032139,11.3458708 15.525289,11.361399 C15.3860816,11.468536 15.3196072,11.5179308 15.2055298,11.6017559 C15.1323642,11.6554425 15.0452263,11.7193646 14.94395,11.7940162 C14.7230765,11.5871106 14.5507673,11.3270648 14.4001137,10.984671 C14.2216641,10.5791112 14.1263578,10.1735471 14.0979674,9.69498342 L14.0979674,9.69105002 C14.0716136,9.21249508 14.1182463,8.8008429 14.2500545,8.37500864 C14.3818627,7.94916563 14.5582845,7.6409444 14.813785,7.38745861 C15.06929,7.13399031 15.3268184,7.00623784 15.6370763,6.99001912 C15.6613322,6.98870799 15.6853347,6.98827095 15.709123,6.98827095 L15.7091362,6.98827969 Z M18.3434478,10.3083666 C18.9959552,10.3057443 19.7811624,10.5197693 20.731756,11.1309629 C21.3156605,11.5106715 21.7700031,11.5424053 22.8162176,11.9904939 L22.8175288,11.9909309 L22.8188399,11.991368 C23.322219,12.1979021 23.6176741,12.4671083 23.7620255,12.7505841 C23.906377,13.034073 23.9099039,13.3414857 23.7890786,13.6648724 C23.5474411,14.3116676 22.7761407,14.9923468 21.6937826,15.3303395 L21.6929085,15.3307766 L21.6920344,15.3312136 C21.1642857,15.5026793 20.7040867,15.8813302 20.1615484,16.1915706 C19.6190277,16.5017979 19.00512,16.7520102 18.1703739,16.7037212 C18.1703739,16.7037168 18.1703739,16.7037212 18.1703739,16.7037212 C17.4597396,16.6622893 17.0349499,16.4210539 16.650849,16.1123607 C16.2667437,15.8036631 15.9320245,15.4158517 15.4418966,15.1280491 L15.4405854,15.1271751 L15.4392743,15.126301 C14.6497885,14.6800742 14.2187709,14.163964 14.0834969,13.7165354 C13.9482185,13.2691068 14.075193,12.8871911 14.4668766,12.5936327 C14.9072645,12.2635986 15.2131825,12.0390976 15.4169632,11.8895453 C15.6194022,11.7409983 15.703625,11.685297 15.7680935,11.623394 C15.7684038,11.622957 15.7685305,11.622957 15.7689675,11.6225199 L15.7692735,11.6220829 C16.1001729,11.3088706 16.6276463,10.738226 17.4227569,10.4645313 C17.696421,10.3703264 18.001784,10.3095466 18.3435746,10.3081961 L18.3434478,10.3083666 Z M22.9062619,13.0069369 C22.6246829,13.0237631 22.3297828,13.1687002 21.9864013,13.3604054 C21.6430199,13.5521105 21.256878,13.7973406 20.8384079,14.0388338 C20.0014721,14.5218204 19.038047,14.9837283 18.0805918,14.9837283 C17.1216551,14.9837283 16.3555118,14.5408493 15.7808726,14.0854752 C15.4935509,13.8577838 15.2564149,13.6284404 15.0669561,13.4510265 C14.9722311,13.3623109 14.8900799,13.2867065 14.8134179,13.2276487 C14.7367734,13.1685909 14.6743853,13.1100357 14.5461303,13.1100357 L14.5400116,13.3795435 C14.5308337,13.4697233 14.5213935,13.4669437 14.5251084,13.4693999 C14.5310959,13.4733333 14.5608587,13.4835601 14.5955731,13.5103509 C14.6519344,13.5537495 14.7301609,13.6245375 14.8230067,13.7114832 C15.0086981,13.8853788 15.2554403,14.124464 15.5592255,14.3652012 C16.166796,14.8466668 17.0117515,15.3406363 18.0806093,15.3406363 C19.1509618,15.3406363 20.1636375,14.8403471 21.016875,14.3479598 C21.4434872,14.1017639 21.8309534,13.8560094 22.1604324,13.6720705 C22.4898897,13.4881185 22.7670895,13.3727781 22.9275766,13.3632068 L22.9062925,13.00695 L22.9062619,13.0069369 Z M23.8576858,14.2878093 C24.5685911,17.0901733 26.2220701,21.1378562 27.2848005,23.113201 C27.8496849,24.1612205 28.9735097,26.3878921 29.4590574,29.0706371 C29.7667148,29.0611969 30.1054855,29.1059065 30.4682673,29.1987042 C31.7377591,25.907589 29.3917525,22.3626165 28.3189832,21.375368 C27.8858722,20.9551061 27.8650557,20.7668098 28.0797669,20.7757081 C29.2436775,21.8049915 30.7716374,23.8752142 31.3275492,26.211938 C31.581035,27.2774436 31.6350799,28.3975886 31.3630809,29.5030663 C31.4961478,29.5583437 31.6312951,29.6184504 31.7682604,29.683286 C33.806037,30.6755779 34.5596721,31.5384567 34.1973186,32.716121 C34.0779748,32.7117506 33.960576,32.7126247 33.8460659,32.7152469 C33.8354021,32.7155572 33.8247819,32.715684 33.814118,32.716121 C34.1092104,31.7826203 33.4554837,31.0941179 31.7135031,30.305952 C29.9067264,29.5110511 28.4669839,29.5901387 28.2236507,31.2022427 C28.2080919,31.2867016 28.1955487,31.3727644 28.1860212,31.460029 C28.05104,31.506902 27.9153158,31.5667509 27.7792552,31.6412014 C26.9308557,32.1054213 26.4677896,32.9477371 26.2102393,33.9808403 C25.9529032,35.0131131 25.8791213,36.2610673 25.8081016,37.6639101 L25.8081016,37.6647842 C25.7647031,38.3701826 25.4746935,39.3242507 25.1805582,40.3347805 C22.2207839,42.446033 18.1128938,43.3607409 14.6251435,40.9805006 C14.3887768,40.6065916 14.1176344,40.2361221 13.8385378,39.8707355 C13.6603154,39.6373843 13.4772332,39.4054841 13.2952172,39.1768225 C13.6532528,39.1768225 13.9575843,39.1184771 14.2035442,39.0069433 C14.5094142,38.8682516 14.724322,38.6454901 14.8306462,38.3594969 C15.0432858,37.7875325 14.8297721,36.9806654 14.1489836,36.0592664 C13.4682956,35.137933 12.3154554,34.0981212 10.6214273,33.0592009 C10.6214273,33.0592009 10.621117,33.0592009 10.621117,33.0588906 C9.37658486,32.2846183 8.68057408,31.3355981 8.3547924,30.3051959 C8.02898013,29.2747018 8.07466439,28.1604089 8.32577265,27.0602631 C8.80774091,24.9485692 10.0461107,22.8947793 10.8362565,21.605909 C11.0489879,21.4493815 10.9122629,21.8964561 10.0363515,23.5230089 C9.25134103,25.0101357 7.78376323,28.4420972 9.79314068,31.1210705 C9.84684033,29.2145776 10.3021401,27.2701931 11.0664741,25.45145 C12.1797968,22.9278068 14.5084483,18.5514927 14.6933968,15.0635108 C14.7887555,15.1327561 15.1164383,15.3538525 15.2624505,15.4368866 C15.2627608,15.4373237 15.2628875,15.4373237 15.2633246,15.4373237 C15.6905181,15.6888908 16.0113611,16.0566244 16.426903,16.3905832 C16.8432709,16.7252019 17.3634237,17.0142238 18.149269,17.0600129 L18.149269,17.0600129 C19.066516,17.113092 19.7655905,16.8289912 20.3383504,16.5014745 C20.9102449,16.1744603 21.3671137,15.8125482 21.7999582,15.6712779 C21.8003952,15.6708409 21.8012693,15.6708409 21.8017063,15.6708409 C22.7163355,15.3848215 23.44356,14.8785842 23.857393,14.2881327 L23.8576858,14.2878093 Z M29.6669682,30.3312962 C30.0374289,30.329548 30.4861993,30.4530917 30.9774372,30.6728508 C32.2995623,31.2832227 32.713238,31.8063999 32.3522873,32.5749338 C32.0481219,33.1548918 30.7462669,34.0775407 29.8540319,33.8342075 C28.9435503,33.5989814 28.4994564,32.2869871 28.6474877,31.2953987 C28.7267763,30.6220356 29.1076387,30.3339097 29.6669682,30.3312962 L29.6669682,30.3312962 Z M28.1710786,32.1433306 C28.2458176,33.3559191 28.8457529,34.5926195 29.9067526,34.8602742 C31.0678224,35.1661922 32.7418469,34.16998 33.4486352,33.3574182 C33.5895689,33.3517803 33.7273516,33.3448313 33.8611658,33.3416409 C34.4811527,33.3266503 35.001157,33.3620509 35.5324588,33.8267253 L35.534207,33.8284735 L35.5359552,33.8302216 C35.9442465,34.1761336 36.1383204,34.8298385 36.3066481,35.5621545 C36.4749627,36.294475 36.6095636,37.0920505 37.11435,37.6602345 L37.115224,37.6611086 L37.1156611,37.6619827 C38.0861227,38.7388952 38.3980544,39.4668146 38.3715083,39.931406 C38.344936,40.3960279 38.008556,40.7409347 37.3873891,41.1155867 C36.1455928,41.864576 33.9453056,42.5158727 32.5399192,44.2181871 C31.3196037,45.6704378 29.8315635,46.4680352 28.5210638,46.5714617 C27.2105642,46.6748883 26.0799127,46.1309646 25.4133237,44.793071 L25.4115756,44.7900117 L25.4098274,44.7869524 C24.9962959,44.0002986 25.1685614,42.758852 25.5169207,41.4493706 C25.8652845,40.1398937 26.3657922,38.7953264 26.4327911,37.7024923 L26.4327911,37.7007442 L26.4327911,37.698996 C26.5036666,36.2987755 26.5820418,35.0759688 26.8172504,34.1324728 C27.0524633,33.1889769 27.4228236,32.5499829 28.0790545,32.1909116 C28.109604,32.1742165 28.139948,32.1584392 28.1701128,32.1435097 L28.1710786,32.1433306 Z M6.86074718,32.2348346 C6.95869322,32.2351449 7.06234705,32.2434006 7.17277507,32.2601394 C7.91559769,32.3726653 8.5633675,32.8920358 9.18746261,33.7385341 C9.8115621,34.5850455 10.3922762,35.7405823 10.9892352,37.0223812 L10.9901093,37.0241294 L10.9905463,37.0258776 C11.4702594,38.0271115 12.4825418,39.128044 13.3403902,40.2511564 C14.1982341,41.3742689 14.8621527,42.5016163 14.7756966,43.3644732 L14.7753863,43.3684066 L14.775076,43.37234 C14.6632363,44.843978 13.8330966,45.6451198 12.5587449,45.9361914 C11.2847734,46.2271625 9.55771794,45.9379396 7.83269472,45.035587 L7.83094655,45.035587 C5.9224477,44.0247687 3.65205856,44.1251622 2.19566909,43.8209924 C1.46727769,43.6688572 0.99200058,43.44013 0.773862951,43.0151698 C0.55571221,42.5902315 0.550839164,41.8488511 1.01440785,40.5847437 L1.01659307,40.5791059 L1.01834125,40.573468 C1.24759292,39.8663213 1.07793226,39.0925822 0.96663015,38.3663367 C0.855328038,37.6400911 0.800894151,36.9795116 1.04888192,36.5190765 L1.05019305,36.5168913 L1.05150418,36.514706 C1.36900824,35.9026821 1.83472718,35.683902 2.41273159,35.4765375 C2.990736,35.2691556 3.67612223,35.1062953 4.21734934,34.5638925 L4.21997161,34.5612703 L4.22259387,34.558648 C4.72293985,34.0308163 5.09877623,33.3691834 5.53863963,32.8995879 C5.90977341,32.5033678 6.28118253,32.2407652 6.84099715,32.2368755 L6.86053303,32.2368755 L6.86074718,32.2348346 Z"></path> <text x="58" y="33" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="30" fill="currentColor">CmdBox</text> </g> </g> </g> </svg> 
+          </a>
+      </div>
+      <div class="search">
+          <ul class="search-list" id="result">
+            <li class="search-result-count" id="search-result-count" style="display:none;"></li>
+            <!-- <li><a href="#"><strong>find</strong> - 指定目录下查找文件。</a></li> -->
+          </ul>
+          <input type="text" class="query" id="query" autocomplete="off" placeholder="CmdBox 命令搜索"
+            role="combobox" aria-label="搜索 CmdBox 命令" aria-expanded="false" aria-autocomplete="list" aria-controls="result" />
+          <div class="enter-input">
+              <input type="hidden" id="current_path" value="/c/gpm.html">
+              <button id="search_btn" aria-label="执行搜索">搜索</button>
+          </div>
+      </div>
+      <!-- ① 搜索框快捷键提示 -->
+      <div class="search-shortcuts" id="search-shortcuts">
+        <span class="shortcut-key"><span class="key">Enter</span> 搜索</span>
+        <span class="shortcut-key"><span class="key">↑↓</span> 切换</span>
+        <span class="shortcut-key"><span class="key">Esc</span> 清空</span>
+      </div>
+  </div>
+</div>
+<script type="text/javascript" src="../js/copy-to-clipboard.js"></script>
+
+<style>
+/* 壁纸模式详情页 - body 顶部间距 */
+body.wallpaper-random,
+body.wallpaper-local {
+  padding-top: 80px !important;
+}
+</style>
+
+<main id="main-content" class="markdown-body" style="padding-bottom: 10px !important; margin: 0 auto 0 auto !important;">
+
+<!-- ⑥ 命令头部信息卡片 -->
+<div class="command-header-card">
+  <div class="command-title-row">
+    <h1 class="command-name">gpm</h1>
+    <span class="command-type-badge command">命令</span>
+  </div>
+  
+  <p class="command-desc">提供文字模式下的滑鼠事件处理</p>
+  
+  <div class="command-actions">
+    
+    <a class="action-btn edit-btn" target="_blank" href="https://github.com/meimolihan/cmdbox/edit/main/command/gpm.md">
+      <svg class="action-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+      <span>纠正错误</span>
+    </a>
+    <a class="action-btn add-btn" target="_blank" href="https://github.com/meimolihan/cmdbox/edit/main/command/gpm.md">
+      <svg class="action-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>添加实例</span>
+    </a>
+    <button class="action-btn copy-link-btn" onclick="navigator.clipboard.writeText(window.location.href);showToast('链接已复制','success')">
+      <svg class="action-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <span>复制链接</span>
+    </button>
+  </div>
+</div>
+
+
+<dark-mode style="position: fixed; top: 8px; left: 10px; z-index: 999;;display: none;" dark="Dark" light="Light"></dark-mode><script>const t=document;const e="_dark_mode_theme_";const s="permanent";const o="colorschemechange";const i="permanentcolorscheme";const h="light";const r="dark";const n=(t,e,s=e)=>{Object.defineProperty(t,s,{enumerable:true,get(){const t=this.getAttribute(e);return t===null?"":t},set(t){this.setAttribute(e,t)}})};const c=(t,e,s=e)=>{Object.defineProperty(t,s,{enumerable:true,get(){return this.hasAttribute(e)},set(t){if(t){this.setAttribute(e,"")}else{this.removeAttribute(e)}}})};class a extends HTMLElement{static get observedAttributes(){return["mode",h,r,s]}LOCAL_NANE=e;constructor(){super();this.t()}connectedCallback(){n(this,"mode");n(this,r);n(this,h);c(this,s);const a=localStorage.getItem(e);if(a&&[h,r].includes(a)){this.mode=a;this.permanent=true}if(this.permanent&&!a){localStorage.setItem(e,this.mode)}const l=[h,r].includes(a);if(this.permanent&&a){this.o()}else{if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){this.mode=r;this.o()}if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches){this.mode=h;this.o()}}if(!this.permanent&&!l){window.matchMedia("(prefers-color-scheme: light)").onchange=t=>{this.mode=t.matches?h:r;this.o()};window.matchMedia("(prefers-color-scheme: dark)").onchange=t=>{this.mode=t.matches?r:h;this.o()}}const d=new MutationObserver(((s,h)=>{this.mode=t.documentElement.dataset.colorMode;if(this.permanent&&l){localStorage.setItem(e,this.mode);this.i(i,{permanent:this.permanent})}this.h();this.i(o,{colorScheme:this.mode})}));d.observe(t.documentElement,{attributes:true});this.i(o,{colorScheme:this.mode});this.h()}attributeChangedCallback(t,s,o){if(t==="mode"&&s!==o&&[h,r].includes(o)){const t=localStorage.getItem(e);if(this.mode===t){this.mode=o;this.h();this.o()}else if(this.mode&&this.mode!==t){this.h();this.o()}}else if((t===h||t===r)&&s!==o){this.h()}if(t==="permanent"&&typeof this.permanent==="boolean"){this.permanent?localStorage.setItem(e,this.mode):localStorage.removeItem(e)}}o(){t.documentElement.setAttribute("data-color-mode",this.mode)}h(){this.icon.textContent=this.mode===h?"🌒":"🌞";this.text.textContent=this.mode===h?this.getAttribute(r):this.getAttribute(h)}t(){var s=this.attachShadow({mode:"open"});this.label=t.createElement("span");this.label.setAttribute("class","wrapper");this.label.onclick=()=>{this.mode=this.mode===h?r:h;if(this.permanent){localStorage.setItem(e,this.mode)}this.o();this.h()};s.appendChild(this.label);this.icon=t.createElement("span");this.label.appendChild(this.icon);this.text=t.createElement("span");this.label.appendChild(this.text);const o=`
+[data-color-mode*='dark'], [data-color-mode*='dark'] body {
+  color-scheme: dark;
+  --color-theme-bg: #0d1117;
+  --color-theme-text: #c9d1d9;
+  background-color: var(--color-theme-bg);
+  color: var(--color-theme-text);
+}
+
+[data-color-mode*='light'], [data-color-mode*='light'] body {
+  color-scheme: light;
+  --color-theme-bg: #fff;
+  --color-theme-text: #24292f;
+  background-color: var(--color-theme-bg);
+  color: var(--color-theme-text);
+}`;const i="_dark_mode_style_";const n=t.getElementById(i);if(!n){var c=t.createElement("style");c.id=i;c.textContent=o;t.head.appendChild(c)}var a=t.createElement("style");a.textContent=`
+    .wrapper { cursor: pointer; user-select: none; position: relative; }
+    .wrapper > span + span { margin-left: .4rem; }
+    `;s.appendChild(a)}i(t,e){this.dispatchEvent(new CustomEvent(t,{bubbles:true,composed:true,detail:e}))}}customElements.define("dark-mode",a);</script><script>const __TEMPLATE__ = document.createElement('template');
+__TEMPLATE__.innerHTML = `
+<style>
+
+markdown-style h1:hover a.anchor .octicon-link:before,
+markdown-style h2:hover a.anchor .octicon-link:before,
+markdown-style h3:hover a.anchor .octicon-link:before,
+markdown-style h4:hover a.anchor .octicon-link:before,
+markdown-style h5:hover a.anchor .octicon-link:before,
+markdown-style h6:hover a.anchor .octicon-link:before {
+  width: 16px;
+  height: 16px;
+  content: ' ';
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+  mask-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' version='1.1' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg>");
+}
+[data-color-mode*='light'], [data-color-mode*='light'] body, markdown-style[theme*='light'] { --color-prettylights-syntax-comment: #6e7781; --color-prettylights-syntax-constant: #0550ae; --color-prettylights-syntax-entity: #8250df; --color-prettylights-syntax-storage-modifier-import: #24292f; --color-prettylights-syntax-entity-tag: #116329; --color-prettylights-syntax-keyword: #cf222e; --color-prettylights-syntax-string: #0a3069; --color-prettylights-syntax-variable: #953800; --color-prettylights-syntax-brackethighlighter-unmatched: #82071e; --color-prettylights-syntax-invalid-illegal-text: #f6f8fa; --color-prettylights-syntax-invalid-illegal-bg: #82071e; --color-prettylights-syntax-carriage-return-text: #f6f8fa; --color-prettylights-syntax-carriage-return-bg: #cf222e; --color-prettylights-syntax-string-regexp: #116329; --color-prettylights-syntax-markup-list: #3b2300; --color-prettylights-syntax-markup-heading: #0550ae; --color-prettylights-syntax-markup-italic: #24292f; --color-prettylights-syntax-markup-bold: #24292f; --color-prettylights-syntax-markup-deleted-text: #82071e; --color-prettylights-syntax-markup-deleted-bg: #FFEBE9; --color-prettylights-syntax-markup-inserted-text: #116329; --color-prettylights-syntax-markup-inserted-bg: #dafbe1; --color-prettylights-syntax-markup-changed-text: #953800; --color-prettylights-syntax-markup-changed-bg: #ffd8b5; --color-prettylights-syntax-markup-ignored-text: #eaeef2; --color-prettylights-syntax-markup-ignored-bg: #0550ae; --color-prettylights-syntax-meta-diff-range: #8250df; --color-prettylights-syntax-brackethighlighter-angle: #57606a; --color-prettylights-syntax-sublimelinter-gutter-mark: #8c959f; --color-prettylights-syntax-constant-other-reference-link: #0a3069; --color-fg-default: #24292f; --color-fg-muted: #57606a; --color-fg-subtle: #6e7781; --color-canvas-default: #ffffff; --color-canvas-subtle: #f6f8fa; --color-border-default: #d0d7de; --color-border-muted: hsla(210,18%,87%,1); --color-neutral-muted: rgba(175,184,193,0.2); --color-accent-fg: #0969da; --color-accent-emphasis: #0969da; --color-attention-subtle: #fff8c5; --color-danger-fg: #cf222e; } [data-color-mode*='dark'], [data-color-mode*='dark'] body, markdown-style[theme*='dark'] { --color-prettylights-syntax-comment: #8b949e; --color-prettylights-syntax-constant: #79c0ff; --color-prettylights-syntax-entity: #d2a8ff; --color-prettylights-syntax-storage-modifier-import: #c9d1d9; --color-prettylights-syntax-entity-tag: #7ee787; --color-prettylights-syntax-keyword: #ff7b72; --color-prettylights-syntax-string: #a5d6ff; --color-prettylights-syntax-variable: #ffa657; --color-prettylights-syntax-brackethighlighter-unmatched: #f85149; --color-prettylights-syntax-invalid-illegal-text: #f0f6fc; --color-prettylights-syntax-invalid-illegal-bg: #8e1519; --color-prettylights-syntax-carriage-return-text: #f0f6fc; --color-prettylights-syntax-carriage-return-bg: #b62324; --color-prettylights-syntax-string-regexp: #7ee787; --color-prettylights-syntax-markup-list: #f2cc60; --color-prettylights-syntax-markup-heading: #1f6feb; --color-prettylights-syntax-markup-italic: #c9d1d9; --color-prettylights-syntax-markup-bold: #c9d1d9; --color-prettylights-syntax-markup-deleted-text: #ffdcd7; --color-prettylights-syntax-markup-deleted-bg: #67060c; --color-prettylights-syntax-markup-inserted-text: #aff5b4; --color-prettylights-syntax-markup-inserted-bg: #033a16; --color-prettylights-syntax-markup-changed-text: #ffdfb6; --color-prettylights-syntax-markup-changed-bg: #5a1e02; --color-prettylights-syntax-markup-ignored-text: #c9d1d9; --color-prettylights-syntax-markup-ignored-bg: #1158c7; --color-prettylights-syntax-meta-diff-range: #d2a8ff; --color-prettylights-syntax-brackethighlighter-angle: #8b949e; --color-prettylights-syntax-sublimelinter-gutter-mark: #484f58; --color-prettylights-syntax-constant-other-reference-link: #a5d6ff; --color-fg-default: #c9d1d9; --color-fg-muted: #8b949e; --color-fg-subtle: #484f58; --color-canvas-default: #0d1117; --color-canvas-subtle: #161b22; --color-border-default: #30363d; --color-border-muted: #21262d; --color-neutral-muted: rgba(110,118,129,0.4); --color-accent-fg: #58a6ff; --color-accent-emphasis: #1f6feb; --color-attention-subtle: rgba(187,128,9,0.15); --color-danger-fg: #f85149; } markdown-style { display: block; -webkit-text-size-adjust: 100%; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-size: 16px; line-height: 1.5; word-wrap: break-word; color: var(--color-fg-default); background-color: var(--color-canvas-default); } markdown-style details, markdown-style figcaption, markdown-style figure { display: block; } markdown-style summary { display: list-item; } markdown-style [hidden] { display: none !important; } markdown-style a { background-color: transparent; color: var(--color-accent-fg); text-decoration: none; } markdown-style a:active, markdown-style a:hover { outline-width: 0; } markdown-style abbr[title] { border-bottom: none; text-decoration: underline dotted; } markdown-style b, markdown-style strong { font-weight: 600; } markdown-style dfn { font-style: italic; } markdown-style h1 { margin: .67em 0; font-weight: 600; padding-bottom: .3em; font-size: 2em; border-bottom: 1px solid var(--color-border-muted); } markdown-style mark { background-color: var(--color-attention-subtle); color: var(--color-text-primary); } markdown-style small { font-size: 90%; } markdown-style sub, markdown-style sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; } markdown-style sub { bottom: -0.25em; } markdown-style sup { top: -0.5em; } markdown-style img { border-style: none; max-width: 100%; box-sizing: content-box; background-color: var(--color-canvas-default); } markdown-style code, markdown-style kbd, markdown-style pre, markdown-style samp { font-family: monospace,monospace; font-size: 1em; } markdown-style figure { margin: 1em 40px; } markdown-style hr { box-sizing: content-box; overflow: hidden; background: transparent; border-bottom: 1px solid var(--color-border-muted); height: .25em; padding: 0; margin: 24px 0; background-color: var(--color-border-default); border: 0; } markdown-style input { font: inherit; margin: 0; overflow: visible; font-family: inherit; font-size: inherit; line-height: inherit; } markdown-style [type=button], markdown-style [type=reset], markdown-style [type=submit] { -webkit-appearance: button; } markdown-style [type=button]::-moz-focus-inner, markdown-style [type=reset]::-moz-focus-inner, markdown-style [type=submit]::-moz-focus-inner { border-style: none; padding: 0; } markdown-style [type=button]:-moz-focusring, markdown-style [type=reset]:-moz-focusring, markdown-style [type=submit]:-moz-focusring { outline: 1px dotted ButtonText; } markdown-style [type=checkbox], markdown-style [type=radio] { box-sizing: border-box; padding: 0; } markdown-style [type=number]::-webkit-inner-spin-button, markdown-style [type=number]::-webkit-outer-spin-button { height: auto; } markdown-style [type=search] { -webkit-appearance: textfield; outline-offset: -2px; } markdown-style [type=search]::-webkit-search-cancel-button, markdown-style [type=search]::-webkit-search-decoration { -webkit-appearance: none; } markdown-style ::-webkit-input-placeholder { color: inherit; opacity: .54; } markdown-style ::-webkit-file-upload-button { -webkit-appearance: button; font: inherit; } markdown-style a:hover { text-decoration: underline; } markdown-style hr::before { display: table; content: ""; } markdown-style hr::after { display: table; clear: both; content: ""; } markdown-style table { border-spacing: 0; border-collapse: collapse; display: block; width: max-content; max-width: 100%; overflow: auto; } markdown-style td, markdown-style th { padding: 0; } markdown-style details summary { cursor: pointer; } markdown-style details:not([open])>*:not(summary) { display: none !important; } markdown-style kbd { display: inline-block; padding: 3px 5px; font: 11px ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; line-height: 10px; color: var(--color-fg-default); vertical-align: middle; background-color: var(--color-canvas-subtle); border: solid 1px var(--color-neutral-muted); border-bottom-color: var(--color-neutral-muted); border-radius: 6px; box-shadow: inset 0 -1px 0 var(--color-neutral-muted); } markdown-style h1, markdown-style h2, markdown-style h3, markdown-style h4, markdown-style h5, markdown-style h6 { margin-top: 24px; margin-bottom: 16px; font-weight: 600; line-height: 1.25; } markdown-style h2 { font-weight: 600; padding-bottom: .3em; font-size: 1.5em; border-bottom: 1px solid var(--color-border-muted); } markdown-style h3 { font-weight: 600; font-size: 1.25em; } markdown-style h4 { font-weight: 600; font-size: 1em; } markdown-style h5 { font-weight: 600; font-size: .875em; } markdown-style h6 { font-weight: 600; font-size: .85em; color: var(--color-fg-muted); } markdown-style p { margin-top: 0; margin-bottom: 10px; } markdown-style blockquote { margin: 0; padding: 0 1em; color: var(--color-fg-muted); border-left: .25em solid var(--color-border-default); } markdown-style ul, markdown-style ol { margin-top: 0; margin-bottom: 0; padding-left: 2em; } markdown-style ol ol, markdown-style ul ol { list-style-type: lower-roman; } markdown-style ul ul ol, markdown-style ul ol ol, markdown-style ol ul ol, markdown-style ol ol ol { list-style-type: lower-alpha; } markdown-style dd { margin-left: 0; } markdown-style tt, markdown-style code { font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; font-size: 12px; } markdown-style pre { margin-top: 0; margin-bottom: 0; font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; font-size: 12px; word-wrap: normal; } markdown-style .octicon { display: inline-block; overflow: visible !important; vertical-align: text-bottom; fill: currentColor; } markdown-style ::placeholder { color: var(--color-fg-subtle); opacity: 1; } markdown-style input::-webkit-outer-spin-button, markdown-style input::-webkit-inner-spin-button { margin: 0; -webkit-appearance: none; appearance: none; }
+markdown-style .token.comment, markdown-style .token.prolog, markdown-style .token.doctype, markdown-style .token.cdata { color: var(--color-prettylights-syntax-comment); } markdown-style .token.namespace { opacity: 0.7; } markdown-style .token.tag, markdown-style .token.selector, markdown-style .token.constant, markdown-style .token.symbol, markdown-style .token.deleted { color: var(--color-prettylights-syntax-entity-tag); } markdown-style .token.maybe-class-name { color: var(--color-prettylights-syntax-variable); } markdown-style .token.property-access, markdown-style .token.operator, markdown-style .token.boolean, markdown-style .token.number, markdown-style .token.selector markdown-style .token.class, markdown-style .token.attr-name, markdown-style .token.string, markdown-style .token.char, markdown-style .token.builtin { color: var(--color-prettylights-syntax-constant); } markdown-style .token.deleted { color: var(--color-prettylights-syntax-markup-deleted-text); } markdown-style .token.property { color: var(--color-prettylights-syntax-constant); } markdown-style .token.punctuation { color: var(--color-prettylights-syntax-markup-bold); } markdown-style .token.function { color: var(--color-prettylights-syntax-entity); } markdown-style .code-line .token.deleted { background-color: var(--color-prettylights-syntax-markup-deleted-bg); } markdown-style .token.inserted { color: var(--color-prettylights-syntax-markup-inserted-text); } markdown-style .code-line .token.inserted { background-color: var(--color-prettylights-syntax-markup-inserted-bg); } markdown-style .token.variable { color: var(--color-prettylights-syntax-constant); } markdown-style .token.entity, markdown-style .token.url, .language-css markdown-style .token.string, .style markdown-style .token.string { color: var(--color-prettylights-syntax-string); } markdown-style .token.color, markdown-style .token.atrule, markdown-style .token.attr-value, markdown-style .token.function, markdown-style .token.class-name { color: var(--color-prettylights-syntax-string); } markdown-style .token.rule, markdown-style .token.regex, markdown-style .token.important, markdown-style .token.keyword { color: var(--color-prettylights-syntax-keyword); } markdown-style .token.coord { color: var(--color-prettylights-syntax-meta-diff-range); } markdown-style .token.important, markdown-style .token.bold { font-weight: bold; } markdown-style .token.italic { font-style: italic; } markdown-style .token.entity { cursor: help; }
+markdown-style [data-catalyst] { display: block; } markdown-style g-emoji { font-family: "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; font-size: 1em; font-style: normal !important; font-weight: 400; line-height: 1; vertical-align: -0.075em; } markdown-style g-emoji img { width: 1em; height: 1em; } markdown-style::before { display: table; content: ""; } markdown-style::after { display: table; clear: both; content: ""; } markdown-style>*:first-child { margin-top: 0 !important; } markdown-style>*:last-child { margin-bottom: 0 !important; } markdown-style a:not([href]) { color: inherit; text-decoration: none; } markdown-style .absent { color: var(--color-danger-fg); } markdown-style a.anchor { float: left; padding-right: 4px; margin-left: -20px; line-height: 1; } markdown-style a.anchor:focus { outline: none; } markdown-style p, markdown-style blockquote, markdown-style ul, markdown-style ol, markdown-style dl, markdown-style table, markdown-style pre, markdown-style details { margin-top: 0; margin-bottom: 16px; } markdown-style blockquote>:first-child { margin-top: 0; } markdown-style blockquote>:last-child { margin-bottom: 0; } markdown-style sup>a::before { content: "["; } markdown-style sup>a::after { content: "]"; }
+markdown-style .octicon-video { border: 1px solid #d0d7de !important; border-radius: 6px !important; display: block; } markdown-style .octicon-video summary { border-bottom: 1px solid #d0d7de !important; padding: 8px 16px !important; cursor: pointer; } markdown-style .octicon-video > video { display: block !important; max-width: 100% !important; padding: 2px; box-sizing: border-box; border-bottom-right-radius: 6px !important; border-bottom-left-radius: 6px !important; } markdown-style details.octicon-video:not([open])>*:not(summary) { display: none !important; } markdown-style details.octicon-video:not([open]) > summary { border-bottom: 0 !important; } markdown-style h1 .octicon-link, markdown-style h2 .octicon-link, markdown-style h3 .octicon-link, markdown-style h4 .octicon-link, markdown-style h5 .octicon-link, markdown-style h6 .octicon-link { color: var(--color-fg-default); vertical-align: middle; visibility: hidden; } markdown-style h1:hover .anchor, markdown-style h2:hover .anchor, markdown-style h3:hover .anchor, markdown-style h4:hover .anchor, markdown-style h5:hover .anchor, markdown-style h6:hover .anchor { text-decoration: none; } markdown-style h1:hover .anchor .octicon-link, markdown-style h2:hover .anchor .octicon-link, markdown-style h3:hover .anchor .octicon-link, markdown-style h4:hover .anchor .octicon-link, markdown-style h5:hover .anchor .octicon-link, markdown-style h6:hover .anchor .octicon-link { visibility: visible; } markdown-style h1 tt, markdown-style h1 code, markdown-style h2 tt, markdown-style h2 code, markdown-style h3 tt, markdown-style h3 code, markdown-style h4 tt, markdown-style h4 code, markdown-style h5 tt, markdown-style h5 code, markdown-style h6 tt, markdown-style h6 code { padding: 0 .2em; font-size: inherit; } markdown-style ul.no-list, markdown-style ol.no-list { padding: 0; list-style-type: none; } markdown-style ol[type="1"] { list-style-type: decimal; } markdown-style ol[type=a] { list-style-type: lower-alpha; } markdown-style ol[type=i] { list-style-type: lower-roman; } markdown-style div>ol:not([type]) { list-style-type: decimal; } markdown-style ul ul, markdown-style ul ol, markdown-style ol ol, markdown-style ol ul { margin-top: 0; margin-bottom: 0; } markdown-style li>p { margin-top: 16px; } markdown-style li+li { margin-top: .25em; } markdown-style dl { padding: 0; } markdown-style dl dt { padding: 0; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: 600; } markdown-style dl dd { padding: 0 16px; margin-bottom: 16px; } markdown-style table th { font-weight: 600; } markdown-style table th, markdown-style table td { padding: 6px 13px; border: 1px solid var(--color-border-default); } markdown-style table tr { background-color: var(--color-canvas-default); border-top: 1px solid var(--color-border-muted); } markdown-style table tr:nth-child(2n) { background-color: var(--color-canvas-subtle); } markdown-style table img { background-color: transparent; vertical-align: middle; } markdown-style img[align=right] { padding-left: 20px; } markdown-style img[align=left] { padding-right: 20px; } markdown-style .emoji { max-width: none; vertical-align: text-top; background-color: transparent; } markdown-style span.frame { display: block; overflow: hidden; } markdown-style span.frame>span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0 0; overflow: hidden; border: 1px solid var(--color-border-default); } markdown-style span.frame span img { display: block; float: left; } markdown-style span.frame span span { display: block; padding: 5px 0 0; clear: both; color: var(--color-fg-default); } markdown-style span.align-center { display: block; overflow: hidden; clear: both; } markdown-style span.align-center>span { display: block; margin: 13px auto 0; overflow: hidden; text-align: center; } markdown-style span.align-center span img { margin: 0 auto; text-align: center; } markdown-style span.align-right { display: block; overflow: hidden; clear: both; } markdown-style span.align-right>span { display: block; margin: 13px 0 0; overflow: hidden; text-align: right; } markdown-style span.align-right span img { margin: 0; text-align: right; } markdown-style span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; } markdown-style span.float-left span { margin: 13px 0 0; } markdown-style span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; } markdown-style span.float-right>span { display: block; margin: 13px auto 0; overflow: hidden; text-align: right; } markdown-style code, markdown-style tt { padding: .2em .4em; margin: 0; font-size: 85%; background-color: var(--color-neutral-muted); border-radius: 6px; } markdown-style code br, markdown-style tt br { display: none; } markdown-style del code { text-decoration: inherit; } markdown-style pre code { font-size: 100%; } markdown-style pre>code { padding: 0; margin: 0; word-break: normal; white-space: pre; background: transparent; border: 0; } markdown-style pre { position: relative; font-size: 85%; line-height: 1.45; background-color: var(--color-canvas-subtle); border-radius: 6px; } markdown-style pre code, markdown-style pre tt { display: inline; max-width: auto; padding: 0; margin: 0; overflow: visible; line-height: inherit; word-wrap: normal; background-color: transparent; border: 0; } markdown-style pre > code { padding: 16px; overflow: auto; display: block; } markdown-style .csv-data td, markdown-style .csv-data th { padding: 5px; overflow: hidden; font-size: 12px; line-height: 1; text-align: left; white-space: nowrap; } markdown-style .csv-data .blob-num { padding: 10px 8px 9px; text-align: right; background: var(--color-canvas-default); border: 0; } markdown-style .csv-data tr { border-top: 0; } markdown-style .csv-data th { font-weight: 600; background: var(--color-canvas-subtle); border-top: 0; } markdown-style .footnotes { font-size: 12px; color: var(--color-fg-muted); border-top: 1px solid var(--color-border-default); } markdown-style .footnotes ol { padding-left: 16px; } markdown-style .footnotes li { position: relative; } markdown-style .footnotes li:target::before { position: absolute; top: -8px; right: -8px; bottom: -8px; left: -24px; pointer-events: none; content: ""; border: 2px solid var(--color-accent-emphasis); border-radius: 6px; } markdown-style .footnotes li:target { color: var(--color-fg-default); } markdown-style .footnotes .data-footnote-backref g-emoji { font-family: monospace; } markdown-style .task-list-item { list-style-type: none; } markdown-style .task-list-item label { font-weight: 400; } markdown-style .task-list-item.enabled label { cursor: pointer; } markdown-style .task-list-item+.task-list-item { margin-top: 3px; } markdown-style .task-list-item .handle { display: none; } markdown-style .task-list-item-checkbox, markdown-style input[type="checkbox"] { margin: 0 .2em .25em -1.6em; vertical-align: middle; } markdown-style .contains-task-list:dir(rtl) .task-list-item-checkbox, markdown-style .contains-task-list:dir(rtl) input[type="checkbox"] { margin: 0 -1.6em .25em .2em; } markdown-style ::-webkit-calendar-picker-indicator { filter: invert(50%); }
+</style>
+<slot></slot>
+`;
+class MarkdownStyle extends HTMLElement {
+    constructor() {
+        super();
+        this.shadow = this.attachShadow({ mode: 'open' });
+        this.shadow.appendChild(__TEMPLATE__.content.cloneNode(true));
+        const style = Array.prototype.slice
+            .call(this.shadow.children)
+            .find((item) => item.tagName === 'STYLE');
+        if (style) {
+            const id = '__MARKDOWN_STYLE__';
+            const findStyle = document.getElementById(id);
+            if (!findStyle) {
+                style.id = id;
+                document.head.append(style);
+            }
+        }
+    }
+    get theme() {
+        const value = this.getAttribute('theme');
+        return value === null ? '' : value;
+    }
+    set theme(name) {
+        this.setAttribute('theme', name);
+    }
+    connectedCallback() {
+        if (!this.theme) {
+            const { colorMode } = document.documentElement.dataset;
+            this.theme = colorMode;
+            const observer = new MutationObserver((mutationsList, observer) => {
+                this.theme = document.documentElement.dataset.colorMode;
+            });
+            observer.observe(document.documentElement, { attributes: true });
+            window.matchMedia('(prefers-color-scheme: light)').onchange = (event) => {
+                this.theme = event.matches ? 'light' : 'dark';
+            };
+            window.matchMedia('(prefers-color-scheme: dark)').onchange = (event) => {
+                this.theme = event.matches ? 'dark' : 'light';
+            };
+        }
+    }
+}
+customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
+<h1 id="gpm"><a class="anchor" aria-hidden="true" tabindex="-1" href="#gpm"><span class="octicon octicon-link"></span></a>gpm</h1>
+<p>提供文字模式下的滑鼠事件处理</p>
+<h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
+<p><strong>gpm命令</strong> 是Linux的虚拟控制台下的鼠标服务器，用于在虚拟控制台下实现鼠标复制和粘贴文本的功能。</p>
+<h3 id="语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#语法"><span class="octicon octicon-link"></span></a>语法</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">gpm<span class="token punctuation">(</span>选项<span class="token punctuation">)</span>
+</span></code><div onclick="copied(this)" data-code="gpm(选项)
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="选项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#选项"><span class="octicon octicon-link"></span></a>选项</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">-a：设置加速值；
+</span><span class="code-line line-number" line="2">-b：设置波特率；
+</span><span class="code-line line-number" line="3">-B：设置鼠标按键次序；
+</span><span class="code-line line-number" line="4">-m：指定鼠标设备文件；
+</span><span class="code-line line-number" line="5">-t：设置鼠标类型。
+</span></code><div onclick="copied(this)" data-code="-a：设置加速值；
+-b：设置波特率；
+-B：设置鼠标按键次序；
+-m：指定鼠标设备文件；
+-t：设置鼠标类型。
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<style>markdown-style pre .copied {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  color: #a5afbb;
+  top: 6px;
+  right: 6px;
+  border-radius: 5px;
+  background: #82828226;
+  padding: 6px;
+  font-size: 12px;
+  transition: all .3s;
+}
+markdown-style pre .copied:not(.active) {
+  visibility: hidden;
+}
+markdown-style pre:hover .copied {
+  visibility: visible;
+}
+markdown-style pre:hover .copied:hover {
+  background: #4caf50;
+  color: #fff;
+}
+markdown-style pre:hover .copied:active,
+markdown-style pre .copied.active {
+  background: #2e9b33;
+  color: #fff;
+}
+markdown-style pre .copied .octicon-copy {
+  display: block;
+}
+markdown-style pre .copied .octicon-check {
+  display: none;
+}
+markdown-style pre .active .octicon-copy {
+  display: none;
+}
+markdown-style pre .active .octicon-check {
+  display: block;
+}</style><script>/*! @uiw/copy-to-clipboard v1.0.12 | MIT (c) 2021 Kenny Wang | https://github.com/uiwjs/copy-to-clipboard.git */
+!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t():"function"==typeof define&&define.amd?define(t):(e="undefined"!=typeof globalThis?globalThis:e||self).copyTextToClipboard=t()}(this,(function(){"use strict";return function(e,t){const o=document.createElement("textarea");o.value=e,o.setAttribute("readonly",""),o.style={position:"absolute",left:"-9999px"},document.body.appendChild(o);const n=document.getSelection().rangeCount>0&&document.getSelection().getRangeAt(0);o.select();let c=!1;try{c=!!document.execCommand("copy")}catch(e){c=!1}document.body.removeChild(o),n&&document.getSelection&&(document.getSelection().removeAllRanges(),document.getSelection().addRange(n)),t&&t(c)}}));
+
+function copied(target, str) {
+  target.classList.add('active');
+  copyTextToClipboard(str || target.dataset.code, function(success) {
+    if (!window._copyToastEl) {
+      window._copyToastEl = document.createElement('div');
+      window._copyToastEl.id = 'copy-toast';
+      document.body.appendChild(window._copyToastEl);
+    }
+    clearTimeout(window._copyToastTimer);
+    window._copyToastEl.textContent = success ? '\u2713 \u5df2\u590d\u5236\u5230\u526a\u8d34\u677f' : '\u2717 \u590d\u5236\u5931\u8d25\uff0c\u8bf7\u624b\u52a8\u590d\u5236';
+    window._copyToastEl.className = success ? 'show success' : 'show error';
+    window._copyToastTimer = setTimeout(function() {
+      window._copyToastEl.className = '';
+    }, 2000);
+    setTimeout(function() {
+      target.classList.remove('active');
+    }, 2000);
+  });
+}</script></markdown-style>
+
+</main>
+<!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
+<div class="footer ">
+  <div class="footer-grid">
+    <!-- 第一行：导航链接 -->
+    <a class="footer-item" target="_blank" href="https://github.com/meimolihan/cmdbox/new/main/command">
+      <svg class="footer-icon icon-command" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-add" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea"/>
+            <stop offset="100%" style="stop-color:#764ba2"/>
+          </linearGradient>
+        </defs>
+        <circle cx="12" cy="12" r="10" fill="url(#grad-add)"/>
+        <line x1="12" y1="8" x2="12" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">添加命令</span>
+    </a>
+    <a class="footer-item" href="../hot.html">
+      <svg class="footer-icon icon-list" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-list" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#11998e"/>
+            <stop offset="100%" style="stop-color:#38ef7d"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="4" width="18" height="16" rx="2" fill="url(#grad-list)"/>
+        <line x1="7" y1="9" x2="17" y2="9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7" y1="14" x2="14" y2="14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">命令列表</span>
+    </a>
+    <a class="footer-item" target="_blank" href="https://github.com/meimolihan/cmdbox/new/main/myscript">
+      <svg class="footer-icon icon-script" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-script" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#f093fb"/>
+            <stop offset="100%" style="stop-color:#f5576c"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="3" fill="url(#grad-script)"/>
+        <path d="M8 8 L12 12 L8 16" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="14" y1="16" x2="16" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">添加脚本</span>
+    </a>
+    <a class="footer-item" href="../script-list.html">
+      <svg class="footer-icon icon-doc" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-doc" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4facfe"/>
+            <stop offset="100%" style="stop-color:#00f2fe"/>
+          </linearGradient>
+        </defs>
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" fill="url(#grad-doc)"/>
+        <polyline points="14 2 14 8 20 8" stroke="white" stroke-width="1.5" fill="none"/>
+        <line x1="8" y1="13" x2="16" y2="13" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8" y1="17" x2="13" y2="17" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">脚本列表</span>
+    </a>
+    <!-- 第二行：统计信息 -->
+    <a class="footer-item" href="../hot.html">
+      <svg class="footer-icon icon-command" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-cmd" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fa709a"/>
+            <stop offset="100%" style="stop-color:#fee140"/>
+          </linearGradient>
+        </defs>
+        <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
+        <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
+      </svg>
+      <span class="footer-text">命令 <span class="footer-count command">797</span></span>
+    </a>
+    <a class="footer-item" href="../script-list.html">
+      <svg class="footer-icon icon-script" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-code" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#a8edea"/>
+            <stop offset="100%" style="stop-color:#fed6e3"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="3" fill="url(#grad-code)"/>
+        <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">脚本 <span class="footer-count script">180</span></span>
+    </a>
+    
+    <a class="footer-item" href="../all.html">
+      <svg class="footer-icon icon-total" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-total" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#667eea"/>
+            <stop offset="100%" style="stop-color:#764ba2"/>
+          </linearGradient>
+        </defs>
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
+      </svg>
+      <span class="footer-text">共计 <span class="footer-count total">977</span></span>
+    </a>
+    <a class="footer-item github-btn" href="https://github.com/meimolihan/cmdbox" target="_blank">
+      <svg class="footer-icon icon-github" viewBox="0 0 24 24" fill="url(#github-gradient)" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="github-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#24292e"/>
+            <stop offset="50%" style="stop-color:#4285f4"/>
+            <stop offset="100%" style="stop-color:#ea4335"/>
+          </linearGradient>
+        </defs>
+        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+      </svg>
+      <span class="footer-text">Github</span>
+    </a>
+  </div>
+
+  <!-- <div>
+    <a target="_blank" href="../contributors.html#镜像网站">镜像网站</a>列表，
+    <a href="https://github.com/jaywcjlove/linux-command/issues/649" target="_blank">推荐</a>自己的镜像网站
+  </div>
+  <div class="ad_title">
+    <sup>特别感谢：</sup>
+  </div>
+  <div class="ad">
+    <a href="https://go.warp.dev/linux-command">
+      <img alt="Warp sponsorship" width="160" src="../img/warp.png">
+      <b>Warp, the intelligent terminal for developers!</b>
+    </a>
+    <a href="https://pawakalabs.com/products/fakey/">
+      <img alt="Fakey sponsorship" width="160" src="../img/fakey.png">
+      <b>Fakey - Manga Translator, Available for Android, iOS and browser extension</b>
+    </a>
+  </div>
+</div> -->
+<script type="text/javascript" src="../js/dt.js?v=mpxi7oh6"></script>
+<script type="text/javascript" src="../js/index.js?v=mpxi7oh6"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mpxi7oh6"></script>
+</body>
+</html>
