@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ffmpeg_classify_ratio 命令">
     <meta name="twitter:description" content="FFmpeg 图片按宽高比自动分类（自动识别横竖屏） - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mpyy2wz9">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mpyyq81d">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mpyy2wz9"></script>
+    <script src="../js/dt.js?v=mpyyq81d"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1435,9 +1435,9 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
 </span><span class="code-line line-number" line="20">        <span class="token punctuation">[</span>6x13<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.166667</span>  <span class="token punctuation">[</span>9x21<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.333333</span>
 </span><span class="code-line line-number" line="21">    <span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="22">
-</span><span class="code-line line-number" line="23">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nullglob
+</span><span class="code-line line-number" line="23">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nullglob nocaseglob
 </span><span class="code-line line-number" line="24">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">files</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$src</span>"</span>/*.<span class="token punctuation">{</span>webp,jpg,jpeg,png,bmp,jfif<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="25">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-u</span> nullglob
+</span><span class="code-line line-number" line="25">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-u</span> nullglob nocaseglob
 </span><span class="code-line line-number" line="26">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">total</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>files<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
 </span><span class="code-line line-number" line="27">
 </span><span class="code-line line-number" line="28">    <span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>📊 开始智能分类（自动识别横竖屏）...<span class="token entity" title="\n">\n</span>"</span>
@@ -1519,9 +1519,9 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
         [6x13]=2.166667  [9x21]=2.333333
     )
 
-    shopt -s nullglob
+    shopt -s nullglob nocaseglob
     local files=(&#x22;$src&#x22;/*.{webp,jpg,jpeg,png,bmp,jfif})
-    shopt -u nullglob
+    shopt -u nullglob nocaseglob
     local total=${#files[@]}
 
     printf &#x22;\n📊 开始智能分类（自动识别横竖屏）...\n&#x22;
@@ -2083,8 +2083,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mpyy2wz9"></script>
-<script type="text/javascript" src="../js/index.js?v=mpyy2wz9"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mpyy2wz9"></script>
+<script type="text/javascript" src="../js/dt.js?v=mpyyq81d"></script>
+<script type="text/javascript" src="../js/index.js?v=mpyyq81d"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mpyyq81d"></script>
 </body>
 </html>
