@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ffmpeg_classify_ratio 命令">
     <meta name="twitter:description" content="FFmpeg 图片按宽高比自动分类（自动识别横竖屏） - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mpyyq81d">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mpz7cs07">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mpyyq81d"></script>
+    <script src="../js/dt.js?v=mpz7cs07"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1412,96 +1412,370 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <hr>
 <h2 id="linux-版本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#linux-版本"><span class="octicon octicon-link"></span></a>Linux 版本</h2>
-<p>直接复制粘贴到终端执行（可选参数指定目录，默认为当前目录）：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function-name function">classify_images</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="2">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>.}</span>"</span>
-</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">tolerance</span><span class="token operator">=</span><span class="token number">0.05</span>
-</span><span class="code-line line-number" line="4">
-</span><span class="code-line line-number" line="5">    <span class="token comment"># 横屏比例（宽÷高）</span>
-</span><span class="code-line line-number" line="6">    <span class="token builtin class-name">local</span> <span class="token parameter variable">-A</span> <span class="token assign-left variable">LANDSCAPE</span><span class="token operator">=</span><span class="token punctuation">(</span>
-</span><span class="code-line line-number" line="7">        <span class="token punctuation">[</span>4x3<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.333333</span>   <span class="token punctuation">[</span>3x2<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.500000</span>
-</span><span class="code-line line-number" line="8">        <span class="token punctuation">[</span>16x10<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.600000</span> <span class="token punctuation">[</span>16x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.777778</span>
-</span><span class="code-line line-number" line="9">        <span class="token punctuation">[</span>17x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.888889</span>  <span class="token punctuation">[</span>19x10<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.900000</span>
-</span><span class="code-line line-number" line="10">        <span class="token punctuation">[</span>2x1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.000000</span>   <span class="token punctuation">[</span>18x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.000000</span>
-</span><span class="code-line line-number" line="11">        <span class="token punctuation">[</span>20x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.222222</span>  <span class="token punctuation">[</span>21x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.333333</span>
-</span><span class="code-line line-number" line="12">        <span class="token punctuation">[</span>24x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.666667</span>  <span class="token punctuation">[</span>32x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">3.555556</span>
-</span><span class="code-line line-number" line="13">    <span class="token punctuation">)</span>
+<h3 id="一键脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一键脚本"><span class="octicon octicon-link"></span></a>一键脚本</h3>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/ffmpeg_classify_ratio.sh<span class="token punctuation">)</span>
+</span></code><div onclick="copied(this)" data-code="bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/ffmpeg_classify_ratio.sh)
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="脚本源码"><a class="anchor" aria-hidden="true" tabindex="-1" href="#脚本源码"><span class="octicon octicon-link"></span></a>脚本源码</h3>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token shebang important">#!/bin/bash</span>
+</span><span class="code-line line-number" line="2"><span class="token function-name function">list_color_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="3">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_hui</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;59m'</span>
+</span><span class="code-line line-number" line="4">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_hong</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;9m'</span>
+</span><span class="code-line line-number" line="5">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_lv</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;10m'</span>
+</span><span class="code-line line-number" line="6">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_huang</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;11m'</span>
+</span><span class="code-line line-number" line="7">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_lan</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;32m'</span>
+</span><span class="code-line line-number" line="8">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_bai</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;15m'</span>
+</span><span class="code-line line-number" line="9">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_zi</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;13m'</span>
+</span><span class="code-line line-number" line="10">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_bufan</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;14m'</span>
+</span><span class="code-line line-number" line="11">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">reset</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[0m'</span>
+</span><span class="code-line line-number" line="12"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="13">list_color_init<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="14">
-</span><span class="code-line line-number" line="15">    <span class="token comment"># 竖屏比例（高÷宽）</span>
-</span><span class="code-line line-number" line="16">    <span class="token builtin class-name">local</span> <span class="token parameter variable">-A</span> <span class="token assign-left variable">PORTRAIT</span><span class="token operator">=</span><span class="token punctuation">(</span>
-</span><span class="code-line line-number" line="17">        <span class="token punctuation">[</span>1x1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.000000</span>   <span class="token punctuation">[</span>4x5<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.250000</span>
-</span><span class="code-line line-number" line="18">        <span class="token punctuation">[</span>3x4<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.333333</span>   <span class="token punctuation">[</span>2x3<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.500000</span>
-</span><span class="code-line line-number" line="19">        <span class="token punctuation">[</span>10x16<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.600000</span> <span class="token punctuation">[</span>9x16<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.777778</span>
-</span><span class="code-line line-number" line="20">        <span class="token punctuation">[</span>6x13<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.166667</span>  <span class="token punctuation">[</span>9x21<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.333333</span>
-</span><span class="code-line line-number" line="21">    <span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="22">
-</span><span class="code-line line-number" line="23">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nullglob nocaseglob
-</span><span class="code-line line-number" line="24">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">files</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$src</span>"</span>/*.<span class="token punctuation">{</span>webp,jpg,jpeg,png,bmp,jfif<span class="token punctuation">}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="25">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-u</span> nullglob nocaseglob
-</span><span class="code-line line-number" line="26">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">total</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>files<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
-</span><span class="code-line line-number" line="27">
-</span><span class="code-line line-number" line="28">    <span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>📊 开始智能分类（自动识别横竖屏）...<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="29">    <span class="token builtin class-name">printf</span> <span class="token string">"共 %d 个图片文件<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$total</span>"</span>
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16"><span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lan}</span>[信息]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="17"><span class="token function-name function">log_ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>[成功]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="18"><span class="token function-name function">log_warn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>[警告]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="19"><span class="token function-name function">log_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>[错误]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span> <span class="token operator">></span><span class="token file-descriptor important">&#x26;2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="20">
+</span><span class="code-line line-number" line="21">
+</span><span class="code-line line-number" line="22"><span class="token function-name function">handle_invalid_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="23">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="24">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="25">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="26">    <span class="token function">sleep</span> <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="27">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="28"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="29">
 </span><span class="code-line line-number" line="30">
-</span><span class="code-line line-number" line="31">    <span class="token builtin class-name">local</span> <span class="token parameter variable">-A</span> stats
-</span><span class="code-line line-number" line="32">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">moved</span><span class="token operator">=</span><span class="token number">0</span> <span class="token assign-left variable">errors</span><span class="token operator">=</span><span class="token number">0</span>
-</span><span class="code-line line-number" line="33">
-</span><span class="code-line line-number" line="34">    <span class="token keyword">for</span> <span class="token for-or-select variable">f</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${files<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="35">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$f</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="36">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">dim</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>ffprobe <span class="token parameter variable">-v</span> error <span class="token parameter variable">-select_streams</span> v:0 <span class="token punctuation">\</span>
-</span></span><span class="code-line line-number" line="37"><span class="token variable">                    <span class="token parameter variable">-show_entries</span> <span class="token assign-left variable">stream</span><span class="token operator">=</span>width,height <span class="token parameter variable">-of</span> <span class="token assign-left variable">csv</span><span class="token operator">=</span>p<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"<span class="token variable">$f</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="38">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$dim</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> <span class="token variable"><span class="token punctuation">((</span>errors<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token builtin class-name">printf</span> <span class="token string">"❌ 处理失败: %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$name</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">continue</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="39">
-</span><span class="code-line line-number" line="40">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">w</span><span class="token operator">=</span><span class="token variable">${dim<span class="token operator">%%</span><span class="token operator">,</span>*}</span>
-</span><span class="code-line line-number" line="41">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">h</span><span class="token operator">=</span><span class="token variable">${dim<span class="token operator">#</span>*<span class="token operator">,</span>}</span>
-</span><span class="code-line line-number" line="42">
-</span><span class="code-line line-number" line="43">        <span class="token comment"># 判断横竖屏并选择比例表</span>
-</span><span class="code-line line-number" line="44">        <span class="token builtin class-name">local</span> mode
-</span><span class="code-line line-number" line="45">        <span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> w <span class="token operator">></span> h <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="46">            <span class="token assign-left variable">mode</span><span class="token operator">=</span><span class="token string">"landscape"</span>
-</span><span class="code-line line-number" line="47">            <span class="token builtin class-name">local</span> <span class="token parameter variable">-n</span> <span class="token assign-left variable">R</span><span class="token operator">=</span>LANDSCAPE
-</span><span class="code-line line-number" line="48">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">val</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{printf<span class="token entity" title="\&#x22;">\"</span>%.10f<span class="token entity" title="\&#x22;">\"</span>,<span class="token variable">$w</span>/<span class="token variable">$h</span>}"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="49">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="50">            <span class="token assign-left variable">mode</span><span class="token operator">=</span><span class="token string">"portrait"</span>
-</span><span class="code-line line-number" line="51">            <span class="token builtin class-name">local</span> <span class="token parameter variable">-n</span> <span class="token assign-left variable">R</span><span class="token operator">=</span>PORTRAIT
-</span><span class="code-line line-number" line="52">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">val</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{printf<span class="token entity" title="\&#x22;">\"</span>%.10f<span class="token entity" title="\&#x22;">\"</span>,<span class="token variable">$h</span>/<span class="token variable">$w</span>}"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="53">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="54">
-</span><span class="code-line line-number" line="55">        <span class="token comment"># 找最接近的比例</span>
-</span><span class="code-line line-number" line="56">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">best_dir</span><span class="token operator">=</span><span class="token string">"other"</span> <span class="token assign-left variable">best_diff</span><span class="token operator">=</span><span class="token number">99</span>
-</span><span class="code-line line-number" line="57">        <span class="token keyword">for</span> <span class="token for-or-select variable">dir</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>R<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="58">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">diff</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{d=<span class="token variable">$val</span>-<span class="token variable">${R<span class="token punctuation">[</span>$dir<span class="token punctuation">]</span>}</span>;if(d&#x3C;0)d=-d;print d}"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="59">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">cmp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{print(<span class="token variable">$diff</span>&#x3C;<span class="token variable">$best_diff</span>)?1:0}"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="60">            <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$cmp</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> <span class="token assign-left variable">best_diff</span><span class="token operator">=</span><span class="token variable">$diff</span><span class="token punctuation">;</span> <span class="token assign-left variable">best_dir</span><span class="token operator">=</span><span class="token variable">$dir</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="61">        <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="62">
-</span><span class="code-line line-number" line="63">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{print(<span class="token variable">$best_diff</span>&#x3C;<span class="token variable">$tolerance</span>)?1:0}"</span><span class="token variable">)</span></span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">best_dir</span><span class="token operator">=</span><span class="token string">"other"</span>
-</span><span class="code-line line-number" line="64">
-</span><span class="code-line line-number" line="65">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">target</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$src</span>/<span class="token variable">$mode</span>/<span class="token variable">$best_dir</span>"</span>
-</span><span class="code-line line-number" line="66">        <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$target</span>"</span>
-</span><span class="code-line line-number" line="67">        <span class="token function">mv</span> <span class="token string">"<span class="token variable">$f</span>"</span> <span class="token string">"<span class="token variable">$target</span>/"</span>
-</span><span class="code-line line-number" line="68">        <span class="token variable"><span class="token punctuation">((</span>moved<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="69">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">key</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$mode</span>/<span class="token variable">$best_dir</span>"</span>
-</span><span class="code-line line-number" line="70">        stats<span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>stats[$key]<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>
+</span><span class="code-line line-number" line="31"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="32">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="33">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="34">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="35">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="36">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="37">    <span class="token function">sleep</span> <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="38">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="39"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="40">
+</span><span class="code-line line-number" line="41">
+</span><span class="code-line line-number" line="42"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="43">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="44">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="45">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="46">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="47">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="48"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="49">
+</span><span class="code-line line-number" line="50">
+</span><span class="code-line line-number" line="51"><span class="token function-name function">sleep_fractional</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="52">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">seconds</span><span class="token operator">=</span><span class="token variable">$1</span>
+</span><span class="code-line line-number" line="53">    <span class="token keyword">if</span> <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="54">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> perl <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> perl <span class="token parameter variable">-e</span> <span class="token string">"select(undef, undef, undef, <span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="55">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python3 <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> python3 <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="56">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> python <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="57">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">int_seconds</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print int($1+0.999)}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="58">    <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$int_seconds</span>"</span>
+</span><span class="code-line line-number" line="59"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="60">
+</span><span class="code-line line-number" line="61">
+</span><span class="code-line line-number" line="62"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="63">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="64">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="65">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="66">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="67">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="68">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="69"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="70">
 </span><span class="code-line line-number" line="71">
-</span><span class="code-line line-number" line="72">        <span class="token variable"><span class="token punctuation">((</span>moved <span class="token operator">%</span> <span class="token number">20</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">))</span></span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">printf</span> <span class="token string">"已处理: %d 个图片<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$moved</span>"</span>
-</span><span class="code-line line-number" line="73">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="74">
-</span><span class="code-line line-number" line="75">    <span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>========== 分类完成 ==========<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="76">    <span class="token builtin class-name">printf</span> <span class="token string">"📊 统计结果：<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="77">    <span class="token keyword">for</span> <span class="token for-or-select variable">key</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">printf</span> <span class="token string">'%s\n'</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>stats<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token operator">|</span> <span class="token function">sort</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="78">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">pct</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{printf<span class="token entity" title="\&#x22;">\"</span>%.1f<span class="token entity" title="\&#x22;">\"</span>,<span class="token variable">${stats<span class="token punctuation">[</span>$key<span class="token punctuation">]</span>}</span>/<span class="token variable">$total</span>*100}"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="79">        <span class="token builtin class-name">printf</span> <span class="token string">"  %s: %d 个图片 (%.1f%%)<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$key</span>"</span> <span class="token string">"<span class="token variable">${stats<span class="token punctuation">[</span>$key<span class="token punctuation">]</span>}</span>"</span> <span class="token string">"<span class="token variable">$pct</span>"</span>
-</span><span class="code-line line-number" line="80">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="81">    <span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>✅ 共处理 %d 个图片！<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$moved</span>"</span>
-</span><span class="code-line line-number" line="82">    <span class="token builtin class-name">printf</span> <span class="token string">"❌ 处理失败: %d 个<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$errors</span>"</span>
-</span><span class="code-line line-number" line="83">    <span class="token builtin class-name">printf</span> <span class="token string">"📁 总计: %d 个图片<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">find</span> <span class="token string">"<span class="token variable">$src</span>"</span> <span class="token parameter variable">-maxdepth</span> <span class="token number">3</span> <span class="token parameter variable">-type</span> f <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="84"><span class="token punctuation">}</span><span class="token punctuation">;</span> classify_images
-</span></code><div onclick="copied(this)" data-code="classify_images() {
+</span><span class="code-line line-number" line="72"><span class="token function-name function">exit_script</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="73">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="74">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>感谢使用，再见！<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="75">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="76">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="77">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="78">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="79">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="80"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="81">
+</span><span class="code-line line-number" line="82">
+</span><span class="code-line line-number" line="83"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="84">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级选单}</span>"</span>
+</span><span class="code-line line-number" line="85">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回到 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span><span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="86">    <span class="token function">sleep</span> <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="87">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="88">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="89"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="90">
+</span><span class="code-line line-number" line="91">
+</span><span class="code-line line-number" line="92"><span class="token function-name function">install_ffmpeg</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="93">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> ffprobe <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="94">        log_ok <span class="token string">"ffmpeg已存在，无需安装"</span>
+</span><span class="code-line line-number" line="95">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="96">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="97">    log_info <span class="token string">"开始自动安装ffmpeg..."</span>
+</span><span class="code-line line-number" line="98">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">apt</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="99">        <span class="token function">apt</span> update <span class="token parameter variable">-y</span> <span class="token operator">&#x26;&#x26;</span> <span class="token function">apt</span> <span class="token function">install</span> ffmpeg <span class="token parameter variable">-y</span>
+</span><span class="code-line line-number" line="100">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> dnf <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="101">        dnf <span class="token function">install</span> ffmpeg <span class="token parameter variable">-y</span>
+</span><span class="code-line line-number" line="102">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> yum <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="103">        yum <span class="token function">install</span> ffmpeg <span class="token parameter variable">-y</span>
+</span><span class="code-line line-number" line="104">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> pacman <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="105">        pacman <span class="token parameter variable">-S</span> ffmpeg <span class="token parameter variable">--noconfirm</span>
+</span><span class="code-line line-number" line="106">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="107">        log_error <span class="token string">"不支持当前系统包管理器，请手动安装ffmpeg"</span>
+</span><span class="code-line line-number" line="108">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="109">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="110">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> ffprobe <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="111">        log_ok <span class="token string">"ffmpeg安装成功"</span>
+</span><span class="code-line line-number" line="112">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="113">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="114">        log_error <span class="token string">"ffmpeg安装失败"</span>
+</span><span class="code-line line-number" line="115">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="116">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="117"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="118">
+</span><span class="code-line line-number" line="119">
+</span><span class="code-line line-number" line="120"><span class="token function-name function">classify_images</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="121">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">src</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>.}</span>"</span>
+</span><span class="code-line line-number" line="122">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">tolerance</span><span class="token operator">=</span><span class="token number">0.05</span>
+</span><span class="code-line line-number" line="123">
+</span><span class="code-line line-number" line="124">
+</span><span class="code-line line-number" line="125">    <span class="token builtin class-name">local</span> <span class="token parameter variable">-A</span> <span class="token assign-left variable">LANDSCAPE</span><span class="token operator">=</span><span class="token punctuation">(</span>
+</span><span class="code-line line-number" line="126">        <span class="token punctuation">[</span>4x3<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.333333</span>   <span class="token punctuation">[</span>3x2<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.500000</span>
+</span><span class="code-line line-number" line="127">        <span class="token punctuation">[</span>16x10<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.600000</span> <span class="token punctuation">[</span>16x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.777778</span>
+</span><span class="code-line line-number" line="128">        <span class="token punctuation">[</span>17x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.888889</span>  <span class="token punctuation">[</span>19x10<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.900000</span>
+</span><span class="code-line line-number" line="129">        <span class="token punctuation">[</span>2x1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.000000</span>   <span class="token punctuation">[</span>18x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.000000</span>
+</span><span class="code-line line-number" line="130">        <span class="token punctuation">[</span>20x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.222222</span>  <span class="token punctuation">[</span>21x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.333333</span>
+</span><span class="code-line line-number" line="131">        <span class="token punctuation">[</span>24x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.666667</span>  <span class="token punctuation">[</span>32x9<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">3.555556</span>
+</span><span class="code-line line-number" line="132">    <span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="133">
+</span><span class="code-line line-number" line="134">
+</span><span class="code-line line-number" line="135">    <span class="token builtin class-name">local</span> <span class="token parameter variable">-A</span> <span class="token assign-left variable">PORTRAIT</span><span class="token operator">=</span><span class="token punctuation">(</span>
+</span><span class="code-line line-number" line="136">        <span class="token punctuation">[</span>1x1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.000000</span>   <span class="token punctuation">[</span>4x5<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.250000</span>
+</span><span class="code-line line-number" line="137">        <span class="token punctuation">[</span>3x4<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.333333</span>   <span class="token punctuation">[</span>2x3<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.500000</span>
+</span><span class="code-line line-number" line="138">        <span class="token punctuation">[</span>10x16<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.600000</span> <span class="token punctuation">[</span>9x16<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1.777778</span>
+</span><span class="code-line line-number" line="139">        <span class="token punctuation">[</span>6x13<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.166667</span>  <span class="token punctuation">[</span>9x21<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2.333333</span>
+</span><span class="code-line line-number" line="140">    <span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="141">
+</span><span class="code-line line-number" line="142">
+</span><span class="code-line line-number" line="143">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-s</span> nullglob nocaseglob
+</span><span class="code-line line-number" line="144">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">files</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$src</span>"</span>/*.<span class="token punctuation">{</span>webp,jpg,jpeg,png,bmp,jfif<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="145">    <span class="token builtin class-name">shopt</span> <span class="token parameter variable">-u</span> nullglob nocaseglob
+</span><span class="code-line line-number" line="146">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">total</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>files<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
+</span><span class="code-line line-number" line="147">
+</span><span class="code-line line-number" line="148">
+</span><span class="code-line line-number" line="149">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="150">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 图片智能分类（自动识别横竖屏）<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="151">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="152">    log_info <span class="token string">"共 <span class="token variable">${total}</span> 个图片文件"</span>
+</span><span class="code-line line-number" line="153">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="154">
+</span><span class="code-line line-number" line="155">
+</span><span class="code-line line-number" line="156">    <span class="token builtin class-name">local</span> <span class="token parameter variable">-A</span> stats
+</span><span class="code-line line-number" line="157">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">moved</span><span class="token operator">=</span><span class="token number">0</span> <span class="token assign-left variable">errors</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line line-number" line="158">
+</span><span class="code-line line-number" line="159">
+</span><span class="code-line line-number" line="160">    <span class="token keyword">for</span> <span class="token for-or-select variable">f</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${files<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="161">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">name</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$f</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="162">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">dim</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>ffprobe <span class="token parameter variable">-v</span> error <span class="token parameter variable">-select_streams</span> v:0 <span class="token punctuation">\</span>
+</span></span><span class="code-line line-number" line="163"><span class="token variable">                    <span class="token parameter variable">-show_entries</span> <span class="token assign-left variable">stream</span><span class="token operator">=</span>width,height <span class="token parameter variable">-of</span> <span class="token assign-left variable">csv</span><span class="token operator">=</span>p<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"<span class="token variable">$f</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="164">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$dim</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> <span class="token variable"><span class="token punctuation">((</span>errors<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> log_error <span class="token string">"处理失败: <span class="token variable">$name</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">continue</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="165">
+</span><span class="code-line line-number" line="166">
+</span><span class="code-line line-number" line="167">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">w</span><span class="token operator">=</span><span class="token variable">${dim<span class="token operator">%%</span><span class="token operator">,</span>*}</span>
+</span><span class="code-line line-number" line="168">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">h</span><span class="token operator">=</span><span class="token variable">${dim<span class="token operator">#</span>*<span class="token operator">,</span>}</span>
+</span><span class="code-line line-number" line="169">
+</span><span class="code-line line-number" line="170">
+</span><span class="code-line line-number" line="171">        <span class="token builtin class-name">local</span> mode
+</span><span class="code-line line-number" line="172">        <span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> w <span class="token operator">></span> h <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="173">            <span class="token assign-left variable">mode</span><span class="token operator">=</span><span class="token string">"landscape"</span>
+</span><span class="code-line line-number" line="174">            <span class="token builtin class-name">local</span> <span class="token parameter variable">-n</span> <span class="token assign-left variable">R</span><span class="token operator">=</span>LANDSCAPE
+</span><span class="code-line line-number" line="175">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">val</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{printf<span class="token entity" title="\&#x22;">\"</span>%.10f<span class="token entity" title="\&#x22;">\"</span>,<span class="token variable">$w</span>/<span class="token variable">$h</span>}"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="176">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="177">            <span class="token assign-left variable">mode</span><span class="token operator">=</span><span class="token string">"portrait"</span>
+</span><span class="code-line line-number" line="178">            <span class="token builtin class-name">local</span> <span class="token parameter variable">-n</span> <span class="token assign-left variable">R</span><span class="token operator">=</span>PORTRAIT
+</span><span class="code-line line-number" line="179">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">val</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{printf<span class="token entity" title="\&#x22;">\"</span>%.10f<span class="token entity" title="\&#x22;">\"</span>,<span class="token variable">$h</span>/<span class="token variable">$w</span>}"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="180">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="181">
+</span><span class="code-line line-number" line="182">
+</span><span class="code-line line-number" line="183">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">best_dir</span><span class="token operator">=</span><span class="token string">"other"</span> <span class="token assign-left variable">best_diff</span><span class="token operator">=</span><span class="token number">99</span>
+</span><span class="code-line line-number" line="184">        <span class="token keyword">for</span> <span class="token for-or-select variable">dir</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>R<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="185">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">diff</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{d=<span class="token variable">$val</span>-<span class="token variable">${R<span class="token punctuation">[</span>$dir<span class="token punctuation">]</span>}</span>;if(d&#x3C;0)d=-d;print d}"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="186">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">cmp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{print(<span class="token variable">$diff</span>&#x3C;<span class="token variable">$best_diff</span>)?1:0}"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="187">            <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$cmp</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> <span class="token assign-left variable">best_diff</span><span class="token operator">=</span><span class="token variable">$diff</span><span class="token punctuation">;</span> <span class="token assign-left variable">best_dir</span><span class="token operator">=</span><span class="token variable">$dir</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="188">        <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="189">
+</span><span class="code-line line-number" line="190">
+</span><span class="code-line line-number" line="191">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{print(<span class="token variable">$best_diff</span>&#x3C;<span class="token variable">$tolerance</span>)?1:0}"</span><span class="token variable">)</span></span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">best_dir</span><span class="token operator">=</span><span class="token string">"other"</span>
+</span><span class="code-line line-number" line="192">
+</span><span class="code-line line-number" line="193">
+</span><span class="code-line line-number" line="194">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">target</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$src</span>/<span class="token variable">$mode</span>/<span class="token variable">$best_dir</span>"</span>
+</span><span class="code-line line-number" line="195">        <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$target</span>"</span>
+</span><span class="code-line line-number" line="196">        <span class="token function">mv</span> <span class="token string">"<span class="token variable">$f</span>"</span> <span class="token string">"<span class="token variable">$target</span>/"</span>
+</span><span class="code-line line-number" line="197">        <span class="token variable"><span class="token punctuation">((</span>moved<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line line-number" line="198">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">key</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$mode</span>/<span class="token variable">$best_dir</span>"</span>
+</span><span class="code-line line-number" line="199">        stats<span class="token punctuation">[</span><span class="token variable">$key</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>stats[$key]<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>
+</span><span class="code-line line-number" line="200">
+</span><span class="code-line line-number" line="201">
+</span><span class="code-line line-number" line="202">        <span class="token variable"><span class="token punctuation">((</span>moved <span class="token operator">%</span> <span class="token number">20</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">))</span></span> <span class="token operator">&#x26;&#x26;</span> log_info <span class="token string">"已处理: <span class="token variable">${moved}</span> 个图片"</span>
+</span><span class="code-line line-number" line="203">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="204">
+</span><span class="code-line line-number" line="205">
+</span><span class="code-line line-number" line="206">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="207">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 分类完成，分类统计<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="208">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="209">    log_info <span class="token string">"统计结果："</span>
+</span><span class="code-line line-number" line="210">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="211">    <span class="token keyword">for</span> <span class="token for-or-select variable">key</span> <span class="token keyword">in</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">printf</span> <span class="token string">'%s\n'</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>stats<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token operator">|</span> <span class="token function">sort</span><span class="token variable">)</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="212">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">pct</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">awk</span> <span class="token string">"BEGIN{printf<span class="token entity" title="\&#x22;">\"</span>%.1f<span class="token entity" title="\&#x22;">\"</span>,<span class="token variable">${stats<span class="token punctuation">[</span>$key<span class="token punctuation">]</span>}</span>/<span class="token variable">$total</span>*100}"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="213">        log_info <span class="token string">"  <span class="token variable">$key</span>: <span class="token variable">${stats<span class="token punctuation">[</span>$key<span class="token punctuation">]</span>}</span> 个图片 (<span class="token variable">${pct}</span>%)"</span>
+</span><span class="code-line line-number" line="214">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="215">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="216">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="217">    log_ok <span class="token string">"共成功处理 <span class="token variable">${moved}</span> 个图片！"</span>
+</span><span class="code-line line-number" line="218">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$errors</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> log_error <span class="token string">"处理失败: <span class="token variable">${errors}</span> 个"</span>
+</span><span class="code-line line-number" line="219">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">all_files</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">find</span> <span class="token string">"<span class="token variable">$src</span>"</span> <span class="token parameter variable">-maxdepth</span> <span class="token number">3</span> <span class="token parameter variable">-type</span> f <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">wc</span> <span class="token parameter variable">-l</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="220">    log_info <span class="token string">"脚本目录下现存总计文件数: <span class="token variable">${all_files}</span> 个"</span>
+</span><span class="code-line line-number" line="221"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="222">
+</span><span class="code-line line-number" line="223">
+</span><span class="code-line line-number" line="224"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="225">    install_ffmpeg
+</span><span class="code-line line-number" line="226">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">run_path</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>.}</span>"</span>
+</span><span class="code-line line-number" line="227">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$run_path</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="228">        log_error <span class="token string">"目录不存在: <span class="token variable">$run_path</span>"</span>
+</span><span class="code-line line-number" line="229">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="230">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="231">    classify_images <span class="token string">"<span class="token variable">$run_path</span>"</span>
+</span><span class="code-line line-number" line="232"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="233">
+</span><span class="code-line line-number" line="234">
+</span><span class="code-line line-number" line="235">main <span class="token string">"<span class="token variable">$@</span>"</span>
+</span></code><div onclick="copied(this)" data-code="#!/bin/bash
+list_color_init() {
+    export gl_hui=$&#x27;\033[38;5;59m&#x27;
+    export gl_hong=$&#x27;\033[38;5;9m&#x27;
+    export gl_lv=$&#x27;\033[38;5;10m&#x27;
+    export gl_huang=$&#x27;\033[38;5;11m&#x27;
+    export gl_lan=$&#x27;\033[38;5;32m&#x27;
+    export gl_bai=$&#x27;\033[38;5;15m&#x27;
+    export gl_zi=$&#x27;\033[38;5;13m&#x27;
+    export gl_bufan=$&#x27;\033[38;5;14m&#x27;
+    export reset=$&#x27;\033[0m&#x27;
+}
+list_color_init()
+
+
+log_info()  { echo -e &#x22;${gl_lan}[信息]${gl_bai} $*&#x22;; }
+log_ok()    { echo -e &#x22;${gl_lv}[成功]${gl_bai} $*&#x22;; }
+log_warn()  { echo -e &#x22;${gl_huang}[警告]${gl_bai} $*&#x22;; }
+log_error() { echo -e &#x22;${gl_hong}[错误]${gl_bai} $*&#x22; >&#x26;2; }
+
+
+handle_invalid_input() {
+    echo -ne &#x22;\r${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
+    sleep 1
+    echo -e &#x22;\r${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
+    sleep 0.5
+    return 2
+}
+
+
+handle_y_n() {
+    echo -e &#x22;${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_hong}。${gl_bai}&#x22;
+    sleep 1
+    echo -e &#x22;${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_huang}。${gl_bai}&#x22;
+    sleep 1
+    echo -e &#x22;${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_lv}。${gl_bai}&#x22;
+    sleep 0.5
+    return 2
+}
+
+
+break_end() {
+    echo -e &#x22;${gl_lv}操作完成${gl_bai}&#x22;
+    echo -e &#x22;${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c&#x22;
+    read -r -n 1 -s -r -p &#x22;&#x22;
+    echo &#x22;&#x22;
+    clear
+}
+
+
+sleep_fractional() {
+    local seconds=$1
+    if sleep &#x22;$seconds&#x22; 2>/dev/null; then return 0; fi
+    if command -v perl >/dev/null 2>&#x26;1; then perl -e &#x22;select(undef, undef, undef, $seconds)&#x22;; return 0; fi
+    if command -v python3 >/dev/null 2>&#x26;1; then python3 -c &#x22;import time; time.sleep($seconds)&#x22;; return 0; fi
+    if command -v python >/dev/null 2>&#x26;1; then python -c &#x22;import time; time.sleep($seconds)&#x22;; return 0; fi
+    local int_seconds=$(echo &#x22;$seconds&#x22; | awk &#x27;{print int($1+0.999)}&#x27;)
+    sleep &#x22;$int_seconds&#x22;
+}
+
+
+exit_animation() {
+    echo -ne &#x22;${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c&#x22;
+    sleep_fractional 0.5
+    echo -ne &#x22;${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c&#x22;
+    sleep_fractional 0.6
+    echo &#x22;&#x22;
+    clear
+}
+
+
+exit_script() {
+    echo &#x22;&#x22;
+    echo -ne &#x22;${gl_hong}感谢使用，再见！${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c&#x22;
+    sleep_fractional 0.5
+    echo -ne &#x22;${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c&#x22;
+    sleep_fractional 0.6
+    clear
+    exit 0
+}
+
+
+cancel_return() {
+    local menu_name=&#x22;${1:-上一级选单}&#x22;
+    echo -e &#x22;${gl_lv}即将返回到 ${gl_huang}${menu_name}${gl_lv}${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c&#x22;
+    sleep 0.6
+    echo &#x22;&#x22;
+    clear
+}
+
+
+install_ffmpeg() {
+    if command -v ffprobe &#x26;>/dev/null; then
+        log_ok &#x22;ffmpeg已存在，无需安装&#x22;
+        return 0
+    fi
+    log_info &#x22;开始自动安装ffmpeg...&#x22;
+    if command -v apt &#x26;>/dev/null; then
+        apt update -y &#x26;&#x26; apt install ffmpeg -y
+    elif command -v dnf &#x26;>/dev/null; then
+        dnf install ffmpeg -y
+    elif command -v yum &#x26;>/dev/null; then
+        yum install ffmpeg -y
+    elif command -v pacman &#x26;>/dev/null; then
+        pacman -S ffmpeg --noconfirm
+    else
+        log_error &#x22;不支持当前系统包管理器，请手动安装ffmpeg&#x22;
+        return 1
+    fi
+    if command -v ffprobe &#x26;>/dev/null; then
+        log_ok &#x22;ffmpeg安装成功&#x22;
+        return 0
+    else
+        log_error &#x22;ffmpeg安装失败&#x22;
+        return 1
+    fi
+}
+
+
+classify_images() {
     local src=&#x22;${1:-.}&#x22;
     local tolerance=0.05
 
-    # 横屏比例（宽÷高）
+
     local -A LANDSCAPE=(
         [4x3]=1.333333   [3x2]=1.500000
         [16x10]=1.600000 [16x9]=1.777778
@@ -1511,7 +1785,7 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
         [24x9]=2.666667  [32x9]=3.555556
     )
 
-    # 竖屏比例（高÷宽）
+
     local -A PORTRAIT=(
         [1x1]=1.000000   [4x5]=1.250000
         [3x4]=1.333333   [2x3]=1.500000
@@ -1519,27 +1793,35 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
         [6x13]=2.166667  [9x21]=2.333333
     )
 
+
     shopt -s nullglob nocaseglob
     local files=(&#x22;$src&#x22;/*.{webp,jpg,jpeg,png,bmp,jfif})
     shopt -u nullglob nocaseglob
     local total=${#files[@]}
 
-    printf &#x22;\n📊 开始智能分类（自动识别横竖屏）...\n&#x22;
-    printf &#x22;共 %d 个图片文件\n\n&#x22; &#x22;$total&#x22;
+
+    clear
+    echo -e &#x22;${gl_zi}>>> 图片智能分类（自动识别横竖屏）${gl_bai}&#x22;
+    echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+    log_info &#x22;共 ${total} 个图片文件&#x22;
+    echo &#x22;&#x22;
+
 
     local -A stats
     local moved=0 errors=0
+
 
     for f in &#x22;${files[@]}&#x22;; do
         local name=$(basename &#x22;$f&#x22;)
         local dim=$(ffprobe -v error -select_streams v:0 \
                     -show_entries stream=width,height -of csv=p=0 &#x22;$f&#x22; 2>/dev/null)
-        [[ -z &#x22;$dim&#x22; ]] &#x26;&#x26; { ((errors++)); printf &#x22;❌ 处理失败: %s\n&#x22; &#x22;$name&#x22;; continue; }
+        [[ -z &#x22;$dim&#x22; ]] &#x26;&#x26; { ((errors++)); log_error &#x22;处理失败: $name&#x22;; continue; }
+
 
         local w=${dim%%,*}
         local h=${dim#*,}
 
-        # 判断横竖屏并选择比例表
+
         local mode
         if (( w > h )); then
             mode=&#x22;landscape&#x22;
@@ -1551,7 +1833,7 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
             local val=$(awk &#x22;BEGIN{printf\&#x22;%.10f\&#x22;,$h/$w}&#x22;)
         fi
 
-        # 找最接近的比例
+
         local best_dir=&#x22;other&#x22; best_diff=99
         for dir in &#x22;${!R[@]}&#x22;; do
             local diff=$(awk &#x22;BEGIN{d=$val-${R[$dir]};if(d<0)d=-d;print d}&#x22;)
@@ -1559,7 +1841,9 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
             [[ $cmp -eq 1 ]] &#x26;&#x26; { best_diff=$diff; best_dir=$dir; }
         done
 
+
         [[ $(awk &#x22;BEGIN{print($best_diff<$tolerance)?1:0}&#x22;) -eq 0 ]] &#x26;&#x26; best_dir=&#x22;other&#x22;
+
 
         local target=&#x22;$src/$mode/$best_dir&#x22;
         mkdir -p &#x22;$target&#x22;
@@ -1568,19 +1852,41 @@ Write-Host &#x22;📁 总计: $total 个图片&#x60;n&#x22; -ForegroundColor Cya
         local key=&#x22;$mode/$best_dir&#x22;
         stats[$key]=$((stats[$key]+1))
 
-        ((moved % 20 == 0)) &#x26;&#x26; printf &#x22;已处理: %d 个图片\n&#x22; &#x22;$moved&#x22;
+
+        ((moved % 20 == 0)) &#x26;&#x26; log_info &#x22;已处理: ${moved} 个图片&#x22;
     done
 
-    printf &#x22;\n========== 分类完成 ==========\n\n&#x22;
-    printf &#x22;📊 统计结果：\n\n&#x22;
+
+    echo &#x22;&#x22;
+    echo -e &#x22;${gl_huang}>>> 分类完成，分类统计${gl_bai}&#x22;
+    echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+    log_info &#x22;统计结果：&#x22;
+    echo &#x22;&#x22;
     for key in $(printf &#x27;%s\n&#x27; &#x22;${!stats[@]}&#x22; | sort); do
         local pct=$(awk &#x22;BEGIN{printf\&#x22;%.1f\&#x22;,${stats[$key]}/$total*100}&#x22;)
-        printf &#x22;  %s: %d 个图片 (%.1f%%)\n&#x22; &#x22;$key&#x22; &#x22;${stats[$key]}&#x22; &#x22;$pct&#x22;
+        log_info &#x22;  $key: ${stats[$key]} 个图片 (${pct}%)&#x22;
     done
-    printf &#x22;\n✅ 共处理 %d 个图片！\n&#x22; &#x22;$moved&#x22;
-    printf &#x22;❌ 处理失败: %d 个\n\n&#x22; &#x22;$errors&#x22;
-    printf &#x22;📁 总计: %d 个图片\n\n&#x22; &#x22;$(find &#x22;$src&#x22; -maxdepth 3 -type f | wc -l)&#x22;
-}; classify_images
+    echo &#x22;&#x22;
+        echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+    log_ok &#x22;共成功处理 ${moved} 个图片！&#x22;
+    [[ $errors -gt 0 ]] &#x26;&#x26; log_error &#x22;处理失败: ${errors} 个&#x22;
+    local all_files=$(find &#x22;$src&#x22; -maxdepth 3 -type f 2>/dev/null | wc -l)
+    log_info &#x22;脚本目录下现存总计文件数: ${all_files} 个&#x22;
+}
+
+
+main(){
+    install_ffmpeg
+    local run_path=&#x22;${1:-.}&#x22;
+    if [[ ! -d &#x22;$run_path&#x22; ]];then
+        log_error &#x22;目录不存在: $run_path&#x22;
+        exit 1
+    fi
+    classify_images &#x22;$run_path&#x22;
+}
+
+
+main &#x22;$@&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <hr>
 <h2 id="支持的比例"><a class="anchor" aria-hidden="true" tabindex="-1" href="#支持的比例"><span class="octicon octicon-link"></span></a>支持的比例</h2>
@@ -2083,8 +2389,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mpyyq81d"></script>
-<script type="text/javascript" src="../js/index.js?v=mpyyq81d"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mpyyq81d"></script>
+<script type="text/javascript" src="../js/dt.js?v=mpz7cs07"></script>
+<script type="text/javascript" src="../js/index.js?v=mpz7cs07"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mpz7cs07"></script>
 </body>
 </html>
