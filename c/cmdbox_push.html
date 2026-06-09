@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="cmdbox_push 命令">
     <meta name="twitter:description" content="CmdBox 自动部署与推送工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq5we6io">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq5z0v2y">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq5we6io"></script>
+    <script src="../js/dt.js?v=mq5z0v2y"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1344,7 +1344,7 @@ Git 推送至远程仓库
 </span><span class="code-line line-number" line="72"><span class="token keyword">fi</span>
 </span><span class="code-line line-number" line="73">
 </span><span class="code-line line-number" line="74"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="75">log_info <span class="token string">"进入项目目录：<span class="token variable">$SOURCE_DIR</span>"</span>
+</span><span class="code-line line-number" line="75">log_info <span class="token string">"进入项目目录：<span class="token variable">${gl_huang}</span><span class="token variable">$SOURCE_DIR</span><span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="76"><span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">${SOURCE_DIR}</span>"</span> <span class="token operator">||</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="77">    log_error <span class="token string">"源码目录不存在，部署终止"</span>
 </span><span class="code-line line-number" line="78">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
@@ -1352,7 +1352,7 @@ Git 推送至远程仓库
 </span><span class="code-line line-number" line="80">    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
 </span><span class="code-line line-number" line="81"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="82">
-</span><span class="code-line line-number" line="83">log_info <span class="token string">"执行项目构建：npm install &#x26;&#x26; npm run build"</span>
+</span><span class="code-line line-number" line="83">log_info <span class="token string">"执行项目构建：<span class="token variable">${gl_lv}</span>npm install<span class="token variable">${gl_bai}</span> &#x26;&#x26; <span class="token variable">${gl_lv}</span>npm run build<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="84"><span class="token function">npm</span> <span class="token function">install</span>
 </span><span class="code-line line-number" line="85"><span class="token function">npm</span> run build
 </span><span class="code-line line-number" line="86">log_ok <span class="token string">"项目构建完成"</span>
@@ -1454,7 +1454,7 @@ else
 fi
 
 echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-log_info &#x22;进入项目目录：$SOURCE_DIR&#x22;
+log_info &#x22;进入项目目录：${gl_huang}$SOURCE_DIR${gl_bai}&#x22;
 cd &#x22;${SOURCE_DIR}&#x22; || {
     log_error &#x22;源码目录不存在，部署终止&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
@@ -1462,7 +1462,7 @@ cd &#x22;${SOURCE_DIR}&#x22; || {
     exit 1
 }
 
-log_info &#x22;执行项目构建：npm install &#x26;&#x26; npm run build&#x22;
+log_info &#x22;执行项目构建：${gl_lv}npm install${gl_bai} &#x26;&#x26; ${gl_lv}npm run build${gl_bai}&#x22;
 npm install
 npm run build
 log_ok &#x22;项目构建完成&#x22;
@@ -1705,8 +1705,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq5we6io"></script>
-<script type="text/javascript" src="../js/index.js?v=mq5we6io"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq5we6io"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq5z0v2y"></script>
+<script type="text/javascript" src="../js/index.js?v=mq5z0v2y"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq5z0v2y"></script>
 </body>
 </html>

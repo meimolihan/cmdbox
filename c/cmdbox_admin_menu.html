@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="cmdbox_admin_menu 命令">
     <meta name="twitter:description" content="Cmdbox 项目推送管理脚本 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq5we6io">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq5z0v2y">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq5we6io"></script>
+    <script src="../js/dt.js?v=mq5z0v2y"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1816,7 +1816,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="510">        <span class="token number">1</span><span class="token punctuation">)</span> enter_directory <span class="token string">"FnOS 项目推送"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="511">        <span class="token number">2</span><span class="token punctuation">)</span> go_parent_directory <span class="token string">"FnOS 项目推送"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="512">        <span class="token number">3</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="513">        <span class="token number">4</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/script/raw/master/sh/git/linux-command_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="513">        <span class="token number">4</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="514">        <span class="token number">5</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/Gitee/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="515">        <span class="token number">6</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/sh <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="516">        <span class="token number">7</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/Gitee/sh <span class="token punctuation">;</span><span class="token punctuation">;</span>
@@ -2341,7 +2341,7 @@ cmdbox_admin_menu() {
         1) enter_directory &#x22;FnOS 项目推送&#x22; ;;
         2) go_parent_directory &#x22;FnOS 项目推送&#x22; ;;
         3) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
-        4) bash <(curl -sL gitee.com/meimolihan/script/raw/master/sh/git/linux-command_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
+        4) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
         5) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
         6) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
         7) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
@@ -2569,8 +2569,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq5we6io"></script>
-<script type="text/javascript" src="../js/index.js?v=mq5we6io"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq5we6io"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq5z0v2y"></script>
+<script type="text/javascript" src="../js/index.js?v=mq5z0v2y"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq5z0v2y"></script>
 </body>
 </html>
