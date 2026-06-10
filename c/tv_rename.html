@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="tv_rename 命令">
     <meta name="twitter:description" content="电视剧视频智能识别重命名 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7h68bm">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7heyha">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq7h68bm"></script>
+    <script src="../js/dt.js?v=mq7heyha"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -3990,7 +3990,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="2769">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>7.  <span class="token variable">${gl_bai}</span>移动视频文件             <span class="token variable">${gl_bufan}</span>8.  <span class="token variable">${gl_bai}</span>测试识别模式"</span>
 </span><span class="code-line line-number" line="2770">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>9.  <span class="token variable">${gl_bai}</span>批量重命名"</span>
 </span><span class="code-line line-number" line="2771">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="2772">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>0.  <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="2772">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单           <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
 </span><span class="code-line line-number" line="2773">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="2774">
 </span><span class="code-line line-number" line="2775">            <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> choice
@@ -4004,16 +4004,17 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="2783">            <span class="token number">6</span><span class="token punctuation">)</span>  delete_test_files <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="2784">            <span class="token number">7</span><span class="token punctuation">)</span>  move_videos_interactive <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="2785">            <span class="token number">8</span><span class="token punctuation">)</span>  test_all_recognition_modes <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2786">            <span class="token number">9</span><span class="token punctuation">)</span> batch_rename_files <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2787">            <span class="token number">0</span><span class="token punctuation">)</span>  exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2788">            *<span class="token punctuation">)</span> handle_invalid_input<span class="token punctuation">;</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2789">            <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="2790">        <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="2791">    <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="2792">    main_menu
-</span><span class="code-line line-number" line="2793"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="2794">
-</span><span class="code-line line-number" line="2795">tv_rename_ultimate
+</span><span class="code-line line-number" line="2786">            <span class="token number">9</span><span class="token punctuation">)</span>  batch_rename_files <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2787">            <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2788">            00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2789">            *<span class="token punctuation">)</span> handle_invalid_input<span class="token punctuation">;</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2790">            <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="2791">        <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="2792">    <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2793">    main_menu
+</span><span class="code-line line-number" line="2794"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2795">
+</span><span class="code-line line-number" line="2796">tv_rename_ultimate
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -6785,7 +6786,7 @@ tv_rename_ultimate() {
             echo -e &#x22;${gl_bufan}7.  ${gl_bai}移动视频文件             ${gl_bufan}8.  ${gl_bai}测试识别模式&#x22;
             echo -e &#x22;${gl_bufan}9.  ${gl_bai}批量重命名&#x22;
             echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-            echo -e &#x22;${gl_hong}0.  ${gl_bai}退出脚本&#x22;
+            echo -e &#x22;${gl_huang}0.  ${gl_bai}返回上一级选单           ${gl_hong}00. ${gl_bai}退出脚本&#x22;
             echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
 
             read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}请输入你的选择: &#x22;)&#x22; choice
@@ -6799,8 +6800,9 @@ tv_rename_ultimate() {
             6)  delete_test_files ;;
             7)  move_videos_interactive ;;
             8)  test_all_recognition_modes ;;
-            9) batch_rename_files ;;
-            0)  exit_script ;;
+            9)  batch_rename_files ;;
+            0) cancel_return &#x22;已是主菜单&#x22; || continue ;;
+            00 | 000 | 0000) exit_script ;;
             *) handle_invalid_input; continue ;;
             esac
         done
@@ -7016,8 +7018,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq7h68bm"></script>
-<script type="text/javascript" src="../js/index.js?v=mq7h68bm"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq7h68bm"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq7heyha"></script>
+<script type="text/javascript" src="../js/index.js?v=mq7heyha"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq7heyha"></script>
 </body>
 </html>
