@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_file_menu 命令">
     <meta name="twitter:description" content="Linux 系统下的交互式文件管理器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7cr2d7">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7e5pet">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq7cr2d7"></script>
+    <script src="../js/dt.js?v=mq7e5pet"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -8840,7 +8840,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_file_menu.sh) /v
 </span><span class="code-line line-number" line="7618">            select_and_display_file_info <span class="token string">"."</span> <span class="token number">1</span> <span class="token number">4</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7619">        <span class="token number">38</span><span class="token punctuation">)</span> show_directory_tree <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7620">        <span class="token number">39</span><span class="token punctuation">)</span> manage_backup_files_simple <span class="token string">"linux_file"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="7621">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"<span class="token variable">$menu_name</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7621">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7622">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7623">        *<span class="token punctuation">)</span>  handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7624">        <span class="token keyword">esac</span>
@@ -16479,7 +16479,7 @@ linux_file() {
             select_and_display_file_info &#x22;.&#x22; 1 4 ;;
         38) show_directory_tree ;;
         39) manage_backup_files_simple &#x22;linux_file&#x22; ;;
-        0) cancel_return &#x22;$menu_name&#x22;; return ;;
+        0) cancel_return &#x22;已是主菜单&#x22; || continue ;;
         00 | 000 | 0000) exit_script ;;
         *)  handle_invalid_input ;;
         esac
@@ -16705,8 +16705,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq7cr2d7"></script>
-<script type="text/javascript" src="../js/index.js?v=mq7cr2d7"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq7cr2d7"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq7e5pet"></script>
+<script type="text/javascript" src="../js/index.js?v=mq7e5pet"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq7e5pet"></script>
 </body>
 </html>

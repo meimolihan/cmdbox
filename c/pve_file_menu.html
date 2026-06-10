@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve_file_menu 命令">
     <meta name="twitter:description" content="PVE 系统文件管理器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7cr2d7">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7e5pet">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq7cr2d7"></script>
+    <script src="../js/dt.js?v=mq7e5pet"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -8872,7 +8872,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/pve_file_menu.sh) /var
 </span><span class="code-line line-number" line="7672">        <span class="token number">4</span><span class="token punctuation">)</span> linux_file /etc/pve/qemu-server <span class="token string">"PVE 虚拟机配置管理"</span> <span class="token string">"主菜单"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7673">        <span class="token number">5</span><span class="token punctuation">)</span> linux_file /var/lib/vz/images <span class="token string">"PVE 虚拟磁盘管理"</span> <span class="token string">"主菜单"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7674">        <span class="token number">6</span><span class="token punctuation">)</span> linux_file /var/lib/vz <span class="token string">"PVE 数据总目录管理"</span> <span class="token string">"主菜单"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="7675">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return<span class="token punctuation">;</span> <span class="token builtin class-name">break</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="7675">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7676">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7677">        *<span class="token punctuation">)</span> handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="7678">        <span class="token keyword">esac</span>
@@ -16561,7 +16561,7 @@ pve_file_menu() {
         4) linux_file /etc/pve/qemu-server &#x22;PVE 虚拟机配置管理&#x22; &#x22;主菜单&#x22; ;;
         5) linux_file /var/lib/vz/images &#x22;PVE 虚拟磁盘管理&#x22; &#x22;主菜单&#x22; ;;
         6) linux_file /var/lib/vz &#x22;PVE 数据总目录管理&#x22; &#x22;主菜单&#x22; ;;
-        0) cancel_return; break ;;
+        0) cancel_return &#x22;已是主菜单&#x22; || continue ;;
         00 | 000 | 0000) exit_script ;;
         *) handle_invalid_input ;;
         esac
@@ -16783,8 +16783,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq7cr2d7"></script>
-<script type="text/javascript" src="../js/index.js?v=mq7cr2d7"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq7cr2d7"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq7e5pet"></script>
+<script type="text/javascript" src="../js/index.js?v=mq7e5pet"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq7e5pet"></script>
 </body>
 </html>

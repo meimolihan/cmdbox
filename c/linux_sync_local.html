@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_sync_local 命令">
     <meta name="twitter:description" content="Rsync 本地同步管理工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7cr2d7">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq7e5pet">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq7cr2d7"></script>
+    <script src="../js/dt.js?v=mq7e5pet"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -2676,7 +2676,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="1517">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>7.  <span class="token variable">${gl_bai}</span>创建定时任务         <span class="token variable">${gl_bufan}</span>8.  <span class="token variable">${gl_bai}</span>删除定时任务"</span>
 </span><span class="code-line line-number" line="1518">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>9.  <span class="token variable">${gl_bai}</span>编辑cron文件         <span class="token variable">${gl_bufan}</span>10. <span class="token variable">${gl_bai}</span>查看cron文件"</span>
 </span><span class="code-line line-number" line="1519">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1520">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>0.  <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="1520">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单       <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
 </span><span class="code-line line-number" line="1521">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="1522">
 </span><span class="code-line line-number" line="1523">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入你的选择: "</span> choice
@@ -2691,13 +2691,14 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="1532">        <span class="token number">8</span><span class="token punctuation">)</span>  local_delete_schedule <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="1533">        <span class="token number">9</span><span class="token punctuation">)</span>  edit_crontab<span class="token punctuation">;</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="1534">        <span class="token number">10</span><span class="token punctuation">)</span> list_beautify_all <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1535">        <span class="token number">0</span><span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1536">        *<span class="token punctuation">)</span> handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1537">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="1538">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="1539"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1540">
-</span><span class="code-line line-number" line="1541">local_rsync_manager
+</span><span class="code-line line-number" line="1535">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1536">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1537">        *<span class="token punctuation">)</span> handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1538">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="1539">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="1540"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1541">
+</span><span class="code-line line-number" line="1542">local_rsync_manager
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -4217,7 +4218,7 @@ local_rsync_manager() {
         echo -e &#x22;${gl_bufan}7.  ${gl_bai}创建定时任务         ${gl_bufan}8.  ${gl_bai}删除定时任务&#x22;
         echo -e &#x22;${gl_bufan}9.  ${gl_bai}编辑cron文件         ${gl_bufan}10. ${gl_bai}查看cron文件&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        echo -e &#x22;${gl_hong}0.  ${gl_bai}退出脚本&#x22;
+        echo -e &#x22;${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
 
         read -r -e -p &#x22;请输入你的选择: &#x22; choice
@@ -4232,7 +4233,8 @@ local_rsync_manager() {
         8)  local_delete_schedule ;;
         9)  edit_crontab; continue ;;
         10) list_beautify_all ;;
-        0) exit_script ;;
+        0) cancel_return &#x22;已是主菜单&#x22; || continue ;;
+        00 | 000 | 0000) exit_script ;;
         *) handle_invalid_input ;;
         esac
     done
@@ -4451,8 +4453,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq7cr2d7"></script>
-<script type="text/javascript" src="../js/index.js?v=mq7cr2d7"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq7cr2d7"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq7e5pet"></script>
+<script type="text/javascript" src="../js/index.js?v=mq7e5pet"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq7e5pet"></script>
 </body>
 </html>
