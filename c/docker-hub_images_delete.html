@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-hub_images_delete 命令">
     <meta name="twitter:description" content="Docker Hub 镜像标签删除工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq9o7ow4">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mq9orhvy">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mq9o7ow4"></script>
+    <script src="../js/dt.js?v=mq9orhvy"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1161,6 +1161,9 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p>该脚本用于通过 <a href="https://hub.docker.com/">Docker Hub</a> 官方 Registry API 删除指定镜像仓库中的标签（tag）。支持使用 Personal Access Token（推荐）或 <code>用户名:密码</code> 进行认证，自动获取镜像摘要（digest）后发送删除请求。</p>
+<p>
+  <img src="../img/docker-hub-pat.webp" alt="生成个人令牌" title="截图演示" loading="lazy">
+</p>
 <h3 id="功能特点"><a class="anchor" aria-hidden="true" tabindex="-1" href="#功能特点"><span class="octicon octicon-link"></span></a>功能特点</h3>
 <ul>
   <li>支持 PAT 和 <code>用户名:密码</code> 两种认证方式</li>
@@ -1201,6 +1204,44 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 发送 DELETE 请求删除标签
     ↓
 显示删除结果并更新标签列表
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<ul>
+  <li>手动操作流程</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 定义账号、个人访问令牌、仓库名、待操作镜像标签</span>
+</span><span class="code-line line-number" line="2"><span class="token assign-left variable"><span class="token environment constant">USER</span></span><span class="token operator">=</span><span class="token string">"mobufan"</span>
+</span><span class="code-line line-number" line="3"><span class="token assign-left variable">PAT</span><span class="token operator">=</span><span class="token string">"dckr_pat_xxxxxx"</span>
+</span><span class="code-line line-number" line="4"><span class="token assign-left variable">REPO</span><span class="token operator">=</span><span class="token string">"mobufan/cmdbox"</span>
+</span><span class="code-line line-number" line="5"><span class="token assign-left variable">TAG</span><span class="token operator">=</span><span class="token string">"2026.06.03"</span>
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 拉取 mobufan/cmdbox 仓库下所有标签（单次最多获取100条），仅输出标签名称</span>
+</span><span class="code-line line-number" line="8"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">"https://hub.docker.com/v2/repositories/mobufan/cmdbox/tags?page_size=100"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.results[].name'</span>
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token comment"># 根据仓库+标签查询镜像摘要(digest)，赋值给变量</span>
+</span><span class="code-line line-number" line="12"><span class="token assign-left variable">DIGEST</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">"https://hub.docker.com/v2/repositories/<span class="token variable">${REPO}</span>/tags/<span class="token variable">${TAG}</span>/"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.digest'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="13"><span class="token comment"># 打印获取到的镜像摘要</span>
+</span><span class="code-line line-number" line="14"><span class="token builtin class-name">echo</span> <span class="token variable">$DIGEST</span>
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16"><span class="token comment"># 通过 Digest 删除 Docker 镜像清单（需传入认证令牌）</span>
+</span><span class="code-line line-number" line="17"><span class="token function">curl</span> <span class="token parameter variable">-X</span> DELETE <span class="token parameter variable">-i</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">${AUTH_TOKEN}</span>"</span> <span class="token string">"https://registry-1.docker.io/v2/<span class="token variable">${REPO}</span>/manifests/<span class="token variable">${DIGEST}</span>"</span>
+</span></code><div onclick="copied(this)" data-code="# 定义账号、个人访问令牌、仓库名、待操作镜像标签
+USER=&#x22;mobufan&#x22;
+PAT=&#x22;dckr_pat_xxxxxx&#x22;
+REPO=&#x22;mobufan/cmdbox&#x22;
+TAG=&#x22;2026.06.03&#x22;
+
+# 拉取 mobufan/cmdbox 仓库下所有标签（单次最多获取100条），仅输出标签名称
+curl -s &#x22;https://hub.docker.com/v2/repositories/mobufan/cmdbox/tags?page_size=100&#x22; | jq -r &#x27;.results[].name&#x27;
+
+
+# 根据仓库+标签查询镜像摘要(digest)，赋值给变量
+DIGEST=$(curl -s &#x22;https://hub.docker.com/v2/repositories/${REPO}/tags/${TAG}/&#x22; | jq -r &#x27;.digest&#x27;)
+# 打印获取到的镜像摘要
+echo $DIGEST
+
+# 通过 Digest 删除 Docker 镜像清单（需传入认证令牌）
+curl -X DELETE -i -H &#x22;Authorization: Bearer ${AUTH_TOKEN}&#x22; &#x22;https://registry-1.docker.io/v2/${REPO}/manifests/${DIGEST}&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="认证方式说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#认证方式说明"><span class="octicon octicon-link"></span></a>认证方式说明</h3>
 <table>
@@ -2179,8 +2220,8 @@ function copied(target, str) {
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mq9o7ow4"></script>
-<script type="text/javascript" src="../js/index.js?v=mq9o7ow4"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mq9o7ow4"></script>
+<script type="text/javascript" src="../js/dt.js?v=mq9orhvy"></script>
+<script type="text/javascript" src="../js/index.js?v=mq9orhvy"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mq9orhvy"></script>
 </body>
 </html>
