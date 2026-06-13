@@ -253,3 +253,53 @@
     }, 2000);
   };
 })();
+
+/* ⑳ 自动替换代码块中的 ../sh/ ../bat/ 为当前域名 */
+(function() {
+  var origin = window.location.origin;
+  if (!origin || origin === 'null') return;
+
+  function fixScriptUrls(root) {
+    root = root || document;
+    // 更新 code 元素文本
+    var codes = root.querySelectorAll('pre code');
+    for (var i = 0; i < codes.length; i++) {
+      var code = codes[i];
+      if (code._urlFixed) continue;
+      var text = code.textContent || code.innerText;
+      if (text.indexOf('../sh/') === -1 && text.indexOf('../bat/') === -1) continue;
+      code.textContent = text
+        .replace(/\.\.\/sh\//g, origin + '/sh/')
+        .replace(/\.\.\/bat\//g, origin + '/bat/');
+      code._urlFixed = true;
+    }
+    // 更新复制按钮的 data-code 属性
+    var btns = root.querySelectorAll('[data-code]');
+    for (var j = 0; j < btns.length; j++) {
+      var btn = btns[j];
+      if (btn._urlFixed) continue;
+      var dataCode = btn.getAttribute('data-code');
+      if (dataCode && (dataCode.indexOf('../sh/') !== -1 || dataCode.indexOf('../bat/') !== -1)) {
+        btn.setAttribute('data-code',
+          dataCode
+            .replace(/\.\.\/sh\//g, origin + '/sh/')
+            .replace(/\.\.\/bat\//g, origin + '/bat/')
+        );
+      }
+      btn._urlFixed = true;
+    }
+  }
+
+  fixScriptUrls();
+
+  if (window.MutationObserver) {
+    var obs = new MutationObserver(function(muts) {
+      for (var m = 0; m < muts.length; m++) {
+        if (muts[m].addedNodes.length) {
+          fixScriptUrls(muts[m].target);
+        }
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+  }
+})();
