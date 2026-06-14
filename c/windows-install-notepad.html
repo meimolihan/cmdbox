@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="windows-install-notepad 命令">
     <meta name="twitter:description" content="Windows 安装 Notepad++ 文本编辑器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqd28yo4">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqdoxyat">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqd28yo4"></script>
+    <script src="../js/dt.js?v=mqdoxyat"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -989,6 +989,7 @@ function syncWallpaperUI(isOn) {
             <li class="search-result-count" id="search-result-count" style="display:none;"></li>
             <!-- <li><a href="#"><strong>find</strong> - 指定目录下查找文件。</a></li> -->
           </ul>
+          <ul class="search-list" id="search-history"></ul>
           <input type="text" class="query" id="query" autocomplete="off" placeholder="CmdBox 命令搜索"
             role="combobox" aria-label="搜索 CmdBox 命令" aria-expanded="false" aria-autocomplete="list" aria-controls="result" />
           <div class="enter-input">
@@ -1240,7 +1241,6 @@ function copied(target, str) {
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
   <div class="footer-grid">
-    <!-- 第一行：导航链接 -->
     <a class="footer-item" target="_blank" href="https://github.com/meimolihan/cmdbox/new/main/command">
       <svg class="footer-icon icon-command" viewBox="0 0 24 24">
         <defs>
@@ -1255,7 +1255,7 @@ function copied(target, str) {
       </svg>
       <span class="footer-text">添加命令</span>
     </a>
-    <a class="footer-item" href="../hot.html">
+    <a class="footer-item" href="../command-list.html">
       <svg class="footer-icon icon-list" viewBox="0 0 24 24">
         <defs>
           <linearGradient id="grad-list" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1298,8 +1298,38 @@ function copied(target, str) {
       </svg>
       <span class="footer-text">脚本列表</span>
     </a>
-    <!-- 第二行：统计信息 -->
-    <a class="footer-item" href="../hot.html">
+    <!-- 新增：添加 Win -->
+    <a class="footer-item" target="_blank" href="https://github.com/meimolihan/cmdbox/new/main/windows">
+      <svg class="footer-icon icon-windows" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-win-add" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00bcd4"/>
+            <stop offset="100%" style="stop-color:#3f51b5"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="2" fill="url(#grad-win-add)"/>
+        <line x1="12" y1="8" x2="12" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">添加 Win</span>
+    </a>
+    <!-- 新增：Win 列表 -->
+    <a class="footer-item" href="../windows.html">
+      <svg class="footer-icon icon-win-list" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-win-list" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00bcd4"/>
+            <stop offset="100%" style="stop-color:#3f51b5"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="2" fill="url(#grad-win-list)"/>
+        <line x1="7" y1="9" x2="17" y2="9" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="7" y1="14" x2="14" y2="14" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">Win 列表</span>
+    </a>
+    <!-- 命令统计：只显示 command 目录 -->
+    <a class="footer-item" href="../command-list.html">
       <svg class="footer-icon icon-command" viewBox="0 0 24 24">
         <defs>
           <linearGradient id="grad-cmd" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1312,6 +1342,7 @@ function copied(target, str) {
       </svg>
       <span class="footer-text">命令 <span class="footer-count command">801</span></span>
     </a>
+    <!-- 脚本统计：只显示 myscript 目录 -->
     <a class="footer-item" href="../script-list.html">
       <svg class="footer-icon icon-script" viewBox="0 0 24 24">
         <defs>
@@ -1327,6 +1358,23 @@ function copied(target, str) {
       <span class="footer-text">脚本 <span class="footer-count script">184</span></span>
     </a>
     
+    <!-- Win 统计：只显示 windows 目录 -->
+    <a class="footer-item" href="../windows.html">
+      <svg class="footer-icon icon-windows" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="grad-win" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00bcd4"/>
+            <stop offset="100%" style="stop-color:#3f51b5"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="2" fill="url(#grad-win)"/>
+        <line x1="8" y1="8" x2="16" y2="8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <line x1="8" y1="16" x2="14" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <span class="footer-text">Win <span class="footer-count windows">77</span></span>
+    </a>
+    <!-- 共计统计：command + myscript + windows 总和 -->
     <a class="footer-item" href="../all.html">
       <svg class="footer-icon icon-total" viewBox="0 0 24 24">
         <defs>
@@ -1340,6 +1388,21 @@ function copied(target, str) {
       </svg>
       <span class="footer-text">共计 <span class="footer-count total">1062</span></span>
     </a>
+    <!-- Gitee 链接 -->
+    <a class="footer-item" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
+      <svg class="footer-icon icon-gitee" viewBox="0 0 24 24" fill="none">
+        <defs>
+          <linearGradient id="grad-gitee" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#c71d23"/>
+            <stop offset="100%" style="stop-color:#e85d33"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="20" height="20" rx="4" fill="url(#grad-gitee)"/>
+        <path d="M7 8.5l3.5 3.5L7 15.5M17 8.5l-3.5 3.5 3.5 3.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="footer-text">Gitee</span>
+    </a>
+    <!-- GitHub 链接 -->
     <a class="footer-item github-btn" href="https://github.com/meimolihan/cmdbox" target="_blank">
       <svg class="footer-icon icon-github" viewBox="0 0 24 24" fill="url(#github-gradient)" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -1351,13 +1414,15 @@ function copied(target, str) {
         </defs>
         <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
       </svg>
-      <span class="footer-text">Github</span>
+      <span class="footer-text">GitHub</span>
     </a>
   </div>
 
 
-<script type="text/javascript" src="../js/dt.js?v=mqd28yo4"></script>
-<script type="text/javascript" src="../js/index.js?v=mqd28yo4"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqd28yo4"></script>
+</div>
+
+<script type="text/javascript" src="../js/dt.js?v=mqdoxyat"></script>
+<script type="text/javascript" src="../js/index.js?v=mqdoxyat"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqdoxyat"></script>
 </body>
 </html>
