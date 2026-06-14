@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_install_ubuntu 命令">
     <meta name="twitter:description" content="安装配置 WSL2 Ubuntu 系统 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqdoxyat">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqdq6yh9">
     <!-- 跳转到主内容（无障碍） -->
     <style>
       .skip-link {
@@ -130,7 +130,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqdoxyat"></script>
+    <script src="../js/dt.js?v=mqdq6yh9"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1704,6 +1704,143 @@ cd /mnt/c/Users/$(cmd.exe /c echo %USERNAME% | tr -d &#x27;\r&#x27;)/Music
 # 桌面快捷访问（一键直达）
 cd /mnt/c/Users/$(cmd.exe /c echo %USERNAME% | tr -d &#x27;\r&#x27;)/Desktop
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h2 id="wsl-清理指南"><a class="anchor" aria-hidden="true" tabindex="-1" href="#wsl-清理指南"><span class="octicon octicon-link"></span></a>WSL 清理指南</h2>
+<p>结合 WSL Ubuntu 环境，分「卸载分发版」「清理残留文件」「关闭 WSL 功能」「深度重置」四个层级，PowerShell <strong>以管理员身份</strong>执行。</p>
+<h3 id="一仅卸载指定-ubuntu-实例保留-wsl-功能"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一仅卸载指定-ubuntu-实例保留-wsl-功能"><span class="octicon octicon-link"></span></a>一、仅卸载指定 Ubuntu 实例（保留 WSL 功能）</h3>
+<p>适合只想删掉当前 Ubuntu，后续还想用 WSL。</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 停止所有 WSL 运行实例</span>
+</span><span class="code-line line-number" line="2">wsl <span class="token operator">--</span>shutdown
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 2. 查看已安装分发版</span>
+</span><span class="code-line line-number" line="5">wsl <span class="token operator">--</span>list <span class="token operator">--</span>verbose
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 3. 注销/删除 Ubuntu（数据全部清空，不可恢复）</span>
+</span><span class="code-line line-number" line="8">wsl <span class="token operator">--</span>unregister ubuntu
+</span></code><div onclick="copied(this)" data-code="# 1. 停止所有 WSL 运行实例
+wsl --shutdown
+
+# 2. 查看已安装分发版
+wsl --list --verbose
+
+# 3. 注销/删除 Ubuntu（数据全部清空，不可恢复）
+wsl --unregister ubuntu
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>执行后该实例、磁盘文件、配置全部删除。</p>
+<h3 id="二卸载所有-wsl-分发版--清理残留常用彻底清理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二卸载所有-wsl-分发版--清理残留常用彻底清理"><span class="octicon octicon-link"></span></a>二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</h3>
+<p>清空全部 Linux 子系统：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 停止 WSL</span>
+</span><span class="code-line line-number" line="2">wsl <span class="token operator">--</span>shutdown
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 2. 列出所有分发版并批量注销</span>
+</span><span class="code-line line-number" line="5">wsl <span class="token operator">--</span>list <span class="token operator">--</span>quiet <span class="token punctuation">|</span> <span class="token function">ForEach-Object</span> <span class="token punctuation">{</span> wsl <span class="token operator">--</span>unregister <span class="token variable">$_</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 3. 清理 WSL 缓存与临时文件</span>
+</span><span class="code-line line-number" line="8"><span class="token function">Remove-Item</span> <span class="token string">"<span class="token variable">$env</span>:LOCALAPPDATA\Packages\CanonicalGroupLimited*"</span> <span class="token operator">-</span>Recurse <span class="token operator">-</span>Force <span class="token operator">-</span>ErrorAction SilentlyContinue
+</span><span class="code-line line-number" line="9"><span class="token function">Remove-Item</span> <span class="token string">"<span class="token variable">$env</span>:LOCALAPPDATA\wsl\"</span> <span class="token operator">-</span>Recurse <span class="token operator">-</span>Force <span class="token operator">-</span>ErrorAction SilentlyContinue
+</span></code><div onclick="copied(this)" data-code="# 1. 停止 WSL
+wsl --shutdown
+
+# 2. 列出所有分发版并批量注销
+wsl --list --quiet | ForEach-Object { wsl --unregister $_ }
+
+# 3. 清理 WSL 缓存与临时文件
+Remove-Item &#x22;$env:LOCALAPPDATA\Packages\CanonicalGroupLimited*&#x22; -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item &#x22;$env:LOCALAPPDATA\wsl\&#x22; -Recurse -Force -ErrorAction SilentlyContinue
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="三完全禁用并卸载-wsl-整套功能彻底回归纯-windows"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三完全禁用并卸载-wsl-整套功能彻底回归纯-windows"><span class="octicon octicon-link"></span></a>三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</h3>
+<p>不再使用 WSL、Hyper-V、虚拟机平台，关闭系统组件：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 先删除所有分发版（执行上面的步骤）</span>
+</span><span class="code-line line-number" line="2">
+</span><span class="code-line line-number" line="3"><span class="token comment"># 2. 关闭 WSL 子系统</span>
+</span><span class="code-line line-number" line="4">dism<span class="token punctuation">.</span>exe <span class="token operator">/</span>online <span class="token operator">/</span><span class="token function">disable-feature</span> <span class="token operator">/</span>featurename:Microsoft-Windows-Subsystem-Linux <span class="token operator">/</span>all <span class="token operator">/</span>norestart
+</span><span class="code-line line-number" line="5">
+</span><span class="code-line line-number" line="6"><span class="token comment"># 3. 关闭虚拟机平台（WSL2 依赖）</span>
+</span><span class="code-line line-number" line="7">dism<span class="token punctuation">.</span>exe <span class="token operator">/</span>online <span class="token operator">/</span><span class="token function">disable-feature</span> <span class="token operator">/</span>featurename:VirtualMachinePlatform <span class="token operator">/</span>all <span class="token operator">/</span>norestart
+</span><span class="code-line line-number" line="8">
+</span><span class="code-line line-number" line="9"><span class="token comment"># 4. 关闭 Hyper-V（如果你也不用虚拟机）</span>
+</span><span class="code-line line-number" line="10">dism<span class="token punctuation">.</span>exe <span class="token operator">/</span>online <span class="token operator">/</span><span class="token function">disable-feature</span> <span class="token operator">/</span>featurename:Hyper-V <span class="token operator">/</span>all <span class="token operator">/</span>norestart
+</span><span class="code-line line-number" line="11">
+</span><span class="code-line line-number" line="12"><span class="token comment"># 5. 重启生效</span>
+</span><span class="code-line line-number" line="13">shutdown <span class="token operator">/</span>r <span class="token operator">/</span>f <span class="token operator">/</span>t 0
+</span></code><div onclick="copied(this)" data-code="# 1. 先删除所有分发版（执行上面的步骤）
+
+# 2. 关闭 WSL 子系统
+dism.exe /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+# 3. 关闭虚拟机平台（WSL2 依赖）
+dism.exe /online /disable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+# 4. 关闭 Hyper-V（如果你也不用虚拟机）
+dism.exe /online /disable-feature /featurename:Hyper-V /all /norestart
+
+# 5. 重启生效
+shutdown /r /f /t 0
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="四修复-wsl-异常--重置默认设置出问题时用"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四修复-wsl-异常--重置默认设置出问题时用"><span class="octicon octicon-link"></span></a>四、修复 WSL 异常 + 重置默认设置（出问题时用）</h3>
+<p>不想卸载，但 WSL 报错、启动失败：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 终止所有 WSL 进程</span>
+</span><span class="code-line line-number" line="2">wsl <span class="token operator">--</span>shutdown
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 重置 WSL 相关网络/虚拟机监控程序启动项</span>
+</span><span class="code-line line-number" line="5">bcdedit <span class="token operator">/</span><span class="token function">set</span> hypervisorlaunchtype off
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 重启后如需再用 WSL，改回 auto</span>
+</span><span class="code-line line-number" line="8">bcdedit <span class="token operator">/</span><span class="token function">set</span> hypervisorlaunchtype auto
+</span></code><div onclick="copied(this)" data-code="# 终止所有 WSL 进程
+wsl --shutdown
+
+# 重置 WSL 相关网络/虚拟机监控程序启动项
+bcdedit /set hypervisorlaunchtype off
+
+# 重启后如需再用 WSL，改回 auto
+bcdedit /set hypervisorlaunchtype auto
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="五针对-wslconfig-配置文件清理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五针对-wslconfig-配置文件清理"><span class="octicon octicon-link"></span></a>五、针对 .wslconfig 配置文件清理</h3>
+<p>如果之前配置过内存/CPU 限制：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 删除全局 WSL 配置文件</span>
+</span><span class="code-line line-number" line="2"><span class="token function">Remove-Item</span> <span class="token string">"<span class="token variable">$env</span>:USERPROFILE\.wslconfig"</span> <span class="token operator">-</span>Force <span class="token operator">-</span>ErrorAction SilentlyContinue
+</span></code><div onclick="copied(this)" data-code="# 删除全局 WSL 配置文件
+Remove-Item &#x22;$env:USERPROFILE\.wslconfig&#x22; -Force -ErrorAction SilentlyContinue
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="六一键终极清理脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六一键终极清理脚本"><span class="octicon octicon-link"></span></a>六、一键终极清理脚本</h3>
+<p>复制到管理员 PowerShell 直接运行：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 停止 WSL</span>
+</span><span class="code-line line-number" line="2">wsl <span class="token operator">--</span>shutdown
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 删除所有 WSL 分发版</span>
+</span><span class="code-line line-number" line="5">wsl <span class="token operator">--</span>list <span class="token operator">--</span>quiet <span class="token punctuation">|</span> <span class="token function">ForEach-Object</span> <span class="token punctuation">{</span> wsl <span class="token operator">--</span>unregister <span class="token variable">$_</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 删除 WSL 虚拟磁盘与缓存</span>
+</span><span class="code-line line-number" line="8"><span class="token function">Remove-Item</span> <span class="token string">"<span class="token variable">$env</span>:LOCALAPPDATA\wsl\"</span> <span class="token operator">-</span>Recurse <span class="token operator">-</span>Force <span class="token operator">-</span>ErrorAction SilentlyContinue
+</span><span class="code-line line-number" line="9"><span class="token function">Remove-Item</span> <span class="token string">"<span class="token variable">$env</span>:USERPROFILE\.wslconfig"</span> <span class="token operator">-</span>Force <span class="token operator">-</span>ErrorAction SilentlyContinue
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token comment"># 关闭 WSL 与虚拟机平台组件</span>
+</span><span class="code-line line-number" line="12">dism <span class="token operator">/</span>online <span class="token operator">/</span><span class="token function">disable-feature</span> <span class="token operator">/</span>featurename:Microsoft-Windows-Subsystem-Linux <span class="token operator">/</span>all <span class="token operator">/</span>norestart
+</span><span class="code-line line-number" line="13">dism <span class="token operator">/</span>online <span class="token operator">/</span><span class="token function">disable-feature</span> <span class="token operator">/</span>featurename:VirtualMachinePlatform <span class="token operator">/</span>all <span class="token operator">/</span>norestart
+</span><span class="code-line line-number" line="14">
+</span><span class="code-line line-number" line="15"><span class="token function">Write-Host</span> <span class="token string">"WSL 环境已彻底清理，请手动重启电脑生效"</span>
+</span></code><div onclick="copied(this)" data-code="# 停止 WSL
+wsl --shutdown
+
+# 删除所有 WSL 分发版
+wsl --list --quiet | ForEach-Object { wsl --unregister $_ }
+
+# 删除 WSL 虚拟磁盘与缓存
+Remove-Item &#x22;$env:LOCALAPPDATA\wsl\&#x22; -Recurse -Force -ErrorAction SilentlyContinue
+Remove-Item &#x22;$env:USERPROFILE\.wslconfig&#x22; -Force -ErrorAction SilentlyContinue
+
+# 关闭 WSL 与虚拟机平台组件
+dism /online /disable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism /online /disable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+Write-Host &#x22;WSL 环境已彻底清理，请手动重启电脑生效&#x22;
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="补充说明-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明-1"><span class="octicon octicon-link"></span></a>补充说明</h3>
+<ul>
+  <li><code>wsl --unregister</code> 是<strong>不可逆删除</strong>，系统内所有文件、Docker、配置全部清空，操作前备份重要数据</li>
+  <li>清理后想重新使用 WSL，回到本教程重新执行「启用功能 → 安装 Ubuntu」即可</li>
+  <li>当前系统已开启 VBS/HVCI/虚拟化，单纯删 WSL 不会影响这些安全功能</li>
+</ul>
 <h2 id="参考链接"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参考链接"><span class="octicon octicon-link"></span></a>参考链接</h2>
 <ul>
   <li><a href="https://docs.microsoft.com/zh-cn/windows/wsl/" title="Microsoft WSL 官方文档">WSL 官方文档</a></li>
@@ -1964,8 +2101,8 @@ function copied(target, str) {
 
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqdoxyat"></script>
-<script type="text/javascript" src="../js/index.js?v=mqdoxyat"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqdoxyat"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqdq6yh9"></script>
+<script type="text/javascript" src="../js/index.js?v=mqdq6yh9"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqdq6yh9"></script>
 </body>
 </html>
