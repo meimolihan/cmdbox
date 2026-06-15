@@ -5,20 +5,20 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="win-install-nodejs:Windows 安装 Node.js 运行时 - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
-    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,win-install-nodejs,Windows 安装 Node.js 运行时">
-    <title>win-install-nodejs 命令，win-install-nodejs 命令详解：Windows 安装 Node.js 运行时 - Cmdbox 命令搜索引擎</title>
+    <meta name="description" content="win-install-nodejs:Windows 安装 Node.js - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
+    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,win-install-nodejs,Windows 安装 Node.js">
+    <title>win-install-nodejs 命令，win-install-nodejs 命令详解：Windows 安装 Node.js - Cmdbox 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
     <!-- SEO -->
     <link rel="canonical" href="/../c/win-install-nodejs.html">
     <meta property="og:title" content="win-install-nodejs 命令">
-    <meta property="og:description" content="Windows 安装 Node.js 运行时 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <meta property="og:description" content="Windows 安装 Node.js - 最专业的命令大全，值得收藏的命令速查手册。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="/../c/win-install-nodejs.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="win-install-nodejs 命令">
-    <meta name="twitter:description" content="Windows 安装 Node.js 运行时 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqf8c4oq">
+    <meta name="twitter:description" content="Windows 安装 Node.js - 最专业的命令大全，值得收藏的命令速查手册。">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqffuy1q">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqf8c4oq"></script>
+    <script src="../js/dt.js?v=mqffuy1q"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1026,7 +1026,7 @@ body.wallpaper-local {
     <span class="command-type-badge command wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">命令</span>
   </div>
   
-  <p class="command-desc wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">Windows 安装 Node.js 运行时</p>
+  <p class="command-desc wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">Windows 安装 Node.js</p>
   
   <div class="command-actions">
     
@@ -1132,7 +1132,7 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
 <h1 id="win-install-nodejs"><a class="anchor" aria-hidden="true" tabindex="-1" href="#win-install-nodejs"><span class="octicon octicon-link"></span></a>win-install-nodejs</h1>
-<p>Windows 安装 Node.js 运行时</p>
+<p>Windows 安装 Node.js</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong><a href="https://nodejs.org/">Node.js</a></strong> 是一个开源、跨平台的 JavaScript 运行时环境，基于 Chrome V8 引擎，适用于服务端应用、前端工具链（Webpack/Vite）和桌面应用开发。</p>
 <h2 id="安装-nodejs"><a class="anchor" aria-hidden="true" tabindex="-1" href="#安装-nodejs"><span class="octicon octicon-link"></span></a>安装 Node.js</h2>
@@ -1156,15 +1156,44 @@ cd ~\Downloads; curl.exe -L -o node-lts-x64.msi https://nodejs.org/dist/v20.11.0
 <blockquote>
   <p>推荐使用 winget 安装，自动处理依赖、静默后台执行</p>
 </blockquote>
-<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1">winget install <span class="token operator">-</span>e <span class="token operator">--</span>id OpenJS<span class="token punctuation">.</span>NodeJS<span class="token punctuation">.</span>LTS <span class="token operator">-</span>h <span class="token operator">--</span>accept-package-agreements <span class="token operator">--</span>accept-source-agreements
-</span></code><div onclick="copied(this)" data-code="winget install -e --id OpenJS.NodeJS.LTS -h --accept-package-agreements --accept-source-agreements
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1">winget install <span class="token operator">-</span>e <span class="token operator">--</span>id Git<span class="token punctuation">.</span>Git <span class="token operator">--</span>silent <span class="token operator">--</span>accept-package-agreements <span class="token operator">--</span>accept-source-agreements
+</span><span class="code-line line-number" line="2">
+</span><span class="code-line line-number" line="3">winget list <span class="token operator">-</span>e <span class="token operator">--</span>id Git<span class="token punctuation">.</span>Git
+</span></code><div onclick="copied(this)" data-code="winget install -e --id Git.Git --silent --accept-package-agreements --accept-source-agreements
+
+winget list -e --id Git.Git
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>
+  <img src="../img/winget-install-git.webp" alt="" loading="lazy">
+</p>
 <ul>
-  <li><code>-e</code>：精确匹配包 ID，杜绝装错</li>
-  <li><code>-h</code>：静默安装，不弹出向导窗口</li>
-  <li><code>--accept-package-agreements</code>：自动同意许可协议</li>
-  <li><code>--accept-source-agreements</code>：同意源协议，批量部署必备</li>
+  <li>
+    <p><code>-e</code>：精确匹配包 ID，杜绝装错</p>
+  </li>
+  <li>
+    <p><code>--silent</code>：静默安装，不弹出向导窗口</p>
+  </li>
+  <li>
+    <p><code>--accept-package-agreements</code>：自动同意许可协议</p>
+  </li>
+  <li>
+    <p><code>--accept-source-agreements</code>：同意源协议，批量部署必备</p>
+  </li>
+  <li>
+    <p><strong>Windows winget 卸载 Node.js</strong></p>
+  </li>
 </ul>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 静默无弹窗彻底卸载（管理员 PowerShell）</span>
+</span><span class="code-line line-number" line="2">winget uninstall <span class="token operator">-</span>e <span class="token operator">--</span>id OpenJS<span class="token punctuation">.</span>NodeJS<span class="token punctuation">.</span>LTS <span class="token operator">--</span>silent
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 彻底清理缓存 / 用户配置（--purge）（管理员 PowerShell）</span>
+</span><span class="code-line line-number" line="5">winget uninstall <span class="token operator">-</span>e <span class="token operator">--</span>id OpenJS<span class="token punctuation">.</span>NodeJS<span class="token punctuation">.</span>LTS <span class="token operator">--</span>silent <span class="token operator">--</span>purge
+</span></code><div onclick="copied(this)" data-code="# 静默无弹窗彻底卸载（管理员 PowerShell）
+winget uninstall -e --id OpenJS.NodeJS.LTS --silent
+
+# 彻底清理缓存 / 用户配置（--purge）（管理员 PowerShell）
+winget uninstall -e --id OpenJS.NodeJS.LTS --silent --purge
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p><strong>使用前提</strong></p>
 <ul>
   <li>系统：Windows 11 / 10 1709+（自带 winget）</li>
@@ -1342,7 +1371,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">796</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">797</span></span>
     </a>
     <!-- 脚本统计：只显示 myscript 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1388,7 +1417,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1084</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1085</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1421,9 +1450,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqf8c4oq"></script>
-<script type="text/javascript" src="../js/index.js?v=mqf8c4oq"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqf8c4oq"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqffuy1q"></script>
+<script type="text/javascript" src="../js/index.js?v=mqffuy1q"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqffuy1q"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
