@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="compose_install_halo 命令">
     <meta name="twitter:description" content="Compose 部署 Halo 建站工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqesdcop">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqesr7at">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqesdcop"></script>
+    <script src="../js/dt.js?v=mqesr7at"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1267,6 +1267,55 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>外部访问地址配置为 <a href="http://localhost:8090/%EF%BC%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%9C%80%E4%BF%AE%E6%94%B9%E4%B8%BA%E5%AE%9E%E9%99%85%E5%9F%9F%E5%90%8D">http://localhost:8090/，生产环境需修改为实际域名</a></li>
   <li>数据库密码默认为 openpostgresql，生产环境建议修改</li>
 </ul>
+<h2 id="docker-运行"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-运行"><span class="octicon octicon-link"></span></a>Docker 运行</h2>
+<h3 id="halo"><a class="anchor" aria-hidden="true" tabindex="-1" href="#halo"><span class="octicon octicon-link"></span></a>halo</h3>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="2">  <span class="token parameter variable">--name</span> halo <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="3">  <span class="token parameter variable">--restart</span> always <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="4">  <span class="token parameter variable">-p</span> <span class="token number">8090</span>:8090 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="5">  <span class="token parameter variable">-v</span> ./halo2:/root/.halo2 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="6">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">JVM_OPTS</span><span class="token operator">=</span><span class="token string">"-Xmx256m -Xms256m"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="7">  registry.fit2cloud.com/halo/halo:2 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="8">  <span class="token parameter variable">--spring.r2dbc.url</span><span class="token operator">=</span>r2dbc:pool:postgresql://halodb/halo <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="9">  <span class="token parameter variable">--spring.r2dbc.username</span><span class="token operator">=</span>halo <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="10">  <span class="token parameter variable">--spring.r2dbc.password</span><span class="token operator">=</span>openpostgresql <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="11">  <span class="token parameter variable">--spring.sql.init.platform</span><span class="token operator">=</span>postgresql <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="12">  --halo.external-url<span class="token operator">=</span>http://localhost:8090/
+</span></code><div onclick="copied(this)" data-code="docker run -d \
+  --name halo \
+  --restart always \
+  -p 8090:8090 \
+  -v ./halo2:/root/.halo2 \
+  -e JVM_OPTS=&#x22;-Xmx256m -Xms256m&#x22; \
+  registry.fit2cloud.com/halo/halo:2 \
+  --spring.r2dbc.url=r2dbc:pool:postgresql://halodb/halo \
+  --spring.r2dbc.username=halo \
+  --spring.r2dbc.password=openpostgresql \
+  --spring.sql.init.platform=postgresql \
+  --halo.external-url=http://localhost:8090/
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="halodb"><a class="anchor" aria-hidden="true" tabindex="-1" href="#halodb"><span class="octicon octicon-link"></span></a>halodb</h3>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="2">  <span class="token parameter variable">--name</span> halodb <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="3">  <span class="token parameter variable">--restart</span> always <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="4">  <span class="token parameter variable">-p</span> <span class="token number">5433</span>:5432 <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="5">  <span class="token parameter variable">-v</span> ./db:/var/lib/postgresql/data <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="6">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">POSTGRES_PASSWORD</span><span class="token operator">=</span>openpostgresql <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="7">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">POSTGRES_USER</span><span class="token operator">=</span>halo <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="8">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">POSTGRES_DB</span><span class="token operator">=</span>halo <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="9">  <span class="token parameter variable">-e</span> <span class="token assign-left variable">PGUSER</span><span class="token operator">=</span>halo <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="10">  postgres:17.6
+</span></code><div onclick="copied(this)" data-code="docker run -d \
+  --name halodb \
+  --restart always \
+  -p 5433:5432 \
+  -v ./db:/var/lib/postgresql/data \
+  -e POSTGRES_PASSWORD=openpostgresql \
+  -e POSTGRES_USER=halo \
+  -e POSTGRES_DB=halo \
+  -e PGUSER=halo \
+  postgres:17.6
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="脚本源码"><a class="anchor" aria-hidden="true" tabindex="-1" href="#脚本源码"><span class="octicon octicon-link"></span></a>脚本源码</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token shebang important">#!/bin/bash</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">set</span> <span class="token parameter variable">-uo</span> pipefail
@@ -2580,9 +2629,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqesdcop"></script>
-<script type="text/javascript" src="../js/index.js?v=mqesdcop"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqesdcop"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqesr7at"></script>
+<script type="text/javascript" src="../js/index.js?v=mqesr7at"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqesr7at"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
