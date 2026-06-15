@@ -823,8 +823,8 @@ deploy_app() {
         <div class="logo">🌿</div>
         
         <div class="card">
-            <h1>Welcome to Nginx!</h1>
-            <p>您已成功安装并运行了Nginx服务器。这个页面是默认的欢迎页面，表明您的服务器正在正常工作。</p>
+            <h1>Welcome to Nginx! — <a href="https://cmdbox.meimolihan.eu.org" target="_blank" style="color:#1b5e20;text-decoration:none;">cmdbox</a></h1>
+            <p>您已通过 <a href="https://cmdbox.meimolihan.eu.org" target="_blank">cmdbox</a> 成功部署 Nginx，服务器正在正常工作。</p>
             
             <div class="status-container">
                 <div class="status-item">
@@ -841,7 +841,7 @@ deploy_app() {
                 </div>
             </div>
             
-            <p>要替换此页面，请将您的网站文件上传到服务器文档根目录。</p>
+            <p>要添加网站，将 <code>index.html</code> 等文件放入部署目录下的 <code>html/</code> 子目录，并在 <code>conf.d/</code> 中创建 <code>*.conf</code> 配置文件。</p>
             
             <div class="btn-container">
                 <!-- 使用真实的链接而不是按钮 -->
@@ -1101,7 +1101,9 @@ NGINX_CONF_EOF
     log_info "静态文件目录：${gl_huang}${COMPOSE_DIR}/html${gl_bai}"
     log_info "虚拟主机配置目录：${gl_huang}${COMPOSE_DIR}/conf.d${gl_bai}"
     echo -e ""
-    log_info "将 HTML 文件放入 html/ 目录，在 conf.d/ 中创建 .conf 配置虚拟主机"
+    log_info "部署绝对路径："
+    log_info "  静态文件：${gl_huang}${COMPOSE_DIR}/html/${gl_bai}"
+    log_info "  虚拟主机：${gl_huang}${COMPOSE_DIR}/conf.d/*.conf${gl_bai}"
     log_info "修改配置后执行：${gl_huang}docker exec nginx nginx -s reload${gl_bai}"
     echo -e ""
     log_info "正在测试默认页访问 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"

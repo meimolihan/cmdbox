@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="compose_install_nginx 命令">
     <meta name="twitter:description" content="Compose 部署 Nginx 反向代理服务器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqf65qph">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqf6qtjf">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqf65qph"></script>
+    <script src="../js/dt.js?v=mqf6qtjf"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -2139,8 +2139,8 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span></span><span class="code-line line-number" line="823"><span class="token string">        &#x3C;div class="logo">🌿&#x3C;/div>
 </span></span><span class="code-line line-number" line="824"><span class="token string">        
 </span></span><span class="code-line line-number" line="825"><span class="token string">        &#x3C;div class="card">
-</span></span><span class="code-line line-number" line="826"><span class="token string">            &#x3C;h1>Welcome to Nginx!&#x3C;/h1>
-</span></span><span class="code-line line-number" line="827"><span class="token string">            &#x3C;p>您已成功安装并运行了Nginx服务器。这个页面是默认的欢迎页面，表明您的服务器正在正常工作。&#x3C;/p>
+</span></span><span class="code-line line-number" line="826"><span class="token string">            &#x3C;h1>Welcome to Nginx! — &#x3C;a href="https://cmdbox.meimolihan.eu.org" target="_blank" style="color:#1b5e20;text-decoration:none;">cmdbox&#x3C;/a>&#x3C;/h1>
+</span></span><span class="code-line line-number" line="827"><span class="token string">            &#x3C;p>您已通过 &#x3C;a href="https://cmdbox.meimolihan.eu.org" target="_blank">cmdbox&#x3C;/a> 成功部署 Nginx，服务器正在正常工作。&#x3C;/p>
 </span></span><span class="code-line line-number" line="828"><span class="token string">            
 </span></span><span class="code-line line-number" line="829"><span class="token string">            &#x3C;div class="status-container">
 </span></span><span class="code-line line-number" line="830"><span class="token string">                &#x3C;div class="status-item">
@@ -2157,7 +2157,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span></span><span class="code-line line-number" line="841"><span class="token string">                &#x3C;/div>
 </span></span><span class="code-line line-number" line="842"><span class="token string">            &#x3C;/div>
 </span></span><span class="code-line line-number" line="843"><span class="token string">            
-</span></span><span class="code-line line-number" line="844"><span class="token string">            &#x3C;p>要替换此页面，请将您的网站文件上传到服务器文档根目录。&#x3C;/p>
+</span></span><span class="code-line line-number" line="844"><span class="token string">            &#x3C;p>要添加网站，将 &#x3C;code>index.html&#x3C;/code> 等文件放入部署目录下的 &#x3C;code>html/&#x3C;/code> 子目录，并在 &#x3C;code>conf.d/&#x3C;/code> 中创建 &#x3C;code>*.conf&#x3C;/code> 配置文件。&#x3C;/p>
 </span></span><span class="code-line line-number" line="845"><span class="token string">            
 </span></span><span class="code-line line-number" line="846"><span class="token string">            &#x3C;div class="btn-container">
 </span></span><span class="code-line line-number" line="847"><span class="token string">                &#x3C;!-- 使用真实的链接而不是按钮 -->
@@ -2417,24 +2417,26 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="1101">    log_info <span class="token string">"静态文件目录：<span class="token variable">${gl_huang}</span><span class="token variable">${COMPOSE_DIR}</span>/html<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="1102">    log_info <span class="token string">"虚拟主机配置目录：<span class="token variable">${gl_huang}</span><span class="token variable">${COMPOSE_DIR}</span>/conf.d<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="1103">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="1104">    log_info <span class="token string">"将 HTML 文件放入 html/ 目录，在 conf.d/ 中创建 .conf 配置虚拟主机"</span>
-</span><span class="code-line line-number" line="1105">    log_info <span class="token string">"修改配置后执行：<span class="token variable">${gl_huang}</span>docker exec nginx nginx -s reload<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1106">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="1107">    log_info <span class="token string">"正在测试默认页访问 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1108">    <span class="token function">sleep</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="1109">    <span class="token assign-left variable">HTTP_CODE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-w</span> <span class="token string">"%{http_code}"</span> <span class="token parameter variable">-A</span> <span class="token string">"Mozilla/5.0"</span> <span class="token string">"http://127.0.0.1:<span class="token variable">${HOST_PORT}</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"000"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="1110">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$HTTP_CODE</span>"</span> <span class="token operator">=</span> <span class="token string">"200"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1111">        log_ok <span class="token string">"默认页访问正常 (HTTP <span class="token variable">${HTTP_CODE}</span>)"</span>
-</span><span class="code-line line-number" line="1112">    <span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$HTTP_CODE</span>"</span> <span class="token operator">=</span> <span class="token string">"000"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1113">        log_warn <span class="token string">"无法访问，请检查防火墙是否放行端口 <span class="token variable">${HOST_PORT}</span>"</span>
-</span><span class="code-line line-number" line="1114">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="1115">        log_warn <span class="token string">"默认页返回状态码 <span class="token variable">${HTTP_CODE}</span>，请检查配置"</span>
-</span><span class="code-line line-number" line="1116">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="1117">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1118">    break_end
-</span><span class="code-line line-number" line="1119"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1120">
-</span><span class="code-line line-number" line="1121">deploy_app <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="1104">    log_info <span class="token string">"部署绝对路径："</span>
+</span><span class="code-line line-number" line="1105">    log_info <span class="token string">"  静态文件：<span class="token variable">${gl_huang}</span><span class="token variable">${COMPOSE_DIR}</span>/html/<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1106">    log_info <span class="token string">"  虚拟主机：<span class="token variable">${gl_huang}</span><span class="token variable">${COMPOSE_DIR}</span>/conf.d/*.conf<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1107">    log_info <span class="token string">"修改配置后执行：<span class="token variable">${gl_huang}</span>docker exec nginx nginx -s reload<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1108">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="1109">    log_info <span class="token string">"正在测试默认页访问 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1110">    <span class="token function">sleep</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="1111">    <span class="token assign-left variable">HTTP_CODE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-w</span> <span class="token string">"%{http_code}"</span> <span class="token parameter variable">-A</span> <span class="token string">"Mozilla/5.0"</span> <span class="token string">"http://127.0.0.1:<span class="token variable">${HOST_PORT}</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token builtin class-name">echo</span> <span class="token string">"000"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="1112">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$HTTP_CODE</span>"</span> <span class="token operator">=</span> <span class="token string">"200"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1113">        log_ok <span class="token string">"默认页访问正常 (HTTP <span class="token variable">${HTTP_CODE}</span>)"</span>
+</span><span class="code-line line-number" line="1114">    <span class="token keyword">elif</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$HTTP_CODE</span>"</span> <span class="token operator">=</span> <span class="token string">"000"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1115">        log_warn <span class="token string">"无法访问，请检查防火墙是否放行端口 <span class="token variable">${HOST_PORT}</span>"</span>
+</span><span class="code-line line-number" line="1116">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1117">        log_warn <span class="token string">"默认页返回状态码 <span class="token variable">${HTTP_CODE}</span>，请检查配置"</span>
+</span><span class="code-line line-number" line="1118">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1119">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1120">    break_end
+</span><span class="code-line line-number" line="1121"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1122">
+</span><span class="code-line line-number" line="1123">deploy_app <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -3260,8 +3262,8 @@ deploy_app() {
         <div class=&#x22;logo&#x22;>🌿</div>
         
         <div class=&#x22;card&#x22;>
-            <h1>Welcome to Nginx!</h1>
-            <p>您已成功安装并运行了Nginx服务器。这个页面是默认的欢迎页面，表明您的服务器正在正常工作。</p>
+            <h1>Welcome to Nginx! — <a href=&#x22;https://cmdbox.meimolihan.eu.org&#x22; target=&#x22;_blank&#x22; style=&#x22;color:#1b5e20;text-decoration:none;&#x22;>cmdbox</a></h1>
+            <p>您已通过 <a href=&#x22;https://cmdbox.meimolihan.eu.org&#x22; target=&#x22;_blank&#x22;>cmdbox</a> 成功部署 Nginx，服务器正在正常工作。</p>
             
             <div class=&#x22;status-container&#x22;>
                 <div class=&#x22;status-item&#x22;>
@@ -3278,7 +3280,7 @@ deploy_app() {
                 </div>
             </div>
             
-            <p>要替换此页面，请将您的网站文件上传到服务器文档根目录。</p>
+            <p>要添加网站，将 <code>index.html</code> 等文件放入部署目录下的 <code>html/</code> 子目录，并在 <code>conf.d/</code> 中创建 <code>*.conf</code> 配置文件。</p>
             
             <div class=&#x22;btn-container&#x22;>
                 <!-- 使用真实的链接而不是按钮 -->
@@ -3538,7 +3540,9 @@ NGINX_CONF_EOF
     log_info &#x22;静态文件目录：${gl_huang}${COMPOSE_DIR}/html${gl_bai}&#x22;
     log_info &#x22;虚拟主机配置目录：${gl_huang}${COMPOSE_DIR}/conf.d${gl_bai}&#x22;
     echo -e &#x22;&#x22;
-    log_info &#x22;将 HTML 文件放入 html/ 目录，在 conf.d/ 中创建 .conf 配置虚拟主机&#x22;
+    log_info &#x22;部署绝对路径：&#x22;
+    log_info &#x22;  静态文件：${gl_huang}${COMPOSE_DIR}/html/${gl_bai}&#x22;
+    log_info &#x22;  虚拟主机：${gl_huang}${COMPOSE_DIR}/conf.d/*.conf${gl_bai}&#x22;
     log_info &#x22;修改配置后执行：${gl_huang}docker exec nginx nginx -s reload${gl_bai}&#x22;
     echo -e &#x22;&#x22;
     log_info &#x22;正在测试默认页访问 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
@@ -4044,9 +4048,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqf65qph"></script>
-<script type="text/javascript" src="../js/index.js?v=mqf65qph"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqf65qph"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqf6qtjf"></script>
+<script type="text/javascript" src="../js/index.js?v=mqf6qtjf"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqf6qtjf"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
