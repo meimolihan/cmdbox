@@ -40,7 +40,7 @@ list_beautify_linux_modules() {
             printf "%s%s\t%s\t%s\t%s%s\n" "$gl_huang" "(无数据)" "(无数据)" "(无数据)" "(无数据)" "$reset"
         else
             echo "$data" | sort -k1,1 | while IFS= read -r line; do
-                [ -z "$(echo "$line" | tr -d ' ')"] && continue
+                [ -z "$(echo "$line" | tr -d ' ')" ] && continue
                 modname=$(echo "$line" | awk '{print $1}')
                 size=$(echo "$line" | awk '{print $2}')
                 used=$(echo "$line" | awk '{print $3}')

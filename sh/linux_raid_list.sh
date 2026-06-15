@@ -40,48 +40,40 @@ list_beautify_linux_raid() {
         printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "阵列名" "级别" "大小" "活动数" "状态" "成员" "$reset"
         printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "--------" "--------" "--------" "--------" "--------" "--------" "$reset"
 
+        awk '/^md/{name=$1; level=$4; status=$3; disks=""; for(i=5;i<=NF;i++){gsub(/\[[0-9]+\]/,"",$i); disks=disks $i " "}; getline; size=$1; split($5,arr,"/"); active=arr[1]; total=arr[2]; print name,level,size,active"/"total,status,disks}' /proc/mdstat | \
         while IFS= read -r line; do
-            if echo "$line" | grep -q "^md"; then
-                md_name=$(echo "$line" | awk '{print $1}')
-                md_level=$(echo "$line" | awk '{print $2}')
-                md_status=$(echo "$line" | awk '{print $NF}')
-                md_disks=$(echo "$line" | awk '{for(i=3;i<NF-2;i++) printf "%s ", $i; print ""}' | sed 's/\[[^]]*\]//g; s/  */ /g; s/^ *//; s/ *$//')
+            [ -z "$line" ] && continue
+            md_name=$(echo "$line" | awk '{print $1}')
+            md_level=$(echo "$line" | awk '{print $2}')
+            md_size=$(echo "$line" | awk '{print $3}')
+            md_active=$(echo "$line" | awk '{print $4}')
+            md_status=$(echo "$line" | awk '{print $5}')
+            md_disks=$(echo "$line" | awk '{for(i=6;i<=NF;i++) printf "%s ", $i}' | sed 's/ *$//')
 
-                md_size=""
-                if command -v mdadm &> /dev/null; then
-                    detail=$(mdadm --detail "/dev/$md_name" 2>/dev/null)
-                    md_size=$(echo "$detail" | grep "Array Size" | awk '{print $4}')
-                    if [ -n "$md_size" ]; then
-                        md_size=$(( md_size / 1024 )) "M"
-                    fi
-                    active_devices=$(echo "$detail" | grep "Working Devices" | awk '{print $4}')
-                    total_devices=$(echo "$detail" | grep "Total Devices" | awk '{print $4}')
-                    md_active="${active_devices}/${total_devices}"
-                else
-                    md_active="?"
-                    md_size="?"
-                fi
+            # Strip "md" prefix then re-add to ensure consistent format
+            md_name="md${md_name#md}"
 
-                if [ "$md_status" = "UU" ] || [ "$md_status" = "normal" ]; then
-                    status_color="$gl_lv"
-                    status_text="正常"
-                elif [ "$md_status" = "_" ] || echo "$md_status" | grep -q "_"; then
-                    status_color="$gl_huang"
-                    status_text="降级"
-                else
-                    status_color="$gl_hong"
-                    status_text="故障"
-                fi
+            case "$md_status" in
+                active) status_color="$gl_lv"; status_text="正常" ;;
+                *) status_color="$gl_hong"; status_text="$md_status" ;;
+            esac
 
-                printf "%s%s\t%s%s\t%s%s\t%s%s\t%s%s\t%s%s%s\n" \
-                    "$gl_lan" "$md_name" \
-                    "$gl_bufan" "$md_level" \
-                    "$gl_lv" "$md_size" \
-                    "$gl_bai" "$md_active" \
-                    "$status_color" "$status_text" \
-                    "$gl_hui" "$md_disks" "$reset"
+            if [ -n "$md_size" ] && [ "$md_size" -eq "$md_size" ] 2>/dev/null; then
+                md_size=$(( md_size / 1024 ))M
+            else
+                md_size="?"
             fi
-        done < /proc/mdstat
+
+            md_disks=$(echo "$md_disks" | sed 's/\[[^]]*\]//g')
+
+            printf "%s%s\t%s%s\t%s%s\t%s%s\t%s%s\t%s%s%s\n" \
+                "$gl_lan" "$md_name" \
+                "$gl_bufan" "$md_level" \
+                "$gl_lv" "$md_size" \
+                "$gl_bai" "$md_active" \
+                "$status_color" "$status_text" \
+                "$gl_hui" "$md_disks" "$reset"
+        done
     } | column_if_available
 }
 

@@ -49,10 +49,7 @@ list_beautify_linux_fstab() {
             line=$(echo "$line" | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
             [ -z "$line" ] && continue
 
-            if echo "$line" | grep -q "^\s*#"; then
-                printf "%s%s%s\n" "$gl_hui" "$line" "$reset"
-                continue
-            fi
+            echo "$line" | grep -q "^\s*#" && continue
 
             device=$(echo "$line" | awk '{print $1}')
             mount=$(echo "$line" | awk '{print $2}')

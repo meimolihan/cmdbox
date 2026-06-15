@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_modules_list 命令">
     <meta name="twitter:description" content="Linux 内核模块 美化列表 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqeo05mi">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqesdcop">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqeo05mi"></script>
+    <script src="../js/dt.js?v=mqesdcop"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1231,7 +1231,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="40">            <span class="token builtin class-name">printf</span> <span class="token string">"%s%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$gl_huang</span>"</span> <span class="token string">"(无数据)"</span> <span class="token string">"(无数据)"</span> <span class="token string">"(无数据)"</span> <span class="token string">"(无数据)"</span> <span class="token string">"<span class="token variable">$reset</span>"</span>
 </span><span class="code-line line-number" line="41">        <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="42">            <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$data</span>"</span> <span class="token operator">|</span> <span class="token function">sort</span> -k1,1 <span class="token operator">|</span> <span class="token keyword">while</span> <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> line<span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="43">                <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">' '</span><span class="token variable">)</span></span>"</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="43">                <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token parameter variable">-d</span> <span class="token string">' '</span><span class="token variable">)</span></span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
 </span><span class="code-line line-number" line="44">                <span class="token assign-left variable">modname</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="45">                <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $2}'</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="46">                <span class="token assign-left variable">used</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$line</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $3}'</span><span class="token variable">)</span></span>
@@ -1304,7 +1304,7 @@ list_beautify_linux_modules() {
             printf &#x22;%s%s\t%s\t%s\t%s%s\n&#x22; &#x22;$gl_huang&#x22; &#x22;(无数据)&#x22; &#x22;(无数据)&#x22; &#x22;(无数据)&#x22; &#x22;(无数据)&#x22; &#x22;$reset&#x22;
         else
             echo &#x22;$data&#x22; | sort -k1,1 | while IFS= read -r line; do
-                [ -z &#x22;$(echo &#x22;$line&#x22; | tr -d &#x27; &#x27;)&#x22;] &#x26;&#x26; continue
+                [ -z &#x22;$(echo &#x22;$line&#x22; | tr -d &#x27; &#x27;)&#x22; ] &#x26;&#x26; continue
                 modname=$(echo &#x22;$line&#x22; | awk &#x27;{print $1}&#x27;)
                 size=$(echo &#x22;$line&#x22; | awk &#x27;{print $2}&#x27;)
                 used=$(echo &#x22;$line&#x22; | awk &#x27;{print $3}&#x27;)
@@ -1604,9 +1604,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqeo05mi"></script>
-<script type="text/javascript" src="../js/index.js?v=mqeo05mi"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqeo05mi"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqesdcop"></script>
+<script type="text/javascript" src="../js/index.js?v=mqesdcop"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqesdcop"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
