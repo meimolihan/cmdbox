@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_firewall_list 命令">
     <meta name="twitter:description" content="Linux 防火墙规则 美化列表 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqekewkc">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqeo05mi">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqekewkc"></script>
+    <script src="../js/dt.js?v=mqeo05mi"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1238,81 +1238,86 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="31"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="32">
 </span><span class="code-line line-number" line="33"><span class="token function-name function">list_beautify_linux_firewall</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="34">    <span class="token assign-left variable">tables</span><span class="token operator">=</span><span class="token string">"filter nat mangle"</span>
-</span><span class="code-line line-number" line="35">    <span class="token keyword">for</span> <span class="token for-or-select variable">table</span> <span class="token keyword">in</span> <span class="token variable">$tables</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="36">        <span class="token assign-left variable">raw</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>iptables <span class="token parameter variable">-t</span> <span class="token string">"<span class="token variable">$table</span>"</span> <span class="token parameter variable">-L</span> <span class="token parameter variable">-n</span> <span class="token parameter variable">-v</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="37">        <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$raw</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="34">    <span class="token keyword">for</span> <span class="token for-or-select variable">table</span> <span class="token keyword">in</span> filter nat mangle<span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="35">        <span class="token assign-left variable">raw</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>iptables <span class="token parameter variable">-t</span> <span class="token string">"<span class="token variable">$table</span>"</span> <span class="token parameter variable">-L</span> <span class="token parameter variable">-n</span> <span class="token parameter variable">-v</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="36">        <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$raw</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="37">        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$raw</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/^[[:space:]]*[0-9]+[[:space:]]/{c++} END{exit c==0}'</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span>
 </span><span class="code-line line-number" line="38">
-</span><span class="code-line line-number" line="39">        <span class="token assign-left variable">has_rules</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$raw</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/^[[:space:]]*[0-9]/{c++} END{print c}'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="40">        <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$has_rules</span>"</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="39">        <span class="token assign-left variable">chains</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$raw</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/^Chain /{print $2}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="40">        <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$chains</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
 </span><span class="code-line line-number" line="41">
 </span><span class="code-line line-number" line="42">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>--- 表: <span class="token variable">$table</span> ---<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="43">
-</span><span class="code-line line-number" line="44">        <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="45">            <span class="token builtin class-name">printf</span> <span class="token string">"%s%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token string">"链"</span> <span class="token string">"策略"</span> <span class="token string">"目标"</span> <span class="token string">"协议"</span> <span class="token string">"源地址"</span> <span class="token string">"目的地址"</span> <span class="token string">"<span class="token variable">$reset</span>"</span>
-</span><span class="code-line line-number" line="46">            <span class="token builtin class-name">printf</span> <span class="token string">"%s%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"<span class="token variable">$reset</span>"</span>
-</span><span class="code-line line-number" line="47">
-</span><span class="code-line line-number" line="48">            <span class="token assign-left variable">chains</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$raw</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/^Chain /{print $2}'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="49">            <span class="token keyword">for</span> <span class="token for-or-select variable">chain</span> <span class="token keyword">in</span> <span class="token variable">$chains</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="50">                <span class="token assign-left variable">chain_rules</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>iptables <span class="token parameter variable">-t</span> <span class="token string">"<span class="token variable">$table</span>"</span> <span class="token parameter variable">-L</span> <span class="token string">"<span class="token variable">$chain</span>"</span> <span class="token parameter variable">-n</span> <span class="token parameter variable">-v</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="51">                <span class="token assign-left variable">policy</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$chain_rules</span>"</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span> <span class="token operator">|</span> <span class="token function">awk</span> -F<span class="token string">'policy '</span> <span class="token string">'{print $2}'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="52">                <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$policy</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">policy</span><span class="token operator">=</span><span class="token string">"ACCEPT"</span>
+</span><span class="code-line line-number" line="44">        <span class="token builtin class-name">printf</span> <span class="token string">"%s%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token string">"链"</span> <span class="token string">"策略"</span> <span class="token string">"目标"</span> <span class="token string">"协议"</span> <span class="token string">"源地址"</span> <span class="token string">"目的地址"</span> <span class="token string">"<span class="token variable">$reset</span>"</span>
+</span><span class="code-line line-number" line="45">        <span class="token builtin class-name">printf</span> <span class="token string">"%s%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s<span class="token entity" title="\t">\t</span>%s%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"--------"</span> <span class="token string">"<span class="token variable">$reset</span>"</span>
+</span><span class="code-line line-number" line="46">
+</span><span class="code-line line-number" line="47">        <span class="token keyword">for</span> <span class="token for-or-select variable">chain</span> <span class="token keyword">in</span> <span class="token variable">$chains</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="48">            <span class="token assign-left variable">chain_rules</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>iptables <span class="token parameter variable">-t</span> <span class="token string">"<span class="token variable">$table</span>"</span> <span class="token parameter variable">-L</span> <span class="token string">"<span class="token variable">$chain</span>"</span> <span class="token parameter variable">-n</span> <span class="token parameter variable">-v</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="49">            <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$chain_rules</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="50">
+</span><span class="code-line line-number" line="51">            <span class="token assign-left variable">policy</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$chain_rules</span>"</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span> <span class="token operator">|</span> <span class="token function">awk</span> -F<span class="token string">'policy '</span> <span class="token string">'{print $2}'</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="52">            <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$policy</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">policy</span><span class="token operator">=</span><span class="token string">"ACCEPT"</span>
 </span><span class="code-line line-number" line="53">
-</span><span class="code-line line-number" line="54">                <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$policy</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="55">                    ACCEPT<span class="token punctuation">)</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"允许"</span><span class="token punctuation">;</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="56">                    DROP<span class="token punctuation">)</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"丢弃"</span><span class="token punctuation">;</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="57">                    *<span class="token punctuation">)</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$policy</span>"</span><span class="token punctuation">;</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_huang}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="58">                <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="54">            <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$policy</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="55">                ACCEPT<span class="token punctuation">)</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"允许"</span><span class="token punctuation">;</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="56">                DROP<span class="token punctuation">)</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"丢弃"</span><span class="token punctuation">;</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="57">                *<span class="token punctuation">)</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$policy</span>"</span><span class="token punctuation">;</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_huang}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="58">            <span class="token keyword">esac</span>
 </span><span class="code-line line-number" line="59">
-</span><span class="code-line line-number" line="60">                <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$chain_rules</span>"</span> <span class="token operator">|</span> <span class="token function">tail</span> <span class="token parameter variable">-n</span> +3 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">chain_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lan}</span><span class="token variable">${chain}</span><span class="token variable">${reset}</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="61">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$policy_color</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="62">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$policy_disp</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="63">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_lv</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lv</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="64">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_hong</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_hong</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="65">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_huang</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_huang</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="66">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_lan</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lan</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="67">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_hui</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="68">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_bufan</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_bufan</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="69">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_bai</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_bai</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="70">                    <span class="token parameter variable">-v</span> <span class="token assign-left variable">reset</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$reset</span>"</span> <span class="token string">'
-</span></span><span class="code-line line-number" line="71"><span class="token string">                NF >= 6 {
-</span></span><span class="code-line line-number" line="72"><span class="token string">                    target = $3
-</span></span><span class="code-line line-number" line="73"><span class="token string">                    prot = $4
-</span></span><span class="code-line line-number" line="74"><span class="token string">                    src = $5
-</span></span><span class="code-line line-number" line="75"><span class="token string">                    dst = $6
+</span><span class="code-line line-number" line="60">            <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$chain_rules</span>"</span> <span class="token operator">|</span> <span class="token function">tail</span> <span class="token parameter variable">-n</span> +3 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">chain_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lan}</span><span class="token variable">${chain}</span><span class="token variable">${reset}</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="61">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">policy_color</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$policy_color</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="62">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">policy_disp</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$policy_disp</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="63">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_lv</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lv</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="64">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_hong</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_hong</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="65">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_huang</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_huang</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="66">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_lan</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lan</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="67">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_hui</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="68">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_bufan</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_bufan</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="69">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">gl_bai</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_bai</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="70">                <span class="token parameter variable">-v</span> <span class="token assign-left variable">reset</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$reset</span>"</span> <span class="token string">'
+</span></span><span class="code-line line-number" line="71"><span class="token string">            {
+</span></span><span class="code-line line-number" line="72"><span class="token string">                target = $3
+</span></span><span class="code-line line-number" line="73"><span class="token string">                prot = $4
+</span></span><span class="code-line line-number" line="74"><span class="token string">                src = $8
+</span></span><span class="code-line line-number" line="75"><span class="token string">                dst = $9
 </span></span><span class="code-line line-number" line="76"><span class="token string">
-</span></span><span class="code-line line-number" line="77"><span class="token string">                    if (target == "ACCEPT") { tcol = gl_lv; tdisp = "允许" }
-</span></span><span class="code-line line-number" line="78"><span class="token string">                    else if (target == "DROP") { tcol = gl_hong; tdisp = "丢弃" }
-</span></span><span class="code-line line-number" line="79"><span class="token string">                    else if (target == "REJECT") { tcol = gl_hong; tdisp = "拒绝" }
-</span></span><span class="code-line line-number" line="80"><span class="token string">                    else { tcol = gl_huang; tdisp = target }
+</span></span><span class="code-line line-number" line="77"><span class="token string">                if (target == "ACCEPT") { tcol = gl_lv; tdisp = "允许" }
+</span></span><span class="code-line line-number" line="78"><span class="token string">                else if (target == "DROP") { tcol = gl_hong; tdisp = "丢弃" }
+</span></span><span class="code-line line-number" line="79"><span class="token string">                else if (target == "REJECT") { tcol = gl_hong; tdisp = "拒绝" }
+</span></span><span class="code-line line-number" line="80"><span class="token string">                else { tcol = gl_huang; tdisp = target }
 </span></span><span class="code-line line-number" line="81"><span class="token string">
-</span></span><span class="code-line line-number" line="82"><span class="token string">                    if (prot == "tcp") { pcol = gl_lan; pdisp = "TCP" }
-</span></span><span class="code-line line-number" line="83"><span class="token string">                    else if (prot == "udp") { pcol = gl_lan; pdisp = "UDP" }
-</span></span><span class="code-line line-number" line="84"><span class="token string">                    else if (prot == "all") { pcol = gl_hui; pdisp = "全部" }
-</span></span><span class="code-line line-number" line="85"><span class="token string">                    else { pcol = gl_bufan; pdisp = prot }
+</span></span><span class="code-line line-number" line="82"><span class="token string">                if (prot == "tcp" || prot == "6") { pcol = gl_lan; pdisp = "TCP" }
+</span></span><span class="code-line line-number" line="83"><span class="token string">                else if (prot == "udp" || prot == "17") { pcol = gl_lan; pdisp = "UDP" }
+</span></span><span class="code-line line-number" line="84"><span class="token string">                else if (prot == "all" || prot == "0") { pcol = gl_hui; pdisp = "全部" }
+</span></span><span class="code-line line-number" line="85"><span class="token string">                else { pcol = gl_bufan; pdisp = prot }
 </span></span><span class="code-line line-number" line="86"><span class="token string">
-</span></span><span class="code-line line-number" line="87"><span class="token string">                    print chain_color "\t" \
-</span></span><span class="code-line line-number" line="88"><span class="token string">                          policy_color policy_disp reset "\t" \
-</span></span><span class="code-line line-number" line="89"><span class="token string">                          tcol tdisp reset "\t" \
-</span></span><span class="code-line line-number" line="90"><span class="token string">                          pcol pdisp reset "\t" \
-</span></span><span class="code-line line-number" line="91"><span class="token string">                          gl_bai src reset "\t" \
-</span></span><span class="code-line line-number" line="92"><span class="token string">                          gl_bai dst reset
-</span></span><span class="code-line line-number" line="93"><span class="token string">                }'</span>
-</span><span class="code-line line-number" line="94">            <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="95">        <span class="token punctuation">}</span> <span class="token operator">|</span> column_if_available
-</span><span class="code-line line-number" line="96">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="97"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="98">
-</span><span class="code-line line-number" line="99"><span class="token function-name function">list_beautify_all</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="100">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="101">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Linux防火墙规则列表<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="102">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="103">    list_beautify_linux_firewall
-</span><span class="code-line line-number" line="104">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="105">    break_end
-</span><span class="code-line line-number" line="106"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="107">
-</span><span class="code-line line-number" line="108">list_beautify_all
+</span></span><span class="code-line line-number" line="87"><span class="token string">                gsub(/^0\.0\.0\.0\//, "", src)
+</span></span><span class="code-line line-number" line="88"><span class="token string">                gsub(/^0\.0\.0\.0\//, "", dst)
+</span></span><span class="code-line line-number" line="89"><span class="token string">                if (src == "0.0.0.0/0") src = "*"
+</span></span><span class="code-line line-number" line="90"><span class="token string">                if (dst == "0.0.0.0/0") dst = "*"
+</span></span><span class="code-line line-number" line="91"><span class="token string">
+</span></span><span class="code-line line-number" line="92"><span class="token string">                print chain_color "\t" \
+</span></span><span class="code-line line-number" line="93"><span class="token string">                      policy_color policy_disp reset "\t" \
+</span></span><span class="code-line line-number" line="94"><span class="token string">                      tcol tdisp reset "\t" \
+</span></span><span class="code-line line-number" line="95"><span class="token string">                      pcol pdisp reset "\t" \
+</span></span><span class="code-line line-number" line="96"><span class="token string">                      gl_bai src reset "\t" \
+</span></span><span class="code-line line-number" line="97"><span class="token string">                      gl_bai dst reset
+</span></span><span class="code-line line-number" line="98"><span class="token string">            }'</span>
+</span><span class="code-line line-number" line="99">        <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="100">        <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="101">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="102"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="103">
+</span><span class="code-line line-number" line="104"><span class="token function-name function">list_beautify_all</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="105">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="106">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Linux防火墙规则列表<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="107">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="108">    list_beautify_linux_firewall
+</span><span class="code-line line-number" line="109">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="110">    break_end
+</span><span class="code-line line-number" line="111"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="112">
+</span><span class="code-line line-number" line="113">list_beautify_all
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -1346,68 +1351,73 @@ column_if_available() {
 }
 
 list_beautify_linux_firewall() {
-    tables=&#x22;filter nat mangle&#x22;
-    for table in $tables; do
-        raw=$(iptables -t &#x22;$table&#x22; -L -n -v 2>/dev/null)
+    for table in filter nat mangle; do
+        raw=$(iptables -t &#x22;$table&#x22; -L -n -v 2>/dev/null) || continue
         [ -z &#x22;$raw&#x22; ] &#x26;&#x26; continue
+        echo &#x22;$raw&#x22; | awk &#x27;/^[[:space:]]*[0-9]+[[:space:]]/{c++} END{exit c==0}&#x27; || continue
 
-        has_rules=$(echo &#x22;$raw&#x22; | awk &#x27;/^[[:space:]]*[0-9]/{c++} END{print c}&#x27;)
-        [ &#x22;$has_rules&#x22; -eq 0 ] &#x26;&#x26; continue
+        chains=$(echo &#x22;$raw&#x22; | awk &#x27;/^Chain /{print $2}&#x27;)
+        [ -z &#x22;$chains&#x22; ] &#x26;&#x26; continue
 
         echo -e &#x22;${gl_zi}--- 表: $table ---${gl_bai}&#x22;
 
-        {
-            printf &#x22;%s%s\t%s\t%s\t%s\t%s\t%s%s\n&#x22; &#x22;$gl_hui&#x22; &#x22;链&#x22; &#x22;策略&#x22; &#x22;目标&#x22; &#x22;协议&#x22; &#x22;源地址&#x22; &#x22;目的地址&#x22; &#x22;$reset&#x22;
-            printf &#x22;%s%s\t%s\t%s\t%s\t%s\t%s%s\n&#x22; &#x22;$gl_hui&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;$reset&#x22;
+        printf &#x22;%s%s\t%s\t%s\t%s\t%s\t%s%s\n&#x22; &#x22;$gl_hui&#x22; &#x22;链&#x22; &#x22;策略&#x22; &#x22;目标&#x22; &#x22;协议&#x22; &#x22;源地址&#x22; &#x22;目的地址&#x22; &#x22;$reset&#x22;
+        printf &#x22;%s%s\t%s\t%s\t%s\t%s\t%s%s\n&#x22; &#x22;$gl_hui&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;--------&#x22; &#x22;$reset&#x22;
 
-            chains=$(echo &#x22;$raw&#x22; | awk &#x27;/^Chain /{print $2}&#x27;)
-            for chain in $chains; do
-                chain_rules=$(iptables -t &#x22;$table&#x22; -L &#x22;$chain&#x22; -n -v 2>/dev/null)
-                policy=$(echo &#x22;$chain_rules&#x22; | head -1 | awk -F&#x27;policy &#x27; &#x27;{print $2}&#x27; | awk &#x27;{print $1}&#x27;)
-                [ -z &#x22;$policy&#x22; ] &#x26;&#x26; policy=&#x22;ACCEPT&#x22;
+        for chain in $chains; do
+            chain_rules=$(iptables -t &#x22;$table&#x22; -L &#x22;$chain&#x22; -n -v 2>/dev/null)
+            [ -z &#x22;$chain_rules&#x22; ] &#x26;&#x26; continue
 
-                case &#x22;$policy&#x22; in
-                    ACCEPT) policy_disp=&#x22;允许&#x22;; policy_color=&#x22;${gl_lv}&#x22; ;;
-                    DROP) policy_disp=&#x22;丢弃&#x22;; policy_color=&#x22;${gl_hong}&#x22; ;;
-                    *) policy_disp=&#x22;$policy&#x22;; policy_color=&#x22;${gl_huang}&#x22; ;;
-                esac
+            policy=$(echo &#x22;$chain_rules&#x22; | head -1 | awk -F&#x27;policy &#x27; &#x27;{print $2}&#x27; | awk &#x27;{print $1}&#x27;)
+            [ -z &#x22;$policy&#x22; ] &#x26;&#x26; policy=&#x22;ACCEPT&#x22;
 
-                echo &#x22;$chain_rules&#x22; | tail -n +3 | awk -v chain_color=&#x22;${gl_lan}${chain}${reset}&#x22; \
-                    -v policy_color=&#x22;$policy_color&#x22; \
-                    -v policy_disp=&#x22;$policy_disp&#x22; \
-                    -v gl_lv=&#x22;$gl_lv&#x22; \
-                    -v gl_hong=&#x22;$gl_hong&#x22; \
-                    -v gl_huang=&#x22;$gl_huang&#x22; \
-                    -v gl_lan=&#x22;$gl_lan&#x22; \
-                    -v gl_hui=&#x22;$gl_hui&#x22; \
-                    -v gl_bufan=&#x22;$gl_bufan&#x22; \
-                    -v gl_bai=&#x22;$gl_bai&#x22; \
-                    -v reset=&#x22;$reset&#x22; &#x27;
-                NF >= 6 {
-                    target = $3
-                    prot = $4
-                    src = $5
-                    dst = $6
+            case &#x22;$policy&#x22; in
+                ACCEPT) policy_disp=&#x22;允许&#x22;; policy_color=&#x22;${gl_lv}&#x22; ;;
+                DROP) policy_disp=&#x22;丢弃&#x22;; policy_color=&#x22;${gl_hong}&#x22; ;;
+                *) policy_disp=&#x22;$policy&#x22;; policy_color=&#x22;${gl_huang}&#x22; ;;
+            esac
 
-                    if (target == &#x22;ACCEPT&#x22;) { tcol = gl_lv; tdisp = &#x22;允许&#x22; }
-                    else if (target == &#x22;DROP&#x22;) { tcol = gl_hong; tdisp = &#x22;丢弃&#x22; }
-                    else if (target == &#x22;REJECT&#x22;) { tcol = gl_hong; tdisp = &#x22;拒绝&#x22; }
-                    else { tcol = gl_huang; tdisp = target }
+            echo &#x22;$chain_rules&#x22; | tail -n +3 | awk -v chain_color=&#x22;${gl_lan}${chain}${reset}&#x22; \
+                -v policy_color=&#x22;$policy_color&#x22; \
+                -v policy_disp=&#x22;$policy_disp&#x22; \
+                -v gl_lv=&#x22;$gl_lv&#x22; \
+                -v gl_hong=&#x22;$gl_hong&#x22; \
+                -v gl_huang=&#x22;$gl_huang&#x22; \
+                -v gl_lan=&#x22;$gl_lan&#x22; \
+                -v gl_hui=&#x22;$gl_hui&#x22; \
+                -v gl_bufan=&#x22;$gl_bufan&#x22; \
+                -v gl_bai=&#x22;$gl_bai&#x22; \
+                -v reset=&#x22;$reset&#x22; &#x27;
+            {
+                target = $3
+                prot = $4
+                src = $8
+                dst = $9
 
-                    if (prot == &#x22;tcp&#x22;) { pcol = gl_lan; pdisp = &#x22;TCP&#x22; }
-                    else if (prot == &#x22;udp&#x22;) { pcol = gl_lan; pdisp = &#x22;UDP&#x22; }
-                    else if (prot == &#x22;all&#x22;) { pcol = gl_hui; pdisp = &#x22;全部&#x22; }
-                    else { pcol = gl_bufan; pdisp = prot }
+                if (target == &#x22;ACCEPT&#x22;) { tcol = gl_lv; tdisp = &#x22;允许&#x22; }
+                else if (target == &#x22;DROP&#x22;) { tcol = gl_hong; tdisp = &#x22;丢弃&#x22; }
+                else if (target == &#x22;REJECT&#x22;) { tcol = gl_hong; tdisp = &#x22;拒绝&#x22; }
+                else { tcol = gl_huang; tdisp = target }
 
-                    print chain_color &#x22;\t&#x22; \
-                          policy_color policy_disp reset &#x22;\t&#x22; \
-                          tcol tdisp reset &#x22;\t&#x22; \
-                          pcol pdisp reset &#x22;\t&#x22; \
-                          gl_bai src reset &#x22;\t&#x22; \
-                          gl_bai dst reset
-                }&#x27;
-            done
-        } | column_if_available
+                if (prot == &#x22;tcp&#x22; || prot == &#x22;6&#x22;) { pcol = gl_lan; pdisp = &#x22;TCP&#x22; }
+                else if (prot == &#x22;udp&#x22; || prot == &#x22;17&#x22;) { pcol = gl_lan; pdisp = &#x22;UDP&#x22; }
+                else if (prot == &#x22;all&#x22; || prot == &#x22;0&#x22;) { pcol = gl_hui; pdisp = &#x22;全部&#x22; }
+                else { pcol = gl_bufan; pdisp = prot }
+
+                gsub(/^0\.0\.0\.0\//, &#x22;&#x22;, src)
+                gsub(/^0\.0\.0\.0\//, &#x22;&#x22;, dst)
+                if (src == &#x22;0.0.0.0/0&#x22;) src = &#x22;*&#x22;
+                if (dst == &#x22;0.0.0.0/0&#x22;) dst = &#x22;*&#x22;
+
+                print chain_color &#x22;\t&#x22; \
+                      policy_color policy_disp reset &#x22;\t&#x22; \
+                      tcol tdisp reset &#x22;\t&#x22; \
+                      pcol pdisp reset &#x22;\t&#x22; \
+                      gl_bai src reset &#x22;\t&#x22; \
+                      gl_bai dst reset
+            }&#x27;
+        done
+        echo &#x22;&#x22;
     done
 }
 
@@ -1690,9 +1700,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqekewkc"></script>
-<script type="text/javascript" src="../js/index.js?v=mqekewkc"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqekewkc"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqeo05mi"></script>
+<script type="text/javascript" src="../js/index.js?v=mqeo05mi"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqeo05mi"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
