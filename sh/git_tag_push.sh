@@ -141,7 +141,6 @@ show_tag_detail() {
     done
     
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    break_end
 }
 
 create_annotated_tag() {
@@ -210,6 +209,7 @@ create_annotated_tag() {
         else
             log_warn "已跳过推送，可后续手动执行 git push origin $tag_name"
         fi
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         break_end
         return 0
     else
