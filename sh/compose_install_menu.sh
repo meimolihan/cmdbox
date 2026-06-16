@@ -160,7 +160,7 @@ compose_install_xiaomusic() { run_compose "xiaomusic" "XiaoMusic 小爱音箱服
 compose_install_xunlei() { run_compose "xunlei" "迅雷下载服务" "2345" "/vol1/1000/compose/xunlei"; }
 compose_install_zfile() { run_compose "zfile" "ZFile 在线文件管理系统" "8080" "/vol1/1000/compose/zfile"; }
 compose_install_iptv() { run_compose "iptv" "IPTV 直播流代理服务" "1905" "/vol1/1000/compose/iptv"; }
-compose_install_ddns-go() { run_compose "ddns-go" "DDNS-GO 动态域名解析服务" "9876" "/vol1/1000/compose/ddns-go"; }
+compose_install_ddns-go() { run_compose "ddns-go" "DDNS-GO 动态域名解析" "9876" "/vol1/1000/compose/ddns-go"; }
 
 show_menu() {
     clear
@@ -192,7 +192,7 @@ show_menu() {
     echo -e "${gl_bufan}─────────────────────────────────────────────────────${reset}"
     echo -e "${gl_bufan}41. ${gl_bai}XiaoMusic小爱音箱服务  ${gl_bufan}42. ${gl_bai}迅雷下载服务"
     echo -e "${gl_bufan}43. ${gl_bai}ZFile在线文件管理系统  ${gl_bufan}44. ${gl_bai}IPTV直播流代理服务"
-    echo -e "${gl_bufan}45. ${gl_bai}DDNS-GO动态域名解析服务"
+    echo -e "${gl_bufan}45. ${gl_bai}DDNS-GO动态域名解析"
     echo -e "${gl_bufan}─────────────────────────────────────────────────────${reset}"
     echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单         ${gl_hong}00. ${gl_bai}退出脚本"
 }
