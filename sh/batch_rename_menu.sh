@@ -89,7 +89,7 @@ handle_invalid_input() {
     echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
     sleep_fractional 0.5
     echo -ne "\r\033[K"
-    continue
+    return 2
 }
 
 go_parent_directory() {
@@ -300,6 +300,114 @@ show_directory_list() {
     return 0
 }
 
+rename_items_regex() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    echo -e ""
+    echo -e "${gl_zi}>>> 正则表达式替换${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}支持 sed 扩展正则表达式 (ERE)${gl_bai}"
+    echo -e "${gl_bai}示例:${gl_bai}"
+    echo -e "  ${gl_huang}查找: ^IMG_  替换: photo_${gl_bai}  -> ${gl_lv}IMG_001.jpg → photo_001.jpg${gl_bai}"
+    echo -e "  ${gl_huang}查找: \\.[a-z]+$  替换: .txt${gl_bai}  -> ${gl_lv}强制修改扩展名${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
+    read -e -p "$(echo -e "${gl_bai}请输入正则表达式(${gl_huang}0${gl_bai}返回): ")" regex_pattern
+    [[ "$regex_pattern" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+
+    if [[ -z "$regex_pattern" ]]; then
+        log_warn "正则表达式不能为空"
+        exit_animation
+        return
+    fi
+
+    read -r -e -p "$(echo -e "${gl_bai}请输入替换为的字符串: ")" replacement
+    # 允许空替换（即删除匹配内容）
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    local sed_error=""
+
+    for item in "${items[@]}"; do
+        local itemname=$(basename "$item")
+        local dir=$(dirname "$item")
+        local newname
+
+        # 使用 sed 进行正则替换
+        newname=$(echo "$itemname" | sed -E "s/${regex_pattern}/${replacement}/g" 2>&1)
+        local sed_exit=$?
+        
+        if [[ $sed_exit -ne 0 ]]; then
+            sed_error="$newname"
+            break
+        fi
+
+        if [[ "$itemname" != "$newname" ]]; then
+            local full_newname="${dir}/${newname}"
+            rename_items+=("$item:$full_newname")
+            if [[ -d "$item" ]]; then
+                echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}${newname}${gl_bai}"
+            else
+                echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}${newname}${gl_bai}"
+            fi
+        fi
+    done
+
+    if [[ -n "$sed_error" ]]; then
+        log_error "正则表达式语法错误: ${gl_hong}${sed_error}${gl_bai}"
+        exit_animation
+        return
+    fi
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        [[ "$confirm" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    else
+        log_warn "没有项目名匹配该正则表达式"
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
 batch_rename_files() {
     while true; do
         local current_dir=$(pwd)
@@ -355,25 +463,26 @@ batch_rename_files() {
         echo -e "${gl_bufan}3.  ${gl_bai}添加前缀              ${gl_bufan}4.  ${gl_bai}添加后缀"
         echo -e "${gl_bufan}5.  ${gl_bai}替换字符串            ${gl_bufan}6.  ${gl_bai}序号重命名"
         echo -e "${gl_bufan}7.  ${gl_bai}大小写转换            ${gl_bufan}8.  ${gl_bai}移除字符"
-        echo -e "${gl_bufan}9.  ${gl_bai}删除所有空格"
+        echo -e "${gl_bufan}9.  ${gl_bai}删除所有空格          ${gl_bufan}10. ${gl_bai}正则表达式替换"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请选择重命名模式: ")" rename_mode
 
         case "$rename_mode" in
-        1) enter_directory ;;
-        2) go_parent_directory ;;
-        3) rename_items_add_prefix ;;
-        4) rename_items_add_suffix ;;
-        5) rename_items_replace_string ;;
-        6) rename_items_sequential ;;
-        7) rename_items_change_case ;;
-        8) rename_items_remove_chars ;;
-        9) rename_items_remove_spaces ;;
-        0) cancel_return "已是主菜单" || continue ;;
+        1)  enter_directory ;;
+        2)  go_parent_directory ;;
+        3)  rename_items_add_prefix ;;
+        4)  rename_items_add_suffix ;;
+        5)  rename_items_replace_string ;;
+        6)  rename_items_sequential ;;
+        7)  rename_items_change_case ;;
+        8)  rename_items_remove_chars ;;
+        9)  rename_items_remove_spaces ;;
+        10) rename_items_regex ;;
+        0)  cancel_return "已是主菜单" || continue ;;
         00 | 000 | 0000) exit_script ;;
-        *) handle_invalid_input ;;
+        *)  handle_invalid_input ;;
         esac
     done
 }

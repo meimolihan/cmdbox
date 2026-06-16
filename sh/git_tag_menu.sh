@@ -389,6 +389,196 @@ show_tag() {
     break_end
 }
 
+batch_sync_tags() {
+    echo -e ""
+    echo -e "${gl_zi}>>> 批量标签同步${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
+    local local_tags=()
+    while IFS= read -r tag; do
+        [[ -n "$tag" ]] && local_tags+=("$tag")
+    done < <(git tag 2>/dev/null)
+    
+    local remote_tags=()
+    while IFS= read -r tag; do
+        [[ -n "$tag" ]] && remote_tags+=("$tag")
+    done < <(git ls-remote --tags origin 2>/dev/null | awk -F'/' '{print $3}' | sed 's/\^{}//')
+    
+    if [[ ${#local_tags[@]} -eq 0 ]]; then
+        echo -e "${gl_huang}本地没有标签${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        break_end
+        return 0
+    fi
+    
+    local only_local=()
+    local only_remote=()
+    local synced=()
+    
+    for tag in "${local_tags[@]}"; do
+        if [[ " ${remote_tags[*]} " =~ " ${tag} " ]]; then
+            synced+=("$tag")
+        else
+            only_local+=("$tag")
+        fi
+    done
+    
+    for tag in "${remote_tags[@]}"; do
+        if [[ ! " ${local_tags[*]} " =~ " ${tag} " ]]; then
+            only_remote+=("$tag")
+        fi
+    done
+    
+    echo -e "${gl_bai}标签同步状态:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
+    echo -e "${gl_lv}仅本地 (${#only_local[@]}):${gl_bai}"
+    if [[ ${#only_local[@]} -gt 0 ]]; then
+        for tag in "${only_local[@]}"; do
+            echo -e "  ${gl_huang}↑${gl_bai} $tag"
+        done
+    else
+        echo -e "  ${gl_hui}  (无)${gl_bai}"
+    fi
+    
+    echo -e ""
+    echo -e "${gl_lan}仅远程 (${#only_remote[@]}):${gl_bai}"
+    if [[ ${#only_remote[@]} -gt 0 ]]; then
+        for tag in "${only_remote[@]}"; do
+            echo -e "  ${gl_hong}↓${gl_bai} $tag"
+        done
+    else
+        echo -e "  ${gl_hui}  (无)${gl_bai}"
+    fi
+    
+    echo -e ""
+    echo -e "${gl_lv}已同步 (${#synced[@]}):${gl_bai}"
+    if [[ ${#synced[@]} -gt 0 ]]; then
+        for tag in "${synced[@]}"; do
+            echo -e "  ${gl_lv}✓${gl_bai} $tag"
+        done
+    else
+        echo -e "  ${gl_hui}  (无)${gl_bai}"
+    fi
+    
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bufan}1.  ${gl_bai}推送所有本地标签到远程"
+    echo -e "${gl_bufan}2.  ${gl_bai}拉取所有远程标签到本地"
+    echo -e "${gl_bufan}3.  ${gl_bai}删除本地未推送的标签"
+    echo -e "${gl_bufan}4.  ${gl_bai}删除远程已不存在的本地标签"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_huang}0.  ${gl_bai}返回"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}请选择操作: ")" sync_choice
+    
+    case "$sync_choice" in
+    1)
+        if [[ ${#only_local[@]} -eq 0 ]]; then
+            log_warn "没有需要推送的本地标签"
+            break_end
+            return 0
+        fi
+        echo -e ""
+        echo -e "${gl_bai}将推送以下标签:${gl_bai}"
+        for tag in "${only_local[@]}"; do
+            echo -e "  ${gl_huang}↑ $tag${gl_bai}"
+        done
+        read -r -e -p "$(echo -e "${gl_bai}确认推送? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ "$confirm" =~ ^[Yy]$ ]]; then
+            if git push --tags; then
+                log_ok "所有本地标签已推送到远程"
+            else
+                log_error "推送失败"
+            fi
+        else
+            log_warn "取消推送"
+        fi
+        ;;
+    2)
+        if [[ ${#only_remote[@]} -eq 0 ]]; then
+            log_warn "没有需要拉取的远程标签"
+            break_end
+            return 0
+        fi
+        echo -e ""
+        echo -e "${gl_bai}将拉取以下标签:${gl_bai}"
+        for tag in "${only_remote[@]}"; do
+            echo -e "  ${gl_hong}↓ $tag${gl_bai}"
+        done
+        read -r -e -p "$(echo -e "${gl_bai}确认拉取? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ "$confirm" =~ ^[Yy]$ ]]; then
+            if git fetch --tags; then
+                log_ok "远程标签已拉取到本地"
+            else
+                log_error "拉取失败"
+            fi
+        else
+            log_warn "取消拉取"
+        fi
+        ;;
+    3)
+        if [[ ${#only_local[@]} -eq 0 ]]; then
+            log_warn "没有仅本地的标签"
+            break_end
+            return 0
+        fi
+        echo -e ""
+        echo -e "${gl_hong}警告: 将删除以下仅本地的标签:${gl_bai}"
+        for tag in "${only_local[@]}"; do
+            echo -e "  ${gl_hong}✗ $tag${gl_bai}"
+        done
+        read -r -e -p "$(echo -e "${gl_hong}确认删除? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ "$confirm" =~ ^[Yy]$ ]]; then
+            local del_count=0
+            for tag in "${only_local[@]}"; do
+                if git tag -d "$tag" 2>/dev/null; then
+                    ((del_count++))
+                    log_info "已删除: $tag"
+                fi
+            done
+            log_ok "共删除 $del_count 个本地标签"
+        else
+            log_warn "取消删除"
+        fi
+        ;;
+    4)
+        if [[ ${#only_remote[@]} -eq 0 ]]; then
+            log_warn "没有仅远程的标签"
+            break_end
+            return 0
+        fi
+        echo -e ""
+        echo -e "${gl_hong}警告: 将删除以下远程标签（本地保留）:${gl_bai}"
+        for tag in "${only_remote[@]}"; do
+            echo -e "  ${gl_hong}✗ $tag${gl_bai}"
+        done
+        read -r -e -p "$(echo -e "${gl_hong}确认删除远程标签? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ "$confirm" =~ ^[Yy]$ ]]; then
+            local del_count=0
+            for tag in "${only_remote[@]}"; do
+                if git push origin --delete "$tag" 2>/dev/null; then
+                    ((del_count++))
+                    log_info "已删除远程: $tag"
+                fi
+            done
+            log_ok "共删除 $del_count 个远程标签"
+        else
+            log_warn "取消删除"
+        fi
+        ;;
+    0)
+        cancel_return "Git 标签管理"
+        return 1
+        ;;
+    *)
+        handle_invalid_input
+        return 1
+        ;;
+    esac
+    
+    break_end
+}
+
 git_tag_menu() {
     local target_dir="${1:-$(pwd)}"
     
@@ -427,7 +617,7 @@ git_tag_menu() {
         echo -e "${gl_bufan}1.  ${gl_bai}查看所有标签        ${gl_bufan}2.  ${gl_bai}创建轻量标签"
         echo -e "${gl_bufan}3.  ${gl_bai}创建附注标签        ${gl_bufan}4.  ${gl_bai}删除本地标签"
         echo -e "${gl_bufan}5.  ${gl_bai}推送标签到远程      ${gl_bufan}6.  ${gl_bai}删除远程标签"
-        echo -e "${gl_bufan}7.  ${gl_bai}查看标签详情"
+        echo -e "${gl_bufan}7.  ${gl_bai}查看标签详情        ${gl_bufan}8.  ${gl_bai}批量标签同步"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -441,6 +631,7 @@ git_tag_menu() {
             5) push_tag ;;
             6) delete_remote_tag ;;
             7) show_tag ;;
+            8) batch_sync_tags ;;
             0) cancel_return "已是主菜单" || continue ;;
             00 | 000 | 0000) exit_script ;;
             *) handle_invalid_input ;;
