@@ -35,7 +35,7 @@ sleep_fractional() {
 
 cancel_return() {
     local menu_name="${1:-退出脚本}"
-    echo -ne "${gl_lv}即将 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.5
     echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
@@ -358,6 +358,7 @@ batch_rename_files() {
         echo -e "${gl_bufan}9.  ${gl_bai}删除所有空格"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请选择重命名模式: ")" rename_mode
 
         case "$rename_mode" in

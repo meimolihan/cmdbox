@@ -1,76 +1,41 @@
 #!/bin/bash
 set -uo pipefail
 
-list_color_init() {
-    export gl_hui=$'\033[38;5;59m'
-    export gl_hong=$'\033[38;5;9m'
-    export gl_lv=$'\033[38;5;10m'
-    export gl_huang=$'\033[38;5;11m'
-    export gl_lan=$'\033[38;5;32m'
-    export gl_bai=$'\033[38;5;15m'
-    export gl_zi=$'\033[38;5;13m'
-    export gl_bufan=$'\033[38;5;14m'
-    export reset=$'\033[0m'
-}
-list_color_init
+gl_hui='\033[38;5;59m'
+gl_hong='\033[38;5;9m'
+gl_lv='\033[38;5;10m'
+gl_huang='\033[38;5;11m'
+gl_lan='\033[38;5;32m'
+gl_bai='\033[38;5;15m'
+gl_zi='\033[38;5;13m'
+gl_bufan='\033[38;5;14m'
 
-log_info()  { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
-log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
-log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
+log_info() { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
+log_ok() { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
+log_warn() { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
-
-handle_invalid_input() {
-    echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
-    sleep_fractional 1
-    echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
-    sleep_fractional 0.5
-    echo -ne "\r\033[K"
-    return 2
-}
-
-handle_y_n() {
-    echo -e "${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_hong}。${gl_bai}"
-    sleep 1
-    echo -e "${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_huang}。${gl_bai}"
-    sleep 1
-    echo -e "${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_lv}。${gl_bai}"
-    sleep 0.5
-    return 2
-}
 
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
-    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
-    read -r -n 1 -s -r -p ""
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    read -r -n 1 -s -p ""
     echo ""
     clear
 }
 
 sleep_fractional() {
     local seconds=$1
-    if sleep "$seconds" 2>/dev/null; then
-        return 0
-    fi
-    
-    if command -v perl >/dev/null 2>&1; then
-        perl -e "select(undef, undef, undef, $seconds)"
-        return 0
-    fi
-    
-    if command -v python3 >/dev/null 2>&1; then
-        python3 -c "import time; time.sleep($seconds)"
-        return 0
-    elif command -v python >/dev/null 2>&1; then
-        python -c "import time; time.sleep($seconds)"
-        return 0
-    fi
-    
+    if sleep "$seconds" 2>/dev/null; then return 0; fi
+    if command -v perl >/dev/null 2>&1; then perl -e "select(undef, undef, undef, $seconds)"; return 0; fi
+    if command -v python3 >/dev/null 2>&1; then python3 -c "import time; time.sleep($seconds)"; return 0; fi
+    if command -v python >/dev/null 2>&1; then python -c "import time; time.sleep($seconds)"; return 0; fi
     local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
     sleep "$int_seconds"
 }
 
-exit_animation() {
-    echo -ne "${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+cancel_return() {
+    local menu_name="${1:-退出脚本}"
+    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.5
     echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
@@ -88,438 +53,980 @@ exit_script() {
     exit 0
 }
 
-cancel_return() {
-    local menu_name="${1:-上一级选单}"
-    echo -e "${gl_lv}即将返回到 ${gl_huang}${menu_name}${gl_lv} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
-    sleep 0.6
+handle_y_n() {
+    echo -ne "\r${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.3
+    echo -ne "\r${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.3
+    echo -ne "\r${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    return 2
+}
+
+exit_animation() {
+    echo -ne "\r${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
     echo ""
     clear
 }
 
-check_git_repo() {
-    if ! command -v git &>/dev/null; then
-        log_error "Git 未安装，请先安装 Git"
+cancel_empty() {
+    local menu_name="${1:-上一级选单}"
+    echo -e "${gl_hong}空输入，返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
+handle_invalid_input() {
+    echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
+    sleep_fractional 1
+    echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
+    sleep_fractional 0.5
+    echo -ne "\r\033[K"
+    continue
+}
+
+go_parent_directory() {
+    if [[ "$(pwd)" != "/" ]]; then
+        local current_path="$(pwd)"
+        cd ..
+        echo -e "${gl_lv}已返回上级目录: ${gl_huang}$(pwd) ${gl_bai}"
+        exit_animation
+    else
+        echo -e "${gl_huang}已经在根目录: ${gl_hong}/ ${gl_bai}"
+        exit_animation
+    fi
+}
+
+enter_directory() {
+    local current_path="$(pwd)"
+    local return_target="${1:-文件管理器}"
+    clear
+    local dirs=()
+    echo -e "${gl_huang}>>> 当前目录子目录列表：${gl_bai}(${gl_lv}$current_path${gl_bai})"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    show_directory_list "." 2 false true "dirs"
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e ""
+    echo -e "${gl_zi}>>> 进入指定目录${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}请输入 ${gl_huang}序号${gl_bai} ${gl_lv}目录名${gl_bai} ${gl_lan}路径${gl_bai} (${gl_hui}..上级${gl_bai} ${gl_zi}~家${gl_bai} ${gl_hong}/根${gl_bai}) 或 ${gl_huang}0${gl_bai}返回: ")" input
+
+    if [[ -z "$input" ]]; then
+        cancel_empty
         return 1
     fi
     
-    if [[ ! -d ".git" ]]; then
-        log_error "当前目录不是 Git 仓库"
+    if [[ "$input" == "0" ]]; then
+        cancel_return "$return_target"
         return 1
     fi
-    
+
+    if [[ "$input" =~ ^[0-9]+$ ]]; then
+        if [[ -z "${dirs[@]}" ]]; then
+            echo -e "${gl_hong}当前目录没有可用的子目录列表，无法通过序号选择${gl_bai}"
+            exit_animation
+            return 1
+        fi
+
+        if [[ "$input" -ge 1 ]] && [[ "$input" -le ${#dirs[@]} ]]; then
+            local selected_dir="${dirs[$((input - 1))]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_bai}已选择: ${gl_lv}$selected_dir${gl_bai}"
+
+            if cd "$selected_dir" 2>/dev/null; then
+                echo -e "${gl_bai}成功进入目录: ${gl_lv}$(pwd)${gl_bai}"
+            else
+                echo -e "${gl_hong}无法进入目录: $selected_dir${gl_bai}"
+                echo -e "${gl_hong}可能的原因：${gl_bai}"
+                echo -e "${gl_huang}1. 目录不存在${gl_bai}"
+                echo -e "${gl_huang}2. 没有访问权限${gl_bai}"
+                echo -e "${gl_huang}3. 输入路径有误${gl_bai}"
+            fi
+        else
+            echo -e "${gl_hong}序号 $input 超出范围 (1-${#dirs[@]})${gl_bai}"
+        fi
+    else
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}尝试进入: $input${gl_bai}"
+
+        local target_path="$input"
+        if [[ "$input" == ".." ]]; then
+            target_path=".."
+        elif [[ "$input" == "~" ]]; then
+            target_path=~
+        elif [[ "$input" == "/" ]]; then
+            target_path="/"
+        fi
+
+        if cd "$target_path" 2>/dev/null; then
+            local new_path="$(pwd)"
+            echo -e "${gl_lv}成功进入目录: $new_path${gl_bai}"
+
+            if [[ ! -d "$new_path" ]]; then
+                echo -e "${gl_hong}警告：目标不是一个有效的目录${gl_bai}"
+                cd "$current_path" 2>/dev/null
+            fi
+        else
+            echo -e "${gl_hong}无法进入目录: $input${gl_bai}"
+            echo -e "${gl_hong}可能的原因：${gl_bai}"
+            echo -e "${gl_huang}1. 路径不存在${gl_bai}"
+            echo -e "${gl_huang}2. 没有访问权限${gl_bai}"
+            echo -e "${gl_huang}3. 不是有效的目录${gl_bai}"
+            echo -e "${gl_huang}4. 路径格式错误${gl_bai}"
+
+            if [[ -e "$input" ]] && [[ ! -d "$input" ]]; then
+                echo -e "${gl_huang}注意：'$input' 是一个文件，不是目录${gl_bai}"
+            fi
+        fi
+    fi
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_huang}即将进入 ${gl_lv}$(basename "$(pwd)")${gl_huang} 目录 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    sleep_fractional 1.6
     return 0
 }
 
-get_current_branch() {
-    git branch --show-current 2>/dev/null || echo ""
-}
+show_directory_list() {
+    local base_path="${1:-.}"
+    local items_per_line="${2:-4}"
+    local show_hidden="${3:-false}"
+    local exit_on_empty="${4:-true}"
+    local return_array_var="$5"
 
-list_branches() {
-    clear
-    echo -e ""
-    echo -e "${gl_zi}>>> 所有分支列表${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    
-    local current_branch=$(get_current_branch)
-    
-    echo -e "${gl_bai}本地分支:${gl_bai}"
-    git branch -v | while IFS= read -r branch; do
-        if [[ "$branch" == "*"* ]]; then
-            echo -e "${gl_lv}✓ $branch${gl_bai}"
-        else
-            echo -e "${gl_bai}  $branch"
+    local dir_array=()
+    for dir in "$base_path"/*/; do
+        [[ -d "$dir" ]] || continue
+        local dir_name
+        dir_name=$(basename "$dir")
+
+        if [[ "$show_hidden" == "true" || "$show_hidden" == "1" ]]; then
+            dir_array+=("$dir_name")
+        elif [[ ! "$dir_name" =~ ^\. ]]; then
+            dir_array+=("$dir_name")
         fi
     done
-    
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    
-    echo -e "${gl_bai}远程分支:${gl_bai}"
-    git branch -r 2>/dev/null | while IFS= read -r branch; do
-        echo -e "${gl_hui}  $branch${gl_bai}"
-    done || echo -e "${gl_hui}  无远程分支${gl_bai}"
-    
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    break_end
-}
 
-create_branch() {
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}请输入新分支名称(${gl_huang}0${gl_bai}返回): ")" branch_name
-    if [[ "$branch_name" == "0" ]]; then
-        cancel_return "Git 分支管理"
-        return 1
-    fi
-    
-    if [[ -z "$branch_name" ]]; then
-        log_error "分支名称不能为空"
-        break_end
-        return 1
-    fi
-    
-    if git rev-parse --verify --quiet "$branch_name" >/dev/null; then
-        log_error "分支 ${gl_huang}$branch_name ${gl_hong}已存在"
-        break_end
-        return 1
-    fi
-    
-    read -r -e -p "$(echo -e "${gl_bai}从哪个分支创建? (默认: 当前分支): ")" base_branch
-    base_branch=${base_branch:-$(get_current_branch)}
-    
-    if [[ -z "$base_branch" ]]; then
-        log_error "基础分支不存在"
-        break_end
-        return 1
-    fi
-    
-    echo -e ""
-    if git checkout -b "$branch_name" "$base_branch" 2>/dev/null; then
-        log_ok "分支 ${gl_huang}$branch_name ${gl_lv}创建成功 (基于 ${gl_huang}$base_branch${gl_lv})"
-    else
-        log_error "分支创建失败"
-        break_end
-        return 1
-    fi
-    
-    read -r -e -p "$(echo -e "${gl_bai}是否推送到远程仓库? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" push_to_remote
-    
-    if [[ "$push_to_remote" =~ ^[Yy]$ ]]; then
-        if git push -u origin "$branch_name" 2>/dev/null; then
-            log_ok "已推送到远程分支 ${gl_huang}origin/$branch_name"
-        else
-            log_warn "推送失败，请手动执行: git push -u origin $branch_name"
+    if [[ ${#dir_array[@]} -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录为空${gl_bai}"
+        if [[ "$exit_on_empty" == "true" || "$exit_on_empty" == "1" ]]; then
+            if [[ -n "$return_array_var" ]]; then
+                eval "$return_array_var=()"
+            fi
+            return 0
         fi
     fi
-    
-    break_end
-}
 
-delete_branch() {
-    local current_branch=$(get_current_branch)
-    
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}请输入要删除的分支名称(${gl_huang}0${gl_bai}返回): ")" branch_name
-    if [[ "$branch_name" == "0" ]]; then
-        cancel_return "Git 分支管理"
-        return 1
-    fi
-    
-    if [[ -z "$branch_name" ]]; then
-        log_error "分支名称不能为空"
-        break_end
-        return 1
-    fi
-    
-    if [[ "$branch_name" == "$current_branch" ]]; then
-        log_error "不能删除当前分支，请先切换到其他分支"
-        echo -e "${gl_bai}当前分支: ${gl_lv}$current_branch${gl_bai}"
-        break_end
-        return 1
-    fi
-    
-    if ! git rev-parse --verify --quiet "$branch_name" >/dev/null; then
-        log_error "分支 ${gl_huang}$branch_name ${gl_hong}不存在"
-        break_end
-        return 1
-    fi
-    
-    echo -e ""
-    echo -e "${gl_hong}警告: 删除分支 ${gl_huang}$branch_name${gl_hong}${gl_bai}"
-    echo -e "${gl_huang}最后一次提交信息:${gl_bai}"
-    git log -1 --pretty=format:"%s" "$branch_name" 2>/dev/null || echo "无法获取提交信息"
-    
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}确认删除? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
-    
-    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-        log_warn "取消删除"
-        break_end
-        return 0
-    fi
-    
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}是否强制删除未合并的分支? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" force_delete
-    echo -e ""
-    
-    if [[ "$force_delete" =~ ^[Yy]$ ]]; then
-        if git branch -D "$branch_name" 2>/dev/null; then
-            log_ok "分支 ${gl_huang}$branch_name ${gl_lv}已强制删除"
-        else
-            log_error "强制删除失败"
-        fi
-    else
-        if git branch -d "$branch_name" 2>/dev/null; then
-            log_ok "分支 ${gl_huang}$branch_name ${gl_lv}已安全删除"
-        else
-            log_error "删除失败 (分支可能未合并，使用 -D 强制删除)"
-        fi
-    fi
-    
-    break_end
-}
+    mapfile -t dir_array < <(printf '%s\n' "${dir_array[@]}" | sort)
 
-switch_branch() {
-    local current_branch=$(get_current_branch)
-    
-    echo -e "\n${gl_bai}当前分支: ${gl_lv}$current_branch${gl_bai}"
-    echo -e "${gl_bai}可切换的分支:${gl_bai}"
-    
-    git branch | while IFS= read -r branch; do
-        if [[ "$branch" == "*"* ]]; then
-            echo -e "${gl_lv}✓ $branch${gl_bai}"
-        else
-            branch_name=$(echo "$branch" | sed 's/^[ *]*//')
-            echo -e "${gl_bai}  $branch_name"
-        fi
-    done
-    
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}请输入分支名称(${gl_huang}0${gl_bai}返回): ")" branch_name
-    if [[ "$branch_name" == "0" ]]; then
-        cancel_return "Git 分支管理"
-        return 1
+    if [[ -n "$return_array_var" ]]; then
+        eval "$return_array_var=($(printf '%q ' "${dir_array[@]}"))"
     fi
-    
-    if [[ -z "$branch_name" ]]; then
-        log_error "分支名称不能为空"
-        break_end
-        return 1
-    fi
-    
-    if [[ "$branch_name" == "$current_branch" ]]; then
-        log_warn "已经在 ${gl_huang}$branch_name ${gl_huang}分支上${gl_bai}"
-        break_end
-        return 0
-    fi
-    
-    echo -e ""
-    if git checkout "$branch_name" 2>/dev/null; then
-        log_ok "已切换到分支 ${gl_huang}$branch_name"
-    else
-        log_error "切换失败，分支可能不存在"
-        
-        read -r -e -p "$(echo -e "${gl_bai}是否从远程拉取并切换? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" create_from_remote
-        
-        if [[ "$create_from_remote" =~ ^[Yy]$ ]]; then
-            if git checkout -b "$branch_name" "origin/$branch_name" 2>/dev/null; then
-                log_ok "已创建并切换到分支 ${gl_huang}$branch_name ${gl_lv}(从远程分支 origin/$branch_name)"
+
+    get_display_width() {
+        local str="$1"
+        local width=0
+        local len=${#str}
+
+        for ((i = 0; i < len; i++)); do
+            local char="${str:i:1}"
+            local code=$(printf '%d' "'$char")
+
+            if [[ $code -lt 128 ]]; then
+                ((width++))
+            elif [[ $code -ge 0x4E00 && $code -le 0x9FFF ]] ||
+                [[ $code -ge 0x3400 && $code -le 0x4DBF ]] ||
+                [[ $code -ge 0x20000 && $code -le 0x2A6DF ]] ||
+                [[ $code -ge 0x2A700 && $code -le 0x2B73F ]] ||
+                [[ $code -ge 0x2B740 && $code -le 0x2B81F ]] ||
+                [[ $code -ge 0x2B820 && $code -le 0x2CEAF ]] ||
+                [[ $code -ge 0xF900 && $code -le 0xFAFF ]] ||
+                [[ $code -ge 0x2F800 && $code -le 0x2FA1F ]]; then
+                ((width += 2))
+            elif [[ $code -ge 0x3000 && $code -le 0x303F ]] ||
+                [[ $code -ge 0xFF00 && $code -le 0xFFEF ]]; then
+                ((width += 2))
             else
-                log_error "从远程创建失败"
+                ((width += 2))
             fi
-        fi
-    fi
-    
-    break_end
-}
+        done
 
-merge_branch() {
-    local current_branch=$(get_current_branch)
-    
-    echo -e "\n${gl_bai}当前分支: ${gl_lv}$current_branch${gl_bai}"
-    echo -e "${gl_bai}可合并的分支:${gl_bai}"
-    
-    git branch | while IFS= read -r branch; do
-        if [[ "$branch" != "*"* ]]; then
-            branch_name=$(echo "$branch" | sed 's/^[ *]*//')
-            echo -e "${gl_bai}  $branch_name"
+        echo $width
+    }
+
+    local max_display_width=0
+    for d in "${dir_array[@]}"; do
+        local width
+        width=$(get_display_width "$d")
+        (($width > max_display_width)) && max_display_width=$width
+    done
+
+    local column_width=$((max_display_width + 4))
+
+    local count=0
+    for i in "${!dir_array[@]}"; do
+        count=$((i + 1))
+
+        local index_str
+        printf -v index_str "%2d." "$count"
+
+        local current_width
+        current_width=$(get_display_width "${dir_array[i]}")
+
+        local padding=$((column_width - current_width))
+
+        printf "${gl_bufan}%s${gl_bai} %s" "$index_str" "${dir_array[i]}"
+
+        for ((s = 0; s < padding; s++)); do
+            printf " "
+        done
+
+        if (((i + 1) % items_per_line == 0)); then
+            echo
         fi
     done
-    
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}请输入要合并的分支名称(${gl_huang}0${gl_bai}返回): ")" branch_name
-    if [[ "$branch_name" == "0" ]]; then
-        cancel_return "Git 分支管理"
-        return 1
+
+    if ((count % items_per_line != 0)); then
+        echo
     fi
-    
-    if [[ -z "$branch_name" ]]; then
-        log_error "分支名称不能为空"
-        break_end
-        return 1
-    fi
-    
-    if [[ "$branch_name" == "$current_branch" ]]; then
-        log_error "不能合并到当前分支自身"
-        break_end
-        return 1
-    fi
-    
-    if ! git rev-parse --verify --quiet "$branch_name" >/dev/null; then
-        log_error "分支 ${gl_huang}$branch_name ${gl_hong}不存在"
-        break_end
-        return 1
-    fi
-    
-    echo -e ""
-    read -r -e -p "$(echo -e "${gl_bai}是否使用 --no-ff (不快速合并，保留合并历史)? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" no_ff_option
-    echo -e ""
-    
-    local merge_command="git merge"
-    if [[ "$no_ff_option" =~ ^[Yy]$ ]]; then
-        merge_command="$merge_command --no-ff"
-    else
-        merge_command="$merge_command --ff"
-    fi
-    
-    read -r -e -p "$(echo -e "${gl_bai}是否跳过编辑提交信息? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" no_edit_option
-    
-    if [[ "$no_edit_option" =~ ^[Yy]$ ]]; then
-        merge_command="$merge_command --no-edit"
-    fi
-    
-    echo -e ""
-    log_info "正在合并分支: ${gl_huang}$branch_name ${gl_lan}→ ${gl_lv}$current_branch${gl_bai}"
-    
-    if eval "$merge_command \"$branch_name\"" 2>/dev/null; then
-        log_ok "分支 ${gl_huang}$branch_name ${gl_lv}已成功合并到 ${gl_huang}$current_branch${gl_bai}"
-    else
-        log_error "合并失败，可能存在冲突，请手动解决"
-    fi
-    
-    break_end
+    return 0
 }
 
-rename_branch() {
-    local current_branch=$(get_current_branch)
-    
-    echo -e "\n${gl_bai}当前分支: ${gl_lv}$current_branch${gl_bai}"
-    read -r -e -p "$(echo -e "${gl_bai}请输入原分支名称 (默认: 当前分支, ${gl_huang}0${gl_bai}返回): ")" old_name
-    if [[ "$old_name" == "0" ]]; then
-        cancel_return "Git 分支管理"
-        return 1
-    fi
-    old_name="${old_name:-$current_branch}"
-    
-    if [[ -z "$old_name" ]]; then
-        log_error "原分支名称不能为空"
-        break_end
-        return 1
-    fi
-    
-    if ! git rev-parse --verify --quiet "$old_name" >/dev/null; then
-        log_error "分支 ${gl_huang}$old_name ${gl_hong}不存在"
-        break_end
-        return 1
-    fi
-    
-    read -r -e -p "$(echo -e "${gl_bai}请输入新分支名称: ")" new_name
-    
-    if [[ -z "$new_name" ]]; then
-        log_error "新分支名称不能为空"
-        break_end
-        return 1
-    fi
-    
-    if git rev-parse --verify --quiet "$new_name" >/dev/null; then
-        log_error "分支 ${gl_huang}$new_name ${gl_hong}已存在"
-        break_end
-        return 1
-    fi
-    
-    echo -e ""
-    if [[ "$old_name" == "$current_branch" ]]; then
-        echo -e "${gl_bai}当前分支: ${gl_lv}$old_name ${gl_bai}→ ${gl_huang}$new_name${gl_bai}"
-        
-        if git branch -m "$new_name" 2>/dev/null; then
-            log_ok "当前分支重命名为: ${gl_huang}$new_name${gl_bai}"
-            
-            read -r -e -p "$(echo -e "${gl_bai}是否更新远程分支? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" update_remote
-            
-            if [[ "$update_remote" =~ ^[Yy]$ ]]; then
-                if git push origin --delete "$old_name" 2>/dev/null && git push -u origin "$new_name" 2>/dev/null; then
-                    log_ok "远程分支已更新: ${gl_huang}origin/$old_name → origin/$new_name${gl_bai}"
-                else
-                    log_warn "更新远程分支失败，请手动执行:"
-                    echo -e "${gl_hui}  git push origin --delete $old_name"
-                    echo -e "${gl_hui}  git push -u origin $new_name${gl_bai}"
-                fi
-            fi
-        else
-            log_error "重命名失败"
-        fi
-    else
-        echo -e "${gl_bai}分支重命名: ${gl_lv}$old_name ${gl_bai}→ ${gl_huang}$new_name${gl_bai}"
-        
-        if git branch -m "$old_name" "$new_name" 2>/dev/null; then
-            log_ok "分支重命名成功: ${gl_huang}$old_name → $new_name${gl_bai}"
-        else
-            log_error "重命名失败"
-        fi
-    fi
-    
-    break_end
-}
-
-git_branch_menu() {
-    local target_dir="${1:-$(pwd)}"
-    
-    if [[ ! -d "$target_dir" ]]; then
-        log_error "目录不存在: ${gl_huang}$target_dir${gl_bai}"
-        break_end
-        return 1
-    fi
-    
-    if ! cd "$target_dir" 2>/dev/null; then
-        log_error "无法进入目录: ${gl_huang}$target_dir${gl_bai}"
-        break_end
-        return 1
-    fi
-    
-    if ! check_git_repo; then
-        break_end
-        return 1
-    fi
-    
+batch_rename_files() {
     while true; do
+        local current_dir=$(pwd)
+        local items=()
+        
+        while IFS= read -r -d $'\0' item; do
+            items+=("$item")
+        done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+        
+        local item_count=${#items[@]}
+        
         clear
         echo -e ""
-        echo -e "${gl_zi}>>> Git 分支管理${gl_bai}"
+        echo -e "${gl_zi}>>> 批量重命名文件/文件夹${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         
-        local repo_name=$(basename "$(git rev-parse --show-toplevel 2>/dev/null)" 2>/dev/null || echo "未知仓库")
-        local current_branch=$(get_current_branch)
-        local commit_count=$(git rev-list --count HEAD 2>/dev/null || echo "?")
-        local last_commit=$(git log -1 --format="%s" 2>/dev/null | head -c 50)
-        
-        echo -e "${gl_bai}仓库: ${gl_huang}$repo_name"
-        echo -e "${gl_bai}分支: ${gl_lv}$current_branch"
-        echo -e "${gl_bai}提交: ${gl_lan}$commit_count"
-        
-        if [[ -n "$last_commit" ]]; then
-            echo -e "${gl_bai}最近提交: ${gl_hui}$last_commit"
+        if [[ $item_count -eq 0 ]]; then
+            echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        else
+            echo -e "${gl_bai}当前目录: ${gl_lv}${current_dir}${gl_bai}  ${gl_bai}项目数量: ${gl_lv}${item_count}${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            
+            if [[ $item_count -le 20 ]]; then
+                echo -e "${gl_bai}项目列表:${gl_bai}"
+                for i in "${!items[@]}"; do
+                    local item="${items[$i]}"
+                    local itemname=$(basename "$item")
+                    if [[ -d "$item" ]]; then
+                        echo -e "  ${gl_huang}$((i + 1))${gl_bai}. ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai}"
+                    else
+                        echo -e "  ${gl_huang}$((i + 1))${gl_bai}. ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai}"
+                    fi
+                done
+            else
+                echo -e "${gl_bai}显示前 20 个项目:${gl_bai}"
+                for i in {0..19}; do
+                    if [[ $i -lt $item_count ]]; then
+                        local item="${items[$i]}"
+                        local itemname=$(basename "$item")
+                        if [[ -d "$item" ]]; then
+                            echo -e "  ${gl_huang}$((i + 1))${gl_bai}. ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai}"
+                        else
+                            echo -e "  ${gl_huang}$((i + 1))${gl_bai}. ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai}"
+                        fi
+                    fi
+                done
+                echo -e "  ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}还有 $((item_count - 20)) 个项目${gl_bai}"
+            fi
         fi
         
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}查看所有分支        ${gl_bufan}2.  ${gl_bai}创建新分支"
-        echo -e "${gl_bufan}3.  ${gl_bai}删除分支            ${gl_bufan}4.  ${gl_bai}切换分支"
-        echo -e "${gl_bufan}5.  ${gl_bai}合并分支            ${gl_bufan}6.  ${gl_bai}重命名分支"
+        echo -e "${gl_bufan}1.  ${gl_bai}进入指定目录          ${gl_bufan}2.  ${gl_bai}返回上一级目录"
+        echo -e "${gl_bufan}3.  ${gl_bai}添加前缀              ${gl_bufan}4.  ${gl_bai}添加后缀"
+        echo -e "${gl_bufan}5.  ${gl_bai}替换字符串            ${gl_bufan}6.  ${gl_bai}序号重命名"
+        echo -e "${gl_bufan}7.  ${gl_bai}大小写转换            ${gl_bufan}8.  ${gl_bai}移除字符"
+        echo -e "${gl_bufan}9.  ${gl_bai}删除所有空格"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        
-        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" choice
-        
-        case $choice in
-            1) list_branches ;;
-            2) create_branch ;;
-            3) delete_branch ;;
-            4) switch_branch ;;
-            5) merge_branch ;;
-            6) rename_branch ;;
-            0) cancel_return "已是主菜单" && continue ;;
-            00) exit_script ;;
-            *) handle_invalid_input ;;
+        read -r -e -p "$(echo -e "${gl_bai}请选择重命名模式: ")" rename_mode
+
+        case "$rename_mode" in
+        1) enter_directory ;;
+        2) go_parent_directory ;;
+        3) rename_items_add_prefix ;;
+        4) rename_items_add_suffix ;;
+        5) rename_items_replace_string ;;
+        6) rename_items_sequential ;;
+        7) rename_items_change_case ;;
+        8) rename_items_remove_chars ;;
+        9) rename_items_remove_spaces ;;
+        0) cancel_return "已是主菜单" || continue ;;
+        00 | 000 | 0000) exit_script ;;
+        *) handle_invalid_input ;;
         esac
     done
 }
 
-main() {
-    if [[ -n "${1:-}" ]]; then
-        git_branch_menu "$1"
-    else
-        git_branch_menu
+rename_items_add_prefix() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
     fi
+    
+    echo -e ""
+    echo -e "${gl_zi}>>> 批量添加前缀${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -e -p "$(echo -e "${gl_bai}请输入要添加的前缀(${gl_huang}0${gl_bai}返回): ")" prefix
+    if [[ -z "$prefix" ]]; then
+        log_warn "前缀不能为空"
+        exit_animation
+        return
+    fi
+
+    [ "$prefix" == "0" ] && { cancel_return "上一级选单"; return 1; }  
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    for item in "${items[@]}"; do
+        local itemname=$(basename "$item")
+        local dir=$(dirname "$item")
+        local newname="${dir}/${prefix}${itemname}"
+
+        if [[ "$itemname" != "${prefix}${itemname}" ]]; then
+            rename_items+=("$item:$newname")
+            if [[ -d "$item" ]]; then
+                echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}${prefix}${itemname}${gl_bai}"
+            else
+                echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}${prefix}${itemname}${gl_bai}"
+            fi
+        fi
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        [ "$confirm" = "0" ] && { cancel_return "上一级选单"; return 1; }  
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    else
+        log_warn "没有项目需要重命名（可能已有相同前缀）"
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
 }
 
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
-    main "$@"
-fi
+rename_items_add_suffix() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    echo -e ""
+    echo -e "${gl_zi}>>> 批量添加后缀${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -e -p "$(echo -e "${gl_bai}请输入要添加的后缀 (不含扩展名)(${gl_huang}0${gl_bai}返回): ")" suffix
+    if [[ -z "$suffix" ]]; then
+        log_warn "后缀不能为空"
+        exit_animation
+        return
+    fi
+
+    [[ "$suffix" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    for item in "${items[@]}"; do
+        local itemname=$(basename "$item")
+        local dir=$(dirname "$item")
+        local newname
+
+        if [[ -f "$item" ]] && [[ "$itemname" =~ \. ]]; then
+            local ext="${itemname##*.}"
+            local name="${itemname%.*}"
+            if [[ "$name" == "$ext" ]]; then
+                newname="${dir}/${itemname}${suffix}"
+            else
+                newname="${dir}/${name}${suffix}.${ext}"
+            fi
+        else
+            newname="${dir}/${itemname}${suffix}"
+        fi
+
+        if [[ "$itemname" != "$(basename "$newname")" ]]; then
+            rename_items+=("$item:$newname")
+            if [[ -d "$item" ]]; then
+                echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            else
+                echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            fi
+        fi
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    else
+        log_warn "没有项目需要重命名"
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
+rename_items_replace_string() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    echo -e ""
+    echo -e "${gl_zi}>>> 替换字符${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -e -p "$(echo -e "${gl_bai}请输入要替换的字符串(${gl_huang}0${gl_bai}返回): ")" old_str
+
+    [[ "$old_str" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+
+    if [[ -z "$old_str" ]]; then
+        log_warn "要替换的字符串不能为空"
+        exit_animation
+        return
+    fi
+
+    read -r -e -p "$(echo -e "${gl_bai}请输入替换为的字符串: ")" new_str
+    [ "$new_str" == "0" ] && { cancel_return "上一级选单"; return 1; }   
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    for item in "${items[@]}"; do
+        local itemname=$(basename "$item")
+        local dir=$(dirname "$item")
+        local newname="${dir}/${itemname//$old_str/$new_str}"
+
+        if [[ "$itemname" != "$(basename "$newname")" ]]; then
+            rename_items+=("$item:$newname")
+            if [[ -d "$item" ]]; then
+                echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            else
+                echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            fi
+        fi
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        [ "$confirm" == "0" ] && { cancel_return "上一级选单"; return 1; }  
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    else
+        log_warn "没有找到匹配的字符串 '$old_str'"
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
+rename_items_sequential() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    echo -e ""
+    echo -e "${gl_huang}>>> 序号重命名模板说明:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "  ${gl_huang}###${gl_bai} 表示三位数字序号 (如: 001, 002)"
+    echo -e "  ${gl_huang}##${gl_bai}  表示两位数字序号 (如: 01, 02)"
+    echo -e "  ${gl_huang}#${gl_bai}   表示一位数字序号 (如: 1, 2)"
+    echo -e "  ${gl_huang}%d${gl_bai}  表示数字序号 (如: 1, 2, 3)"
+    echo -e ""
+    echo -e "${gl_bai}示例:${gl_bai}"
+    echo -e "  ${gl_huang}image-###.jpg${gl_bai}   -> ${gl_lv}image-001.jpg, image-002.jpg, ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "  ${gl_huang}document_##.txt${gl_bai} -> ${gl_lv}document_01.txt, document_02.txt, ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "  ${gl_huang}file_#.pdf${gl_bai}      -> ${gl_lv}file_1.pdf, file_2.pdf, ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    echo -e ""
+    echo -e "${gl_zi}>>> 序号重命名${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -e -p "$(echo -e "${gl_bai}请输入文件名模板(${gl_huang}0${gl_bai}返回): ")" template
+    [[ "$template" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+
+    if [[ -z "$template" ]]; then
+        log_warn "模板不能为空"
+        exit_animation
+        return
+    fi
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    local idx=1
+
+    for item in "${items[@]}"; do
+        local dir=$(dirname "$item")
+        local itemname=$(basename "$item")
+        
+        if [[ -f "$item" ]] && [[ "$itemname" =~ \. ]] && [[ "${itemname%.*}" != "${itemname##*.}" ]]; then
+            local ext="${itemname##*.}"
+            local name_without_ext="${itemname%.*}"
+            local newname_template="${template%.*}"
+            if [[ -z "$newname_template" ]]; then
+                newname_template="$template"
+            fi
+            
+            if [[ "$newname_template" =~ "###" ]]; then
+                newname_template="${newname_template//###/$(printf "%03d" $idx)}"
+            elif [[ "$newname_template" =~ "##" ]]; then
+                newname_template="${newname_template//##/$(printf "%02d" $idx)}"
+            elif [[ "$newname_template" =~ "#" ]]; then
+                newname_template="${newname_template//#/$idx}"
+            elif [[ "$newname_template" =~ "%d" ]]; then
+                newname_template="${newname_template//%d/$idx}"
+            else
+                newname_template="${newname_template}_${idx}"
+            fi
+            
+            local newname="${dir}/${newname_template}.${ext}"
+        else
+            local newname_template="$template"
+            
+            if [[ "$newname_template" =~ "###" ]]; then
+                newname_template="${newname_template//###/$(printf "%03d" $idx)}"
+            elif [[ "$newname_template" =~ "##" ]]; then
+                newname_template="${newname_template//##/$(printf "%02d" $idx)}"
+            elif [[ "$newname_template" =~ "#" ]]; then
+                newname_template="${newname_template//#/$idx}"
+            elif [[ "$newname_template" =~ "%d" ]]; then
+                newname_template="${newname_template//%d/$idx}"
+            else
+                newname_template="${newname_template}_${idx}"
+            fi
+            
+            local newname="${dir}/${newname_template}"
+        fi
+        
+        rename_items+=("$item:$newname")
+        if [[ -d "$item" ]]; then
+            echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+        else
+            echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+        fi
+        ((idx++))
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        [ "$confirm" == "0" ] && { cancel_return "上一级选单"; return 1; }
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
+rename_items_change_case() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    while true; do
+        echo -e ""
+        echo -e "${gl_zi}>>> 大小写转换${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}转为小写              ${gl_bufan}2.  ${gl_bai}转为大写"
+        echo -e "${gl_bufan}3.  ${gl_bai}首字母大写            ${gl_bufan}4.  ${gl_bai}单词首字母大写"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请选择转换模式: ")" case_mode
+
+        case "$case_mode" in
+        0) cancel_return;  return  ;;
+        1 | 2 | 3 | 4)
+            local rename_count=0
+            local rename_items=()
+
+            echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+            for item in "${items[@]}"; do
+                local itemname=$(basename "$item")
+                local dir=$(dirname "$item")
+                local newname
+
+                case "$case_mode" in
+                1) newname="${dir}/${itemname,,}" ;;
+                2) newname="${dir}/${itemname^^}" ;;
+                3) newname="${dir}/${itemname^}" ;;
+                4)
+                    newname="$itemname"
+                    if [[ "$newname" =~ [a-zA-Z] ]]; then
+                        newname=$(echo "$newname" | sed -E 's/(^|_)([a-z])/\1\u\2/g' 2>/dev/null || echo "$newname")
+                    fi
+                    newname="${dir}/${newname}"
+                    ;;
+                esac
+
+                if [[ "$itemname" != "$(basename "$newname")" ]]; then
+                    rename_items+=("$item:$newname")
+                    if [[ -d "$item" ]]; then
+                        echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+                    else
+                        echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+                    fi
+                fi
+            done
+
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+            if [[ ${#rename_items[@]} -gt 0 ]]; then
+                read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+                [ "$confirm" = "0" ] && { cancel_return "上一级选单"; continue; }
+                case "$confirm" in
+                [Yy])
+                    for rename_pair in "${rename_items[@]}"; do
+                        IFS=':' read -r old_name new_name <<<"$rename_pair"
+                        if mv "$old_name" "$new_name" 2>/dev/null; then
+                            ((rename_count++))
+                            log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                        else
+                            log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                        fi
+                    done
+                    ;;
+                [Nn])
+                    log_warn "操作已取消"
+                    ;;
+                *) handle_y_n ;;
+                esac
+            else
+                log_warn "没有项目需要转换大小写"
+            fi
+
+            if [[ $rename_count -gt 0 ]]; then
+                log_ok "成功重命名 ${rename_count} 个项目"
+            fi
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            return
+            ;;
+        *) handle_invalid_input ;;
+        esac
+    done
+}
+
+rename_items_remove_chars() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    echo -e ""
+    echo -e "${gl_zi}>>> 移除字符${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -e -p "$(echo -e "${gl_bai}请输入要移除的字符或模式(${gl_huang}0${gl_bai}返回): ")" remove_pattern
+
+    [[ "$remove_pattern" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+
+    if [[ -z "$remove_pattern" ]]; then
+        log_warn "要移除的字符不能为空"
+        exit_animation
+        return
+    fi
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    for item in "${items[@]}"; do
+        local itemname=$(basename "$item")
+        local dir=$(dirname "$item")
+        local newname="${dir}/${itemname//$remove_pattern/}"
+
+        if [[ "$itemname" != "$(basename "$newname")" ]]; then
+            rename_items+=("$item:$newname")
+            if [[ -d "$item" ]]; then
+                echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            else
+                echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            fi
+        fi
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        [[ "$confirm" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    else
+        log_warn "没有找到匹配的字符 '$remove_pattern'"
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
+rename_items_remove_spaces() {
+    local current_dir=$(pwd)
+    local items=()
+    while IFS= read -r -d $'\0' item; do
+        items+=("$item")
+    done < <(find "$current_dir" -maxdepth 1 -print0 2>/dev/null | grep -zv "^${current_dir}$")
+    
+    local item_count=${#items[@]}
+    
+    if [[ $item_count -eq 0 ]]; then
+        echo -e "${gl_huang}当前目录下没有找到任何项目${gl_bai}"
+        exit_animation
+        return
+    fi
+    
+    echo -e ""
+    echo -e "${gl_zi}>>> 删除文件名中的所有空格${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
+    echo -e "${gl_bai}注意: 此操作将删除所有项目名中的所有空格字符${gl_bai}"
+    echo -e "${gl_bai}包括项目名开头、中间和结尾的空格${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    echo -e "${gl_bai}预览重命名结果:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local rename_count=0
+    local rename_items=()
+    for item in "${items[@]}"; do
+        local itemname=$(basename "$item")
+        local dir=$(dirname "$item")
+        local newname="${dir}/${itemname// /}"
+
+        if [[ "$itemname" != "$(basename "$newname")" ]]; then
+            rename_items+=("$item:$newname")
+            if [[ -d "$item" ]]; then
+                echo -e "  ${gl_lv}[目录]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            else
+                echo -e "  ${gl_hui}[文件]${gl_bai} ${gl_bufan}${itemname}${gl_bai} -> ${gl_lv}$(basename "$newname")${gl_bai}"
+            fi
+        fi
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}将重命名 ${gl_lv}${#rename_items[@]}${gl_bai} 个项目${gl_bai}"
+
+    if [[ ${#rename_items[@]} -gt 0 ]]; then
+        read -r -e -p "$(echo -e "${gl_bai}确认执行重命名? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        [[ "$confirm" == "0" ]] && { cancel_return "上一级选单"; return 1; }
+        case "$confirm" in
+        [Yy])
+            for rename_pair in "${rename_items[@]}"; do
+                IFS=':' read -r old_name new_name <<<"$rename_pair"
+                if mv "$old_name" "$new_name" 2>/dev/null; then
+                    ((rename_count++))
+                    log_info "已重命名: ${gl_bufan}$(basename "$old_name")${gl_bai} -> ${gl_lv}$(basename "$new_name")${gl_bai}"
+                else
+                    log_error "重命名失败: ${gl_bufan}$(basename "$old_name")${gl_bai}"
+                fi
+            done
+            ;;
+        [Nn])
+            log_warn "操作已取消"
+            ;;
+        *) handle_y_n ;;
+        esac
+    else
+        log_warn "没有项目名包含空格"
+    fi
+
+    if [[ $rename_count -gt 0 ]]; then
+        log_ok "成功重命名 ${rename_count} 个项目"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
+batch_rename_files
