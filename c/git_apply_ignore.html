@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="git_apply_ignore 命令">
     <meta name="twitter:description" content="清理 Git 缓存并重新提交推送工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqfg86sx">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqg1vtvc">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqfg86sx"></script>
+    <script src="../js/dt.js?v=mqg1vtvc"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1200,101 +1200,102 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="36"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="37">
 </span><span class="code-line line-number" line="38"><span class="token function-name function">handle_invalid_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="39">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
-</span><span class="code-line line-number" line="40">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="41">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
-</span><span class="code-line line-number" line="42">    <span class="token function">sleep</span> <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="43">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="44"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="45">
-</span><span class="code-line line-number" line="46"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="47">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="48">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="49">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="50">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="51">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="52">    <span class="token function">sleep</span> <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="53">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="54"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="55">
-</span><span class="code-line line-number" line="56"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="57">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="58">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="59">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-p</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="60">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="61">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="62"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="63">
-</span><span class="code-line line-number" line="64"><span class="token function-name function">exit_script</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="65">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="66">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>感谢使用，再见！ <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="67">    sleep_fractional <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="68">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="69">    sleep_fractional <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="70">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="71">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="72"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="73">
-</span><span class="code-line line-number" line="74"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="75">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="76">    sleep_fractional <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="77">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="78">    sleep_fractional <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="79">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="80">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="81"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="82">
-</span><span class="code-line line-number" line="83"><span class="token function-name function">git_clean_cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="84">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="85">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Git缓存清理 &#x26; .gitignore规则应用<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="86">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="87">
-</span><span class="code-line line-number" line="88">    log_info <span class="token string">"正在清除Git缓存（保留本地文件） <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="89">    <span class="token keyword">if</span> <span class="token function">git</span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--cached</span> <span class="token builtin class-name">.</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="90">        log_ok <span class="token string">"Git缓存清除成功"</span>
-</span><span class="code-line line-number" line="91">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="92">        log_error <span class="token string">"Git缓存清除失败"</span>
-</span><span class="code-line line-number" line="93">        exit_animation
-</span><span class="code-line line-number" line="94">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="95">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="96">
-</span><span class="code-line line-number" line="97">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="98">    log_info <span class="token string">"正在重新添加文件，应用.gitignore规则 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="99">    <span class="token keyword">if</span> <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="100">        log_ok <span class="token string">"文件重新添加成功，.gitignore已生效"</span>
-</span><span class="code-line line-number" line="101">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="102">        log_error <span class="token string">"文件添加失败"</span>
-</span><span class="code-line line-number" line="103">        exit_animation
-</span><span class="code-line line-number" line="104">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="105">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="106">
-</span><span class="code-line line-number" line="107">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="108">    log_info <span class="token string">"正在提交更改 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="109">    <span class="token keyword">if</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"🎯 应用 .gitignore 规则，清理不必要的跟踪文件"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="110">        log_ok <span class="token string">"提交成功"</span>
-</span><span class="code-line line-number" line="111">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="112">        log_warn <span class="token string">"无文件可提交或提交失败"</span>
-</span><span class="code-line line-number" line="113">        exit_animation
-</span><span class="code-line line-number" line="114">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="115">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="116">
-</span><span class="code-line line-number" line="117">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="118">    log_info <span class="token string">"正在推送至远程仓库 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="119">    <span class="token keyword">if</span> <span class="token function">git</span> push<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="120">        log_ok <span class="token string">"远程推送成功"</span>
-</span><span class="code-line line-number" line="121">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="122">        log_error <span class="token string">"远程推送失败，请检查网络/权限/分支配置"</span>
-</span><span class="code-line line-number" line="123">        exit_animation
-</span><span class="code-line line-number" line="124">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="125">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="126">
-</span><span class="code-line line-number" line="127">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="128">    log_ok <span class="token string">"全部操作执行完成！.gitignore规则已完全生效"</span>
-</span><span class="code-line line-number" line="129">    break_end
-</span><span class="code-line line-number" line="130">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="131"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="132">
-</span><span class="code-line line-number" line="133">git_clean_cache
+</span><span class="code-line line-number" line="39">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="40">    sleep_fractional <span class="token number">1</span>
+</span><span class="code-line line-number" line="41">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="42">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="43">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K"</span>
+</span><span class="code-line line-number" line="44">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="45"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="46">
+</span><span class="code-line line-number" line="47"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="48">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="49">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="50">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="51">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="52">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="53">    <span class="token function">sleep</span> <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="54">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="55"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="56">
+</span><span class="code-line line-number" line="57"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="58">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="59">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="60">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-p</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="61">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="62">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="63"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="64">
+</span><span class="code-line line-number" line="65"><span class="token function-name function">exit_script</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="66">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="67">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>感谢使用，再见！ <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="68">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="69">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="70">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="71">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="72">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="73"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="74">
+</span><span class="code-line line-number" line="75"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="76">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="77">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="78">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="79">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="80">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="81">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="82"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="83">
+</span><span class="code-line line-number" line="84"><span class="token function-name function">git_clean_cache</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="85">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="86">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Git缓存清理 &#x26; .gitignore规则应用<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="87">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="88">
+</span><span class="code-line line-number" line="89">    log_info <span class="token string">"正在清除Git缓存（保留本地文件） <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="90">    <span class="token keyword">if</span> <span class="token function">git</span> <span class="token function">rm</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">--cached</span> <span class="token builtin class-name">.</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="91">        log_ok <span class="token string">"Git缓存清除成功"</span>
+</span><span class="code-line line-number" line="92">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="93">        log_error <span class="token string">"Git缓存清除失败"</span>
+</span><span class="code-line line-number" line="94">        exit_animation
+</span><span class="code-line line-number" line="95">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="96">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="97">
+</span><span class="code-line line-number" line="98">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="99">    log_info <span class="token string">"正在重新添加文件，应用.gitignore规则 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="100">    <span class="token keyword">if</span> <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="101">        log_ok <span class="token string">"文件重新添加成功，.gitignore已生效"</span>
+</span><span class="code-line line-number" line="102">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="103">        log_error <span class="token string">"文件添加失败"</span>
+</span><span class="code-line line-number" line="104">        exit_animation
+</span><span class="code-line line-number" line="105">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="106">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="107">
+</span><span class="code-line line-number" line="108">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="109">    log_info <span class="token string">"正在提交更改 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="110">    <span class="token keyword">if</span> <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"🎯 应用 .gitignore 规则，清理不必要的跟踪文件"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="111">        log_ok <span class="token string">"提交成功"</span>
+</span><span class="code-line line-number" line="112">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="113">        log_warn <span class="token string">"无文件可提交或提交失败"</span>
+</span><span class="code-line line-number" line="114">        exit_animation
+</span><span class="code-line line-number" line="115">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="116">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="117">
+</span><span class="code-line line-number" line="118">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="119">    log_info <span class="token string">"正在推送至远程仓库 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="120">    <span class="token keyword">if</span> <span class="token function">git</span> push<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="121">        log_ok <span class="token string">"远程推送成功"</span>
+</span><span class="code-line line-number" line="122">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="123">        log_error <span class="token string">"远程推送失败，请检查网络/权限/分支配置"</span>
+</span><span class="code-line line-number" line="124">        exit_animation
+</span><span class="code-line line-number" line="125">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="126">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="127">
+</span><span class="code-line line-number" line="128">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="129">    log_ok <span class="token string">"全部操作执行完成！.gitignore规则已完全生效"</span>
+</span><span class="code-line line-number" line="130">    break_end
+</span><span class="code-line line-number" line="131">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="132"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="133">
+</span><span class="code-line line-number" line="134">git_clean_cache
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -1333,10 +1334,11 @@ sleep_fractional() {
 }
 
 handle_invalid_input() {
-    echo -ne &#x22;\r${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
-    sleep 1
-    echo -e &#x22;\r${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
-    sleep 0.5
+    echo -ne &#x22;\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
+    sleep_fractional 1
+    echo -ne &#x22;\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
+    sleep_fractional 0.5
+    echo -ne &#x22;\r\033[K&#x22;
     return 2
 }
 
@@ -1633,7 +1635,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">209</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">210</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -1664,7 +1666,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1085</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1086</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1697,9 +1699,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqfg86sx"></script>
-<script type="text/javascript" src="../js/index.js?v=mqfg86sx"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqfg86sx"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqg1vtvc"></script>
+<script type="text/javascript" src="../js/index.js?v=mqg1vtvc"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqg1vtvc"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>

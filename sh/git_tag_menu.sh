@@ -19,32 +19,6 @@ log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 
-handle_invalid_input() {
-    echo -ne "\r${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
-    sleep 1
-    echo -e "\r${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
-    sleep 0.5
-    return 2
-}
-
-handle_y_n() {
-    echo -e "${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_hong}。${gl_bai}"
-    sleep 1
-    echo -e "${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_huang}。${gl_bai}"
-    sleep 1
-    echo -e "${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_lv}。${gl_bai}"
-    sleep 0.5
-    return 2
-}
-
-break_end() {
-    echo -e "${gl_lv}操作完成${gl_bai}"
-    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
-    read -r -n 1 -s -r -p ""
-    echo ""
-    clear
-}
-
 sleep_fractional() {
     local seconds=$1
     if sleep "$seconds" 2>/dev/null; then
@@ -66,6 +40,33 @@ sleep_fractional() {
     
     local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
     sleep "$int_seconds"
+}
+
+handle_invalid_input() {
+    echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
+    sleep_fractional 1
+    echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
+    sleep_fractional 0.5
+    echo -ne "\r\033[K"
+    return 2
+}
+
+handle_y_n() {
+    echo -e "${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_hong}。${gl_bai}"
+    sleep_fractional 1
+    echo -e "${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_huang}。${gl_bai}"
+    sleep_fractional 1
+    echo -e "${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai})${gl_lv}。${gl_bai}"
+    sleep_fractional 0.5
+    return 2
+}
+
+break_end() {
+    echo -e "${gl_lv}操作完成${gl_bai}"
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    read -r -n 1 -s -r -p ""
+    echo ""
+    clear
 }
 
 exit_animation() {
@@ -90,7 +91,7 @@ exit_script() {
 cancel_return() {
     local menu_name="${1:-上一级选单}"
     echo -e "${gl_lv}即将返回到 ${gl_huang}${menu_name}${gl_lv} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
-    sleep 0.6
+    sleep_fractional 0.6
     echo ""
     clear
 }
@@ -110,7 +111,6 @@ check_git_repo() {
     return 0
 }
 
-# 显示标签列表
 list_tags() {
     clear
     echo -e ""
@@ -132,7 +132,6 @@ list_tags() {
     break_end
 }
 
-# 创建轻量标签
 create_lightweight_tag() {
     echo -e ""
     read -r -e -p "$(echo -e "${gl_bai}请输入标签名称(${gl_huang}0${gl_bai}返回): ")" tag_name
@@ -173,7 +172,6 @@ create_lightweight_tag() {
     break_end
 }
 
-# 创建附注标签
 create_annotated_tag() {
     echo -e ""
     read -r -e -p "$(echo -e "${gl_bai}请输入标签名称(${gl_huang}0${gl_bai}返回): ")" tag_name
@@ -219,7 +217,6 @@ create_annotated_tag() {
     break_end
 }
 
-# 删除本地标签
 delete_local_tag() {
     echo -e ""
     echo -e "${gl_bai}当前标签列表:${gl_bai}"
@@ -259,7 +256,6 @@ delete_local_tag() {
     break_end
 }
 
-# 推送标签到远程
 push_tag() {
     echo -e ""
     echo -e "${gl_bai}当前标签列表:${gl_bai}"
@@ -306,7 +302,6 @@ push_tag() {
     break_end
 }
 
-# 删除远程标签
 delete_remote_tag() {
     echo -e ""
     echo -e "${gl_bai}当前标签列表:${gl_bai}"
@@ -358,7 +353,6 @@ delete_remote_tag() {
     break_end
 }
 
-# 查看标签详情
 show_tag() {
     echo -e ""
     echo -e "${gl_bai}当前标签列表:${gl_bai}"
@@ -395,7 +389,6 @@ show_tag() {
     break_end
 }
 
-# 7. 主菜单函数
 git_tag_menu() {
     local target_dir="${1:-$(pwd)}"
     
@@ -455,13 +448,10 @@ git_tag_menu() {
     done
 }
 
-# 主程序入口
 main() {
-    # 使用默认值处理参数，防止未绑定变量错误
     git_tag_menu "${1:-}"
 }
 
-# 检查是否直接运行脚本
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     main "$@"
 fi

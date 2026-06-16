@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve_vm_wizard 命令">
     <meta name="twitter:description" content="PVE 虚拟机创建向导 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqfg86sx">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqg1vtvc">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqfg86sx"></script>
+    <script src="../js/dt.js?v=mqg1vtvc"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1306,483 +1306,484 @@ bash pve_vm_wizard.sh
 </span><span class="code-line line-number" line="48"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="49">
 </span><span class="code-line line-number" line="50"><span class="token function-name function">handle_invalid_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="51">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
-</span><span class="code-line line-number" line="52">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="53">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
-</span><span class="code-line line-number" line="54">    <span class="token function">sleep</span> <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="55">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="56"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="57">
-</span><span class="code-line line-number" line="58"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="59">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="60">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="61">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="62">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="63">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="64">    <span class="token function">sleep</span> <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="65">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="66"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="67">
-</span><span class="code-line line-number" line="68"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="69">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="70">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="71">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="72">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="73">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="74"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="75">
-</span><span class="code-line line-number" line="76"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="77">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级选单}</span>"</span>
-</span><span class="code-line line-number" line="78">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回到 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span><span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="79">    <span class="token function">sleep</span> <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="80">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="81">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="82"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="83">
-</span><span class="code-line line-number" line="84"><span class="token function-name function">root_use</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="85">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="86">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token environment constant">$EUID</span>"</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="87">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token variable">${gl_zi}</span>>>> ROOT登录检查 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="88">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="89">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>提示: <span class="token variable">${gl_bai}</span>该功能需要root用户才能运行！"</span>
-</span><span class="code-line line-number" line="90">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="91">        break_end
-</span><span class="code-line line-number" line="92">        mobufan
-</span><span class="code-line line-number" line="93">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="94">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="95">    <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="96"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="97">
-</span><span class="code-line line-number" line="98"><span class="token assign-left variable">TMP_FILE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>mktemp<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="99"><span class="token assign-left variable">CLEANUP_VMID</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="100"><span class="token function-name function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="101">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$CLEANUP_VMID</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> qm status <span class="token string">"<span class="token variable">$CLEANUP_VMID</span>"</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="102">        <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="103">        log_warn <span class="token string">"检测到未完成创建的虚拟机 VMID=<span class="token variable">$CLEANUP_VMID</span>"</span>
-</span><span class="code-line line-number" line="104">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>是否删除该虚拟机？(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" confirm
-</span></span><span class="code-line line-number" line="105"><span class="token string">        case "</span><span class="token variable">$confirm</span><span class="token string">" in
-</span></span><span class="code-line line-number" line="106"><span class="token string">            [Yy])
-</span></span><span class="code-line line-number" line="107"><span class="token string">                qm destroy "</span><span class="token variable">$CLEANUP_VMID</span><span class="token string">" --purge &#x26;>/dev/null
-</span></span><span class="code-line line-number" line="108"><span class="token string">                log_ok "</span>已删除虚拟机 <span class="token variable">$CLEANUP_VMID</span><span class="token string">"
-</span></span><span class="code-line line-number" line="109"><span class="token string">                ;;
-</span></span><span class="code-line line-number" line="110"><span class="token string">            *)
-</span></span><span class="code-line line-number" line="111"><span class="token string">                log_info "</span>保留虚拟机 <span class="token variable">$CLEANUP_VMID</span>，请手动处理<span class="token string">"
-</span></span><span class="code-line line-number" line="112"><span class="token string">                ;;
-</span></span><span class="code-line line-number" line="113"><span class="token string">        esac
-</span></span><span class="code-line line-number" line="114"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="115"><span class="token string">    [ -f "</span><span class="token variable">$TMP_FILE</span><span class="token string">" ] &#x26;&#x26; rm -f "</span><span class="token variable">$TMP_FILE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="116"><span class="token string">}
-</span></span><span class="code-line line-number" line="117"><span class="token string">trap cleanup EXIT INT TERM
-</span></span><span class="code-line line-number" line="118"><span class="token string">
-</span></span><span class="code-line line-number" line="119"><span class="token string">select_mirror() {
-</span></span><span class="code-line line-number" line="120"><span class="token string">    local img_dir="</span>/var/lib/vz/template/iso<span class="token string">"
-</span></span><span class="code-line line-number" line="121"><span class="token string">    if [ ! -d "</span><span class="token variable">$img_dir</span><span class="token string">" ]; then
-</span></span><span class="code-line line-number" line="122"><span class="token string">        log_error "</span>镜像目录不存在: <span class="token variable">$img_dir</span><span class="token string">"
-</span></span><span class="code-line line-number" line="123"><span class="token string">        exit_script
-</span></span><span class="code-line line-number" line="124"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="125"><span class="token string">    mapfile -t images &#x3C; &#x3C;(find "</span><span class="token variable">$img_dir</span><span class="token string">" -maxdepth 1 -type f \( -iname "</span>*.qcow2<span class="token string">" -o -iname "</span>*.raw<span class="token string">" -o -iname "</span>*.img<span class="token string">" -o -iname "</span>*.iso<span class="token string">" \) | sort)
-</span></span><span class="code-line line-number" line="126"><span class="token string">    if [ <span class="token variable">${<span class="token operator">#</span>images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> -eq 0 ]; then
-</span></span><span class="code-line line-number" line="127"><span class="token string">        log_error "</span>镜像目录下没有找到支持的镜像文件<span class="token string">"
-</span></span><span class="code-line line-number" line="128"><span class="token string">        exit_script
-</span></span><span class="code-line line-number" line="129"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="130"><span class="token string">    
-</span></span><span class="code-line line-number" line="131"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="132"><span class="token string">        echo -e "</span>"
-</span><span class="code-line line-number" line="133">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 选择镜像文件<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="134">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="135">        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="136">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">fname</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">${images<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="137">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span><span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>. <span class="token variable">${gl_bai}</span><span class="token variable">$fname</span>"</span>
-</span><span class="code-line line-number" line="138">        <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="139">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="140">        
-</span><span class="code-line line-number" line="141">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">original_dir</span><span class="token operator">=</span><span class="token string">"<span class="token environment constant">$PWD</span>"</span>
-</span><span class="code-line line-number" line="142">        <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$img_dir</span>"</span> <span class="token operator">||</span> <span class="token punctuation">{</span> log_error <span class="token string">"无法进入目录 <span class="token variable">$img_dir</span>"</span><span class="token punctuation">;</span> exit_script<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="143">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请选择镜像序号，或输入文件名(可Tab补全，<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" choice
-</span></span><span class="code-line line-number" line="144"><span class="token string">        cd "</span><span class="token variable">$original_dir</span><span class="token string">" || exit_script
-</span></span><span class="code-line line-number" line="145"><span class="token string">        
-</span></span><span class="code-line line-number" line="146"><span class="token string">        if [[ "</span><span class="token variable">$choice</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="147"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="148"><span class="token string">        elif [[ "</span><span class="token variable">$choice</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$choice</span><span class="token string">" -ge 1 ] &#x26;&#x26; [ "</span><span class="token variable">$choice</span><span class="token string">" -le <span class="token variable">${<span class="token operator">#</span>images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> ]; then
-</span></span><span class="code-line line-number" line="149"><span class="token string">            IMAGE_PATH="</span><span class="token variable">${images<span class="token punctuation">[</span>$((choice-1))<span class="token punctuation">]</span>}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="150"><span class="token string">            log_ok "</span>已选择镜像: <span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span><span class="token variable">)</span></span><span class="token string">"
-</span></span><span class="code-line line-number" line="151"><span class="token string">            break
-</span></span><span class="code-line line-number" line="152"><span class="token string">        else
-</span></span><span class="code-line line-number" line="153"><span class="token string">            local test_path="</span><span class="token variable">$img_dir</span>/<span class="token variable">$choice</span><span class="token string">"
-</span></span><span class="code-line line-number" line="154"><span class="token string">            if [ -f "</span><span class="token variable">$test_path</span><span class="token string">" ]; then
-</span></span><span class="code-line line-number" line="155"><span class="token string">                IMAGE_PATH="</span><span class="token variable">$test_path</span><span class="token string">"
-</span></span><span class="code-line line-number" line="156"><span class="token string">                log_ok "</span>已选择镜像: <span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span><span class="token variable">)</span></span><span class="token string">"
-</span></span><span class="code-line line-number" line="157"><span class="token string">                break
-</span></span><span class="code-line line-number" line="158"><span class="token string">            else
-</span></span><span class="code-line line-number" line="159"><span class="token string">                log_warn "</span>文件不存在: <span class="token variable">$test_path</span><span class="token string">"
-</span></span><span class="code-line line-number" line="160"><span class="token string">                sleep 1
-</span></span><span class="code-line line-number" line="161"><span class="token string">            fi
-</span></span><span class="code-line line-number" line="162"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="163"><span class="token string">    done
-</span></span><span class="code-line line-number" line="164"><span class="token string">
-</span></span><span class="code-line line-number" line="165"><span class="token string">    local ext="</span><span class="token variable">${IMAGE_PATH<span class="token operator">##</span>*.}</span>"
-</span><span class="code-line line-number" line="166">    <span class="token assign-left variable">ext</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$ext</span>"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">'[:upper:]'</span> <span class="token string">'[:lower:]'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="167">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$ext</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="168">        <span class="token assign-left variable">MIRROR_TYPE</span><span class="token operator">=</span><span class="token string">"iso"</span>
-</span><span class="code-line line-number" line="169">        log_info <span class="token string">"检测到 ISO 镜像，将作为安装光盘处理（自动创建空硬盘并设置光驱启动）"</span>
-</span><span class="code-line line-number" line="170">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="171">        <span class="token assign-left variable">MIRROR_TYPE</span><span class="token operator">=</span><span class="token string">"disk"</span>
-</span><span class="code-line line-number" line="172">        log_info <span class="token string">"检测到磁盘镜像，将直接导入为系统盘"</span>
-</span><span class="code-line line-number" line="173">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="174"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="175">
-</span><span class="code-line line-number" line="176"><span class="token function-name function">get_vmid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="177">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="178">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入虚拟机ID (VMID) (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" vmid
-</span></span><span class="code-line line-number" line="179"><span class="token string">        if [[ "</span><span class="token variable">$vmid</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="180"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="181"><span class="token string">        elif [[ "</span><span class="token variable">$vmid</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$vmid</span><span class="token string">" -ge 100 ] &#x26;&#x26; [ "</span><span class="token variable">$vmid</span><span class="token string">" -le 999999999 ]; then
-</span></span><span class="code-line line-number" line="182"><span class="token string">            if qm status "</span><span class="token variable">$vmid</span><span class="token string">" &#x26;>/dev/null; then
-</span></span><span class="code-line line-number" line="183"><span class="token string">                log_warn "</span>VMID <span class="token variable">$vmid</span> 已存在，请重新输入<span class="token string">"
-</span></span><span class="code-line line-number" line="184"><span class="token string">                continue
-</span></span><span class="code-line line-number" line="185"><span class="token string">            fi
-</span></span><span class="code-line line-number" line="186"><span class="token string">            VMID=<span class="token variable">$vmid</span>
-</span></span><span class="code-line line-number" line="187"><span class="token string">            echo "</span><span class="token variable">$VMID</span><span class="token string">" > "</span><span class="token variable">$TMP_FILE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="188"><span class="token string">            CLEANUP_VMID=<span class="token variable">$VMID</span>
-</span></span><span class="code-line line-number" line="189"><span class="token string">            log_ok "</span>使用 VMID: <span class="token variable">$VMID</span><span class="token string">"
-</span></span><span class="code-line line-number" line="190"><span class="token string">            break
-</span></span><span class="code-line line-number" line="191"><span class="token string">        else
-</span></span><span class="code-line line-number" line="192"><span class="token string">            log_warn "</span>VMID 必须是 <span class="token number">100</span>~999999999 的数字<span class="token string">"
-</span></span><span class="code-line line-number" line="193"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="194"><span class="token string">    done
-</span></span><span class="code-line line-number" line="195"><span class="token string">}
-</span></span><span class="code-line line-number" line="196"><span class="token string">
-</span></span><span class="code-line line-number" line="197"><span class="token string">get_name() {
-</span></span><span class="code-line line-number" line="198"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="199"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入虚拟机名称 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" name
-</span></span><span class="code-line line-number" line="200"><span class="token string">        if [[ "</span><span class="token variable">$name</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="201"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="202"><span class="token string">        elif [[ -n "</span><span class="token variable">$name</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="203"><span class="token string">            VM_NAME="</span><span class="token variable">$name</span><span class="token string">"
-</span></span><span class="code-line line-number" line="204"><span class="token string">            log_ok "</span>虚拟机名称: <span class="token variable">$VM_NAME</span><span class="token string">"
-</span></span><span class="code-line line-number" line="205"><span class="token string">            break
-</span></span><span class="code-line line-number" line="206"><span class="token string">        else
-</span></span><span class="code-line line-number" line="207"><span class="token string">            log_warn "</span>名称不能为空<span class="token string">"
-</span></span><span class="code-line line-number" line="208"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="209"><span class="token string">    done
-</span></span><span class="code-line line-number" line="210"><span class="token string">}
-</span></span><span class="code-line line-number" line="211"><span class="token string">
-</span></span><span class="code-line line-number" line="212"><span class="token string">get_memory() {
-</span></span><span class="code-line line-number" line="213"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="214"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入内存大小(MB，例如 4096) (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" mem
-</span></span><span class="code-line line-number" line="215"><span class="token string">        if [[ "</span><span class="token variable">$mem</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="216"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="217"><span class="token string">        elif [[ "</span><span class="token variable">$mem</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$mem</span><span class="token string">" -ge 512 ]; then
-</span></span><span class="code-line line-number" line="218"><span class="token string">            MEMORY=<span class="token variable">$mem</span>
-</span></span><span class="code-line line-number" line="219"><span class="token string">            log_ok "</span>内存: <span class="token variable">${MEMORY}</span>MB<span class="token string">"
-</span></span><span class="code-line line-number" line="220"><span class="token string">            break
-</span></span><span class="code-line line-number" line="221"><span class="token string">        else
-</span></span><span class="code-line line-number" line="222"><span class="token string">            log_warn "</span>请输入至少 <span class="token number">512</span> 的数字<span class="token string">"
-</span></span><span class="code-line line-number" line="223"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="224"><span class="token string">    done
-</span></span><span class="code-line line-number" line="225"><span class="token string">}
-</span></span><span class="code-line line-number" line="226"><span class="token string">
-</span></span><span class="code-line line-number" line="227"><span class="token string">get_cores() {
-</span></span><span class="code-line line-number" line="228"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="229"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入CPU核心数 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" cores
-</span></span><span class="code-line line-number" line="230"><span class="token string">        if [[ "</span><span class="token variable">$cores</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="231"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="232"><span class="token string">        elif [[ "</span><span class="token variable">$cores</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$cores</span><span class="token string">" -ge 1 ]; then
-</span></span><span class="code-line line-number" line="233"><span class="token string">            CORES=<span class="token variable">$cores</span>
-</span></span><span class="code-line line-number" line="234"><span class="token string">            log_ok "</span>CPU核心数: <span class="token variable">$CORES</span><span class="token string">"
-</span></span><span class="code-line line-number" line="235"><span class="token string">            break
-</span></span><span class="code-line line-number" line="236"><span class="token string">        else
-</span></span><span class="code-line line-number" line="237"><span class="token string">            log_warn "</span>请输入正整数<span class="token string">"
-</span></span><span class="code-line line-number" line="238"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="239"><span class="token string">    done
-</span></span><span class="code-line line-number" line="240"><span class="token string">}
-</span></span><span class="code-line line-number" line="241"><span class="token string">
-</span></span><span class="code-line line-number" line="242"><span class="token string">get_storage() {
-</span></span><span class="code-line line-number" line="243"><span class="token string">    mapfile -t storages &#x3C; &#x3C;(pvesm status -content images 2>/dev/null | awk 'NR>1 {print <span class="token variable">$1</span>}')
-</span></span><span class="code-line line-number" line="244"><span class="token string">    if [ <span class="token variable">${<span class="token operator">#</span>storages<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> -eq 0 ]; then
-</span></span><span class="code-line line-number" line="245"><span class="token string">        log_warn "</span>未找到可用的存储池，将使用默认 local-lvm<span class="token string">"
-</span></span><span class="code-line line-number" line="246"><span class="token string">        STORAGE="</span>local-lvm<span class="token string">"
-</span></span><span class="code-line line-number" line="247"><span class="token string">        log_ok "</span>存储池: <span class="token variable">$STORAGE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="248"><span class="token string">        return
-</span></span><span class="code-line line-number" line="249"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="250"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="251"><span class="token string">        echo -e "</span>"
-</span><span class="code-line line-number" line="252">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 可用存储池<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="253">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="254">        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>storages<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="255">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span><span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>. <span class="token variable">${gl_bai}</span><span class="token variable">${storages<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="256">        <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="257">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="258">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入序号或存储池名称 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" storage_choice
-</span></span><span class="code-line line-number" line="259"><span class="token string">        if [[ "</span><span class="token variable">$storage_choice</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="260"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="261"><span class="token string">        elif [[ "</span><span class="token variable">$storage_choice</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$storage_choice</span><span class="token string">" -ge 1 ] &#x26;&#x26; [ "</span><span class="token variable">$storage_choice</span><span class="token string">" -le <span class="token variable">${<span class="token operator">#</span>storages<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> ]; then
-</span></span><span class="code-line line-number" line="262"><span class="token string">            STORAGE="</span><span class="token variable">${storages<span class="token punctuation">[</span>$((storage_choice-1))<span class="token punctuation">]</span>}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="263"><span class="token string">            break
-</span></span><span class="code-line line-number" line="264"><span class="token string">        else
-</span></span><span class="code-line line-number" line="265"><span class="token string">            if pvesm status -content images 2>/dev/null | awk '{print <span class="token variable">$1</span>}' | grep -qx "</span><span class="token variable">$storage_choice</span><span class="token string">"; then
-</span></span><span class="code-line line-number" line="266"><span class="token string">                STORAGE="</span><span class="token variable">$storage_choice</span><span class="token string">"
-</span></span><span class="code-line line-number" line="267"><span class="token string">                break
-</span></span><span class="code-line line-number" line="268"><span class="token string">            else
-</span></span><span class="code-line line-number" line="269"><span class="token string">                log_warn "</span>无效的存储池名称或序号<span class="token string">"
-</span></span><span class="code-line line-number" line="270"><span class="token string">                continue
-</span></span><span class="code-line line-number" line="271"><span class="token string">            fi
-</span></span><span class="code-line line-number" line="272"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="273"><span class="token string">    done
-</span></span><span class="code-line line-number" line="274"><span class="token string">    log_ok "</span>存储池: <span class="token variable">$STORAGE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="275"><span class="token string">}
-</span></span><span class="code-line line-number" line="276"><span class="token string">
-</span></span><span class="code-line line-number" line="277"><span class="token string">get_bridge() {
-</span></span><span class="code-line line-number" line="278"><span class="token string">    mapfile -t bridges &#x3C; &#x3C;(ip -br link show type bridge | awk '{print <span class="token variable">$1</span>}')
-</span></span><span class="code-line line-number" line="279"><span class="token string">    if [ <span class="token variable">${<span class="token operator">#</span>bridges<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> -eq 0 ]; then
-</span></span><span class="code-line line-number" line="280"><span class="token string">        log_warn "</span>未找到网桥，将使用默认 vmbr0<span class="token string">"
-</span></span><span class="code-line line-number" line="281"><span class="token string">        BRIDGE="</span>vmbr0<span class="token string">"
-</span></span><span class="code-line line-number" line="282"><span class="token string">        log_ok "</span>网桥: <span class="token variable">$BRIDGE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="283"><span class="token string">        return
-</span></span><span class="code-line line-number" line="284"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="285"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="286"><span class="token string">        echo -e "</span>"
-</span><span class="code-line line-number" line="287">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 可用网桥<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="288">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="289">        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>bridges<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="290">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span><span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>. <span class="token variable">${gl_bai}</span><span class="token variable">${bridges<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="291">        <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="292">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="293">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入序号或网桥名称 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" bridge_choice
-</span></span><span class="code-line line-number" line="294"><span class="token string">        if [[ "</span><span class="token variable">$bridge_choice</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="295"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="296"><span class="token string">        elif [[ "</span><span class="token variable">$bridge_choice</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$bridge_choice</span><span class="token string">" -ge 1 ] &#x26;&#x26; [ "</span><span class="token variable">$bridge_choice</span><span class="token string">" -le <span class="token variable">${<span class="token operator">#</span>bridges<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> ]; then
-</span></span><span class="code-line line-number" line="297"><span class="token string">            BRIDGE="</span><span class="token variable">${bridges<span class="token punctuation">[</span>$((bridge_choice-1))<span class="token punctuation">]</span>}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="298"><span class="token string">            break
-</span></span><span class="code-line line-number" line="299"><span class="token string">        else
-</span></span><span class="code-line line-number" line="300"><span class="token string">            if ip -br link show type bridge | awk '{print <span class="token variable">$1</span>}' | grep -qx "</span><span class="token variable">$bridge_choice</span><span class="token string">"; then
-</span></span><span class="code-line line-number" line="301"><span class="token string">                BRIDGE="</span><span class="token variable">$bridge_choice</span><span class="token string">"
-</span></span><span class="code-line line-number" line="302"><span class="token string">                break
-</span></span><span class="code-line line-number" line="303"><span class="token string">            else
-</span></span><span class="code-line line-number" line="304"><span class="token string">                log_warn "</span>无效的网桥名称或序号<span class="token string">"
-</span></span><span class="code-line line-number" line="305"><span class="token string">                continue
-</span></span><span class="code-line line-number" line="306"><span class="token string">            fi
-</span></span><span class="code-line line-number" line="307"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="308"><span class="token string">    done
-</span></span><span class="code-line line-number" line="309"><span class="token string">    log_ok "</span>网桥: <span class="token variable">$BRIDGE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="310"><span class="token string">}
-</span></span><span class="code-line line-number" line="311"><span class="token string">
-</span></span><span class="code-line line-number" line="312"><span class="token string">get_bios() {
-</span></span><span class="code-line line-number" line="313"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="314"><span class="token string">        echo -e "</span>"
-</span><span class="code-line line-number" line="315">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> BIOS 类型<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="316">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="317">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1. <span class="token variable">${gl_bai}</span>seabios (传统BIOS)"</span>
-</span><span class="code-line line-number" line="318">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2. <span class="token variable">${gl_bai}</span>ovmf (UEFI)"</span>
-</span><span class="code-line line-number" line="319">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="320">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入你的选择 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" bios_choice
-</span></span><span class="code-line line-number" line="321"><span class="token string">        case "</span><span class="token variable">$bios_choice</span><span class="token string">" in
-</span></span><span class="code-line line-number" line="322"><span class="token string">            0) exit_script ;;
-</span></span><span class="code-line line-number" line="323"><span class="token string">            1) BIOS="</span>seabios<span class="token string">"; MACHINE="</span>pc<span class="token string">"; break ;;
-</span></span><span class="code-line line-number" line="324"><span class="token string">            2) BIOS="</span>ovmf<span class="token string">"; MACHINE="</span>q35<span class="token string">"; break ;;
-</span></span><span class="code-line line-number" line="325"><span class="token string">            *) handle_invalid_input ;;
-</span></span><span class="code-line line-number" line="326"><span class="token string">        esac
-</span></span><span class="code-line line-number" line="327"><span class="token string">    done
-</span></span><span class="code-line line-number" line="328"><span class="token string">    log_ok "</span>BIOS: <span class="token variable">$BIOS</span>, 机器类型: <span class="token variable">$MACHINE</span><span class="token string">"
-</span></span><span class="code-line line-number" line="329"><span class="token string">}
-</span></span><span class="code-line line-number" line="330"><span class="token string">
-</span></span><span class="code-line line-number" line="331"><span class="token string">get_disk_size() {
-</span></span><span class="code-line line-number" line="332"><span class="token string">    if [ "</span><span class="token variable">$MIRROR_TYPE</span><span class="token string">" != "</span>iso<span class="token string">" ]; then
-</span></span><span class="code-line line-number" line="333"><span class="token string">        return
-</span></span><span class="code-line line-number" line="334"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="335"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="336"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入系统盘大小(GB，例如 32) (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" size
-</span></span><span class="code-line line-number" line="337"><span class="token string">        if [[ "</span><span class="token variable">$size</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="338"><span class="token string">            exit_script
-</span></span><span class="code-line line-number" line="339"><span class="token string">        elif [[ "</span><span class="token variable">$size</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$size</span><span class="token string">" -ge 1 ]; then
-</span></span><span class="code-line line-number" line="340"><span class="token string">            DISK_SIZE_GB="</span><span class="token variable">$size</span><span class="token string">"
-</span></span><span class="code-line line-number" line="341"><span class="token string">            log_ok "</span>系统盘大小: <span class="token variable">${DISK_SIZE_GB}</span>GB<span class="token string">"
-</span></span><span class="code-line line-number" line="342"><span class="token string">            break
-</span></span><span class="code-line line-number" line="343"><span class="token string">        else
-</span></span><span class="code-line line-number" line="344"><span class="token string">            log_warn "</span>请输入至少 <span class="token number">1</span> 的正整数<span class="token string">"
-</span></span><span class="code-line line-number" line="345"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="346"><span class="token string">    done
-</span></span><span class="code-line line-number" line="347"><span class="token string">}
-</span></span><span class="code-line line-number" line="348"><span class="token string">
-</span></span><span class="code-line line-number" line="349"><span class="token string">create_vm() {
-</span></span><span class="code-line line-number" line="350"><span class="token string">    echo -e "</span>"
-</span><span class="code-line line-number" line="351">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 开始创建虚拟机<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="352">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="353">
-</span><span class="code-line line-number" line="354">    <span class="token keyword">if</span> <span class="token operator">!</span> qm create <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="355">        <span class="token parameter variable">--name</span> <span class="token string">"<span class="token variable">$VM_NAME</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="356">        <span class="token parameter variable">--memory</span> <span class="token string">"<span class="token variable">$MEMORY</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="357">        <span class="token parameter variable">--cores</span> <span class="token string">"<span class="token variable">$CORES</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="358">        <span class="token parameter variable">--cpu</span> <span class="token function">host</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="359">        <span class="token parameter variable">--net0</span> <span class="token string">"virtio,bridge=<span class="token variable">$BRIDGE</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="360">        <span class="token parameter variable">--bios</span> <span class="token string">"<span class="token variable">$BIOS</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="361">        <span class="token parameter variable">--machine</span> <span class="token string">"<span class="token variable">$MACHINE</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="362">        <span class="token parameter variable">--scsihw</span> virtio-scsi-single<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="363">        log_error <span class="token string">"创建虚拟机基础配置失败"</span>
-</span><span class="code-line line-number" line="364">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="365">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="366">    log_ok <span class="token string">"基础配置完成"</span>
-</span><span class="code-line line-number" line="367">
-</span><span class="code-line line-number" line="368">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="369">        log_info <span class="token string">"处理 ISO 镜像：挂载为光驱，并创建空硬盘"</span>
-</span><span class="code-line line-number" line="370">        
-</span><span class="code-line line-number" line="371">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--ide2</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>,media=cdrom"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="372">            log_error <span class="token string">"挂载 ISO 到光驱失败"</span>
-</span><span class="code-line line-number" line="373">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="374">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="375">        log_ok <span class="token string">"ISO 已挂载为光驱 (ide2)"</span>
-</span><span class="code-line line-number" line="376">        
-</span><span class="code-line line-number" line="377">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">disk_vol</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${STORAGE}</span>:<span class="token variable">${DISK_SIZE_GB}</span>,format=qcow2"</span>
-</span><span class="code-line line-number" line="378">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--scsi0</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="379">            log_error <span class="token string">"创建并附加空硬盘失败"</span>
-</span><span class="code-line line-number" line="380">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="381">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="382">        log_ok <span class="token string">"空硬盘已创建并附加到 scsi0 (<span class="token variable">${DISK_SIZE_GB}</span>GB)"</span>
-</span><span class="code-line line-number" line="383">        
-</span><span class="code-line line-number" line="384">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--boot</span> <span class="token assign-left variable">order</span><span class="token operator">=</span>ide2<span class="token punctuation">;</span>scsi0<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="385">            log_error <span class="token string">"设置启动顺序失败"</span>
-</span><span class="code-line line-number" line="386">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="387">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="388">        log_ok <span class="token string">"启动顺序: 光驱(ide2) -> 硬盘(scsi0)"</span>
-</span><span class="code-line line-number" line="389">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="390">        log_info <span class="token string">"导入磁盘镜像: <span class="token variable">$IMAGE_PATH</span> -> 存储 <span class="token variable">$STORAGE</span>"</span>
-</span><span class="code-line line-number" line="391">        <span class="token builtin class-name">local</span> import_output
-</span><span class="code-line line-number" line="392">        <span class="token assign-left variable">import_output</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>qm importdisk <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span> <span class="token string">"<span class="token variable">$STORAGE</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="393">        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="394">            log_error <span class="token string">"导入磁盘失败: <span class="token variable">$import_output</span>"</span>
-</span><span class="code-line line-number" line="395">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="396">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="397">        log_ok <span class="token string">"磁盘导入成功"</span>
-</span><span class="code-line line-number" line="398">        
-</span><span class="code-line line-number" line="399">        <span class="token builtin class-name">local</span> disk_vol
-</span><span class="code-line line-number" line="400">        <span class="token assign-left variable">disk_vol</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$import_output</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oP</span> <span class="token string">"imported as '\K[^']+"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="401">        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="402">            <span class="token assign-left variable">disk_vol</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>qm config <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oP</span> <span class="token string">"unused0:\s*\K\S+"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="403">            <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="404">                log_error <span class="token string">"无法获取导入的磁盘卷名"</span>
-</span><span class="code-line line-number" line="405">                <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="406">            <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="407">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="408">        log_info <span class="token string">"磁盘卷: <span class="token variable">$disk_vol</span>"</span>
-</span><span class="code-line line-number" line="409">        
-</span><span class="code-line line-number" line="410">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--scsi0</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="411">            log_error <span class="token string">"附加磁盘失败"</span>
-</span><span class="code-line line-number" line="412">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="413">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="414">        log_ok <span class="token string">"磁盘已附加到 scsi0"</span>
-</span><span class="code-line line-number" line="415">        
-</span><span class="code-line line-number" line="416">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--boot</span> <span class="token assign-left variable">order</span><span class="token operator">=</span>scsi0<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="417">            log_error <span class="token string">"设置启动顺序失败"</span>
-</span><span class="code-line line-number" line="418">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="419">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="420">        log_ok <span class="token string">"启动顺序: 硬盘(scsi0)"</span>
-</span><span class="code-line line-number" line="421">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="422">
-</span><span class="code-line line-number" line="423">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$BIOS</span>"</span> <span class="token operator">=</span> <span class="token string">"ovmf"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="424">        log_info <span class="token string">"添加 EFI 磁盘 (4MB)"</span>
-</span><span class="code-line line-number" line="425">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--efidisk0</span> <span class="token string">"<span class="token variable">${STORAGE}</span>:1,format=raw,efitype=4m"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="426">            log_warn <span class="token string">"添加 EFI 磁盘失败，您稍后可手动添加"</span>
-</span><span class="code-line line-number" line="427">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="428">            log_ok <span class="token string">"EFI 磁盘已添加"</span>
-</span><span class="code-line line-number" line="429">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="430">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="431">
-</span><span class="code-line line-number" line="432">    <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--serial0</span> socket<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="433">        log_warn <span class="token string">"添加串口控制台失败"</span>
-</span><span class="code-line line-number" line="434">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="435">        log_ok <span class="token string">"串口控制台已启用"</span>
-</span><span class="code-line line-number" line="436">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="437">
-</span><span class="code-line line-number" line="438">    <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--agent</span> <span class="token assign-left variable">enabled</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="439">        log_warn <span class="token string">"启用 QEMU Guest Agent 失败"</span>
-</span><span class="code-line line-number" line="440">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="441">        log_ok <span class="token string">"QEMU Guest Agent 已启用"</span>
-</span><span class="code-line line-number" line="442">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="443">
-</span><span class="code-line line-number" line="444">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="445">    log_ok <span class="token string">"虚拟机 <span class="token variable">$VM_NAME</span> (VMID: <span class="token variable">$VMID</span>) 创建成功！"</span>
-</span><span class="code-line line-number" line="446">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="447">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>提示: 虚拟机将从 ISO 光驱启动，请完成操作系统安装。安装后系统将自动从硬盘启动。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="448">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="449">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="450">
-</span><span class="code-line line-number" line="451">    <span class="token assign-left variable">CLEANUP_VMID</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="452">    <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="453"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="454">
-</span><span class="code-line line-number" line="455"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="456">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="457">    root_use
-</span><span class="code-line line-number" line="458">    <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> qm <span class="token operator">&#x26;></span> /dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="459">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="460">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> Proxmox VE 交互式虚拟机创建工具<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="461">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="462">        log_error <span class="token string">"未检测到Proxmox VE环境，请确保脚本在PVE节点上运行"</span>
-</span><span class="code-line line-number" line="463">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="464">        break_end
-</span><span class="code-line line-number" line="465">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="466">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="467">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Proxmox VE 交互式虚拟机创建工具<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="468">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="469">
-</span><span class="code-line line-number" line="470">    <span class="token keyword">for</span> <span class="token for-or-select variable">cmd</span> <span class="token keyword">in</span> qm pvesm <span class="token function">ip</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="471">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token string">"<span class="token variable">$cmd</span>"</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="472">            log_error <span class="token string">"命令 <span class="token variable">$cmd</span> 未找到，请在 Proxmox VE 环境中运行"</span>
-</span><span class="code-line line-number" line="473">            exit_script
-</span><span class="code-line line-number" line="474">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="475">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="476">
-</span><span class="code-line line-number" line="477">    select_mirror
-</span><span class="code-line line-number" line="478">    get_vmid
-</span><span class="code-line line-number" line="479">    get_name
-</span><span class="code-line line-number" line="480">    get_memory
-</span><span class="code-line line-number" line="481">    get_cores
-</span><span class="code-line line-number" line="482">    get_storage
-</span><span class="code-line line-number" line="483">    get_bridge
-</span><span class="code-line line-number" line="484">    get_bios
-</span><span class="code-line line-number" line="485">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="486">        get_disk_size
-</span><span class="code-line line-number" line="487">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="488">
-</span><span class="code-line line-number" line="489">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="490">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 配置确认<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="491">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="492">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>镜像类型:   <span class="token variable">${gl_lv}</span><span class="token variable">$MIRROR_TYPE</span>"</span>
-</span><span class="code-line line-number" line="493">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>镜像路径:   <span class="token variable">${gl_lv}</span><span class="token variable">$IMAGE_PATH</span>"</span>
-</span><span class="code-line line-number" line="494">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>VMID:       <span class="token variable">${gl_lv}</span><span class="token variable">$VMID</span>"</span>
-</span><span class="code-line line-number" line="495">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>名称:       <span class="token variable">${gl_lv}</span><span class="token variable">$VM_NAME</span>"</span>
-</span><span class="code-line line-number" line="496">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>内存:       <span class="token variable">${gl_lv}</span><span class="token variable">${MEMORY}</span>MB"</span>
-</span><span class="code-line line-number" line="497">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>CPU核心:    <span class="token variable">${gl_lv}</span><span class="token variable">$CORES</span>"</span>
-</span><span class="code-line line-number" line="498">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>存储池:     <span class="token variable">${gl_lv}</span><span class="token variable">$STORAGE</span>"</span>
-</span><span class="code-line line-number" line="499">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>网桥:       <span class="token variable">${gl_lv}</span><span class="token variable">$BRIDGE</span>"</span>
-</span><span class="code-line line-number" line="500">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>BIOS:       <span class="token variable">${gl_lv}</span><span class="token variable">$BIOS</span>"</span>
-</span><span class="code-line line-number" line="501">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>机器类型:   <span class="token variable">${gl_lv}</span><span class="token variable">$MACHINE</span>"</span>
-</span><span class="code-line line-number" line="502">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="503">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>系统盘大小: <span class="token variable">${gl_lv}</span><span class="token variable">${DISK_SIZE_GB}</span>GB"</span>
-</span><span class="code-line line-number" line="504">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="505">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="506">
-</span><span class="code-line line-number" line="507">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>确认以上信息并开始创建? (<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" confirm
-</span></span><span class="code-line line-number" line="508"><span class="token string">    case "</span><span class="token variable">$confirm</span><span class="token string">" in
-</span></span><span class="code-line line-number" line="509"><span class="token string">        [Yy]) create_vm ;;
-</span></span><span class="code-line line-number" line="510"><span class="token string">        [Nn]) 
-</span></span><span class="code-line line-number" line="511"><span class="token string">            log_info "</span>已取消创建<span class="token string">"
-</span></span><span class="code-line line-number" line="512"><span class="token string">            exit_animation
-</span></span><span class="code-line line-number" line="513"><span class="token string">            exit 0
-</span></span><span class="code-line line-number" line="514"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="515"><span class="token string">        *) handle_y_n; main ;;
-</span></span><span class="code-line line-number" line="516"><span class="token string">    esac
-</span></span><span class="code-line line-number" line="517"><span class="token string">
-</span></span><span class="code-line line-number" line="518"><span class="token string">    if [ <span class="token variable">$?</span> -eq 0 ]; then
-</span></span><span class="code-line line-number" line="519"><span class="token string">        break_end
-</span></span><span class="code-line line-number" line="520"><span class="token string">    else
-</span></span><span class="code-line line-number" line="521"><span class="token string">        log_error "</span>创建过程中出现错误，请检查日志<span class="token string">"
-</span></span><span class="code-line line-number" line="522"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按回车键退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span><span class="token string">"
-</span></span><span class="code-line line-number" line="523"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="524"><span class="token string">    exit_script
-</span></span><span class="code-line line-number" line="525"><span class="token string">}
-</span></span><span class="code-line line-number" line="526"><span class="token string">
-</span></span><span class="code-line line-number" line="527"><span class="token string">main "</span><span class="token variable">$@</span>"
+</span><span class="code-line line-number" line="51">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="52">    sleep_fractional <span class="token number">1</span>
+</span><span class="code-line line-number" line="53">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="54">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="55">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K"</span>
+</span><span class="code-line line-number" line="56">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="57"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="58">
+</span><span class="code-line line-number" line="59"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="60">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="61">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="62">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="63">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="64">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="65">    <span class="token function">sleep</span> <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="66">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="67"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="68">
+</span><span class="code-line line-number" line="69"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="70">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="71">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="72">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="73">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="74">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="75"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="76">
+</span><span class="code-line line-number" line="77"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="78">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级选单}</span>"</span>
+</span><span class="code-line line-number" line="79">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回到 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span><span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="80">    <span class="token function">sleep</span> <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="81">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="82">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="83"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="84">
+</span><span class="code-line line-number" line="85"><span class="token function-name function">root_use</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="86">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="87">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token environment constant">$EUID</span>"</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="88">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token variable">${gl_zi}</span>>>> ROOT登录检查 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="89">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="90">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>提示: <span class="token variable">${gl_bai}</span>该功能需要root用户才能运行！"</span>
+</span><span class="code-line line-number" line="91">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="92">        break_end
+</span><span class="code-line line-number" line="93">        mobufan
+</span><span class="code-line line-number" line="94">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="95">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="96">    <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="97"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="98">
+</span><span class="code-line line-number" line="99"><span class="token assign-left variable">TMP_FILE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>mktemp<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="100"><span class="token assign-left variable">CLEANUP_VMID</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="101"><span class="token function-name function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="102">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$CLEANUP_VMID</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> qm status <span class="token string">"<span class="token variable">$CLEANUP_VMID</span>"</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="103">        <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="104">        log_warn <span class="token string">"检测到未完成创建的虚拟机 VMID=<span class="token variable">$CLEANUP_VMID</span>"</span>
+</span><span class="code-line line-number" line="105">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>是否删除该虚拟机？(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" confirm
+</span></span><span class="code-line line-number" line="106"><span class="token string">        case "</span><span class="token variable">$confirm</span><span class="token string">" in
+</span></span><span class="code-line line-number" line="107"><span class="token string">            [Yy])
+</span></span><span class="code-line line-number" line="108"><span class="token string">                qm destroy "</span><span class="token variable">$CLEANUP_VMID</span><span class="token string">" --purge &#x26;>/dev/null
+</span></span><span class="code-line line-number" line="109"><span class="token string">                log_ok "</span>已删除虚拟机 <span class="token variable">$CLEANUP_VMID</span><span class="token string">"
+</span></span><span class="code-line line-number" line="110"><span class="token string">                ;;
+</span></span><span class="code-line line-number" line="111"><span class="token string">            *)
+</span></span><span class="code-line line-number" line="112"><span class="token string">                log_info "</span>保留虚拟机 <span class="token variable">$CLEANUP_VMID</span>，请手动处理<span class="token string">"
+</span></span><span class="code-line line-number" line="113"><span class="token string">                ;;
+</span></span><span class="code-line line-number" line="114"><span class="token string">        esac
+</span></span><span class="code-line line-number" line="115"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="116"><span class="token string">    [ -f "</span><span class="token variable">$TMP_FILE</span><span class="token string">" ] &#x26;&#x26; rm -f "</span><span class="token variable">$TMP_FILE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="117"><span class="token string">}
+</span></span><span class="code-line line-number" line="118"><span class="token string">trap cleanup EXIT INT TERM
+</span></span><span class="code-line line-number" line="119"><span class="token string">
+</span></span><span class="code-line line-number" line="120"><span class="token string">select_mirror() {
+</span></span><span class="code-line line-number" line="121"><span class="token string">    local img_dir="</span>/var/lib/vz/template/iso<span class="token string">"
+</span></span><span class="code-line line-number" line="122"><span class="token string">    if [ ! -d "</span><span class="token variable">$img_dir</span><span class="token string">" ]; then
+</span></span><span class="code-line line-number" line="123"><span class="token string">        log_error "</span>镜像目录不存在: <span class="token variable">$img_dir</span><span class="token string">"
+</span></span><span class="code-line line-number" line="124"><span class="token string">        exit_script
+</span></span><span class="code-line line-number" line="125"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="126"><span class="token string">    mapfile -t images &#x3C; &#x3C;(find "</span><span class="token variable">$img_dir</span><span class="token string">" -maxdepth 1 -type f \( -iname "</span>*.qcow2<span class="token string">" -o -iname "</span>*.raw<span class="token string">" -o -iname "</span>*.img<span class="token string">" -o -iname "</span>*.iso<span class="token string">" \) | sort)
+</span></span><span class="code-line line-number" line="127"><span class="token string">    if [ <span class="token variable">${<span class="token operator">#</span>images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> -eq 0 ]; then
+</span></span><span class="code-line line-number" line="128"><span class="token string">        log_error "</span>镜像目录下没有找到支持的镜像文件<span class="token string">"
+</span></span><span class="code-line line-number" line="129"><span class="token string">        exit_script
+</span></span><span class="code-line line-number" line="130"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="131"><span class="token string">    
+</span></span><span class="code-line line-number" line="132"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="133"><span class="token string">        echo -e "</span>"
+</span><span class="code-line line-number" line="134">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 选择镜像文件<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="135">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="136">        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="137">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">fname</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">${images<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="138">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span><span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>. <span class="token variable">${gl_bai}</span><span class="token variable">$fname</span>"</span>
+</span><span class="code-line line-number" line="139">        <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="140">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="141">        
+</span><span class="code-line line-number" line="142">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">original_dir</span><span class="token operator">=</span><span class="token string">"<span class="token environment constant">$PWD</span>"</span>
+</span><span class="code-line line-number" line="143">        <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$img_dir</span>"</span> <span class="token operator">||</span> <span class="token punctuation">{</span> log_error <span class="token string">"无法进入目录 <span class="token variable">$img_dir</span>"</span><span class="token punctuation">;</span> exit_script<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="144">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请选择镜像序号，或输入文件名(可Tab补全，<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" choice
+</span></span><span class="code-line line-number" line="145"><span class="token string">        cd "</span><span class="token variable">$original_dir</span><span class="token string">" || exit_script
+</span></span><span class="code-line line-number" line="146"><span class="token string">        
+</span></span><span class="code-line line-number" line="147"><span class="token string">        if [[ "</span><span class="token variable">$choice</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="148"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="149"><span class="token string">        elif [[ "</span><span class="token variable">$choice</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$choice</span><span class="token string">" -ge 1 ] &#x26;&#x26; [ "</span><span class="token variable">$choice</span><span class="token string">" -le <span class="token variable">${<span class="token operator">#</span>images<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> ]; then
+</span></span><span class="code-line line-number" line="150"><span class="token string">            IMAGE_PATH="</span><span class="token variable">${images<span class="token punctuation">[</span>$((choice-1))<span class="token punctuation">]</span>}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="151"><span class="token string">            log_ok "</span>已选择镜像: <span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span><span class="token variable">)</span></span><span class="token string">"
+</span></span><span class="code-line line-number" line="152"><span class="token string">            break
+</span></span><span class="code-line line-number" line="153"><span class="token string">        else
+</span></span><span class="code-line line-number" line="154"><span class="token string">            local test_path="</span><span class="token variable">$img_dir</span>/<span class="token variable">$choice</span><span class="token string">"
+</span></span><span class="code-line line-number" line="155"><span class="token string">            if [ -f "</span><span class="token variable">$test_path</span><span class="token string">" ]; then
+</span></span><span class="code-line line-number" line="156"><span class="token string">                IMAGE_PATH="</span><span class="token variable">$test_path</span><span class="token string">"
+</span></span><span class="code-line line-number" line="157"><span class="token string">                log_ok "</span>已选择镜像: <span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span><span class="token variable">)</span></span><span class="token string">"
+</span></span><span class="code-line line-number" line="158"><span class="token string">                break
+</span></span><span class="code-line line-number" line="159"><span class="token string">            else
+</span></span><span class="code-line line-number" line="160"><span class="token string">                log_warn "</span>文件不存在: <span class="token variable">$test_path</span><span class="token string">"
+</span></span><span class="code-line line-number" line="161"><span class="token string">                sleep 1
+</span></span><span class="code-line line-number" line="162"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="163"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="164"><span class="token string">    done
+</span></span><span class="code-line line-number" line="165"><span class="token string">
+</span></span><span class="code-line line-number" line="166"><span class="token string">    local ext="</span><span class="token variable">${IMAGE_PATH<span class="token operator">##</span>*.}</span>"
+</span><span class="code-line line-number" line="167">    <span class="token assign-left variable">ext</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$ext</span>"</span> <span class="token operator">|</span> <span class="token function">tr</span> <span class="token string">'[:upper:]'</span> <span class="token string">'[:lower:]'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="168">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$ext</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="169">        <span class="token assign-left variable">MIRROR_TYPE</span><span class="token operator">=</span><span class="token string">"iso"</span>
+</span><span class="code-line line-number" line="170">        log_info <span class="token string">"检测到 ISO 镜像，将作为安装光盘处理（自动创建空硬盘并设置光驱启动）"</span>
+</span><span class="code-line line-number" line="171">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="172">        <span class="token assign-left variable">MIRROR_TYPE</span><span class="token operator">=</span><span class="token string">"disk"</span>
+</span><span class="code-line line-number" line="173">        log_info <span class="token string">"检测到磁盘镜像，将直接导入为系统盘"</span>
+</span><span class="code-line line-number" line="174">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="175"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="176">
+</span><span class="code-line line-number" line="177"><span class="token function-name function">get_vmid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="178">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="179">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入虚拟机ID (VMID) (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" vmid
+</span></span><span class="code-line line-number" line="180"><span class="token string">        if [[ "</span><span class="token variable">$vmid</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="181"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="182"><span class="token string">        elif [[ "</span><span class="token variable">$vmid</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$vmid</span><span class="token string">" -ge 100 ] &#x26;&#x26; [ "</span><span class="token variable">$vmid</span><span class="token string">" -le 999999999 ]; then
+</span></span><span class="code-line line-number" line="183"><span class="token string">            if qm status "</span><span class="token variable">$vmid</span><span class="token string">" &#x26;>/dev/null; then
+</span></span><span class="code-line line-number" line="184"><span class="token string">                log_warn "</span>VMID <span class="token variable">$vmid</span> 已存在，请重新输入<span class="token string">"
+</span></span><span class="code-line line-number" line="185"><span class="token string">                continue
+</span></span><span class="code-line line-number" line="186"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="187"><span class="token string">            VMID=<span class="token variable">$vmid</span>
+</span></span><span class="code-line line-number" line="188"><span class="token string">            echo "</span><span class="token variable">$VMID</span><span class="token string">" > "</span><span class="token variable">$TMP_FILE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="189"><span class="token string">            CLEANUP_VMID=<span class="token variable">$VMID</span>
+</span></span><span class="code-line line-number" line="190"><span class="token string">            log_ok "</span>使用 VMID: <span class="token variable">$VMID</span><span class="token string">"
+</span></span><span class="code-line line-number" line="191"><span class="token string">            break
+</span></span><span class="code-line line-number" line="192"><span class="token string">        else
+</span></span><span class="code-line line-number" line="193"><span class="token string">            log_warn "</span>VMID 必须是 <span class="token number">100</span>~999999999 的数字<span class="token string">"
+</span></span><span class="code-line line-number" line="194"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="195"><span class="token string">    done
+</span></span><span class="code-line line-number" line="196"><span class="token string">}
+</span></span><span class="code-line line-number" line="197"><span class="token string">
+</span></span><span class="code-line line-number" line="198"><span class="token string">get_name() {
+</span></span><span class="code-line line-number" line="199"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="200"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入虚拟机名称 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" name
+</span></span><span class="code-line line-number" line="201"><span class="token string">        if [[ "</span><span class="token variable">$name</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="202"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="203"><span class="token string">        elif [[ -n "</span><span class="token variable">$name</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="204"><span class="token string">            VM_NAME="</span><span class="token variable">$name</span><span class="token string">"
+</span></span><span class="code-line line-number" line="205"><span class="token string">            log_ok "</span>虚拟机名称: <span class="token variable">$VM_NAME</span><span class="token string">"
+</span></span><span class="code-line line-number" line="206"><span class="token string">            break
+</span></span><span class="code-line line-number" line="207"><span class="token string">        else
+</span></span><span class="code-line line-number" line="208"><span class="token string">            log_warn "</span>名称不能为空<span class="token string">"
+</span></span><span class="code-line line-number" line="209"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="210"><span class="token string">    done
+</span></span><span class="code-line line-number" line="211"><span class="token string">}
+</span></span><span class="code-line line-number" line="212"><span class="token string">
+</span></span><span class="code-line line-number" line="213"><span class="token string">get_memory() {
+</span></span><span class="code-line line-number" line="214"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="215"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入内存大小(MB，例如 4096) (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" mem
+</span></span><span class="code-line line-number" line="216"><span class="token string">        if [[ "</span><span class="token variable">$mem</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="217"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="218"><span class="token string">        elif [[ "</span><span class="token variable">$mem</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$mem</span><span class="token string">" -ge 512 ]; then
+</span></span><span class="code-line line-number" line="219"><span class="token string">            MEMORY=<span class="token variable">$mem</span>
+</span></span><span class="code-line line-number" line="220"><span class="token string">            log_ok "</span>内存: <span class="token variable">${MEMORY}</span>MB<span class="token string">"
+</span></span><span class="code-line line-number" line="221"><span class="token string">            break
+</span></span><span class="code-line line-number" line="222"><span class="token string">        else
+</span></span><span class="code-line line-number" line="223"><span class="token string">            log_warn "</span>请输入至少 <span class="token number">512</span> 的数字<span class="token string">"
+</span></span><span class="code-line line-number" line="224"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="225"><span class="token string">    done
+</span></span><span class="code-line line-number" line="226"><span class="token string">}
+</span></span><span class="code-line line-number" line="227"><span class="token string">
+</span></span><span class="code-line line-number" line="228"><span class="token string">get_cores() {
+</span></span><span class="code-line line-number" line="229"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="230"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入CPU核心数 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" cores
+</span></span><span class="code-line line-number" line="231"><span class="token string">        if [[ "</span><span class="token variable">$cores</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="232"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="233"><span class="token string">        elif [[ "</span><span class="token variable">$cores</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$cores</span><span class="token string">" -ge 1 ]; then
+</span></span><span class="code-line line-number" line="234"><span class="token string">            CORES=<span class="token variable">$cores</span>
+</span></span><span class="code-line line-number" line="235"><span class="token string">            log_ok "</span>CPU核心数: <span class="token variable">$CORES</span><span class="token string">"
+</span></span><span class="code-line line-number" line="236"><span class="token string">            break
+</span></span><span class="code-line line-number" line="237"><span class="token string">        else
+</span></span><span class="code-line line-number" line="238"><span class="token string">            log_warn "</span>请输入正整数<span class="token string">"
+</span></span><span class="code-line line-number" line="239"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="240"><span class="token string">    done
+</span></span><span class="code-line line-number" line="241"><span class="token string">}
+</span></span><span class="code-line line-number" line="242"><span class="token string">
+</span></span><span class="code-line line-number" line="243"><span class="token string">get_storage() {
+</span></span><span class="code-line line-number" line="244"><span class="token string">    mapfile -t storages &#x3C; &#x3C;(pvesm status -content images 2>/dev/null | awk 'NR>1 {print <span class="token variable">$1</span>}')
+</span></span><span class="code-line line-number" line="245"><span class="token string">    if [ <span class="token variable">${<span class="token operator">#</span>storages<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> -eq 0 ]; then
+</span></span><span class="code-line line-number" line="246"><span class="token string">        log_warn "</span>未找到可用的存储池，将使用默认 local-lvm<span class="token string">"
+</span></span><span class="code-line line-number" line="247"><span class="token string">        STORAGE="</span>local-lvm<span class="token string">"
+</span></span><span class="code-line line-number" line="248"><span class="token string">        log_ok "</span>存储池: <span class="token variable">$STORAGE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="249"><span class="token string">        return
+</span></span><span class="code-line line-number" line="250"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="251"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="252"><span class="token string">        echo -e "</span>"
+</span><span class="code-line line-number" line="253">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 可用存储池<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="254">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="255">        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>storages<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="256">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span><span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>. <span class="token variable">${gl_bai}</span><span class="token variable">${storages<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="257">        <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="258">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="259">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入序号或存储池名称 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" storage_choice
+</span></span><span class="code-line line-number" line="260"><span class="token string">        if [[ "</span><span class="token variable">$storage_choice</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="261"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="262"><span class="token string">        elif [[ "</span><span class="token variable">$storage_choice</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$storage_choice</span><span class="token string">" -ge 1 ] &#x26;&#x26; [ "</span><span class="token variable">$storage_choice</span><span class="token string">" -le <span class="token variable">${<span class="token operator">#</span>storages<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> ]; then
+</span></span><span class="code-line line-number" line="263"><span class="token string">            STORAGE="</span><span class="token variable">${storages<span class="token punctuation">[</span>$((storage_choice-1))<span class="token punctuation">]</span>}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="264"><span class="token string">            break
+</span></span><span class="code-line line-number" line="265"><span class="token string">        else
+</span></span><span class="code-line line-number" line="266"><span class="token string">            if pvesm status -content images 2>/dev/null | awk '{print <span class="token variable">$1</span>}' | grep -qx "</span><span class="token variable">$storage_choice</span><span class="token string">"; then
+</span></span><span class="code-line line-number" line="267"><span class="token string">                STORAGE="</span><span class="token variable">$storage_choice</span><span class="token string">"
+</span></span><span class="code-line line-number" line="268"><span class="token string">                break
+</span></span><span class="code-line line-number" line="269"><span class="token string">            else
+</span></span><span class="code-line line-number" line="270"><span class="token string">                log_warn "</span>无效的存储池名称或序号<span class="token string">"
+</span></span><span class="code-line line-number" line="271"><span class="token string">                continue
+</span></span><span class="code-line line-number" line="272"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="273"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="274"><span class="token string">    done
+</span></span><span class="code-line line-number" line="275"><span class="token string">    log_ok "</span>存储池: <span class="token variable">$STORAGE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="276"><span class="token string">}
+</span></span><span class="code-line line-number" line="277"><span class="token string">
+</span></span><span class="code-line line-number" line="278"><span class="token string">get_bridge() {
+</span></span><span class="code-line line-number" line="279"><span class="token string">    mapfile -t bridges &#x3C; &#x3C;(ip -br link show type bridge | awk '{print <span class="token variable">$1</span>}')
+</span></span><span class="code-line line-number" line="280"><span class="token string">    if [ <span class="token variable">${<span class="token operator">#</span>bridges<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> -eq 0 ]; then
+</span></span><span class="code-line line-number" line="281"><span class="token string">        log_warn "</span>未找到网桥，将使用默认 vmbr0<span class="token string">"
+</span></span><span class="code-line line-number" line="282"><span class="token string">        BRIDGE="</span>vmbr0<span class="token string">"
+</span></span><span class="code-line line-number" line="283"><span class="token string">        log_ok "</span>网桥: <span class="token variable">$BRIDGE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="284"><span class="token string">        return
+</span></span><span class="code-line line-number" line="285"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="286"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="287"><span class="token string">        echo -e "</span>"
+</span><span class="code-line line-number" line="288">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 可用网桥<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="289">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="290">        <span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${<span class="token operator">!</span>bridges<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="291">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span><span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>. <span class="token variable">${gl_bai}</span><span class="token variable">${bridges<span class="token punctuation">[</span>$i<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="292">        <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="293">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="294">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入序号或网桥名称 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" bridge_choice
+</span></span><span class="code-line line-number" line="295"><span class="token string">        if [[ "</span><span class="token variable">$bridge_choice</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="296"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="297"><span class="token string">        elif [[ "</span><span class="token variable">$bridge_choice</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$bridge_choice</span><span class="token string">" -ge 1 ] &#x26;&#x26; [ "</span><span class="token variable">$bridge_choice</span><span class="token string">" -le <span class="token variable">${<span class="token operator">#</span>bridges<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> ]; then
+</span></span><span class="code-line line-number" line="298"><span class="token string">            BRIDGE="</span><span class="token variable">${bridges<span class="token punctuation">[</span>$((bridge_choice-1))<span class="token punctuation">]</span>}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="299"><span class="token string">            break
+</span></span><span class="code-line line-number" line="300"><span class="token string">        else
+</span></span><span class="code-line line-number" line="301"><span class="token string">            if ip -br link show type bridge | awk '{print <span class="token variable">$1</span>}' | grep -qx "</span><span class="token variable">$bridge_choice</span><span class="token string">"; then
+</span></span><span class="code-line line-number" line="302"><span class="token string">                BRIDGE="</span><span class="token variable">$bridge_choice</span><span class="token string">"
+</span></span><span class="code-line line-number" line="303"><span class="token string">                break
+</span></span><span class="code-line line-number" line="304"><span class="token string">            else
+</span></span><span class="code-line line-number" line="305"><span class="token string">                log_warn "</span>无效的网桥名称或序号<span class="token string">"
+</span></span><span class="code-line line-number" line="306"><span class="token string">                continue
+</span></span><span class="code-line line-number" line="307"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="308"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="309"><span class="token string">    done
+</span></span><span class="code-line line-number" line="310"><span class="token string">    log_ok "</span>网桥: <span class="token variable">$BRIDGE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="311"><span class="token string">}
+</span></span><span class="code-line line-number" line="312"><span class="token string">
+</span></span><span class="code-line line-number" line="313"><span class="token string">get_bios() {
+</span></span><span class="code-line line-number" line="314"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="315"><span class="token string">        echo -e "</span>"
+</span><span class="code-line line-number" line="316">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> BIOS 类型<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="317">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="318">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1. <span class="token variable">${gl_bai}</span>seabios (传统BIOS)"</span>
+</span><span class="code-line line-number" line="319">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2. <span class="token variable">${gl_bai}</span>ovmf (UEFI)"</span>
+</span><span class="code-line line-number" line="320">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="321">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入你的选择 (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token punctuation">)</span><span class="token string">" bios_choice
+</span></span><span class="code-line line-number" line="322"><span class="token string">        case "</span><span class="token variable">$bios_choice</span><span class="token string">" in
+</span></span><span class="code-line line-number" line="323"><span class="token string">            0) exit_script ;;
+</span></span><span class="code-line line-number" line="324"><span class="token string">            1) BIOS="</span>seabios<span class="token string">"; MACHINE="</span>pc<span class="token string">"; break ;;
+</span></span><span class="code-line line-number" line="325"><span class="token string">            2) BIOS="</span>ovmf<span class="token string">"; MACHINE="</span>q35<span class="token string">"; break ;;
+</span></span><span class="code-line line-number" line="326"><span class="token string">            *) handle_invalid_input ;;
+</span></span><span class="code-line line-number" line="327"><span class="token string">        esac
+</span></span><span class="code-line line-number" line="328"><span class="token string">    done
+</span></span><span class="code-line line-number" line="329"><span class="token string">    log_ok "</span>BIOS: <span class="token variable">$BIOS</span>, 机器类型: <span class="token variable">$MACHINE</span><span class="token string">"
+</span></span><span class="code-line line-number" line="330"><span class="token string">}
+</span></span><span class="code-line line-number" line="331"><span class="token string">
+</span></span><span class="code-line line-number" line="332"><span class="token string">get_disk_size() {
+</span></span><span class="code-line line-number" line="333"><span class="token string">    if [ "</span><span class="token variable">$MIRROR_TYPE</span><span class="token string">" != "</span>iso<span class="token string">" ]; then
+</span></span><span class="code-line line-number" line="334"><span class="token string">        return
+</span></span><span class="code-line line-number" line="335"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="336"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="337"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入系统盘大小(GB，例如 32) (<span class="token variable">${gl_hong}</span>0<span class="token variable">${gl_bai}</span>退出): "</span><span class="token variable">)</span></span><span class="token string">" size
+</span></span><span class="code-line line-number" line="338"><span class="token string">        if [[ "</span><span class="token variable">$size</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="339"><span class="token string">            exit_script
+</span></span><span class="code-line line-number" line="340"><span class="token string">        elif [[ "</span><span class="token variable">$size</span><span class="token string">" =~ ^[0-9]+$ ]] &#x26;&#x26; [ "</span><span class="token variable">$size</span><span class="token string">" -ge 1 ]; then
+</span></span><span class="code-line line-number" line="341"><span class="token string">            DISK_SIZE_GB="</span><span class="token variable">$size</span><span class="token string">"
+</span></span><span class="code-line line-number" line="342"><span class="token string">            log_ok "</span>系统盘大小: <span class="token variable">${DISK_SIZE_GB}</span>GB<span class="token string">"
+</span></span><span class="code-line line-number" line="343"><span class="token string">            break
+</span></span><span class="code-line line-number" line="344"><span class="token string">        else
+</span></span><span class="code-line line-number" line="345"><span class="token string">            log_warn "</span>请输入至少 <span class="token number">1</span> 的正整数<span class="token string">"
+</span></span><span class="code-line line-number" line="346"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="347"><span class="token string">    done
+</span></span><span class="code-line line-number" line="348"><span class="token string">}
+</span></span><span class="code-line line-number" line="349"><span class="token string">
+</span></span><span class="code-line line-number" line="350"><span class="token string">create_vm() {
+</span></span><span class="code-line line-number" line="351"><span class="token string">    echo -e "</span>"
+</span><span class="code-line line-number" line="352">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 开始创建虚拟机<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="353">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="354">
+</span><span class="code-line line-number" line="355">    <span class="token keyword">if</span> <span class="token operator">!</span> qm create <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="356">        <span class="token parameter variable">--name</span> <span class="token string">"<span class="token variable">$VM_NAME</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="357">        <span class="token parameter variable">--memory</span> <span class="token string">"<span class="token variable">$MEMORY</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="358">        <span class="token parameter variable">--cores</span> <span class="token string">"<span class="token variable">$CORES</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="359">        <span class="token parameter variable">--cpu</span> <span class="token function">host</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="360">        <span class="token parameter variable">--net0</span> <span class="token string">"virtio,bridge=<span class="token variable">$BRIDGE</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="361">        <span class="token parameter variable">--bios</span> <span class="token string">"<span class="token variable">$BIOS</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="362">        <span class="token parameter variable">--machine</span> <span class="token string">"<span class="token variable">$MACHINE</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="363">        <span class="token parameter variable">--scsihw</span> virtio-scsi-single<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="364">        log_error <span class="token string">"创建虚拟机基础配置失败"</span>
+</span><span class="code-line line-number" line="365">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="366">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="367">    log_ok <span class="token string">"基础配置完成"</span>
+</span><span class="code-line line-number" line="368">
+</span><span class="code-line line-number" line="369">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="370">        log_info <span class="token string">"处理 ISO 镜像：挂载为光驱，并创建空硬盘"</span>
+</span><span class="code-line line-number" line="371">        
+</span><span class="code-line line-number" line="372">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--ide2</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>,media=cdrom"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="373">            log_error <span class="token string">"挂载 ISO 到光驱失败"</span>
+</span><span class="code-line line-number" line="374">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="375">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="376">        log_ok <span class="token string">"ISO 已挂载为光驱 (ide2)"</span>
+</span><span class="code-line line-number" line="377">        
+</span><span class="code-line line-number" line="378">        <span class="token builtin class-name">local</span> <span class="token assign-left variable">disk_vol</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${STORAGE}</span>:<span class="token variable">${DISK_SIZE_GB}</span>,format=qcow2"</span>
+</span><span class="code-line line-number" line="379">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--scsi0</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="380">            log_error <span class="token string">"创建并附加空硬盘失败"</span>
+</span><span class="code-line line-number" line="381">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="382">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="383">        log_ok <span class="token string">"空硬盘已创建并附加到 scsi0 (<span class="token variable">${DISK_SIZE_GB}</span>GB)"</span>
+</span><span class="code-line line-number" line="384">        
+</span><span class="code-line line-number" line="385">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--boot</span> <span class="token assign-left variable">order</span><span class="token operator">=</span>ide2<span class="token punctuation">;</span>scsi0<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="386">            log_error <span class="token string">"设置启动顺序失败"</span>
+</span><span class="code-line line-number" line="387">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="388">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="389">        log_ok <span class="token string">"启动顺序: 光驱(ide2) -> 硬盘(scsi0)"</span>
+</span><span class="code-line line-number" line="390">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="391">        log_info <span class="token string">"导入磁盘镜像: <span class="token variable">$IMAGE_PATH</span> -> 存储 <span class="token variable">$STORAGE</span>"</span>
+</span><span class="code-line line-number" line="392">        <span class="token builtin class-name">local</span> import_output
+</span><span class="code-line line-number" line="393">        <span class="token assign-left variable">import_output</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>qm importdisk <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span> <span class="token string">"<span class="token variable">$STORAGE</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="394">        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token variable">$?</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="395">            log_error <span class="token string">"导入磁盘失败: <span class="token variable">$import_output</span>"</span>
+</span><span class="code-line line-number" line="396">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="397">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="398">        log_ok <span class="token string">"磁盘导入成功"</span>
+</span><span class="code-line line-number" line="399">        
+</span><span class="code-line line-number" line="400">        <span class="token builtin class-name">local</span> disk_vol
+</span><span class="code-line line-number" line="401">        <span class="token assign-left variable">disk_vol</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$import_output</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oP</span> <span class="token string">"imported as '\K[^']+"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="402">        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="403">            <span class="token assign-left variable">disk_vol</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>qm config <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oP</span> <span class="token string">"unused0:\s*\K\S+"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="404">            <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="405">                log_error <span class="token string">"无法获取导入的磁盘卷名"</span>
+</span><span class="code-line line-number" line="406">                <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="407">            <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="408">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="409">        log_info <span class="token string">"磁盘卷: <span class="token variable">$disk_vol</span>"</span>
+</span><span class="code-line line-number" line="410">        
+</span><span class="code-line line-number" line="411">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--scsi0</span> <span class="token string">"<span class="token variable">$disk_vol</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="412">            log_error <span class="token string">"附加磁盘失败"</span>
+</span><span class="code-line line-number" line="413">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="414">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="415">        log_ok <span class="token string">"磁盘已附加到 scsi0"</span>
+</span><span class="code-line line-number" line="416">        
+</span><span class="code-line line-number" line="417">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--boot</span> <span class="token assign-left variable">order</span><span class="token operator">=</span>scsi0<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="418">            log_error <span class="token string">"设置启动顺序失败"</span>
+</span><span class="code-line line-number" line="419">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="420">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="421">        log_ok <span class="token string">"启动顺序: 硬盘(scsi0)"</span>
+</span><span class="code-line line-number" line="422">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="423">
+</span><span class="code-line line-number" line="424">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$BIOS</span>"</span> <span class="token operator">=</span> <span class="token string">"ovmf"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="425">        log_info <span class="token string">"添加 EFI 磁盘 (4MB)"</span>
+</span><span class="code-line line-number" line="426">        <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--efidisk0</span> <span class="token string">"<span class="token variable">${STORAGE}</span>:1,format=raw,efitype=4m"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="427">            log_warn <span class="token string">"添加 EFI 磁盘失败，您稍后可手动添加"</span>
+</span><span class="code-line line-number" line="428">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="429">            log_ok <span class="token string">"EFI 磁盘已添加"</span>
+</span><span class="code-line line-number" line="430">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="431">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="432">
+</span><span class="code-line line-number" line="433">    <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--serial0</span> socket<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="434">        log_warn <span class="token string">"添加串口控制台失败"</span>
+</span><span class="code-line line-number" line="435">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="436">        log_ok <span class="token string">"串口控制台已启用"</span>
+</span><span class="code-line line-number" line="437">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="438">
+</span><span class="code-line line-number" line="439">    <span class="token keyword">if</span> <span class="token operator">!</span> qm <span class="token builtin class-name">set</span> <span class="token string">"<span class="token variable">$VMID</span>"</span> <span class="token parameter variable">--agent</span> <span class="token assign-left variable">enabled</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="440">        log_warn <span class="token string">"启用 QEMU Guest Agent 失败"</span>
+</span><span class="code-line line-number" line="441">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="442">        log_ok <span class="token string">"QEMU Guest Agent 已启用"</span>
+</span><span class="code-line line-number" line="443">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="444">
+</span><span class="code-line line-number" line="445">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="446">    log_ok <span class="token string">"虚拟机 <span class="token variable">$VM_NAME</span> (VMID: <span class="token variable">$VMID</span>) 创建成功！"</span>
+</span><span class="code-line line-number" line="447">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="448">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>提示: 虚拟机将从 ISO 光驱启动，请完成操作系统安装。安装后系统将自动从硬盘启动。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="449">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="450">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="451">
+</span><span class="code-line line-number" line="452">    <span class="token assign-left variable">CLEANUP_VMID</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="453">    <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="454"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="455">
+</span><span class="code-line line-number" line="456"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="457">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="458">    root_use
+</span><span class="code-line line-number" line="459">    <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> qm <span class="token operator">&#x26;></span> /dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="460">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="461">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> Proxmox VE 交互式虚拟机创建工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="462">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="463">        log_error <span class="token string">"未检测到Proxmox VE环境，请确保脚本在PVE节点上运行"</span>
+</span><span class="code-line line-number" line="464">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="465">        break_end
+</span><span class="code-line line-number" line="466">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="467">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="468">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Proxmox VE 交互式虚拟机创建工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="469">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="470">
+</span><span class="code-line line-number" line="471">    <span class="token keyword">for</span> <span class="token for-or-select variable">cmd</span> <span class="token keyword">in</span> qm pvesm <span class="token function">ip</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="472">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token string">"<span class="token variable">$cmd</span>"</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="473">            log_error <span class="token string">"命令 <span class="token variable">$cmd</span> 未找到，请在 Proxmox VE 环境中运行"</span>
+</span><span class="code-line line-number" line="474">            exit_script
+</span><span class="code-line line-number" line="475">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="476">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="477">
+</span><span class="code-line line-number" line="478">    select_mirror
+</span><span class="code-line line-number" line="479">    get_vmid
+</span><span class="code-line line-number" line="480">    get_name
+</span><span class="code-line line-number" line="481">    get_memory
+</span><span class="code-line line-number" line="482">    get_cores
+</span><span class="code-line line-number" line="483">    get_storage
+</span><span class="code-line line-number" line="484">    get_bridge
+</span><span class="code-line line-number" line="485">    get_bios
+</span><span class="code-line line-number" line="486">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="487">        get_disk_size
+</span><span class="code-line line-number" line="488">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="489">
+</span><span class="code-line line-number" line="490">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="491">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 配置确认<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="492">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="493">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>镜像类型:   <span class="token variable">${gl_lv}</span><span class="token variable">$MIRROR_TYPE</span>"</span>
+</span><span class="code-line line-number" line="494">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>镜像路径:   <span class="token variable">${gl_lv}</span><span class="token variable">$IMAGE_PATH</span>"</span>
+</span><span class="code-line line-number" line="495">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>VMID:       <span class="token variable">${gl_lv}</span><span class="token variable">$VMID</span>"</span>
+</span><span class="code-line line-number" line="496">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>名称:       <span class="token variable">${gl_lv}</span><span class="token variable">$VM_NAME</span>"</span>
+</span><span class="code-line line-number" line="497">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>内存:       <span class="token variable">${gl_lv}</span><span class="token variable">${MEMORY}</span>MB"</span>
+</span><span class="code-line line-number" line="498">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>CPU核心:    <span class="token variable">${gl_lv}</span><span class="token variable">$CORES</span>"</span>
+</span><span class="code-line line-number" line="499">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>存储池:     <span class="token variable">${gl_lv}</span><span class="token variable">$STORAGE</span>"</span>
+</span><span class="code-line line-number" line="500">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>网桥:       <span class="token variable">${gl_lv}</span><span class="token variable">$BRIDGE</span>"</span>
+</span><span class="code-line line-number" line="501">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>BIOS:       <span class="token variable">${gl_lv}</span><span class="token variable">$BIOS</span>"</span>
+</span><span class="code-line line-number" line="502">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>机器类型:   <span class="token variable">${gl_lv}</span><span class="token variable">$MACHINE</span>"</span>
+</span><span class="code-line line-number" line="503">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$MIRROR_TYPE</span>"</span> <span class="token operator">=</span> <span class="token string">"iso"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="504">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>系统盘大小: <span class="token variable">${gl_lv}</span><span class="token variable">${DISK_SIZE_GB}</span>GB"</span>
+</span><span class="code-line line-number" line="505">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="506">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="507">
+</span><span class="code-line line-number" line="508">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>确认以上信息并开始创建? (<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" confirm
+</span></span><span class="code-line line-number" line="509"><span class="token string">    case "</span><span class="token variable">$confirm</span><span class="token string">" in
+</span></span><span class="code-line line-number" line="510"><span class="token string">        [Yy]) create_vm ;;
+</span></span><span class="code-line line-number" line="511"><span class="token string">        [Nn]) 
+</span></span><span class="code-line line-number" line="512"><span class="token string">            log_info "</span>已取消创建<span class="token string">"
+</span></span><span class="code-line line-number" line="513"><span class="token string">            exit_animation
+</span></span><span class="code-line line-number" line="514"><span class="token string">            exit 0
+</span></span><span class="code-line line-number" line="515"><span class="token string">            ;;
+</span></span><span class="code-line line-number" line="516"><span class="token string">        *) handle_y_n; main ;;
+</span></span><span class="code-line line-number" line="517"><span class="token string">    esac
+</span></span><span class="code-line line-number" line="518"><span class="token string">
+</span></span><span class="code-line line-number" line="519"><span class="token string">    if [ <span class="token variable">$?</span> -eq 0 ]; then
+</span></span><span class="code-line line-number" line="520"><span class="token string">        break_end
+</span></span><span class="code-line line-number" line="521"><span class="token string">    else
+</span></span><span class="code-line line-number" line="522"><span class="token string">        log_error "</span>创建过程中出现错误，请检查日志<span class="token string">"
+</span></span><span class="code-line line-number" line="523"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按回车键退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span><span class="token string">"
+</span></span><span class="code-line line-number" line="524"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="525"><span class="token string">    exit_script
+</span></span><span class="code-line line-number" line="526"><span class="token string">}
+</span></span><span class="code-line line-number" line="527"><span class="token string">
+</span></span><span class="code-line line-number" line="528"><span class="token string">main "</span><span class="token variable">$@</span>"
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 
 list_color_init() {
@@ -1833,10 +1834,11 @@ exit_script() {
 }
 
 handle_invalid_input() {
-    echo -ne &#x22;\r${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
-    sleep 1
-    echo -e &#x22;\r${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
-    sleep 0.5
+    echo -ne &#x22;\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
+    sleep_fractional 1
+    echo -ne &#x22;\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
+    sleep_fractional 0.5
+    echo -ne &#x22;\r\033[K&#x22;
     return 2
 }
 
@@ -2513,7 +2515,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">209</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">210</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -2544,7 +2546,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1085</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1086</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -2577,9 +2579,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqfg86sx"></script>
-<script type="text/javascript" src="../js/index.js?v=mqfg86sx"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqfg86sx"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqg1vtvc"></script>
+<script type="text/javascript" src="../js/index.js?v=mqg1vtvc"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqg1vtvc"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>

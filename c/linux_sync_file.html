@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_sync_file 命令">
     <meta name="twitter:description" content="Rsync 文件同步工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqfg86sx">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqg1vtvc">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqfg86sx"></script>
+    <script src="../js/dt.js?v=mqg1vtvc"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1326,230 +1326,231 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="76"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="77">
 </span><span class="code-line line-number" line="78"><span class="token function-name function">handle_invalid_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="79">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
-</span><span class="code-line line-number" line="80">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="81">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
-</span><span class="code-line line-number" line="82">    <span class="token function">sleep</span> <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="83">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="84"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="85">
-</span><span class="code-line line-number" line="86"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="87">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="88">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="89">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="90">    <span class="token function">sleep</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="91">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="92">    <span class="token function">sleep</span> <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="93">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="94"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="95">
-</span><span class="code-line line-number" line="96"><span class="token function-name function">exit_script</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="97">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="98">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>感谢使用，再见！<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="99">    sleep_fractional <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="100">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="101">    sleep_fractional <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="102">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="103">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="104"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="105">
-</span><span class="code-line line-number" line="106"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="107">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="108">    sleep_fractional <span class="token number">0.5</span>
-</span><span class="code-line line-number" line="109">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="110">    sleep_fractional <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="111">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="112">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="113"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="114">
-</span><span class="code-line line-number" line="115"><span class="token function-name function">sleep_fractional</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="116">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">seconds</span><span class="token operator">=</span><span class="token variable">$1</span>
-</span><span class="code-line line-number" line="117">    <span class="token keyword">if</span> <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="118">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> perl <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> perl <span class="token parameter variable">-e</span> <span class="token string">"select(undef, undef, undef, <span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="119">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python3 <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> python3 <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="120">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> python <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="121">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">int_seconds</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print int($1+0.999)}'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="122">    <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$int_seconds</span>"</span>
-</span><span class="code-line line-number" line="123"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="124">
-</span><span class="code-line line-number" line="125"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="126">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级选单}</span>"</span>
-</span><span class="code-line line-number" line="127">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回到 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span><span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="128">    <span class="token function">sleep</span> <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="129">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="130">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="131"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="132">
-</span><span class="code-line line-number" line="133"><span class="token assign-left variable">LOG_FILE</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="134"><span class="token assign-left variable">SOURCE_FILE</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="135"><span class="token assign-left variable">TARGET_FILE</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="136">
-</span><span class="code-line line-number" line="137"><span class="token function-name function">usage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="138">    <span class="token function">cat</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">EOF
-</span></span><span class="code-line line-number" line="139"><span class="token string">用法: <span class="token variable">$0</span> [选项]
-</span></span><span class="code-line line-number" line="140"><span class="token string">不传参：进入交互式路径配置
-</span></span><span class="code-line line-number" line="141"><span class="token string">传参：指定对应参数执行
-</span></span><span class="code-line line-number" line="142"><span class="token string">
-</span></span><span class="code-line line-number" line="143"><span class="token string">可选参数：
-</span></span><span class="code-line line-number" line="144"><span class="token string">  -s, --source    必填，源文件路径
-</span></span><span class="code-line line-number" line="145"><span class="token string">  -t, --target    必填，目标文件路径
-</span></span><span class="code-line line-number" line="146"><span class="token string">  -l, --log       选填，日志文件路径，留空默认使用 <span class="token variable">${DEFAULT_LOG}</span>
-</span></span><span class="code-line line-number" line="147"><span class="token string">  -h, --help      显示本帮助并退出
-</span></span><span class="code-line line-number" line="148"><span class="token string">
-</span></span><span class="code-line line-number" line="149"><span class="token string">示例：
-</span></span><span class="code-line line-number" line="150"><span class="token string">  <span class="token variable">$0</span>
-</span></span><span class="code-line line-number" line="151"><span class="token string">  <span class="token variable">$0</span> -s /etc/hosts -t /data/test/hosts
-</span></span><span class="code-line line-number" line="152"><span class="token string">  <span class="token variable">$0</span> -s /etc/hosts -t /data/test/hosts -l /tmp/hosts.log
-</span></span><span class="code-line line-number" line="153"><span class="token string">EOF</span>
-</span><span class="code-line line-number" line="154">    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="155"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="156">
-</span><span class="code-line line-number" line="157"><span class="token function-name function">parse_args</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="158">    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="159">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="160">            -s<span class="token operator">|</span>--source<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="161">                <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> log_error <span class="token string">"-s 后必须指定源文件路径"</span> <span class="token operator">&#x26;&#x26;</span> usage
-</span><span class="code-line line-number" line="162">                <span class="token assign-left variable">SOURCE_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
-</span><span class="code-line line-number" line="163">                <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="164">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="165">            -t<span class="token operator">|</span>--target<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="166">                <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> log_error <span class="token string">"-t 后必须指定目标文件路径"</span> <span class="token operator">&#x26;&#x26;</span> usage
-</span><span class="code-line line-number" line="167">                <span class="token assign-left variable">TARGET_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
-</span><span class="code-line line-number" line="168">                <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="169">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="170">            -l<span class="token operator">|</span>--log<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="171">                <span class="token assign-left variable">LOG_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
-</span><span class="code-line line-number" line="172">                <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="173">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="174">            -h<span class="token operator">|</span>--help<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="175">                usage
-</span><span class="code-line line-number" line="176">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="177">            *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="178">                log_error <span class="token string">"未知参数: <span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="179">                usage
-</span><span class="code-line line-number" line="180">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="181">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="182">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="183">
-</span><span class="code-line line-number" line="184">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token operator">||</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="185">        log_error <span class="token string">"传参模式下 -s -t 为必填项"</span>
-</span><span class="code-line line-number" line="186">        usage
-</span><span class="code-line line-number" line="187">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="188"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="189">
-</span><span class="code-line line-number" line="190"><span class="token function-name function">interactive_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="191">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="192">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Rsync 文件同步工具<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="193">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="194">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="195">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入源文件路径: "</span> SOURCE_FILE
-</span><span class="code-line line-number" line="196">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">break</span>
-</span><span class="code-line line-number" line="197">        log_error <span class="token string">"路径不能为空，请重新输入！"</span>
-</span><span class="code-line line-number" line="198">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="199">
-</span><span class="code-line line-number" line="200">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="201">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入目标文件路径: "</span> TARGET_FILE
-</span><span class="code-line line-number" line="202">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">break</span>
-</span><span class="code-line line-number" line="203">        log_error <span class="token string">"路径不能为空，请重新输入！"</span>
-</span><span class="code-line line-number" line="204">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="205">
-</span><span class="code-line line-number" line="206">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入日志文件路径(回车使用默认日志): "</span> LOG_FILE
-</span><span class="code-line line-number" line="207">
-</span><span class="code-line line-number" line="208">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="209">    log_info <span class="token string">"源文件:   <span class="token variable">$SOURCE_FILE</span>"</span>
-</span><span class="code-line line-number" line="210">    log_info <span class="token string">"目标文件: <span class="token variable">$TARGET_FILE</span>"</span>
-</span><span class="code-line line-number" line="211">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="212">        log_info <span class="token string">"日志文件: <span class="token variable">$LOG_FILE</span>"</span>
-</span><span class="code-line line-number" line="213">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="214">        log_info <span class="token string">"日志: 使用默认路径 <span class="token variable">${DEFAULT_LOG}</span>"</span>
-</span><span class="code-line line-number" line="215">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="216">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="217">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "确认开始同步？(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" confirm
-</span></span><span class="code-line line-number" line="218"><span class="token string">    case <span class="token variable">$confirm</span> in
-</span></span><span class="code-line line-number" line="219"><span class="token string">        [Nn])
-</span></span><span class="code-line line-number" line="220"><span class="token string">            log_warn "</span>用户取消，退出脚本<span class="token string">"
-</span></span><span class="code-line line-number" line="221"><span class="token string">            exit_animation
-</span></span><span class="code-line line-number" line="222"><span class="token string">            exit 0
-</span></span><span class="code-line line-number" line="223"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="224"><span class="token string">        [Yy])
-</span></span><span class="code-line line-number" line="225"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="226"><span class="token string">        *)
-</span></span><span class="code-line line-number" line="227"><span class="token string">            handle_y_n
-</span></span><span class="code-line line-number" line="228"><span class="token string">            exit 1
-</span></span><span class="code-line line-number" line="229"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="230"><span class="token string">    esac
-</span></span><span class="code-line line-number" line="231"><span class="token string">    echo "</span>"
-</span><span class="code-line line-number" line="232"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="233">
-</span><span class="code-line line-number" line="234"><span class="token function-name function">main_log</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="235">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">msg</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="236">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$msg</span>"</span>
-</span><span class="code-line line-number" line="237">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$msg</span>"</span> <span class="token operator">>></span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span>
-</span><span class="code-line line-number" line="238"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="239">
-</span><span class="code-line line-number" line="240">check_deps
-</span><span class="code-line line-number" line="241">
-</span><span class="code-line line-number" line="242"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="243">    interactive_input
-</span><span class="code-line line-number" line="244"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="245">    parse_args <span class="token string">"<span class="token variable">$@</span>"</span>
-</span><span class="code-line line-number" line="246"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="247">
-</span><span class="code-line line-number" line="248"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">LOG_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${DEFAULT_LOG}</span>"</span>
-</span><span class="code-line line-number" line="249">
-</span><span class="code-line line-number" line="250">log_info <span class="token string">"最终日志文件路径: <span class="token variable">${LOG_FILE}</span>"</span>
-</span><span class="code-line line-number" line="251">log_info <span class="token string">"日志存放目录: <span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">${LOG_FILE}</span>"</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="252">
-</span><span class="code-line line-number" line="253"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="254"><span class="token assign-left variable">TARGET_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="255"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$TARGET_DIR</span>"</span>
-</span><span class="code-line line-number" line="256">
-</span><span class="code-line line-number" line="257">main_log <span class="token string">""</span>
-</span><span class="code-line line-number" line="258">main_log <span class="token string">"【主机文件同步任务】开始时间: <span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%Y-%m-%d %H:%M:%S"</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="259">main_log <span class="token string">"================================================================"</span>
-</span><span class="code-line line-number" line="260">
-</span><span class="code-line line-number" line="261">main_log <span class="token string">"【配置】日志文件路径: <span class="token variable">${LOG_FILE}</span>"</span>
-</span><span class="code-line line-number" line="262">
-</span><span class="code-line line-number" line="263"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="264">    main_log <span class="token string">"【错误】源文件不存在: <span class="token variable">$SOURCE_FILE</span>"</span>
-</span><span class="code-line line-number" line="265">    main_log <span class="token string">"【状态】同步任务失败，源文件未找到"</span>
-</span><span class="code-line line-number" line="266">    main_log <span class="token string">"================================================================"</span>
-</span><span class="code-line line-number" line="267">    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="268"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="269">
-</span><span class="code-line line-number" line="270">main_log <span class="token string">"【信息】源文件: <span class="token variable">$SOURCE_FILE</span>"</span>
-</span><span class="code-line line-number" line="271">main_log <span class="token string">"【信息】目标位置: <span class="token variable">$TARGET_FILE</span>"</span>
-</span><span class="code-line line-number" line="272">main_log <span class="token string">"【信息】源文件大小: <span class="token variable"><span class="token variable">$(</span><span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-f1</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="273">main_log <span class="token string">"【信息】开始同步主机文件..."</span>
-</span><span class="code-line line-number" line="274">main_log <span class="token string">"【执行】开始执行 rsync 命令..."</span>
-</span><span class="code-line line-number" line="275">
-</span><span class="code-line line-number" line="276"><span class="token assign-left variable">SYNC_START</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%s<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="277"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="278">    <span class="token function">rsync</span> <span class="token parameter variable">-avhz</span> --delete-delay <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span> <span class="token operator">|</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span>
-</span><span class="code-line line-number" line="279"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="280">    <span class="token function">rsync</span> <span class="token parameter variable">-avhz</span> --delete-delay <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span>
-</span><span class="code-line line-number" line="281"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="282"><span class="token assign-left variable">SYNC_RET</span><span class="token operator">=</span><span class="token variable">${<span class="token environment constant">PIPESTATUS</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>
-</span><span class="code-line line-number" line="283"><span class="token assign-left variable">SYNC_END</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%s<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="284"><span class="token assign-left variable">DURATION</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>SYNC_END <span class="token operator">-</span> SYNC_START<span class="token variable">))</span></span>
-</span><span class="code-line line-number" line="285">
-</span><span class="code-line line-number" line="286"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$SYNC_RET</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="287">    main_log <span class="token string">"【成功】主机文件同步完成"</span>
-</span><span class="code-line line-number" line="288">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="289">        main_log <span class="token string">"【验证】目标文件已创建/更新"</span>
-</span><span class="code-line line-number" line="290">        main_log <span class="token string">"【验证】目标文件大小: <span class="token variable"><span class="token variable">$(</span><span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-f1</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="291">        main_log <span class="token string">"【验证】同步后文件MD5: <span class="token variable"><span class="token variable">$(</span>md5sum <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="292">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="293">        main_log <span class="token string">"【警告】同步完成但目标文件未找到"</span>
-</span><span class="code-line line-number" line="294">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="295"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="296">    main_log <span class="token string">"【错误】同步失败，rsync 退出码: <span class="token variable">$SYNC_RET</span>"</span>
-</span><span class="code-line line-number" line="297">    main_log <span class="token string">"【状态】同步任务未完成"</span>
-</span><span class="code-line line-number" line="298"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="299">
-</span><span class="code-line line-number" line="300">main_log <span class="token string">"【信息】同步结束时间: <span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%Y-%m-%d %H:%M:%S"</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="301">main_log <span class="token string">"【信息】任务执行时长: <span class="token variable">${DURATION}</span> 秒"</span>
-</span><span class="code-line line-number" line="302">main_log <span class="token string">"================================================================"</span>
+</span><span class="code-line line-number" line="79">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_huang}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span> 1 <span class="token variable">${gl_huang}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="80">    sleep_fractional <span class="token number">1</span>
+</span><span class="code-line line-number" line="81">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_lv}</span>无效的输入,请重新输入! <span class="token variable">${gl_zi}</span>0<span class="token variable">${gl_lv}</span> 秒后返回"</span>
+</span><span class="code-line line-number" line="82">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="83">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K"</span>
+</span><span class="code-line line-number" line="84">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="85"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="86">
+</span><span class="code-line line-number" line="87"><span class="token function-name function">handle_y_n</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="88">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_hong}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="89">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="90">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_huang}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="91">    <span class="token function">sleep</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="92">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>无效的选择，请输入 <span class="token variable">${gl_bai}</span>(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>或<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>)<span class="token variable">${gl_lv}</span>。<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="93">    <span class="token function">sleep</span> <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="94">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="95"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="96">
+</span><span class="code-line line-number" line="97"><span class="token function-name function">exit_script</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="98">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="99">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>感谢使用，再见！<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="100">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="101">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="102">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="103">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="104">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="105"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="106">
+</span><span class="code-line line-number" line="107"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="108">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将退出 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="109">    sleep_fractional <span class="token number">0.5</span>
+</span><span class="code-line line-number" line="110">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span><span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="111">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="112">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="113">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="114"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="115">
+</span><span class="code-line line-number" line="116"><span class="token function-name function">sleep_fractional</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="117">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">seconds</span><span class="token operator">=</span><span class="token variable">$1</span>
+</span><span class="code-line line-number" line="118">    <span class="token keyword">if</span> <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="119">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> perl <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> perl <span class="token parameter variable">-e</span> <span class="token string">"select(undef, undef, undef, <span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="120">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python3 <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> python3 <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="121">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span> python <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="122">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">int_seconds</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print int($1+0.999)}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="123">    <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$int_seconds</span>"</span>
+</span><span class="code-line line-number" line="124"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="125">
+</span><span class="code-line line-number" line="126"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="127">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级选单}</span>"</span>
+</span><span class="code-line line-number" line="128">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回到 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span><span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="129">    <span class="token function">sleep</span> <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="130">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="131">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="132"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="133">
+</span><span class="code-line line-number" line="134"><span class="token assign-left variable">LOG_FILE</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="135"><span class="token assign-left variable">SOURCE_FILE</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="136"><span class="token assign-left variable">TARGET_FILE</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="137">
+</span><span class="code-line line-number" line="138"><span class="token function-name function">usage</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="139">    <span class="token function">cat</span> <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">EOF
+</span></span><span class="code-line line-number" line="140"><span class="token string">用法: <span class="token variable">$0</span> [选项]
+</span></span><span class="code-line line-number" line="141"><span class="token string">不传参：进入交互式路径配置
+</span></span><span class="code-line line-number" line="142"><span class="token string">传参：指定对应参数执行
+</span></span><span class="code-line line-number" line="143"><span class="token string">
+</span></span><span class="code-line line-number" line="144"><span class="token string">可选参数：
+</span></span><span class="code-line line-number" line="145"><span class="token string">  -s, --source    必填，源文件路径
+</span></span><span class="code-line line-number" line="146"><span class="token string">  -t, --target    必填，目标文件路径
+</span></span><span class="code-line line-number" line="147"><span class="token string">  -l, --log       选填，日志文件路径，留空默认使用 <span class="token variable">${DEFAULT_LOG}</span>
+</span></span><span class="code-line line-number" line="148"><span class="token string">  -h, --help      显示本帮助并退出
+</span></span><span class="code-line line-number" line="149"><span class="token string">
+</span></span><span class="code-line line-number" line="150"><span class="token string">示例：
+</span></span><span class="code-line line-number" line="151"><span class="token string">  <span class="token variable">$0</span>
+</span></span><span class="code-line line-number" line="152"><span class="token string">  <span class="token variable">$0</span> -s /etc/hosts -t /data/test/hosts
+</span></span><span class="code-line line-number" line="153"><span class="token string">  <span class="token variable">$0</span> -s /etc/hosts -t /data/test/hosts -l /tmp/hosts.log
+</span></span><span class="code-line line-number" line="154"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="155">    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="156"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="157">
+</span><span class="code-line line-number" line="158"><span class="token function-name function">parse_args</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="159">    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="160">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="161">            -s<span class="token operator">|</span>--source<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="162">                <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> log_error <span class="token string">"-s 后必须指定源文件路径"</span> <span class="token operator">&#x26;&#x26;</span> usage
+</span><span class="code-line line-number" line="163">                <span class="token assign-left variable">SOURCE_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
+</span><span class="code-line line-number" line="164">                <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="165">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="166">            -t<span class="token operator">|</span>--target<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="167">                <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> log_error <span class="token string">"-t 后必须指定目标文件路径"</span> <span class="token operator">&#x26;&#x26;</span> usage
+</span><span class="code-line line-number" line="168">                <span class="token assign-left variable">TARGET_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
+</span><span class="code-line line-number" line="169">                <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="170">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="171">            -l<span class="token operator">|</span>--log<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="172">                <span class="token assign-left variable">LOG_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
+</span><span class="code-line line-number" line="173">                <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="174">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="175">            -h<span class="token operator">|</span>--help<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="176">                usage
+</span><span class="code-line line-number" line="177">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="178">            *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="179">                log_error <span class="token string">"未知参数: <span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="180">                usage
+</span><span class="code-line line-number" line="181">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="182">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="183">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="184">
+</span><span class="code-line line-number" line="185">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token operator">||</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="186">        log_error <span class="token string">"传参模式下 -s -t 为必填项"</span>
+</span><span class="code-line line-number" line="187">        usage
+</span><span class="code-line line-number" line="188">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="189"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="190">
+</span><span class="code-line line-number" line="191"><span class="token function-name function">interactive_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="192">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="193">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Rsync 文件同步工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="194">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="195">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="196">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入源文件路径: "</span> SOURCE_FILE
+</span><span class="code-line line-number" line="197">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">break</span>
+</span><span class="code-line line-number" line="198">        log_error <span class="token string">"路径不能为空，请重新输入！"</span>
+</span><span class="code-line line-number" line="199">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="200">
+</span><span class="code-line line-number" line="201">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="202">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入目标文件路径: "</span> TARGET_FILE
+</span><span class="code-line line-number" line="203">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">break</span>
+</span><span class="code-line line-number" line="204">        log_error <span class="token string">"路径不能为空，请重新输入！"</span>
+</span><span class="code-line line-number" line="205">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="206">
+</span><span class="code-line line-number" line="207">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入日志文件路径(回车使用默认日志): "</span> LOG_FILE
+</span><span class="code-line line-number" line="208">
+</span><span class="code-line line-number" line="209">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="210">    log_info <span class="token string">"源文件:   <span class="token variable">$SOURCE_FILE</span>"</span>
+</span><span class="code-line line-number" line="211">    log_info <span class="token string">"目标文件: <span class="token variable">$TARGET_FILE</span>"</span>
+</span><span class="code-line line-number" line="212">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="213">        log_info <span class="token string">"日志文件: <span class="token variable">$LOG_FILE</span>"</span>
+</span><span class="code-line line-number" line="214">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="215">        log_info <span class="token string">"日志: 使用默认路径 <span class="token variable">${DEFAULT_LOG}</span>"</span>
+</span><span class="code-line line-number" line="216">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="217">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="218">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "确认开始同步？(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" confirm
+</span></span><span class="code-line line-number" line="219"><span class="token string">    case <span class="token variable">$confirm</span> in
+</span></span><span class="code-line line-number" line="220"><span class="token string">        [Nn])
+</span></span><span class="code-line line-number" line="221"><span class="token string">            log_warn "</span>用户取消，退出脚本<span class="token string">"
+</span></span><span class="code-line line-number" line="222"><span class="token string">            exit_animation
+</span></span><span class="code-line line-number" line="223"><span class="token string">            exit 0
+</span></span><span class="code-line line-number" line="224"><span class="token string">            ;;
+</span></span><span class="code-line line-number" line="225"><span class="token string">        [Yy])
+</span></span><span class="code-line line-number" line="226"><span class="token string">            ;;
+</span></span><span class="code-line line-number" line="227"><span class="token string">        *)
+</span></span><span class="code-line line-number" line="228"><span class="token string">            handle_y_n
+</span></span><span class="code-line line-number" line="229"><span class="token string">            exit 1
+</span></span><span class="code-line line-number" line="230"><span class="token string">            ;;
+</span></span><span class="code-line line-number" line="231"><span class="token string">    esac
+</span></span><span class="code-line line-number" line="232"><span class="token string">    echo "</span>"
+</span><span class="code-line line-number" line="233"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="234">
+</span><span class="code-line line-number" line="235"><span class="token function-name function">main_log</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="236">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">msg</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="237">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$msg</span>"</span>
+</span><span class="code-line line-number" line="238">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$msg</span>"</span> <span class="token operator">>></span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span>
+</span><span class="code-line line-number" line="239"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="240">
+</span><span class="code-line line-number" line="241">check_deps
+</span><span class="code-line line-number" line="242">
+</span><span class="code-line line-number" line="243"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="244">    interactive_input
+</span><span class="code-line line-number" line="245"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="246">    parse_args <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="247"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="248">
+</span><span class="code-line line-number" line="249"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">LOG_FILE</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${DEFAULT_LOG}</span>"</span>
+</span><span class="code-line line-number" line="250">
+</span><span class="code-line line-number" line="251">log_info <span class="token string">"最终日志文件路径: <span class="token variable">${LOG_FILE}</span>"</span>
+</span><span class="code-line line-number" line="252">log_info <span class="token string">"日志存放目录: <span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">${LOG_FILE}</span>"</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="253">
+</span><span class="code-line line-number" line="254"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="255"><span class="token assign-left variable">TARGET_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">dirname</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="256"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">$TARGET_DIR</span>"</span>
+</span><span class="code-line line-number" line="257">
+</span><span class="code-line line-number" line="258">main_log <span class="token string">""</span>
+</span><span class="code-line line-number" line="259">main_log <span class="token string">"【主机文件同步任务】开始时间: <span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%Y-%m-%d %H:%M:%S"</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="260">main_log <span class="token string">"================================================================"</span>
+</span><span class="code-line line-number" line="261">
+</span><span class="code-line line-number" line="262">main_log <span class="token string">"【配置】日志文件路径: <span class="token variable">${LOG_FILE}</span>"</span>
+</span><span class="code-line line-number" line="263">
+</span><span class="code-line line-number" line="264"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="265">    main_log <span class="token string">"【错误】源文件不存在: <span class="token variable">$SOURCE_FILE</span>"</span>
+</span><span class="code-line line-number" line="266">    main_log <span class="token string">"【状态】同步任务失败，源文件未找到"</span>
+</span><span class="code-line line-number" line="267">    main_log <span class="token string">"================================================================"</span>
+</span><span class="code-line line-number" line="268">    <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="269"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="270">
+</span><span class="code-line line-number" line="271">main_log <span class="token string">"【信息】源文件: <span class="token variable">$SOURCE_FILE</span>"</span>
+</span><span class="code-line line-number" line="272">main_log <span class="token string">"【信息】目标位置: <span class="token variable">$TARGET_FILE</span>"</span>
+</span><span class="code-line line-number" line="273">main_log <span class="token string">"【信息】源文件大小: <span class="token variable"><span class="token variable">$(</span><span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-f1</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="274">main_log <span class="token string">"【信息】开始同步主机文件..."</span>
+</span><span class="code-line line-number" line="275">main_log <span class="token string">"【执行】开始执行 rsync 命令..."</span>
+</span><span class="code-line line-number" line="276">
+</span><span class="code-line line-number" line="277"><span class="token assign-left variable">SYNC_START</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%s<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="278"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="279">    <span class="token function">rsync</span> <span class="token parameter variable">-avhz</span> --delete-delay <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span> <span class="token operator">|</span> <span class="token function">tee</span> <span class="token parameter variable">-a</span> <span class="token string">"<span class="token variable">$LOG_FILE</span>"</span>
+</span><span class="code-line line-number" line="280"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="281">    <span class="token function">rsync</span> <span class="token parameter variable">-avhz</span> --delete-delay <span class="token string">"<span class="token variable">$SOURCE_FILE</span>"</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span>
+</span><span class="code-line line-number" line="282"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="283"><span class="token assign-left variable">SYNC_RET</span><span class="token operator">=</span><span class="token variable">${<span class="token environment constant">PIPESTATUS</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>
+</span><span class="code-line line-number" line="284"><span class="token assign-left variable">SYNC_END</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%s<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="285"><span class="token assign-left variable">DURATION</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>SYNC_END <span class="token operator">-</span> SYNC_START<span class="token variable">))</span></span>
+</span><span class="code-line line-number" line="286">
+</span><span class="code-line line-number" line="287"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$SYNC_RET</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="288">    main_log <span class="token string">"【成功】主机文件同步完成"</span>
+</span><span class="code-line line-number" line="289">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="290">        main_log <span class="token string">"【验证】目标文件已创建/更新"</span>
+</span><span class="code-line line-number" line="291">        main_log <span class="token string">"【验证】目标文件大小: <span class="token variable"><span class="token variable">$(</span><span class="token function">du</span> <span class="token parameter variable">-h</span> <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-f1</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="292">        main_log <span class="token string">"【验证】同步后文件MD5: <span class="token variable"><span class="token variable">$(</span>md5sum <span class="token string">"<span class="token variable">$TARGET_FILE</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="293">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="294">        main_log <span class="token string">"【警告】同步完成但目标文件未找到"</span>
+</span><span class="code-line line-number" line="295">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="296"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="297">    main_log <span class="token string">"【错误】同步失败，rsync 退出码: <span class="token variable">$SYNC_RET</span>"</span>
+</span><span class="code-line line-number" line="298">    main_log <span class="token string">"【状态】同步任务未完成"</span>
+</span><span class="code-line line-number" line="299"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="300">
+</span><span class="code-line line-number" line="301">main_log <span class="token string">"【信息】同步结束时间: <span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">"%Y-%m-%d %H:%M:%S"</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="302">main_log <span class="token string">"【信息】任务执行时长: <span class="token variable">${DURATION}</span> 秒"</span>
+</span><span class="code-line line-number" line="303">main_log <span class="token string">"================================================================"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 
 list_color_init() {
@@ -1628,10 +1629,11 @@ check_deps() {
 }
 
 handle_invalid_input() {
-    echo -ne &#x22;\r${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
-    sleep 1
-    echo -e &#x22;\r${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
-    sleep 0.5
+    echo -ne &#x22;\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回&#x22;
+    sleep_fractional 1
+    echo -ne &#x22;\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回&#x22;
+    sleep_fractional 0.5
+    echo -ne &#x22;\r\033[K&#x22;
     return 2
 }
 
@@ -2055,7 +2057,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">209</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">210</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -2086,7 +2088,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1085</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1086</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -2119,9 +2121,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqfg86sx"></script>
-<script type="text/javascript" src="../js/index.js?v=mqfg86sx"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqfg86sx"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqg1vtvc"></script>
+<script type="text/javascript" src="../js/index.js?v=mqg1vtvc"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqg1vtvc"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
