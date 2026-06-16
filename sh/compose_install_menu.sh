@@ -35,7 +35,7 @@ handle_invalid_input() {
     echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
     sleep_fractional 0.5
     echo -ne "\r\033[K"
-    return 2
+    continue
 }
 
 break_end() {
