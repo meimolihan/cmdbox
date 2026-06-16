@@ -355,8 +355,9 @@ batch_rename_files() {
         echo -e "${gl_bufan}3.  ${gl_bai}添加前缀              ${gl_bufan}4.  ${gl_bai}添加后缀"
         echo -e "${gl_bufan}5.  ${gl_bai}替换字符串            ${gl_bufan}6.  ${gl_bai}序号重命名"
         echo -e "${gl_bufan}7.  ${gl_bai}大小写转换            ${gl_bufan}8.  ${gl_bai}移除字符"
-        echo -e "${gl_bufan}9.  ${gl_bai}删除所有空格          ${gl_hong}0.  ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}9.  ${gl_bai}删除所有空格"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
         read -r -e -p "$(echo -e "${gl_bai}请选择重命名模式: ")" rename_mode
 
         case "$rename_mode" in
@@ -369,7 +370,8 @@ batch_rename_files() {
         7) rename_items_change_case ;;
         8) rename_items_remove_chars ;;
         9) rename_items_remove_spaces ;;
-        0 | 00 | 000) exit_script ;;
+        0) cancel_return "已是主菜单" || continue ;;
+        00 | 000 | 0000) exit_script ;;
         *) handle_invalid_input ;;
         esac
     done
