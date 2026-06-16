@@ -122,15 +122,34 @@ print_single_tag() {
 }
 
 list_all_full_tags() {
+    local show_count=3
+    local target_dir="$PWD"
+
+    for arg in "$@"; do
+        if [[ "$arg" =~ ^[0-9]+$ ]]; then
+            show_count="$arg"
+        else
+            target_dir=$(realpath "$arg")
+        fi
+    done
+
+    local origin_pwd="$PWD"
+    if ! cd "$target_dir"; then
+        echo -e "${gl_hong}错误：目录 ${target_dir} 不存在或无法进入！${gl_bai}"
+        break_end
+        return 1
+    fi
+
     clear
     if ! git rev-parse --is-inside-work-tree &>/dev/null; then
-        echo -e "${gl_hong}当前目录不是Git仓库！${gl_bai}"
+        echo -e "${gl_hong}当前目录「${target_dir}」不是Git仓库！${gl_bai}"
+        cd "$origin_pwd"
         break_end
         return 0
     fi
 
     local tag_list
-    tag_list=$(git tag 2>/dev/null | sort -t'v' -k2 -nr | head -n3)
+    tag_list=$(git tag 2>/dev/null | sort -t'v' -k2 -nr | head -n"${show_count}")
     local current_dir_name
     current_dir_name=$(basename "$PWD") 
 
@@ -138,12 +157,14 @@ list_all_full_tags() {
         echo -e ""
         echo -e "${gl_zi}【Git标签】${gl_lv}无${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_hong}错误：当前仓库不存在任何Git标签${gl_bai}"
+        echo -e "${gl_hong}错误：仓库 ${current_dir_name} 不存在任何Git标签${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        cd "$origin_pwd"
         break_end
         return 0
     fi
-    echo -e "${gl_zi}>>> ${gl_huang}${current_dir_name} ${gl_zi}项目 ${gl_huang}Git ${gl_zi}标签 ${gl_bai}"
+
+    echo -e "${gl_zi}>>> ${gl_huang}${current_dir_name} ${gl_zi}项目 ${gl_huang}Git ${gl_zi}标签(展示前 ${gl_lv}${show_count} ${gl_zi}个) ${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     while IFS= read -r single_tag; do
@@ -152,7 +173,8 @@ list_all_full_tags() {
     done <<< "${tag_list}"
 
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    cd "$origin_pwd"
     break_end
 }
 
-list_all_full_tags
+list_all_full_tags "$@"
