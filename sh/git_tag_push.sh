@@ -25,7 +25,6 @@ break_end() {
     read -r -n 1 -s -r -p ""
     echo ""
     clear
-    exit 0
 }
 
 sleep_fractional() {
@@ -152,7 +151,7 @@ create_annotated_tag() {
     local commit_ref="HEAD"
     
     clear
-    echo -e "${gl_zi}>>> Git 标签推送${gl_bai}"
+    echo -e "${gl_zi}>>> Git 标签创建${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     
     if [[ -n "$project_dir" ]]; then
@@ -200,12 +199,18 @@ create_annotated_tag() {
         
         read -r -e -p "$(echo -e "${gl_bai}是否推送到远程仓库? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" push_now
         if [[ "$push_now" =~ ^[Yy]$ ]]; then
+            echo -e ""
+            log_info "正在推送标签 ${gl_huang}$tag_name${gl_bai} 至远程 origin..."
             if git push origin "$tag_name" 2>/dev/null; then
-                log_ok "标签已推送到远程仓库"
+                log_ok "标签已成功推送到远程仓库"
             else
-                log_warn "推送失败，请手动执行: ${gl_lan}git push origin $tag_name${gl_bai}"
+                log_error "推送失败，请检查网络或远程权限"
+                log_warn "手动推送命令: ${gl_lan}git push origin $tag_name${gl_bai}"
             fi
+        else
+            log_warn "已跳过推送，可后续手动执行 git push origin $tag_name"
         fi
+        break_end
         return 0
     else
         log_error "标签创建失败"
