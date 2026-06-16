@@ -107,7 +107,10 @@ list_beautify_all() {
         local tag_list
         tag_list=$(git tag 2>/dev/null)
         if [ -z "$tag_list" ]; then
+            echo -e "${gl_zi}>>> Git标签 ${tag} 基础信息${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             echo -e "${gl_huang}无标签${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             break_end
             return
         fi
