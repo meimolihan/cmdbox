@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="cmdbox_admin_menu 命令">
     <meta name="twitter:description" content="Cmdbox 项目推送管理菜单 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqgbl4fh">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqgfbpwt">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqgbl4fh"></script>
+    <script src="../js/dt.js?v=mqgfbpwt"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1816,30 +1816,32 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="498">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>5.  <span class="token variable">${gl_bai}</span>FnOS推送cmdbox脚本库"</span>
 </span><span class="code-line line-number" line="499">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>6.  <span class="token variable">${gl_bai}</span>FnOS推送GitHub mobufan 脚本工具箱"</span>
 </span><span class="code-line line-number" line="500">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>7.  <span class="token variable">${gl_bai}</span>FnOS推送Gitee mobufan 脚本工具箱"</span>
-</span><span class="code-line line-number" line="501">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="502">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>66. <span class="token variable">${gl_bai}</span>推送当前项目更新"</span>
-</span><span class="code-line line-number" line="503">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>99. <span class="token variable">${gl_bai}</span>拉取当前项目更新"</span>
-</span><span class="code-line line-number" line="504">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>0.  <span class="token variable">${gl_bai}</span>退出脚本"</span>
-</span><span class="code-line line-number" line="505">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="506">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> rename_mode
-</span><span class="code-line line-number" line="507">
-</span><span class="code-line line-number" line="508">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$rename_mode</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="509">        <span class="token number">1</span><span class="token punctuation">)</span> enter_directory <span class="token string">"FnOS 项目推送"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="510">        <span class="token number">2</span><span class="token punctuation">)</span> go_parent_directory <span class="token string">"FnOS 项目推送"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="511">        <span class="token number">3</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="512">        <span class="token number">4</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="513">        <span class="token number">5</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/Gitee/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="514">        <span class="token number">6</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/sh <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="515">        <span class="token number">7</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/Gitee/sh <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="516">        <span class="token number">66</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="517">        <span class="token number">99</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_pull.sh<span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="518">        <span class="token number">0</span> <span class="token operator">|</span> 00 <span class="token operator">|</span> 000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="519">        *<span class="token punctuation">)</span> handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="520">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="521">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="522"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="523">
-</span><span class="code-line line-number" line="524">cmdbox_admin_menu
+</span><span class="code-line line-number" line="501">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>8.  <span class="token variable">${gl_bai}</span>Git标签管理cmdbox-main"</span>
+</span><span class="code-line line-number" line="502">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="503">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>66. <span class="token variable">${gl_bai}</span>推送当前项目更新"</span>
+</span><span class="code-line line-number" line="504">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>99. <span class="token variable">${gl_bai}</span>拉取当前项目更新"</span>
+</span><span class="code-line line-number" line="505">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>0.  <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="506">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="507">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> rename_mode
+</span><span class="code-line line-number" line="508">
+</span><span class="code-line line-number" line="509">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$rename_mode</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="510">        <span class="token number">1</span><span class="token punctuation">)</span>  enter_directory <span class="token string">"FnOS 项目推送"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="511">        <span class="token number">2</span><span class="token punctuation">)</span>  go_parent_directory <span class="token string">"FnOS 项目推送"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="512">        <span class="token number">3</span><span class="token punctuation">)</span>  <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="513">        <span class="token number">4</span><span class="token punctuation">)</span>  <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="514">        <span class="token number">5</span><span class="token punctuation">)</span>  <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/Gitee/cmdbox <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="515">        <span class="token number">6</span><span class="token punctuation">)</span>  <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/sh <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="516">        <span class="token number">7</span><span class="token punctuation">)</span>  <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> /vol1/1000/Gitee/sh <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="517">        <span class="token number">8</span><span class="token punctuation">)</span>  <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_tag_menu.sh<span class="token punctuation">)</span> /vol1/1000/GitHub/cmdbox-main <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="518">        <span class="token number">66</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh<span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="519">        <span class="token number">99</span><span class="token punctuation">)</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/git_pull.sh<span class="token punctuation">)</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="520">        <span class="token number">0</span> <span class="token operator">|</span> 00 <span class="token operator">|</span> 000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="521">        *<span class="token punctuation">)</span>  handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="522">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="523">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="524"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="525">
+</span><span class="code-line line-number" line="526">cmdbox_admin_menu
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -2340,6 +2342,7 @@ cmdbox_admin_menu() {
         echo -e &#x22;${gl_bufan}5.  ${gl_bai}FnOS推送cmdbox脚本库&#x22;
         echo -e &#x22;${gl_bufan}6.  ${gl_bai}FnOS推送GitHub mobufan 脚本工具箱&#x22;
         echo -e &#x22;${gl_bufan}7.  ${gl_bai}FnOS推送Gitee mobufan 脚本工具箱&#x22;
+        echo -e &#x22;${gl_bufan}8.  ${gl_bai}Git标签管理cmdbox-main&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
         echo -e &#x22;${gl_lv}66. ${gl_bai}推送当前项目更新&#x22;
         echo -e &#x22;${gl_huang}99. ${gl_bai}拉取当前项目更新&#x22;
@@ -2348,17 +2351,18 @@ cmdbox_admin_menu() {
         read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}请输入你的选择: &#x22;)&#x22; rename_mode
 
         case &#x22;$rename_mode&#x22; in
-        1) enter_directory &#x22;FnOS 项目推送&#x22; ;;
-        2) go_parent_directory &#x22;FnOS 项目推送&#x22; ;;
-        3) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
-        4) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
-        5) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
-        6) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
-        7) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
+        1)  enter_directory &#x22;FnOS 项目推送&#x22; ;;
+        2)  go_parent_directory &#x22;FnOS 项目推送&#x22; ;;
+        3)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
+        4)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
+        5)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
+        6)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
+        7)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
+        8)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_tag_menu.sh) /vol1/1000/GitHub/cmdbox-main ;;
         66) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) ;;
         99) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_pull.sh) ;;
         0 | 00 | 000) exit_script ;;
-        *) handle_invalid_input ;;
+        *)  handle_invalid_input ;;
         esac
     done
 }
@@ -2641,9 +2645,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqgbl4fh"></script>
-<script type="text/javascript" src="../js/index.js?v=mqgbl4fh"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqgbl4fh"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqgfbpwt"></script>
+<script type="text/javascript" src="../js/index.js?v=mqgfbpwt"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqgfbpwt"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>

@@ -498,6 +498,7 @@ cmdbox_admin_menu() {
         echo -e "${gl_bufan}5.  ${gl_bai}FnOS推送cmdbox脚本库"
         echo -e "${gl_bufan}6.  ${gl_bai}FnOS推送GitHub mobufan 脚本工具箱"
         echo -e "${gl_bufan}7.  ${gl_bai}FnOS推送Gitee mobufan 脚本工具箱"
+        echo -e "${gl_bufan}8.  ${gl_bai}Git标签管理cmdbox-main"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_lv}66. ${gl_bai}推送当前项目更新"
         echo -e "${gl_huang}99. ${gl_bai}拉取当前项目更新"
@@ -506,17 +507,18 @@ cmdbox_admin_menu() {
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" rename_mode
 
         case "$rename_mode" in
-        1) enter_directory "FnOS 项目推送" ;;
-        2) go_parent_directory "FnOS 项目推送" ;;
-        3) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
-        4) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
-        5) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
-        6) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
-        7) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
+        1)  enter_directory "FnOS 项目推送" ;;
+        2)  go_parent_directory "FnOS 项目推送" ;;
+        3)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
+        4)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
+        5)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
+        6)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
+        7)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
+        8)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_tag_menu.sh) /vol1/1000/GitHub/cmdbox-main ;;
         66) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) ;;
         99) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_pull.sh) ;;
         0 | 00 | 000) exit_script ;;
-        *) handle_invalid_input ;;
+        *)  handle_invalid_input ;;
         esac
     done
 }
