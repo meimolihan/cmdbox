@@ -56,6 +56,16 @@ cancel_return() {
     clear
 }
 
+cancel_empty() {
+    local menu_name="${1:-上一级选单}"
+    echo -e "${gl_hong}空输入，返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
 break_end() {
     echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
     read -r -n 1 -s -r -p ""

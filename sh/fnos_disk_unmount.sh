@@ -47,6 +47,15 @@ exit_script() {
     exit 0
 }
 
+exit_animation() {
+    echo -ne "${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
 unmount_partition() {
     clear
     if [[ $(hostname | tr '[:upper:]' '[:lower:]') != "fnos" ]]; then

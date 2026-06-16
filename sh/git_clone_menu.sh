@@ -482,7 +482,7 @@ git_clone_menu() {
         fi
         
         if [ -z "$(ls -A 2>/dev/null)" ]; then
-            echo -e "${gl_huang}>>> 当前目录文件列表：${gl_bai}(${gl_lv}$current_dir${gl_bai})"
+            echo -e "${gl_huang}>>> 当前目录文件列表：${gl_bai}(${gl_lv}$(pwd)${gl_bai})"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             echo -e "${gl_huang}当前目录为空${gl_bai}"
         else

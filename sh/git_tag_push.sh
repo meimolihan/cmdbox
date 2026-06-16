@@ -21,7 +21,7 @@ log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
-    echo -e "${gl_bai}按任意键退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     read -r -n 1 -s -r -p ""
     echo ""
     clear

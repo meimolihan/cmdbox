@@ -100,7 +100,6 @@ check_and_open_port() {
 
     log_info "检查端口 ${gl_huang}${PORT}${gl_bai} 是否放行 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
 
-    # 检查端口是否已放行
     if iptables -L INPUT -n 2>/dev/null | grep -qE "dpt:${PORT}[[:space:]]|dpt:${PORT}$" 2>/dev/null; then
         log_ok "端口 ${PORT} 已放行，无需操作"
         return 0
@@ -108,13 +107,11 @@ check_and_open_port() {
 
     log_warn "端口 ${gl_hong}${PORT}${gl_bai} 未放行，正在开放 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
 
-    # 开放端口
     iptables -I INPUT -p tcp --dport "${PORT}" -j ACCEPT 2>/dev/null
     iptables -I INPUT -p udp --dport "${PORT}" -j ACCEPT 2>/dev/null
 
     log_info "保存防火墙规则 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
 
-    # 方法1: 使用 iptables-save 保存到文件（最可靠，不会卡住）
     local SAVED=0
     if command -v iptables-save >/dev/null 2>&1; then
         mkdir -p /etc/iptables 2>/dev/null
@@ -127,7 +124,6 @@ check_and_open_port() {
         fi
     fi
 
-    # 方法2: 尝试使用 netfilter-persistent（带超时，避免卡住）
     if command -v netfilter-persistent >/dev/null 2>&1; then
         log_info "尝试 netfilter-persistent 保存..."
         (
@@ -151,7 +147,6 @@ check_and_open_port() {
         fi
     fi
 
-    # 方法3: 尝试使用 service iptables save（带超时）
     if [ $SAVED -eq 0 ] && command -v service >/dev/null 2>&1; then
         if service iptables status >/dev/null 2>&1; then
             log_info "尝试 service iptables save..."
@@ -177,7 +172,6 @@ check_and_open_port() {
         fi
     fi
 
-    # 方法4: 尝试使用 iptables-persistent（Debian/Ubuntu）
     if [ $SAVED -eq 0 ] && command -v iptables-save >/dev/null 2>&1 && [ -f /etc/iptables/rules.v4 ]; then
         log_info "iptables 规则已通过文件备份: /etc/iptables/rules.v4"
         log_info "重启后如需恢复规则，可执行: iptables-restore < /etc/iptables/rules.v4"
@@ -190,9 +184,6 @@ check_and_open_port() {
     fi
 
     log_ok "端口 ${gl_lv}${PORT}${gl_bai} 已开放"
-}
-        log_warn "iptables 未安装，跳过端口检查"
-    fi
 }
 
 check_port_available() {

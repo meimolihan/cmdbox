@@ -62,6 +62,16 @@ exit_animation() {
     echo ""
 }
 
+cancel_return() {
+    local menu_name="${1:-上一级选单}"
+    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
 linux_mount_partition() {
     echo ""
     echo -e "${gl_zi}>>> 挂载分区"

@@ -23,6 +23,16 @@ break_end() {
     clear
 }
 
+sleep_fractional() {
+    local seconds=$1
+    if sleep "$seconds" 2>/dev/null; then return 0; fi
+    if command -v perl >/dev/null 2>&1; then perl -e "select(undef, undef, undef, $seconds)"; return 0; fi
+    if command -v python3 >/dev/null 2>&1; then python3 -c "import time; time.sleep($seconds)"; return 0; fi
+    if command -v python >/dev/null 2>&1; then python -c "import time; time.sleep($seconds)"; return 0; fi
+    local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
+    sleep "$int_seconds"
+}
+
 exit_script() {
     echo ""
     echo -ne "${gl_hong}感谢使用，再见！ ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"

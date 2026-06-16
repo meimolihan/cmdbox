@@ -49,6 +49,25 @@ exit_animation() {
     echo ""
 }
 
+handle_invalid_input() {
+    echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
+    sleep_fractional 1
+    echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
+    sleep_fractional 0.5
+    echo -ne "\r\033[K"
+    continue
+}
+
+cancel_return() {
+    local menu_name="${1:-上一级选单}"
+    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
 safe_read() {
     local prompt="$1"
     local var_name="$2"
