@@ -5,20 +5,20 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="docker-buildx-clean:清理 Docker Buildx 构建缓存 - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
-    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,docker-buildx-clean,清理 Docker Buildx 构建缓存">
-    <title>docker-buildx-clean 命令，docker-buildx-clean 命令详解：清理 Docker Buildx 构建缓存 - Cmdbox 命令搜索引擎</title>
+    <meta name="description" content="docker-buildx-clean:清理 Docker Buildx 构建缓存 &amp; 修复节点错乱 - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
+    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,docker-buildx-clean,清理 Docker Buildx 构建缓存 &amp; 修复节点错乱">
+    <title>docker-buildx-clean 命令，docker-buildx-clean 命令详解：清理 Docker Buildx 构建缓存 &amp; 修复节点错乱 - Cmdbox 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
     <!-- SEO -->
     <link rel="canonical" href="/../c/docker-buildx-clean.html">
     <meta property="og:title" content="docker-buildx-clean 命令">
-    <meta property="og:description" content="清理 Docker Buildx 构建缓存 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <meta property="og:description" content="清理 Docker Buildx 构建缓存 &amp; 修复节点错乱 - 最专业的命令大全，值得收藏的命令速查手册。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="/../c/docker-buildx-clean.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-buildx-clean 命令">
-    <meta name="twitter:description" content="清理 Docker Buildx 构建缓存 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqhh74q6">
+    <meta name="twitter:description" content="清理 Docker Buildx 构建缓存 &amp; 修复节点错乱 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqhic0ui">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqhh74q6"></script>
+    <script src="../js/dt.js?v=mqhic0ui"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1026,7 +1026,7 @@ body.wallpaper-local {
     <span class="command-type-badge command wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">命令</span>
   </div>
   
-  <p class="command-desc wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">清理 Docker Buildx 构建缓存</p>
+  <p class="command-desc wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">清理 Docker Buildx 构建缓存 &amp; 修复节点错乱</p>
   
   <div class="command-actions">
     
@@ -1132,42 +1132,109 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
 <h1 id="docker-buildx-clean"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-buildx-clean"><span class="octicon octicon-link"></span></a>docker-buildx-clean</h1>
-<p>清理 Docker Buildx 构建缓存</p>
+<p>清理 Docker Buildx 构建缓存 &#x26; 修复节点错乱</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p><strong>docker buildx</strong> 是 Docker 的扩展构建工具，支持多平台镜像构建、高级构建选项和构建缓存管理。<code>docker buildx prune</code> 命令用于清理 Buildx 构建缓存，释放磁盘空间。Buildx 使用独立的缓存存储机制，与 <code>docker builder prune</code> 不同，它管理的是 BuildKit 快照和构建中间层。</p>
-<h3 id="什么是-buildx-构建缓存"><a class="anchor" aria-hidden="true" tabindex="-1" href="#什么是-buildx-构建缓存"><span class="octicon octicon-link"></span></a>什么是 Buildx 构建缓存</h3>
-<p><code>docker buildx</code> 使用 BuildKit 作为后端，构建缓存存储在 <code>/var/lib/docker/buildx</code>（Linux）或 <code>%LOCALAPPDATA%\Docker\buildx</code>（Windows）。缓存包含：</p>
-<table>
-  <thead>
-    <tr>
-      <th>缓存类型</th>
-      <th>说明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>BuildKit 快照</strong></td>
-      <td>构建中间层和变更跟踪</td>
-    </tr>
-    <tr>
-      <td><strong>构建结果缓存</strong></td>
-      <td>缓存的构建层，可被后续构建复用</td>
-    </tr>
-    <tr>
-      <td><strong>多平台构建产物</strong></td>
-      <td><code>--platform</code> 指定的多架构镜像层</td>
-    </tr>
-    <tr>
-      <td><strong>输出缓存</strong></td>
-      <td><code>--output type=local</code> 等输出的临时文件</td>
-    </tr>
-  </tbody>
-</table>
-<p>合理清理构建缓存可以释放大量磁盘空间，尤其在频繁构建大项目时。</p>
-<h3 id="语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#语法"><span class="octicon octicon-link"></span></a>语法</h3>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> buildx prune <span class="token punctuation">[</span>OPTIONS<span class="token punctuation">]</span>
-</span></code><div onclick="copied(this)" data-code="docker buildx prune [OPTIONS]
+<p><strong>docker buildx</strong> 是 Docker 的扩展构建工具，支持多平台镜像构建、高级构建选项和构建缓存管理。本文覆盖 Buildx 缓存清理的完整操作，以及 Buildx 节点元数据索引错乱（<code>No such container: buildx_buildkit_mybuilder00</code>）的彻底修复方案。</p>
+<h2 id="buildx-节点错乱修复适配-fnos"><a class="anchor" aria-hidden="true" tabindex="-1" href="#buildx-节点错乱修复适配-fnos"><span class="octicon octicon-link"></span></a>Buildx 节点错乱修复（适配 FnOS）</h2>
+<h3 id="一问题现象"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一问题现象"><span class="octicon octicon-link"></span></a>一、问题现象</h3>
+<p>当前系统存在 Buildx 元数据与实际容器不匹配的顽固 Bug：</p>
+<ul>
+  <li><code>docker buildx prune -f</code> / <code>docker buildx du</code> 报错：<code>No such container: buildx_buildkit_mybuilder00</code></li>
+  <li>实际运行容器名为 <code>buildx_buildkit_mybuilder0</code>（多出一个 <code>0</code> 后缀，索引错乱）</li>
+  <li>无法删除 builder、无法正常清理缓存、缓存统计失效</li>
+  <li>切换默认构建器清理正常，切回自定义 builder 必报错</li>
+</ul>
+<h3 id="二问题根因"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二问题根因"><span class="octicon octicon-link"></span></a>二、问题根因</h3>
+<p>Docker Buildx 在异常重启 / 强制删除容器后：</p>
+<ol>
+  <li>本地配置缓存残留了错误节点名称 <code>mybuilder00</code></li>
+  <li>实际创建的容器节点为正常 <code>mybuilder0</code></li>
+  <li><code>docker-container</code> 驱动的 buildx 会强制读取错误元数据，导致找不到容器报错</li>
+</ol>
+<p><strong>核心结论</strong>：服务是好的，只是 buildx 本地索引数据库错乱。</p>
+<h3 id="三临时安全清理方案日常使用--推荐"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三临时安全清理方案日常使用--推荐"><span class="octicon octicon-link"></span></a>三、临时安全清理方案（日常使用 | 推荐）</h3>
+<p>无需重建、不破坏现有多架构构建器、永久规避报错，日常清理缓存固定使用这套流程：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 切换到系统默认内置构建器（无独立容器、无错乱bug）</span>
+</span><span class="code-line line-number" line="2"><span class="token function">docker</span> buildx use default
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 2. 安全清理所有无引用构建缓存（不删除正在使用的层）</span>
+</span><span class="code-line line-number" line="5"><span class="token function">docker</span> buildx prune <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 3. 切回你的多架构构建器，正常编译镜像</span>
+</span><span class="code-line line-number" line="8"><span class="token function">docker</span> buildx use mybuilder
+</span></code><div onclick="copied(this)" data-code="# 1. 切换到系统默认内置构建器（无独立容器、无错乱bug）
+docker buildx use default
+
+# 2. 安全清理所有无引用构建缓存（不删除正在使用的层）
+docker buildx prune -f
+
+# 3. 切回你的多架构构建器，正常编译镜像
+docker buildx use mybuilder
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>✅ 实测有效：清理无报错、缓存清零、不影响构建环境。</p>
+<h3 id="四彻底根治修复方案重置错乱索引"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四彻底根治修复方案重置错乱索引"><span class="octicon octicon-link"></span></a>四、彻底根治修复方案（重置错乱索引）</h3>
+<p>如需彻底修复异常索引，以后 <code>buildx prune</code> 无需切换默认，执行完整重置流程：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 切换默认构建器</span>
+</span><span class="code-line line-number" line="2"><span class="token function">docker</span> buildx use default
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 2. 删除损坏的自定义构建器</span>
+</span><span class="code-line line-number" line="5"><span class="token function">docker</span> buildx <span class="token function">rm</span> mybuilder <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 3. 强制清理所有残留 buildkit 容器</span>
+</span><span class="code-line line-number" line="8"><span class="token function">docker</span> <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> <span class="token parameter variable">--filter</span> <span class="token string">"name=^buildx_buildkit_"</span> <span class="token parameter variable">-q</span><span class="token variable">)</span></span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># 4. 全新创建干净无错乱的 buildx 构建器</span>
+</span><span class="code-line line-number" line="11"><span class="token function">docker</span> buildx create <span class="token parameter variable">--name</span> mybuilder <span class="token parameter variable">--driver</span> docker-container <span class="token parameter variable">--use</span>
+</span><span class="code-line line-number" line="12">
+</span><span class="code-line line-number" line="13"><span class="token comment"># 5. 初始化启动 BuildKit</span>
+</span><span class="code-line line-number" line="14"><span class="token function">docker</span> buildx inspect mybuilder <span class="token parameter variable">--bootstrap</span>
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16"><span class="token comment"># 6. 正常清理缓存（彻底无报错）</span>
+</span><span class="code-line line-number" line="17"><span class="token function">docker</span> buildx prune <span class="token parameter variable">-f</span>
+</span></code><div onclick="copied(this)" data-code="# 1. 切换默认构建器
+docker buildx use default
+
+# 2. 删除损坏的自定义构建器
+docker buildx rm mybuilder 2>/dev/null
+
+# 3. 强制清理所有残留 buildkit 容器
+docker rm -f $(docker ps -a --filter &#x22;name=^buildx_buildkit_&#x22; -q) 2>/dev/null
+
+# 4. 全新创建干净无错乱的 buildx 构建器
+docker buildx create --name mybuilder --driver docker-container --use
+
+# 5. 初始化启动 BuildKit
+docker buildx inspect mybuilder --bootstrap
+
+# 6. 正常清理缓存（彻底无报错）
+docker buildx prune -f
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="五万能替代清理命令绕开所有-buildx-bug"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五万能替代清理命令绕开所有-buildx-bug"><span class="octicon octicon-link"></span></a>五、万能替代清理命令（绕开所有 Buildx Bug）</h3>
+<p>Docker 原生清理命令，不依赖 buildx 索引，100% 不会报错：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安全清理：仅删除未使用的构建缓存（推荐日常使用）</span>
+</span><span class="code-line line-number" line="2"><span class="token function">docker</span> builder prune <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 深度清理：清空所有悬空/未引用缓存（适合磁盘爆满）</span>
+</span><span class="code-line line-number" line="5"><span class="token comment"># docker builder prune -a -f</span>
+</span></code><div onclick="copied(this)" data-code="# 安全清理：仅删除未使用的构建缓存（推荐日常使用）
+docker builder prune -f
+
+# 深度清理：清空所有悬空/未引用缓存（适合磁盘爆满）
+# docker builder prune -a -f
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="六最佳使用规范后续永久不报错"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六最佳使用规范后续永久不报错"><span class="octicon octicon-link"></span></a>六、最佳使用规范（后续永久不报错）</h3>
+<p>结合环境，固定工作流：</p>
+<ol>
+  <li><strong>编译镜像</strong>：使用 <code>mybuilder</code> 多架构构建器</li>
+  <li><strong>日常清理缓存</strong>：优先 <code>docker builder prune -f</code></li>
+  <li><strong>需要精准清理 buildx 缓存</strong>：切 default 清理再切回</li>
+</ol>
+<h3 id="七当前环境状态总结"><a class="anchor" aria-hidden="true" tabindex="-1" href="#七当前环境状态总结"><span class="octicon octicon-link"></span></a>七、当前环境状态总结</h3>
+<ul>
+  <li>Buildx 服务：正常运行</li>
+  <li>BuildKit 容器：正常在线</li>
+  <li>故障类型：本地元数据索引错乱（软件 Bug，非环境损坏）</li>
+</ul>
 <h2 id="查看构建缓存使用情况"><a class="anchor" aria-hidden="true" tabindex="-1" href="#查看构建缓存使用情况"><span class="octicon octicon-link"></span></a>查看构建缓存使用情况</h2>
 <h3 id="查看缓存大小"><a class="anchor" aria-hidden="true" tabindex="-1" href="#查看缓存大小"><span class="octicon octicon-link"></span></a>查看缓存大小</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 查看所有 Buildx 缓存的磁盘使用情况（推荐第一步操作）</span>
@@ -1475,6 +1542,10 @@ cleanup-buildx:
 <p>A: <code>%LOCALAPPDATA%\Docker\buildx</code>，也可以通过 <code>docker buildx du --verbose</code> 查看具体路径。</p>
 <p><strong>Q: 清理报错 "permission denied"？</strong></p>
 <p>A: 需要管理员/root 权限。在 Linux 上使用 <code>sudo</code>，或确保当前用户在 <code>docker</code> 用户组中。</p>
+<p><strong>Q: 报错 "No such container: buildx_buildkit_mybuilder00"？</strong></p>
+<p>A: Buildx 元数据索引错乱。实际容器为 <code>mybuilder0</code> 但本地缓存误记为 <code>mybuilder00</code>。使用临时方案：<code>docker buildx use default &#x26;&#x26; docker buildx prune -f &#x26;&#x26; docker buildx use mybuilder</code>。如需根治，执行彻底修复方案（见上方第四节）。</p>
+<p><strong>Q: <code>docker buildx du</code> 一直转圈不显示结果？</strong></p>
+<p>A: BuildKit 容器可能未正常运行。先执行 <code>docker buildx inspect mybuilder --bootstrap</code> 确认容器在线，然后重试。如果仍然卡住，说明 builder 元数据损坏，需重建 builder。</p>
 <style>markdown-style pre .copied {
   display: flex;
   position: absolute;
@@ -1719,9 +1790,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqhh74q6"></script>
-<script type="text/javascript" src="../js/index.js?v=mqhh74q6"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqhh74q6"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqhic0ui"></script>
+<script type="text/javascript" src="../js/index.js?v=mqhic0ui"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqhic0ui"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
