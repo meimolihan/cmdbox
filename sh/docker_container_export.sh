@@ -70,9 +70,13 @@ export_container() {
     fi
 
     docker export "$CONTAINER" > "$BACKUP"
+    clear
+    echo -e "${gl_zi}>>> Docker 容器导出${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    log_ok "已导出: ${gl_bai}${BACKUP}"
+    CUR_DIR=$(pwd)
+    log_ok "已导出: ${gl_lv}$CUR_DIR/${BACKUP}${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
 }
 
 interactive_mode() {
