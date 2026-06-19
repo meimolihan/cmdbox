@@ -94,7 +94,7 @@ cd "${TARGET_DIR}" || {
     break_end
     exit 1
 }
-rm -rf 404.html all.html c contributors.html css hot.html img index.html js list.html script-list.html
+rm -rf 404.html all.html c contributors.html css hot.html img index.html js list.html script-list.html windows-list.html
 log_ok "旧文件清理完成"
 
 echo -e ""
