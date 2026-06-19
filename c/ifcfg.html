@@ -5,20 +5,20 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-    <meta name="description" content="ifcfg:置Linux中的网络接口参数 - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
-    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,ifcfg,置Linux中的网络接口参数">
-    <title>ifcfg 命令，ifcfg 命令详解：置Linux中的网络接口参数 - Cmdbox 命令搜索引擎</title>
+    <meta name="description" content="ifcfg:设置网络接口参数 - 最专业的命令大全，内容包含Linux命令手册、详解、学习，值得收藏的命令速查手册。">
+    <meta name="keywords" content="Cmdbox,Linux,Command,命令大全,Linux命令手册,ifcfg,设置网络接口参数">
+    <title>ifcfg 命令，ifcfg 命令详解：设置网络接口参数 - Cmdbox 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
     <!-- SEO -->
     <link rel="canonical" href="/../c/ifcfg.html">
     <meta property="og:title" content="ifcfg 命令">
-    <meta property="og:description" content="置Linux中的网络接口参数 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <meta property="og:description" content="设置网络接口参数 - 最专业的命令大全，值得收藏的命令速查手册。">
     <meta property="og:type" content="article">
     <meta property="og:url" content="/../c/ifcfg.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ifcfg 命令">
-    <meta name="twitter:description" content="置Linux中的网络接口参数 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqjipvqy">
+    <meta name="twitter:description" content="设置网络接口参数 - 最专业的命令大全，值得收藏的命令速查手册。">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqk7pmhg">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqjipvqy"></script>
+    <script src="../js/dt.js?v=mqk7pmhg"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1026,7 +1026,7 @@ body.wallpaper-local {
     <span class="command-type-badge command wow animate__animated animate__fadeInRight" data-wow-delay="0.2s">命令</span>
   </div>
   
-  <p class="command-desc wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">置Linux中的网络接口参数</p>
+  <p class="command-desc wow animate__animated animate__fadeInUp" data-wow-delay="0.3s">设置网络接口参数</p>
   
   <div class="command-actions">
     
@@ -1132,22 +1132,52 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
 <h1 id="ifcfg"><a class="anchor" aria-hidden="true" tabindex="-1" href="#ifcfg"><span class="octicon octicon-link"></span></a>ifcfg</h1>
-<p>置Linux中的网络接口参数</p>
+<p>设置网络接口参数</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p><strong>ifcfg命令</strong> 是一个Bash脚本程序，用来设置Linux中的网络接口参数。</p>
+<p><strong>ifcfg命令</strong> 是一个简单的Bash脚本程序，用于替代ifconfig的IP地址管理功能。它不仅能添加地址，还能执行重复地址检测（DAD）、发送无偿ARP以更新共享该接口的其他主机的缓存、添加控制路由以及在必要时重新启动路由器发现。</p>
 <h3 id="语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#语法"><span class="octicon octicon-link"></span></a>语法</h3>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg<span class="token punctuation">(</span>参数<span class="token punctuation">)</span>
-</span></code><div onclick="copied(this)" data-code="ifcfg(参数)
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg <span class="token punctuation">[</span>网络接口<span class="token punctuation">]</span> <span class="token punctuation">[</span>命令<span class="token punctuation">]</span> IP地址 <span class="token punctuation">[</span>Peer地址<span class="token punctuation">]</span>
+</span></code><div onclick="copied(this)" data-code="ifcfg [网络接口] [命令] IP地址 [Peer地址]
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="参数"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参数"><span class="octicon octicon-link"></span></a>参数</h3>
-<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">网络接口：指定要操作的网络接口；
-</span><span class="code-line line-number" line="2">add/del：添加或删除网络接口上的地址；
-</span><span class="code-line line-number" line="3">ip地址：指定IP地址和子网掩码；
-</span><span class="code-line line-number" line="4">Stop：停用指定的网络接口的IP地址。
-</span></code><div onclick="copied(this)" data-code="网络接口：指定要操作的网络接口；
-add/del：添加或删除网络接口上的地址；
-ip地址：指定IP地址和子网掩码；
-Stop：停用指定的网络接口的IP地址。
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">网络接口：指定要操作的网络接口，可以包含别名（用冒号分隔）；
+</span><span class="code-line line-number" line="2">add：添加网络接口上的IP地址；
+</span><span class="code-line line-number" line="3">del：删除网络接口上的IP地址；
+</span><span class="code-line line-number" line="4">stop：停用指定网络接口的IP地址；
+</span><span class="code-line line-number" line="5">IP地址：指定IP地址，可以包含前缀长度（如 <span class="token number">192.168</span>.1.10/24）；
+</span><span class="code-line line-number" line="6">Peer地址：可选参数，用于点对点接口的远端地址。
+</span></code><div onclick="copied(this)" data-code="网络接口：指定要操作的网络接口，可以包含别名（用冒号分隔）；
+add：添加网络接口上的IP地址；
+del：删除网络接口上的IP地址；
+stop：停用指定网络接口的IP地址；
+IP地址：指定IP地址，可以包含前缀长度（如 192.168.1.10/24）；
+Peer地址：可选参数，用于点对点接口的远端地址。
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="实例"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实例"><span class="octicon octicon-link"></span></a>实例</h3>
+<p><strong>更改IP地址：</strong></p>
+<p>将eth0的IP地址从192.168.0.1更改为192.168.0.2：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg eth0 del <span class="token number">192.168</span>.0.1
+</span><span class="code-line line-number" line="2">ifcfg eth0 <span class="token function">add</span> <span class="token number">192.168</span>.0.2
+</span></code><div onclick="copied(this)" data-code="ifcfg eth0 del 192.168.0.1
+ifcfg eth0 add 192.168.0.2
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>第一条命令关闭eth0并移除原有IP地址，第二条命令启用该接口并配置新地址。</p>
+<p><strong>添加IP地址：</strong></p>
+<p>为eth0添加一个新的IP地址：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg eth0 <span class="token function">add</span> <span class="token number">192.168</span>.1.100/24
+</span></code><div onclick="copied(this)" data-code="ifcfg eth0 add 192.168.1.100/24
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>添加带前缀长度的IP地址：</strong></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg eth0 <span class="token function">add</span> <span class="token number">10.0</span>.0.10/16
+</span></code><div onclick="copied(this)" data-code="ifcfg eth0 add 10.0.0.10/16
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>停止网络接口的IP地址：</strong></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg eth0 stop
+</span></code><div onclick="copied(this)" data-code="ifcfg eth0 stop
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p><strong>配置点对点接口：</strong></p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">ifcfg ppp0 <span class="token function">add</span> <span class="token number">10.0</span>.0.1 <span class="token number">10.0</span>.0.2
+</span></code><div onclick="copied(this)" data-code="ifcfg ppp0 add 10.0.0.1 10.0.0.2
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <style>markdown-style pre .copied {
   display: flex;
@@ -1314,7 +1344,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">800</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">797</span></span>
     </a>
     <!-- 脚本统计：只显示 myscript 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1346,7 +1376,7 @@ function copied(target, str) {
         <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
         <line x1="8" y1="16" x2="14" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">Win <span class="footer-count windows">90</span></span>
+      <span class="footer-text">Win <span class="footer-count windows">93</span></span>
     </a>
     <!-- 共计统计：command + myscript + windows 总和 -->
     <a class="footer-item footer-total wow animate__animated animate__fadeInUp" data-wow-delay="0.55s" href="../all.html">
@@ -1393,9 +1423,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqjipvqy"></script>
-<script type="text/javascript" src="../js/index.js?v=mqjipvqy"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqjipvqy"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqk7pmhg"></script>
+<script type="text/javascript" src="../js/index.js?v=mqk7pmhg"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqk7pmhg"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
