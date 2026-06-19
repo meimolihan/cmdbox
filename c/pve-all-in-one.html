@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve-all-in-one 命令">
     <meta name="twitter:description" content="PVE 虚拟化平台 All-in-One 搭建教程 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqk9y7hf">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=mqkbirys">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=mqk9y7hf"></script>
+    <script src="../js/dt.js?v=mqkbirys"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景 */
@@ -1139,19 +1139,6 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <ul>
   <li>🎬 PVE 9 安装教程： <a href="https://www.bilibili.com/video/BV12VBMBFEc2/">https://www.bilibili.com/video/BV12VBMBFEc2/</a></li>
 </ul>
-<hr>
-<h2 id="-文章目录"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-文章目录"><span class="octicon octicon-link"></span></a>📑 文章目录</h2>
-<ul>
-  <li><a href="#features">✨ 方案特点与功能</a></li>
-  <li><a href="#pve-install">⚙️ 一、PVE 系统安装</a></li>
-  <li><a href="#virtual-router">🌐 二、虚拟路由安装</a></li>
-  <li><a href="#pve-source">📦 三、给 PVE 换源（建议）</a></li>
-  <li><a href="#sriov">🎮 四、开启核显 SR-IOV（若需要）</a></li>
-  <li><a href="#vm-install">🖥️ 五、虚拟机安装（按需选择）</a></li>
-  <li><a href="#tail">🔚 六、尾巴</a></li>
-</ul>
-<hr>
-<p><a id="features"></a></p>
 <h2 id="-方案特点与功能"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-方案特点与功能"><span class="octicon octicon-link"></span></a>✨ 方案特点与功能</h2>
 <p>本教程构建的 PVE All in One 方案具有以下亮点：</p>
 <ul>
@@ -1163,7 +1150,6 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li><strong>详尽与保姆级</strong> 📖：从 BIOS 设置到系统调优，每一步均有详细说明和命令，适合新手入门。</li>
 </ul>
 <hr>
-<p><a id="pve-install"></a></p>
 <h2 id="️-一pve-系统安装"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-一pve-系统安装"><span class="octicon octicon-link"></span></a>⚙️ 一、PVE 系统安装</h2>
 <h3 id="1下载-pve-系统及写盘软件"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1下载-pve-系统及写盘软件"><span class="octicon octicon-link"></span></a>1、下载 PVE 系统及写盘软件</h3>
 <ul>
@@ -1295,7 +1281,6 @@ lspci -D -nnk
   </li>
 </ol>
 <hr>
-<p><a id="virtual-router"></a></p>
 <h2 id="-二虚拟路由安装"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-二虚拟路由安装"><span class="octicon octicon-link"></span></a>🌐 二、虚拟路由安装</h2>
 <blockquote>
   <p>🚨 如果你的 PVE 主机将连接到一个独立的路由器（已有网络），可以直接跳过此步，进入 <strong><a href="#pve-source">换源</a></strong> 步骤。</p>
@@ -1332,7 +1317,6 @@ qm importdisk 101 /var/lib/vz/template/iso/istoreos.img local
   <li><strong>插件下载</strong>：可访问 <a href="https://github.com/AUK9527/Are-u-ok/tree/main/x86">AUK9527 的插件仓库</a>。</li>
 </ol>
 <hr>
-<p><a id="pve-source"></a></p>
 <h2 id="-三给-pve-换源建议"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-三给-pve-换源建议"><span class="octicon octicon-link"></span></a>📦 三、给 PVE 换源（建议）</h2>
 <blockquote>
   <p>
@@ -1555,7 +1539,6 @@ reboot
   <p>📝 <strong>PVE 8.x 及更早版本</strong>的换源命令有所不同，主要为<code>sources.list</code>文件格式和发行版代号（如<code>bookworm</code>， <code>bullseye</code>）。请参考原文中折叠的代码块或根据对应版本的官方文档调整。</p>
 </blockquote>
 <hr>
-<p><a id="sriov"></a></p>
 <h2 id="-四开启核显-sr-iov若需要"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-四开启核显-sr-iov若需要"><span class="octicon octicon-link"></span></a>🎮 四、开启核显 SR-IOV（若需要）</h2>
 <blockquote>
   <p>
@@ -1662,7 +1645,6 @@ reboot
   <p>🔧 <strong>卸载 SR-IOV 驱动</strong>：如果需要卸载，请参照原文末尾的卸载步骤。</p>
 </blockquote>
 <hr>
-<p><a id="vm-install"></a></p>
 <h2 id="️-五虚拟机安装按需选择"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-五虚拟机安装按需选择"><span class="octicon octicon-link"></span></a>🖥️ 五、虚拟机安装（按需选择）</h2>
 <h3 id="1安装飞牛-fnos-"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1安装飞牛-fnos-"><span class="octicon octicon-link"></span></a>1、安装飞牛 fnOS 🐂</h3>
 <ol>
@@ -1742,7 +1724,6 @@ pct set <容器ID> -mp0 /mnt/pve/your_nfs_share,mp=/media
   </li>
 </ol>
 <hr>
-<p><a id="tail"></a></p>
 <h2 id="-六尾巴"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-六尾巴"><span class="octicon octicon-link"></span></a>🔚 六、尾巴</h2>
 <p>完成所有系统安装后，别忘了进行一些收尾工作：</p>
 <ul>
@@ -1917,7 +1898,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">797</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">798</span></span>
     </a>
     <!-- 脚本统计：只显示 myscript 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1963,7 +1944,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1110</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1111</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1996,9 +1977,9 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/dt.js?v=mqk9y7hf"></script>
-<script type="text/javascript" src="../js/index.js?v=mqk9y7hf"></script>
-<script type="text/javascript" src="../js/enhance.js?v=mqk9y7hf"></script>
+<script type="text/javascript" src="../js/dt.js?v=mqkbirys"></script>
+<script type="text/javascript" src="../js/index.js?v=mqkbirys"></script>
+<script type="text/javascript" src="../js/enhance.js?v=mqkbirys"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="https://npm.elemecdn.com/hexo-butterfly-wowjs/lib/wow.min.js"></script>
 <script>
