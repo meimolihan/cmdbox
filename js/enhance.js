@@ -102,17 +102,6 @@
     'node': ['npm', 'nvm', 'yarn', 'pnpm']
   };
 
-  // HTML 转义
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;');
-  }
-
   // 从描述中提取关键词
   function extractKeywords(desc) {
     if (!desc) return [];
@@ -234,25 +223,7 @@
   }
 })();
 
-/* Toast 提示工具 */
-(function() {
-  // 确保只有一个 Toast 元素
-  var toast = document.getElementById('copy-toast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'copy-toast';
-    document.body.appendChild(toast);
-  }
 
-  window.showToast = function(message, type) {
-    type = type || 'success';
-    toast.textContent = message;
-    toast.className = 'show ' + type;
-    setTimeout(function() {
-      toast.className = '';
-    }, 2000);
-  };
-})();
 
 /* ⑳ 自动替换代码块中的 ../sh/ ../bat/ 为当前域名 */
 (function() {
