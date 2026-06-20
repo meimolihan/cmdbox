@@ -212,18 +212,10 @@
   }
 
   addLanguageLabels();
-  // 对动态加载的代码块重新定位
-  if (window.MutationObserver) {
-    var obs = new MutationObserver(function(muts) {
-      muts.forEach(function(m) {
-        if (m.addedNodes.length) addLanguageLabels();
-      });
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
+  if (typeof registerDomChange !== 'undefined') {
+    registerDomChange(addLanguageLabels);
   }
 })();
-
-
 
 /* ⑳ 自动替换代码块中的 ../sh/ ../bat/ 为当前域名 */
 (function() {
@@ -263,14 +255,7 @@
 
   fixScriptUrls();
 
-  if (window.MutationObserver) {
-    var obs = new MutationObserver(function(muts) {
-      for (var m = 0; m < muts.length; m++) {
-        if (muts[m].addedNodes.length) {
-          fixScriptUrls(muts[m].target);
-        }
-      }
-    });
-    obs.observe(document.body, { childList: true, subtree: true });
+  if (typeof registerDomChange !== 'undefined') {
+    registerDomChange(function() { fixScriptUrls(); });
   }
 })();
