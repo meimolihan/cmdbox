@@ -135,20 +135,29 @@
     <script src="js/dt.js?v=a719069"></script>
     <!-- 壁纸切换功能 -->
     <style>
-      /* 壁纸背景 */
-      body.wallpaper-random {
+      /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
+      #wallpaper-bg {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1;
+        pointer-events: none;
+      }
+      html body.wallpaper-random,
+      html body.wallpaper-local {
+        background: transparent !important;
+        background-image: none !important;
+      }
+      body.wallpaper-random #wallpaper-bg {
         background-image: url('https://api.meimolihan.eu.org/') !important;
         background-size: cover !important;
         background-position: center center !important;
         background-repeat: no-repeat !important;
-        background-attachment: fixed !important;
-        background-color: transparent !important;
       }
-      /* 斜纹纹理叠加 - 复刻参考图效果 */
-      body.wallpaper-random::before,
-      body.wallpaper-local::before {
+      /* 斜纹纹理叠加 */
+      body.wallpaper-random #wallpaper-bg::before,
+      body.wallpaper-local #wallpaper-bg::before {
         content: '';
-        position: fixed;
+        position: absolute;
         top: 0; left: 0; right: 0; bottom: 0;
         z-index: 0;
         pointer-events: none;
@@ -777,6 +786,7 @@
     </style>
 </head>
 <body>
+<div id="wallpaper-bg"></div>
 <div id="dark-overlay"></div>
 <a class="skip-link" href="#main-content">跳转到主内容</a>
 <div id="theme-toggle" style="position:fixed;left:80px;bottom:80px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:99998;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;box-shadow:0 4px 15px rgba(102,126,234,0.4);border:none;overflow:hidden;" onclick="toggleTheme()">
@@ -894,7 +904,7 @@ function toggleWallpaper() {
   }
 }
 
-// 页面加载时恢复壁纸状态，并监控 body 背景变化
+// 页面加载时恢复壁纸状态，并监控 wallpaper-bg 背景变化
 (function initWallpaper() {
   const mode = localStorage.getItem('_wallpaper_mode_');
   if (mode !== 'on' && mode !== 'local') return;
@@ -913,12 +923,13 @@ function toggleWallpaper() {
     });
   });
 
-  // 监控 body.style 的变化，被覆盖时自动恢复
+  // 监控 #wallpaper-bg 的 style 变化，被覆盖时自动恢复
   var wallpaperObserver = new MutationObserver(function(records) {
     for (var i = 0; i < records.length; i++) {
       var rec = records[i];
       if (rec.type === 'attributes' && rec.attributeName === 'style') {
-        var currentBg = document.body.style.backgroundImage;
+        var bg = document.getElementById('wallpaper-bg');
+        var currentBg = bg ? bg.style.backgroundImage : '';
         if (!currentBg || currentBg === 'none' || currentBg === '') {
           if (mode === 'on') applyWallpaperBg();
           else if (mode === 'local') applyHoneycombBg();
@@ -926,18 +937,21 @@ function toggleWallpaper() {
       }
     }
   });
-  wallpaperObserver.observe(document.body, { attributes: true });
+  var bgEl = document.getElementById('wallpaper-bg');
+  if (bgEl) wallpaperObserver.observe(bgEl, { attributes: true });
 
   // 备用：定期检查（每 200ms），防止其他方式覆盖背景
   setInterval(function() {
     var currentMode = localStorage.getItem('_wallpaper_mode_');
+    var bgEl = document.getElementById('wallpaper-bg');
+    if (!bgEl) return;
     if (document.body.classList.contains('wallpaper-random')) {
-      var bg = document.body.style.backgroundImage;
+      var bg = bgEl.style.backgroundImage;
       if (!bg || bg === 'none' || bg === '') {
         applyWallpaperBg();
       }
     } else if (currentMode === 'local') {
-      var bg = document.body.style.backgroundImage;
+      var bg = bgEl.style.backgroundImage;
       if (!bg || bg === 'none' || bg === '') {
         applyHoneycombBg();
       }
@@ -948,19 +962,19 @@ function toggleWallpaper() {
 function applyWallpaperBg() {
   var ts = localStorage.getItem('_wallpaper_ts_') || Date.now();
   var bgUrl = "url('" + WALLPAPER_API + "?t=" + ts + "')";
-  document.body.style.backgroundImage = bgUrl;
-  document.documentElement.style.backgroundImage = bgUrl;
+  var bg = document.getElementById('wallpaper-bg');
+  if (bg) bg.style.backgroundImage = bgUrl;
   document.body.classList.add('wallpaper-random');
 }
 
 function applyHoneycombBg() {
+  var bg = document.getElementById('wallpaper-bg');
+  if (bg) {
+    bg.style.backgroundImage = HONEYCOMB_BG;
+    bg.style.backgroundSize = '56px 98px';
+    bg.style.backgroundPosition = '0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px';
+  }
   document.body.classList.add('wallpaper-local');
-  document.body.style.backgroundImage = HONEYCOMB_BG;
-  document.body.style.backgroundSize = '56px 98px';
-  document.body.style.backgroundPosition = '0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px';
-  document.documentElement.style.backgroundImage = HONEYCOMB_BG;
-  document.documentElement.style.backgroundSize = '56px 98px';
-  document.documentElement.style.backgroundPosition = '0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px';
 }
 
 function syncWallpaperUI(isOn) {
