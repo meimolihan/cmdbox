@@ -223,7 +223,7 @@ docker_check_env() {
         log_info "正在检查 Docker 运行环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         log_warn "Docker 未安装，即将自动安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_docker.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
 
         if ! command -v docker &>/dev/null; then
             log_error "Docker 安装失败，请手动安装后重试！"
@@ -238,7 +238,7 @@ docker_check_env() {
         log_info "正在检查 Docker Compose 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         log_warn "Docker Compose 未安装，即将自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_compose.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
 
         if ! command -v docker-compose &>/dev/null; then
             log_error "Docker Compose 安装失败，请手动安装后重试！"

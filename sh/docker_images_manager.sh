@@ -1224,7 +1224,7 @@ EOF
                 echo
                 ;;
             6)
-                cd "/mnt/backup_images" && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_file_menu.sh)
+                cd "/mnt/backup_images" && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_file_menu.sh)
                 ;;
             0) cancel_return; break ;;
             00 | 000 | 0000) exit_script ;;

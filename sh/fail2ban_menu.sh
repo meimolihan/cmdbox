@@ -1536,7 +1536,7 @@ fail2ban_config_manager() {
     check_directory_empty "/etc/fail2ban" "网站防御配置文件管理" "true" || return 1
     clear
     echo -e "${gl_zi}>>> 网站防御配置文件管理${gl_bai}"
-    bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_file_menu.sh)  "/etc/fail2ban"
+    bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_file_menu.sh)  "/etc/fail2ban"
 }
 
 fail2ban_edit_whitelist() {

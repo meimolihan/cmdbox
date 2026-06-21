@@ -16,7 +16,7 @@ parse_arguments() {
                 ;;
             -h|--help)
                 cat << 'HELPEOF'
-用法: linux_file_menu.sh [选项] [工作路径]
+用法: lx_file_menu.sh [选项] [工作路径]
 
 描述: Linux 文件管理器 - 完整功能版，支持39项操作
 
@@ -25,9 +25,9 @@ parse_arguments() {
   -h, --help              显示此帮助信息
 
 示例:
-  ./linux_file_menu.sh /home/user/documents
-  ./linux_file_menu.sh --workdir /tmp
-  ./linux_file_menu.sh
+  ./lx_file_menu.sh /home/user/documents
+  ./lx_file_menu.sh --workdir /tmp
+  ./lx_file_menu.sh
 HELPEOF
                 exit 0
                 ;;

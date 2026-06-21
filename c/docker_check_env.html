@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker_check_env 命令">
     <meta name="twitter:description" content="检查并安装 Docker 和 Docker Compose - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=8f59d49332c8f644">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=8f59d49333f74c43">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=8f59d49332c8f644"></script>
+    <script src="../js/dt.js?v=8f59d49333f74c43"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1165,7 +1165,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>提供两种检查模式：单独检查（仅检查 Docker 或 Compose）、全面检查（同时检查两者）</li>
   <li>自动检测 Docker 安装状态：已安装则显示版本号，未安装则自动安装</li>
   <li>自动检测 Docker Compose 安装状态：支持 docker-compose 和 docker compose 两种形式</li>
-  <li>智能安装：未安装时自动调用 linux_install_docker.sh 或 linux_install_compose.sh</li>
+  <li>智能安装：未安装时自动调用 lx_install_docker.sh 或 lx_install_compose.sh</li>
   <li>版本信息显示：已安装时显示具体的版本号</li>
   <li>静默模式：已安装时静默退出，适合在部署脚本中调用</li>
   <li>完整的函数封装：check_docker_env、check_compose_env、docker_check_env 三种函数</li>
@@ -1205,7 +1205,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <h3 id="注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#注意事项"><span class="octicon octicon-link"></span></a>注意事项</h3>
 <ul>
   <li>脚本需要 root 权限或 sudo 权限来安装 Docker 和 Docker Compose</li>
-  <li>自动安装功能依赖官方安装脚本 linux_install_docker.sh 和 linux_install_compose.sh</li>
+  <li>自动安装功能依赖官方安装脚本 lx_install_docker.sh 和 lx_install_compose.sh</li>
   <li>支持的包管理器：apt (Debian/Ubuntu)、yum/dnf (CentOS/RHEL/Fedora)</li>
   <li>单独检查模式适合仅需验证单个组件的场景</li>
   <li>全面检查模式（docker_check_env 函数）在已安装时会静默退出，适合在部署脚本开头调用</li>
@@ -1267,7 +1267,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="49">    <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="50">        log_warn <span class="token string">"Docker 未安装，即将自动安装 Docker 环境 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="51">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="52">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_docker.sh<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="52">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="53">
 </span><span class="code-line line-number" line="54">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="55">            log_error <span class="token string">"Docker 安装失败，请手动安装后重试！"</span>
@@ -1288,7 +1288,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="70">    <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="71">        log_warn <span class="token string">"Docker Compose 未安装，即将自动安装 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="72">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="73">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_compose.sh<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="73">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="74">
 </span><span class="code-line line-number" line="75">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker-compose</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="76">            log_error <span class="token string">"Docker Compose 安装失败，请手动安装后重试！"</span>
@@ -1356,7 +1356,7 @@ docker_check_env() {
     else
         log_warn &#x22;Docker 未安装，即将自动安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_docker.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
 
         if ! command -v docker &#x26;>/dev/null; then
             log_error &#x22;Docker 安装失败，请手动安装后重试！&#x22;
@@ -1377,7 +1377,7 @@ docker_check_env() {
     else
         log_warn &#x22;Docker Compose 未安装，即将自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_compose.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
 
         if ! command -v docker-compose &#x26;>/dev/null; then
             log_error &#x22;Docker Compose 安装失败，请手动安装后重试！&#x22;
@@ -1449,7 +1449,7 @@ docker_check_env
 </span><span class="code-line line-number" line="49">    <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="50">        log_warn <span class="token string">"Docker 未安装，即将自动安装 Docker 环境<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="51">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="52">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_docker.sh<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="52">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="53">
 </span><span class="code-line line-number" line="54">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="55">            log_error <span class="token string">"Docker 安装失败，请手动安装后重试！"</span>
@@ -1470,7 +1470,7 @@ docker_check_env
 </span><span class="code-line line-number" line="70">    <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="71">        log_warn <span class="token string">"Docker Compose 未安装，即将自动安装<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="72">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="73">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_compose.sh<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="73">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="74">
 </span><span class="code-line line-number" line="75">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker-compose</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="76">            log_error <span class="token string">"Docker Compose 安装失败，请手动安装后重试！"</span>
@@ -1538,7 +1538,7 @@ docker_check_env() {
     else
         log_warn &#x22;Docker 未安装，即将自动安装 Docker 环境${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_docker.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
 
         if ! command -v docker &#x26;>/dev/null; then
             log_error &#x22;Docker 安装失败，请手动安装后重试！&#x22;
@@ -1559,7 +1559,7 @@ docker_check_env() {
     else
         log_warn &#x22;Docker Compose 未安装，即将自动安装${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_compose.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
 
         if ! command -v docker-compose &#x26;>/dev/null; then
             log_error &#x22;Docker Compose 安装失败，请手动安装后重试！&#x22;
@@ -1870,8 +1870,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=8f59d49332c8f644"></script>
-<script type="text/javascript" src="../js/enhance.js?v=8f59d49332c8f644"></script>
+<script type="text/javascript" src="../js/index.js?v=8f59d49333f74c43"></script>
+<script type="text/javascript" src="../js/enhance.js?v=8f59d49333f74c43"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

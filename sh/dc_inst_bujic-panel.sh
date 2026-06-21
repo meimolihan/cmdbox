@@ -84,13 +84,13 @@ docker_check_env() {
         log_ok "Docker 已安装"
     else
         log_warn "Docker 未安装，开始安装"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_docker.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
     fi
     if command -v docker-compose &>/dev/null || docker compose version &>/dev/null; then
         log_ok "Docker Compose 已安装"
     else
         log_warn "Docker Compose 未安装，开始安装"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_install_compose.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
     fi
 }
 
