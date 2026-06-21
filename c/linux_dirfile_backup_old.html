@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_dirfile_backup_old 命令">
     <meta name="twitter:description" content="Linux 目录与文件备份 - 带时间戳的压缩备份 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=8f59d4938a6417ad">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=8f59d4937ffbde6c">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=8f59d4938a6417ad"></script>
+    <script src="../js/dt.js?v=8f59d4937ffbde6c"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1606,7 +1606,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_dirfile_backup_o
 </span><span class="code-line line-number" line="297">    <span class="token keyword">fi</span>
 </span><span class="code-line line-number" line="298"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="299">
-</span><span class="code-line line-number" line="300"><span class="token function-name function">linux_dir_file_backup_old</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="300"><span class="token function-name function">linux_dirfile_backup_old</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="301">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">DEFAULT_WORK_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>
 </span><span class="code-line line-number" line="302">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">DEFAULT_BACKUP_DIR</span><span class="token operator">=</span><span class="token string">"/mnt/backup"</span>
 </span><span class="code-line line-number" line="303">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">BACKUP_TEMP_DIR</span><span class="token operator">=</span><span class="token string">"/tmp"</span>
@@ -1823,7 +1823,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_dirfile_backup_o
 </span><span class="code-line line-number" line="514">    <span class="token keyword">done</span>
 </span><span class="code-line line-number" line="515"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="516">
-</span><span class="code-line line-number" line="517">linux_dir_file_backup_old <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="517">linux_dirfile_backup_old <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -2123,7 +2123,7 @@ get_backup_list() {
     fi
 }
 
-linux_dir_file_backup_old() {
+linux_dirfile_backup_old() {
     local DEFAULT_WORK_DIR=&#x22;$(pwd)&#x22;
     local DEFAULT_BACKUP_DIR=&#x22;/mnt/backup&#x22;
     local BACKUP_TEMP_DIR=&#x22;/tmp&#x22;
@@ -2340,7 +2340,7 @@ linux_dir_file_backup_old() {
     done
 }
 
-linux_dir_file_backup_old &#x22;$@&#x22;
+linux_dirfile_backup_old &#x22;$@&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="创建本地脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#创建本地脚本"><span class="octicon octicon-link"></span></a>创建本地脚本</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">new_script</span><span class="token operator">=</span><span class="token string">"new_test.sh"</span>
@@ -2368,9 +2368,9 @@ chmod +x &#x22;$new_script&#x22; &#x26;&#x26; ./&#x22;$new_script&#x22; &#x26;&#
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="相关命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#相关命令"><span class="octicon octicon-link"></span></a>相关命令</h2>
 <ul>
-  <li><a href="../c/linux_dir_file_backup_new.html" title="文件目录备份脚本(无时间戳)">linux_dir_file_backup_new</a></li>
-  <li><a href="../c/linux_dir_file_backup_old.html" title="文件目录备份脚本(带时间戳)">linux_dir_file_backup_old</a> 👈 当前所在位置</li>
-  <li><a href="../c/linux_dir_file_restore.html" title="文件目录恢复脚本">linux_dir_file_restore</a></li>
+  <li><a href="../c/linux_dirfile_backup_new.html" title="文件目录备份脚本(无时间戳)">linux_dirfile_backup_new</a></li>
+  <li><a href="../c/linux_dirfile_backup_old.html" title="文件目录备份脚本(带时间戳)">linux_dirfile_backup_old</a> 👈 当前所在位置</li>
+  <li><a href="../c/linux_dirfile_restore.html" title="文件目录恢复脚本">linux_dirfile_restore</a></li>
 </ul>
 <style>markdown-style pre .copied {
   display: flex;
@@ -2616,8 +2616,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=8f59d4938a6417ad"></script>
-<script type="text/javascript" src="../js/enhance.js?v=8f59d4938a6417ad"></script>
+<script type="text/javascript" src="../js/index.js?v=8f59d4937ffbde6c"></script>
+<script type="text/javascript" src="../js/enhance.js?v=8f59d4937ffbde6c"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

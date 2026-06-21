@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="linux_dirfile_backup_new 命令">
     <meta name="twitter:description" content="Linux 目录与文件备份 - 无时间戳压缩并强制覆盖同名旧压缩 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=8f59d4938a6417ad">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=8f59d4937ffbde6c">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=8f59d4938a6417ad"></script>
+    <script src="../js/dt.js?v=8f59d4937ffbde6c"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1300,7 +1300,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_dirfile_backup_n
 <h3 id="注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#注意事项"><span class="octicon octicon-link"></span></a>注意事项</h3>
 <ul>
   <li>备份文件名不带时间戳，多次备份会覆盖旧文件</li>
-  <li>如需保留历史备份，请手动重命名或改用 linux_dir_file_backup_old.sh</li>
+  <li>如需保留历史备份，请手动重命名或改用 linux_dirfile_backup_old.sh</li>
   <li>每次备份会自动在备份目录的 <code>logs/</code> 子目录下生成日志文件（格式：<code>YYYY-MM-DD-HH-MM-SS.log</code>）</li>
   <li>备份大目录可能需要较长时间，请耐心等待</li>
   <li>确保备份保存目录有足够空间</li>
@@ -1678,7 +1678,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_dirfile_backup_n
 </span><span class="code-line line-number" line="369">    <span class="token keyword">fi</span>
 </span><span class="code-line line-number" line="370"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="371">
-</span><span class="code-line line-number" line="372"><span class="token function-name function">linux_dir_file_backup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="372"><span class="token function-name function">linux_dirfile_backup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="373">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">DEFAULT_WORK_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>
 </span><span class="code-line line-number" line="374">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">DEFAULT_BACKUP_DIR</span><span class="token operator">=</span><span class="token string">"/mnt/backup"</span>
 </span><span class="code-line line-number" line="375">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">BACKUP_TEMP_DIR</span><span class="token operator">=</span><span class="token string">"/tmp"</span>
@@ -1934,7 +1934,7 @@ bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_dirfile_backup_n
 </span><span class="code-line line-number" line="625">    <span class="token keyword">done</span>
 </span><span class="code-line line-number" line="626"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="627">
-</span><span class="code-line line-number" line="628">linux_dir_file_backup <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="628">linux_dirfile_backup <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -2306,7 +2306,7 @@ get_backup_list() {
     fi
 }
 
-linux_dir_file_backup() {
+linux_dirfile_backup() {
     local DEFAULT_WORK_DIR=&#x22;$(pwd)&#x22;
     local DEFAULT_BACKUP_DIR=&#x22;/mnt/backup&#x22;
     local BACKUP_TEMP_DIR=&#x22;/tmp&#x22;
@@ -2562,7 +2562,7 @@ linux_dir_file_backup() {
     done
 }
 
-linux_dir_file_backup &#x22;$@&#x22;
+linux_dirfile_backup &#x22;$@&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="脚本函数说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#脚本函数说明"><span class="octicon octicon-link"></span></a>脚本函数说明</h3>
 <table>
@@ -2630,7 +2630,7 @@ linux_dir_file_backup &#x22;$@&#x22;
       <td align="left">批量备份所有项目，遍历调用 <code>backup_single_compose_project</code></td>
     </tr>
     <tr>
-      <td align="left"><code>linux_dir_file_backup</code></td>
+      <td align="left"><code>linux_dirfile_backup</code></td>
       <td align="left">主函数，处理参数解析、交互循环、分发调用</td>
     </tr>
   </tbody>
@@ -2664,9 +2664,9 @@ chmod +x backup.sh
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="相关命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#相关命令"><span class="octicon octicon-link"></span></a>相关命令</h2>
 <ul>
-  <li><a href="../c/linux_dir_file_backup_new.html" title="文件目录备份脚本(无时间戳)">linux_dir_file_backup_new</a> 👈 当前所在位置</li>
-  <li><a href="../c/linux_dir_file_backup_old.html" title="文件目录备份脚本(带时间戳)">linux_dir_file_backup_old</a></li>
-  <li><a href="../c/linux_dir_file_restore.html" title="文件目录恢复脚本">linux_dir_file_restore</a></li>
+  <li><a href="../c/linux_dirfile_backup_new.html" title="文件目录备份脚本(无时间戳)">linux_dirfile_backup_new</a> 👈 当前所在位置</li>
+  <li><a href="../c/linux_dirfile_backup_old.html" title="文件目录备份脚本(带时间戳)">linux_dirfile_backup_old</a></li>
+  <li><a href="../c/linux_dirfile_restore.html" title="文件目录恢复脚本">linux_dirfile_restore</a></li>
 </ul>
 <style>markdown-style pre .copied {
   display: flex;
@@ -2912,8 +2912,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=8f59d4938a6417ad"></script>
-<script type="text/javascript" src="../js/enhance.js?v=8f59d4938a6417ad"></script>
+<script type="text/javascript" src="../js/index.js?v=8f59d4937ffbde6c"></script>
+<script type="text/javascript" src="../js/enhance.js?v=8f59d4937ffbde6c"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
