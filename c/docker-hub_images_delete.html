@@ -1237,14 +1237,13 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="7"><span class="token comment"># 拉取 mobufan/cmdbox 仓库下所有标签（单次最多获取100条），仅输出标签名称</span>
 </span><span class="code-line line-number" line="8"><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">"https://hub.docker.com/v2/repositories/mobufan/cmdbox/tags?page_size=100"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.results[].name'</span>
 </span><span class="code-line line-number" line="9">
-</span><span class="code-line line-number" line="10">
-</span><span class="code-line line-number" line="11"><span class="token comment"># 根据仓库+标签查询镜像摘要(digest)，赋值给变量</span>
-</span><span class="code-line line-number" line="12"><span class="token assign-left variable">DIGEST</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">"https://hub.docker.com/v2/repositories/<span class="token variable">${REPO}</span>/tags/<span class="token variable">${TAG}</span>/"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.digest'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="13"><span class="token comment"># 打印获取到的镜像摘要</span>
-</span><span class="code-line line-number" line="14"><span class="token builtin class-name">echo</span> <span class="token variable">$DIGEST</span>
-</span><span class="code-line line-number" line="15">
-</span><span class="code-line line-number" line="16"><span class="token comment"># 通过 Digest 删除 Docker 镜像清单（需传入认证令牌）</span>
-</span><span class="code-line line-number" line="17"><span class="token function">curl</span> <span class="token parameter variable">-X</span> DELETE <span class="token parameter variable">-i</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">${AUTH_TOKEN}</span>"</span> <span class="token string">"https://registry-1.docker.io/v2/<span class="token variable">${REPO}</span>/manifests/<span class="token variable">${DIGEST}</span>"</span>
+</span><span class="code-line line-number" line="10"><span class="token comment"># 根据仓库+标签查询镜像摘要(digest)，赋值给变量</span>
+</span><span class="code-line line-number" line="11"><span class="token assign-left variable">DIGEST</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-s</span> <span class="token string">"https://hub.docker.com/v2/repositories/<span class="token variable">${REPO}</span>/tags/<span class="token variable">${TAG}</span>/"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.digest'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="12"><span class="token comment"># 打印获取到的镜像摘要</span>
+</span><span class="code-line line-number" line="13"><span class="token builtin class-name">echo</span> <span class="token variable">$DIGEST</span>
+</span><span class="code-line line-number" line="14">
+</span><span class="code-line line-number" line="15"><span class="token comment"># 通过 Digest 删除 Docker 镜像清单（需传入认证令牌）</span>
+</span><span class="code-line line-number" line="16"><span class="token function">curl</span> <span class="token parameter variable">-X</span> DELETE <span class="token parameter variable">-i</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">${AUTH_TOKEN}</span>"</span> <span class="token string">"https://registry-1.docker.io/v2/<span class="token variable">${REPO}</span>/manifests/<span class="token variable">${DIGEST}</span>"</span>
 </span></code><div onclick="copied(this)" data-code="# 定义账号、个人访问令牌、仓库名、待操作镜像标签
 USER=&#x22;mobufan&#x22;
 PAT=&#x22;dckr_pat_xxxxxx&#x22;
@@ -1253,7 +1252,6 @@ TAG=&#x22;2026.06.03&#x22;
 
 # 拉取 mobufan/cmdbox 仓库下所有标签（单次最多获取100条），仅输出标签名称
 curl -s &#x22;https://hub.docker.com/v2/repositories/mobufan/cmdbox/tags?page_size=100&#x22; | jq -r &#x27;.results[].name&#x27;
-
 
 # 根据仓库+标签查询镜像摘要(digest)，赋值给变量
 DIGEST=$(curl -s &#x22;https://hub.docker.com/v2/repositories/${REPO}/tags/${TAG}/&#x22; | jq -r &#x27;.digest&#x27;)
@@ -2060,6 +2058,31 @@ bash docker-hub_images_delete.sh dckr_pat_xxxxxx mobufan/cmdbox
 <p>A: 当前脚本为交互式单次删除，批量删除可修改脚本在标签选择阶段支持多选，或多次运行脚本。</p>
 <p><strong>Q: 脚本支持删除多架构镜像的所有平台标签吗？</strong></p>
 <p>A: 支持。通过 Registry API 删除的是标签引用，与该标签指向的镜像层数多架构无关，删除后所有架构的该标签均不可用。</p>
+<h2 id="相关命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#相关命令"><span class="octicon octicon-link"></span></a>相关命令</h2>
+<ul>
+  <li><a href="../c/docker-hub_images_check.html" title="Docker Hub 镜像标签查询">docker-hub_images_check</a></li>
+  <li><a href="../c/docker-hub_images_delete.html" title="Docker Hub 镜像标签删除">docker-hub_images_delete</a> 👈 当前所在位置</li>
+  <li><a href="../c/docker-hub_images_delete_menu.html" title="Docker Hub 镜像标签管理菜单">docker-hub_images_delete_menu</a></li>
+  <li><a href="../c/docker_build_push_img.html" title="Docker 镜像构建登录校验与一键推送">docker_build_push_img</a></li>
+  <li><a href="../c/docker_check_env.html" title="Docker 环境检查安装">docker_check_env</a></li>
+  <li><a href="../c/docker_clean_all.html" title="Docker 彻底清理">docker_clean_all</a></li>
+  <li><a href="../c/docker_container_export.html" title="Docker 导出容器为备份包">docker_container_export</a></li>
+  <li><a href="../c/docker_container_import.html" title="Docker 导入容器备份包为镜像">docker_container_import</a></li>
+  <li><a href="../c/docker_daily_scripts.html" title="Docker 日常维护脚本">docker_daily_scripts</a></li>
+  <li><a href="../c/docker_disk_list.html" title="Docker 磁盘列表">docker_disk_list</a></li>
+  <li><a href="../c/docker_images_list.html" title="Docker 镜像列表">docker_images_list</a></li>
+  <li><a href="../c/docker_images_manager.html" title="Docker 镜像管理工具">docker_images_manager</a></li>
+  <li><a href="../c/docker_install_uninstall.html" title="Docker 安装卸载">docker_install_uninstall</a></li>
+  <li><a href="../c/docker_login.html" title="Docker 登录">docker_login</a></li>
+  <li><a href="../c/docker_login_check.html" title="Docker 登录状态检查">docker_login_check</a></li>
+  <li><a href="../c/docker_network_list.html" title="Docker 网络列表">docker_network_list</a></li>
+  <li><a href="../c/docker_occupy_list.html" title="Docker 容器占用列表">docker_occupy_list</a></li>
+  <li><a href="../c/docker_port_list.html" title="Docker 端口列表">docker_port_list</a></li>
+  <li><a href="../c/docker_ps_list.html" title="Docker 运行中容器列表">docker_ps_list</a></li>
+  <li><a href="../c/docker_update_all.html" title="Docker 批量更新所有容器">docker_update_all</a></li>
+  <li><a href="../c/docker_user.html" title="Docker 用户管理">docker_user</a></li>
+  <li><a href="../c/docker_volume_list.html" title="Docker 卷列表">docker_volume_list</a></li>
+</ul>
 <style>markdown-style pre .copied {
   display: flex;
   position: absolute;
