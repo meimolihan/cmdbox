@@ -175,10 +175,8 @@ clean_old_container() {
     done
     log_ok "相关镜像清理完成"
 
-    log_info "清理悬空镜像与未使用资源"
-    docker image prune -a -f >/dev/null 2>&1
-    docker system prune -a -f --volumes >/dev/null 2>&1
-    docker builder prune -af >/dev/null 2>&1
+    log_info "清理悬空镜像"
+    docker image prune -f >/dev/null 2>&1
     log_ok "Docker 系统资源清理完成"
 
     log_info "验证清理结果"
