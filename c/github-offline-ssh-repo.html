@@ -1152,6 +1152,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   日常使用中常遇到 GitHub网页打不开/无法登录，但SSH连接验证正常 的问题。
   普通<code>git</code>命令仅能推拉代码，<strong>无法创建远程仓库</strong>，GitHub CLI交互式登录会卡死网页授权，本文提供两套方案：<code>gh CLI Token静默登录方案</code> + <code>Curl API创建方案</code>，适配FnOS(apt包管理器)、Root用户、SSH鉴权正常环境。
 </p>
+<p><strong>GitHub 创建令牌：<a href="https://github.com/settings/tokens/new">https://github.com/settings/tokens/new</a></strong></p>
 <h2 id="一环境前置操作"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一环境前置操作"><span class="octicon octicon-link"></span></a>一、环境前置操作</h2>
 <h3 id="1-安装github-cligh"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-安装github-cligh"><span class="octicon octicon-link"></span></a>1. 安装GitHub CLI（gh）</h3>
 <p>FnOS为apt系系统，先安装gh工具：</p>
@@ -1166,7 +1167,7 @@ apt install gh -y
 </span></code><div onclick="copied(this)" data-code="ssh -T git@github.com
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>✅ 成功输出（代表SSH可正常使用）：</p>
-<pre><code class="language-test code-highlight"><span class="code-line line-number" line="1">Hi meimolihan! You've successfully authenticated, but GitHub does not provide shell access.
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">Hi meimolihan! You've successfully authenticated, but GitHub does not provide shell access.
 </span></code><div onclick="copied(this)" data-code="Hi meimolihan! You&#x27;ve successfully authenticated, but GitHub does not provide shell access.
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <blockquote>
@@ -1193,12 +1194,34 @@ apt install gh -y
 <h3 id="1-gh使用token非交互式登录"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-gh使用token非交互式登录"><span class="octicon octicon-link"></span></a>1. gh使用token非交互式登录</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 清空旧登录信息</span>
 </span><span class="code-line line-number" line="2">gh auth <span class="token builtin class-name">logout</span>
-</span><span class="code-line line-number" line="3"><span class="token comment"># 使用token直接登录，替换为自己的token</span>
-</span><span class="code-line line-number" line="4">gh auth login --with-token <span class="token operator">&#x3C;&#x3C;&#x3C;</span> 你的GitHub个人Token
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 使用token直接登录，替换为自己的token</span>
+</span><span class="code-line line-number" line="5">gh auth login --with-token <span class="token operator">&#x3C;&#x3C;&#x3C;</span> 你的GitHub个人Token
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 校验登录状态</span>
+</span><span class="code-line line-number" line="8">gh auth status
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># 查看当前用户信息</span>
+</span><span class="code-line line-number" line="11">gh api user
+</span><span class="code-line line-number" line="12">
+</span><span class="code-line line-number" line="13"><span class="token comment"># 取消登录</span>
+</span><span class="code-line line-number" line="14">gh auth <span class="token builtin class-name">logout</span>
+</span><span class="code-line line-number" line="15"><span class="token function">rm</span> <span class="token parameter variable">-rf</span> ~/.config/gh
 </span></code><div onclick="copied(this)" data-code="# 清空旧登录信息
 gh auth logout
+
 # 使用token直接登录，替换为自己的token
 gh auth login --with-token <<< 你的GitHub个人Token
+
+# 校验登录状态
+gh auth status
+
+# 查看当前用户信息
+gh api user
+
+# 取消登录
+gh auth logout
+rm -rf ~/.config/gh
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="2-gh命令创建cmdbox仓库"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-gh命令创建cmdbox仓库"><span class="octicon octicon-link"></span></a>2. gh命令创建CmdBox仓库</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 创建公开仓库</span>
