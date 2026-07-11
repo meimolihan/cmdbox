@@ -1159,195 +1159,254 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   </ul>
 </blockquote>
 <hr>
-<h2 id="一临时关闭重启失效"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一临时关闭重启失效"><span class="octicon octicon-link"></span></a>一、临时关闭（重启失效）</h2>
-<p>管理员 PowerShell：</p>
-<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableRealtimeMonitoring <span class="token boolean">$true</span>
-</span><span class="code-line line-number" line="2"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableBehaviorMonitoring <span class="token boolean">$true</span>
-</span><span class="code-line line-number" line="3"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableCloudProtection <span class="token boolean">$true</span>
-</span><span class="code-line line-number" line="4"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableBlockAtFirstSeen <span class="token boolean">$true</span>
-</span></code><div onclick="copied(this)" data-code="Set-MpPreference -DisableRealtimeMonitoring $true
+<h1 id="彻底关闭-windows-defender-安全中心实战记录"><a class="anchor" aria-hidden="true" tabindex="-1" href="#彻底关闭-windows-defender-安全中心实战记录"><span class="octicon octicon-link"></span></a>彻底关闭 Windows Defender 安全中心（实战记录）</h1>
+<blockquote>
+  <p>
+    适用：Windows 10 / Windows 11
+    环境：管理员 PowerShell（确认 <code>IsInRole("Administrators")</code> = <code>True</code>）
+    本文只收录<strong>实测有效</strong>的命令；失效/受限项见文末附录。
+  </p>
+</blockquote>
+<hr>
+<h2 id="前置条件"><a class="anchor" aria-hidden="true" tabindex="-1" href="#前置条件"><span class="octicon octicon-link"></span></a>前置条件</h2>
+<ol>
+  <li>以<strong>管理员身份</strong>打开 PowerShell（右键 → 以管理员身份运行）。</li>
+  <li>确认权限（返回 <code>True</code> 即管理员）：</li>
+</ol>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token punctuation">(</span><span class="token namespace">[Security.Principal.WindowsPrincipal]</span><span class="token namespace">[Security.Principal.WindowsIdentity]</span>::GetCurrent<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>IsInRole<span class="token punctuation">(</span><span class="token string">"Administrators"</span><span class="token punctuation">)</span>
+</span></code><div onclick="copied(this)" data-code="([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(&#x22;Administrators&#x22;)
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<hr>
+<h2 id="一关闭-defender-实时防护powershell已验证有效"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一关闭-defender-实时防护powershell已验证有效"><span class="octicon octicon-link"></span></a>一、关闭 Defender 实时防护（PowerShell，已验证有效）</h2>
+<p>逐条执行：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 禁用实时保护</span>
+</span><span class="code-line line-number" line="2"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableRealtimeMonitoring <span class="token boolean">$true</span>
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 2. 禁用行为监控</span>
+</span><span class="code-line line-number" line="5"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableBehaviorMonitoring <span class="token boolean">$true</span>
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 3. 禁用脚本扫描</span>
+</span><span class="code-line line-number" line="8"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableScriptScanning <span class="token boolean">$true</span>
+</span><span class="code-line line-number" line="9">
+</span><span class="code-line line-number" line="10"><span class="token comment"># 4. 禁用 IOAV 保护（可移动介质自动播放扫描）</span>
+</span><span class="code-line line-number" line="11"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableIOAVProtection <span class="token boolean">$true</span>
+</span></code><div onclick="copied(this)" data-code="# 1. 禁用实时保护
+Set-MpPreference -DisableRealtimeMonitoring $true
+
+# 2. 禁用行为监控
 Set-MpPreference -DisableBehaviorMonitoring $true
-Set-MpPreference -DisableCloudProtection $true
-Set-MpPreference -DisableBlockAtFirstSeen $true
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<p>验证关闭状态：</p>
-<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token function">Get-MpComputerStatus</span> <span class="token punctuation">|</span> <span class="token function">Select</span> AMRunningMode<span class="token punctuation">,</span> RealTimeProtectionEnabled
-</span></code><div onclick="copied(this)" data-code="Get-MpComputerStatus | Select AMRunningMode, RealTimeProtectionEnabled
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<p><code>RealTimeProtectionEnabled : False</code> 代表关闭成功。</p>
-<hr>
-<h2 id="二永久关闭专业版--企业版组策略"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二永久关闭专业版--企业版组策略"><span class="octicon octicon-link"></span></a>二、永久关闭（专业版 / 企业版：组策略）</h2>
-<h3 id="写入注册表"><a class="anchor" aria-hidden="true" tabindex="-1" href="#写入注册表"><span class="octicon octicon-link"></span></a>写入注册表</h3>
-<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token parameter attr-name">/v</span> DisableAntiSpyware <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableRealtimeMonitoring <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="3"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableBehaviorMonitoring <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="4"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableOnAccessProtection <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="5"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableScanOnRealtimeEnable <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span></code><div onclick="copied(this)" data-code="reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableBehaviorMonitoring /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableOnAccessProtection /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableScanOnRealtimeEnable /t REG_DWORD /d 1 /f
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h3 id="刷新组策略"><a class="anchor" aria-hidden="true" tabindex="-1" href="#刷新组策略"><span class="octicon octicon-link"></span></a>刷新组策略</h3>
-<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">gpupdate</span> <span class="token parameter attr-name">/force</span></span>
-</span></code><div onclick="copied(this)" data-code="gpupdate /force
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<p>重启后 Defender 完全停用。</p>
-<h3 id="恢复开启"><a class="anchor" aria-hidden="true" tabindex="-1" href="#恢复开启"><span class="octicon octicon-link"></span></a>恢复开启</h3>
-<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token parameter attr-name">/v</span> DisableAntiSpyware <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">0</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">gpupdate</span> <span class="token parameter attr-name">/force</span></span>
-</span></code><div onclick="copied(this)" data-code="reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware /t REG_DWORD /d 0 /f
-gpupdate /force
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<hr>
-<h2 id="三家庭版专用无组策略"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三家庭版专用无组策略"><span class="octicon octicon-link"></span></a>三、家庭版专用（无组策略）</h2>
-<p>管理员 CMD 直接写入注册表：</p>
-<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token parameter attr-name">/v</span> DisableAntiSpyware <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="2">
-</span><span class="code-line line-number" line="3"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableRealtimeMonitoring <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="4"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableBehaviorMonitoring <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="5"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableOnAccessProtection <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="6"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableScanOnRealtimeEnable <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="7">
-</span><span class="code-line line-number" line="8"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan"</span> <span class="token parameter attr-name">/v</span> DisableScheduleScan <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span></code><div onclick="copied(this)" data-code="reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware /t REG_DWORD /d 1 /f
 
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableBehaviorMonitoring /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableOnAccessProtection /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableScanOnRealtimeEnable /t REG_DWORD /d 1 /f
+# 3. 禁用脚本扫描
+Set-MpPreference -DisableScriptScanning $true
 
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan&#x22; /v DisableScheduleScan /t REG_DWORD /d 1 /f
+# 4. 禁用 IOAV 保护（可移动介质自动播放扫描）
+Set-MpPreference -DisableIOAVProtection $true
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<p>执行后重启电脑生效。</p>
-<blockquote>
-  <p><strong>注意</strong>：新版 Win11 家庭版强化了防护，部分更新会自动删除 <code>DisableAntiSpyware</code> 键，失效时需进安全模式重新执行。</p>
-</blockquote>
 <hr>
-<h2 id="四停止-defender-服务辅助不能单独禁用"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四停止-defender-服务辅助不能单独禁用"><span class="octicon octicon-link"></span></a>四、停止 Defender 服务（辅助，不能单独禁用）</h2>
-<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">net</span> stop WinDefend</span>
-</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">sc</span> config WinDefend start=disabled</span>
-</span></code><div onclick="copied(this)" data-code="net stop WinDefend
-sc config WinDefend start=disabled
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<blockquote>
-  <p>单独禁用服务无效，系统会自动恢复，须搭配上面注册表 / 组策略操作。</p>
-</blockquote>
-<hr>
-<h2 id="五安全模式彻底锁死"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五安全模式彻底锁死"><span class="octicon octicon-link"></span></a>五、安全模式彻底锁死</h2>
-<p>当普通模式修改被系统自动重置时使用。</p>
-<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">shutdown</span> <span class="token parameter attr-name">/r</span> <span class="token parameter attr-name">/o</span> <span class="token parameter attr-name">/t</span> <span class="token number">0</span></span>
-</span></code><div onclick="copied(this)" data-code="shutdown /r /o /t 0
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<p>重启后选择：<strong>疑难解答 → 高级选项 → 启动设置 → 重启 → 按 4 进入安全模式</strong>。</p>
-<p>在安全模式下执行上面<strong>家庭版注册表全套命令</strong>，重启后生效更持久。</p>
-<hr>
-<h2 id="六一键完整禁用批处理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六一键完整禁用批处理"><span class="octicon octicon-link"></span></a>六、一键完整禁用批处理</h2>
-<p>保存为 <code>DisableDefender.bat</code>，管理员运行：</p>
-<pre class="language-batch"><code class="language-batch code-highlight"><span class="code-line line-number" line="1"><span class="token operator">@</span><span class="token command"><span class="token keyword">echo</span> off</span>
-</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">fltmc</span> filters >nul <span class="token number">2</span>></span><span class="token operator">&#x26;</span><span class="token command"><span class="token keyword">1</span> || (echo 请右键以管理员运行 </span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">pause</span> </span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">exit</span></span><span class="token punctuation">)</span>
+<h2 id="二用注册表策略锁死已验证有效"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二用注册表策略锁死已验证有效"><span class="octicon octicon-link"></span></a>二、用注册表策略锁死（已验证有效）</h2>
+<p>防止系统/组策略把它重新打开：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 强制禁用 Defender 防病毒</span>
+</span><span class="code-line line-number" line="2">reg add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token operator">/</span>v <span class="token string">"DisableAntiSpyware"</span> <span class="token operator">/</span>t REG_DWORD <span class="token operator">/</span>d 1 <span class="token operator">/</span>f
 </span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token command"><span class="token keyword">echo</span> 正在写入永久禁用 Defender 注册表项</span>
-</span><span class="code-line line-number" line="5">
-</span><span class="code-line line-number" line="6"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token parameter attr-name">/v</span> DisableAntiSpyware <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="7"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableRealtimeMonitoring <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="8"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableBehaviorMonitoring <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="9"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableOnAccessProtection <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="10"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token parameter attr-name">/v</span> DisableScanOnRealtimeEnable <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="11"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan"</span> <span class="token parameter attr-name">/v</span> DisableScheduleScan <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">1</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13"><span class="token command"><span class="token keyword">echo</span> 禁用 Defender 服务</span>
-</span><span class="code-line line-number" line="14"><span class="token command"><span class="token keyword">sc</span> config WinDefend start=disabled</span>
-</span><span class="code-line line-number" line="15"><span class="token command"><span class="token keyword">net</span> stop WinDefend</span>
-</span><span class="code-line line-number" line="16">
-</span><span class="code-line line-number" line="17"><span class="token command"><span class="token keyword">echo</span> 刷新组策略</span>
-</span><span class="code-line line-number" line="18"><span class="token command"><span class="token keyword">gpupdate</span> <span class="token parameter attr-name">/force</span></span>
-</span><span class="code-line line-number" line="19">
-</span><span class="code-line line-number" line="20"><span class="token command"><span class="token keyword">echo</span> 操作完成，请重启电脑生效</span>
-</span><span class="code-line line-number" line="21"><span class="token command"><span class="token keyword">pause</span></span>
-</span><span class="code-line line-number" line="22"><span class="token command"><span class="token keyword">shutdown</span> <span class="token parameter attr-name">/r</span> <span class="token parameter attr-name">/t</span> <span class="token number">3</span></span>
-</span></code><div onclick="copied(this)" data-code="@echo off
-fltmc filters >nul 2>&#x26;1 || (echo 请右键以管理员运行 &#x26; pause &#x26; exit)
-
-echo 正在写入永久禁用 Defender 注册表项
-
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableRealtimeMonitoring /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableBehaviorMonitoring /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableOnAccessProtection /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableScanOnRealtimeEnable /t REG_DWORD /d 1 /f
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Scan&#x22; /v DisableScheduleScan /t REG_DWORD /d 1 /f
-
-echo 禁用 Defender 服务
-sc config WinDefend start=disabled
-net stop WinDefend
-
-echo 刷新组策略
-gpupdate /force
-
-echo 操作完成，请重启电脑生效
-pause
-shutdown /r /t 3
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<hr>
-<h2 id="七恢复-defender-一键脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#七恢复-defender-一键脚本"><span class="octicon octicon-link"></span></a>七、恢复 Defender 一键脚本</h2>
-<p>保存为 <code>RestoreDefender.bat</code>，管理员运行：</p>
-<pre class="language-batch"><code class="language-batch code-highlight"><span class="code-line line-number" line="1"><span class="token operator">@</span><span class="token command"><span class="token keyword">echo</span> off</span>
-</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">fltmc</span> filters >nul <span class="token number">2</span>></span><span class="token operator">&#x26;</span><span class="token command"><span class="token keyword">1</span> || (echo 请右键以管理员运行 </span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">pause</span> </span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">exit</span></span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token command"><span class="token keyword">reg</span> add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token parameter attr-name">/v</span> DisableAntiSpyware <span class="token parameter attr-name">/t</span> REG_DWORD <span class="token parameter attr-name">/d</span> <span class="token number">0</span> <span class="token parameter attr-name">/f</span></span>
-</span><span class="code-line line-number" line="5">
-</span><span class="code-line line-number" line="6"><span class="token command"><span class="token keyword">sc</span> config WinDefend start=auto</span>
-</span><span class="code-line line-number" line="7"><span class="token command"><span class="token keyword">net</span> start WinDefend</span>
+</span><span class="code-line line-number" line="4"><span class="token comment"># 实时保护相关（防止自恢复）</span>
+</span><span class="code-line line-number" line="5">reg add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v <span class="token string">"DisableRealtimeMonitoring"</span> <span class="token operator">/</span>t REG_DWORD <span class="token operator">/</span>d 1 <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="6">reg add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v <span class="token string">"DisableBehaviorMonitoring"</span> <span class="token operator">/</span>t REG_DWORD <span class="token operator">/</span>d 1 <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="7">reg add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v <span class="token string">"DisableOnAccessProtection"</span> <span class="token operator">/</span>t REG_DWORD <span class="token operator">/</span>d 1 <span class="token operator">/</span>f
 </span><span class="code-line line-number" line="8">
-</span><span class="code-line line-number" line="9"><span class="token command"><span class="token keyword">gpupdate</span> <span class="token parameter attr-name">/force</span></span>
-</span><span class="code-line line-number" line="10">
-</span><span class="code-line line-number" line="11"><span class="token command"><span class="token keyword">echo</span> 已恢复 Windows Defender，重启生效</span>
-</span><span class="code-line line-number" line="12"><span class="token command"><span class="token keyword">pause</span></span>
-</span><span class="code-line line-number" line="13"><span class="token command"><span class="token keyword">shutdown</span> <span class="token parameter attr-name">/r</span> <span class="token parameter attr-name">/t</span> <span class="token number">3</span></span>
-</span></code><div onclick="copied(this)" data-code="@echo off
-fltmc filters >nul 2>&#x26;1 || (echo 请右键以管理员运行 &#x26; pause &#x26; exit)
+</span><span class="code-line line-number" line="9"><span class="token comment"># 隐藏安全中心托盘通知（防弹窗恢复）</span>
+</span><span class="code-line line-number" line="10">reg add <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray"</span> <span class="token operator">/</span>v <span class="token string">"AutoTurnOff"</span> <span class="token operator">/</span>t REG_DWORD <span class="token operator">/</span>d 1 <span class="token operator">/</span>f
+</span></code><div onclick="copied(this)" data-code="# 强制禁用 Defender 防病毒
+reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v &#x22;DisableAntiSpyware&#x22; /t REG_DWORD /d 1 /f
 
-reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware /t REG_DWORD /d 0 /f
+# 实时保护相关（防止自恢复）
+reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v &#x22;DisableRealtimeMonitoring&#x22; /t REG_DWORD /d 1 /f
+reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v &#x22;DisableBehaviorMonitoring&#x22; /t REG_DWORD /d 1 /f
+reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v &#x22;DisableOnAccessProtection&#x22; /t REG_DWORD /d 1 /f
 
-sc config WinDefend start=auto
-net start WinDefend
+# 隐藏安全中心托盘通知（防弹窗恢复）
+reg add &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray&#x22; /v &#x22;AutoTurnOff&#x22; /t REG_DWORD /d 1 /f
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<blockquote>
+  <p>注意：<code>reg add</code> 语法里 <code>/t REG_DWORD</code> 不能写成 <code>_DWORD</code>，否则值类型不对。</p>
+</blockquote>
+<hr>
+<h2 id="三隐藏-windows-安全中心界面与弹窗组策略"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三隐藏-windows-安全中心界面与弹窗组策略"><span class="octicon octicon-link"></span></a>三、隐藏 Windows 安全中心界面与弹窗（组策略）</h2>
+<p><code>Win + R</code> → 输入 <code>gpedit.msc</code> → 回车：</p>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">计算机配置 → 管理模板 → Windows 组件 → Windows 安全中心 → 通知
+</span><span class="code-line line-number" line="2">  → 隐藏所有通知 = 已启用
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4">用户配置 → 管理模板 → 开始菜单和任务栏
+</span><span class="code-line line-number" line="5">  → 删除操作中心图标 = 已启用
+</span></code><div onclick="copied(this)" data-code="计算机配置 → 管理模板 → Windows 组件 → Windows 安全中心 → 通知
+  → 隐藏所有通知 = 已启用
 
-gpupdate /force
-
-echo 已恢复 Windows Defender，重启生效
-pause
-shutdown /r /t 3
+用户配置 → 管理模板 → 开始菜单和任务栏
+  → 删除操作中心图标 = 已启用
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>（若无 gpedit，可用等效注册表项，或跳过此步——不影响防护已关闭的事实。）</p>
+<hr>
+<h2 id="四重启使配置彻底生效"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四重启使配置彻底生效"><span class="octicon octicon-link"></span></a>四、重启使配置彻底生效</h2>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1">shutdown <span class="token operator">/</span>r <span class="token operator">/</span>t 0
+</span></code><div onclick="copied(this)" data-code="shutdown /r /t 0
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <hr>
-<h2 id="常见失效原因"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常见失效原因"><span class="octicon octicon-link"></span></a>常见失效原因</h2>
+<h2 id="五验证"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五验证"><span class="octicon octicon-link"></span></a>五、验证</h2>
+<p>重启后执行，确认各项均为 <code>False</code>：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token function">Get-MpComputerStatus</span>
+</span></code><div onclick="copied(this)" data-code="Get-MpComputerStatus
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>关键看：</p>
+<ul>
+  <li><code>RealTimeProtectionEnabled : False</code></li>
+  <li><code>AntivirusEnabled : False</code></li>
+  <li><code>BehaviorMonitorEnabled : False</code></li>
+  <li><code>AMRunningMode : Passive Mode</code>（被动模式，不提供防护）</li>
+</ul>
+<p>也可核对注册表是否落地：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1">reg query <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token operator">/</span>v DisableAntiSpyware
+</span><span class="code-line line-number" line="2">reg query <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v DisableRealtimeMonitoring
+</span></code><div onclick="copied(this)" data-code="reg query &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware
+reg query &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableRealtimeMonitoring
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<hr>
+<h2 id="六一键恢复脚本需要时运行"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六一键恢复脚本需要时运行"><span class="octicon octicon-link"></span></a>六、一键恢复脚本（需要时运行）</h2>
+<p>在<strong>管理员 PowerShell</strong> 里执行，恢复默认防护：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 重新开启各项防护</span>
+</span><span class="code-line line-number" line="2"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableRealtimeMonitoring <span class="token boolean">$false</span>
+</span><span class="code-line line-number" line="3"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableBehaviorMonitoring <span class="token boolean">$false</span>
+</span><span class="code-line line-number" line="4"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableScriptScanning <span class="token boolean">$false</span>
+</span><span class="code-line line-number" line="5"><span class="token function">Set-MpPreference</span> <span class="token operator">-</span>DisableIOAVProtection <span class="token boolean">$false</span>
+</span><span class="code-line line-number" line="6">
+</span><span class="code-line line-number" line="7"><span class="token comment"># 删除我们加的策略键，让系统恢复默认（Defender 会自行重启）</span>
+</span><span class="code-line line-number" line="8">reg delete <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender"</span> <span class="token operator">/</span>v DisableAntiSpyware <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="9">reg delete <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v DisableRealtimeMonitoring <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="10">reg delete <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v DisableBehaviorMonitoring <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="11">reg delete <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection"</span> <span class="token operator">/</span>v DisableOnAccessProtection <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="12">reg delete <span class="token string">"HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray"</span> <span class="token operator">/</span>v AutoTurnOff <span class="token operator">/</span>f
+</span><span class="code-line line-number" line="13">
+</span><span class="code-line line-number" line="14">shutdown <span class="token operator">/</span>r <span class="token operator">/</span>t 0
+</span></code><div onclick="copied(this)" data-code="# 重新开启各项防护
+Set-MpPreference -DisableRealtimeMonitoring $false
+Set-MpPreference -DisableBehaviorMonitoring $false
+Set-MpPreference -DisableScriptScanning $false
+Set-MpPreference -DisableIOAVProtection $false
+
+# 删除我们加的策略键，让系统恢复默认（Defender 会自行重启）
+reg delete &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender&#x22; /v DisableAntiSpyware /f
+reg delete &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableRealtimeMonitoring /f
+reg delete &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableBehaviorMonitoring /f
+reg delete &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection&#x22; /v DisableOnAccessProtection /f
+reg delete &#x22;HKLM\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Systray&#x22; /v AutoTurnOff /f
+
+shutdown /r /t 0
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<hr>
+<h2 id="七想让-defender-进程也消失"><a class="anchor" aria-hidden="true" tabindex="-1" href="#七想让-defender-进程也消失"><span class="octicon octicon-link"></span></a>七、想让 Defender 进程也"消失"</h2>
+<p>
+  上述步骤后 Defender 已是<strong>被动模式（不杀毒）</strong>，服务进程仍挂在后台——这是 Windows 的正常现象。
+  若一定要进程退出，仅两条正路：
+</p>
+<ol>
+  <li><strong>装一个第三方杀软</strong>（如火绒、卡巴等）：微软官方机制，Defender 检测到后自动完全让位、进程退出。最稳、不破坏系统。</li>
+  <li><strong>PsExec 以 SYSTEM 强停</strong>（进阶、有风险，可能影响 Windows Update / SmartScreen，大版本更新可能复活）：
+    <pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 下载 Sysinternals PsExec 后</span>
+</span><span class="code-line line-number" line="2">psexec <span class="token operator">-</span>s <span class="token operator">-</span>i <span class="token operator">-</span>d cmd<span class="token punctuation">.</span>exe
+</span><span class="code-line line-number" line="3"><span class="token comment"># 在新窗口执行：</span>
+</span><span class="code-line line-number" line="4"><span class="token function">sc</span> stop WinDefend
+</span><span class="code-line line-number" line="5"><span class="token function">sc</span> config WinDefend <span class="token function">start</span>= disabled
+</span></code><div onclick="copied(this)" data-code="# 下载 Sysinternals PsExec 后
+psexec -s -i -d cmd.exe
+# 在新窗口执行：
+sc stop WinDefend
+sc config WinDefend start= disabled
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+  </li>
+</ol>
+<hr>
+<h2 id="八彻底关闭-smart-app-control智能应用控制windows-11-专属"><a class="anchor" aria-hidden="true" tabindex="-1" href="#八彻底关闭-smart-app-control智能应用控制windows-11-专属"><span class="octicon octicon-link"></span></a>八、彻底关闭 Smart App Control（智能应用控制，Windows 11 专属）</h2>
+<blockquote>
+  <p>Smart App Control（SAC）是 <strong>Windows 11 22H2 及以上</strong>独立的另一道拦截层，不依赖 Defender 实时防护——它会拦截"不受信任 / 未签名"的新应用。即使 Defender 已关，它仍可能弹窗拦截程序。仅 Windows 11 有此功能，Windows 10 无需处理。</p>
+</blockquote>
+<h3 id="方法-1windows-安全中心最简单"><a class="anchor" aria-hidden="true" tabindex="-1" href="#方法-1windows-安全中心最简单"><span class="octicon octicon-link"></span></a>方法 1：Windows 安全中心（最简单）</h3>
+<p><code>Windows 安全中心 → 应用和浏览器控制 → 智能应用控制 → 关闭</code></p>
+<h3 id="方法-2组策略最稳能持久推荐"><a class="anchor" aria-hidden="true" tabindex="-1" href="#方法-2组策略最稳能持久推荐"><span class="octicon octicon-link"></span></a>方法 2：组策略（最稳、能持久，推荐）</h3>
+<p><code>Win + R</code> → 输入 <code>gpedit.msc</code> → 回车：</p>
+<pre><code class="code-highlight"><span class="code-line line-number" line="1">计算机配置 → 管理模板 → Windows 组件 → Smart App Control
+</span><span class="code-line line-number" line="2">  → 配置 Smart App Control = 已禁用
+</span></code><div onclick="copied(this)" data-code="计算机配置 → 管理模板 → Windows 组件 → Smart App Control
+  → 配置 Smart App Control = 已禁用
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="方法-3注册表适合-win11-家庭版无-gpedit-的情况"><a class="anchor" aria-hidden="true" tabindex="-1" href="#方法-3注册表适合-win11-家庭版无-gpedit-的情况"><span class="octicon octicon-link"></span></a>方法 3：注册表（适合 Win11 家庭版无 gpedit 的情况）</h3>
+<p>在<strong>管理员 PowerShell</strong> 执行：</p>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1">reg add <span class="token string">"HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"</span> <span class="token operator">/</span>v <span class="token string">"VerifiedAndReputablePolicyState"</span> <span class="token operator">/</span>t REG_DWORD <span class="token operator">/</span>d 0 <span class="token operator">/</span>f
+</span></code><div onclick="copied(this)" data-code="reg add &#x22;HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy&#x22; /v &#x22;VerifiedAndReputablePolicyState&#x22; /t REG_DWORD /d 0 /f
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<blockquote>
+  <p>该注册表值含义：<code>0</code> = 关闭（Off），<code>1</code> = 评估模式（Evaluation，仅全新安装后的评估期），<code>2</code> = 开启（Enforced）。</p>
+</blockquote>
+<h3 id="验证"><a class="anchor" aria-hidden="true" tabindex="-1" href="#验证"><span class="octicon octicon-link"></span></a>验证</h3>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 注册表确认（应为 0x0）</span>
+</span><span class="code-line line-number" line="2">reg query <span class="token string">"HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy"</span> <span class="token operator">/</span>v VerifiedAndReputablePolicyState
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 状态确认（应为 Off）</span>
+</span><span class="code-line line-number" line="5"><span class="token function">Get-MpComputerStatus</span> <span class="token punctuation">|</span> <span class="token function">Select</span> SmartAppControlState
+</span></code><div onclick="copied(this)" data-code="# 注册表确认（应为 0x0）
+reg query &#x22;HKLM\SYSTEM\CurrentControlSet\Control\CI\Policy&#x22; /v VerifiedAndReputablePolicyState
+
+# 状态确认（应为 Off）
+Get-MpComputerStatus | Select SmartAppControlState
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>执行后<strong>重启</strong>生效。</p>
+<h3 id="️-关键警告务必先读"><a class="anchor" aria-hidden="true" tabindex="-1" href="#️-关键警告务必先读"><span class="octicon octicon-link"></span></a>⚠️ 关键警告（务必先读）</h3>
+<ol>
+  <li><strong>单向操作</strong>：Smart App Control 一旦设为"关闭"，<strong>无法再简单打开</strong>。想恢复成"开 / 评估"模式，只能「重置此电脑」（重装系统），没有任何注册表或组策略能直接切回去。</li>
+  <li>关闭前确认你确实不需要它拦截未知 / 未签名程序。</li>
+  <li>关掉后，结合前面已关的 Defender，整条"应用信任链"为全开绿灯状态，请确保有其他防护手段。</li>
+</ol>
+<hr>
+<h2 id="附录本次实测无效--受限的命令仅供参考勿纠结"><a class="anchor" aria-hidden="true" tabindex="-1" href="#附录本次实测无效--受限的命令仅供参考勿纠结"><span class="octicon octicon-link"></span></a>附录：本次实测"无效 / 受限"的命令（仅供参考，勿纠结）</h2>
 <table>
   <thead>
     <tr>
+      <th>命令</th>
+      <th>结果</th>
       <th>原因</th>
-      <th>说明</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>篡改保护未关闭</td>
-      <td>系统自动还原注册表修改</td>
+      <td><code>sc config WinDefend start= disabled</code></td>
+      <td><code>Set-Content</code> 报错</td>
+      <td>PowerShell 中 <code>sc</code> 是 <code>Set-Content</code> 别名，须用 <code>sc.exe</code></td>
     </tr>
     <tr>
-      <td>Windows 大版本更新</td>
-      <td>重置策略，需重新执行脚本</td>
+      <td><code>sc.exe stop WinDefend</code></td>
+      <td>拒绝访问 5</td>
+      <td>WinDefend 是受保护服务（PPL），管理员也无法 <code>sc</code> 停</td>
     </tr>
     <tr>
-      <td>家庭版系统限制</td>
-      <td>微软弱化 <code>DisableAntiSpyware</code>，优先安全模式执行</td>
+      <td><code>sc.exe stop wscsvc</code> / <code>SecurityHealthService</code></td>
+      <td>拒绝访问 5</td>
+      <td>同上，系统服务受保护</td>
     </tr>
     <tr>
-      <td>第三方优化工具 / 安全软件冲突</td>
-      <td>互相覆盖设置</td>
+      <td><code>schtasks /Change ... Windows Defender ...</code></td>
+      <td>任务不存在</td>
+      <td>本机无这些计划任务，可忽略</td>
     </tr>
   </tbody>
 </table>
+<blockquote>
+  <p>结论：<code>sc.exe</code> 的"拒绝访问"不是权限不足，而是 Windows 对核心安全服务的有意保护，无法通过"以管理员运行"绕过。关闭防护靠<strong>组策略/注册表 + 被动模式</strong>即可达成，无需强停服务进程。</p>
+</blockquote>
+<hr>
+<h2 id="风险提示"><a class="anchor" aria-hidden="true" tabindex="-1" href="#风险提示"><span class="octicon octicon-link"></span></a>风险提示</h2>
+<ul>
+  <li>关闭 Defender 后系统处于"裸奔"状态，建议尽快安装其他杀软。</li>
+  <li>关闭安全中心后，部分企业 VPN、网银控件、系统更新可能行为异常。</li>
+  <li>大版本系统更新后，Defender 可能自动恢复，需重新执行本文步骤。</li>
+  <li><strong>Smart App Control 为单向关闭</strong>：第六节恢复脚本只能恢复 Defender 相关项，<strong>无法</strong>把 SAC 重新打开；如需恢复 SAC，只能「重置此电脑」。</li>
+</ul>
 <style>markdown-style pre .copied {
   display: flex;
   position: absolute;
