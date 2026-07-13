@@ -29,14 +29,7 @@ file_rename_sorter() {
     local user_ext_list=("$@")
 
     [[ -z "$default_prefix" ]] && default_prefix="pc"
-
-    echo ""
-    echo -e "${gl_zi}>>> 批量文件重命名排序 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
-    read -r -e -p "$(echo -e "${gl_bai}请输入文件名前缀（默认 ${gl_lv}$default_prefix${gl_bai}）: ")" prefix
-    [[ -z "$prefix" ]] && prefix="$default_prefix"
-    log_info "正在使用前缀: ${gl_lv}$prefix${gl_bai}"
+    log_info "正在使用前缀: ${gl_lv}$default_prefix${gl_bai}"
 
     local temp_folder="temp_rename_folder_$RANDOM"
     local processed_count=0
@@ -104,9 +97,9 @@ file_rename_sorter() {
 
         if [[ "$file" == *.* ]]; then
             local file_ext="${file##*.}"
-            local new_file=$(printf "%s-%03d.%s" "$prefix" "$rename_counter" "$file_ext")
+            local new_file=$(printf "%s-%03d.%s" "$default_prefix" "$rename_counter" "$file_ext")
         else
-            local new_file=$(printf "%s-%03d" "$prefix" "$rename_counter")
+            local new_file=$(printf "%s-%03d" "$default_prefix" "$rename_counter")
         fi
 
         echo -e "  ${gl_huang}[$rename_counter/${#moved_files[@]}]${gl_bai} 重命名: ${gl_lv}$file${gl_bai} → ${gl_lv}$new_file${gl_bai}"
@@ -125,12 +118,27 @@ file_rename_sorter() {
 
     if [[ $final_count -gt 0 ]]; then
         log_ok "文件批量重命名完成！共处理 ${gl_lv}$final_count${gl_bai} 个文件"
-        log_info "规则: 仅修改文件名、完全保留原后缀格式"
+        log_info "规则: 仅修改文件名、完全保留原后缀格式、序号三位补零"
     else
         log_warn "没有文件被重命名"
     fi
     return 0
 }
+
+show_help() {
+    echo -e "${gl_zi}批量文件重命名脚本【无交互传参版】${gl_bai}"
+    echo -e "用法: ${gl_lv}$0 [文件名前缀] [后缀1 后缀2 ...]${gl_bai}"
+    echo ""
+    echo -e "示例:"
+    echo -e "  1. 默认前缀pc，重命名所有文件: ${gl_huang}$0${gl_bai}"
+    echo -e "  2. 自定义前缀file，仅重命名jpg/png文件: ${gl_huang}$0 file jpg png${gl_bai}"
+    echo -e "  3. 自定义前缀data，重命名所有文件: ${gl_huang}$0 data${gl_bai}"
+}
+
+if [[ $# -ge 1 && ($1 == "-h" || $1 == "--help") ]]; then
+    show_help
+    exit 0
+fi
 
 if [[ $# -ge 1 ]]; then
     file_rename_sorter "$1" "${@:2}"
