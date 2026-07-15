@@ -1,5 +1,4 @@
 #!/bin/bash
-set -uo pipefail
 
 gl_hui='\033[38;5;59m'
 gl_hong='\033[38;5;9m'
@@ -18,9 +17,9 @@ log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 sleep_fractional() {
     local seconds=$1
     if sleep "$seconds" 2>/dev/null; then return 0; fi
-    if command -v perl &>/dev/null; then perl -e "select(undef, undef, undef, $seconds)"; return 0; fi
-    if command -v python3 &>/dev/null; then python3 -c "import time; time.sleep($seconds)"; return 0; fi
-    if command -v python &>/dev/null; then python -c "import time; time.sleep($seconds)"; return 0; fi
+    if command -v perl >/dev/null; then perl -e "select(undef, undef, undef, $seconds)"; return 0; fi
+    if command -v python3 >/dev/null; then python3 -c "import time; time.sleep($seconds)"; return 0; fi
+    if command -v python >/dev/null; then python -c "import time; time.sleep($seconds)"; return 0; fi
     local int_seconds=$(awk -v s="$seconds" 'BEGIN{print int(s+0.999)}')
     sleep "$int_seconds"
 }
@@ -46,75 +45,105 @@ exit_script() {
 install() {
     [[ $# -eq 0 ]] && return 1
     for pkg in "$@"; do
-        command -v "$pkg" &>/dev/null && continue
+        command -v "$pkg" >/dev/null && continue
         log_info "正在安装依赖：${gl_huang}$pkg${gl_bai}"
-        if command -v apt &>/dev/null; then
+        if command -v apt >/dev/null; then
             apt update -y && apt install -y "$pkg" >/dev/null 2>&1
-        elif command -v dnf &>/dev/null; then
+        elif command -v dnf >/dev/null; then
             dnf install -y "$pkg" >/dev/null 2>&1
-        elif command -v yum &>/dev/null; then
+        elif command -v yum >/dev/null; then
             yum install -y "$pkg" >/dev/null 2>&1
         fi
     done
 }
 
-input_repo_url() {
-    global_repo_url=""
-    while true; do
-        clear
-        echo -e "${gl_huang}当前工作目录: ${gl_lv}$(pwd)${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        ls --color=auto -x
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e ""
-        echo -e "${gl_zi}>>> Git克隆仓库${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        read -r -e -p "$(echo -e "${gl_bai}请输入仓库地址 (${gl_hong}0${gl_bai}退出): ")" input_tmp
+input_repo_list() {
+    local repo_list=()
+    clear
+    echo -e "${gl_huang}当前工作目录: ${gl_lv}$(pwd)${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    ls --color=auto -x
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e ""
+    echo -e "${gl_zi}>>> Git批量克隆仓库${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}逐行输入仓库地址，输入 ${gl_hong}0${gl_bai} 退出，空行结束输入${gl_bai}"
+    echo -e "${gl_bai}————————————————————————————————————————————————${gl_bai}"
 
+    while true; do
+        read -r -e -p "$(echo -e "${gl_bai}> ")" input_tmp
         input_tmp=$(echo "$input_tmp" | xargs)
         if [[ "$input_tmp" == "0" ]]; then
             exit_script
-        elif [[ -z "$input_tmp" ]]; then
-            log_error "仓库地址不能为空，请重新输入"
-            sleep 1
-            continue
         fi
-        global_repo_url="$input_tmp"
-        break
+        if [[ -z "$input_tmp" ]]; then
+            break
+        fi
+        repo_list+=("$input_tmp")
     done
+    echo "${repo_list[@]}"
+}
+
+# 提取仓库目录名
+get_repo_name() {
+    local url="$1"
+    url="${url%/.git}"
+    url="${url%.git}"
+    echo "${url##*/}"
 }
 
 clone_repository() {
     install git
-    local repo_url=""
+    local repo_list=()
 
     if [[ $# -eq 0 ]]; then
-        # 交互模式：调用函数写入全局变量
-        input_repo_url
-        repo_url="$global_repo_url"
-    else
-        # 传参模式处理
-        repo_url="$1"
-        repo_url=$(echo "$repo_url" | xargs)
-        if [[ -z "$repo_url" ]]; then
-            log_error "传入仓库地址为空"
+        read -ra repo_list <<< "$(input_repo_list)"
+        if [[ ${#repo_list[@]} -eq 0 ]]; then
+            log_warn "未输入任何仓库地址"
             break_end
             return 1
         fi
+    else
+        repo_list=("$@")
     fi
+
+    local -A seen
+    local unique_list=()
+    for item in "${repo_list[@]}"; do
+        [[ -z ${seen[$item]} ]] && unique_list+=("$item") && seen[$item]=1
+    done
+    repo_list=("${unique_list[@]}")
 
     echo -e ""
-    echo -e "${gl_huang}>>> 正在克隆仓库中 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_zi}>>> 开始批量克隆，总计 ${gl_lv}${#repo_list[@]}${gl_huang} 个仓库 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_info "克隆目标目录：${gl_huang}$(pwd)${gl_bai}"
+    echo ""
 
-    if git clone -- "$repo_url"; then
-        log_ok "仓库克隆成功！"
-    else
-        log_error "仓库克隆失败，请检查地址或网络"
-    fi
+    local succ=0 skip=0 fail=0
+    for url in "${repo_list[@]}"; do
+        local name=$(get_repo_name "$url")
+        echo -e "${gl_huang}>>> 正在处理：${gl_huang}$url${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+        if [[ -d "$name" ]]; then
+            log_warn "[$name] 目录已存在，跳过克隆"
+            ((skip++))
+            echo ""
+            continue
+        fi
+
+        if git clone -- "$url"; then
+            log_ok "[$name] 克隆成功"
+            ((succ++))
+        else
+            log_error "[$name] 克隆失败"
+            ((fail++))
+        fi
+    done
+
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    log_info "批量任务汇总：${gl_lv}成功${succ}${gl_bai} 个，${gl_huang}跳过${skip}${gl_bai} 个，${gl_hong}失败${fail}${gl_bai} 个"
     break_end
 }
 
-clone_repository "$@"
