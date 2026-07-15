@@ -3,10 +3,10 @@ set -uo pipefail
 
 # ====================== 【可自定义配置区】 在这里修改所有默认参数 ======================
 # 项目标题
-DEFAULT_TITLE="Speedtest Tracker 网速监测工具 一键部署"
+DEFAULT_TITLE="Speedtest Go 中文版 网速测试工具 一键部署"
 
 # 部署目录（不传参时的默认路径）
-DEFAULT_COMPOSE_DIR="/vol1/1000/compose/speedtest"
+DEFAULT_COMPOSE_DIR="/vol1/1000/compose/speedtest-go-zh"
 
 # 默认访问端口（不传参时使用），映射容器 80
 DEFAULT_PORT="7878"
@@ -192,7 +192,6 @@ check_and_open_port() {
     log_ok "端口 ${gl_lv}${PORT}${gl_bai} 已开放"
 }
 
-
 check_port_available() {
     local PORT="$1"
     if ss -tuln | grep -q ":${PORT} "; then
@@ -266,7 +265,7 @@ docker_check_env() {
         log_info "正在检查 Docker 运行环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         log_warn "Docker 未安装，即将自动安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
 
         if ! command -v docker &>/dev/null; then
             log_error "Docker 安装失败，请手动安装后重试！"
@@ -281,7 +280,7 @@ docker_check_env() {
         log_info "正在检查 Docker Compose 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         log_warn "Docker Compose 未安装，即将自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
 
         if ! command -v docker-compose &>/dev/null; then
             log_error "Docker Compose 安装失败，请手动安装后重试！"
@@ -494,7 +493,7 @@ deploy_app() {
 services:
    ${DEFAULT_CONTAINER_NAME}:
       container_name: ${DEFAULT_CONTAINER_NAME}
-      image: chishin/speedtest-go-zh:latest
+      image: mobufan/speedtest-go-zh:latest
       restart: always
       network_mode: bridge
       ports:
