@@ -445,7 +445,7 @@ deploy_app() {
     cat > docker-compose.yml << EOF
 services:
    ${DEFAULT_CONTAINER_NAME}:
-      image: docker.1ms.run/smysong/mediamaster-v2:latest
+      image: smysong/mediamaster-v2:latest
       container_name: ${DEFAULT_CONTAINER_NAME}
       environment:
          - UID=0

@@ -1776,7 +1776,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="445">    <span class="token function">cat</span> <span class="token operator">></span> docker-compose.yml <span class="token operator">&#x3C;&#x3C;</span> <span class="token string">EOF
 </span></span><span class="code-line line-number" line="446"><span class="token string">services:
 </span></span><span class="code-line line-number" line="447"><span class="token string">   <span class="token variable">${DEFAULT_CONTAINER_NAME}</span>:
-</span></span><span class="code-line line-number" line="448"><span class="token string">      image: docker.1ms.run/smysong/mediamaster-v2:latest
+</span></span><span class="code-line line-number" line="448"><span class="token string">      image: smysong/mediamaster-v2:latest
 </span></span><span class="code-line line-number" line="449"><span class="token string">      container_name: <span class="token variable">${DEFAULT_CONTAINER_NAME}</span>
 </span></span><span class="code-line line-number" line="450"><span class="token string">      environment:
 </span></span><span class="code-line line-number" line="451"><span class="token string">         - UID=0
@@ -2293,7 +2293,7 @@ deploy_app() {
     cat > docker-compose.yml << EOF
 services:
    ${DEFAULT_CONTAINER_NAME}:
-      image: docker.1ms.run/smysong/mediamaster-v2:latest
+      image: smysong/mediamaster-v2:latest
       container_name: ${DEFAULT_CONTAINER_NAME}
       environment:
          - UID=0
