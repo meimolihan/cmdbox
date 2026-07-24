@@ -1196,6 +1196,11 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li><strong>🐱 <code>GitHub</code> 项目地址：<a href="https://github.com/smysong/mediamaster-v2">https://github.com/smysong/mediamaster-v2</a></strong></li>
   <li><strong>🐋 <code>Docker</code> 镜像地址：<a href="https://hub.docker.com/r/smysong/mediamaster-v2">https://hub.docker.com/r/smysong/mediamaster-v2</a></strong></li>
 </ul>
+<p><strong>默认登录信息</strong>：</p>
+<ul>
+  <li>👑 用户名：<code>admin</code></li>
+  <li>🔑 密码：<code>password</code></li>
+</ul>
 <h2 id="效果预览"><a class="anchor" aria-hidden="true" tabindex="-1" href="#效果预览"><span class="octicon octicon-link"></span></a>效果预览</h2>
 <p>
   <img src="../img/dc_inst_mediamaster-01.webp" alt="执行脚本效果预览" title="截图演示" loading="lazy">
@@ -1841,11 +1846,12 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="510">    log_info <span class="token string">"部署目录：<span class="token variable">${gl_huang}</span><span class="token variable">${COMPOSE_DIR}</span><span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="511">    log_info <span class="token string">"媒体库目录：<span class="token variable">${gl_huang}</span><span class="token variable">${MEDIA_DIR}</span><span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="512">    log_info <span class="token string">"下载目录：<span class="token variable">${gl_huang}</span><span class="token variable">${DOWNLOADS_DIR}</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="513">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="514">    break_end
-</span><span class="code-line line-number" line="515"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="516">
-</span><span class="code-line line-number" line="517">deploy_app <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="513">    log_info <span class="token string">"用户名/密码：<span class="token variable">${gl_huang}</span>admin<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_lv}</span>password<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="514">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="515">    break_end
+</span><span class="code-line line-number" line="516"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="517">
+</span><span class="code-line line-number" line="518">deploy_app <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -2358,6 +2364,7 @@ EOF
     log_info &#x22;部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}&#x22;
     log_info &#x22;媒体库目录：${gl_huang}${MEDIA_DIR}${gl_bai}&#x22;
     log_info &#x22;下载目录：${gl_huang}${DOWNLOADS_DIR}${gl_bai}&#x22;
+    log_info &#x22;用户名/密码：${gl_huang}admin${gl_bai}/${gl_lv}password${gl_bai}&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
     break_end
 }

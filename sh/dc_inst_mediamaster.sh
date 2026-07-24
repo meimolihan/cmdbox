@@ -510,6 +510,7 @@ EOF
     log_info "部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}"
     log_info "媒体库目录：${gl_huang}${MEDIA_DIR}${gl_bai}"
     log_info "下载目录：${gl_huang}${DOWNLOADS_DIR}${gl_bai}"
+    log_info "用户名/密码：${gl_huang}admin${gl_bai}/${gl_lv}password${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
 }
