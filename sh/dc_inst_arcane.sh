@@ -477,6 +477,8 @@ EOF
     log_info "部署完成！"
     log_info "访问地址：${gl_lv}http://${LOCAL_IP}:${HOST_PORT}${gl_bai}"
     log_info "部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}"
+    log_info "默认用户名：${gl_huang}arcane${gl_bai}"
+    log_info "默认密码：${gl_huang}arcane-admin${gl_bai}"
     log_info "ENCRYPTION_KEY：${gl_huang}${ENCRYPTION_KEY}${gl_bai}"
     log_info "JWT_SECRET：${gl_huang}${JWT_SECRET}${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
