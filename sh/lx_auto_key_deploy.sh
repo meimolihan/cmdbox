@@ -14,7 +14,6 @@ log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 
-# 静默模式日志函数
 log_info_silent()  { [[ "$SILENT_MODE" != "1" ]] && log_info "$*"; }
 log_ok_silent()    { [[ "$SILENT_MODE" != "1" ]] && log_ok "$*"; }
 log_warn_silent()  { [[ "$SILENT_MODE" != "1" ]] && log_warn "$*"; }
@@ -64,8 +63,8 @@ exit_script() {
             sleep_fractional 0.06
         done
         echo -e "\r\033[K${gl_lv}✓${gl_bai} 成功退出\n"
-        clear
     }
+    clear
     exit 0
 }
 
@@ -75,7 +74,6 @@ SUCCESS_IP_LIST=()
 CURRENT_USER=""
 SILENT_MODE=0
 
-# 显示帮助信息
 show_help() {
     cat << EOF
 ${gl_huang}SSH密钥分发工具${gl_bai}
@@ -98,10 +96,10 @@ ${gl_bufan}示例：${gl_bai}
   $0 --list
   $0 --delete 10.10.10.254
   $0 --clear
-  $0 -s -u root -p pass -i "10.10.10.251"  # 静默模式
+  $0 -s -u root -p pass -i "10.10.10.251"
 
 ${gl_bufan}交互模式：${gl_bai}
-  $0                  # 不带参数进入交互菜单
+  $0
 
 EOF
     exit 0
@@ -111,32 +109,36 @@ load_list(){
     SUCCESS_IP_LIST=()
     if [[ -f "$LIST_FILE" ]]; then
         while IFS= read -r line; do
-            # 去除可能的回车符和空格
             line=$(echo "$line" | tr -d '\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
             [[ -n "$line" ]] && SUCCESS_IP_LIST+=("$line")
         done < "$LIST_FILE"
+        # log_info_silent "加载清单文件，共 ${#SUCCESS_IP_LIST[@]} 个IP"
+    else
+        log_info_silent "清单文件不存在，创建新文件"
+        touch "$LIST_FILE"
     fi
 }
 
 save_list(){
-    # 使用普通数组进行去重（兼容所有Bash版本）
     local unique_list=()
-    local -A seen=()
-    
+    local temp_file=$(mktemp)
+
     for ip in "${SUCCESS_IP_LIST[@]}"; do
-        # 检查是否已经存在
-        if [[ -z "${seen[$ip]:-}" ]]; then
+        if ! grep -q "^${ip}$" "$temp_file" 2>/dev/null; then
+            echo "$ip" >> "$temp_file"
             unique_list+=("$ip")
-            seen[$ip]=1
         fi
     done
-    
-    # 写入文件
+
     > "$LIST_FILE"
     for ip in "${unique_list[@]}"; do
         echo "$ip" >> "$LIST_FILE"
     done
+    
+    rm -f "$temp_file"
+    
     SUCCESS_IP_LIST=("${unique_list[@]}")
+    log_info_silent "保存清单文件，共 ${#SUCCESS_IP_LIST[@]} 个IP"
 }
 
 valid_ip() {
@@ -160,10 +162,23 @@ ip_in_list() {
 add_success_ip() {
     local target_ip="$1"
     load_list
-    if ! ip_in_list "$target_ip"; then
-        SUCCESS_IP_LIST+=("$target_ip")
-        save_list
-        log_info_silent "已将 ${target_ip} 存入清单文件"
+    
+    if ip_in_list "$target_ip"; then
+        log_warn "${target_ip} 已在清单中，跳过添加"
+        return 1
+    fi
+    
+    SUCCESS_IP_LIST+=("$target_ip")
+    save_list
+    log_ok "已添加 ${target_ip} 到清单"
+    
+    load_list
+    if ip_in_list "$target_ip"; then
+        log_ok "验证成功：${target_ip} 已保存"
+        return 0
+    else
+        log_error "验证失败：${target_ip} 未能保存到清单"
+        return 1
     fi
 }
 
@@ -172,6 +187,7 @@ del_success_ip() {
     load_list
     local new_arr=()
     local found=0
+    
     for ip in "${SUCCESS_IP_LIST[@]}"; do
         if [[ "$ip" != "$target_ip" ]]; then
             new_arr+=("$ip")
@@ -183,10 +199,18 @@ del_success_ip() {
     if [[ $found -eq 1 ]]; then
         SUCCESS_IP_LIST=("${new_arr[@]}")
         save_list
-        log_ok_silent "已删除记录：${target_ip}"
-        return 0
+        log_ok "已删除记录：${target_ip}"
+        
+        load_list
+        if ! ip_in_list "$target_ip"; then
+            log_ok "验证成功：${target_ip} 已从清单中移除"
+            return 0
+        else
+            log_error "验证失败：${target_ip} 仍存在于清单中"
+            return 1
+        fi
     else
-        log_warn_silent "清单中不存在IP：${target_ip}"
+        log_warn "清单中不存在IP：${target_ip}"
         return 1
     fi
 }
@@ -194,7 +218,7 @@ del_success_ip() {
 print_success_list() {
     local username="$1"
     load_list
-    [[ "$SILENT_MODE" != "1" ]] && clear
+    echo -e ""
     echo -e "${gl_huang}>>> 已完成密钥分发主机清单${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     if [[ ${#SUCCESS_IP_LIST[@]} -eq 0 ]]; then
@@ -242,11 +266,12 @@ run_batch_task() {
     local ip_list=("$@")
     local success_count=0 fail_count=0 skip_count=0
 
-    # 更新当前用户名
     CURRENT_USER="$user"
+    
+    log_info "开始批量密钥分发任务"
+    log_info "目标主机数: ${#ip_list[@]}"
 
     for TARGET_IP in "${ip_list[@]}"; do
-        # 去除可能的空格和换行
         TARGET_IP=$(echo "$TARGET_IP" | tr -d '\r' | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
         
         if ! valid_ip "$TARGET_IP"; then
@@ -255,58 +280,75 @@ run_batch_task() {
             continue
         fi
         
-        # 检查是否已经分发过
         load_list
         if ip_in_list "$TARGET_IP"; then
-            log_info_silent "${TARGET_IP} 已经完成密钥分发，跳过"
+            log_warn "${TARGET_IP} 已经完成密钥分发，跳过"
             ((skip_count++))
             continue
         fi
         
-        [[ "$SILENT_MODE" != "1" ]] && echo -e "\n${gl_bufan}————————————————————————${gl_bai}"
-        [[ "$SILENT_MODE" != "1" ]] && echo -e "${gl_zi}>>> 正在处理主机: ${TARGET_IP}${gl_bai}"
-        log_info_silent "测试网络连通性 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        if ping -c 2 -W 3 "$TARGET_IP" >/dev/null 2>&1; then
-            log_ok_silent "${TARGET_IP} 网络可达"
+        echo -e "\n${gl_bufan}————————————————————————${gl_bai}"
+        echo -e "${gl_zi}>>> 正在处理主机: ${TARGET_IP}${gl_bai}"
+        
+        log_info "检测SSH服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        
+        if command -v nc &>/dev/null; then
+            if nc -zv -w 3 "$TARGET_IP" 22 2>&1 | grep -q "succeeded\|Connected to"; then
+                log_ok "${TARGET_IP} SSH服务端口(22)可达"
+            else
+                log_error "${TARGET_IP} SSH服务端口(22)不可达，跳过"
+                echo -e "${gl_huang}提示: 请确保目标主机SSH服务已启动且防火墙允许22端口${gl_bai}"
+                ((fail_count++))
+                continue
+            fi
+        elif timeout 3 bash -c "echo >/dev/tcp/${TARGET_IP}/22" 2>/dev/null; then
+            log_ok "${TARGET_IP} SSH服务端口(22)可达"
         else
-            log_error "${TARGET_IP} 网络不通，跳过"
+            log_error "${TARGET_IP} SSH服务端口(22)不可达，跳过"
+            echo -e "${gl_huang}提示: 请确保目标主机SSH服务已启动且防火墙允许22端口${gl_bai}"
             ((fail_count++))
             continue
         fi
 
         diagnose_and_fix_ssh "$TARGET_IP"
 
-        log_info_silent "测试密码SSH连接 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        log_info "测试密码SSH连接 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         if sshpass -p "$pass" ssh -o StrictHostKeyChecking=no -o ConnectTimeout=10 "${user}@${TARGET_IP}" "echo ok" 2>/dev/null; then
-            log_ok_silent "${TARGET_IP} SSH密码连接成功"
+            log_ok "${TARGET_IP} SSH密码连接成功"
         else
-            log_error "${TARGET_IP} SSH登录失败，跳过"
+            log_error "${TARGET_IP} SSH登录失败，请检查用户名和密码"
             ((fail_count++))
             continue
         fi
 
-        log_info_silent "推送SSH公钥 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        log_info "推送SSH公钥 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         if sshpass -p "$pass" ssh-copy-id -o StrictHostKeyChecking=no -i "${KEY_PATH}.pub" "${user}@${TARGET_IP}" >/dev/null 2>&1; then
-            log_ok_silent "${TARGET_IP} 密钥推送完成"
+            log_ok "${TARGET_IP} 密钥推送完成"
         else
             log_error "${TARGET_IP} 公钥推送失败"
             ((fail_count++))
             continue
         fi
 
-        log_info_silent "验证免密登录 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        log_info "验证免密登录 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         if ssh -o BatchMode=yes -o ConnectTimeout=5 "${user}@${TARGET_IP}" "echo ok" 2>/dev/null; then
-            log_ok_silent "${TARGET_IP} 免密登录验证成功"
-            add_success_ip "$TARGET_IP"
-            ((success_count++))
+            log_ok "${TARGET_IP} 免密登录验证成功"
+            
+            if add_success_ip "$TARGET_IP"; then
+                ((success_count++))
+                log_ok "${TARGET_IP} 已成功记录到清单"
+            else
+                log_error "${TARGET_IP} 添加到清单失败"
+                ((fail_count++))
+            fi
         else
-            log_warn_silent "${TARGET_IP} 密钥已推送，但免密登录校验失败"
+            log_warn "${TARGET_IP} 密钥已推送，但免密登录校验失败"
             ((fail_count++))
         fi
 
-        [[ "$SILENT_MODE" != "1" ]] && echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        [[ "$SILENT_MODE" != "1" ]] && echo -e "${gl_lv}[测试命令] ssh ${user}@${TARGET_IP}${gl_bai}"
-        [[ "$SILENT_MODE" != "1" ]] && echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}[测试命令] ssh ${user}@${TARGET_IP}${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     done
 
     echo -e ""
@@ -318,7 +360,16 @@ run_batch_task() {
     echo -e "  成功: ${gl_lv}${success_count}${gl_bai} 台"
     echo -e "  失败: ${gl_hong}${fail_count}${gl_bai} 台"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
     print_success_list "$CURRENT_USER"
+    
+    if [[ -f "$LIST_FILE" ]]; then
+        local file_count=$(grep -c . "$LIST_FILE" 2>/dev/null || echo 0)
+        echo -e "${gl_lv}清单文件路径: ${LIST_FILE}${gl_bai}"
+        echo -e "${gl_lv}文件中的IP数: ${file_count}${gl_bai}"
+    else
+        log_error "清单文件不存在！"
+    fi
 }
 
 delete_ip_interactive() {
@@ -372,6 +423,8 @@ interactive_mode() {
     
     while true; do
 
+        clear
+
         if [[ ${#SUCCESS_IP_LIST[@]} -gt 0 ]]; then
             print_success_list "$CURRENT_USER"
             echo -e "${gl_huang}检测到 ${#SUCCESS_IP_LIST[@]} 台主机已完成密钥分发${gl_bai}"
@@ -380,7 +433,7 @@ interactive_mode() {
         fi
 
         show_management_menu
-        read -p $'\033[33m请输入你的选择: \033[0m' choice
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" choice
         
         case $choice in
             0)
@@ -394,7 +447,7 @@ interactive_mode() {
                 read -p $'\033[33m> \033[0m' confirm
                 if [[ "${confirm,,}" == "y" ]]; then
                     SUCCESS_IP_LIST=()
-                    rm -f "$LIST_FILE"
+                    > "$LIST_FILE"
                     log_ok "所有记录已清空"
                     print_success_list "$CURRENT_USER"
                 else
@@ -414,7 +467,6 @@ interactive_mode() {
                 [[ -z "$CRED_PASS" ]] && log_error "密码不能为空！" && continue
                 log_info "凭证录入完成，登录用户：${CRED_USER}"
                 
-                # 更新当前用户名
                 CURRENT_USER="$CRED_USER"
                 
                 echo -e "${gl_huang}请输入要分发的主机IP列表（用空格分隔）：${gl_bai}"
@@ -428,6 +480,7 @@ interactive_mode() {
                 
                 targets=($ip_input)
                 run_batch_task "${CRED_USER}" "${CRED_PASS}" "${targets[@]}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 break_end
                 ;;
             *)
@@ -492,6 +545,7 @@ parse_args() {
     if [[ $show_list -eq 1 ]]; then
         load_list
         print_success_list "$CURRENT_USER"
+        echo -e "${gl_lv}清单文件: ${LIST_FILE}${gl_bai}"
         exit 0
     fi
 
@@ -505,7 +559,7 @@ parse_args() {
             fi
         fi
         SUCCESS_IP_LIST=()
-        rm -f "$LIST_FILE"
+        > "$LIST_FILE"
         log_ok "所有记录已清空"
         print_success_list "$CURRENT_USER"
         exit 0
@@ -520,7 +574,6 @@ parse_args() {
 
     if [[ -n "$user" && -n "$pass" && -n "$ip_list" ]]; then
         CURRENT_USER="$user"
-        # 将IP字符串转换为数组
         IFS=' ' read -r -a ip_array <<< "$ip_list"
         run_batch_task "$user" "$pass" "${ip_array[@]}"
         exit 0
