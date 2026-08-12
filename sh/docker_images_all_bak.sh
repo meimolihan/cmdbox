@@ -80,10 +80,10 @@ install() {
     done
 }
 
-# ---------------- 核心备份函数 直接全量备份所有镜像 ----------------
 backup_all_docker_images() {
-    # 参数1：备份根目录，默认 /mnt/backup_images
-    local BACKUP_ROOT="${1:-/mnt/backup_images}"
+    local BACKUP_ROOT="$1"
+    local RETAIN_COUNT="$2"
+
     log_info "安装依赖 tar jq gzip pigz"
     install tar jq gzip pigz
 
@@ -92,10 +92,33 @@ backup_all_docker_images() {
         return 1
     fi
 
+    clear
+    echo -e "${gl_zi}>>> 备份所有 Docker 镜像${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ -n "${RETAIN_COUNT}" && "${RETAIN_COUNT}" -gt 0 ]]; then
+        log_info "轮转策略：总共保留 ${RETAIN_COUNT} 套备份(含本次新建)"
+        mapfile -t EXIST_BACKUPS < <(find "${BACKUP_ROOT}" -maxdepth 1 -type d -name "images_backup_*" | sort)
+        local exist_cnt=${#EXIST_BACKUPS[@]}
+        log_info "当前已存在历史备份: ${exist_cnt} 套"
+        # 本次会新增1套，所以历史最多允许保留 RETAIN_COUNT -1 套
+        local max_keep_history=$(( RETAIN_COUNT - 1 ))
+        if [[ ${exist_cnt} -gt ${max_keep_history} ]]; then
+            local del_cnt=$(( exist_cnt - max_keep_history ))
+            log_warn "历史备份超出配额，将删除最旧 ${del_cnt} 套备份"
+            for ((i=0; i<del_cnt; i++)); do
+                local rm_dir="${EXIST_BACKUPS[$i]}"
+                log_info "删除旧备份: ${rm_dir}"
+                rm -rf "${rm_dir}"
+            done
+        else
+            log_info "历史备份数量(${exist_cnt}) ≤ 允许历史保留(${max_keep_history})，无需删除"
+        fi
+    fi
+
     local DATE_STR=$(date +%Y%m%d_%H%M%S)
     local BACKUP_DIR="${BACKUP_ROOT}/images_backup_${DATE_STR}"
     mkdir -p "$BACKUP_DIR"
-    log_info "备份目录: ${BACKUP_DIR}"
+    log_info "本次备份目录: ${BACKUP_DIR}"
 
     mapfile -t IMAGES < <(docker images --format "{{.Repository}}:{{.Tag}}" | grep -v "<none>" | grep -v "REPOSITORY:TAG")
     if [[ ${#IMAGES[@]} -eq 0 ]]; then
@@ -164,4 +187,15 @@ EOF
     echo -e "${gl_bufan}================================================${gl_bai}"
 }
 
-backup_all_docker_images "${1:-}"
+ARG_BACKUP_ROOT="/mnt/backup_images"
+ARG_RETAIN=""
+
+for arg in "$@"; do
+    if [[ "$arg" =~ ^[0-9]+$ ]]; then
+        ARG_RETAIN="$arg"
+    else
+        ARG_BACKUP_ROOT="$arg"
+    fi
+done
+
+backup_all_docker_images "${ARG_BACKUP_ROOT}" "${ARG_RETAIN}"

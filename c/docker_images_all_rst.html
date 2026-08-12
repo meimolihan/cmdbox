@@ -1362,44 +1362,48 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="135">    install_dep jq <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span>
 </span><span class="code-line line-number" line="136">    install_dep <span class="token function">gzip</span> <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span>
 </span><span class="code-line line-number" line="137">
-</span><span class="code-line line-number" line="138">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">MANIFEST</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${BACKUP_DIR}</span>/manifest.json"</span>
-</span><span class="code-line line-number" line="139">    <span class="token builtin class-name">local</span> IMAGE_COUNT
-</span><span class="code-line line-number" line="140">    <span class="token assign-left variable">IMAGE_COUNT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jq <span class="token parameter variable">-r</span> <span class="token string">'.images | length'</span> <span class="token string">"<span class="token variable">$MANIFEST</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="141">    log_info <span class="token string">"备份目录: <span class="token variable">${BACKUP_DIR}</span>"</span>
-</span><span class="code-line line-number" line="142">    log_info <span class="token string">"需要恢复镜像总数: <span class="token variable">${IMAGE_COUNT}</span>"</span>
-</span><span class="code-line line-number" line="143">
-</span><span class="code-line line-number" line="144">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">success</span><span class="token operator">=</span><span class="token number">0</span> <span class="token assign-left variable">fail</span><span class="token operator">=</span><span class="token number">0</span>
-</span><span class="code-line line-number" line="145">    <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&#x3C;</span>IMAGE_COUNT<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="146">        <span class="token builtin class-name">local</span> IMAGE_NAME IMAGE_FILE IMAGE_PATH
-</span><span class="code-line line-number" line="147">        <span class="token assign-left variable">IMAGE_NAME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jq <span class="token parameter variable">-r</span> <span class="token string">".images[<span class="token variable">$i</span>].name"</span> <span class="token string">"<span class="token variable">$MANIFEST</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="148">        <span class="token assign-left variable">IMAGE_FILE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jq <span class="token parameter variable">-r</span> <span class="token string">".images[<span class="token variable">$i</span>].file"</span> <span class="token string">"<span class="token variable">$MANIFEST</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="149">        <span class="token assign-left variable">IMAGE_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${BACKUP_DIR}</span>/<span class="token variable">${IMAGE_FILE}</span>"</span>
-</span><span class="code-line line-number" line="150">
-</span><span class="code-line line-number" line="151">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>[<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>/<span class="token variable">${IMAGE_COUNT}</span>]<span class="token variable">${gl_bai}</span> 加载镜像: <span class="token variable">${gl_zi}</span><span class="token variable">${IMAGE_NAME}</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="152">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="153">            log_error <span class="token string">"文件缺失 <span class="token variable">${IMAGE_FILE}</span>"</span>
-</span><span class="code-line line-number" line="154">            <span class="token variable"><span class="token punctuation">((</span>fail<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="155">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="156">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="157">        <span class="token keyword">if</span> <span class="token function">docker</span> load <span class="token parameter variable">-i</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="158">            log_ok <span class="token string">"加载成功: <span class="token variable">${IMAGE_NAME}</span>"</span>
-</span><span class="code-line line-number" line="159">            <span class="token variable"><span class="token punctuation">((</span>success<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="160">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="161">            log_error <span class="token string">"docker load 失败: <span class="token variable">${IMAGE_NAME}</span>"</span>
-</span><span class="code-line line-number" line="162">            <span class="token variable"><span class="token punctuation">((</span>fail<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="163">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="164">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="165">
-</span><span class="code-line line-number" line="166">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>========================================<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="167">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$fail</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="168">        log_error <span class="token string">"恢复完成: 成功 <span class="token variable">${success}</span> , 失败 <span class="token variable">${fail}</span>"</span>
-</span><span class="code-line line-number" line="169">        <span class="token builtin class-name">exit</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="170">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="171">    log_ok <span class="token string">"恢复完成: 成功 <span class="token variable">${success}</span> , 失败 <span class="token variable">${fail}</span>"</span>
-</span><span class="code-line line-number" line="172">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="173"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="174">
-</span><span class="code-line line-number" line="175">main <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="138">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="139">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 恢复所有 Docker 镜像<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="140">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="141">
+</span><span class="code-line line-number" line="142">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">MANIFEST</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${BACKUP_DIR}</span>/manifest.json"</span>
+</span><span class="code-line line-number" line="143">    <span class="token builtin class-name">local</span> IMAGE_COUNT
+</span><span class="code-line line-number" line="144">    <span class="token assign-left variable">IMAGE_COUNT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jq <span class="token parameter variable">-r</span> <span class="token string">'.images | length'</span> <span class="token string">"<span class="token variable">$MANIFEST</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="145">    log_info <span class="token string">"备份目录: <span class="token variable">${BACKUP_DIR}</span>"</span>
+</span><span class="code-line line-number" line="146">    log_info <span class="token string">"需要恢复镜像总数: <span class="token variable">${IMAGE_COUNT}</span>"</span>
+</span><span class="code-line line-number" line="147">
+</span><span class="code-line line-number" line="148">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">success</span><span class="token operator">=</span><span class="token number">0</span> <span class="token assign-left variable">fail</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line line-number" line="149">    <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&#x3C;</span>IMAGE_COUNT<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="150">        <span class="token builtin class-name">local</span> IMAGE_NAME IMAGE_FILE IMAGE_PATH
+</span><span class="code-line line-number" line="151">        <span class="token assign-left variable">IMAGE_NAME</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jq <span class="token parameter variable">-r</span> <span class="token string">".images[<span class="token variable">$i</span>].name"</span> <span class="token string">"<span class="token variable">$MANIFEST</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="152">        <span class="token assign-left variable">IMAGE_FILE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>jq <span class="token parameter variable">-r</span> <span class="token string">".images[<span class="token variable">$i</span>].file"</span> <span class="token string">"<span class="token variable">$MANIFEST</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="153">        <span class="token assign-left variable">IMAGE_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${BACKUP_DIR}</span>/<span class="token variable">${IMAGE_FILE}</span>"</span>
+</span><span class="code-line line-number" line="154">
+</span><span class="code-line line-number" line="155">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>[<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>/<span class="token variable">${IMAGE_COUNT}</span>]<span class="token variable">${gl_bai}</span> 加载镜像: <span class="token variable">${gl_zi}</span><span class="token variable">${IMAGE_NAME}</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="156">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="157">            log_error <span class="token string">"文件缺失 <span class="token variable">${IMAGE_FILE}</span>"</span>
+</span><span class="code-line line-number" line="158">            <span class="token variable"><span class="token punctuation">((</span>fail<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line line-number" line="159">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="160">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="161">        <span class="token keyword">if</span> <span class="token function">docker</span> load <span class="token parameter variable">-i</span> <span class="token string">"<span class="token variable">$IMAGE_PATH</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="162">            log_ok <span class="token string">"加载成功: <span class="token variable">${IMAGE_NAME}</span>"</span>
+</span><span class="code-line line-number" line="163">            <span class="token variable"><span class="token punctuation">((</span>success<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line line-number" line="164">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="165">            log_error <span class="token string">"docker load 失败: <span class="token variable">${IMAGE_NAME}</span>"</span>
+</span><span class="code-line line-number" line="166">            <span class="token variable"><span class="token punctuation">((</span>fail<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line line-number" line="167">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="168">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="169">
+</span><span class="code-line line-number" line="170">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>========================================<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="171">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$fail</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="172">        log_error <span class="token string">"恢复完成: 成功 <span class="token variable">${success}</span> , 失败 <span class="token variable">${fail}</span>"</span>
+</span><span class="code-line line-number" line="173">        <span class="token builtin class-name">exit</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="174">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="175">    log_ok <span class="token string">"恢复完成: 成功 <span class="token variable">${success}</span> , 失败 <span class="token variable">${fail}</span>"</span>
+</span><span class="code-line line-number" line="176">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="177"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="178">
+</span><span class="code-line line-number" line="179">main <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -1536,6 +1540,10 @@ main() {
 
     install_dep jq || exit 1
     install_dep gzip || exit 1
+
+    clear
+    echo -e &#x22;${gl_zi}>>> 恢复所有 Docker 镜像${gl_bai}&#x22;
+    echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
 
     local MANIFEST=&#x22;${BACKUP_DIR}/manifest.json&#x22;
     local IMAGE_COUNT

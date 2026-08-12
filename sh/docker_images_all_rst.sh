@@ -135,6 +135,10 @@ main() {
     install_dep jq || exit 1
     install_dep gzip || exit 1
 
+    clear
+    echo -e "${gl_zi}>>> 恢复所有 Docker 镜像${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
     local MANIFEST="${BACKUP_DIR}/manifest.json"
     local IMAGE_COUNT
     IMAGE_COUNT=$(jq -r '.images | length' "$MANIFEST")
