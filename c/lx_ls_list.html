@@ -1305,65 +1305,75 @@ bash linux_ls.sh /etc
 </span><span class="code-line line-number" line="29">    <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="30">
 </span><span class="code-line line-number" line="31">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="32">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 目录文件列表（按时间排序）<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="32">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 目录&#x26;文件列表（按修改时间排序）<span class="token variable">${reset}</span>"</span>
 </span><span class="code-line line-number" line="33">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${reset}</span>"</span>
 </span><span class="code-line line-number" line="34">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lan}</span>路径：<span class="token variable">${gl_huang}</span><span class="token variable">${target_dir}</span><span class="token variable">${reset}</span>"</span>
 </span><span class="code-line line-number" line="35">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${reset}</span>"</span>
 </span><span class="code-line line-number" line="36">
-</span><span class="code-line line-number" line="37">    <span class="token comment"># 总大小</span>
-</span><span class="code-line line-number" line="38">    <span class="token function">du</span> <span class="token parameter variable">-sh</span> <span class="token string">"<span class="token variable">$target_dir</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">qing</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_qing</span>"</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">rst</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$reset</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="39">        <span class="token string">'{print qing "总计 " $1 rst}'</span>
-</span><span class="code-line line-number" line="40">
-</span><span class="code-line line-number" line="41">    <span class="token comment"># 核心：不用 ls，直接用 stat</span>
-</span><span class="code-line line-number" line="42">    <span class="token function">find</span> <span class="token string">"<span class="token variable">$target_dir</span>"</span> <span class="token parameter variable">-maxdepth</span> <span class="token number">1</span> <span class="token parameter variable">-type</span> f <span class="token parameter variable">-printf</span> <span class="token string">'%T@ %p\0'</span> <span class="token operator">|</span>
-</span><span class="code-line line-number" line="43">    <span class="token function">sort</span> <span class="token parameter variable">-zn</span> <span class="token operator">|</span>
-</span><span class="code-line line-number" line="44">    <span class="token keyword">while</span> <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-d</span> <span class="token string">''</span> line<span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="45">        <span class="token assign-left variable">mtime</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${line<span class="token operator">%%</span> *}</span>"</span>
-</span><span class="code-line line-number" line="46">        <span class="token assign-left variable">file</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${line<span class="token operator">#</span>* }</span>"</span>
-</span><span class="code-line line-number" line="47">
-</span><span class="code-line line-number" line="48">        <span class="token function">stat</span> <span class="token parameter variable">--format</span><span class="token operator">=</span><span class="token string">"%A %h %U %G %s"</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="49">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">hui</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="50">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">huang</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_huang</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="51">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">lan</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lan</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="52">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">lv</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lv</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="53">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">qing</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_qing</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="54">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">zi</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_zi</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="55">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">rst</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$reset</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="56">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">mtime</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$mtime</span>"</span> <span class="token punctuation">\</span>
-</span><span class="code-line line-number" line="57">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">fname</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$file</span>"</span><span class="token variable">)</span></span>"</span> <span class="token string">'
-</span></span><span class="code-line line-number" line="58"><span class="token string">        {
-</span></span><span class="code-line line-number" line="59"><span class="token string">            size=$5
-</span></span><span class="code-line line-number" line="60"><span class="token string">            if (size >= 1073741824)
-</span></span><span class="code-line line-number" line="61"><span class="token string">                size=sprintf("%.1fG", size/1073741824)
-</span></span><span class="code-line line-number" line="62"><span class="token string">            else if (size >= 1048576)
-</span></span><span class="code-line line-number" line="63"><span class="token string">                size=sprintf("%.1fM", size/1048576)
-</span></span><span class="code-line line-number" line="64"><span class="token string">            else if (size >= 1024)
-</span></span><span class="code-line line-number" line="65"><span class="token string">                size=sprintf("%.1fK", size/1024)
-</span></span><span class="code-line line-number" line="66"><span class="token string">            else
-</span></span><span class="code-line line-number" line="67"><span class="token string">                size=size "B"
-</span></span><span class="code-line line-number" line="68"><span class="token string">
-</span></span><span class="code-line line-number" line="69"><span class="token string">            cmd="date -d @" mtime " \"+%F %T\""
-</span></span><span class="code-line line-number" line="70"><span class="token string">            cmd | getline ctime
-</span></span><span class="code-line line-number" line="71"><span class="token string">            close(cmd)
-</span></span><span class="code-line line-number" line="72"><span class="token string">
-</span></span><span class="code-line line-number" line="73"><span class="token string">            printf "%s%-12s%s %s%4s%s %s%-8s%s %s%-8s%s %s%6s%s %s%-19s%s %s%s%s\n",
-</span></span><span class="code-line line-number" line="74"><span class="token string">                hui, $1, rst,
-</span></span><span class="code-line line-number" line="75"><span class="token string">                huang, $2, rst,
-</span></span><span class="code-line line-number" line="76"><span class="token string">                lan, $3, rst,
-</span></span><span class="code-line line-number" line="77"><span class="token string">                lv, $4, rst,
-</span></span><span class="code-line line-number" line="78"><span class="token string">                huang, size, rst,
-</span></span><span class="code-line line-number" line="79"><span class="token string">                qing, ctime, rst,
-</span></span><span class="code-line line-number" line="80"><span class="token string">                zi, fname, rst
-</span></span><span class="code-line line-number" line="81"><span class="token string">        }'</span>
-</span><span class="code-line line-number" line="82">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="83"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="84">
-</span><span class="code-line line-number" line="85"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="86">    list_beautify_directory <span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>.}</span>"</span>
-</span><span class="code-line line-number" line="87">    break_end
-</span><span class="code-line line-number" line="88"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="89">
-</span><span class="code-line line-number" line="90">main <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="37">    <span class="token function">du</span> <span class="token parameter variable">-sh</span> <span class="token string">"<span class="token variable">$target_dir</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">qing</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_qing</span>"</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">rst</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$reset</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="38">        <span class="token string">'{print qing "总计 " $1 rst}'</span>
+</span><span class="code-line line-number" line="39">
+</span><span class="code-line line-number" line="40">    <span class="token function">find</span> <span class="token string">"<span class="token variable">$target_dir</span>"</span> <span class="token parameter variable">-maxdepth</span> <span class="token number">1</span> <span class="token punctuation">\</span><span class="token punctuation">(</span> <span class="token parameter variable">-type</span> f <span class="token parameter variable">-o</span> <span class="token parameter variable">-type</span> d <span class="token punctuation">\</span><span class="token punctuation">)</span> <span class="token operator">!</span> <span class="token parameter variable">-path</span> <span class="token string">"<span class="token variable">$target_dir</span>"</span> <span class="token parameter variable">-printf</span> <span class="token string">'%T@ %p\0'</span> <span class="token operator">|</span>
+</span><span class="code-line line-number" line="41">    <span class="token function">sort</span> <span class="token parameter variable">-zn</span> <span class="token operator">|</span>
+</span><span class="code-line line-number" line="42">    <span class="token keyword">while</span> <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-d</span> <span class="token string">''</span> line<span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="43">        <span class="token assign-left variable">mtime</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${line<span class="token operator">%%</span> *}</span>"</span>
+</span><span class="code-line line-number" line="44">        <span class="token assign-left variable">file</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${line<span class="token operator">#</span>* }</span>"</span>
+</span><span class="code-line line-number" line="45">
+</span><span class="code-line line-number" line="46">        <span class="token assign-left variable">is_dir</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line line-number" line="47">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">is_dir</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="48">
+</span><span class="code-line line-number" line="49">        <span class="token function">stat</span> <span class="token parameter variable">--format</span><span class="token operator">=</span><span class="token string">"%A %h %U %G %s"</span> <span class="token string">"<span class="token variable">$file</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="50">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">hui</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_hui</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="51">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">huang</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_huang</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="52">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">lan</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lan</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="53">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">lv</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_lv</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="54">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">qing</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_qing</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="55">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">zi</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$gl_zi</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="56">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">rst</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$reset</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="57">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">mtime</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$mtime</span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="58">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">fname</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$file</span>"</span><span class="token variable">)</span></span>"</span> <span class="token punctuation">\</span>
+</span><span class="code-line line-number" line="59">            <span class="token parameter variable">-v</span> <span class="token assign-left variable">is_dir</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$is_dir</span>"</span> <span class="token string">'
+</span></span><span class="code-line line-number" line="60"><span class="token string">        {
+</span></span><span class="code-line line-number" line="61"><span class="token string">            size=$5
+</span></span><span class="code-line line-number" line="62"><span class="token string">            if (size >= 1073741824) {
+</span></span><span class="code-line line-number" line="63"><span class="token string">                size=sprintf("%.1fG", size/1073741824)
+</span></span><span class="code-line line-number" line="64"><span class="token string">            } else if (size >= 1048576) {
+</span></span><span class="code-line line-number" line="65"><span class="token string">                size=sprintf("%.1fM", size/1048576)
+</span></span><span class="code-line line-number" line="66"><span class="token string">            } else if (size >= 1024) {
+</span></span><span class="code-line line-number" line="67"><span class="token string">                size=sprintf("%.1fK", size/1024)
+</span></span><span class="code-line line-number" line="68"><span class="token string">            } else {
+</span></span><span class="code-line line-number" line="69"><span class="token string">                size=size "B"
+</span></span><span class="code-line line-number" line="70"><span class="token string">            }
+</span></span><span class="code-line line-number" line="71"><span class="token string">
+</span></span><span class="code-line line-number" line="72"><span class="token string">            cmd="date -d @" mtime " \"+%F %T\""
+</span></span><span class="code-line line-number" line="73"><span class="token string">            cmd | getline ctime
+</span></span><span class="code-line line-number" line="74"><span class="token string">            close(cmd)
+</span></span><span class="code-line line-number" line="75"><span class="token string">
+</span></span><span class="code-line line-number" line="76"><span class="token string">            disp_name = fname
+</span></span><span class="code-line line-number" line="77"><span class="token string">            name_color = zi
+</span></span><span class="code-line line-number" line="78"><span class="token string">            if(is_dir == 1){
+</span></span><span class="code-line line-number" line="79"><span class="token string">                disp_name = fname "/"
+</span></span><span class="code-line line-number" line="80"><span class="token string">                name_color = lv
+</span></span><span class="code-line line-number" line="81"><span class="token string">            }
+</span></span><span class="code-line line-number" line="82"><span class="token string">
+</span></span><span class="code-line line-number" line="83"><span class="token string">            printf "%s%-12s%s %s%4s%s %s%-8s%s %s%-8s%s %s%6s%s %s%-19s%s %s%s%s\n",
+</span></span><span class="code-line line-number" line="84"><span class="token string">                hui, $1, rst,
+</span></span><span class="code-line line-number" line="85"><span class="token string">                huang, $2, rst,
+</span></span><span class="code-line line-number" line="86"><span class="token string">                lan, $3, rst,
+</span></span><span class="code-line line-number" line="87"><span class="token string">                lv, $4, rst,
+</span></span><span class="code-line line-number" line="88"><span class="token string">                huang, size, rst,
+</span></span><span class="code-line line-number" line="89"><span class="token string">                qing, ctime, rst,
+</span></span><span class="code-line line-number" line="90"><span class="token string">                name_color, disp_name, rst
+</span></span><span class="code-line line-number" line="91"><span class="token string">        }'</span>
+</span><span class="code-line line-number" line="92">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="93"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="94">
+</span><span class="code-line line-number" line="95"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="96">    list_beautify_directory <span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>.}</span>"</span>
+</span><span class="code-line line-number" line="97">    break_end
+</span><span class="code-line line-number" line="98"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="99">
+</span><span class="code-line line-number" line="100">main <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -1395,21 +1405,22 @@ list_beautify_directory() {
     }
 
     clear
-    echo -e &#x22;${gl_zi}>>> 目录文件列表（按时间排序）${reset}&#x22;
+    echo -e &#x22;${gl_zi}>>> 目录&#x26;文件列表（按修改时间排序）${reset}&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${reset}&#x22;
     echo -e &#x22;${gl_lan}路径：${gl_huang}${target_dir}${reset}&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${reset}&#x22;
 
-    # 总大小
     du -sh &#x22;$target_dir&#x22; 2>/dev/null | awk -v qing=&#x22;$gl_qing&#x22; -v rst=&#x22;$reset&#x22; \
         &#x27;{print qing &#x22;总计 &#x22; $1 rst}&#x27;
 
-    # 核心：不用 ls，直接用 stat
-    find &#x22;$target_dir&#x22; -maxdepth 1 -type f -printf &#x27;%T@ %p\0&#x27; |
+    find &#x22;$target_dir&#x22; -maxdepth 1 \( -type f -o -type d \) ! -path &#x22;$target_dir&#x22; -printf &#x27;%T@ %p\0&#x27; |
     sort -zn |
     while IFS= read -r -d &#x27;&#x27; line; do
         mtime=&#x22;${line%% *}&#x22;
         file=&#x22;${line#* }&#x22;
+
+        is_dir=0
+        [[ -d &#x22;$file&#x22; ]] &#x26;&#x26; is_dir=1
 
         stat --format=&#x22;%A %h %U %G %s&#x22; &#x22;$file&#x22; | awk \
             -v hui=&#x22;$gl_hui&#x22; \
@@ -1420,21 +1431,30 @@ list_beautify_directory() {
             -v zi=&#x22;$gl_zi&#x22; \
             -v rst=&#x22;$reset&#x22; \
             -v mtime=&#x22;$mtime&#x22; \
-            -v fname=&#x22;$(basename &#x22;$file&#x22;)&#x22; &#x27;
+            -v fname=&#x22;$(basename &#x22;$file&#x22;)&#x22; \
+            -v is_dir=&#x22;$is_dir&#x22; &#x27;
         {
             size=$5
-            if (size >= 1073741824)
+            if (size >= 1073741824) {
                 size=sprintf(&#x22;%.1fG&#x22;, size/1073741824)
-            else if (size >= 1048576)
+            } else if (size >= 1048576) {
                 size=sprintf(&#x22;%.1fM&#x22;, size/1048576)
-            else if (size >= 1024)
+            } else if (size >= 1024) {
                 size=sprintf(&#x22;%.1fK&#x22;, size/1024)
-            else
+            } else {
                 size=size &#x22;B&#x22;
+            }
 
             cmd=&#x22;date -d @&#x22; mtime &#x22; \&#x22;+%F %T\&#x22;&#x22;
             cmd | getline ctime
             close(cmd)
+
+            disp_name = fname
+            name_color = zi
+            if(is_dir == 1){
+                disp_name = fname &#x22;/&#x22;
+                name_color = lv
+            }
 
             printf &#x22;%s%-12s%s %s%4s%s %s%-8s%s %s%-8s%s %s%6s%s %s%-19s%s %s%s%s\n&#x22;,
                 hui, $1, rst,
@@ -1443,7 +1463,7 @@ list_beautify_directory() {
                 lv, $4, rst,
                 huang, size, rst,
                 qing, ctime, rst,
-                zi, fname, rst
+                name_color, disp_name, rst
         }&#x27;
     done
 }

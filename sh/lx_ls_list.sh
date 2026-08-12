@@ -29,21 +29,22 @@ list_beautify_directory() {
     }
 
     clear
-    echo -e "${gl_zi}>>> 目录文件列表（按时间排序）${reset}"
+    echo -e "${gl_zi}>>> 目录&文件列表（按修改时间排序）${reset}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
     echo -e "${gl_lan}路径：${gl_huang}${target_dir}${reset}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
 
-    # 总大小
     du -sh "$target_dir" 2>/dev/null | awk -v qing="$gl_qing" -v rst="$reset" \
         '{print qing "总计 " $1 rst}'
 
-    # 核心：不用 ls，直接用 stat
-    find "$target_dir" -maxdepth 1 -type f -printf '%T@ %p\0' |
+    find "$target_dir" -maxdepth 1 \( -type f -o -type d \) ! -path "$target_dir" -printf '%T@ %p\0' |
     sort -zn |
     while IFS= read -r -d '' line; do
         mtime="${line%% *}"
         file="${line#* }"
+
+        is_dir=0
+        [[ -d "$file" ]] && is_dir=1
 
         stat --format="%A %h %U %G %s" "$file" | awk \
             -v hui="$gl_hui" \
@@ -54,21 +55,30 @@ list_beautify_directory() {
             -v zi="$gl_zi" \
             -v rst="$reset" \
             -v mtime="$mtime" \
-            -v fname="$(basename "$file")" '
+            -v fname="$(basename "$file")" \
+            -v is_dir="$is_dir" '
         {
             size=$5
-            if (size >= 1073741824)
+            if (size >= 1073741824) {
                 size=sprintf("%.1fG", size/1073741824)
-            else if (size >= 1048576)
+            } else if (size >= 1048576) {
                 size=sprintf("%.1fM", size/1048576)
-            else if (size >= 1024)
+            } else if (size >= 1024) {
                 size=sprintf("%.1fK", size/1024)
-            else
+            } else {
                 size=size "B"
+            }
 
             cmd="date -d @" mtime " \"+%F %T\""
             cmd | getline ctime
             close(cmd)
+
+            disp_name = fname
+            name_color = zi
+            if(is_dir == 1){
+                disp_name = fname "/"
+                name_color = lv
+            }
 
             printf "%s%-12s%s %s%4s%s %s%-8s%s %s%-8s%s %s%6s%s %s%-19s%s %s%s%s\n",
                 hui, $1, rst,
@@ -77,7 +87,7 @@ list_beautify_directory() {
                 lv, $4, rst,
                 huang, size, rst,
                 qing, ctime, rst,
-                zi, fname, rst
+                name_color, disp_name, rst
         }'
     done
 }
