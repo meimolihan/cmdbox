@@ -47,12 +47,11 @@ cancel_return() {
         "${gl_lv}."
         "${gl_bufan}."
         "${gl_zi}."
-        "${gl_cheng}."
     )
     local dot_buffer=""
     local frame_len=${#frames[@]}
     local dot_idx=0
-    local total_dots=6
+    local total_dots=${#dots[@]}
 
     for ((i=0; i<20; i++)); do
         if (( i > 0 && i % 3 == 0 && dot_idx < total_dots )); then
@@ -74,12 +73,11 @@ exit_animation() {
         "${gl_lv}."
         "${gl_bufan}."
         "${gl_zi}."
-        "${gl_cheng}."
     )
     local dot_buffer=""
     local frame_len=${#frames[@]}
     local dot_idx=0
-    local total_dots=6
+    local total_dots=${#dots[@]}
 
     for ((i=0; i<20; i++)); do
         if (( i > 0 && i % 3 == 0 && dot_idx < total_dots )); then
