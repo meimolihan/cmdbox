@@ -311,15 +311,23 @@ modify_grub_params() {
     echo -e ""
     echo -e "${gl_zi}>>> 修改 GRUB 默认引导参数${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    echo -e "${gl_bai}原行：${gl_huang}$(grep ^GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub)${gl_bai}"
-    echo -e "${gl_bai}新行：${gl_lv}GRUB_CMDLINE_LINUX_DEFAULT=\"quiet iommu=pt i915.enable_guc=3 i915.max_vfs=7\"${gl_bai}"
+    echo -e "${gl_bai}原行：${gl_huang}GRUB_CMDLINE_LINUX_DEFAULT=${gl_lv}$(grep ^GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub | sed 's/^GRUB_CMDLINE_LINUX_DEFAULT="//; s/"$//')${gl_bai}"
+    echo -e "${gl_bai}新行：${gl_huang}GRUB_CMDLINE_LINUX_DEFAULT=${gl_lv}"quiet intel_iommu=on i915.enable_guc=3 i915.max_vfs=7 module_blacklist=xe"${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     read -r -e -p "$(echo -e "${gl_bai}确认写入？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
 
     case "$confirm" in
     [yY])
-        sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet iommu=pt i915.enable_guc=3 i915.max_vfs=7"/' /etc/default/grub
-        log_info "${gl_bai}已更新 ${gl_huang}/etc/default/grub${gl_bai}，需要执行 'update-grub' 生效。"
+        sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on i915.enable_guc=3 i915.max_vfs=7 module_blacklist=xe"/' /etc/default/grub
+        log_info "${gl_bai}已更新 ${gl_huang}/etc/default/grub${gl_bai}"
+
+        echo -e "${gl_bai}正在检查 GRUB 配置语法 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        if grub-mkconfig -o /dev/null >/dev/null 2>&1; then
+            log_info "${gl_lv}配置文件语法正确 ✅${gl_bai}"
+        else
+            log_error "${gl_hong}配置文件语法错误 ❌ 请检查 /etc/default/grub 后重试。${gl_bai}"
+            exit 1
+        fi
 
         read -r -e -p "$(echo -e "${gl_bai}立即执行 update-grub？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" do_update
         case "$do_update" in
@@ -364,8 +372,7 @@ install_i915_sriov_driver() {
         return 1
     fi
 
-    apt update
-    apt install -y jq curl wget
+    apt update && apt install -y jq curl wget build-essential git dkms sysfsutils proxmox-headers-$(uname -r) intel-gpu-tools
     clear
     echo -e ""
     echo -e "${gl_bai}当前内核的头文件 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}${gl_hui}"
@@ -381,7 +388,6 @@ install_i915_sriov_driver() {
 
     echo -e "${gl_bai}正在检测 GitHub 最新版本 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}${gl_hui}"
     VER=""
-
     API="https://api.github.com/repos/strongtz/i915-sriov-dkms/releases/latest"
     VER=$(curl -s --connect-timeout 10 --max-time 15 "$API" | jq -r .tag_name 2>/dev/null)
     
@@ -490,16 +496,6 @@ check_sriov_status() {
     break_end
 }
 
-is_pve_system() {
-    if [ ! -d "/var/lib/vz/template/iso" ]; then
-        echo -e ""
-        echo -en "\r${gl_hong}你这不是 ${gl_huang}PVE${gl_hong} 系统！\c"
-        exit_animation
-        return 1
-    fi
-    return 0
-}
-
 pve_optimize_script() {
     is_pve_system || return 1
     clear
@@ -522,6 +518,16 @@ check_pve_version() {
     else
         echo -e "${gl_bai}PVE 系统版本：${gl_hong}非PVE系统或未安装pveversion${gl_bai}"
     fi
+}
+
+is_pve_system() {
+    if [ ! -d "/var/lib/vz/template/iso" ]; then
+        echo -e ""
+        echo -en "\r${gl_hong}你这不是 ${gl_huang}PVE${gl_hong} 系统！\c"
+        exit_animation
+        return 1
+    fi
+    return 0
 }
 
 linux_pve_menu() {
