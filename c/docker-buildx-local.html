@@ -1145,8 +1145,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="docker-buildx-local"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-buildx-local"><span class="octicon octicon-link"></span></a>docker-buildx-local</h1>
-<p>Docker 多架构镜像构建并推送到 Docker Hub</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong>docker buildx</strong> 是 Docker 官方提供的多架构镜像构建插件，它利用 QEMU 模拟器在单台机器上同时构建不同 CPU 架构的镜像（如 amd64 + arm64），无需多台物理机器。<code>docker buildx build --load</code> 将构建结果直接加载到本地 Docker 镜像库，适用于本地测试验证；结合 <code>--push</code> 或 <code>-o type=registry</code> 可直接推送到远程仓库。</p>
 <h3 id="工作原理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#工作原理"><span class="octicon octicon-link"></span></a>工作原理</h3>

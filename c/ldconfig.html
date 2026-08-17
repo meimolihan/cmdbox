@@ -1145,8 +1145,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="ldconfig"><a class="anchor" aria-hidden="true" tabindex="-1" href="#ldconfig"><span class="octicon octicon-link"></span></a>ldconfig</h1>
-<p>动态链接库管理命令</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong>ldconfig命令</strong> 的用途主要是在默认搜寻目录<code>/lib</code>和<code>/usr/lib</code>以及动态库配置文件<code>/etc/ld.so.conf</code>内所列的目录下，搜索出可共享的动态链接库（格式如lib*.so*）,进而创建出动态装入程序(ld.so)所需的连接和缓存文件。缓存文件默认为<code>/etc/ld.so.cache</code>，此文件保存已排好序的动态链接库名字列表，为了让动态链接库为系统所共享，需运行动态链接库的管理命令ldconfig，此执行程序存放在<code>/sbin</code>目录下。</p>
 <p>ldconfig通常在系统启动时运行，而当用户安装了一个新的动态链接库时，就需要手工运行这个命令。</p>

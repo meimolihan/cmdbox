@@ -1145,8 +1145,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="dc_fix_oom"><a class="anchor" aria-hidden="true" tabindex="-1" href="#dc_fix_oom"><span class="octicon octicon-link"></span></a>dc_fix_oom</h1>
-<p>修复 Docker 内存溢出故障</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong>dc_fix_oom</strong> 解决 fnOS 内置 Docker Compose V2 在同时使用 <code>mem_limit</code> 与 <code>memswap_limit</code> 参数时丢失物理内存限制（MemoryLimit=null）的 Bug。该 Bug 导致容器无物理内存上限，持续吃满宿主机内存，触发系统 OOM、杀掉系统进程、机器卡死断连。</p>
 <h3 id="问题根源"><a class="anchor" aria-hidden="true" tabindex="-1" href="#问题根源"><span class="octicon octicon-link"></span></a>问题根源</h3>

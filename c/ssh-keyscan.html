@@ -1145,8 +1145,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="ssh-keyscan"><a class="anchor" aria-hidden="true" tabindex="-1" href="#ssh-keyscan"><span class="octicon octicon-link"></span></a>ssh-keyscan</h1>
-<p>收集主机 SSH 公钥的工具</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong>ssh-keyscan</strong> 是 OpenSSH 套件中的一个工具，用于批量收集远程主机的 SSH 公钥。它通过非交互方式连接 SSH 服务器并获取其主机密钥，常用于初始化 <code>known_hosts</code> 文件、搭建 SSH 信任网络或自动化部署场景。</p>
 <p>相较于手动 ssh 连接后确认指纹，ssh-keyscan 可以批量、自动化地收集多台主机的公钥，无需逐个交互确认。</p>

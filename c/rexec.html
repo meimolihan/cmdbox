@@ -1145,8 +1145,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="rexec"><a class="anchor" aria-hidden="true" tabindex="-1" href="#rexec"><span class="octicon octicon-link"></span></a>rexec</h1>
-<p>远程执行Linux系统下命令</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong>rexec命令</strong> 用于在指定的远程Linux系统主机上执行命令，向远程rexec服务器发出执行命令的请求。</p>
 <p>rexec命令通过检查<code>$HOME/.netrc</code>文件（包含远程主机上使用的用户名和密码）来提供自动登录的功能。如果没有发现此类项或系统在安全方式下操作（参阅 securetcpip 命令），rexec命令提示输入一个远程主机的有效用户名和密码。这两种情况下，rexec均导致远程系统上的rexecd使用缺省的compat用户登录认证方法。rexecd不会为了备用的认证方法去查找<code>/etc/security/user</code>文件。也可以指定<code>-n</code>标志到rexec命令行上来重设自动登录功能。</p>
