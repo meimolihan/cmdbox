@@ -35,26 +35,55 @@ column_if_available() {
     fi
 }
 
-parse_pve_kernel() {
-    apt-cache search 'pve-kernel' 2>/dev/null | while read -r line; do
-        [[ -z $line ]] && continue
-        pkg_name=$(echo "$line" | awk '{print $1}')
-        desc=${line#"$pkg_name" }
-        desc=$(echo "$desc" | xargs)
+filter_kernel_version() {
+    local pkg="$1"
+    local min_ver="$2"
+    [[ -z "$min_ver" ]] && return 0
 
-        if [[ $pkg_name =~ ^pve-kernel-[0-9] ]]; then
-            pkg_color="$gl_lan"
-        else
-            pkg_color="$gl_bufan"
+    local ver_raw
+    ver_raw=$(echo "$pkg" | sed -E \
+        -e 's/^proxmox-kernel-//' \
+        -e 's/\+deb[0-9u-]*//' \
+        -e 's/-rc[0-9]+//' \
+        -e 's/-pve.*//' \
+        -e 's/-[0-9]+$//')
+
+    local smallest
+    smallest=$(printf "%s\n" "$min_ver" "$ver_raw" | sort -V | head -n1)
+    if [[ "$smallest" == "$ver_raw" ]]; then
+        return 1
+    fi
+    return 0
+}
+
+parse_pve_kernel() {
+    local min_version="$1"
+    apt-cache pkgnames 2>/dev/null \
+        | grep -E '^(proxmox|pve)-kernel-' \
+        | grep -v -- '-signed$' \
+        | sort -V \
+        | while read -r pkg_name; do
+        [[ -z $pkg_name ]] && continue
+
+        local desc
+        desc=$(apt-cache show "$pkg_name" 2>/dev/null | grep -m1 '^Description:' | sed 's/^Description://' | xargs)
+        [[ -z "$desc" ]] && continue
+
+        [[ "$desc" != "Proxmox Kernel Image" && "$desc" != "Latest Proxmox Kernel Image" ]] && continue
+
+        if ! filter_kernel_version "$pkg_name" "$min_version"; then
+            continue
         fi
 
+        pkg_color="$gl_lan"
         echo -e "${gl_huang}内核包${reset}\t${pkg_color}${pkg_name}${reset}\t${gl_bai}${desc}${reset}"
     done
 }
 
 show_pve_kernel() {
+    local min_version="${1:-}"
     clear
-    
+
     if ! command -v qm &> /dev/null; then
         echo -e ""
         echo -e "${gl_zi}>>> PVE 可用内核包列表${gl_bai}"
@@ -65,17 +94,19 @@ show_pve_kernel() {
         return 1
     fi
 
-    echo -e "${gl_zi}>>> PVE 可用内核包列表${gl_bai}"
+    local title=">>> PVE 可用内核包列表（排除‑signed签名包）"
+    if [[ -n "$min_version" ]]; then
+        title+=" (仅展示 >= ${min_version})"
+    fi
+    echo -e "${gl_zi}${title}${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
     {
         printf "%s%s\t%s\t%s%s\n" "$gl_hui" "类型" "软件包名" "描述" "$reset"
         printf "%s%s\t%s\t%s%s\n" "$gl_hui" "----" "--------" "----" "$reset"
-        parse_pve_kernel
+        parse_pve_kernel "$min_version"
     } | column_if_available
-
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
 }
 
-show_pve_kernel
+show_pve_kernel "${1:-}"
