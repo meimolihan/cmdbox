@@ -1467,371 +1467,363 @@ bash git_repo_vis.sh
 <h2 id="脚本源码"><a class="anchor" aria-hidden="true" tabindex="-1" href="#脚本源码"><span class="octicon octicon-link"></span></a>脚本源码</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token shebang important">#!/bin/bash</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">set</span> <span class="token parameter variable">-uo</span> pipefail
-</span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token function-name function">list_color_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="5">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_hui</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;59m'</span>
-</span><span class="code-line line-number" line="6">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_hong</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;9m'</span>
-</span><span class="code-line line-number" line="7">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_lv</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;10m'</span>
-</span><span class="code-line line-number" line="8">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_huang</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;11m'</span>
-</span><span class="code-line line-number" line="9">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_lan</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;32m'</span>
-</span><span class="code-line line-number" line="10">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_bai</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;15m'</span>
-</span><span class="code-line line-number" line="11">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_zi</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;13m'</span>
-</span><span class="code-line line-number" line="12">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_bufan</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;14m'</span>
-</span><span class="code-line line-number" line="13"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="14">list_color_init
-</span><span class="code-line line-number" line="15">
-</span><span class="code-line line-number" line="16"><span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lan}</span>[信息]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="17"><span class="token function-name function">log_ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>[成功]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="18"><span class="token function-name function">log_warn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>[警告]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="19"><span class="token function-name function">log_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>[错误]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span> <span class="token operator">></span><span class="token file-descriptor important">&#x26;2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="20">
-</span><span class="code-line line-number" line="21"><span class="token function-name function">sleep_fractional</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="22">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">seconds</span><span class="token operator">=</span><span class="token variable">$1</span>
-</span><span class="code-line line-number" line="23">    <span class="token keyword">if</span> <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="24">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="25">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="26">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> perl <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="27">        perl <span class="token parameter variable">-e</span> <span class="token string">"select(undef, undef, undef, <span class="token variable">$seconds</span>)"</span>
-</span><span class="code-line line-number" line="28">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="29">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="30">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python3 <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="31">        python3 <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span>
+</span><span class="code-line line-number" line="3"><span class="token function-name function">list_color_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="4">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_hui</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;59m'</span>
+</span><span class="code-line line-number" line="5">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_hong</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;9m'</span>
+</span><span class="code-line line-number" line="6">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_lv</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;10m'</span>
+</span><span class="code-line line-number" line="7">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_huang</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;11m'</span>
+</span><span class="code-line line-number" line="8">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_lan</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;32m'</span>
+</span><span class="code-line line-number" line="9">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_bai</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;15m'</span>
+</span><span class="code-line line-number" line="10">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_zi</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;13m'</span>
+</span><span class="code-line line-number" line="11">    <span class="token builtin class-name">export</span> <span class="token assign-left variable">gl_bufan</span><span class="token operator">=</span><span class="token string">$'<span class="token entity" title="\033">\033</span>[38;5;14m'</span>
+</span><span class="code-line line-number" line="12"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="13">list_color_init
+</span><span class="code-line line-number" line="14"><span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lan}</span>[信息]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="15"><span class="token function-name function">log_ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>[成功]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="16"><span class="token function-name function">log_warn</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>[警告]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="17"><span class="token function-name function">log_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>[错误]<span class="token variable">${gl_bai}</span> <span class="token variable">$*</span>"</span> <span class="token operator">></span><span class="token file-descriptor important">&#x26;2</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="18"><span class="token function-name function">sleep_fractional</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="19">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">seconds</span><span class="token operator">=</span><span class="token variable">$1</span>
+</span><span class="code-line line-number" line="20">    <span class="token keyword">if</span> <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="21">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="22">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="23">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> perl <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="24">        perl <span class="token parameter variable">-e</span> <span class="token string">"select(undef, undef, undef, <span class="token variable">$seconds</span>)"</span>
+</span><span class="code-line line-number" line="25">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="26">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="27">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python3 <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="28">        python3 <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span>
+</span><span class="code-line line-number" line="29">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="30">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="31">        python <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span>
 </span><span class="code-line line-number" line="32">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="33">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> python <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="34">        python <span class="token parameter variable">-c</span> <span class="token string">"import time; time.sleep(<span class="token variable">$seconds</span>)"</span>
-</span><span class="code-line line-number" line="35">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="36">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="37">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">int_seconds</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print int($1+0.999)}'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="38">    <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$int_seconds</span>"</span>
-</span><span class="code-line line-number" line="39"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="40">
-</span><span class="code-line line-number" line="41"><span class="token function-name function">handle_invalid_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="42">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_huang}</span>无效输入，1秒后返回<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="43">    sleep_fractional <span class="token number">1</span>
-</span><span class="code-line line-number" line="44">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K"</span>
-</span><span class="code-line line-number" line="45">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="46"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="47">
-</span><span class="code-line line-number" line="48"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="49">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="50">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
-</span><span class="code-line line-number" line="51">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-r</span>
-</span><span class="code-line line-number" line="52">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="53">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="54"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="55">
-</span><span class="code-line line-number" line="56"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="57">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">frames</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"⠋"</span> <span class="token string">"⠙"</span> <span class="token string">"⠹"</span> <span class="token string">"⠸"</span> <span class="token string">"⠼"</span> <span class="token string">"⠴"</span> <span class="token string">"⠦"</span> <span class="token string">"⠧"</span> <span class="token string">"⠇"</span> <span class="token string">"⠏"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="58">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dots</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${gl_hong}</span>."</span> <span class="token string">"<span class="token variable">${gl_huang}</span>."</span> <span class="token string">"<span class="token variable">${gl_lv}</span>."</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>."</span> <span class="token string">"<span class="token variable">${gl_zi}</span>."</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="59">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dot_buffer</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="60">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">frame_len</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>frames<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
-</span><span class="code-line line-number" line="61">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dot_idx</span><span class="token operator">=</span><span class="token number">0</span>
-</span><span class="code-line line-number" line="62">    <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&#x3C;</span><span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="63">        <span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&#x26;&#x26;</span> i <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&#x26;&#x26;</span> dot_idx <span class="token operator">&#x3C;</span> ${#dots[@]} <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="64">            <span class="token assign-left variable">dot_buffer</span><span class="token operator">+=</span><span class="token variable">${dots<span class="token punctuation">[</span>$dot_idx<span class="token punctuation">]</span>}</span>
-</span><span class="code-line line-number" line="65">            <span class="token variable"><span class="token punctuation">((</span>dot_idx<span class="token operator">++</span><span class="token punctuation">))</span></span>
-</span><span class="code-line line-number" line="66">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="67">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_bufan}</span><span class="token variable">${frames<span class="token punctuation">[</span>$((i<span class="token operator">%</span>frame_len))<span class="token punctuation">]</span>}</span><span class="token variable">${gl_bai}</span> 正在退出 <span class="token variable">${dot_buffer}</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="68">        sleep_fractional <span class="token number">0.06</span>
-</span><span class="code-line line-number" line="69">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="70">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_lv}</span>✓<span class="token variable">${gl_bai}</span> 成功退出<span class="token entity" title="\n">\n</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="71">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="72">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="73"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="74">
-</span><span class="code-line line-number" line="75"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="76">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级菜单}</span>"</span>
-</span><span class="code-line line-number" line="77">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span> <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="78">    sleep_fractional <span class="token number">0.6</span>
-</span><span class="code-line line-number" line="79">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="80">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="81"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="82">
-</span><span class="code-line line-number" line="83"><span class="token function-name function">install_deps</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="84">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">pkg_list</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$@</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="85">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token environment constant">$EUID</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="86">        log_error <span class="token string">"安装依赖需要root权限，请使用root或sudo执行"</span>
-</span><span class="code-line line-number" line="87">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="88">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="89">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">apt</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="90">        log_info <span class="token string">"检测到Debian/Ubuntu系列，使用apt安装依赖"</span>
-</span><span class="code-line line-number" line="91">        <span class="token function">apt</span> update <span class="token parameter variable">-qq</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span>
-</span><span class="code-line line-number" line="92">        <span class="token function">apt</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="93">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> dnf <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="94">        log_info <span class="token string">"检测到RHEL/CentOS/Fedora系列，使用dnf安装依赖"</span>
-</span><span class="code-line line-number" line="95">        dnf <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="96">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> yum <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="97">        log_info <span class="token string">"检测到CentOS7系列，使用yum安装依赖"</span>
-</span><span class="code-line line-number" line="98">        yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="99">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> pacman <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="100">        log_info <span class="token string">"检测到Arch系列，使用pacman安装依赖"</span>
-</span><span class="code-line line-number" line="101">        pacman <span class="token parameter variable">-Syu</span> <span class="token parameter variable">--noconfirm</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="102">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="103">        log_error <span class="token string">"不识别当前系统包管理器，请手动安装: <span class="token variable">${pkg_list<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>
-</span><span class="code-line line-number" line="104">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="105">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="106"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="107">
-</span><span class="code-line line-number" line="108"><span class="token function-name function">api_query_private_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="109">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">platform</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="110">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">token</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
-</span><span class="code-line line-number" line="111">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">api_url</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$3</span>"</span>
-</span><span class="code-line line-number" line="112">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">curl_args</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="113">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-s <span class="token parameter variable">-X</span> GET<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="114">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"github"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="115">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: token <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="116">    <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"gitee"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="117">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: Bearer <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="118">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="119">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Accept: application/json"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="120">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${api_url}</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="121">    <span class="token builtin class-name">local</span> out
-</span><span class="code-line line-number" line="122">    <span class="token assign-left variable">out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token string">"<span class="token variable">${curl_args<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="123">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$out</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.private'</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
-</span><span class="code-line line-number" line="124"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="125">
-</span><span class="code-line line-number" line="126"><span class="token function-name function">change_repo_visibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="127">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">platform</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="128">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">token</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
-</span><span class="code-line line-number" line="129">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">api_url</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$3</span>"</span>
-</span><span class="code-line line-number" line="130">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">private_flag</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$4</span>"</span>
-</span><span class="code-line line-number" line="131">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">curl_args</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="132">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-s <span class="token parameter variable">-X</span> PATCH<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="133">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"github"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="134">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: token <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="135">    <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"gitee"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="136">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: Bearer <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="137">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="138">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Accept: application/json"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="139">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Content-Type: application/json"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="140">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-d <span class="token string">"{<span class="token entity" title="\&#x22;">\"</span>private<span class="token entity" title="\&#x22;">\"</span>:<span class="token variable">${private_flag}</span>}"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="141">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${api_url}</span>"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="142">    <span class="token builtin class-name">local</span> resp
-</span><span class="code-line line-number" line="143">    <span class="token assign-left variable">resp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token string">"<span class="token variable">${curl_args<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="144">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$resp</span>"</span>
-</span><span class="code-line line-number" line="145"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="146">
-</span><span class="code-line line-number" line="147"><span class="token function-name function">local_git_check_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="148">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-d</span> .git <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="149">        <span class="token builtin class-name">echo</span> <span class="token string">"NOTGIT"</span>
-</span><span class="code-line line-number" line="150">        <span class="token builtin class-name">return</span>
-</span><span class="code-line line-number" line="151">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="152">    <span class="token builtin class-name">local</span> remote_url
-</span><span class="code-line line-number" line="153">    <span class="token assign-left variable">remote_url</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> remote get-url origin <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token boolean">true</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="154">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${remote_url}</span>"</span>
-</span><span class="code-line line-number" line="155"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="156">
-</span><span class="code-line line-number" line="157"><span class="token function-name function">main_work</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="158">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">GH_TOKEN</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${GH_TOKEN<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="159">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">REPO_LOCAL_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${REPO_LOCAL_PATH<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="160">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">REPO_API_URL</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${REPO_API_URL<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="161">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${ACTION<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="162">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${PLATFORM<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="163">
-</span><span class="code-line line-number" line="164">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG GH_TOKEN=[<span class="token variable">${gl_huang}</span><span class="token variable">${GH_TOKEN}</span><span class="token variable">${gl_bai}</span>]"</span>
-</span><span class="code-line line-number" line="165">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG REPO_API_URL=[<span class="token variable">${gl_huang}</span><span class="token variable">${REPO_API_URL}</span><span class="token variable">${gl_bai}</span>]"</span>
-</span><span class="code-line line-number" line="166">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG ACTION=[<span class="token variable">${gl_huang}</span><span class="token variable">${ACTION}</span><span class="token variable">${gl_bai}</span>]"</span>
-</span><span class="code-line line-number" line="167">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG PLATFORM=[<span class="token variable">${gl_huang}</span><span class="token variable">${PLATFORM}</span><span class="token variable">${gl_bai}</span>]"</span>
-</span><span class="code-line line-number" line="168">
-</span><span class="code-line line-number" line="169">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="170">        log_info <span class="token string">"检测到环境变量，启用免交互模式"</span>
-</span><span class="code-line line-number" line="171">        <span class="token builtin class-name">local</span> private_target
-</span><span class="code-line line-number" line="172">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">==</span> <span class="token string">"public2private"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="173">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"true"</span>
-</span><span class="code-line line-number" line="174">        <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">==</span> <span class="token string">"private2public"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="175">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"false"</span>
-</span><span class="code-line line-number" line="176">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="177">            log_error <span class="token string">"ACTION参数仅支持 public2private / private2public"</span>
-</span><span class="code-line line-number" line="178">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="179">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="180">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token operator">!=</span> <span class="token string">"github"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token operator">!=</span> <span class="token string">"gitee"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="181">            log_error <span class="token string">"PLATFORM仅支持 github / gitee"</span>
-</span><span class="code-line line-number" line="182">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="183">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="184">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="185">            <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="186">                <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token operator">||</span> <span class="token boolean">true</span>
-</span><span class="code-line line-number" line="187">            <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="188">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="189">        log_info <span class="token string">"执行修改仓库可见性，平台:<span class="token variable">${gl_lv}</span><span class="token variable">${PLATFORM}</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="190">        <span class="token builtin class-name">local</span> res
-</span><span class="code-line line-number" line="191">        <span class="token assign-left variable">res</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>change_repo_visibility <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token string">"<span class="token variable">${private_target}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="192">        <span class="token keyword">if</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$res</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-e</span> <span class="token string">'.id'</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="193">            log_ok <span class="token string">"API请求执行完成"</span>
-</span><span class="code-line line-number" line="194">            <span class="token builtin class-name">local</span> cur
-</span><span class="code-line line-number" line="195">            <span class="token assign-left variable">cur</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>api_query_private_status <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="196">            <span class="token builtin class-name">local</span> cn_status
-</span><span class="code-line line-number" line="197">            <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${cur}</span>"</span> <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="198">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"私有仓库"</span>
-</span><span class="code-line line-number" line="199">            <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${cur}</span>"</span> <span class="token operator">==</span> <span class="token string">"false"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="200">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"公开仓库"</span>
-</span><span class="code-line line-number" line="201">            <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="202">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"未知(<span class="token variable">${cur}</span>)"</span>
-</span><span class="code-line line-number" line="203">            <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="204">            log_info <span class="token string">"当前仓库状态: <span class="token variable">${gl_lv}</span><span class="token variable">${cn_status}</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="205">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="206">            log_error <span class="token string">"API调用失败，返回: <span class="token variable">${res}</span>"</span>
-</span><span class="code-line line-number" line="207">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="208">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="209">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="210">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="211">
-</span><span class="code-line line-number" line="212">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="213">    <span class="token builtin class-name">local</span> git_ret
-</span><span class="code-line line-number" line="214">    <span class="token assign-left variable">git_ret</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>local_git_check_status<span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="215">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 当前仓库的状态<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="216">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="217">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${git_ret}</span>"</span> <span class="token operator">==</span> <span class="token string">"NOTGIT"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="218">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>非 Git 仓库<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="219">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="220">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>本地Git仓库<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="221">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="222">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="223">
-</span><span class="code-line line-number" line="224">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="225">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 仓库可见性切换工具<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="226">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="227">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1. GitHub<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="228">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2. Gitee<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="229">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="230">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>00. 退出脚本<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="231">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="232">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请选择代码平台: <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span>"</span> plat_opt
-</span><span class="code-line line-number" line="233">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">${plat_opt}</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="234">        <span class="token number">1</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="235">            <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"github"</span>
-</span><span class="code-line line-number" line="236">            <span class="token builtin class-name">break</span>
-</span><span class="code-line line-number" line="237">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="238">        <span class="token number">2</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="239">            <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"gitee"</span>
-</span><span class="code-line line-number" line="240">            <span class="token builtin class-name">break</span>
-</span><span class="code-line line-number" line="241">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="242">        00<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="243">            exit_animation
-</span><span class="code-line line-number" line="244">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="245">        *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="246">            handle_invalid_input
-</span><span class="code-line line-number" line="247">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="248">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="249">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="250">
-</span><span class="code-line line-number" line="251">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="252">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 输入配置信息 <span class="token variable">${gl_huang}</span>[<span class="token variable">${PLATFORM}</span>]<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="253">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入平台个人令牌: <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span>"</span> GH_TOKEN
-</span><span class="code-line line-number" line="254">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="255">        log_error <span class="token string">"令牌不能为空"</span>
-</span><span class="code-line line-number" line="256">        break_end
-</span><span class="code-line line-number" line="257">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="258">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="259">
-</span><span class="code-line line-number" line="260">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>仓库本地绝对路径(回车使用当前目录): <span class="token variable">${gl_bai}</span>"</span><span class="token punctuation">)</span><span class="token string">" REPO_LOCAL_PATH
-</span></span><span class="code-line line-number" line="261"><span class="token string">    if [[ -z "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="262"><span class="token string">        REPO_LOCAL_PATH=<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>
-</span></span><span class="code-line line-number" line="263"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="264"><span class="token string">    if [[ -n "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="265"><span class="token string">        if [[ -d "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="266"><span class="token string">            cd "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" || log_warn "</span>切换目录失败<span class="token string">"
-</span></span><span class="code-line line-number" line="267"><span class="token string">        else
-</span></span><span class="code-line line-number" line="268"><span class="token string">            log_warn "</span>本地目录 <span class="token variable">${REPO_LOCAL_PATH}</span> 不存在，跳过cd，不影响API调用<span class="token string">"
-</span></span><span class="code-line line-number" line="269"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="270"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="271"><span class="token string">
-</span></span><span class="code-line line-number" line="272"><span class="token string">    read -r -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>输入仓库API地址: <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span><span class="token string">" REPO_API_URL
+</span><span class="code-line line-number" line="33">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="34">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">int_seconds</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$seconds</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print int($1+0.999)}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="35">    <span class="token function">sleep</span> <span class="token string">"<span class="token variable">$int_seconds</span>"</span>
+</span><span class="code-line line-number" line="36"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="37"><span class="token function-name function">handle_invalid_input</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="38">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_huang}</span>无效输入，1秒后返回<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="39">    sleep_fractional <span class="token number">1</span>
+</span><span class="code-line line-number" line="40">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K"</span>
+</span><span class="code-line line-number" line="41">    <span class="token builtin class-name">return</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="42"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="43"><span class="token function-name function">break_end</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="44">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>操作完成<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="45">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>按任意键继续<span class="token variable">${gl_bai}</span> <span class="token entity" title="\c">\c</span>"</span>
+</span><span class="code-line line-number" line="46">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-n</span> <span class="token number">1</span> <span class="token parameter variable">-s</span> <span class="token parameter variable">-r</span>
+</span><span class="code-line line-number" line="47">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="48">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="49"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="50"><span class="token function-name function">exit_animation</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="51">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">frames</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"⠋"</span> <span class="token string">"⠙"</span> <span class="token string">"⠹"</span> <span class="token string">"⠸"</span> <span class="token string">"⠼"</span> <span class="token string">"⠴"</span> <span class="token string">"⠦"</span> <span class="token string">"⠧"</span> <span class="token string">"⠇"</span> <span class="token string">"⠏"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="52">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dots</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${gl_hong}</span>."</span> <span class="token string">"<span class="token variable">${gl_huang}</span>."</span> <span class="token string">"<span class="token variable">${gl_lv}</span>."</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>."</span> <span class="token string">"<span class="token variable">${gl_zi}</span>."</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="53">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dot_buffer</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="54">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">frame_len</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>frames<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
+</span><span class="code-line line-number" line="55">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dot_idx</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line line-number" line="56">    <span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&#x3C;</span><span class="token number">20</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="57">        <span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&#x26;&#x26;</span> i <span class="token operator">%</span> <span class="token number">3</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&#x26;&#x26;</span> dot_idx <span class="token operator">&#x3C;</span> ${#dots[@]} <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="58">            <span class="token assign-left variable">dot_buffer</span><span class="token operator">+=</span><span class="token variable">${dots<span class="token punctuation">[</span>$dot_idx<span class="token punctuation">]</span>}</span>
+</span><span class="code-line line-number" line="59">            <span class="token variable"><span class="token punctuation">((</span>dot_idx<span class="token operator">++</span><span class="token punctuation">))</span></span>
+</span><span class="code-line line-number" line="60">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="61">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_bufan}</span><span class="token variable">${frames<span class="token punctuation">[</span>$((i<span class="token operator">%</span>frame_len))<span class="token punctuation">]</span>}</span><span class="token variable">${gl_bai}</span> 正在退出 <span class="token variable">${dot_buffer}</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="62">        sleep_fractional <span class="token number">0.06</span>
+</span><span class="code-line line-number" line="63">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="64">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\r">\r</span><span class="token entity" title="\033">\033</span>[K<span class="token variable">${gl_lv}</span>✓<span class="token variable">${gl_bai}</span> 成功退出<span class="token entity" title="\n">\n</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="65">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="66">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="67"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="68"><span class="token function-name function">cancel_return</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="69">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">menu_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>上一级菜单}</span>"</span>
+</span><span class="code-line line-number" line="70">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-ne</span> <span class="token string">"<span class="token variable">${gl_lv}</span>即将返回 <span class="token variable">${gl_huang}</span><span class="token variable">${menu_name}</span><span class="token variable">${gl_lv}</span> <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="71">    sleep_fractional <span class="token number">0.6</span>
+</span><span class="code-line line-number" line="72">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="73">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="74"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="75"><span class="token function-name function">install_deps</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="76">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">pkg_list</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">$@</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="77">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token environment constant">$EUID</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="78">        log_error <span class="token string">"安装依赖需要root权限，请使用root或sudo执行"</span>
+</span><span class="code-line line-number" line="79">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="80">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="81">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">apt</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="82">        log_info <span class="token string">"检测到Debian/Ubuntu系列，使用apt安装依赖"</span>
+</span><span class="code-line line-number" line="83">        <span class="token function">apt</span> update <span class="token parameter variable">-qq</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span>
+</span><span class="code-line line-number" line="84">        <span class="token function">apt</span> <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="85">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> dnf <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="86">        log_info <span class="token string">"检测到RHEL/CentOS/Fedora系列，使用dnf安装依赖"</span>
+</span><span class="code-line line-number" line="87">        dnf <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="88">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> yum <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="89">        log_info <span class="token string">"检测到CentOS7系列，使用yum安装依赖"</span>
+</span><span class="code-line line-number" line="90">        yum <span class="token function">install</span> <span class="token parameter variable">-y</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="91">    <span class="token keyword">elif</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> pacman <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="92">        log_info <span class="token string">"检测到Arch系列，使用pacman安装依赖"</span>
+</span><span class="code-line line-number" line="93">        pacman <span class="token parameter variable">-Syu</span> <span class="token parameter variable">--noconfirm</span> <span class="token string">"<span class="token variable">${pkg_list<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="94">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="95">        log_error <span class="token string">"不识别当前系统包管理器，请手动安装: <span class="token variable">${pkg_list<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>
+</span><span class="code-line line-number" line="96">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="97">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="98"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="99"><span class="token function-name function">api_query_private_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="100">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">platform</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="101">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">token</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
+</span><span class="code-line line-number" line="102">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">api_url</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$3</span>"</span>
+</span><span class="code-line line-number" line="103">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">curl_args</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="104">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-s <span class="token parameter variable">-X</span> GET<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="105">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"github"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="106">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: token <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="107">    <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"gitee"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="108">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: Bearer <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="109">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="110">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Accept: application/json"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="111">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${api_url}</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="112">    <span class="token builtin class-name">local</span> out
+</span><span class="code-line line-number" line="113">    <span class="token assign-left variable">out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token string">"<span class="token variable">${curl_args<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="114">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$out</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.private'</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null
+</span><span class="code-line line-number" line="115"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="116"><span class="token function-name function">change_repo_visibility</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="117">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">platform</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="118">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">token</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
+</span><span class="code-line line-number" line="119">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">api_url</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$3</span>"</span>
+</span><span class="code-line line-number" line="120">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">private_flag</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$4</span>"</span>
+</span><span class="code-line line-number" line="121">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">curl_args</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="122">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-s <span class="token parameter variable">-X</span> PATCH<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="123">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"github"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="124">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: token <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="125">    <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${platform}</span>"</span> <span class="token operator">==</span> <span class="token string">"gitee"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="126">        <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Authorization: Bearer <span class="token variable">${token}</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="127">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="128">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Accept: application/json"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="129">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-H <span class="token string">"Content-Type: application/json"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="130">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span>-d <span class="token string">"{<span class="token entity" title="\&#x22;">\"</span>private<span class="token entity" title="\&#x22;">\"</span>:<span class="token variable">${private_flag}</span>}"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="131">    <span class="token assign-left variable">curl_args</span><span class="token operator">+=</span><span class="token punctuation">(</span><span class="token string">"<span class="token variable">${api_url}</span>"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="132">    <span class="token builtin class-name">local</span> resp
+</span><span class="code-line line-number" line="133">    <span class="token assign-left variable">resp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token string">"<span class="token variable">${curl_args<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="134">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$resp</span>"</span>
+</span><span class="code-line line-number" line="135"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="136"><span class="token function-name function">local_git_check_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="137">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-d</span> .git <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="138">        <span class="token builtin class-name">echo</span> <span class="token string">"NOTGIT"</span>
+</span><span class="code-line line-number" line="139">        <span class="token builtin class-name">return</span>
+</span><span class="code-line line-number" line="140">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="141">    <span class="token builtin class-name">local</span> remote_url
+</span><span class="code-line line-number" line="142">    <span class="token assign-left variable">remote_url</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">git</span> remote get-url origin <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token boolean">true</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="143">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${remote_url}</span>"</span>
+</span><span class="code-line line-number" line="144"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="145"><span class="token function-name function">main_work</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="146">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">GH_TOKEN</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${GH_TOKEN<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="147">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">REPO_LOCAL_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${REPO_LOCAL_PATH<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="148">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">REPO_API_URL</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${REPO_API_URL<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="149">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${ACTION<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="150">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${PLATFORM<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="151">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG GH_TOKEN=[<span class="token variable">${gl_huang}</span><span class="token variable">${GH_TOKEN}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="152">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG REPO_API_URL=[<span class="token variable">${gl_huang}</span><span class="token variable">${REPO_API_URL}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="153">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG ACTION=[<span class="token variable">${gl_huang}</span><span class="token variable">${ACTION}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="154">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG PLATFORM=[<span class="token variable">${gl_huang}</span><span class="token variable">${PLATFORM}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="155">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="156">        log_info <span class="token string">"检测到环境变量，启用免交互模式"</span>
+</span><span class="code-line line-number" line="157">        <span class="token builtin class-name">local</span> private_target
+</span><span class="code-line line-number" line="158">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">==</span> <span class="token string">"public2private"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="159">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"true"</span>
+</span><span class="code-line line-number" line="160">        <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">==</span> <span class="token string">"private2public"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="161">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"false"</span>
+</span><span class="code-line line-number" line="162">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="163">            log_error <span class="token string">"ACTION参数仅支持 public2private / private2public"</span>
+</span><span class="code-line line-number" line="164">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="165">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="166">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token operator">!=</span> <span class="token string">"github"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token operator">!=</span> <span class="token string">"gitee"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="167">            log_error <span class="token string">"PLATFORM仅支持 github / gitee"</span>
+</span><span class="code-line line-number" line="168">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="169">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="170">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="171">            <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="172">                <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token operator">||</span> <span class="token boolean">true</span>
+</span><span class="code-line line-number" line="173">            <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="174">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="175">        log_info <span class="token string">"执行修改仓库可见性，平台:<span class="token variable">${gl_lv}</span><span class="token variable">${PLATFORM}</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="176">        <span class="token builtin class-name">local</span> res
+</span><span class="code-line line-number" line="177">        <span class="token assign-left variable">res</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>change_repo_visibility <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token string">"<span class="token variable">${private_target}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="178">        <span class="token keyword">if</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$res</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-e</span> <span class="token string">'.id'</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="179">            log_ok <span class="token string">"API请求执行完成"</span>
+</span><span class="code-line line-number" line="180">            <span class="token builtin class-name">local</span> cur
+</span><span class="code-line line-number" line="181">            <span class="token assign-left variable">cur</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>api_query_private_status <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="182">            <span class="token builtin class-name">local</span> cn_status
+</span><span class="code-line line-number" line="183">            <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${cur}</span>"</span> <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="184">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"私有仓库"</span>
+</span><span class="code-line line-number" line="185">            <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${cur}</span>"</span> <span class="token operator">==</span> <span class="token string">"false"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="186">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"公开仓库"</span>
+</span><span class="code-line line-number" line="187">            <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="188">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"未知(<span class="token variable">${cur}</span>)"</span>
+</span><span class="code-line line-number" line="189">            <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="190">            log_info <span class="token string">"当前仓库状态: <span class="token variable">${gl_lv}</span><span class="token variable">${cn_status}</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="191">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="192">            log_error <span class="token string">"API调用失败，返回: <span class="token variable">${res}</span>"</span>
+</span><span class="code-line line-number" line="193">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="194">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="195">        <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="196">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="197">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="198">    <span class="token builtin class-name">local</span> git_ret
+</span><span class="code-line line-number" line="199">    <span class="token assign-left variable">git_ret</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>local_git_check_status<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="200">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 当前仓库的状态<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="201">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="202">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${git_ret}</span>"</span> <span class="token operator">==</span> <span class="token string">"NOTGIT"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="203">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>非 Git 仓库<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="204">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="205">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>本地Git仓库<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="206">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="207">    <span class="token builtin class-name">echo</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="208">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="209">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 仓库可见性切换工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="210">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="211">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>GitHub<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="212">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>Gitee<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="213">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="214">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="215">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="216">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请选择代码平台: <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span>"</span> plat_opt
+</span><span class="code-line line-number" line="217">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">${plat_opt}</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="218">        <span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="219">            <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"github"</span>
+</span><span class="code-line line-number" line="220">            <span class="token builtin class-name">break</span>
+</span><span class="code-line line-number" line="221">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="222">        <span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="223">            <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"gitee"</span>
+</span><span class="code-line line-number" line="224">            <span class="token builtin class-name">break</span>
+</span><span class="code-line line-number" line="225">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="226">        00<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="227">            exit_animation
+</span><span class="code-line line-number" line="228">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="229">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="230">            handle_invalid_input
+</span><span class="code-line line-number" line="231">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="232">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="233">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="234">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="235">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 输入配置信息 <span class="token variable">${gl_huang}</span>[<span class="token variable">${PLATFORM}</span>]<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="236">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="237">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>Gitee  创建令牌地址：<span class="token variable">${gl_lv}</span>https://gitee.com/profile/personal_access_tokens<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="238">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>GitHub 创建令牌地址：<span class="token variable">${gl_lv}</span>https://github.com/settings/tokens/new<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="239">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="240">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span>请输入平台个人令牌(输入<span class="token variable">${gl_huang}</span>0<span class="token variable">${gl_bai}</span>返回): <span class="token variable">${gl_bai}</span>"</span><span class="token punctuation">)</span><span class="token string">" GH_TOKEN
+</span></span><span class="code-line line-number" line="241"><span class="token string">    if [[ "</span><span class="token variable">${GH_TOKEN}</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="242"><span class="token string">        cancel_return
+</span></span><span class="code-line line-number" line="243"><span class="token string">        main_work
+</span></span><span class="code-line line-number" line="244"><span class="token string">        return 0
+</span></span><span class="code-line line-number" line="245"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="246"><span class="token string">    if [[ -z "</span><span class="token variable">${GH_TOKEN}</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="247"><span class="token string">        log_error "</span>令牌不能为空<span class="token string">"
+</span></span><span class="code-line line-number" line="248"><span class="token string">        break_end
+</span></span><span class="code-line line-number" line="249"><span class="token string">        return 1
+</span></span><span class="code-line line-number" line="250"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="251"><span class="token string">    read -r -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>仓库本地绝对路径(回车使用当前目录，输入<span class="token variable">${gl_huang}</span>0<span class="token variable">${gl_bai}</span>返回): <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span><span class="token string">" REPO_LOCAL_PATH
+</span></span><span class="code-line line-number" line="252"><span class="token string">    if [[ "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="253"><span class="token string">        cancel_return
+</span></span><span class="code-line line-number" line="254"><span class="token string">        main_work
+</span></span><span class="code-line line-number" line="255"><span class="token string">        return 0
+</span></span><span class="code-line line-number" line="256"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="257"><span class="token string">    if [[ -z "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="258"><span class="token string">        REPO_LOCAL_PATH=<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>
+</span></span><span class="code-line line-number" line="259"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="260"><span class="token string">    if [[ -n "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="261"><span class="token string">        if [[ -d "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="262"><span class="token string">            cd "</span><span class="token variable">${REPO_LOCAL_PATH}</span><span class="token string">" || log_warn "</span>切换目录失败<span class="token string">"
+</span></span><span class="code-line line-number" line="263"><span class="token string">        else
+</span></span><span class="code-line line-number" line="264"><span class="token string">            log_warn "</span>本地目录 <span class="token variable">${REPO_LOCAL_PATH}</span> 不存在，跳过cd，不影响API调用<span class="token string">"
+</span></span><span class="code-line line-number" line="265"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="266"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="267"><span class="token string">    read -r -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>输入仓库API地址(输入<span class="token variable">${gl_huang}</span>0<span class="token variable">${gl_bai}</span>返回): <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span><span class="token string">" REPO_API_URL
+</span></span><span class="code-line line-number" line="268"><span class="token string">    if [[ "</span><span class="token variable">${REPO_API_URL}</span><span class="token string">" == "</span><span class="token number">0</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="269"><span class="token string">        cancel_return
+</span></span><span class="code-line line-number" line="270"><span class="token string">        main_work
+</span></span><span class="code-line line-number" line="271"><span class="token string">        return 0
+</span></span><span class="code-line line-number" line="272"><span class="token string">    fi
 </span></span><span class="code-line line-number" line="273"><span class="token string">    if [[ -z "</span><span class="token variable">${REPO_API_URL}</span><span class="token string">" ]]; then
 </span></span><span class="code-line line-number" line="274"><span class="token string">        log_error "</span>API地址不能为空<span class="token string">"
 </span></span><span class="code-line line-number" line="275"><span class="token string">        break_end
 </span></span><span class="code-line line-number" line="276"><span class="token string">        return 1
 </span></span><span class="code-line line-number" line="277"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="278"><span class="token string">
-</span></span><span class="code-line line-number" line="279"><span class="token string">    clear
-</span></span><span class="code-line line-number" line="280"><span class="token string">    local cur_status_raw
-</span></span><span class="code-line line-number" line="281"><span class="token string">    cur_status_raw=<span class="token variable"><span class="token variable">$(</span>api_query_private_status <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span><span class="token variable">)</span></span>
-</span></span><span class="code-line line-number" line="282"><span class="token string">    local cur_cn
-</span></span><span class="code-line line-number" line="283"><span class="token string">    if [[ "</span><span class="token variable">${cur_status_raw}</span><span class="token string">" == "</span><span class="token boolean">true</span><span class="token string">" ]];then
-</span></span><span class="code-line line-number" line="284"><span class="token string">        cur_cn="</span>私有仓库<span class="token string">"
-</span></span><span class="code-line line-number" line="285"><span class="token string">    elif [[ "</span><span class="token variable">${cur_status_raw}</span><span class="token string">" == "</span><span class="token boolean">false</span><span class="token string">" ]];then
-</span></span><span class="code-line line-number" line="286"><span class="token string">        cur_cn="</span>公开仓库<span class="token string">"
-</span></span><span class="code-line line-number" line="287"><span class="token string">    else
-</span></span><span class="code-line line-number" line="288"><span class="token string">        cur_cn="</span>未知<span class="token punctuation">(</span><span class="token variable">${cur_status_raw}</span><span class="token punctuation">)</span><span class="token string">"
-</span></span><span class="code-line line-number" line="289"><span class="token string">    fi
-</span></span><span class="code-line line-number" line="290"><span class="token string">
-</span></span><span class="code-line line-number" line="291"><span class="token string">    echo -e "</span><span class="token variable">${gl_huang}</span><span class="token operator">>></span><span class="token operator">></span> 当前仓库的状态<span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="292"><span class="token string">    echo -e "</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="293"><span class="token string">    echo -e "</span><span class="token variable">${gl_lv}</span><span class="token variable">${cur_cn}</span><span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="294"><span class="token string">    echo "</span>"
-</span><span class="code-line line-number" line="295">
-</span><span class="code-line line-number" line="296">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="297">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 选择操作 <span class="token variable">${gl_huang}</span>[<span class="token variable">${PLATFORM}</span>]<span class="token variable">${gl_bai}</span>"</span>
+</span></span><span class="code-line line-number" line="278"><span class="token string">    clear
+</span></span><span class="code-line line-number" line="279"><span class="token string">    local cur_status_raw
+</span></span><span class="code-line line-number" line="280"><span class="token string">    cur_status_raw=<span class="token variable"><span class="token variable">$(</span>api_query_private_status <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span><span class="token variable">)</span></span>
+</span></span><span class="code-line line-number" line="281"><span class="token string">    local cur_cn
+</span></span><span class="code-line line-number" line="282"><span class="token string">    if [[ "</span><span class="token variable">${cur_status_raw}</span><span class="token string">" == "</span><span class="token boolean">true</span><span class="token string">" ]];then
+</span></span><span class="code-line line-number" line="283"><span class="token string">        cur_cn="</span>私有仓库<span class="token string">"
+</span></span><span class="code-line line-number" line="284"><span class="token string">    elif [[ "</span><span class="token variable">${cur_status_raw}</span><span class="token string">" == "</span><span class="token boolean">false</span><span class="token string">" ]];then
+</span></span><span class="code-line line-number" line="285"><span class="token string">        cur_cn="</span>公开仓库<span class="token string">"
+</span></span><span class="code-line line-number" line="286"><span class="token string">    else
+</span></span><span class="code-line line-number" line="287"><span class="token string">        cur_cn="</span>未知<span class="token punctuation">(</span><span class="token variable">${cur_status_raw}</span><span class="token punctuation">)</span><span class="token string">"
+</span></span><span class="code-line line-number" line="288"><span class="token string">    fi
+</span></span><span class="code-line line-number" line="289"><span class="token string">    echo -e "</span><span class="token variable">${gl_huang}</span><span class="token operator">>></span><span class="token operator">></span> 当前仓库的状态<span class="token variable">${gl_bai}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="290"><span class="token string">    echo -e "</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="291"><span class="token string">    echo -e "</span><span class="token variable">${gl_lv}</span><span class="token variable">${cur_cn}</span><span class="token variable">${gl_bai}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="292"><span class="token string">    echo "</span>"
+</span><span class="code-line line-number" line="293">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="294">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 选择操作 <span class="token variable">${gl_huang}</span>[<span class="token variable">${PLATFORM}</span>]<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="295">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="296">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>公开仓库 → 私有仓库<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="297">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>私有仓库 → 公开仓库<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="298">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="299">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1. 公开仓库 → 私有仓库<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="300">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2. 私有仓库 → 公开仓库<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="301">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="302">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0. 返回上一级<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="303">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="304">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span>"</span> opt
-</span><span class="code-line line-number" line="305">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">${opt}</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="306">        <span class="token number">1</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="307">            <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"public2private"</span>
-</span><span class="code-line line-number" line="308">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"true"</span>
-</span><span class="code-line line-number" line="309">            <span class="token builtin class-name">break</span>
-</span><span class="code-line line-number" line="310">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="311">        <span class="token number">2</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="312">            <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"private2public"</span>
-</span><span class="code-line line-number" line="313">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"false"</span>
-</span><span class="code-line line-number" line="314">            <span class="token builtin class-name">break</span>
-</span><span class="code-line line-number" line="315">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="316">        <span class="token number">0</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="317">            cancel_return
-</span><span class="code-line line-number" line="318">            main_work
-</span><span class="code-line line-number" line="319">            <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="299">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0. <span class="token variable">${gl_bai}</span>返回上一级选单<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="300">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="301">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: <span class="token variable">${gl_bai}</span>"</span><span class="token variable">)</span></span>"</span> opt
+</span><span class="code-line line-number" line="302">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">${opt}</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="303">        <span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="304">            <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"public2private"</span>
+</span><span class="code-line line-number" line="305">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"true"</span>
+</span><span class="code-line line-number" line="306">            <span class="token builtin class-name">break</span>
+</span><span class="code-line line-number" line="307">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="308">        <span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="309">            <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"private2public"</span>
+</span><span class="code-line line-number" line="310">            <span class="token assign-left variable">private_target</span><span class="token operator">=</span><span class="token string">"false"</span>
+</span><span class="code-line line-number" line="311">            <span class="token builtin class-name">break</span>
+</span><span class="code-line line-number" line="312">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="313">        <span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="314">            cancel_return
+</span><span class="code-line line-number" line="315">            main_work
+</span><span class="code-line line-number" line="316">            <span class="token builtin class-name">return</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="317">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="318">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="319">            handle_invalid_input
 </span><span class="code-line line-number" line="320">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="321">        *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="322">            handle_invalid_input
-</span><span class="code-line line-number" line="323">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="324">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="325">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="326">
-</span><span class="code-line line-number" line="327">    log_info <span class="token string">"开始调用接口修改仓库属性，平台:<span class="token variable">${PLATFORM}</span>"</span>
-</span><span class="code-line line-number" line="328">    <span class="token builtin class-name">local</span> api_resp
-</span><span class="code-line line-number" line="329">    <span class="token assign-left variable">api_resp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>change_repo_visibility <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token string">"<span class="token variable">${private_target}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="330">    <span class="token keyword">if</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${api_resp}</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-e</span> <span class="token string">'.id'</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="331">        log_ok <span class="token string">"接口调用成功"</span>
-</span><span class="code-line line-number" line="332">        <span class="token builtin class-name">local</span> now_status
-</span><span class="code-line line-number" line="333">        <span class="token assign-left variable">now_status</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>api_query_private_status <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="334">        <span class="token builtin class-name">local</span> cn_now
-</span><span class="code-line line-number" line="335">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${now_status}</span>"</span> <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="336">            <span class="token assign-left variable">cn_now</span><span class="token operator">=</span><span class="token string">"私有仓库"</span>
-</span><span class="code-line line-number" line="337">        <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${now_status}</span>"</span> <span class="token operator">==</span> <span class="token string">"false"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="338">            <span class="token assign-left variable">cn_now</span><span class="token operator">=</span><span class="token string">"公开仓库"</span>
-</span><span class="code-line line-number" line="339">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="340">            <span class="token assign-left variable">cn_now</span><span class="token operator">=</span><span class="token string">"未知(<span class="token variable">${now_status}</span>)"</span>
-</span><span class="code-line line-number" line="341">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="342">        log_info <span class="token string">"仓库当前状态: <span class="token variable">${cn_now}</span>"</span>
-</span><span class="code-line line-number" line="343">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="344">        log_error <span class="token string">"接口调用失败，返回内容: <span class="token variable">${api_resp}</span>"</span>
-</span><span class="code-line line-number" line="345">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="346">
-</span><span class="code-line line-number" line="347">    break_end
-</span><span class="code-line line-number" line="348"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="349">
-</span><span class="code-line line-number" line="350"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="351">    <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> jq <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="352">        log_warn <span class="token string">"依赖 jq 未安装，尝试自动安装"</span>
-</span><span class="code-line line-number" line="353">        install_deps jq
-</span><span class="code-line line-number" line="354">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> jq <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="355">            log_error <span class="token string">"jq安装失败，请手动安装jq"</span>
-</span><span class="code-line line-number" line="356">            <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="357">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="358">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="359">    main_work
-</span><span class="code-line line-number" line="360"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="361">
-</span><span class="code-line line-number" line="362"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">${0}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="363">    main
-</span><span class="code-line line-number" line="364"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="321">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="322">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="323">    log_info <span class="token string">"开始调用接口修改仓库属性，平台:<span class="token variable">${PLATFORM}</span>"</span>
+</span><span class="code-line line-number" line="324">    <span class="token builtin class-name">local</span> api_resp
+</span><span class="code-line line-number" line="325">    <span class="token assign-left variable">api_resp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>change_repo_visibility <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token string">"<span class="token variable">${private_target}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="326">    <span class="token keyword">if</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${api_resp}</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-e</span> <span class="token string">'.id'</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="327">        log_ok <span class="token string">"接口调用成功"</span>
+</span><span class="code-line line-number" line="328">        <span class="token builtin class-name">local</span> now_status
+</span><span class="code-line line-number" line="329">        <span class="token assign-left variable">now_status</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>api_query_private_status <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="330">        <span class="token builtin class-name">local</span> cn_now
+</span><span class="code-line line-number" line="331">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${now_status}</span>"</span> <span class="token operator">==</span> <span class="token string">"true"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="332">            <span class="token assign-left variable">cn_now</span><span class="token operator">=</span><span class="token string">"私有仓库"</span>
+</span><span class="code-line line-number" line="333">        <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${now_status}</span>"</span> <span class="token operator">==</span> <span class="token string">"false"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="334">            <span class="token assign-left variable">cn_now</span><span class="token operator">=</span><span class="token string">"公开仓库"</span>
+</span><span class="code-line line-number" line="335">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="336">            <span class="token assign-left variable">cn_now</span><span class="token operator">=</span><span class="token string">"未知(<span class="token variable">${now_status}</span>)"</span>
+</span><span class="code-line line-number" line="337">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="338">        log_info <span class="token string">"仓库当前状态: <span class="token variable">${cn_now}</span>"</span>
+</span><span class="code-line line-number" line="339">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="340">        log_error <span class="token string">"接口调用失败，返回内容: <span class="token variable">${api_resp}</span>"</span>
+</span><span class="code-line line-number" line="341">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="342">    break_end
+</span><span class="code-line line-number" line="343"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="344"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="345">    <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> jq <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="346">        log_warn <span class="token string">"依赖 jq 未安装，尝试自动安装"</span>
+</span><span class="code-line line-number" line="347">        install_deps jq
+</span><span class="code-line line-number" line="348">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> jq <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="349">            log_error <span class="token string">"jq安装失败，请手动安装jq"</span>
+</span><span class="code-line line-number" line="350">            <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="351">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="352">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="353">    main_work
+</span><span class="code-line line-number" line="354"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="355"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">${0}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="356">    main
+</span><span class="code-line line-number" line="357"><span class="token keyword">fi</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
-
 list_color_init() {
     export gl_hui=$&#x27;\033[38;5;59m&#x27;
     export gl_hong=$&#x27;\033[38;5;9m&#x27;
@@ -1843,12 +1835,10 @@ list_color_init() {
     export gl_bufan=$&#x27;\033[38;5;14m&#x27;
 }
 list_color_init
-
 log_info()  { echo -e &#x22;${gl_lan}[信息]${gl_bai} $*&#x22;; }
 log_ok()    { echo -e &#x22;${gl_lv}[成功]${gl_bai} $*&#x22;; }
 log_warn()  { echo -e &#x22;${gl_huang}[警告]${gl_bai} $*&#x22;; }
 log_error() { echo -e &#x22;${gl_hong}[错误]${gl_bai} $*&#x22; >&#x26;2; }
-
 sleep_fractional() {
     local seconds=$1
     if sleep &#x22;$seconds&#x22; 2>/dev/null; then
@@ -1868,14 +1858,12 @@ sleep_fractional() {
     local int_seconds=$(echo &#x22;$seconds&#x22; | awk &#x27;{print int($1+0.999)}&#x27;)
     sleep &#x22;$int_seconds&#x22;
 }
-
 handle_invalid_input() {
     echo -ne &#x22;\r\033[K${gl_huang}无效输入，1秒后返回${gl_bai}&#x22;
     sleep_fractional 1
     echo -ne &#x22;\r\033[K&#x22;
     return 2
 }
-
 break_end() {
     echo -e &#x22;${gl_lv}操作完成${gl_bai}&#x22;
     echo -e &#x22;${gl_bai}按任意键继续${gl_bai} \c&#x22;
@@ -1883,7 +1871,6 @@ break_end() {
     echo &#x22;&#x22;
     clear
 }
-
 exit_animation() {
     local frames=(&#x22;⠋&#x22; &#x22;⠙&#x22; &#x22;⠹&#x22; &#x22;⠸&#x22; &#x22;⠼&#x22; &#x22;⠴&#x22; &#x22;⠦&#x22; &#x22;⠧&#x22; &#x22;⠇&#x22; &#x22;⠏&#x22;)
     local dots=(&#x22;${gl_hong}.&#x22; &#x22;${gl_huang}.&#x22; &#x22;${gl_lv}.&#x22; &#x22;${gl_bufan}.&#x22; &#x22;${gl_zi}.&#x22;)
@@ -1902,7 +1889,6 @@ exit_animation() {
     clear
     exit 0
 }
-
 cancel_return() {
     local menu_name=&#x22;${1:-上一级菜单}&#x22;
     echo -ne &#x22;${gl_lv}即将返回 ${gl_huang}${menu_name}${gl_lv} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
@@ -1910,7 +1896,6 @@ cancel_return() {
     echo &#x22;&#x22;
     clear
 }
-
 install_deps() {
     local pkg_list=(&#x22;$@&#x22;)
     if [[ $EUID -ne 0 ]]; then
@@ -1935,7 +1920,6 @@ install_deps() {
         return 1
     fi
 }
-
 api_query_private_status() {
     local platform=&#x22;$1&#x22;
     local token=&#x22;$2&#x22;
@@ -1953,7 +1937,6 @@ api_query_private_status() {
     out=$(curl &#x22;${curl_args[@]}&#x22; 2>/dev/null)
     echo &#x22;$out&#x22; | jq -r &#x27;.private&#x27; 2>/dev/null
 }
-
 change_repo_visibility() {
     local platform=&#x22;$1&#x22;
     local token=&#x22;$2&#x22;
@@ -1974,7 +1957,6 @@ change_repo_visibility() {
     resp=$(curl &#x22;${curl_args[@]}&#x22; 2>/dev/null)
     echo &#x22;$resp&#x22;
 }
-
 local_git_check_status() {
     if [[ ! -d .git ]];then
         echo &#x22;NOTGIT&#x22;
@@ -1984,19 +1966,16 @@ local_git_check_status() {
     remote_url=$(git remote get-url origin 2>/dev/null || true)
     echo &#x22;${remote_url}&#x22;
 }
-
 main_work() {
     local GH_TOKEN=&#x22;${GH_TOKEN:-}&#x22;
     local REPO_LOCAL_PATH=&#x22;${REPO_LOCAL_PATH:-}&#x22;
     local REPO_API_URL=&#x22;${REPO_API_URL:-}&#x22;
     local ACTION=&#x22;${ACTION:-}&#x22;
     local PLATFORM=&#x22;${PLATFORM:-}&#x22;
-
     log_info &#x22;${gl_bai}DEBUG GH_TOKEN=[${gl_huang}${GH_TOKEN}${gl_bai}]&#x22;
     log_info &#x22;${gl_bai}DEBUG REPO_API_URL=[${gl_huang}${REPO_API_URL}${gl_bai}]&#x22;
     log_info &#x22;${gl_bai}DEBUG ACTION=[${gl_huang}${ACTION}${gl_bai}]&#x22;
     log_info &#x22;${gl_bai}DEBUG PLATFORM=[${gl_huang}${PLATFORM}${gl_bai}]&#x22;
-
     if [[ -n &#x22;${GH_TOKEN}&#x22; &#x26;&#x26; -n &#x22;${REPO_API_URL}&#x22; &#x26;&#x26; -n &#x22;${ACTION}&#x22; &#x26;&#x26; -n &#x22;${PLATFORM}&#x22; ]]; then
         log_info &#x22;检测到环境变量，启用免交互模式&#x22;
         local private_target
@@ -2039,7 +2018,6 @@ main_work() {
         fi
         return 0
     fi
-
     clear
     local git_ret
     git_ret=$(local_git_check_status)
@@ -2051,14 +2029,13 @@ main_work() {
         echo -e &#x22;${gl_lv}本地Git仓库${gl_bai}&#x22;
     fi
     echo &#x22;&#x22;
-
     while true; do
         echo -e &#x22;${gl_zi}>>> 仓库可见性切换工具${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
-        echo -e &#x22;${gl_bufan}1. GitHub${gl_bai}&#x22;
-        echo -e &#x22;${gl_bufan}2. Gitee${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}1.  ${gl_bai}GitHub${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}2.  ${gl_bai}Gitee${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
-        echo -e &#x22;${gl_hong}00. 退出脚本${gl_bai}&#x22;
+        echo -e &#x22;${gl_hong}00. ${gl_bai}退出脚本${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
         read -r -p &#x22;$(echo -e &#x22;${gl_bai}请选择代码平台: ${gl_bai}&#x22;)&#x22; plat_opt
         case &#x22;${plat_opt}&#x22; in
@@ -2078,17 +2055,29 @@ main_work() {
             ;;
         esac
     done
-
     clear
     echo -e &#x22;${gl_zi}>>> 输入配置信息 ${gl_huang}[${PLATFORM}]${gl_bai}&#x22;
-    read -r -p &#x22;$(echo -e &#x22;${gl_bai}请输入平台个人令牌: ${gl_bai}&#x22;)&#x22; GH_TOKEN
+    echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
+    echo -e &#x22;${gl_bai}Gitee  创建令牌地址：${gl_lv}https://gitee.com/profile/personal_access_tokens${gl_bai}&#x22;
+    echo -e &#x22;${gl_bai}GitHub 创建令牌地址：${gl_lv}https://github.com/settings/tokens/new${gl_bai}&#x22;
+    echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
+    read -r -p &#x22;$(echo -e &#x22;${gl_bai}请输入平台个人令牌(输入${gl_huang}0${gl_bai}返回): ${gl_bai}&#x22;)&#x22; GH_TOKEN
+    if [[ &#x22;${GH_TOKEN}&#x22; == &#x22;0&#x22; ]]; then
+        cancel_return
+        main_work
+        return 0
+    fi
     if [[ -z &#x22;${GH_TOKEN}&#x22; ]]; then
         log_error &#x22;令牌不能为空&#x22;
         break_end
         return 1
     fi
-
-    read -r -p &#x22;$(echo -e &#x22;${gl_bai}仓库本地绝对路径(回车使用当前目录): ${gl_bai}&#x22;)&#x22; REPO_LOCAL_PATH
+    read -r -p &#x22;$(echo -e &#x22;${gl_bai}仓库本地绝对路径(回车使用当前目录，输入${gl_huang}0${gl_bai}返回): ${gl_bai}&#x22;)&#x22; REPO_LOCAL_PATH
+    if [[ &#x22;${REPO_LOCAL_PATH}&#x22; == &#x22;0&#x22; ]]; then
+        cancel_return
+        main_work
+        return 0
+    fi
     if [[ -z &#x22;${REPO_LOCAL_PATH}&#x22; ]]; then
         REPO_LOCAL_PATH=$(pwd)
     fi
@@ -2099,14 +2088,17 @@ main_work() {
             log_warn &#x22;本地目录 ${REPO_LOCAL_PATH} 不存在，跳过cd，不影响API调用&#x22;
         fi
     fi
-
-    read -r -p &#x22;$(echo -e &#x22;${gl_bai}输入仓库API地址: ${gl_bai}&#x22;)&#x22; REPO_API_URL
+    read -r -p &#x22;$(echo -e &#x22;${gl_bai}输入仓库API地址(输入${gl_huang}0${gl_bai}返回): ${gl_bai}&#x22;)&#x22; REPO_API_URL
+    if [[ &#x22;${REPO_API_URL}&#x22; == &#x22;0&#x22; ]]; then
+        cancel_return
+        main_work
+        return 0
+    fi
     if [[ -z &#x22;${REPO_API_URL}&#x22; ]]; then
         log_error &#x22;API地址不能为空&#x22;
         break_end
         return 1
     fi
-
     clear
     local cur_status_raw
     cur_status_raw=$(api_query_private_status &#x22;${PLATFORM}&#x22; &#x22;${GH_TOKEN}&#x22; &#x22;${REPO_API_URL}&#x22;)
@@ -2118,19 +2110,17 @@ main_work() {
     else
         cur_cn=&#x22;未知(${cur_status_raw})&#x22;
     fi
-
     echo -e &#x22;${gl_huang}>>> 当前仓库的状态${gl_bai}&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
     echo -e &#x22;${gl_lv}${cur_cn}${gl_bai}&#x22;
     echo &#x22;&#x22;
-
     while true; do
         echo -e &#x22;${gl_zi}>>> 选择操作 ${gl_huang}[${PLATFORM}]${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
-        echo -e &#x22;${gl_bufan}1. 公开仓库 → 私有仓库${gl_bai}&#x22;
-        echo -e &#x22;${gl_bufan}2. 私有仓库 → 公开仓库${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}1.  ${gl_bai}公开仓库 → 私有仓库${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}2.  ${gl_bai}私有仓库 → 公开仓库${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
-        echo -e &#x22;${gl_huang}0. 返回上一级${gl_bai}&#x22;
+        echo -e &#x22;${gl_huang}0. ${gl_bai}返回上一级选单${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————${gl_bai}&#x22;
         read -r -p &#x22;$(echo -e &#x22;${gl_bai}请输入你的选择: ${gl_bai}&#x22;)&#x22; opt
         case &#x22;${opt}&#x22; in
@@ -2154,7 +2144,6 @@ main_work() {
             ;;
         esac
     done
-
     log_info &#x22;开始调用接口修改仓库属性，平台:${PLATFORM}&#x22;
     local api_resp
     api_resp=$(change_repo_visibility &#x22;${PLATFORM}&#x22; &#x22;${GH_TOKEN}&#x22; &#x22;${REPO_API_URL}&#x22; &#x22;${private_target}&#x22;)
@@ -2174,10 +2163,8 @@ main_work() {
     else
         log_error &#x22;接口调用失败，返回内容: ${api_resp}&#x22;
     fi
-
     break_end
 }
-
 main() {
     if ! command -v jq >/dev/null 2>&#x26;1; then
         log_warn &#x22;依赖 jq 未安装，尝试自动安装&#x22;
@@ -2189,7 +2176,6 @@ main() {
     fi
     main_work
 }
-
 if [[ &#x22;${BASH_SOURCE[0]}&#x22; == &#x22;${0}&#x22; ]]; then
     main
 fi

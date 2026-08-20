@@ -1,6 +1,5 @@
 #!/bin/bash
 set -uo pipefail
-
 list_color_init() {
     export gl_hui=$'\033[38;5;59m'
     export gl_hong=$'\033[38;5;9m'
@@ -12,12 +11,10 @@ list_color_init() {
     export gl_bufan=$'\033[38;5;14m'
 }
 list_color_init
-
 log_info()  { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
 log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
-
 sleep_fractional() {
     local seconds=$1
     if sleep "$seconds" 2>/dev/null; then
@@ -37,14 +34,12 @@ sleep_fractional() {
     local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
     sleep "$int_seconds"
 }
-
 handle_invalid_input() {
     echo -ne "\r\033[K${gl_huang}无效输入，1秒后返回${gl_bai}"
     sleep_fractional 1
     echo -ne "\r\033[K"
     return 2
 }
-
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
     echo -e "${gl_bai}按任意键继续${gl_bai} \c"
@@ -52,7 +47,6 @@ break_end() {
     echo ""
     clear
 }
-
 exit_animation() {
     local frames=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
     local dots=("${gl_hong}." "${gl_huang}." "${gl_lv}." "${gl_bufan}." "${gl_zi}.")
@@ -71,7 +65,6 @@ exit_animation() {
     clear
     exit 0
 }
-
 cancel_return() {
     local menu_name="${1:-上一级菜单}"
     echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name}${gl_lv} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
@@ -79,7 +72,6 @@ cancel_return() {
     echo ""
     clear
 }
-
 install_deps() {
     local pkg_list=("$@")
     if [[ $EUID -ne 0 ]]; then
@@ -104,7 +96,6 @@ install_deps() {
         return 1
     fi
 }
-
 api_query_private_status() {
     local platform="$1"
     local token="$2"
@@ -122,7 +113,6 @@ api_query_private_status() {
     out=$(curl "${curl_args[@]}" 2>/dev/null)
     echo "$out" | jq -r '.private' 2>/dev/null
 }
-
 change_repo_visibility() {
     local platform="$1"
     local token="$2"
@@ -143,7 +133,6 @@ change_repo_visibility() {
     resp=$(curl "${curl_args[@]}" 2>/dev/null)
     echo "$resp"
 }
-
 local_git_check_status() {
     if [[ ! -d .git ]];then
         echo "NOTGIT"
@@ -153,19 +142,16 @@ local_git_check_status() {
     remote_url=$(git remote get-url origin 2>/dev/null || true)
     echo "${remote_url}"
 }
-
 main_work() {
     local GH_TOKEN="${GH_TOKEN:-}"
     local REPO_LOCAL_PATH="${REPO_LOCAL_PATH:-}"
     local REPO_API_URL="${REPO_API_URL:-}"
     local ACTION="${ACTION:-}"
     local PLATFORM="${PLATFORM:-}"
-
     log_info "${gl_bai}DEBUG GH_TOKEN=[${gl_huang}${GH_TOKEN}${gl_bai}]"
     log_info "${gl_bai}DEBUG REPO_API_URL=[${gl_huang}${REPO_API_URL}${gl_bai}]"
     log_info "${gl_bai}DEBUG ACTION=[${gl_huang}${ACTION}${gl_bai}]"
     log_info "${gl_bai}DEBUG PLATFORM=[${gl_huang}${PLATFORM}${gl_bai}]"
-
     if [[ -n "${GH_TOKEN}" && -n "${REPO_API_URL}" && -n "${ACTION}" && -n "${PLATFORM}" ]]; then
         log_info "检测到环境变量，启用免交互模式"
         local private_target
@@ -208,7 +194,6 @@ main_work() {
         fi
         return 0
     fi
-
     clear
     local git_ret
     git_ret=$(local_git_check_status)
@@ -220,14 +205,13 @@ main_work() {
         echo -e "${gl_lv}本地Git仓库${gl_bai}"
     fi
     echo ""
-
     while true; do
         echo -e "${gl_zi}>>> 仓库可见性切换工具${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1. GitHub${gl_bai}"
-        echo -e "${gl_bufan}2. Gitee${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}GitHub${gl_bai}"
+        echo -e "${gl_bufan}2.  ${gl_bai}Gitee${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
-        echo -e "${gl_hong}00. 退出脚本${gl_bai}"
+        echo -e "${gl_hong}00. ${gl_bai}退出脚本${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
         read -r -p "$(echo -e "${gl_bai}请选择代码平台: ${gl_bai}")" plat_opt
         case "${plat_opt}" in
@@ -247,17 +231,29 @@ main_work() {
             ;;
         esac
     done
-
     clear
     echo -e "${gl_zi}>>> 输入配置信息 ${gl_huang}[${PLATFORM}]${gl_bai}"
-    read -r -p "$(echo -e "${gl_bai}请输入平台个人令牌: ${gl_bai}")" GH_TOKEN
+    echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}Gitee  创建令牌地址：${gl_lv}https://gitee.com/profile/personal_access_tokens${gl_bai}"
+    echo -e "${gl_bai}GitHub 创建令牌地址：${gl_lv}https://github.com/settings/tokens/new${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
+    read -r -p "$(echo -e "${gl_bai}请输入平台个人令牌(输入${gl_huang}0${gl_bai}返回): ${gl_bai}")" GH_TOKEN
+    if [[ "${GH_TOKEN}" == "0" ]]; then
+        cancel_return
+        main_work
+        return 0
+    fi
     if [[ -z "${GH_TOKEN}" ]]; then
         log_error "令牌不能为空"
         break_end
         return 1
     fi
-
-    read -r -p "$(echo -e "${gl_bai}仓库本地绝对路径(回车使用当前目录): ${gl_bai}")" REPO_LOCAL_PATH
+    read -r -p "$(echo -e "${gl_bai}仓库本地绝对路径(回车使用当前目录，输入${gl_huang}0${gl_bai}返回): ${gl_bai}")" REPO_LOCAL_PATH
+    if [[ "${REPO_LOCAL_PATH}" == "0" ]]; then
+        cancel_return
+        main_work
+        return 0
+    fi
     if [[ -z "${REPO_LOCAL_PATH}" ]]; then
         REPO_LOCAL_PATH=$(pwd)
     fi
@@ -268,14 +264,17 @@ main_work() {
             log_warn "本地目录 ${REPO_LOCAL_PATH} 不存在，跳过cd，不影响API调用"
         fi
     fi
-
-    read -r -p "$(echo -e "${gl_bai}输入仓库API地址: ${gl_bai}")" REPO_API_URL
+    read -r -p "$(echo -e "${gl_bai}输入仓库API地址(输入${gl_huang}0${gl_bai}返回): ${gl_bai}")" REPO_API_URL
+    if [[ "${REPO_API_URL}" == "0" ]]; then
+        cancel_return
+        main_work
+        return 0
+    fi
     if [[ -z "${REPO_API_URL}" ]]; then
         log_error "API地址不能为空"
         break_end
         return 1
     fi
-
     clear
     local cur_status_raw
     cur_status_raw=$(api_query_private_status "${PLATFORM}" "${GH_TOKEN}" "${REPO_API_URL}")
@@ -287,19 +286,17 @@ main_work() {
     else
         cur_cn="未知(${cur_status_raw})"
     fi
-
     echo -e "${gl_huang}>>> 当前仓库的状态${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
     echo -e "${gl_lv}${cur_cn}${gl_bai}"
     echo ""
-
     while true; do
         echo -e "${gl_zi}>>> 选择操作 ${gl_huang}[${PLATFORM}]${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1. 公开仓库 → 私有仓库${gl_bai}"
-        echo -e "${gl_bufan}2. 私有仓库 → 公开仓库${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}公开仓库 → 私有仓库${gl_bai}"
+        echo -e "${gl_bufan}2.  ${gl_bai}私有仓库 → 公开仓库${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
-        echo -e "${gl_huang}0. 返回上一级${gl_bai}"
+        echo -e "${gl_huang}0. ${gl_bai}返回上一级选单${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————${gl_bai}"
         read -r -p "$(echo -e "${gl_bai}请输入你的选择: ${gl_bai}")" opt
         case "${opt}" in
@@ -323,7 +320,6 @@ main_work() {
             ;;
         esac
     done
-
     log_info "开始调用接口修改仓库属性，平台:${PLATFORM}"
     local api_resp
     api_resp=$(change_repo_visibility "${PLATFORM}" "${GH_TOKEN}" "${REPO_API_URL}" "${private_target}")
@@ -343,10 +339,8 @@ main_work() {
     else
         log_error "接口调用失败，返回内容: ${api_resp}"
     fi
-
     break_end
 }
-
 main() {
     if ! command -v jq >/dev/null 2>&1; then
         log_warn "依赖 jq 未安装，尝试自动安装"
@@ -358,7 +352,6 @@ main() {
     fi
     main_work
 }
-
 if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
     main
 fi
