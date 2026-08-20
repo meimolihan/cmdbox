@@ -1628,10 +1628,10 @@ bash git_repo_vis.sh
 </span><span class="code-line line-number" line="161">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${ACTION<span class="token operator">:-</span>}</span>"</span>
 </span><span class="code-line line-number" line="162">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">PLATFORM</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${PLATFORM<span class="token operator">:-</span>}</span>"</span>
 </span><span class="code-line line-number" line="163">
-</span><span class="code-line line-number" line="164">    log_info <span class="token string">"DEBUG GH_TOKEN=[<span class="token variable">${GH_TOKEN}</span>]"</span>
-</span><span class="code-line line-number" line="165">    log_info <span class="token string">"DEBUG REPO_API_URL=[<span class="token variable">${REPO_API_URL}</span>]"</span>
-</span><span class="code-line line-number" line="166">    log_info <span class="token string">"DEBUG ACTION=[<span class="token variable">${ACTION}</span>]"</span>
-</span><span class="code-line line-number" line="167">    log_info <span class="token string">"DEBUG PLATFORM=[<span class="token variable">${PLATFORM}</span>]"</span>
+</span><span class="code-line line-number" line="164">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG GH_TOKEN=[<span class="token variable">${gl_huang}</span><span class="token variable">${GH_TOKEN}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="165">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG REPO_API_URL=[<span class="token variable">${gl_huang}</span><span class="token variable">${REPO_API_URL}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="166">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG ACTION=[<span class="token variable">${gl_huang}</span><span class="token variable">${ACTION}</span><span class="token variable">${gl_bai}</span>]"</span>
+</span><span class="code-line line-number" line="167">    log_info <span class="token string">"<span class="token variable">${gl_bai}</span>DEBUG PLATFORM=[<span class="token variable">${gl_huang}</span><span class="token variable">${PLATFORM}</span><span class="token variable">${gl_bai}</span>]"</span>
 </span><span class="code-line line-number" line="168">
 </span><span class="code-line line-number" line="169">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${ACTION}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="170">        log_info <span class="token string">"检测到环境变量，启用免交互模式"</span>
@@ -1653,7 +1653,7 @@ bash git_repo_vis.sh
 </span><span class="code-line line-number" line="186">                <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">${REPO_LOCAL_PATH}</span>"</span> <span class="token operator">||</span> <span class="token boolean">true</span>
 </span><span class="code-line line-number" line="187">            <span class="token keyword">fi</span>
 </span><span class="code-line line-number" line="188">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="189">        log_info <span class="token string">"执行修改仓库可见性，平台:<span class="token variable">${PLATFORM}</span>"</span>
+</span><span class="code-line line-number" line="189">        log_info <span class="token string">"执行修改仓库可见性，平台:<span class="token variable">${gl_lv}</span><span class="token variable">${PLATFORM}</span><span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="190">        <span class="token builtin class-name">local</span> res
 </span><span class="code-line line-number" line="191">        <span class="token assign-left variable">res</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>change_repo_visibility <span class="token string">"<span class="token variable">${PLATFORM}</span>"</span> <span class="token string">"<span class="token variable">${GH_TOKEN}</span>"</span> <span class="token string">"<span class="token variable">${REPO_API_URL}</span>"</span> <span class="token string">"<span class="token variable">${private_target}</span>"</span><span class="token variable">)</span></span>
 </span><span class="code-line line-number" line="192">        <span class="token keyword">if</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$res</span>"</span> <span class="token operator">|</span> jq <span class="token parameter variable">-e</span> <span class="token string">'.id'</span> <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
@@ -1668,7 +1668,7 @@ bash git_repo_vis.sh
 </span><span class="code-line line-number" line="201">            <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="202">                <span class="token assign-left variable">cn_status</span><span class="token operator">=</span><span class="token string">"未知(<span class="token variable">${cur}</span>)"</span>
 </span><span class="code-line line-number" line="203">            <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="204">            log_info <span class="token string">"当前仓库状态: <span class="token variable">${cn_status}</span>"</span>
+</span><span class="code-line line-number" line="204">            log_info <span class="token string">"当前仓库状态: <span class="token variable">${gl_lv}</span><span class="token variable">${cn_status}</span><span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="205">        <span class="token keyword">else</span>
 </span><span class="code-line line-number" line="206">            log_error <span class="token string">"API调用失败，返回: <span class="token variable">${res}</span>"</span>
 </span><span class="code-line line-number" line="207">            <span class="token builtin class-name">return</span> <span class="token number">1</span>
@@ -1992,10 +1992,10 @@ main_work() {
     local ACTION=&#x22;${ACTION:-}&#x22;
     local PLATFORM=&#x22;${PLATFORM:-}&#x22;
 
-    log_info &#x22;DEBUG GH_TOKEN=[${GH_TOKEN}]&#x22;
-    log_info &#x22;DEBUG REPO_API_URL=[${REPO_API_URL}]&#x22;
-    log_info &#x22;DEBUG ACTION=[${ACTION}]&#x22;
-    log_info &#x22;DEBUG PLATFORM=[${PLATFORM}]&#x22;
+    log_info &#x22;${gl_bai}DEBUG GH_TOKEN=[${gl_huang}${GH_TOKEN}${gl_bai}]&#x22;
+    log_info &#x22;${gl_bai}DEBUG REPO_API_URL=[${gl_huang}${REPO_API_URL}${gl_bai}]&#x22;
+    log_info &#x22;${gl_bai}DEBUG ACTION=[${gl_huang}${ACTION}${gl_bai}]&#x22;
+    log_info &#x22;${gl_bai}DEBUG PLATFORM=[${gl_huang}${PLATFORM}${gl_bai}]&#x22;
 
     if [[ -n &#x22;${GH_TOKEN}&#x22; &#x26;&#x26; -n &#x22;${REPO_API_URL}&#x22; &#x26;&#x26; -n &#x22;${ACTION}&#x22; &#x26;&#x26; -n &#x22;${PLATFORM}&#x22; ]]; then
         log_info &#x22;检测到环境变量，启用免交互模式&#x22;
@@ -2017,7 +2017,7 @@ main_work() {
                 cd &#x22;${REPO_LOCAL_PATH}&#x22; || true
             fi
         fi
-        log_info &#x22;执行修改仓库可见性，平台:${PLATFORM}&#x22;
+        log_info &#x22;执行修改仓库可见性，平台:${gl_lv}${PLATFORM}${gl_bai}&#x22;
         local res
         res=$(change_repo_visibility &#x22;${PLATFORM}&#x22; &#x22;${GH_TOKEN}&#x22; &#x22;${REPO_API_URL}&#x22; &#x22;${private_target}&#x22;)
         if echo &#x22;$res&#x22; | jq -e &#x27;.id&#x27; >/dev/null 2>&#x26;1; then
@@ -2032,7 +2032,7 @@ main_work() {
             else
                 cn_status=&#x22;未知(${cur})&#x22;
             fi
-            log_info &#x22;当前仓库状态: ${cn_status}&#x22;
+            log_info &#x22;当前仓库状态: ${gl_lv}${cn_status}${gl_bai}&#x22;
         else
             log_error &#x22;API调用失败，返回: ${res}&#x22;
             return 1

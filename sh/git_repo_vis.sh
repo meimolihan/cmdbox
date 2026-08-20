@@ -161,10 +161,10 @@ main_work() {
     local ACTION="${ACTION:-}"
     local PLATFORM="${PLATFORM:-}"
 
-    log_info "DEBUG GH_TOKEN=[${GH_TOKEN}]"
-    log_info "DEBUG REPO_API_URL=[${REPO_API_URL}]"
-    log_info "DEBUG ACTION=[${ACTION}]"
-    log_info "DEBUG PLATFORM=[${PLATFORM}]"
+    log_info "${gl_bai}DEBUG GH_TOKEN=[${gl_huang}${GH_TOKEN}${gl_bai}]"
+    log_info "${gl_bai}DEBUG REPO_API_URL=[${gl_huang}${REPO_API_URL}${gl_bai}]"
+    log_info "${gl_bai}DEBUG ACTION=[${gl_huang}${ACTION}${gl_bai}]"
+    log_info "${gl_bai}DEBUG PLATFORM=[${gl_huang}${PLATFORM}${gl_bai}]"
 
     if [[ -n "${GH_TOKEN}" && -n "${REPO_API_URL}" && -n "${ACTION}" && -n "${PLATFORM}" ]]; then
         log_info "检测到环境变量，启用免交互模式"
@@ -186,7 +186,7 @@ main_work() {
                 cd "${REPO_LOCAL_PATH}" || true
             fi
         fi
-        log_info "执行修改仓库可见性，平台:${PLATFORM}"
+        log_info "执行修改仓库可见性，平台:${gl_lv}${PLATFORM}${gl_bai}"
         local res
         res=$(change_repo_visibility "${PLATFORM}" "${GH_TOKEN}" "${REPO_API_URL}" "${private_target}")
         if echo "$res" | jq -e '.id' >/dev/null 2>&1; then
@@ -201,7 +201,7 @@ main_work() {
             else
                 cn_status="未知(${cur})"
             fi
-            log_info "当前仓库状态: ${cn_status}"
+            log_info "当前仓库状态: ${gl_lv}${cn_status}${gl_bai}"
         else
             log_error "API调用失败，返回: ${res}"
             return 1
