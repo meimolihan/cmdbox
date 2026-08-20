@@ -122,12 +122,17 @@ change_repo_visibility() {
     curl_args+=(-s -X PATCH)
     if [[ "${platform}" == "github" ]];then
         curl_args+=(-H "Authorization: token ${token}")
+        curl_args+=(-H "Accept: application/json")
+        curl_args+=(-H "Content-Type: application/json")
+        curl_args+=(-d "{\"private\":${private_flag}}")
     elif [[ "${platform}" == "gitee" ]];then
         curl_args+=(-H "Authorization: Bearer ${token}")
+        curl_args+=(-H "Accept: application/json")
+        curl_args+=(-H "Content-Type: application/json")
+        local repo_full="${api_url##*/repos/}"
+        local repo_name="${repo_full##*/}"
+        curl_args+=(-d "{\"name\":\"${repo_name}\",\"private\":${private_flag}}")
     fi
-    curl_args+=(-H "Accept: application/json")
-    curl_args+=(-H "Content-Type: application/json")
-    curl_args+=(-d "{\"private\":${private_flag}}")
     curl_args+=("${api_url}")
     local resp
     resp=$(curl "${curl_args[@]}" 2>/dev/null)
