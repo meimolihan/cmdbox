@@ -1153,10 +1153,30 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span></code><div onclick="copied(this)" data-code="bash <(curl -sL ../sh/lx_install_opencode.sh)
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <ul>
-  <li>静默安装（指定端口和密码）</li>
+  <li>交互式安装（无参数，按提示输入端口、密码、离线二进制）</li>
 </ul>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh<span class="token punctuation">)</span> <span class="token parameter variable">-p</span> <span class="token number">8456</span> <span class="token parameter variable">-pw</span> mypassword
-</span></code><div onclick="copied(this)" data-code="bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh) -p 8456 -pw mypassword
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh<span class="token punctuation">)</span>
+</span></code><div onclick="copied(this)" data-code="bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<ul>
+  <li>静默安装</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 指定端口和密码</span>
+</span><span class="code-line line-number" line="2"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh<span class="token punctuation">)</span> <span class="token parameter variable">-p</span> <span class="token number">8456</span> <span class="token parameter variable">-pw</span> mypassword
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 指定端口和无密码</span>
+</span><span class="code-line line-number" line="5"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh<span class="token punctuation">)</span> <span class="token parameter variable">-p</span> <span class="token number">8456</span> <span class="token parameter variable">-pw</span> <span class="token string">""</span>
+</span></code><div onclick="copied(this)" data-code="# 指定端口和密码
+bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh) -p 8456 -pw mypassword
+
+# 指定端口和无密码
+bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh) -p 8456 -pw &#x22;&#x22;
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<ul>
+  <li>静默安装（离线模式，指定本地二进制跳过网络下载）</li>
+</ul>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh<span class="token punctuation">)</span> <span class="token parameter variable">-p</span> <span class="token number">8456</span> <span class="token parameter variable">-pw</span> mypassword <span class="token parameter variable">--binary</span> /root/opencode
+</span></code><div onclick="copied(this)" data-code="bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh) -p 8456 -pw mypassword --binary /root/opencode
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>
   <img src="../img/lx_install_opencode.webp" alt="脚本效果预览" title="截图演示" loading="lazy">
@@ -1188,20 +1208,26 @@ opencode web --hostname 0.0.0.0 --port 8456
 <p><code>--hostname 0.0.0.0</code>：允许局域网其他设备访问；默认 <code>127.0.0.1</code> 仅本机访问</p>
 <p><code>OPENCODE_SERVER_PASSWORD</code>：必须设置，否则Web无密码裸奔，用户名默认 <code>opencode</code></p>
 <p>浏览器访问：<code>http://服务器IP:8456</code></p>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 取消密码，前台启动，0.0.0.0局域网访问8456端口</span>
+</span><span class="code-line line-number" line="2">opencode web <span class="token parameter variable">--hostname</span> <span class="token number">0.0</span>.0.0 <span class="token parameter variable">--port</span> <span class="token number">8456</span>
+</span></code><div onclick="copied(this)" data-code="# 取消密码，前台启动，0.0.0.0局域网访问8456端口
+opencode web --hostname 0.0.0.0 --port 8456
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>没有 export <code>OPENCODE_SERVER_PASSWORD</code>，直接启动即为无密码模式。</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p>该脚本封装了 OpenCode 官方一键安装脚本，并自动配置 systemd 后台服务、防火墙端口开放，实现开箱即用的安装体验。</p>
+<p>该脚本封装了 OpenCode 官方一键安装脚本，支持交互式 / 网络 / 离线三种安装方式，可关闭 Web 密码认证，并自动配置 systemd 后台服务，实现开箱即用的安装体验。</p>
 <h3 id="功能特点"><a class="anchor" aria-hidden="true" tabindex="-1" href="#功能特点"><span class="octicon octicon-link"></span></a>功能特点</h3>
 <ul>
-  <li>一键调用官方脚本安装 OpenCode 二进制</li>
-  <li>自动检测系统架构（x86_64 / aarch64）</li>
-  <li>支持交互式和静默安装两种模式</li>
-  <li>交互式：提示输入端口和密码</li>
-  <li>静默式：通过 <code>-p</code> 和 <code>-pw</code> 参数指定</li>
+  <li>支持交互式 / 网络 / 离线三种安装方式</li>
+  <li>交互式：无参数运行，按提示输入端口、密码、离线二进制路径</li>
+  <li>网络模式：调用 opencode.ai 官方一键安装脚本完成二进制安装</li>
+  <li>离线模式：通过 <code>-b/--binary</code> 使用本地上传的二进制，跳过网络下载</li>
+  <li>静默安装：通过 <code>-p</code>、<code>-pw</code>、<code>-b</code> 参数指定端口、密码、离线二进制</li>
+  <li>支持 <code>-pw ""</code> 关闭 Web 密码认证（仅限可信内网），空密码会在 systemd 服务中移除登录密码</li>
+  <li>自动校验二进制并显示 opencode 版本信息</li>
   <li>自动配置 systemd 服务实现开机自启和后台运行</li>
-  <li>自动检测并开放防火墙端口（firewalld / ufw / iptables）</li>
-  <li>无 systemd 环境自动降级为前台手动启动</li>
-  <li>安装完成后显示访问地址、密码、常用命令等信息</li>
-  <li>支持自定义默认端口和密码（脚本头部 <code>customize me</code> 区域）</li>
+  <li>安装完成后显示访问地址、认证状态/用户名/密码、运维命令、卸载命令等</li>
+  <li>脚本内置彩色输出，界面友好直观</li>
 </ul>
 <h3 id="参数说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参数说明"><span class="octicon octicon-link"></span></a>参数说明</h3>
 <table>
@@ -1220,12 +1246,22 @@ opencode web --hostname 0.0.0.0 --port 8456
     </tr>
     <tr>
       <td><code>-pw, --password</code></td>
-      <td>Web 页面密码</td>
+      <td>Web 页面密码；传空字符串 <code>""</code> 关闭密码认证</td>
       <td>admin888</td>
+    </tr>
+    <tr>
+      <td><code>-b, --binary</code></td>
+      <td>离线模式：本地 opencode 二进制路径，跳过网络下载</td>
+      <td>空（走网络安装）</td>
     </tr>
     <tr>
       <td><code>-h, --help</code></td>
       <td>显示帮助信息</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>无参数</td>
+      <td>进入交互式配置模式</td>
       <td>-</td>
     </tr>
   </tbody>
@@ -1241,16 +1277,12 @@ opencode web --hostname 0.0.0.0 --port 8456
   </thead>
   <tbody>
     <tr>
-      <td>系统信息</td>
-      <td>显示操作系统和架构</td>
+      <td>部署配置</td>
+      <td>显示监听端口、密码（或已关闭认证）、离线二进制路径</td>
     </tr>
     <tr>
-      <td>配置参数</td>
-      <td>显示端口、密码等配置</td>
-    </tr>
-    <tr>
-      <td>官方安装</td>
-      <td>执行 opencode.ai 官方安装脚本</td>
+      <td>安装模式</td>
+      <td>网络模式（官方脚本）或离线模式（本地二进制）</td>
     </tr>
     <tr>
       <td>版本信息</td>
@@ -1258,26 +1290,29 @@ opencode web --hostname 0.0.0.0 --port 8456
     </tr>
     <tr>
       <td>systemd 配置</td>
-      <td>生成服务文件并启动服务</td>
+      <td>生成服务文件并启动服务（空密码时移除密码环境变量）</td>
     </tr>
     <tr>
-      <td>防火墙状态</td>
-      <td>显示端口开放结果</td>
+      <td>服务状态</td>
+      <td>显示 systemd 服务运行状态</td>
     </tr>
     <tr>
       <td>安装结果</td>
-      <td>显示访问地址、密码、常用命令</td>
+      <td>显示访问地址、认证状态/用户名/密码、运维命令、卸载命令</td>
     </tr>
   </tbody>
 </table>
 <h3 id="注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#注意事项"><span class="octicon octicon-link"></span></a>注意事项</h3>
 <ul>
-  <li>需要 root 权限运行（sudo 或 root 用户）</li>
-  <li>需要网络连接下载 opencode 官方安装脚本</li>
+  <li>需要 root 权限运行（脚本内强制检测，非 root 直接退出）</li>
+  <li>无参数运行进入交互式配置模式，或用 <code>-p</code>、<code>-pw</code>、<code>-b</code> 静默安装</li>
+  <li>网络模式需要能够访问 opencode.ai 官方安装脚本</li>
+  <li>网络安装失败时会提示切换到离线模式</li>
+  <li>离线模式需先将 opencode 二进制上传到服务器，再用 <code>--binary</code> 指定路径</li>
   <li>二进制默认安装路径：<code>/root/.opencode/bin/opencode</code></li>
-  <li>systemd 服务名称：<code>opencode</code></li>
-  <li>无 systemd 环境（如容器）无法配置开机自启</li>
-  <li>防火墙未检测到时自动跳过端口开放</li>
+  <li>systemd 服务名称：<code>opencode</code>，服务文件位于 <code>/etc/systemd/system/opencode.service</code></li>
+  <li>官方安装使用 <code>--no-modify-path</code>，不会修改 <code>PATH</code> 环境变量</li>
+  <li><code>-pw ""</code> 或交互时密码留空会关闭 Web 认证，仅建议在可信内网使用</li>
   <li>默认密码为 <code>admin888</code>，建议生产环境修改</li>
   <li>脚本以 bash 编写，确保运行环境支持 bash</li>
 </ul>
@@ -1326,135 +1361,184 @@ opencode web --hostname 0.0.0.0 --port 8456
 </span></span><span class="code-line line-number" line="42"><span class="token string">用法:
 </span></span><span class="code-line line-number" line="43"><span class="token string">  <span class="token variable">$0</span> [选项]
 </span></span><span class="code-line line-number" line="44"><span class="token string">
-</span></span><span class="code-line line-number" line="45"><span class="token string">选项:
-</span></span><span class="code-line line-number" line="46"><span class="token string">  -p,--port &#x3C;num>        Web监听端口 (默认8456)
-</span></span><span class="code-line line-number" line="47"><span class="token string">  -pw,--password &#x3C;str>   Web登录密码
-</span></span><span class="code-line line-number" line="48"><span class="token string">  -b,--binary &#x3C;path>     离线模式:指定本地opencode二进制路径，跳过网络下载
-</span></span><span class="code-line line-number" line="49"><span class="token string">  -h,--help              显示帮助
-</span></span><span class="code-line line-number" line="50"><span class="token string">
-</span></span><span class="code-line line-number" line="51"><span class="token string">示例:
-</span></span><span class="code-line line-number" line="52"><span class="token string">  # 网络模式，调用官方install脚本安装
-</span></span><span class="code-line line-number" line="53"><span class="token string">  <span class="token variable">$0</span> -p 8456 -pw mypass123
-</span></span><span class="code-line line-number" line="54"><span class="token string">
-</span></span><span class="code-line line-number" line="55"><span class="token string">  # 离线模式，已经上传二进制到服务器
-</span></span><span class="code-line line-number" line="56"><span class="token string">  <span class="token variable">$0</span> -p 8456 -pw mypass123 --binary /root/opencode
-</span></span><span class="code-line line-number" line="57"><span class="token string">EOF</span>
-</span><span class="code-line line-number" line="58"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="59">
-</span><span class="code-line line-number" line="60"><span class="token comment"># 参数变量</span>
-</span><span class="code-line line-number" line="61"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">8456</span>
-</span><span class="code-line line-number" line="62"><span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">"admin888"</span>
-</span><span class="code-line line-number" line="63"><span class="token assign-left variable">BINARY_PATH</span><span class="token operator">=</span><span class="token string">""</span>
-</span><span class="code-line line-number" line="64">
-</span><span class="code-line line-number" line="65"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="66"><span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="67">-p<span class="token operator">|</span>--port<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="68">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"--port 需要端口参数"</span>
-</span><span class="code-line line-number" line="69">    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="70"><span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="71">-pw<span class="token operator">|</span>--password<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="72">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"--password 需要密码参数"</span>
-</span><span class="code-line line-number" line="73">    <span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="74"><span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="75">-b<span class="token operator">|</span>--binary<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="76">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"--binary 需要本地二进制文件路径"</span>
-</span><span class="code-line line-number" line="77">    <span class="token assign-left variable">BINARY_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="78"><span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="79">-h<span class="token operator">|</span>--help<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="80">    show_usage
-</span><span class="code-line line-number" line="81">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="82"><span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="83">*<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="84">    error <span class="token string">"未知参数: <span class="token variable">$1</span>"</span>
+</span></span><span class="code-line line-number" line="45"><span class="token string">无参数运行：进入交互式配置模式
+</span></span><span class="code-line line-number" line="46"><span class="token string">
+</span></span><span class="code-line line-number" line="47"><span class="token string">选项:
+</span></span><span class="code-line line-number" line="48"><span class="token string">  -p,--port &#x3C;num>        Web监听端口 (默认8456)
+</span></span><span class="code-line line-number" line="49"><span class="token string">  -pw,--password &#x3C;str>   Web登录密码；传空字符串""代表关闭密码认证
+</span></span><span class="code-line line-number" line="50"><span class="token string">  -b,--binary &#x3C;path>     离线模式:指定本地opencode二进制路径，跳过网络下载
+</span></span><span class="code-line line-number" line="51"><span class="token string">  -h,--help              显示帮助
+</span></span><span class="code-line line-number" line="52"><span class="token string">
+</span></span><span class="code-line line-number" line="53"><span class="token string">示例:
+</span></span><span class="code-line line-number" line="54"><span class="token string">  # 交互式安装
+</span></span><span class="code-line line-number" line="55"><span class="token string">  <span class="token variable">$0</span>
+</span></span><span class="code-line line-number" line="56"><span class="token string">
+</span></span><span class="code-line line-number" line="57"><span class="token string">  # 网络模式静默安装
+</span></span><span class="code-line line-number" line="58"><span class="token string">  <span class="token variable">$0</span> -p 8456 -pw mypass123
+</span></span><span class="code-line line-number" line="59"><span class="token string">
+</span></span><span class="code-line line-number" line="60"><span class="token string">  # 静默安装，关闭密码访问(仅可信内网)
+</span></span><span class="code-line line-number" line="61"><span class="token string">  <span class="token variable">$0</span> -p 8456 -pw ""
+</span></span><span class="code-line line-number" line="62"><span class="token string">
+</span></span><span class="code-line line-number" line="63"><span class="token string">  # 离线模式
+</span></span><span class="code-line line-number" line="64"><span class="token string">  <span class="token variable">$0</span> -p 8456 -pw mypass123 --binary /root/opencode
+</span></span><span class="code-line line-number" line="65"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="66"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="67">
+</span><span class="code-line line-number" line="68"><span class="token comment"># 默认参数</span>
+</span><span class="code-line line-number" line="69"><span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token number">8456</span>
+</span><span class="code-line line-number" line="70"><span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">"admin888"</span>
+</span><span class="code-line line-number" line="71"><span class="token assign-left variable">BINARY_PATH</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="72"><span class="token assign-left variable">INTERACTIVE</span><span class="token operator">=</span>false
+</span><span class="code-line line-number" line="73">
+</span><span class="code-line line-number" line="74"><span class="token comment"># 判断是否无参数，开启交互</span>
+</span><span class="code-line line-number" line="75"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="76">    <span class="token assign-left variable">INTERACTIVE</span><span class="token operator">=</span>true
+</span><span class="code-line line-number" line="77"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="78">
+</span><span class="code-line line-number" line="79"><span class="token comment"># 参数解析</span>
+</span><span class="code-line line-number" line="80"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="81"><span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="82">-p<span class="token operator">|</span>--port<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="83">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"--port 需要端口参数"</span>
+</span><span class="code-line line-number" line="84">    <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span> <span class="token number">2</span>
 </span><span class="code-line line-number" line="85"><span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="86"><span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="87"><span class="token keyword">done</span>
-</span><span class="code-line line-number" line="88">
-</span><span class="code-line line-number" line="89"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span>"</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> error <span class="token string">"必须使用root执行"</span>
-</span><span class="code-line line-number" line="90"><span class="token assign-left variable">INSTALL_BIN</span><span class="token operator">=</span><span class="token string">"/root/.opencode/bin/opencode"</span>
-</span><span class="code-line line-number" line="91"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /root/.opencode/bin
-</span><span class="code-line line-number" line="92">
-</span><span class="code-line line-number" line="93">print_banner
-</span><span class="code-line line-number" line="94">sep_line
-</span><span class="code-line line-number" line="95">section <span class="token string">"部署配置"</span>
-</span><span class="code-line line-number" line="96"><span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>监听端口<span class="token variable">${reset}</span>"</span> <span class="token string">"<span class="token variable">${PORT}</span>"</span>
-</span><span class="code-line line-number" line="97"><span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>Web密码<span class="token variable">${reset}</span>"</span> <span class="token string">"******"</span>
-</span><span class="code-line line-number" line="98"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>离线二进制<span class="token variable">${reset}</span>"</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span>
-</span><span class="code-line line-number" line="99">sep_line
-</span><span class="code-line line-number" line="100">
-</span><span class="code-line line-number" line="101"><span class="token comment"># 安装本体：离线优先，否则调用官方install脚本</span>
-</span><span class="code-line line-number" line="102"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="103">    section <span class="token string">"离线模式：使用本地二进制"</span>
-</span><span class="code-line line-number" line="104">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"文件不存在: <span class="token variable">${BINARY_PATH}</span>"</span>
-</span><span class="code-line line-number" line="105">    <span class="token function">cp</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token string">"<span class="token variable">${INSTALL_BIN}</span>"</span>
-</span><span class="code-line line-number" line="106">    <span class="token function">chmod</span> +x <span class="token string">"<span class="token variable">${INSTALL_BIN}</span>"</span>
-</span><span class="code-line line-number" line="107"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="108">    section <span class="token string">"网络模式：调用官方opencode.ai/install"</span>
-</span><span class="code-line line-number" line="109">    ok <span class="token string">"执行 curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path"</span>
-</span><span class="code-line line-number" line="110">    <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://opencode.ai/install <span class="token operator">|</span> <span class="token function">bash</span> <span class="token parameter variable">-s</span> -- --no-modify-path<span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="111">        warn <span class="token string">"网络安装失败！github/opencode网络不通，请切换离线模式"</span>
-</span><span class="code-line line-number" line="112">        warn <span class="token string">"示例：<span class="token variable">$0</span> -p <span class="token variable">${PORT}</span> -pw <span class="token variable">${PASSWORD}</span> --binary /root/opencode"</span>
-</span><span class="code-line line-number" line="113">        error <span class="token string">"网络安装终止"</span>
-</span><span class="code-line line-number" line="114">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="115"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="116">
-</span><span class="code-line line-number" line="117"><span class="token comment"># 校验二进制</span>
-</span><span class="code-line line-number" line="118"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-x</span> <span class="token string">"<span class="token variable">${INSTALL_BIN}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"二进制不存在或无执行权限 <span class="token variable">${INSTALL_BIN}</span>"</span>
-</span><span class="code-line line-number" line="119"><span class="token assign-left variable">VER_OUT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>$<span class="token punctuation">{</span>INSTALL_BIN<span class="token punctuation">}</span> <span class="token parameter variable">--version</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token boolean">true</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="120">ok <span class="token string">"程序版本: <span class="token variable">${VER_OUT}</span>"</span>
-</span><span class="code-line line-number" line="121">
-</span><span class="code-line line-number" line="122">section <span class="token string">"生成 systemd service /etc/systemd/system/opencode.service"</span>
-</span><span class="code-line line-number" line="123"><span class="token function">cat</span> <span class="token operator">></span> /etc/systemd/system/opencode.service <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
-</span></span><span class="code-line line-number" line="124"><span class="token string">[Unit]
-</span></span><span class="code-line line-number" line="125"><span class="token string">Description=OpenCode Web Service
-</span></span><span class="code-line line-number" line="126"><span class="token string">After=network.target
-</span></span><span class="code-line line-number" line="127"><span class="token string">
-</span></span><span class="code-line line-number" line="128"><span class="token string">[Service]
-</span></span><span class="code-line line-number" line="129"><span class="token string">Type=simple
-</span></span><span class="code-line line-number" line="130"><span class="token string">User=root
-</span></span><span class="code-line line-number" line="131"><span class="token string">Environment="OPENCODE_SERVER_PASSWORD={{PASSWORD}}"
-</span></span><span class="code-line line-number" line="132"><span class="token string">ExecStart={{BIN}} web --hostname 0.0.0.0 --port {{PORT}}
-</span></span><span class="code-line line-number" line="133"><span class="token string">Restart=always
-</span></span><span class="code-line line-number" line="134"><span class="token string">RestartSec=10
-</span></span><span class="code-line line-number" line="135"><span class="token string">StandardOutput=journal
-</span></span><span class="code-line line-number" line="136"><span class="token string">StandardError=journal
-</span></span><span class="code-line line-number" line="137"><span class="token string">
-</span></span><span class="code-line line-number" line="138"><span class="token string">[Install]
-</span></span><span class="code-line line-number" line="139"><span class="token string">WantedBy=multi-user.target
-</span></span><span class="code-line line-number" line="140"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="86">-pw<span class="token operator">|</span>--password<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="87">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token operator">||</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token operator">==</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"--password 需要参数，空字符串代表关闭密码"</span>
+</span><span class="code-line line-number" line="88">    <span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="89"><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="90">-b<span class="token operator">|</span>--binary<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="91">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"--binary 需要本地二进制文件路径"</span>
+</span><span class="code-line line-number" line="92">    <span class="token assign-left variable">BINARY_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="93"><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="94">-h<span class="token operator">|</span>--help<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="95">    show_usage
+</span><span class="code-line line-number" line="96">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="97"><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="98">*<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="99">    error <span class="token string">"未知参数: <span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="100"><span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="101"><span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="102"><span class="token keyword">done</span>
+</span><span class="code-line line-number" line="103">
+</span><span class="code-line line-number" line="104"><span class="token comment"># 交互式输入逻辑</span>
+</span><span class="code-line line-number" line="105"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${INTERACTIVE}</span>"</span> <span class="token operator">==</span> <span class="token boolean">true</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="106">    print_banner
+</span><span class="code-line line-number" line="107">    sep_line
+</span><span class="code-line line-number" line="108">    section <span class="token string">"交互式部署配置"</span>
+</span><span class="code-line line-number" line="109">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>监听端口<span class="token variable">${reset}</span> [默认<span class="token variable">${PORT}</span>]: "</span> input_port
+</span><span class="code-line line-number" line="110">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${input_port}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">PORT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${input_port}</span>"</span>
+</span><span class="code-line line-number" line="111">
+</span><span class="code-line line-number" line="112">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>Web密码<span class="token variable">${reset}</span> [默认<span class="token variable">${PASSWORD}</span>，留空直接回车=关闭密码访问]: "</span> input_pw
+</span><span class="code-line line-number" line="113">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${input_pw}</span>"</span> <span class="token operator">==</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="114">        warn <span class="token string">"密码为空，将关闭Web认证，仅内网可信环境使用！"</span>
+</span><span class="code-line line-number" line="115">        <span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="116">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="117">        <span class="token assign-left variable">PASSWORD</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${input_pw}</span>"</span>
+</span><span class="code-line line-number" line="118">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="119">
+</span><span class="code-line line-number" line="120">    <span class="token builtin class-name">read</span> <span class="token parameter variable">-p</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>离线二进制路径<span class="token variable">${reset}</span> [直接回车=网络下载]: "</span> input_bin
+</span><span class="code-line line-number" line="121">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${input_bin}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">BINARY_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${input_bin}</span>"</span>
+</span><span class="code-line line-number" line="122">    sep_line
+</span><span class="code-line line-number" line="123"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="124">
+</span><span class="code-line line-number" line="125"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">id</span> <span class="token parameter variable">-u</span><span class="token variable">)</span></span>"</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> error <span class="token string">"必须使用root执行"</span>
+</span><span class="code-line line-number" line="126"><span class="token assign-left variable">INSTALL_BIN</span><span class="token operator">=</span><span class="token string">"/root/.opencode/bin/opencode"</span>
+</span><span class="code-line line-number" line="127"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /root/.opencode/bin
+</span><span class="code-line line-number" line="128">
+</span><span class="code-line line-number" line="129"><span class="token comment"># 打印部署配置</span>
+</span><span class="code-line line-number" line="130">print_banner
+</span><span class="code-line line-number" line="131">sep_line
+</span><span class="code-line line-number" line="132">section <span class="token string">"部署配置"</span>
+</span><span class="code-line line-number" line="133"><span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>监听端口<span class="token variable">${reset}</span>"</span> <span class="token string">"<span class="token variable">${PORT}</span>"</span>
+</span><span class="code-line line-number" line="134"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${PASSWORD}</span>"</span> <span class="token operator">==</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="135">    <span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>Web密码<span class="token variable">${reset}</span>"</span> <span class="token string">"<span class="token variable">${gl_huang}</span>[已关闭认证]<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="136"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="137">    <span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>Web密码<span class="token variable">${reset}</span>"</span> <span class="token string">"******"</span>
+</span><span class="code-line line-number" line="138"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="139"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">printf</span> <span class="token string">"  %-18s %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${gl_lan}</span>离线二进制<span class="token variable">${reset}</span>"</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span>
+</span><span class="code-line line-number" line="140">sep_line
 </span><span class="code-line line-number" line="141">
-</span><span class="code-line line-number" line="142"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{PASSWORD}}|<span class="token variable">${PASSWORD}</span>|g"</span> /etc/systemd/system/opencode.service
-</span><span class="code-line line-number" line="143"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{BIN}}|<span class="token variable">${INSTALL_BIN}</span>|g"</span> /etc/systemd/system/opencode.service
-</span><span class="code-line line-number" line="144"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{PORT}}|<span class="token variable">${PORT}</span>|g"</span> /etc/systemd/system/opencode.service
-</span><span class="code-line line-number" line="145">
-</span><span class="code-line line-number" line="146">systemctl daemon-reload
-</span><span class="code-line line-number" line="147">systemctl <span class="token builtin class-name">enable</span> <span class="token parameter variable">--now</span> opencode
-</span><span class="code-line line-number" line="148"><span class="token function">sleep</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="149">
-</span><span class="code-line line-number" line="150"><span class="token keyword">if</span> systemctl is-active opencode <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-</span><span class="code-line line-number" line="151">    ok <span class="token string">"systemd服务 active(running)"</span>
-</span><span class="code-line line-number" line="152"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="153">    warn <span class="token string">"服务未正常启动，排查命令 journalctl -u opencode -f"</span>
-</span><span class="code-line line-number" line="154"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="155">
-</span><span class="code-line line-number" line="156"><span class="token assign-left variable">IP</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">hostname</span> <span class="token parameter variable">-I</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="157"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">${IP}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">IP</span><span class="token operator">=</span><span class="token string">"&#x3C;fnOS_IP>"</span>
-</span><span class="code-line line-number" line="158">
-</span><span class="code-line line-number" line="159">sep_line
-</span><span class="code-line line-number" line="160"><span class="token builtin class-name">printf</span> <span class="token string">"  <span class="token variable">${gl_lv}</span>✔ 部署完成<span class="token variable">${reset}</span><span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="161"><span class="token builtin class-name">printf</span> <span class="token string">"  访问地址: http://%s:%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${IP}</span>"</span> <span class="token string">"<span class="token variable">${PORT}</span>"</span>
-</span><span class="code-line line-number" line="162"><span class="token builtin class-name">printf</span> <span class="token string">"  用户名: opencode<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="163"><span class="token builtin class-name">printf</span> <span class="token string">"  密码: %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${PASSWORD}</span>"</span>
-</span><span class="code-line line-number" line="164"><span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="165"><span class="token builtin class-name">printf</span> <span class="token string">"  运维命令:<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="166"><span class="token builtin class-name">printf</span> <span class="token string">"    systemctl status opencode<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="167"><span class="token builtin class-name">printf</span> <span class="token string">"    journalctl -u opencode -f<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="168"><span class="token builtin class-name">printf</span> <span class="token string">"    systemctl restart opencode<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="169"><span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="170"><span class="token builtin class-name">printf</span> <span class="token string">"  卸载:<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="171"><span class="token builtin class-name">printf</span> <span class="token string">"    systemctl stop opencode; systemctl disable opencode<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="172"><span class="token builtin class-name">printf</span> <span class="token string">"    rm -f /etc/systemd/system/opencode.service; rm -rf /root/.opencode; systemctl daemon-reload<span class="token entity" title="\n">\n</span>"</span>
-</span><span class="code-line line-number" line="173">sep_line
+</span><span class="code-line line-number" line="142"><span class="token comment"># 安装本体：离线优先，否则调用官方install脚本</span>
+</span><span class="code-line line-number" line="143"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="144">    section <span class="token string">"离线模式：使用本地二进制"</span>
+</span><span class="code-line line-number" line="145">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"文件不存在: <span class="token variable">${BINARY_PATH}</span>"</span>
+</span><span class="code-line line-number" line="146">    <span class="token function">cp</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">${BINARY_PATH}</span>"</span> <span class="token string">"<span class="token variable">${INSTALL_BIN}</span>"</span>
+</span><span class="code-line line-number" line="147">    <span class="token function">chmod</span> +x <span class="token string">"<span class="token variable">${INSTALL_BIN}</span>"</span>
+</span><span class="code-line line-number" line="148"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="149">    section <span class="token string">"网络模式：调用官方opencode.ai/install"</span>
+</span><span class="code-line line-number" line="150">    ok <span class="token string">"执行 curl -fsSL https://opencode.ai/install | bash -s -- --no-modify-path"</span>
+</span><span class="code-line line-number" line="151">    <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://opencode.ai/install <span class="token operator">|</span> <span class="token function">bash</span> <span class="token parameter variable">-s</span> -- --no-modify-path<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="152">        warn <span class="token string">"网络安装失败！github/opencode网络不通，请切换离线模式"</span>
+</span><span class="code-line line-number" line="153">        warn <span class="token string">"示例：<span class="token variable">$0</span> -p <span class="token variable">${PORT}</span> -pw <span class="token variable">${PASSWORD}</span> --binary /root/opencode"</span>
+</span><span class="code-line line-number" line="154">        error <span class="token string">"网络安装终止"</span>
+</span><span class="code-line line-number" line="155">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="156"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="157">
+</span><span class="code-line line-number" line="158"><span class="token comment"># 校验二进制</span>
+</span><span class="code-line line-number" line="159"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-x</span> <span class="token string">"<span class="token variable">${INSTALL_BIN}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> error <span class="token string">"二进制不存在或无执行权限 <span class="token variable">${INSTALL_BIN}</span>"</span>
+</span><span class="code-line line-number" line="160"><span class="token assign-left variable">VER_OUT</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>$<span class="token punctuation">{</span>INSTALL_BIN<span class="token punctuation">}</span> <span class="token parameter variable">--version</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token boolean">true</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="161">ok <span class="token string">"程序版本: <span class="token variable">${VER_OUT}</span>"</span>
+</span><span class="code-line line-number" line="162">
+</span><span class="code-line line-number" line="163">section <span class="token string">"生成 systemd service /etc/systemd/system/opencode.service"</span>
+</span><span class="code-line line-number" line="164"><span class="token function">cat</span> <span class="token operator">></span> /etc/systemd/system/opencode.service <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="165"><span class="token string">[Unit]
+</span></span><span class="code-line line-number" line="166"><span class="token string">Description=OpenCode Web Service
+</span></span><span class="code-line line-number" line="167"><span class="token string">After=network.target
+</span></span><span class="code-line line-number" line="168"><span class="token string">
+</span></span><span class="code-line line-number" line="169"><span class="token string">[Service]
+</span></span><span class="code-line line-number" line="170"><span class="token string">Type=simple
+</span></span><span class="code-line line-number" line="171"><span class="token string">User=root
+</span></span><span class="code-line line-number" line="172"><span class="token string">{{ENV_PASSWORD}}
+</span></span><span class="code-line line-number" line="173"><span class="token string">ExecStart={{BIN}} web --hostname 0.0.0.0 --port {{PORT}}
+</span></span><span class="code-line line-number" line="174"><span class="token string">Restart=always
+</span></span><span class="code-line line-number" line="175"><span class="token string">RestartSec=10
+</span></span><span class="code-line line-number" line="176"><span class="token string">StandardOutput=journal
+</span></span><span class="code-line line-number" line="177"><span class="token string">StandardError=journal
+</span></span><span class="code-line line-number" line="178"><span class="token string">
+</span></span><span class="code-line line-number" line="179"><span class="token string">[Install]
+</span></span><span class="code-line line-number" line="180"><span class="token string">WantedBy=multi-user.target
+</span></span><span class="code-line line-number" line="181"><span class="token string">EOF</span>
+</span><span class="code-line line-number" line="182">
+</span><span class="code-line line-number" line="183"><span class="token comment"># 处理密码环境变量：空密码则整行移除，否则填充Environment</span>
+</span><span class="code-line line-number" line="184"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${PASSWORD}</span>"</span> <span class="token operator">==</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="185">    <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{ENV_PASSWORD}}||g"</span> /etc/systemd/system/opencode.service
+</span><span class="code-line line-number" line="186"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="187">    <span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{ENV_PASSWORD}}|Environment=<span class="token entity" title="\&#x22;">\"</span>OPENCODE_SERVER_PASSWORD=<span class="token variable">${PASSWORD}</span><span class="token entity" title="\&#x22;">\"</span>|g"</span> /etc/systemd/system/opencode.service
+</span><span class="code-line line-number" line="188"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="189"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{BIN}}|<span class="token variable">${INSTALL_BIN}</span>|g"</span> /etc/systemd/system/opencode.service
+</span><span class="code-line line-number" line="190"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">"s|{{PORT}}|<span class="token variable">${PORT}</span>|g"</span> /etc/systemd/system/opencode.service
+</span><span class="code-line line-number" line="191">
+</span><span class="code-line line-number" line="192">systemctl daemon-reload
+</span><span class="code-line line-number" line="193">systemctl <span class="token builtin class-name">enable</span> <span class="token parameter variable">--now</span> opencode
+</span><span class="code-line line-number" line="194"><span class="token function">sleep</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="195"><span class="token keyword">if</span> systemctl is-active opencode <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="196">    ok <span class="token string">"systemd服务 active(running)"</span>
+</span><span class="code-line line-number" line="197"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="198">    warn <span class="token string">"服务未正常启动，排查命令 journalctl -u opencode -f"</span>
+</span><span class="code-line line-number" line="199"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="200">
+</span><span class="code-line line-number" line="201"><span class="token assign-left variable">IP</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">hostname</span> <span class="token parameter variable">-I</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="202"><span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">${IP}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">IP</span><span class="token operator">=</span><span class="token string">"&#x3C;fnOS_IP>"</span>
+</span><span class="code-line line-number" line="203">
+</span><span class="code-line line-number" line="204">sep_line
+</span><span class="code-line line-number" line="205"><span class="token builtin class-name">printf</span> <span class="token string">"  <span class="token variable">${gl_lv}</span>✔ 部署完成<span class="token variable">${reset}</span><span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="206"><span class="token builtin class-name">printf</span> <span class="token string">"  访问地址: http://%s:%s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${IP}</span>"</span> <span class="token string">"<span class="token variable">${PORT}</span>"</span>
+</span><span class="code-line line-number" line="207"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${PASSWORD}</span>"</span> <span class="token operator">==</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="208">    <span class="token builtin class-name">printf</span> <span class="token string">"  <span class="token variable">${gl_huang}</span>认证状态：已关闭密码访问(内网模式)<span class="token variable">${reset}</span><span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="209"><span class="token keyword">else</span>
+</span><span class="code-line line-number" line="210">    <span class="token builtin class-name">printf</span> <span class="token string">"  用户名: opencode<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="211">    <span class="token builtin class-name">printf</span> <span class="token string">"  密码: %s<span class="token entity" title="\n">\n</span>"</span> <span class="token string">"<span class="token variable">${PASSWORD}</span>"</span>
+</span><span class="code-line line-number" line="212"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="213"><span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="214"><span class="token builtin class-name">printf</span> <span class="token string">"  运维命令:<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="215"><span class="token builtin class-name">printf</span> <span class="token string">"    systemctl status opencode<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="216"><span class="token builtin class-name">printf</span> <span class="token string">"    journalctl -u opencode -f<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="217"><span class="token builtin class-name">printf</span> <span class="token string">"    systemctl restart opencode<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="218"><span class="token builtin class-name">printf</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="219"><span class="token builtin class-name">printf</span> <span class="token string">"  卸载:<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="220"><span class="token builtin class-name">printf</span> <span class="token string">"    systemctl stop opencode; systemctl disable opencode<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="221"><span class="token builtin class-name">printf</span> <span class="token string">"    rm -f /etc/systemd/system/opencode.service; rm -rf /root/.opencode; systemctl daemon-reload<span class="token entity" title="\n">\n</span>"</span>
+</span><span class="code-line line-number" line="222">sep_line
 </span></code><div onclick="copied(this)" data-code="#!/usr/bin/env bash
 # OpenCode deploy helper: official install + systemd service generator
 set -euo pipefail
@@ -1499,26 +1583,41 @@ cat <<EOF
 用法:
   $0 [选项]
 
+无参数运行：进入交互式配置模式
+
 选项:
   -p,--port <num>        Web监听端口 (默认8456)
-  -pw,--password <str>   Web登录密码
+  -pw,--password <str>   Web登录密码；传空字符串&#x22;&#x22;代表关闭密码认证
   -b,--binary <path>     离线模式:指定本地opencode二进制路径，跳过网络下载
   -h,--help              显示帮助
 
 示例:
-  # 网络模式，调用官方install脚本安装
+  # 交互式安装
+  $0
+
+  # 网络模式静默安装
   $0 -p 8456 -pw mypass123
 
-  # 离线模式，已经上传二进制到服务器
+  # 静默安装，关闭密码访问(仅可信内网)
+  $0 -p 8456 -pw &#x22;&#x22;
+
+  # 离线模式
   $0 -p 8456 -pw mypass123 --binary /root/opencode
 EOF
 }
 
-# 参数变量
+# 默认参数
 PORT=8456
 PASSWORD=&#x22;admin888&#x22;
 BINARY_PATH=&#x22;&#x22;
+INTERACTIVE=false
 
+# 判断是否无参数，开启交互
+if [[ $# -eq 0 ]];then
+    INTERACTIVE=true
+fi
+
+# 参数解析
 while [[ $# -gt 0 ]]; do
 case &#x22;$1&#x22; in
 -p|--port)
@@ -1526,7 +1625,7 @@ case &#x22;$1&#x22; in
     PORT=&#x22;$2&#x22;; shift 2
 ;;
 -pw|--password)
-    [[ -n &#x22;${2:-}&#x22; ]] || error &#x22;--password 需要密码参数&#x22;
+    [[ -n &#x22;${2:-}&#x22; || &#x22;${2:-}&#x22; == &#x22;&#x22; ]] || error &#x22;--password 需要参数，空字符串代表关闭密码&#x22;
     PASSWORD=&#x22;$2&#x22;; shift 2
 ;;
 -b|--binary)
@@ -1543,15 +1642,41 @@ case &#x22;$1&#x22; in
 esac
 done
 
+# 交互式输入逻辑
+if [[ &#x22;${INTERACTIVE}&#x22; == true ]];then
+    print_banner
+    sep_line
+    section &#x22;交互式部署配置&#x22;
+    read -p &#x22;  ${gl_lan}监听端口${reset} [默认${PORT}]: &#x22; input_port
+    [[ -n &#x22;${input_port}&#x22; ]] &#x26;&#x26; PORT=&#x22;${input_port}&#x22;
+
+    read -p &#x22;  ${gl_lan}Web密码${reset} [默认${PASSWORD}，留空直接回车=关闭密码访问]: &#x22; input_pw
+    if [[ &#x22;${input_pw}&#x22; == &#x22;&#x22; ]];then
+        warn &#x22;密码为空，将关闭Web认证，仅内网可信环境使用！&#x22;
+        PASSWORD=&#x22;&#x22;
+    else
+        PASSWORD=&#x22;${input_pw}&#x22;
+    fi
+
+    read -p &#x22;  ${gl_lan}离线二进制路径${reset} [直接回车=网络下载]: &#x22; input_bin
+    [[ -n &#x22;${input_bin}&#x22; ]] &#x26;&#x26; BINARY_PATH=&#x22;${input_bin}&#x22;
+    sep_line
+fi
+
 [[ &#x22;$(id -u)&#x22; -ne 0 ]] &#x26;&#x26; error &#x22;必须使用root执行&#x22;
 INSTALL_BIN=&#x22;/root/.opencode/bin/opencode&#x22;
 mkdir -p /root/.opencode/bin
 
+# 打印部署配置
 print_banner
 sep_line
 section &#x22;部署配置&#x22;
 printf &#x22;  %-18s %s\n&#x22; &#x22;${gl_lan}监听端口${reset}&#x22; &#x22;${PORT}&#x22;
-printf &#x22;  %-18s %s\n&#x22; &#x22;${gl_lan}Web密码${reset}&#x22; &#x22;******&#x22;
+if [[ &#x22;${PASSWORD}&#x22; == &#x22;&#x22; ]];then
+    printf &#x22;  %-18s %s\n&#x22; &#x22;${gl_lan}Web密码${reset}&#x22; &#x22;${gl_huang}[已关闭认证]${reset}&#x22;
+else
+    printf &#x22;  %-18s %s\n&#x22; &#x22;${gl_lan}Web密码${reset}&#x22; &#x22;******&#x22;
+fi
 [[ -n &#x22;${BINARY_PATH}&#x22; ]] &#x26;&#x26; printf &#x22;  %-18s %s\n&#x22; &#x22;${gl_lan}离线二进制${reset}&#x22; &#x22;${BINARY_PATH}&#x22;
 sep_line
 
@@ -1585,7 +1710,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-Environment=&#x22;OPENCODE_SERVER_PASSWORD={{PASSWORD}}&#x22;
+{{ENV_PASSWORD}}
 ExecStart={{BIN}} web --hostname 0.0.0.0 --port {{PORT}}
 Restart=always
 RestartSec=10
@@ -1596,14 +1721,18 @@ StandardError=journal
 WantedBy=multi-user.target
 EOF
 
-sed -i &#x22;s|{{PASSWORD}}|${PASSWORD}|g&#x22; /etc/systemd/system/opencode.service
+# 处理密码环境变量：空密码则整行移除，否则填充Environment
+if [[ &#x22;${PASSWORD}&#x22; == &#x22;&#x22; ]];then
+    sed -i &#x22;s|{{ENV_PASSWORD}}||g&#x22; /etc/systemd/system/opencode.service
+else
+    sed -i &#x22;s|{{ENV_PASSWORD}}|Environment=\&#x22;OPENCODE_SERVER_PASSWORD=${PASSWORD}\&#x22;|g&#x22; /etc/systemd/system/opencode.service
+fi
 sed -i &#x22;s|{{BIN}}|${INSTALL_BIN}|g&#x22; /etc/systemd/system/opencode.service
 sed -i &#x22;s|{{PORT}}|${PORT}|g&#x22; /etc/systemd/system/opencode.service
 
 systemctl daemon-reload
 systemctl enable --now opencode
 sleep 2
-
 if systemctl is-active opencode >/dev/null 2>&#x26;1;then
     ok &#x22;systemd服务 active(running)&#x22;
 else
@@ -1616,8 +1745,12 @@ IP=$(hostname -I 2>/dev/null | awk &#x27;{print $1}&#x27;)
 sep_line
 printf &#x22;  ${gl_lv}✔ 部署完成${reset}\n&#x22;
 printf &#x22;  访问地址: http://%s:%s\n&#x22; &#x22;${IP}&#x22; &#x22;${PORT}&#x22;
-printf &#x22;  用户名: opencode\n&#x22;
-printf &#x22;  密码: %s\n&#x22; &#x22;${PASSWORD}&#x22;
+if [[ &#x22;${PASSWORD}&#x22; == &#x22;&#x22; ]];then
+    printf &#x22;  ${gl_huang}认证状态：已关闭密码访问(内网模式)${reset}\n&#x22;
+else
+    printf &#x22;  用户名: opencode\n&#x22;
+    printf &#x22;  密码: %s\n&#x22; &#x22;${PASSWORD}&#x22;
+fi
 printf &#x22;\n&#x22;
 printf &#x22;  运维命令:\n&#x22;
 printf &#x22;    systemctl status opencode\n&#x22;
@@ -1628,6 +1761,31 @@ printf &#x22;  卸载:\n&#x22;
 printf &#x22;    systemctl stop opencode; systemctl disable opencode\n&#x22;
 printf &#x22;    rm -f /etc/systemd/system/opencode.service; rm -rf /root/.opencode; systemctl daemon-reload\n&#x22;
 sep_line
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h2 id="安装后取消密码登录"><a class="anchor" aria-hidden="true" tabindex="-1" href="#安装后取消密码登录"><span class="octicon octicon-link"></span></a>安装后取消密码登录</h2>
+<blockquote>
+  <p>一键修改命令</p>
+</blockquote>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 删除环境变量 OPENCODE_SERVER_PASSWORD=xxx 这一行</span>
+</span><span class="code-line line-number" line="2"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/OPENCODE_SERVER_PASSWORD/d'</span> /etc/systemd/system/opencode.service
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 重载systemd配置，重启服务</span>
+</span><span class="code-line line-number" line="5">systemctl daemon-reload
+</span><span class="code-line line-number" line="6">systemctl restart opencode
+</span><span class="code-line line-number" line="7">
+</span><span class="code-line line-number" line="8"><span class="token comment"># 查看状态</span>
+</span><span class="code-line line-number" line="9">systemctl status opencode
+</span><span class="code-line line-number" line="10">
+</span></code><div onclick="copied(this)" data-code="# 删除环境变量 OPENCODE_SERVER_PASSWORD=xxx 这一行
+sed -i &#x27;/OPENCODE_SERVER_PASSWORD/d&#x27; /etc/systemd/system/opencode.service
+
+# 重载systemd配置，重启服务
+systemctl daemon-reload
+systemctl restart opencode
+
+# 查看状态
+systemctl status opencode
+
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="创建本地脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#创建本地脚本"><span class="octicon octicon-link"></span></a>创建本地脚本</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">new_script</span><span class="token operator">=</span><span class="token string">"new_test.sh"</span>
