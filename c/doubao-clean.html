@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="doubao-clean 命令">
     <meta name="twitter:description" content="删除豆包左侧边栏所有历史会话 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=32504b3c003e1619">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=a450996a773f0478">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=32504b3c003e1619"></script>
+    <script src="../js/dt.js?v=a450996a773f0478"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1145,8 +1145,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="doubao-clean"><a class="anchor" aria-hidden="true" tabindex="-1" href="#doubao-clean"><span class="octicon octicon-link"></span></a>doubao-clean</h1>
-<p>删除豆包左侧边栏所有历史会话</p>
 <h2 id="一快速开始"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一快速开始"><span class="octicon octicon-link"></span></a>一、快速开始</h2>
 <h3 id="方式一双击运行推荐"><a class="anchor" aria-hidden="true" tabindex="-1" href="#方式一双击运行推荐"><span class="octicon octicon-link"></span></a>方式一：双击运行（推荐）</h3>
 <ol>
@@ -1188,7 +1186,7 @@ node delete_doubao_manual.mjs
 <hr>
 <h2 id="三运行原理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三运行原理"><span class="octicon octicon-link"></span></a>三、运行原理</h2>
 <p>脚本自动完成以下步骤，每条历史会话重复一次：</p>
-<pre><code class="code-highlight"><span class="code-line line-number" line="1">遍历左侧边栏每条历史会话
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">遍历左侧边栏每条历史会话
 </span><span class="code-line line-number" line="2">    → hover（鼠标悬停）→ 右侧出现「...」按钮
 </span><span class="code-line line-number" line="3">    → 点击「...」→ 弹出操作菜单
 </span><span class="code-line line-number" line="4">    → 点击菜单「删除」→ 弹出确认框
@@ -1236,7 +1234,7 @@ node delete_doubao_manual.mjs
 <h3 id="q-提示failed-to-launch-the-browser-process"><a class="anchor" aria-hidden="true" tabindex="-1" href="#q-提示failed-to-launch-the-browser-process"><span class="octicon octicon-link"></span></a>Q: 提示"Failed to launch the browser process"？</h3>
 <p><strong>原因</strong>：Chrome 进程被锁或崩溃残留。</p>
 <p><strong>解决方法</strong>：关闭所有 Chrome 窗口后重试。如果仍报错，删除 profile 锁文件：</p>
-<pre><code class="code-highlight"><span class="code-line line-number" line="1">删除「删除豆包历史会话」目录下的 lockfile 文件（如有）
+<pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">删除「删除豆包历史会话」目录下的 lockfile 文件（如有）
 </span><span class="code-line line-number" line="2">删除 doubao_profile\lockfile（如有）
 </span></code><div onclick="copied(this)" data-code="删除「删除豆包历史会话」目录下的 lockfile 文件（如有）
 删除 doubao_profile\lockfile（如有）
@@ -1467,7 +1465,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">802</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">810</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1482,7 +1480,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">240</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">247</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -1513,7 +1511,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1144</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1159</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1546,8 +1544,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=32504b3c003e1619"></script>
-<script type="text/javascript" src="../js/enhance.js?v=32504b3c003e1619"></script>
+<script type="text/javascript" src="../js/index.js?v=a450996a773f0478"></script>
+<script type="text/javascript" src="../js/enhance.js?v=a450996a773f0478"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
