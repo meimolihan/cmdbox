@@ -1588,22 +1588,24 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="322">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="323">        <span class="token number">99</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="324">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> <span class="token variable">${UNINSTALL_SCRIPT_URL}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="325">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="326">        <span class="token number">0</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="327">            cancel_return <span class="token string">"已是主菜单"</span>
-</span><span class="code-line line-number" line="328">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="329">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="330">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="331">            exit_script
-</span><span class="code-line line-number" line="332">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="333">        *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="334">            handle_invalid_input
-</span><span class="code-line line-number" line="335">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="336">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="337">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="338"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="339">
-</span><span class="code-line line-number" line="340">manage_fan_video
+</span><span class="code-line line-number" line="325">            break_end
+</span><span class="code-line line-number" line="326">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="327">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="328">        <span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="329">            cancel_return <span class="token string">"已是主菜单"</span>
+</span><span class="code-line line-number" line="330">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="331">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="332">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="333">            exit_script
+</span><span class="code-line line-number" line="334">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="335">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="336">            handle_invalid_input
+</span><span class="code-line line-number" line="337">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="338">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="339">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="340"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="341">
+</span><span class="code-line line-number" line="342">manage_fan_video
 </span></code><div onclick="copied(this)" data-code="
 #!/bin/bash
 set -uo pipefail
@@ -1928,6 +1930,8 @@ manage_fan_video() {
             ;;
         99)
             bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
             ;;
         0)
             cancel_return &#x22;已是主菜单&#x22;

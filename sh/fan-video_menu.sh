@@ -321,6 +321,8 @@ manage_fan_video() {
             ;;
         99)
             bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
             ;;
         0)
             cancel_return "已是主菜单"
