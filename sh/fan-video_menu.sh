@@ -118,11 +118,96 @@ handle_invalid_input() {
     return 2
 }
 
+show_service_url() {
+    local service="${1:-fan-video}"
+    local url=""
+    local port=""
+    local ip
+
+    ip=$(hostname -I 2>/dev/null | awk '{print $1}')
+    [ -z "$ip" ] && ip=$(ip route get 1 2>/dev/null | awk '{print $7}' | head -1)
+    [ -z "$ip" ] && ip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | head -1)
+    [ -z "$ip" ] && ip="127.0.0.1"
+
+    url=$(systemctl status "$service" --no-pager 2>/dev/null | \
+          grep -i "Network access" | head -1 | \
+          sed -E 's/.*Network access:\s*//' | tr -d ' ')
+    [ -z "$url" ] && url=$(systemctl status "$service" --no-pager 2>/dev/null | \
+          grep -i "Local access" | head -1 | \
+          sed -E 's/.*Local access:\s*//' | tr -d ' ')
+
+    if [ -z "$url" ]; then
+        port=$(systemctl status "$service" --no-pager 2>/dev/null | \
+               grep -oE '(listening on|port)[ :]+[0-9]+' | \
+               grep -oE '[0-9]+' | head -1)
+
+        if [ -z "$port" ]; then
+            local exec_cmd
+            exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
+            port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
+        fi
+
+        if [ -n "$port" ]; then
+            url="http://${ip}:${port}"
+        fi
+    fi
+
+    if [ -n "$url" ]; then
+        echo -e "访问地址：${gl_lv}${url}${gl_bai}"
+    else
+        echo -e "${gl_hong}无法获取访问地址${gl_bai}"
+        return 1
+    fi
+}
+
+show_service_status() {
+    local service="${1:-opencode}"
+
+    local version=""
+    local ver_regex='\b(v[0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+\.[0-9]+)\b'
+
+    if command -v "$service" &>/dev/null; then
+        version=$("$service" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+        [ -z "$version" ] && version=$("$service" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+    fi
+
+    if [ -z "$version" ]; then
+        local exec_path
+        exec_path=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2 | awk '{print $1}')
+        if [ -n "$exec_path" ] && [ -x "$exec_path" ]; then
+            version=$("$exec_path" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+            [ -z "$version" ] && version=$("$exec_path" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+        fi
+    fi
+
+    if [ -z "$version" ] && command -v journalctl &>/dev/null; then
+        version=$(journalctl -u "$service" --no-pager -n 50 -o cat 2>/dev/null | grep -oE "$ver_regex" | head -1)
+    fi
+
+    if [[ ! "$version" =~ $ver_regex ]]; then
+        version=""
+    fi
+
+    if systemctl is-active --quiet "$service"; then
+        echo -e "运行状态：${gl_lv}$service 正在运行${gl_bai}"
+    else
+        echo -e "运行状态：${gl_hong}$service 未运行${gl_bai}"
+    fi
+    if [ -n "$version" ]; then
+        echo -e "版本信息：${gl_huang}$version${gl_bai}"
+    else
+        echo -e "版本信息：${gl_huang}无法获取${gl_bai}"
+    fi
+}
+
 manage_fan_video() {
     while true; do
         clear
         echo -e ""
         echo -e "${gl_zi}>>> fan-video 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-video
+        show_service_url fan-video
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-video       ${gl_bufan}2.  ${gl_bai}启动 fan-video"
         echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-video       ${gl_bufan}4.  ${gl_bai}查看服务状态"
