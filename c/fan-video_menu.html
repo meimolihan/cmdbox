@@ -1573,31 +1573,37 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="307">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
 </span><span class="code-line line-number" line="308">        <span class="token number">66</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="309">            <span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> $<span class="token punctuation">{</span>INSTALL_SCRIPT_URL<span class="token punctuation">}</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="310">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="311">        <span class="token number">77</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="312">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> <span class="token variable">${BACKUP_SCRIPT_URL}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="313">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="314">        <span class="token number">88</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="315">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> <span class="token variable">${RECOVER_SCRIPT_URL}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="316">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="317">        <span class="token number">99</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="318">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> <span class="token variable">${UNINSTALL_SCRIPT_URL}</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="319">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="320">        <span class="token number">0</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="321">            cancel_return <span class="token string">"已是主菜单"</span>
-</span><span class="code-line line-number" line="322">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="323">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="324">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="325">            exit_script
-</span><span class="code-line line-number" line="326">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="327">        *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="328">            handle_invalid_input
+</span><span class="code-line line-number" line="310">            break_end
+</span><span class="code-line line-number" line="311">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="312">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="313">        <span class="token number">77</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="314">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> <span class="token variable">${BACKUP_SCRIPT_URL}</span><span class="token punctuation">)</span> <span class="token string">"/vol2/1000/file/backup/fan-video-backup"</span> <span class="token number">6</span>
+</span><span class="code-line line-number" line="315">            break_end
+</span><span class="code-line line-number" line="316">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="317">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="318">        <span class="token number">88</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="319">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> <span class="token variable">${RECOVER_SCRIPT_URL}</span><span class="token punctuation">)</span> <span class="token string">"/vol2/1000/file/backup/fan-video-backup"</span>
+</span><span class="code-line line-number" line="320">            break_end
+</span><span class="code-line line-number" line="321">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="322">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="323">        <span class="token number">99</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="324">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> <span class="token variable">${UNINSTALL_SCRIPT_URL}</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="325">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="326">        <span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="327">            cancel_return <span class="token string">"已是主菜单"</span>
+</span><span class="code-line line-number" line="328">            <span class="token builtin class-name">continue</span>
 </span><span class="code-line line-number" line="329">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="330">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="331">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="332"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="333">
-</span><span class="code-line line-number" line="334">manage_fan_video
+</span><span class="code-line line-number" line="330">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="331">            exit_script
+</span><span class="code-line line-number" line="332">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="333">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="334">            handle_invalid_input
+</span><span class="code-line line-number" line="335">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="336">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="337">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="338"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="339">
+</span><span class="code-line line-number" line="340">manage_fan_video
 </span></code><div onclick="copied(this)" data-code="
 #!/bin/bash
 set -uo pipefail
@@ -1907,12 +1913,18 @@ manage_fan_video() {
             ;;
         66)
             bash -c &#x22;$(curl -sSL ${INSTALL_SCRIPT_URL})&#x22;
+            break_end
+            continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sL ${BACKUP_SCRIPT_URL}) &#x22;/vol2/1000/file/backup/fan-video-backup&#x22; 6
+            break_end
+            continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sL ${RECOVER_SCRIPT_URL}) &#x22;/vol2/1000/file/backup/fan-video-backup&#x22;
+            break_end
+            continue
             ;;
         99)
             bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})

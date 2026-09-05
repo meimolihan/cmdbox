@@ -306,12 +306,18 @@ manage_fan_video() {
             ;;
         66)
             bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
+            break_end
+            continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
+            break_end
+            continue
             ;;
         99)
             bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
