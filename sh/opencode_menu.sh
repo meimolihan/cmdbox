@@ -115,33 +115,31 @@ show_service_url() {
     local url=""
     local port=""
     local ip
-
     ip=$(hostname -I 2>/dev/null | awk '{print $1}')
     [ -z "$ip" ] && ip=$(ip route get 1 2>/dev/null | awk '{print $7}' | head -1)
     [ -z "$ip" ] && ip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | head -1)
     [ -z "$ip" ] && ip="127.0.0.1"
 
-    url=$(systemctl status "$service" --no-pager 2>/dev/null | \
-          grep -i "Network access" | head -1 | \
-          sed -E 's/.*Network access:\s*//' | tr -d ' ')
-    [ -z "$url" ] && url=$(systemctl status "$service" --no-pager 2>/dev/null | \
-          grep -i "Local access" | head -1 | \
-          sed -E 's/.*Local access:\s*//' | tr -d ' ')
+    port=$(journalctl -u "$service" --no-pager -n 200 -o cat 2>/dev/null \
+        | grep -E 'msg":"fan-video 启动于 :[0-9]+' \
+        | grep -oE ':[0-9]+$' | sed 's/^://' | head -1)
 
-    if [ -z "$url" ]; then
-        port=$(systemctl status "$service" --no-pager 2>/dev/null | \
-               grep -oE '(listening on|port)[ :]+[0-9]+' | \
-               grep -oE '[0-9]+' | head -1)
+    if [ -z "$port" ];then
+        local exec_cmd
+        exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
+        port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
+    fi
 
-        if [ -z "$port" ]; then
-            local exec_cmd
-            exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
-            port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
+    if [ -z "$port" ] && command -v ss >/dev/null 2>&1;then
+        local pid
+        pid=$(systemctl show -p MainPID "$service" 2>/dev/null | cut -d= -f2-)
+        if [[ "$pid" =~ ^[0-9]+$ && "$pid" -gt 0 ]];then
+            port=$(ss -tlnp 2>/dev/null | grep ",pid=$pid," | grep -oE ':[0-9]+' | sed 's/^://' | head -1)
         fi
+    fi
 
-        if [ -n "$port" ]; then
-            url="http://${ip}:${port}"
-        fi
+    if [ -n "$port" ]; then
+        url="http://${ip}:${port}"
     fi
 
     if [ -n "$url" ]; then
