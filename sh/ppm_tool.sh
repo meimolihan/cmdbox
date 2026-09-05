@@ -1480,21 +1480,94 @@ manage_2panel() {
     done
 }
 
+is_compose_running() {
+    local dir="$1"
+
+    if [[ ! -d "$dir" ]]; then
+        return 1
+    fi
+    if [[ ! -f "$dir/docker-compose.yml" ]] && [[ ! -f "$dir/docker-compose.yaml" ]]; then
+        return 1
+    fi
+
+    (
+        cd "$dir" 2>/dev/null || exit 1
+        # 优先使用 docker-compose（旧版）
+        if command -v docker-compose &>/dev/null; then
+            docker-compose ps -q 2>/dev/null | grep -q .
+        # 其次使用 docker compose（新版）
+        elif docker compose version &>/dev/null 2>&1; then
+            docker compose ps -q 2>/dev/null | grep -q .
+        else
+            # 兜底：通过 docker ps 过滤项目标签
+            local project_name
+            project_name=$(basename "$dir")
+            docker ps --filter "label=com.docker.compose.project=$project_name" -q 2>/dev/null | grep -q .
+        fi
+    )
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
         echo -e "${gl_zi}>>> 个人项目管理工具${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}OpenCode 二进制"
-        echo -e "${gl_bufan}2.  ${gl_bai}Fan-Video 二进制"
-        echo -e "${gl_bufan}3.  ${gl_bai}2Panel 二进制"
-        echo -e "${gl_bufan}4.  ${gl_bai}云文档"
-        echo -e "${gl_bufan}5.  ${gl_bai}Fan-Panel"
-        echo -e "${gl_bufan}6.  ${gl_bai}Fan-Video"
+
+        # 检测各服务运行状态（颜色变量）
+        # 1. opencode 二进制
+        if systemctl is-active --quiet opencode 2>/dev/null; then
+            col1="${gl_lv}"
+        else
+            col1="${gl_hong}"
+        fi
+
+        # 2. fan-video 二进制
+        if systemctl is-active --quiet fan-video 2>/dev/null; then
+            col2="${gl_lv}"
+        else
+            col2="${gl_hong}"
+        fi
+
+        # 3. 2panel 二进制
+        if systemctl is-active --quiet 2panel 2>/dev/null; then
+            col3="${gl_lv}"
+        else
+            col3="${gl_hong}"
+        fi
+
+        # 4. 云文档 (docker compose)
+        if is_compose_running "/vol1/1000/compose/md"; then
+            col4="${gl_lv}"
+        else
+            col4="${gl_hong}"
+        fi
+
+        # 5. Fan-Panel (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-panel"; then
+            col5="${gl_lv}"
+        else
+            col5="${gl_hong}"
+        fi
+
+        # 6. Fan-Video (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-video"; then
+            col6="${gl_lv}"
+        else
+            col6="${gl_hong}"
+        fi
+
+        # 显示菜单（序号带颜色）
+        echo -e "${col1}1.${gl_bai}  OpenCode 二进制"
+        echo -e "${col2}2.${gl_bai}  Fan-Video 二进制"
+        echo -e "${col3}3.${gl_bai}  2Panel 二进制"
+        echo -e "${col4}4.${gl_bai}  云文档"
+        echo -e "${col5}5.${gl_bai}  Fan-Panel"
+        echo -e "${col6}6.${gl_bai}  Fan-Video"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请选择操作: ")" action
+
         case "$action" in
         1)
             manage_opencode
@@ -1527,4 +1600,5 @@ proj_mgmt_tool() {
         esac
     done
 }
+
 proj_mgmt_tool

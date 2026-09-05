@@ -2967,54 +2967,128 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="1480">    <span class="token keyword">done</span>
 </span><span class="code-line line-number" line="1481"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="1482">
-</span><span class="code-line line-number" line="1483"><span class="token function-name function">proj_mgmt_tool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="1484">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="1485">        <span class="token function">clear</span>
-</span><span class="code-line line-number" line="1486">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 个人项目管理工具<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1487">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1488">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>OpenCode 二进制"</span>
-</span><span class="code-line line-number" line="1489">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>Fan-Video 二进制"</span>
-</span><span class="code-line line-number" line="1490">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>3.  <span class="token variable">${gl_bai}</span>2Panel 二进制"</span>
-</span><span class="code-line line-number" line="1491">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>4.  <span class="token variable">${gl_bai}</span>云文档"</span>
-</span><span class="code-line line-number" line="1492">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>5.  <span class="token variable">${gl_bai}</span>Fan-Panel"</span>
-</span><span class="code-line line-number" line="1493">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>6.  <span class="token variable">${gl_bai}</span>Fan-Video"</span>
-</span><span class="code-line line-number" line="1494">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1495">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单      <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
-</span><span class="code-line line-number" line="1496">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1497">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请选择操作: "</span><span class="token variable">)</span></span>"</span> action
-</span><span class="code-line line-number" line="1498">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$action</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="1499">        <span class="token number">1</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1500">            manage_opencode
-</span><span class="code-line line-number" line="1501">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1502">        <span class="token number">2</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1503">            manage_fan_video
-</span><span class="code-line line-number" line="1504">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1505">        <span class="token number">3</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1506">            manage_2panel
-</span><span class="code-line line-number" line="1507">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1508">        <span class="token number">4</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1509">            docker_compose_manager /vol1/1000/compose/md
-</span><span class="code-line line-number" line="1510">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1511">        <span class="token number">5</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1512">            docker_compose_manager /vol1/1000/compose/fan-panel
-</span><span class="code-line line-number" line="1513">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1514">        <span class="token number">6</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1515">            docker_compose_manager /vol1/1000/compose/fan-video
-</span><span class="code-line line-number" line="1516">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1517">        <span class="token number">0</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1518">            cancel_return <span class="token string">"已是主菜单"</span>
-</span><span class="code-line line-number" line="1519">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="1520">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1521">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1522">            exit_script
-</span><span class="code-line line-number" line="1523">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1524">        *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1525">            handle_invalid_input
-</span><span class="code-line line-number" line="1526">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1527">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="1528">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="1529"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1530">proj_mgmt_tool
+</span><span class="code-line line-number" line="1483"><span class="token function-name function">is_compose_running</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="1484">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">dir</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="1485">
+</span><span class="code-line line-number" line="1486">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$dir</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1487">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="1488">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1489">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$dir</span>/docker-compose.yml"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">$dir</span>/docker-compose.yaml"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1490">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="1491">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1492">
+</span><span class="code-line line-number" line="1493">    <span class="token punctuation">(</span>
+</span><span class="code-line line-number" line="1494">        <span class="token builtin class-name">cd</span> <span class="token string">"<span class="token variable">$dir</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">||</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="1495">        <span class="token comment"># 优先使用 docker-compose（旧版）</span>
+</span><span class="code-line line-number" line="1496">        <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker-compose</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1497">            <span class="token function">docker-compose</span> <span class="token function">ps</span> <span class="token parameter variable">-q</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-q</span> <span class="token builtin class-name">.</span>
+</span><span class="code-line line-number" line="1498">        <span class="token comment"># 其次使用 docker compose（新版）</span>
+</span><span class="code-line line-number" line="1499">        <span class="token keyword">elif</span> <span class="token function">docker</span> compose version <span class="token operator">&#x26;></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1500">            <span class="token function">docker</span> compose <span class="token function">ps</span> <span class="token parameter variable">-q</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-q</span> <span class="token builtin class-name">.</span>
+</span><span class="code-line line-number" line="1501">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1502">            <span class="token comment"># 兜底：通过 docker ps 过滤项目标签</span>
+</span><span class="code-line line-number" line="1503">            <span class="token builtin class-name">local</span> project_name
+</span><span class="code-line line-number" line="1504">            <span class="token assign-left variable">project_name</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">$dir</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="1505">            <span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">--filter</span> <span class="token string">"label=com.docker.compose.project=<span class="token variable">$project_name</span>"</span> <span class="token parameter variable">-q</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-q</span> <span class="token builtin class-name">.</span>
+</span><span class="code-line line-number" line="1506">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1507">    <span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1508"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1509">
+</span><span class="code-line line-number" line="1510"><span class="token function-name function">proj_mgmt_tool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="1511">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="1512">        <span class="token function">clear</span>
+</span><span class="code-line line-number" line="1513">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 个人项目管理工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1514">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1515">
+</span><span class="code-line line-number" line="1516">        <span class="token comment"># 检测各服务运行状态（颜色变量）</span>
+</span><span class="code-line line-number" line="1517">        <span class="token comment"># 1. opencode 二进制</span>
+</span><span class="code-line line-number" line="1518">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> opencode <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1519">            <span class="token assign-left variable">col1</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="1520">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1521">            <span class="token assign-left variable">col1</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="1522">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1523">
+</span><span class="code-line line-number" line="1524">        <span class="token comment"># 2. fan-video 二进制</span>
+</span><span class="code-line line-number" line="1525">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> fan-video <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1526">            <span class="token assign-left variable">col2</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="1527">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1528">            <span class="token assign-left variable">col2</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="1529">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1530">
+</span><span class="code-line line-number" line="1531">        <span class="token comment"># 3. 2panel 二进制</span>
+</span><span class="code-line line-number" line="1532">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> 2panel <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1533">            <span class="token assign-left variable">col3</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="1534">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1535">            <span class="token assign-left variable">col3</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="1536">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1537">
+</span><span class="code-line line-number" line="1538">        <span class="token comment"># 4. 云文档 (docker compose)</span>
+</span><span class="code-line line-number" line="1539">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/md"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1540">            <span class="token assign-left variable">col4</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="1541">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1542">            <span class="token assign-left variable">col4</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="1543">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1544">
+</span><span class="code-line line-number" line="1545">        <span class="token comment"># 5. Fan-Panel (docker compose)</span>
+</span><span class="code-line line-number" line="1546">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/fan-panel"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1547">            <span class="token assign-left variable">col5</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="1548">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1549">            <span class="token assign-left variable">col5</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="1550">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1551">
+</span><span class="code-line line-number" line="1552">        <span class="token comment"># 6. Fan-Video (docker compose)</span>
+</span><span class="code-line line-number" line="1553">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/fan-video"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1554">            <span class="token assign-left variable">col6</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="1555">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1556">            <span class="token assign-left variable">col6</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="1557">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1558">
+</span><span class="code-line line-number" line="1559">        <span class="token comment"># 显示菜单（序号带颜色）</span>
+</span><span class="code-line line-number" line="1560">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col1}</span>1.<span class="token variable">${gl_bai}</span>  OpenCode 二进制"</span>
+</span><span class="code-line line-number" line="1561">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col2}</span>2.<span class="token variable">${gl_bai}</span>  Fan-Video 二进制"</span>
+</span><span class="code-line line-number" line="1562">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col3}</span>3.<span class="token variable">${gl_bai}</span>  2Panel 二进制"</span>
+</span><span class="code-line line-number" line="1563">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col4}</span>4.<span class="token variable">${gl_bai}</span>  云文档"</span>
+</span><span class="code-line line-number" line="1564">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col5}</span>5.<span class="token variable">${gl_bai}</span>  Fan-Panel"</span>
+</span><span class="code-line line-number" line="1565">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col6}</span>6.<span class="token variable">${gl_bai}</span>  Fan-Video"</span>
+</span><span class="code-line line-number" line="1566">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1567">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单      <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="1568">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1569">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请选择操作: "</span><span class="token variable">)</span></span>"</span> action
+</span><span class="code-line line-number" line="1570">
+</span><span class="code-line line-number" line="1571">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$action</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="1572">        <span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1573">            manage_opencode
+</span><span class="code-line line-number" line="1574">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1575">        <span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1576">            manage_fan_video
+</span><span class="code-line line-number" line="1577">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1578">        <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1579">            manage_2panel
+</span><span class="code-line line-number" line="1580">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1581">        <span class="token number">4</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1582">            docker_compose_manager /vol1/1000/compose/md
+</span><span class="code-line line-number" line="1583">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1584">        <span class="token number">5</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1585">            docker_compose_manager /vol1/1000/compose/fan-panel
+</span><span class="code-line line-number" line="1586">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1587">        <span class="token number">6</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1588">            docker_compose_manager /vol1/1000/compose/fan-video
+</span><span class="code-line line-number" line="1589">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1590">        <span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1591">            cancel_return <span class="token string">"已是主菜单"</span>
+</span><span class="code-line line-number" line="1592">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="1593">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1594">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1595">            exit_script
+</span><span class="code-line line-number" line="1596">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1597">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1598">            handle_invalid_input
+</span><span class="code-line line-number" line="1599">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1600">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="1601">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="1602"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1603">
+</span><span class="code-line line-number" line="1604">proj_mgmt_tool
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -4497,21 +4571,94 @@ manage_2panel() {
     done
 }
 
+is_compose_running() {
+    local dir=&#x22;$1&#x22;
+
+    if [[ ! -d &#x22;$dir&#x22; ]]; then
+        return 1
+    fi
+    if [[ ! -f &#x22;$dir/docker-compose.yml&#x22; ]] &#x26;&#x26; [[ ! -f &#x22;$dir/docker-compose.yaml&#x22; ]]; then
+        return 1
+    fi
+
+    (
+        cd &#x22;$dir&#x22; 2>/dev/null || exit 1
+        # 优先使用 docker-compose（旧版）
+        if command -v docker-compose &#x26;>/dev/null; then
+            docker-compose ps -q 2>/dev/null | grep -q .
+        # 其次使用 docker compose（新版）
+        elif docker compose version &#x26;>/dev/null 2>&#x26;1; then
+            docker compose ps -q 2>/dev/null | grep -q .
+        else
+            # 兜底：通过 docker ps 过滤项目标签
+            local project_name
+            project_name=$(basename &#x22;$dir&#x22;)
+            docker ps --filter &#x22;label=com.docker.compose.project=$project_name&#x22; -q 2>/dev/null | grep -q .
+        fi
+    )
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
         echo -e &#x22;${gl_zi}>>> 个人项目管理工具${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        echo -e &#x22;${gl_bufan}1.  ${gl_bai}OpenCode 二进制&#x22;
-        echo -e &#x22;${gl_bufan}2.  ${gl_bai}Fan-Video 二进制&#x22;
-        echo -e &#x22;${gl_bufan}3.  ${gl_bai}2Panel 二进制&#x22;
-        echo -e &#x22;${gl_bufan}4.  ${gl_bai}云文档&#x22;
-        echo -e &#x22;${gl_bufan}5.  ${gl_bai}Fan-Panel&#x22;
-        echo -e &#x22;${gl_bufan}6.  ${gl_bai}Fan-Video&#x22;
+
+        # 检测各服务运行状态（颜色变量）
+        # 1. opencode 二进制
+        if systemctl is-active --quiet opencode 2>/dev/null; then
+            col1=&#x22;${gl_lv}&#x22;
+        else
+            col1=&#x22;${gl_hong}&#x22;
+        fi
+
+        # 2. fan-video 二进制
+        if systemctl is-active --quiet fan-video 2>/dev/null; then
+            col2=&#x22;${gl_lv}&#x22;
+        else
+            col2=&#x22;${gl_hong}&#x22;
+        fi
+
+        # 3. 2panel 二进制
+        if systemctl is-active --quiet 2panel 2>/dev/null; then
+            col3=&#x22;${gl_lv}&#x22;
+        else
+            col3=&#x22;${gl_hong}&#x22;
+        fi
+
+        # 4. 云文档 (docker compose)
+        if is_compose_running &#x22;/vol1/1000/compose/md&#x22;; then
+            col4=&#x22;${gl_lv}&#x22;
+        else
+            col4=&#x22;${gl_hong}&#x22;
+        fi
+
+        # 5. Fan-Panel (docker compose)
+        if is_compose_running &#x22;/vol1/1000/compose/fan-panel&#x22;; then
+            col5=&#x22;${gl_lv}&#x22;
+        else
+            col5=&#x22;${gl_hong}&#x22;
+        fi
+
+        # 6. Fan-Video (docker compose)
+        if is_compose_running &#x22;/vol1/1000/compose/fan-video&#x22;; then
+            col6=&#x22;${gl_lv}&#x22;
+        else
+            col6=&#x22;${gl_hong}&#x22;
+        fi
+
+        # 显示菜单（序号带颜色）
+        echo -e &#x22;${col1}1.${gl_bai}  OpenCode 二进制&#x22;
+        echo -e &#x22;${col2}2.${gl_bai}  Fan-Video 二进制&#x22;
+        echo -e &#x22;${col3}3.${gl_bai}  2Panel 二进制&#x22;
+        echo -e &#x22;${col4}4.${gl_bai}  云文档&#x22;
+        echo -e &#x22;${col5}5.${gl_bai}  Fan-Panel&#x22;
+        echo -e &#x22;${col6}6.${gl_bai}  Fan-Video&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
         echo -e &#x22;${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
         read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}请选择操作: &#x22;)&#x22; action
+
         case &#x22;$action&#x22; in
         1)
             manage_opencode
@@ -4544,6 +4691,7 @@ proj_mgmt_tool() {
         esac
     done
 }
+
 proj_mgmt_tool
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="创建本地脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#创建本地脚本"><span class="octicon octicon-link"></span></a>创建本地脚本</h2>
