@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="win-install-sharex 命令">
     <meta name="twitter:description" content="Windows 安装 ShareX 截图工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=32504b3c6d20cab9">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=15909a3d013ad575">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=32504b3c6d20cab9"></script>
+    <script src="../js/dt.js?v=15909a3d013ad575"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -286,15 +286,15 @@
         border-radius: 15px !important;
       }
 
-      /* 随机模式代码块背景 - 夜间模式圆角15px - 更透明 */
+      /* 随机模式代码块背景 - 夜间模式圆角15px - 更透明（仅代码块，不作用于行内 code） */
       html[data-color-mode="dark"] body.wallpaper-random markdown-style pre,
-      html[data-color-mode="dark"] body.wallpaper-random markdown-style code,
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style pre code,
       html[data-color-mode="dark"] body.wallpaper-local markdown-style pre,
-      html[data-color-mode="dark"] body.wallpaper-local markdown-style code,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style pre code,
       html:not([data-color-mode]) body.wallpaper-random markdown-style pre,
-      html:not([data-color-mode]) body.wallpaper-random markdown-style code,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style pre code,
       html:not([data-color-mode]) body.wallpaper-local markdown-style pre,
-      html:not([data-color-mode]) body.wallpaper-local markdown-style code {
+      html:not([data-color-mode]) body.wallpaper-local markdown-style pre code {
         background: rgba(22, 27, 34, 0.35) !important;
         backdrop-filter: blur(10px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
@@ -311,16 +311,29 @@
         border-radius: 15px !important;
       }
       html[data-color-mode="light"] body.wallpaper-random markdown-style pre,
-      html[data-color-mode="light"] body.wallpaper-random markdown-style code,
+      html[data-color-mode="light"] body.wallpaper-random markdown-style pre code,
       html[data-color-mode="light"] body.wallpaper-local markdown-style pre,
-      html[data-color-mode="light"] body.wallpaper-local markdown-style code {
+      html[data-color-mode="light"] body.wallpaper-local markdown-style pre code {
         background: rgba(88, 166, 255, 0.05) !important;
         backdrop-filter: blur(10px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
         border-radius: 15px !important;
       }
 
-      /* 浅色模式 - 引用块、表格等卡片样式 - 更透明 */
+      /* 行内代码 - 统一为实心便签样式：不叠加 backdrop-filter，避免多个行内代码糊成马赛克 */
+      html body.wallpaper-random markdown-style code:not(pre code),
+      html body.wallpaper-local markdown-style code:not(pre code) {
+        background: rgba(88, 166, 255, 0.12) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-radius: 6px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style code:not(pre code),
+      html:not([data-color-mode]) body.wallpaper-random markdown-style code:not(pre code),
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style code:not(pre code),
+      html:not([data-color-mode]) body.wallpaper-local markdown-style code:not(pre code) {
+        background: rgba(88, 166, 255, 0.15) !important;
+      }
       html[data-color-mode="light"] body.wallpaper-random markdown-style blockquote,
       html[data-color-mode="light"] body.wallpaper-local markdown-style blockquote {
         background: rgba(255, 255, 255, 0.35) !important;
@@ -1145,8 +1158,6 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h1 id="win-install-sharex"><a class="anchor" aria-hidden="true" tabindex="-1" href="#win-install-sharex"><span class="octicon octicon-link"></span></a>win-install-sharex</h1>
-<p>Windows 安装 ShareX 截图工具</p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p><strong>ShareX</strong> 是一款免费开源的截图和录屏工具，支持自定义区域截图、滚动截图、OCR 文字识别、文件上传和图像编辑等功能。</p>
 <ul>
@@ -1349,7 +1360,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">798</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">814</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1364,7 +1375,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">234</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">251</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -1395,7 +1406,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1134</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1167</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1428,8 +1439,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=32504b3c6d20cab9"></script>
-<script type="text/javascript" src="../js/enhance.js?v=32504b3c6d20cab9"></script>
+<script type="text/javascript" src="../js/index.js?v=15909a3d013ad575"></script>
+<script type="text/javascript" src="../js/enhance.js?v=15909a3d013ad575"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

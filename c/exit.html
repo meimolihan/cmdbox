@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="exit 命令">
     <meta name="twitter:description" content="退出当前的 shell - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=a450996a013ad575">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=15909a3d013ad575">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=a450996a013ad575"></script>
+    <script src="../js/dt.js?v=15909a3d013ad575"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -286,15 +286,15 @@
         border-radius: 15px !important;
       }
 
-      /* 随机模式代码块背景 - 夜间模式圆角15px - 更透明 */
+      /* 随机模式代码块背景 - 夜间模式圆角15px - 更透明（仅代码块，不作用于行内 code） */
       html[data-color-mode="dark"] body.wallpaper-random markdown-style pre,
-      html[data-color-mode="dark"] body.wallpaper-random markdown-style code,
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style pre code,
       html[data-color-mode="dark"] body.wallpaper-local markdown-style pre,
-      html[data-color-mode="dark"] body.wallpaper-local markdown-style code,
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style pre code,
       html:not([data-color-mode]) body.wallpaper-random markdown-style pre,
-      html:not([data-color-mode]) body.wallpaper-random markdown-style code,
+      html:not([data-color-mode]) body.wallpaper-random markdown-style pre code,
       html:not([data-color-mode]) body.wallpaper-local markdown-style pre,
-      html:not([data-color-mode]) body.wallpaper-local markdown-style code {
+      html:not([data-color-mode]) body.wallpaper-local markdown-style pre code {
         background: rgba(22, 27, 34, 0.35) !important;
         backdrop-filter: blur(10px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
@@ -311,16 +311,29 @@
         border-radius: 15px !important;
       }
       html[data-color-mode="light"] body.wallpaper-random markdown-style pre,
-      html[data-color-mode="light"] body.wallpaper-random markdown-style code,
+      html[data-color-mode="light"] body.wallpaper-random markdown-style pre code,
       html[data-color-mode="light"] body.wallpaper-local markdown-style pre,
-      html[data-color-mode="light"] body.wallpaper-local markdown-style code {
+      html[data-color-mode="light"] body.wallpaper-local markdown-style pre code {
         background: rgba(88, 166, 255, 0.05) !important;
         backdrop-filter: blur(10px) saturate(180%) !important;
         -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
         border-radius: 15px !important;
       }
 
-      /* 浅色模式 - 引用块、表格等卡片样式 - 更透明 */
+      /* 行内代码 - 统一为实心便签样式：不叠加 backdrop-filter，避免多个行内代码糊成马赛克 */
+      html body.wallpaper-random markdown-style code:not(pre code),
+      html body.wallpaper-local markdown-style code:not(pre code) {
+        background: rgba(88, 166, 255, 0.12) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border-radius: 6px !important;
+      }
+      html[data-color-mode="dark"] body.wallpaper-random markdown-style code:not(pre code),
+      html:not([data-color-mode]) body.wallpaper-random markdown-style code:not(pre code),
+      html[data-color-mode="dark"] body.wallpaper-local markdown-style code:not(pre code),
+      html:not([data-color-mode]) body.wallpaper-local markdown-style code:not(pre code) {
+        background: rgba(88, 166, 255, 0.15) !important;
+      }
       html[data-color-mode="light"] body.wallpaper-random markdown-style blockquote,
       html[data-color-mode="light"] body.wallpaper-local markdown-style blockquote {
         background: rgba(255, 255, 255, 0.35) !important;
@@ -1452,8 +1465,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=a450996a013ad575"></script>
-<script type="text/javascript" src="../js/enhance.js?v=a450996a013ad575"></script>
+<script type="text/javascript" src="../js/index.js?v=15909a3d013ad575"></script>
+<script type="text/javascript" src="../js/enhance.js?v=15909a3d013ad575"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
