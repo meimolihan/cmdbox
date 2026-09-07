@@ -1165,20 +1165,33 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>CMD 下载命令</li>
 </ul>
 <pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"># 下载文件<span class="token punctuation">(</span><span class="token command"><span class="token keyword">CMD</span> 命令</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">md</span> <span class="token string">"%USERPROFILE%\Downloads\Image"</span> <span class="token number">2</span>>nul </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">cd</span> <span class="token parameter attr-name">/d</span> <span class="token string">"%USERPROFILE%\Downloads\Image"</span> </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">curl</span>.exe <span class="token parameter attr-name">-L</span> <span class="token parameter attr-name">-o</span> gen_icon_sizes.py http://<span class="token number">10</span>.<span class="token number">10</span>.<span class="token number">10</span>.<span class="token number">251</span>:<span class="token number">5000</span>/Image/gen_icon_sizes.py </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">explorer</span> .</span>
+</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">cd</span> <span class="token parameter attr-name">/d</span> <span class="token string">"%USERPROFILE%\Downloads"</span> </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">curl</span>.exe <span class="token parameter attr-name">-L</span> <span class="token parameter attr-name">-o</span> gen_icon_sizes.zip http://<span class="token number">10</span>.<span class="token number">10</span>.<span class="token number">10</span>.<span class="token number">251</span>:<span class="token number">5000</span>/Image/gen_icon_sizes.zip </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">md</span> Image <span class="token number">2</span>>nul </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">tar</span> -xf gen_icon_sizes.zip <span class="token parameter attr-name">-C</span> Image </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">del</span> <span class="token parameter attr-name">/f</span> <span class="token parameter attr-name">/q</span> gen_icon_sizes.zip </span><span class="token operator">&#x26;</span><span class="token operator">&#x26;</span> <span class="token command"><span class="token keyword">explorer</span> Image</span>
 </span></code><div onclick="copied(this)" data-code="# 下载文件(CMD 命令)
-md &#x22;%USERPROFILE%\Downloads\Image&#x22; 2>nul &#x26;&#x26; cd /d &#x22;%USERPROFILE%\Downloads\Image&#x22; &#x26;&#x26; curl.exe -L -o gen_icon_sizes.py http://10.10.10.251:5000/Image/gen_icon_sizes.py &#x26;&#x26; explorer .
+cd /d &#x22;%USERPROFILE%\Downloads&#x22; &#x26;&#x26; curl.exe -L -o gen_icon_sizes.zip http://10.10.10.251:5000/Image/gen_icon_sizes.zip &#x26;&#x26; md Image 2>nul &#x26;&#x26; tar -xf gen_icon_sizes.zip -C Image &#x26;&#x26; del /f /q gen_icon_sizes.zip &#x26;&#x26; explorer Image
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <ul>
   <li>PowerShell 下载命令</li>
 </ul>
-<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$t</span>=<span class="token string">"<span class="token variable">$env</span>:USERPROFILE\Downloads\Image"</span><span class="token punctuation">;</span><span class="token function">New-Item</span> <span class="token variable">$t</span> <span class="token operator">-</span>ItemType Directory <span class="token operator">-</span>Force<span class="token punctuation">|</span><span class="token function">Out-Null</span><span class="token punctuation">;</span><span class="token function">Set-Location</span> <span class="token variable">$t</span><span class="token punctuation">;</span>curl<span class="token punctuation">.</span>exe <span class="token operator">-</span>L <span class="token operator">-</span>o gen_icon_sizes<span class="token punctuation">.</span>py http:<span class="token operator">/</span><span class="token operator">/</span>10<span class="token punctuation">.</span>10<span class="token punctuation">.</span>10<span class="token punctuation">.</span>251:5000/Image/gen_icon_sizes<span class="token punctuation">.</span>py<span class="token punctuation">;</span>explorer <span class="token punctuation">.</span><span class="token punctuation">;</span><span class="token function">Start-Process</span> cmd <span class="token operator">-</span>ArgumentList <span class="token string">"/k cd /d `"<span class="token variable">$t</span>`""</span>
-</span></code><div onclick="copied(this)" data-code="$t=&#x22;$env:USERPROFILE\Downloads\Image&#x22;;New-Item $t -ItemType Directory -Force|Out-Null;Set-Location $t;curl.exe -L -o gen_icon_sizes.py http://10.10.10.251:5000/Image/gen_icon_sizes.py;explorer .;Start-Process cmd -ArgumentList &#x22;/k cd /d &#x60;&#x22;$t&#x60;&#x22;&#x22;
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token variable">$baseDir</span> = <span class="token string">"<span class="token variable">$env</span>:USERPROFILE\Downloads"</span>
+</span><span class="code-line line-number" line="2"><span class="token function">Set-Location</span> <span class="token variable">$baseDir</span>
+</span><span class="code-line line-number" line="3"><span class="token function">Invoke-WebRequest</span> <span class="token operator">-</span>Uri <span class="token string">"http://10.10.10.251:5000/Image/gen_icon_sizes.zip"</span> <span class="token operator">-</span>OutFile <span class="token string">"gen_icon_sizes.zip"</span>
+</span><span class="code-line line-number" line="4"><span class="token variable">$imageDir</span> = <span class="token function">Join-Path</span> <span class="token variable">$baseDir</span> <span class="token string">"Image"</span>
+</span><span class="code-line line-number" line="5"><span class="token function">New-Item</span> <span class="token operator">-</span>ItemType Directory <span class="token operator">-</span>Path <span class="token variable">$imageDir</span> <span class="token operator">-</span>Force <span class="token punctuation">|</span> <span class="token function">Out-Null</span>
+</span><span class="code-line line-number" line="6"><span class="token function">Expand-Archive</span> <span class="token operator">-</span>Path <span class="token string">"gen_icon_sizes.zip"</span> <span class="token operator">-</span>DestinationPath <span class="token variable">$imageDir</span> <span class="token operator">-</span>Force
+</span><span class="code-line line-number" line="7"><span class="token function">Remove-Item</span> <span class="token operator">-</span>Path <span class="token string">"gen_icon_sizes.zip"</span> <span class="token operator">-</span>Force
+</span><span class="code-line line-number" line="8">explorer <span class="token variable">$imageDir</span>
+</span></code><div onclick="copied(this)" data-code="$baseDir = &#x22;$env:USERPROFILE\Downloads&#x22;
+Set-Location $baseDir
+Invoke-WebRequest -Uri &#x22;http://10.10.10.251:5000/Image/gen_icon_sizes.zip&#x22; -OutFile &#x22;gen_icon_sizes.zip&#x22;
+$imageDir = Join-Path $baseDir &#x22;Image&#x22;
+New-Item -ItemType Directory -Path $imageDir -Force | Out-Null
+Expand-Archive -Path &#x22;gen_icon_sizes.zip&#x22; -DestinationPath $imageDir -Force
+Remove-Item -Path &#x22;gen_icon_sizes.zip&#x22; -Force
+explorer $imageDir
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="文件说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#文件说明"><span class="octicon octicon-link"></span></a>文件说明</h3>
 <ul>
   <li><code>gen_icon_sizes.py</code> —— 通用版，可一次生成多个尺寸（推荐）。</li>
-  <li><code>add_64_icon.py</code> —— 精简版，只补 64×64。</li>
 </ul>
 <h2 id="前置环境"><a class="anchor" aria-hidden="true" tabindex="-1" href="#前置环境"><span class="octicon octicon-link"></span></a>前置环境</h2>
 <ul>
@@ -1235,125 +1248,219 @@ md &#x22;%USERPROFILE%\Downloads\Image&#x22; 2>nul &#x26;&#x26; cd /d &#x22;%USE
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>显示版本号（如 <code>Pillow 版本: 12.3.0</code>）即成功。</p>
 <h2 id="开始使用工具"><a class="anchor" aria-hidden="true" tabindex="-1" href="#开始使用工具"><span class="octicon octicon-link"></span></a>开始使用工具</h2>
-<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 通用版：补单个尺寸</span>
+<h3 id="python-脚本直接调用-gen_icon_sizespy"><a class="anchor" aria-hidden="true" tabindex="-1" href="#python-脚本直接调用-gen_icon_sizespy"><span class="octicon octicon-link"></span></a>Python 脚本直接调用 gen_icon_sizes.py</h3>
+<pre class="language-powershell"><code class="language-powershell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 仅生成单个尺寸</span>
 </span><span class="code-line line-number" line="2">python gen_icon_sizes<span class="token punctuation">.</span>py <span class="token string">"图标文件夹路径"</span> 64
 </span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token comment"># 通用版：一次补多个尺寸</span>
-</span><span class="code-line line-number" line="5">python gen_icon_sizes<span class="token punctuation">.</span>py <span class="token string">"图标文件夹路径"</span> 16 32 48 64 128 256 512
-</span></code><div onclick="copied(this)" data-code="# 通用版：补单个尺寸
+</span><span class="code-line line-number" line="4"><span class="token comment"># 一次性全套尺寸：16 32 48 64 128 256 512 1024</span>
+</span><span class="code-line line-number" line="5">python gen_icon_sizes<span class="token punctuation">.</span>py <span class="token string">"图标文件夹路径"</span> 16 32 48 64 128 256 512 1024
+</span></code><div onclick="copied(this)" data-code="# 仅生成单个尺寸
 python gen_icon_sizes.py &#x22;图标文件夹路径&#x22; 64
 
-# 通用版：一次补多个尺寸
-python gen_icon_sizes.py &#x22;图标文件夹路径&#x22; 16 32 48 64 128 256 512
+# 一次性全套尺寸：16 32 48 64 128 256 512 1024
+python gen_icon_sizes.py &#x22;图标文件夹路径&#x22; 16 32 48 64 128 256 512 1024
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="windows-快捷脚本-gen_icon_sizesbat"><a class="anchor" aria-hidden="true" tabindex="-1" href="#windows-快捷脚本-gen_icon_sizesbat"><span class="octicon octicon-link"></span></a>Windows 快捷脚本 gen_icon_sizes.bat</h3>
+<ol>
+  <li>
+    <p><strong>直接双击 bat</strong>：处理当前工作目录，输出全套尺寸</p>
+  </li>
+  <li>
+    <p><strong>拖拽文件夹到 bat 文件</strong>：拖拽哪个文件夹，就处理哪个文件夹</p>
+  </li>
+</ol>
+<pre class="language-cmd"><code class="language-cmd code-highlight"><span class="code-line line-number" line="1"><span class="token command"><span class="token keyword">gen_icon_sizes</span>.bat</span>
+</span></code><div onclick="copied(this)" data-code="gen_icon_sizes.bat
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<blockquote>
+  <p>bat 与 <code>gen_icon_sizes.py</code> 必须放在同一个目录。</p>
+</blockquote>
+<h2 id="命名规则"><a class="anchor" aria-hidden="true" tabindex="-1" href="#命名规则"><span class="octicon octicon-link"></span></a>命名规则</h2>
+<blockquote>
+  <p>✨新版逻辑：不再强制源文件必须带尺寸后缀，普通正方形 PNG 也可识别为母版</p>
+</blockquote>
+<ul>
+  <li>
+    <p>母版示例：<code>icon.png</code> <code>icon_1024x1024x32.png</code></p>
+  </li>
+  <li>
+    <p>输出命名：<code>原文件名_&#x3C;SIZE>x&#x3C;SIZE>x32.png</code></p>
+  </li>
+</ul>
+<p>示例：</p>
+<ul>
+  <li>
+    <p>母版：<code>app.png</code>(1024×1024)</p>
+  </li>
+  <li>
+    <p>生成输出：<code>app_64x64x32.png</code>、<code>app_128x128x32.png</code>、<code>app_256x256x32.png</code></p>
+  </li>
+</ul>
+<h2 id="工作原理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#工作原理"><span class="octicon octicon-link"></span></a>工作原理</h2>
+<ol>
+  <li>
+    <p><strong>扫描源图</strong>：遍历目标文件夹全部 <code>*.png</code>，过滤筛选正方形图片</p>
+  </li>
+  <li>
+    <p><strong>选取母版</strong>：自动选取文件夹内边长最大的正方形 PNG 作为缩放源图</p>
+  </li>
+  <li>
+    <p><strong>高质量缩放</strong>：<code>LANCZOS</code>重采样算法做图像缩放，保留 Alpha 透明通道</p>
+  </li>
+  <li>
+    <p><strong>保存输出</strong>：按照 <code>{basename}_{S}x{S}x32.png</code> 格式输出 32 位 RGBA PNG</p>
+  </li>
+  <li>
+    <p><strong>增量逻辑</strong>：目标文件已存在直接跳过，不覆盖旧文件</p>
+  </li>
+</ol>
+<h2 id="注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#注意事项"><span class="octicon octicon-link"></span></a>注意事项</h2>
 <table>
   <thead>
     <tr>
-      <th>参数</th>
+      <th>场景</th>
       <th>说明</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>图标文件夹路径</td>
-      <td>存放 <code>*_NxNx32.png</code> 图标的目录</td>
+      <td>目标尺寸大于母版</td>
+      <td>会放大图片，画质会模糊；建议放入高分辨率母版，推荐 1024×1024</td>
     </tr>
     <tr>
-      <td>尺寸</td>
-      <td>要生成的像素尺寸，支持一次传入多个</td>
+      <td>更换母版</td>
+      <td>将更高分辨率正方形 PNG 放入目标文件夹，脚本会自动选中最大那张</td>
+    </tr>
+    <tr>
+      <td>非正方形图片</td>
+      <td>自动跳过，不作为母版候选</td>
+    </tr>
+    <tr>
+      <td>普通无后缀 png</td>
+      <td>支持识别，输出自动追加 <code>_SxSx32.png</code></td>
+    </tr>
+    <tr>
+      <td>透明丢失</td>
+      <td>母版必须是带 Alpha 通道的 RGBA PNG；JPG 不支持透明，不可做母版</td>
     </tr>
   </tbody>
 </table>
-<h2 id="原理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#原理"><span class="octicon octicon-link"></span></a>原理</h2>
-<ol>
-  <li>扫描文件夹内所有 <code>*_NxNx32.png</code>，自动选边长最大者（通常 1024）作母版。</li>
-  <li>用 <code>Image.LANCZOS</code> 高质量下采样生成目标尺寸。</li>
-  <li>输出命名对齐原规律：<code>前缀_&#x3C;尺寸>x&#x3C;尺寸>x32.png</code>（末尾 <code>x32</code> = 32位 RGBA 透明）。</li>
-  <li>已存在的尺寸自动跳过，不覆盖。</li>
-</ol>
-<h2 id="注意"><a class="anchor" aria-hidden="true" tabindex="-1" href="#注意"><span class="octicon octicon-link"></span></a>注意</h2>
-<ul>
-  <li>大尺寸（如 512）若文件夹内最大只有 256，会改以 256 为母版放大，画质偏软；建议放入更高分辨率源图再跑。</li>
-  <li>想换母版：把新图命名为 <code>前缀_1024x1024x32.png</code> 放入文件夹即可。</li>
-</ul>
-<h2 id="脚本源码"><a class="anchor" aria-hidden="true" tabindex="-1" href="#脚本源码"><span class="octicon octicon-link"></span></a>脚本源码</h2>
+<h2 id="常见问题"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常见问题"><span class="octicon octicon-link"></span></a>常见问题</h2>
+<table>
+  <thead>
+    <tr>
+      <th>现象</th>
+      <th>解决方法</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>python</code> 不是内部或外部命令</td>
+      <td>关闭并重新打开终端；尝试使用 <code>py</code> 替换全部 <code>python</code></td>
+    </tr>
+    <tr>
+      <td><code>No module named 'PIL'</code></td>
+      <td>当前 Python 环境未安装 pillow，重新执行 pip 安装命令</td>
+    </tr>
+    <tr>
+      <td>pip 网络慢、超时</td>
+      <td>追加镜像参数 <code>-i https://pypi.tuna.tsinghua.edu.cn/simple</code></td>
+    </tr>
+    <tr>
+      <td>提示 “没找到可用的正方形 png 源图”</td>
+      <td>文件夹不存在正方形 PNG；JPG / 损坏 PNG 会被忽略</td>
+    </tr>
+    <tr>
+      <td>权限报错</td>
+      <td>右键终端 /bat，选择<strong>以管理员身份运行</strong></td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="python-脚本源码"><a class="anchor" aria-hidden="true" tabindex="-1" href="#python-脚本源码"><span class="octicon octicon-link"></span></a>python 脚本源码</h2>
 <pre class="language-python"><code class="language-python code-highlight"><span class="code-line line-number" line="1"><span class="token comment">#!/usr/bin/env python3</span>
 </span><span class="code-line line-number" line="2"><span class="token comment"># 通用图标尺寸生成器</span>
 </span><span class="code-line line-number" line="3"><span class="token comment"># 用法:</span>
 </span><span class="code-line line-number" line="4"><span class="token comment">#   python gen_icon_sizes.py "文件夹路径" 64 128 48 96</span>
 </span><span class="code-line line-number" line="5"><span class="token comment">#   (尺寸可写多个，不写默认只生成 64)</span>
 </span><span class="code-line line-number" line="6"><span class="token comment"># 逻辑:</span>
-</span><span class="code-line line-number" line="7"><span class="token comment">#   1. 在文件夹里找最大的 *_&#x3C;N>x&#x3C;N>x32.png 作母版（优先 1024，没有就取最大的一张）</span>
+</span><span class="code-line line-number" line="7"><span class="token comment">#   1. 在文件夹里找最大的正方形png作母版（优先最大边长）</span>
 </span><span class="code-line line-number" line="8"><span class="token comment">#   2. 用 LANCZOS 高质量下采样生成各目标尺寸，文件名对齐原规律 *_&#x3C;SIZE>x&#x3C;SIZE>x32.png</span>
 </span><span class="code-line line-number" line="9"><span class="token comment">#   3. 已存在的跳过</span>
-</span><span class="code-line line-number" line="10"><span class="token keyword">import</span> sys<span class="token punctuation">,</span> glob<span class="token punctuation">,</span> os<span class="token punctuation">,</span> re
+</span><span class="code-line line-number" line="10"><span class="token keyword">import</span> sys<span class="token punctuation">,</span> glob<span class="token punctuation">,</span> os
 </span><span class="code-line line-number" line="11"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
 </span><span class="code-line line-number" line="12">
-</span><span class="code-line line-number" line="13">
-</span><span class="code-line line-number" line="14">folder <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="15">sizes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="16">
-</span><span class="code-line line-number" line="17">
-</span><span class="code-line line-number" line="18"><span class="token comment"># 找母版: 所有 *_数字x数字x32.png，取边长最大的</span>
-</span><span class="code-line line-number" line="19">pat <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r"_(\d+)x(\d+)x32\.png$"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="20">cands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-</span><span class="code-line line-number" line="21"><span class="token keyword">for</span> f <span class="token keyword">in</span> glob<span class="token punctuation">.</span>glob<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>folder<span class="token punctuation">,</span> <span class="token string">"*x32.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="22">    m <span class="token operator">=</span> pat<span class="token punctuation">.</span>search<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>f<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="23">    <span class="token keyword">if</span> m <span class="token keyword">and</span> <span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="24">        cands<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="25"><span class="token keyword">if</span> <span class="token keyword">not</span> cands<span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="26">    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"没找到 *_&#x3C;N>x&#x3C;N>x32.png 源图，请确认路径/命名。"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="27">    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="28">
-</span><span class="code-line line-number" line="29">
-</span><span class="code-line line-number" line="30">side<span class="token punctuation">,</span> master <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>cands<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> c<span class="token punctuation">:</span> c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="31"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"母版: </span><span class="token interpolation"><span class="token punctuation">{</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>master<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string"> (</span><span class="token interpolation"><span class="token punctuation">{</span>side<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>side<span class="token punctuation">}</span></span><span class="token string">)"</span></span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="32">im <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>master<span class="token punctuation">)</span><span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token string">"RGBA"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="33">prefix <span class="token operator">=</span> master<span class="token punctuation">[</span><span class="token punctuation">:</span> <span class="token operator">-</span><span class="token builtin">len</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>side<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>side<span class="token punctuation">}</span></span><span class="token string">x32.png"</span></span><span class="token punctuation">)</span><span class="token punctuation">]</span>   <span class="token comment"># 去掉尺寸后缀，保留前缀</span>
+</span><span class="code-line line-number" line="13">folder <span class="token operator">=</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="14">sizes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token keyword">or</span> <span class="token punctuation">[</span><span class="token number">64</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="15">
+</span><span class="code-line line-number" line="16"><span class="token comment"># 找母版: 扫描全部 *.png，筛选正方形图片</span>
+</span><span class="code-line line-number" line="17">cands <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="18"><span class="token keyword">for</span> f <span class="token keyword">in</span> glob<span class="token punctuation">.</span>glob<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>folder<span class="token punctuation">,</span> <span class="token string">"*.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="19">    <span class="token keyword">try</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="20">        <span class="token keyword">with</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span> <span class="token keyword">as</span> tmp<span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="21">            w<span class="token punctuation">,</span> h <span class="token operator">=</span> tmp<span class="token punctuation">.</span>size
+</span><span class="code-line line-number" line="22">            <span class="token keyword">if</span> w <span class="token operator">==</span> h<span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="23">                cands<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">(</span>w<span class="token punctuation">,</span> f<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="24">    <span class="token keyword">except</span> Exception<span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="25">        <span class="token keyword">continue</span>
+</span><span class="code-line line-number" line="26">
+</span><span class="code-line line-number" line="27"><span class="token keyword">if</span> <span class="token keyword">not</span> cands<span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="28">    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"没找到可用的正方形png源图，请确认路径。"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="29">    sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="30">
+</span><span class="code-line line-number" line="31">side<span class="token punctuation">,</span> master <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>cands<span class="token punctuation">,</span> key<span class="token operator">=</span><span class="token keyword">lambda</span> c<span class="token punctuation">:</span> c<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="32"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"母版: </span><span class="token interpolation"><span class="token punctuation">{</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>master<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token string"> (</span><span class="token interpolation"><span class="token punctuation">{</span>side<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>side<span class="token punctuation">}</span></span><span class="token string">)"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="33">im <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>master<span class="token punctuation">)</span><span class="token punctuation">.</span>convert<span class="token punctuation">(</span><span class="token string">"RGBA"</span><span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="34">
-</span><span class="code-line line-number" line="35">
-</span><span class="code-line line-number" line="36"><span class="token keyword">for</span> s <span class="token keyword">in</span> sizes<span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="37">    dst <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>prefix<span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x32.png"</span></span>
-</span><span class="code-line line-number" line="38">    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>dst<span class="token punctuation">)</span><span class="token punctuation">:</span>
-</span><span class="code-line line-number" line="39">        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"  </span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">: 已存在，跳过"</span></span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="40">        <span class="token keyword">continue</span>
-</span><span class="code-line line-number" line="41">    im<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">,</span> Image<span class="token punctuation">.</span>LANCZOS<span class="token punctuation">)</span><span class="token punctuation">.</span>save<span class="token punctuation">(</span>dst<span class="token punctuation">,</span> <span class="token string">"PNG"</span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="42">    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"  </span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">: 生成完成"</span></span><span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="43"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"完成。"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="35"><span class="token comment"># 构造输出前缀：原文件名去掉扩展名，追加下划线</span>
+</span><span class="code-line line-number" line="36">basename_noext <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>splitext<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>basename<span class="token punctuation">(</span>master<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+</span><span class="code-line line-number" line="37">prefix <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>folder<span class="token punctuation">,</span> basename_noext <span class="token operator">+</span> <span class="token string">"_"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="38">
+</span><span class="code-line line-number" line="39"><span class="token keyword">for</span> s <span class="token keyword">in</span> sizes<span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="40">    dst <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{</span>prefix<span class="token punctuation">}</span></span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x32.png"</span></span>
+</span><span class="code-line line-number" line="41">    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>dst<span class="token punctuation">)</span><span class="token punctuation">:</span>
+</span><span class="code-line line-number" line="42">        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"  </span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">: 已存在，跳过"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="43">        <span class="token keyword">continue</span>
+</span><span class="code-line line-number" line="44">    im<span class="token punctuation">.</span>resize<span class="token punctuation">(</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">,</span> Image<span class="token punctuation">.</span>LANCZOS<span class="token punctuation">)</span><span class="token punctuation">.</span>save<span class="token punctuation">(</span>dst<span class="token punctuation">,</span> <span class="token string">"PNG"</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="45">    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"  </span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">x</span><span class="token interpolation"><span class="token punctuation">{</span>s<span class="token punctuation">}</span></span><span class="token string">: 生成完成"</span></span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="46">
+</span><span class="code-line line-number" line="47"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"完成。"</span><span class="token punctuation">)</span>
 </span></code><div onclick="copied(this)" data-code="#!/usr/bin/env python3
 # 通用图标尺寸生成器
 # 用法:
 #   python gen_icon_sizes.py &#x22;文件夹路径&#x22; 64 128 48 96
 #   (尺寸可写多个，不写默认只生成 64)
 # 逻辑:
-#   1. 在文件夹里找最大的 *_<N>x<N>x32.png 作母版（优先 1024，没有就取最大的一张）
+#   1. 在文件夹里找最大的正方形png作母版（优先最大边长）
 #   2. 用 LANCZOS 高质量下采样生成各目标尺寸，文件名对齐原规律 *_<SIZE>x<SIZE>x32.png
 #   3. 已存在的跳过
-import sys, glob, os, re
+import sys, glob, os
 from PIL import Image
-
 
 folder = sys.argv[1]
 sizes = [int(x) for x in sys.argv[2:]] or [64]
 
-
-# 找母版: 所有 *_数字x数字x32.png，取边长最大的
-pat = re.compile(r&#x22;_(\d+)x(\d+)x32\.png$&#x22;)
+# 找母版: 扫描全部 *.png，筛选正方形图片
 cands = []
-for f in glob.glob(os.path.join(folder, &#x22;*x32.png&#x22;)):
-    m = pat.search(os.path.basename(f))
-    if m and int(m.group(1)) == int(m.group(2)):
-        cands.append((int(m.group(1)), f))
-if not cands:
-    print(&#x22;没找到 *_<N>x<N>x32.png 源图，请确认路径/命名。&#x22;)
-    sys.exit(1)
+for f in glob.glob(os.path.join(folder, &#x22;*.png&#x22;)):
+    try:
+        with Image.open(f) as tmp:
+            w, h = tmp.size
+            if w == h:
+                cands.append((w, f))
+    except Exception:
+        continue
 
+if not cands:
+    print(&#x22;没找到可用的正方形png源图，请确认路径。&#x22;)
+    sys.exit(1)
 
 side, master = max(cands, key=lambda c: c[0])
 print(f&#x22;母版: {os.path.basename(master)} ({side}x{side})&#x22;)
 im = Image.open(master).convert(&#x22;RGBA&#x22;)
-prefix = master[: -len(f&#x22;{side}x{side}x32.png&#x22;)]   # 去掉尺寸后缀，保留前缀
 
+# 构造输出前缀：原文件名去掉扩展名，追加下划线
+basename_noext = os.path.splitext(os.path.basename(master))[0]
+prefix = os.path.join(folder, basename_noext + &#x22;_&#x22;)
 
 for s in sizes:
     dst = f&#x22;{prefix}{s}x{s}x32.png&#x22;
@@ -1362,7 +1469,64 @@ for s in sizes:
         continue
     im.resize((s, s), Image.LANCZOS).save(dst, &#x22;PNG&#x22;)
     print(f&#x22;  {s}x{s}: 生成完成&#x22;)
+
 print(&#x22;完成。&#x22;)
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h2 id="bat-脚本源码"><a class="anchor" aria-hidden="true" tabindex="-1" href="#bat-脚本源码"><span class="octicon octicon-link"></span></a>bat 脚本源码</h2>
+<pre class="language-batch"><code class="language-batch code-highlight"><span class="code-line line-number" line="1"><span class="token operator">@</span><span class="token command"><span class="token keyword">echo</span> off</span>
+</span><span class="code-line line-number" line="2"><span class="token command"><span class="token keyword">chcp</span> <span class="token number">65001</span> >nul</span>
+</span><span class="code-line line-number" line="3"><span class="token command"><span class="token keyword">setlocal</span> enabledelayedexpansion</span>
+</span><span class="code-line line-number" line="4">
+</span><span class="code-line line-number" line="5"><span class="token comment">:: 当前脚本所在目录</span>
+</span><span class="code-line line-number" line="6"><span class="token command"><span class="token keyword">set</span> <span class="token string">"SCRIPT_DIR=%~dp0"</span></span>
+</span><span class="code-line line-number" line="7"><span class="token command"><span class="token keyword">set</span> <span class="token string">"PY_SCRIPT=%SCRIPT_DIR%gen_icon_sizes.py"</span></span>
+</span><span class="code-line line-number" line="8"><span class="token comment">:: 图标文件夹 = 当前工作目录（cmd打开的路径）</span>
+</span><span class="code-line line-number" line="9"><span class="token command"><span class="token keyword">set</span> <span class="token string">"ICON_FOLDER=%cd%"</span></span>
+</span><span class="code-line line-number" line="10">
+</span><span class="code-line line-number" line="11"><span class="token command"><span class="token keyword">if</span> <span class="token keyword">not</span> <span class="token keyword">exist</span> <span class="token string">"%PY_SCRIPT%"</span></span> <span class="token punctuation">(</span>
+</span><span class="code-line line-number" line="12">    <span class="token command"><span class="token keyword">echo</span> 错误：找不到 gen_icon_sizes.py</span>
+</span><span class="code-line line-number" line="13">    <span class="token command"><span class="token keyword">echo</span> 请把bat和py放在同一个目录！</span>
+</span><span class="code-line line-number" line="14">    <span class="token command"><span class="token keyword">pause</span></span>
+</span><span class="code-line line-number" line="15">    <span class="token command"><span class="token keyword">exit</span> <span class="token parameter attr-name">/b</span> <span class="token number">1</span></span>
+</span><span class="code-line line-number" line="16"><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="17">
+</span><span class="code-line line-number" line="18"><span class="token command"><span class="token keyword">echo</span> ======================================</span>
+</span><span class="code-line line-number" line="19"><span class="token command"><span class="token keyword">echo</span> 图标文件夹: <span class="token variable">%ICON_FOLDER%</span></span>
+</span><span class="code-line line-number" line="20"><span class="token command"><span class="token keyword">echo</span> 目标尺寸: <span class="token number">16</span> <span class="token number">32</span> <span class="token number">48</span> <span class="token number">64</span> <span class="token number">128</span> <span class="token number">256</span> <span class="token number">512</span> <span class="token number">1024</span></span>
+</span><span class="code-line line-number" line="21"><span class="token command"><span class="token keyword">echo</span> ======================================</span>
+</span><span class="code-line line-number" line="22">
+</span><span class="code-line line-number" line="23"><span class="token command"><span class="token keyword">python</span> <span class="token string">"%PY_SCRIPT%"</span> <span class="token string">"%ICON_FOLDER%"</span> <span class="token number">16</span> <span class="token number">32</span> <span class="token number">48</span> <span class="token number">64</span> <span class="token number">128</span> <span class="token number">256</span> <span class="token number">512</span> <span class="token number">1024</span></span>
+</span><span class="code-line line-number" line="24">
+</span><span class="code-line line-number" line="25"><span class="token command"><span class="token keyword">echo</span>.</span>
+</span><span class="code-line line-number" line="26"><span class="token command"><span class="token keyword">echo</span> 执行结束</span>
+</span><span class="code-line line-number" line="27"><span class="token command"><span class="token keyword">pause</span></span>
+</span></code><div onclick="copied(this)" data-code="@echo off
+chcp 65001 >nul
+setlocal enabledelayedexpansion
+
+:: 当前脚本所在目录
+set &#x22;SCRIPT_DIR=%~dp0&#x22;
+set &#x22;PY_SCRIPT=%SCRIPT_DIR%gen_icon_sizes.py&#x22;
+:: 图标文件夹 = 当前工作目录（cmd打开的路径）
+set &#x22;ICON_FOLDER=%cd%&#x22;
+
+if not exist &#x22;%PY_SCRIPT%&#x22; (
+    echo 错误：找不到 gen_icon_sizes.py
+    echo 请把bat和py放在同一个目录！
+    pause
+    exit /b 1
+)
+
+echo ======================================
+echo 图标文件夹: %ICON_FOLDER%
+echo 目标尺寸: 16 32 48 64 128 256 512 1024
+echo ======================================
+
+python &#x22;%PY_SCRIPT%&#x22; &#x22;%ICON_FOLDER%&#x22; 16 32 48 64 128 256 512 1024
+
+echo.
+echo 执行结束
+pause
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="相关命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#相关命令"><span class="octicon octicon-link"></span></a>相关命令</h2>
 <ul>
