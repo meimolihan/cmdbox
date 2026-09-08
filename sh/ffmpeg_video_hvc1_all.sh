@@ -1,10 +1,8 @@
 #!/bin/bash
 # ==============================================================================
-# HEVC hvc1 QSV批量目录转码脚本｜遍历一级子目录
-# 支持：交互式 / 命令行传参
+# HEVC hvc1 QSV 批量目录转码脚本
 # 参数：源目录 目标目录 是否删除源文件(true/false)
-# 更新：支持 mp4,mkv；mkv转码输出为mp4；mp4保持后缀不变
-# 逻辑不变：遍历源下一级子文件夹，串行转码；成功后按需删源+清理空目录
+# 特性：前台启动自动nohup后台，加锁防重复运行，全局batch_main.log
 # ==============================================================================
 set -uo pipefail
 
@@ -19,6 +17,72 @@ list_color_init() {
     export gl_bufan=$'\033[38;5;14m'
 }
 list_color_init
+LOCK="/tmp/videnc_batch.lock"
+
+if [[ "${1:-}" != "__BG_RUN__" ]]; then
+    if [[ -f "${LOCK}" ]]; then
+        echo "任务正在运行，锁文件 ${LOCK} 存在，禁止重复启动"
+        exit 1
+    fi
+    SRC_DIR_PARAM="${1:-}"
+    DST_DIR_PARAM="${2:-}"
+    DEL_SRC_PARAM="${3:-false}"
+    nohup bash "$0" __BG_RUN__ "$@" >/dev/null 2>&1 &
+    echo ">>> 命令行批量转码模式"
+    echo "————————————————————————————————————————————————"
+    echo "源 目 录：${SRC_DIR_PARAM}"
+    echo "目标目录：${DST_DIR_PARAM}"
+    echo "转码成功后删除源文件：${DEL_SRC_PARAM}"
+    echo "✅ 任务已自动进入后台静默执行"
+    echo "📖 查看全局日志：tail -f ${DST_DIR_PARAM}/batch_main.log"
+    echo "❌ 强制结束进程：pkill -9 -f ffmpeg && rm -f /tmp/videnc_batch.lock"
+    echo "————————————————————————————————————————————————"
+    exit 0
+fi
+
+shift
+SRC_ROOT="$1"
+DST_ROOT="$2"
+DEL_SRC="$3"
+GLOBAL_LOG="${DST_ROOT}/batch_main.log"
+mkdir -p "${DST_ROOT}"
+
+log_print() {
+    echo -e "$1"
+    echo -e "$1" | sed -r 's/\x1B\[[0-9;]*[a-zA-Z]//g' >> "${GLOBAL_LOG}"
+}
+
+echo $$ > "${LOCK}"
+trap 'rm -f "${LOCK}"' EXIT
+
+calc_est_time() {
+    local src_file="$1"
+    local speed_x="1.91"
+    local dur
+    dur=$(ffprobe -v error -select_streams v:0 \
+        -show_entries stream=duration \
+        -of default=noprint_wrappers=1:nokey=1 "${src_file}" 2>/dev/null)
+    if [[ -z "${dur}" || "${dur}" == "N/A" ]]; then
+        log_print "[警告] 无法读取视频时长"
+        return 1
+    fi
+    local dur_int
+    dur_int=$(echo "scale=0; ${dur}/1" | bc)
+    local dur_h=$(( dur_int / 3600 ))
+    local dur_rem=$(( dur_int % 3600 ))
+    local dur_m=$(( dur_rem / 60 ))
+    local dur_s=$(( dur_rem % 60 ))
+    local est_sec
+    est_sec=$(echo "scale=0; ${dur} / ${speed_x}" | bc -l)
+    local total_int=${est_sec%%.*}
+    local h=$(( total_int / 3600 ))
+    local rem=$(( total_int % 3600 ))
+    local m=$(( rem / 60 ))
+    local s=$(( rem % 60 ))
+    log_print "视频时长：${dur} 秒（≈ ${dur_h}小时${dur_m}分${dur_s}秒）"
+    log_print "预估耗时：${h}小时${m}分${s}秒 完成 (转码速度=${speed_x}倍)"
+    return 0
+}
 
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
@@ -41,27 +105,15 @@ abspath() {
 }
 
 install_deps() {
-    echo -e "${gl_zi}>>> 检查依赖${gl_bai}"
     if command -v ffmpeg &>/dev/null; then
-        echo -e "${gl_lv}ffmpeg 已安装: $(command -v ffmpeg)${gl_bai}"
         if ffmpeg -h encoder=hevc_qsv >/dev/null 2>&1; then
-            echo -e "${gl_lv}hevc_qsv 硬件编码器（FFmpeg编译支持）✅${gl_bai}"
             if command -v vainfo &>/dev/null; then
-                if vainfo >/dev/null 2>&1; then
-                    echo -e "${gl_lv}VA‑API硬件环境正常 ✅${gl_bai}"
-                else
-                    echo -e "${gl_huang}⚠ vainfo检测异常：VA‑API驱动/权限可能异常，QSV硬件可能无法工作${gl_bai}"
-                fi
-            else
-                echo -e "${gl_huang}ℹ 未安装vainfo，跳过硬件环境校验${gl_bai}"
+                vainfo >/dev/null 2>&1
             fi
-        else
-            echo -e "${gl_hong}❌ 当前ffmpeg未编译支持 hevc_qsv 编码器，硬件转码不可用${gl_bai}"
+            return 0
         fi
-        return 0
     fi
-
-    echo -e "${gl_huang}ffmpeg 未找到，尝试自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_huang}ffmpeg 未找到，尝试自动安装${gl_bai}"
     if command -v apt &>/dev/null; then
         sudo apt update && sudo apt install -y ffmpeg vainfo
     elif command -v dnf &>/dev/null; then
@@ -77,13 +129,12 @@ install_deps() {
     elif command -v brew &>/dev/null; then
         brew install ffmpeg
     else
-        echo -e "${gl_hong}无法自动安装 ffmpeg，请手动安装后重试${gl_bai}"
+        echo -e "${gl_hong}无法自动安装 ffmpeg${gl_bai}"
     fi
     if ! command -v ffmpeg &>/dev/null; then
         echo -e "${gl_hong}ffmpeg 安装失败，请手动安装${gl_bai}"
         return 1
     fi
-    echo -e "${gl_lv}ffmpeg 安装成功${gl_bai}"
     return 0
 }
 
@@ -91,63 +142,67 @@ do_batch_encode() {
     local SRC_ROOT="$1"
     local DST_ROOT="$2"
     local DEL_SRC="$3"
-
+    local GLOBAL_LOG="${DST_ROOT}/batch_main.log"
+    log_print "====================================="
+    local now
+    now=$(date +"%Y-%m-%d %H:%M:%S")
+    log_print "[${now}] ====== 开始本轮批量任务 ======"
     for SRC_DIR in "${SRC_ROOT}"/*/; do
+        [ -d "${SRC_DIR}" ] || continue
         DIR_NAME=$(basename "${SRC_DIR%/}")
         DST_DIR="${DST_ROOT}/${DIR_NAME}"
 
-        echo -e "${gl_bufan}=====================================${gl_bai}"
-        echo -e "${gl_zi}正在处理目录：${DIR_NAME}${gl_bai}"
-        echo -e "${gl_hui}源目录: ${gl_lan}${SRC_DIR}${gl_bai}"
-        echo -e "${gl_hui}目标目录: ${gl_lan}${DST_DIR}${gl_bai}"
-
+        log_print ""
+        now=$(date +"%Y-%m-%d %H:%M:%S")
+        log_print "[${now}] 正在处理目录：${DIR_NAME}"
+        log_print "====================================="
+        log_print "源 目 录: ${SRC_DIR}"
+        log_print "目标目录: ${DST_DIR}"
         mkdir -p "${DST_DIR}"
-
-        # 遍历mp4 mkv
         for src_file in "${SRC_DIR}"*.{mp4,mkv}; do
             [ -f "${src_file}" ] || continue
-
             FILENAME=$(basename "${src_file}")
             NAME_NO_EXT="${FILENAME%.*}"
             EXT="${FILENAME##*.}"
-
-            # mkv输出后缀改为mp4，mp4保持mp4
             if [[ "${EXT,,}" == "mkv" ]]; then
                 DST_FILE="${DST_DIR}/${NAME_NO_EXT}.mp4"
             else
                 DST_FILE="${DST_DIR}/${FILENAME}"
             fi
             LOG_FILE="${DST_DIR}/${NAME_NO_EXT}.log"
-
-            echo -e "${gl_bufan}开始转码: ${gl_bai}${src_file}"
-            echo -e "${gl_bufan}输出文件: ${gl_bai}${DST_FILE}"
-            echo -e "${gl_bufan}日志文件: ${gl_bai}${LOG_FILE}"
-
+            log_print "正在处理：${src_file}"
+            calc_est_time "${src_file}"
+            log_print "文件名称: ${FILENAME}"
+            log_print "开始转码: ${src_file}"
+            log_print "输出文件: ${DST_FILE}"
+            log_print "日志文件: ${LOG_FILE}"
+            log_print "查看日志：tail -f ${LOG_FILE}"
             ffmpeg -threads auto -probesize 32M -avioflags direct \
                 -i "${src_file}" -y \
                 -c:v hevc_qsv -preset fast -b:v 2600k -maxrate 5200k -bufsize 10400k -tag:v hvc1 \
                 -c:a copy \
                 "${DST_FILE}" > "${LOG_FILE}" 2>&1
-
             if [ $? -eq 0 ]; then
-                echo -e "${gl_lv}✅ ${FILENAME} 转码成功${gl_bai}"
+                log_print "✅ ${FILENAME} 转码成功"
+                rm -f "${LOG_FILE}"
                 if [[ "${DEL_SRC}" == "true" ]]; then
-                    echo -e "${gl_lv}删除源文件${gl_bai}"
+                    log_print "✅ 删除源文件"
                     rm -f "${src_file}"
-                    echo -e "${gl_huang}🔍 清理空目录 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
                     find "${SRC_ROOT}" -depth -type d -empty -delete
                 fi
             else
-                echo -e "${gl_hong}❌ ${FILENAME} 转码失败！保留源文件，继续下一个文件${gl_bai}"
+                log_print "❌ ${FILENAME} 转码失败！保留源文件和日志，继续下一个文件"
             fi
+            log_print ""
         done
     done
-
+    now=$(date +"%Y-%m-%d %H:%M:%S")
+    log_print "[${now}] ====== 本轮所有文件处理完成 ======"
     if [[ "${DEL_SRC}" == "true" ]]; then
-        echo -e "\n${gl_lv}🎉 全部目录处理完毕，执行最后一次空目录清理${gl_bai}"
+        log_print "\n🎉 全部目录处理完毕，执行最后一次空目录清理"
         find "${SRC_ROOT}" -depth -type d -empty -delete
     else
-        echo -e "\n${gl_lv}🎉 全部目录处理完毕（不删除源文件，跳过空目录清理）${gl_bai}"
+        log_print "\n🎉 全部目录处理完毕（不删除源文件，跳过空目录清理）"
     fi
 }
 
@@ -155,62 +210,53 @@ cli_mode() {
     local src_dir="$1"
     local dst_dir="$2"
     local del_src="${3:-false}"
-
     src_dir=$(abspath "${src_dir}")
     dst_dir=$(abspath "${dst_dir}")
-
     if [[ ! -d "${src_dir}" ]]; then
-        echo -e "${gl_hong}错误：源目录不存在 -> ${src_dir}${gl_bai}"
+        echo "错误：源目录不存在 -> ${src_dir}"
         return 1
     fi
-    mkdir -p "${dst_dir}" || { echo -e "${gl_hong}无法创建目标目录${gl_bai}"; return 1; }
-
-    echo -e "${gl_zi}>>> 命令行批量转码模式${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    echo -e "${gl_hui}源目录：${gl_lan}${src_dir}${gl_bai}"
-    echo -e "${gl_hui}目标目录：${gl_lan}${dst_dir}${gl_bai}"
-    echo -e "${gl_hui}转码成功后删除源文件：${gl_huang}${del_src}${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
+    mkdir -p "${dst_dir}" || { echo "无法创建目标目录"; break_end; return 1; }
+    echo ">>> 命令行批量转码模式"
+    echo "————————————————————————————————————————————————"
+    echo "源 目 录：${src_dir}"
+    echo "目标目录：${dst_dir}"
+    echo "转码成功后删除源文件：${del_src}"
+    echo "————————————————————————————————————————————————"
     do_batch_encode "${src_dir}" "${dst_dir}" "${del_src}"
     return $?
 }
 
 interactive_mode() {
     clear
-    echo -e "${gl_zi}>>> 交互式 一级子目录批量转码（mp4/mkv → mp4）${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
-    read -r -e -p "$(echo -e "${gl_bai}输入源根目录: ${gl_bai}")" src_in
+    echo ">>> 交互式 一级子目录批量 转码（mp4/mkv → mp4）"
+    echo "————————————————————————————————————————————————"
+    read -r -e -p "输入源根目录: " src_in
     src_in=$(abspath "${src_in}")
     if [[ ! -d "${src_in}" ]]; then
-        echo -e "${gl_hong}源目录不存在${gl_bai}"
+        echo "源目录不存在"
         break_end
         return 1
     fi
-
-    read -r -e -p "$(echo -e "${gl_bai}输入目标根目录: ${gl_bai}")" dst_in
+    read -r -e -p "输入目标根目录: " dst_in
     dst_in=$(abspath "${dst_in}")
-    mkdir -p "${dst_in}" || { echo -e "${gl_hong}无法创建目标目录${gl_bai}"; break_end; return 1; }
-
-    read -r -e -p "$(echo -e "${gl_bai}转码成功是否删除源文件?(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}) [默认N]: ")" del_choice
+    mkdir -p "${dst_in}" || { echo "无法创建目标目录"; break_end; return 1; }
+    read -r -e -p "$(echo -e "${gl_bai}转码成功是否删除源文件？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" del_choice
     local del_src="false"
     if [[ "${del_choice}" =~ ^[Yy]$ ]]; then
         del_src="true"
     fi
-
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    echo -e "${gl_hui}源目录：${gl_lan}${src_in}${gl_bai}"
-    echo -e "${gl_hui}目标目录：${gl_lan}${dst_in}${gl_bai}"
-    echo -e "${gl_hui}删除源文件：${gl_huang}${del_src}${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    read -r -e -p "$(echo -e "${gl_bai}确认开始？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+    echo "————————————————————————————————————————————————"
+    echo "源 目 录：${src_in}"
+    echo "目标目录：${dst_in}"
+    echo "删除源文件：${del_src}"
+    echo "————————————————————————————————————————————————"
+    read -r -e -p "$(echo -e "${gl_bai}确认开始？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
     if [[ ! "${confirm}" =~ ^[Yy]$ ]]; then
-        echo -e "${gl_huang}已取消任务${gl_bai}"
+        echo "已取消任务"
         break_end
         return 0
     fi
-
     do_batch_encode "${src_in}" "${dst_in}" "${del_src}"
     break_end
 }
