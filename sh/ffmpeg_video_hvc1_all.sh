@@ -1,209 +1,227 @@
 #!/bin/bash
-# HEVC‑QSV批量转码 hvc1标记 nohup后台版｜兼容curl管道执行，fnOS N100/N305
-# 用法: bash ffmpeg_video_hvc1_all.sh 源目录 输出目录 [del_src:true/false]
+# ==============================================================================
+# HEVC hvc1 QSV批量目录转码脚本｜遍历一级子目录
+# 支持：交互式 / 命令行传参
+# 参数：源目录 目标目录 是否删除源文件(true/false)
+# 更新：支持 mp4,mkv；mkv转码输出为mp4；mp4保持后缀不变
+# 逻辑不变：遍历源下一级子文件夹，串行转码；成功后按需删源+清理空目录
+# ==============================================================================
 set -uo pipefail
-######################## 配置区 ########################
-LOCKFILE="/tmp/videnc_nohup.lock"
-QSV_PRESET="fast"
-QSV_BITRATE="2600k"
-QSV_MAXRATE="5200k"
-QSV_BUFSIZE="10400k"
-QSV_GLOBAL_QUALITY=28
-MOVFLAGS_FASTSTART=true
-FF_THREADS=2
-PROBESIZE="32M"
-MAX_RETRY=1
-KEEP_ALL_LOG=false
-########################################################
-gl_hui=$'\033[38;5;8m'
-gl_hong=$'\033[38;5;9m'
-gl_lv=$'\033[38;5;10m'
-gl_huang=$'\033[38;5;11m'
-gl_lan=$'\033[38;5;12m'
-gl_zi=$'\033[38;5;13m'
-gl_cyan=$'\033[38;5;14m'
-gl_bai=$'\033[38;5;15m'
-my_dirname(){
+
+list_color_init() {
+    export gl_hui=$'\033[38;5;59m'
+    export gl_hong=$'\033[38;5;9m'
+    export gl_lv=$'\033[38;5;10m'
+    export gl_huang=$'\033[38;5;11m'
+    export gl_lan=$'\033[38;5;32m'
+    export gl_bai=$'\033[38;5;15m'
+    export gl_zi=$'\033[38;5;13m'
+    export gl_bufan=$'\033[38;5;14m'
+}
+list_color_init
+
+break_end() {
+    echo -e "${gl_lv}操作完成${gl_bai}"
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    read -r -n 1 -s -r -p ""
+    echo ""
+    clear
+}
+
+abspath() {
     local p="$1"
-    [[ "$p" == */* ]] && { local x="${p%/*}"; [[ -z "$x" ]] && echo "/" || echo "$x"; } || echo "."
+    if command -v realpath &>/dev/null; then
+        realpath "$p" 2>/dev/null || readlink -f "$p" 2>/dev/null || echo "$p"
+    else
+        case "$p" in
+            /*) echo "$p" ;;
+            *)  echo "$PWD/$p" ;;
+        esac
+    fi
 }
-my_basename(){ local p="$1"; echo "${p##*/}"; }
-g_interrupted=0
-sig_handler(){
-    g_interrupted=1
-    echo -e "\n${gl_huang}[!] 收到终止信号，停止ffmpeg${gl_bai}"
-    pkill -9 -f ffmpeg 2>/dev/null
-}
-install_deps(){
+
+install_deps() {
     echo -e "${gl_zi}>>> 检查依赖${gl_bai}"
-    if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null;then
-        echo -e "${gl_hong}[X] ffmpeg/ffprobe未找到${gl_bai}"
-        exit 1
-    fi
-    echo -e "${gl_lv}ffmpeg/ffprobe 已安装: $(command -v ffmpeg)${gl_bai}"
-    if ! ffmpeg -h encoder=hevc_qsv &>/dev/null;then
-        echo -e "${gl_hong}[X] 不支持hevc_qsv编码器${gl_bai}"
-        exit 1
-    fi
-    echo -e "${gl_lv}hevc_qsv 硬件编码器 ✅${gl_bai}"
-    if command -v vainfo &>/dev/null;then
-        vainfo &>/dev/null && echo -e "${gl_lv}VA‑API硬件环境正常 ✅${gl_bai}" || echo -e "${gl_huang}[!] vainfo异常${gl_bai}"
-    else
-        echo -e "${gl_huang}[i] 未安装vainfo${gl_bai}"
-    fi
-}
-do_encode(){
-    local src="$1" dst="$2" log="$3" retry="$4"
-    local logdir; logdir=$(my_dirname "${log}")
-    mkdir -p "${logdir}" 2>/dev/null
-    >"${log}"
-    [[ ! -f "${src}" ]] && { echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘源不存在 ${src}">>"${log}";return 127; }
-    [[ ! -r "${src}" ]] && { echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘无读权限 ${src}">>"${log}";return 126; }
-    if ! ffprobe -v error -show_format "${src}" >>"${log}" 2>&1;then
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘源文件损坏">>"${log}";return 10
-    fi
-    local dstdir; dstdir=$(my_dirname "${dst}")
-    mkdir -p "${dstdir}" 2>/dev/null
-    [[ ! -w "${dstdir}" ]] && { echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘输出目录无写权限">>"${log}";return 13; }
-    echo "------------------------------------------------------------">>"${log}"
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] >>>开始转码 retry=${retry}">>"${log}"
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] SRC:${src}">>"${log}"
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] DST:${dst}">>"${log}"
-    local ffmpeg_cmd=(
-        ffmpeg
-        -threads "${FF_THREADS}"
-        -probesize "${PROBESIZE}"
-        -fflags +genpts+igndts
-        -qsv_device /dev/dri/renderD128
-        -extra_hw_frames 64
-        -i "${src}"
-        -y
-        -c:v hevc_qsv
-        -preset "${QSV_PRESET}"
-        -global_quality "${QSV_GLOBAL_QUALITY}"
-        -b:v "${QSV_BITRATE}"
-        -maxrate "${QSV_MAXRATE}"
-        -bufsize "${QSV_BUFSIZE}"
-        -tag:v hvc1
-    )
-    [[ "${MOVFLAGS_FASTSTART}" == true ]] && ffmpeg_cmd+=(-movflags +faststart)
-    ffmpeg_cmd+=(-avoid_negative_ts make_zero -c:a copy "${dst}")
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] CMD:${ffmpeg_cmd[*]}">>"${log}"
-    "${ffmpeg_cmd[@]}">>"${log}" 2>&1
-    local ret=$?
-    [[ ${g_interrupted} -eq 1 ]] && { echo "[$(date '+%Y-%m-%d %H:%M:%S')] ⚠️外部中断">>"${log}";return 255; }
-    if [[ ${ret} -eq 0 ]];then
-        if ffprobe -v error -show_streams "${dst}">>"${log}" 2>&1;then
-            echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✔完成 ${dst}校验正常">>"${log}"
-            [[ "${KEEP_ALL_LOG}" == false ]] && rm -f "${log}"
-            return 0
+    if command -v ffmpeg &>/dev/null; then
+        echo -e "${gl_lv}ffmpeg 已安装: $(command -v ffmpeg)${gl_bai}"
+        if ffmpeg -h encoder=hevc_qsv >/dev/null 2>&1; then
+            echo -e "${gl_lv}hevc_qsv 硬件编码器（FFmpeg编译支持）✅${gl_bai}"
+            if command -v vainfo &>/dev/null; then
+                if vainfo >/dev/null 2>&1; then
+                    echo -e "${gl_lv}VA‑API硬件环境正常 ✅${gl_bai}"
+                else
+                    echo -e "${gl_huang}⚠ vainfo检测异常：VA‑API驱动/权限可能异常，QSV硬件可能无法工作${gl_bai}"
+                fi
+            else
+                echo -e "${gl_huang}ℹ 未安装vainfo，跳过硬件环境校验${gl_bai}"
+            fi
         else
-            echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘输出视频损坏">>"${log}"
-            rm -f "${dst}" 2>/dev/null
-            return 2
+            echo -e "${gl_hong}❌ 当前ffmpeg未编译支持 hevc_qsv 编码器，硬件转码不可用${gl_bai}"
         fi
-    else
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘ffmpeg退出码=${ret}">>"${log}"
-        rm -f "${dst}" 2>/dev/null
-        return "${ret}"
+        return 0
     fi
+
+    echo -e "${gl_huang}ffmpeg 未找到，尝试自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    if command -v apt &>/dev/null; then
+        sudo apt update && sudo apt install -y ffmpeg vainfo
+    elif command -v dnf &>/dev/null; then
+        sudo dnf install -y ffmpeg vainfo
+    elif command -v yum &>/dev/null; then
+        sudo yum install -y epel-release && sudo yum install -y ffmpeg vainfo
+    elif command -v pacman &>/dev/null; then
+        sudo pacman -S --noconfirm ffmpeg vainfo
+    elif command -v zypper &>/dev/null; then
+        sudo zypper install -y ffmpeg vainfo
+    elif command -v apk &>/dev/null; then
+        sudo apk add ffmpeg vainfo
+    elif command -v brew &>/dev/null; then
+        brew install ffmpeg
+    else
+        echo -e "${gl_hong}无法自动安装 ffmpeg，请手动安装后重试${gl_bai}"
+    fi
+    if ! command -v ffmpeg &>/dev/null; then
+        echo -e "${gl_hong}ffmpeg 安装失败，请手动安装${gl_bai}"
+        return 1
+    fi
+    echo -e "${gl_lv}ffmpeg 安装成功${gl_bai}"
+    return 0
 }
-run_batch_inner(){
-    local src_root="$1" dst_root="$2" del_src="$3"
-    local main_log="${dst_root}/batch_main.log"
-    mkdir -p "${dst_root}"
-    >"${main_log}"
-    trap sig_handler SIGTERM SIGINT
-    local ok=0 fail=0 skip=0 total=0
-    local file_list=()
-    while IFS= read -r -d '' line;do file_list+=("$line");done < <(find "${src_root}" -type f \( -iname "*.mp4" -o -iname "*.mkv" \) -print0 )
-    for src_file in "${file_list[@]}";do
-        [[ ${g_interrupted} -eq 1 ]] && { echo -e "\n[!]中断退出">>"${main_log}";break; }
-        ((total++))
-        local relpath="${src_file#${src_root}/}"
-        local dst_file="${dst_root}/${relpath%.*}.mp4"
-        local log_file="${dst_root}/${relpath%.*}.log"
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] tail -f ${log_file}">>"${main_log}"
-        echo "[$(date '+%Y-%m-%d %H:%M:%S')] 文件:$(my_basename "${src_file}")">>"${main_log}"
-        if [[ -f "${dst_file}" ]];then
-            echo "[$(date '+%Y-%m-%d %H:%M:%S')] ⏭已存在跳过 ${dst_file}">>"${main_log}"
-            ((skip++))
-            echo >>"${main_log}"
-            continue
-        fi
-        local rc=1
-        for ((r=0;r<=MAX_RETRY;r++));do
-            do_encode "${src_file}" "${dst_file}" "${log_file}" "${r}"
-            rc=$?
-            [[ ${rc} -eq 0 ]] && break
-            [[ ${g_interrupted} -eq 1 ]] && { rc=255;break; }
-            sleep 0.5
+
+do_batch_encode() {
+    local SRC_ROOT="$1"
+    local DST_ROOT="$2"
+    local DEL_SRC="$3"
+
+    for SRC_DIR in "${SRC_ROOT}"/*/; do
+        DIR_NAME=$(basename "${SRC_DIR%/}")
+        DST_DIR="${DST_ROOT}/${DIR_NAME}"
+
+        echo -e "${gl_bufan}=====================================${gl_bai}"
+        echo -e "${gl_zi}正在处理目录：${DIR_NAME}${gl_bai}"
+        echo -e "${gl_hui}源目录: ${gl_lan}${SRC_DIR}${gl_bai}"
+        echo -e "${gl_hui}目标目录: ${gl_lan}${DST_DIR}${gl_bai}"
+
+        mkdir -p "${DST_DIR}"
+
+        # 遍历mp4 mkv
+        for src_file in "${SRC_DIR}"*.{mp4,mkv}; do
+            [ -f "${src_file}" ] || continue
+
+            FILENAME=$(basename "${src_file}")
+            NAME_NO_EXT="${FILENAME%.*}"
+            EXT="${FILENAME##*.}"
+
+            # mkv输出后缀改为mp4，mp4保持mp4
+            if [[ "${EXT,,}" == "mkv" ]]; then
+                DST_FILE="${DST_DIR}/${NAME_NO_EXT}.mp4"
+            else
+                DST_FILE="${DST_DIR}/${FILENAME}"
+            fi
+            LOG_FILE="${DST_DIR}/${NAME_NO_EXT}.log"
+
+            echo -e "${gl_bufan}开始转码: ${gl_bai}${src_file}"
+            echo -e "${gl_bufan}输出文件: ${gl_bai}${DST_FILE}"
+            echo -e "${gl_bufan}日志文件: ${gl_bai}${LOG_FILE}"
+
+            ffmpeg -threads auto -probesize 32M -avioflags direct \
+                -i "${src_file}" -y \
+                -c:v hevc_qsv -preset fast -b:v 2600k -maxrate 5200k -bufsize 10400k -tag:v hvc1 \
+                -c:a copy \
+                "${DST_FILE}" > "${LOG_FILE}" 2>&1
+
+            if [ $? -eq 0 ]; then
+                echo -e "${gl_lv}✅ ${FILENAME} 转码成功${gl_bai}"
+                if [[ "${DEL_SRC}" == "true" ]]; then
+                    echo -e "${gl_lv}删除源文件${gl_bai}"
+                    rm -f "${src_file}"
+                    echo -e "${gl_huang}🔍 清理空目录 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    find "${SRC_ROOT}" -depth -type d -empty -delete
+                fi
+            else
+                echo -e "${gl_hong}❌ ${FILENAME} 转码失败！保留源文件，继续下一个文件${gl_bai}"
+            fi
         done
-        if [[ ${rc} -eq 0 ]];then
-            ((ok++))
-            [[ "${del_src}" == "true" ]] && rm -f "${src_file}"
-        else
-            ((fail++))
-            echo "[$(date '+%Y-%m-%d %H:%M:%S')] ❌失败 rc=${rc} log=${log_file}">>"${main_log}"
-        fi
-        echo >>"${main_log}"
     done
-    echo -e "\n====================================">>"${main_log}"
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] 📊任务结束｜成功:${ok} 失败:${fail} 跳过:${skip} 总计:${total}">>"${main_log}"
-}
-cli_mode(){
-    local src_in="$1" dst_in="$2" del_src="${3:-false}"
-    exec 9>"${LOCKFILE}"
-    if ! flock -n 9 ;then
-        echo -e "${gl_hong}[X]已有任务在运行，禁止重复启动${gl_bai}"
-        exit 1
+
+    if [[ "${DEL_SRC}" == "true" ]]; then
+        echo -e "\n${gl_lv}🎉 全部目录处理完毕，执行最后一次空目录清理${gl_bai}"
+        find "${SRC_ROOT}" -depth -type d -empty -delete
+    else
+        echo -e "\n${gl_lv}🎉 全部目录处理完毕（不删除源文件，跳过空目录清理）${gl_bai}"
     fi
-    install_deps
-    src_in=$(realpath -m "${src_in}")
-    dst_in=$(realpath -m "${dst_in}")
-    [[ ! -d "${src_in}" ]] && { echo -e "${gl_hong}[X]源目录不存在 ${src_in}${gl_bai}";exit 1; }
-    mkdir -p "${dst_in}" || { echo -e "${gl_hong}[X]创建输出目录失败${gl_bai}";exit 1; }
-    echo -e "${gl_cyan}————————————————————————————————————${gl_bai}"
-    echo -e "${gl_zi}HEVC‑QSV批量转码 N100/N305 nohup后台${gl_bai}"
-    echo -e "${gl_lan}源目录: ${src_in}${gl_bai}"
-    echo -e "${gl_lan}输出目录: ${dst_in}${gl_bai}"
-    echo -e "${gl_lan}删除源文件: ${del_src}${gl_bai}"
-    echo -e "${gl_cyan}————————————————————————————————————${gl_bai}"
-    # nohup后台，不使用setsid，不调用$0，规避/dev/fd问题
-    nohup bash -c '
-        src_in="$1";dst_in="$2";del_src="$3"
-        export KEEP_ALL_LOG='"${KEEP_ALL_LOG}"'
-        export QSV_PRESET='"${QSV_PRESET}"'
-        export QSV_BITRATE='"${QSV_BITRATE}"'
-        export QSV_MAXRATE='"${QSV_MAXRATE}"'
-        export QSV_BUFSIZE='"${QSV_BUFSIZE}"'
-        export QSV_GLOBAL_QUALITY='"${QSV_GLOBAL_QUALITY}"'
-        export MOVFLAGS_FASTSTART='"${MOVFLAGS_FASTSTART}"'
-        export FF_THREADS='"${FF_THREADS}"'
-        export PROBESIZE='"${PROBESIZE}"'
-        export MAX_RETRY='"${MAX_RETRY}"'
-        '"$(declare -f my_dirname my_basename sig_handler do_encode run_batch_inner)"'
-        run_batch_inner "${src_in}" "${dst_in}" "${del_src}"
-    ' bash "${src_in}" "${dst_in}" "${del_src}" >"${dst_in}/nohup.out" 2>&1 &
-    local bg_pid=$!
-    exec 9<&-
-    echo -e "${gl_lv}✅ nohup后台任务已启动 PID:${bg_pid}${gl_bai}"
-    echo ""
-    echo -e "${gl_zi}📋查看实时日志${gl_bai}"
-    echo -e "${gl_hui}#批量总进度${gl_bai}"
-    echo "tail -f ${dst_in}/batch_main.log"
-    echo ""
-    echo -e "${gl_hui}#查看进程${gl_bai}"
-    echo "pgrep -af ffmpeg"
-    echo ""
-    echo -e "${gl_hui}#⛔停止全部任务${gl_bai}"
-cat <<'EOF'
-bash -c 'pkill -9 -f ffmpeg 2>/dev/null; rm -f /tmp/videnc_nohup.lock'
-EOF
-    echo -e "${gl_cyan}————————————————————————————————————${gl_bai}"
 }
-main(){
-    [[ $# -lt 2 ]] && { echo "用法: $0 源目录 输出目录 [del_src:true/false]";exit 1; }
-    cli_mode "$1" "$2" "${3:-false}"
+
+cli_mode() {
+    local src_dir="$1"
+    local dst_dir="$2"
+    local del_src="${3:-false}"
+
+    src_dir=$(abspath "${src_dir}")
+    dst_dir=$(abspath "${dst_dir}")
+
+    if [[ ! -d "${src_dir}" ]]; then
+        echo -e "${gl_hong}错误：源目录不存在 -> ${src_dir}${gl_bai}"
+        return 1
+    fi
+    mkdir -p "${dst_dir}" || { echo -e "${gl_hong}无法创建目标目录${gl_bai}"; return 1; }
+
+    echo -e "${gl_zi}>>> 命令行批量转码模式${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_hui}源目录：${gl_lan}${src_dir}${gl_bai}"
+    echo -e "${gl_hui}目标目录：${gl_lan}${dst_dir}${gl_bai}"
+    echo -e "${gl_hui}转码成功后删除源文件：${gl_huang}${del_src}${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    do_batch_encode "${src_dir}" "${dst_dir}" "${del_src}"
+    return $?
 }
+
+interactive_mode() {
+    clear
+    echo -e "${gl_zi}>>> 交互式 一级子目录批量转码（mp4/mkv → mp4）${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    read -r -e -p "$(echo -e "${gl_bai}输入源根目录: ${gl_bai}")" src_in
+    src_in=$(abspath "${src_in}")
+    if [[ ! -d "${src_in}" ]]; then
+        echo -e "${gl_hong}源目录不存在${gl_bai}"
+        break_end
+        return 1
+    fi
+
+    read -r -e -p "$(echo -e "${gl_bai}输入目标根目录: ${gl_bai}")" dst_in
+    dst_in=$(abspath "${dst_in}")
+    mkdir -p "${dst_in}" || { echo -e "${gl_hong}无法创建目标目录${gl_bai}"; break_end; return 1; }
+
+    read -r -e -p "$(echo -e "${gl_bai}转码成功是否删除源文件?(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}) [默认N]: ")" del_choice
+    local del_src="false"
+    if [[ "${del_choice}" =~ ^[Yy]$ ]]; then
+        del_src="true"
+    fi
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_hui}源目录：${gl_lan}${src_in}${gl_bai}"
+    echo -e "${gl_hui}目标目录：${gl_lan}${dst_in}${gl_bai}"
+    echo -e "${gl_hui}删除源文件：${gl_huang}${del_src}${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}确认开始？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+    if [[ ! "${confirm}" =~ ^[Yy]$ ]]; then
+        echo -e "${gl_huang}已取消任务${gl_bai}"
+        break_end
+        return 0
+    fi
+
+    do_batch_encode "${src_in}" "${dst_in}" "${del_src}"
+    break_end
+}
+
+main() {
+    install_deps || exit 1
+    if [[ $# -ge 1 ]]; then
+        cli_mode "$@"
+    else
+        interactive_mode
+    fi
+}
+
 main "$@"
