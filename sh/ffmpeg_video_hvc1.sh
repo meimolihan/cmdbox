@@ -8,13 +8,13 @@ set -uo pipefail
 
 ########################### 【可配置参数区】###########################
 LOCKFILE="/tmp/ffmpeg_batch_encode.lock"
-# QSV编码参数
+# QSV编码参数【已对齐目标ffmpeg命令】
 QSV_PRESET="fast"
-QSV_BV="2200k"
-QSV_MAXRATE="4400k"
-QSV_BUFSIZE="8800k"
-# mp4 faststart：开启=支持流式播放；关闭=减少转码末尾大IO，适合机械盘/CIFS
-MOVFLAGS_FASTSTART=true
+QSV_BV="2600k"
+QSV_MAXRATE="5200k"
+QSV_BUFSIZE="10400k"
+# mp4 faststart：已禁用，匹配参考命令无‑movflags +faststart
+MOVFLAGS_FASTSTART=false
 # ffmpeg输入参数
 FFMPEG_THREADS="auto"
 PROBESIZE="32M"
@@ -53,7 +53,6 @@ abspath() {
     fi
 }
 
-# 锁增强：检测锁内PID是否存活，避免僵尸锁
 lock_acquire() {
     if [[ -f "${LOCKFILE}" ]]; then
         local oldpid
@@ -139,7 +138,6 @@ do_encode() {
     local fname
     fname=$(basename "$src")
     mkdir -p "$(dirname "$log")" 2>/dev/null
-
     # 前置校验
     if [[ ! -s "${src}" ]]; then
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘ 源文件为空或不存在: ${src}" | tee -a "$log"
@@ -149,13 +147,11 @@ do_encode() {
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✘ 输出目录无写入权限 $(dirname "$dst")" | tee -a "$log"
         return 1
     fi
-
     echo "------------------------------------------------------------" >> "$log"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] >>> 开始转码: ${fname}" | tee -a "$log"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 输入: ${src}" >> "$log"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 输出: ${dst}" >> "$log"
-
-    # 组装ffmpeg参数
+    # 组装ffmpeg参数｜严格对齐目标命令：无movflags faststart，音频 c:a copy
     local ffmpeg_cmd=(
         ffmpeg
         -threads "${FFMPEG_THREADS}"
@@ -170,15 +166,11 @@ do_encode() {
         -bufsize "${QSV_BUFSIZE}"
         -tag:v hvc1
     )
-    if [[ "${MOVFLAGS_FASTSTART}" == true ]]; then
-        ffmpeg_cmd+=(-movflags +faststart)
-    fi
-    ffmpeg_cmd+=(-c:a copy "$dst")
 
+    ffmpeg_cmd+=(-c:a copy "$dst")
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] ffmpeg_cmd: ${ffmpeg_cmd[*]}" >> "$log"
     "${ffmpeg_cmd[@]}" >> "$log" 2>&1
     local ret=$?
-
     if [[ $ret -eq 0 ]]; then
         echo "[$(date '+%Y-%m-%d %H:%M:%S')] ✔ 完成: ${dst}" | tee -a "$log"
     else
@@ -195,11 +187,9 @@ run_queue() {
     local ok=0 fail=0
     local total=${#files[@]}
 
-    # 提示网络挂载风险
     if mount | grep -qE "cifs|nfs|smb"; then
-        echo -e "${gl_huang}⚠ 检测到网络文件系统，IO等待wa可能升高，建议关闭MOVFLAGS_FASTSTART${gl_bai}"
+        echo -e "${gl_huang}⚠ 检测到网络文件系统，IO等待wa可能升高${gl_bai}"
     fi
-
     for ((i=0; i<total; i++)); do
         local src="${files[$i]}"
         local fname=$(basename "$src")
@@ -405,6 +395,7 @@ cli_mode() {
         dst="${out_dir}/${fname}"
     fi
     local log="${out_dir}/${name}.log"
+    echo -e ""
     echo -e "${gl_zi}>>> 命令行单文件转码 QSV‑hvc1${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     echo -e "${gl_hui}输入: ${gl_bai}${src}"
@@ -429,6 +420,8 @@ cli_mode() {
         " >/dev/null 2>&1 &
         disown
         echo -e "${gl_lv}✅ 单文件后台启动 PID:$!${gl_bai}"
+        echo -e "${gl_hui}查看日志: ${gl_lan}tail -f ${log}${gl_bai}"
+        echo -e "${gl_hui}结束进程: ${gl_lan}pkill -9 -f ffmpeg${gl_bai}"
         return 0
     fi
     do_encode "$src" "$dst" "$log"
@@ -444,5 +437,4 @@ main() {
         interactive_mode
     fi
 }
-
 main "$@"
