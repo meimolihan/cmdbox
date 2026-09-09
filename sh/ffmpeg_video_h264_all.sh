@@ -1,3 +1,8 @@
+
+
+
+
+
 #!/bin/bash
 # ==============================================================================
 # libx264 CRF恒定质量 H.264 批量目录转码脚本
@@ -211,7 +216,7 @@ do_batch_encode() {
             if [[ $NEED_ENCODE -eq 1 ]];then
                 ffmpeg -threads auto -probesize 32M -avioflags direct \
                     -i "${src_file}" -y \
-                    -c:v libx264 -preset fast -profile:v main -crf 23 \
+                    -c:v libx264 -preset veryfast -profile:v main -crf 23 \
                     -c:a copy \
                     -movflags +faststart \
                     "${DST_FILE}" > "${LOG_FILE}" 2>&1
