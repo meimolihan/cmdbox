@@ -1,0 +1,457 @@
+#!/bin/bash
+list_color_init() {
+    export gl_hui=$'\033[38;5;59m'
+    export gl_hong=$'\033[38;5;9m'
+    export gl_lv=$'\033[38;5;10m'
+    export gl_huang=$'\033[38;5;11m'
+    export gl_lan=$'\033[38;5;32m'
+    export gl_bai=$'\033[38;5;15m'
+    export gl_zi=$'\033[38;5;13m'
+    export gl_bufan=$'\033[38;5;14m'
+    export reset=$'\033[0m'
+}
+
+list_color_init
+log_info()  { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
+log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
+log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
+log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
+
+sleep_fractional() {
+    local seconds=$1
+    if sleep "$seconds" 2>/dev/null; then
+        return 0
+    fi
+    if command -v perl >/dev/null 2>&1; then
+        perl -e "select(undef, undef, undef, $seconds)"
+        return 0
+    fi
+    if command -v python3 >/dev/null 2>&1; then
+        python3 -c "import time; time.sleep($seconds)"
+        return 0
+    elif command -v python >/dev/null 2>&1; then
+        python -c "import time; time.sleep($seconds)"
+        return 0
+    fi
+    local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
+    sleep "$int_seconds"
+}
+
+exit_animation() {
+    echo -ne "${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
+exit_script() {
+    local frames=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
+    local dots=(
+        "${gl_hong}."
+        "${gl_huang}."
+        "${gl_lv}."
+        "${gl_bufan}."
+        "${gl_zi}."
+    )
+    local dot_buffer=""
+    local frame_len=${#frames[@]}
+    local dot_idx=0
+    local total_dots=${#dots[@]}
+    for ((i=0; i<20; i++)); do
+        if (( i > 0 && i % 3 == 0 && dot_idx < total_dots )); then
+            dot_buffer+=${dots[$dot_idx]}
+            ((dot_idx++))
+        fi
+        echo -ne "\r\033[K${gl_bufan}${frames[i % frame_len]}${gl_bai} 正在退出 ${dot_buffer}"
+        sleep_fractional 0.06
+    done
+    echo -e "\r\033[K${gl_lv}✓${gl_bai} 成功退出\n"
+    clear
+    exit 0
+}
+
+cancel_return() {
+    local menu_name="${1:-上一级选单}"
+    echo -e "${gl_lv}即将返回到 ${gl_huang}${menu_name}${gl_lv} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    sleep_fractional 0.6
+    echo ""
+    clear
+}
+
+down_selected_compose_projects() {
+    local COMPOSE_WORK_DIR="$1"
+    shift
+    local PROJECT_LIST=("$@")
+    local SKIP_CONFIRM="${PROJECT_LIST[-1]}"
+    unset PROJECT_LIST[-1]
+    clear
+    echo -e ""
+    echo -e "${gl_zi}>>> 下线指定 Compose 项目${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! docker info &>/dev/null; then
+        log_error "Docker 服务未运行"
+        exit_animation
+        return 1
+    fi
+    if [[ ! -d "$COMPOSE_WORK_DIR" ]]; then
+        log_error "目录不存在: $COMPOSE_WORK_DIR"
+        exit_animation
+        return 1
+    fi
+    echo -e "${gl_bai}工作目录: ${gl_huang}$COMPOSE_WORK_DIR${gl_bai}"
+    echo -e "${gl_bai}待处理项目列表: ${gl_huang}${PROJECT_LIST[*]}${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ "$SKIP_CONFIRM" != "true" ]]; then
+        read -r -e -p "$(echo -e "${gl_hong}警告: ${gl_bai}确定下线上面列出项目吗？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+            echo -e "${gl_huang}已取消${gl_bai}"
+            exit_animation
+            return
+        fi
+    fi
+    local down_count=0
+    local warn_count=0
+    local fail_count=0
+    local total_count=${#PROJECT_LIST[@]}
+    for proj in "${PROJECT_LIST[@]}"; do
+        local proj_dir="${COMPOSE_WORK_DIR}/${proj}"
+        local yml_file=""
+        if [[ -f "${proj_dir}/docker-compose.yml" ]]; then
+            yml_file="${proj_dir}/docker-compose.yml"
+        elif [[ -f "${proj_dir}/docker-compose.yaml" ]]; then
+            yml_file="${proj_dir}/docker-compose.yaml"
+        else
+            log_warn "项目 ${gl_huang}$proj${gl_bai} 目录下找不到 docker-compose.yml / yaml，跳过"
+            ((warn_count++))
+            continue
+        fi
+
+        echo -e ""
+        echo -e "${gl_huang}>>> 下线项目: ${gl_lv}$proj${gl_bai}"
+        local out
+        local ret
+        if command -v docker-compose &>/dev/null; then
+            out=$(docker-compose -f "$yml_file" down 2> >(grep -v "No resource found to remove"))
+            ret=$?
+        elif docker compose version &>/dev/null; then
+            out=$(docker compose -f "$yml_file" down 2> >(grep -v "No resource found to remove"))
+            ret=$?
+        else
+            log_error "未找到 docker-compose / docker compose 命令"
+            return 1
+        fi
+        [[ -n "$out" ]] && echo "$out"
+        if [[ $ret -eq 0 ]]; then
+            log_ok "已完成: $proj"
+            ((down_count++))
+        else
+            log_error "项目 $proj down 执行失败"
+            ((fail_count++))
+        fi
+        echo -e ""
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}任务结束${gl_bai}"
+    echo -e "${gl_bai}总计项目: ${gl_huang}$total_count${gl_bai}"
+    echo -e "${gl_lv}成功下线: $down_count${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ "$SKIP_CONFIRM" == "true" ]]; then
+        return
+    fi
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    read -r -n 1 -s -r -p ""
+    echo ""
+    clear
+}
+
+interactive_down() {
+    clear
+    echo -e ""
+    echo -e "${gl_zi}>>> 下线所有 Compose 项目${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! docker info &>/dev/null; then
+        log_error "Docker 服务未运行"
+        exit_animation
+        return 1
+    fi
+    local preset_dirs=(
+        "/compose"
+        "/mnt/compose"
+        "/vol1/1000/compose"
+        "/vol2/1000/compose"
+    )
+    log_info "正在扫描运行中的 docker-compose 项目 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    local running_projects=()
+    if command -v docker &>/dev/null && docker info &>/dev/null; then
+        while IFS= read -r dir; do
+            [[ -z "$dir" ]] && continue
+            [[ ! -d "$dir" ]] && continue
+            running_projects+=("$(realpath "$dir")")
+        done < <(
+            docker ps --format '{{.Names}}' 2>/dev/null |
+                xargs -I{} sh -c 'docker inspect {} 2>/dev/null | jq -r ".[0].Config.Labels[\"com.docker.compose.project.working_dir\"]" 2>/dev/null || echo ""' |
+                sort -u
+        )
+    fi
+    local recommended_dirs=()
+    for preset_dir in "${preset_dirs[@]}"; do
+        for running_dir in "${running_projects[@]}"; do
+            if [[ "$running_dir" == "$preset_dir" ]] || [[ "$running_dir" == "$preset_dir"* ]]; then
+                recommended_dirs+=("$preset_dir")
+                break
+            fi
+        done
+    done
+    recommended_dirs=($(printf "%s\n" "${recommended_dirs[@]}" | sort -u))
+    if [[ ${#running_projects[@]} -gt 0 ]]; then
+        echo -e "${gl_bai}扫描到运行中的 docker-compose 项目目录:${gl_bai}"
+        for dir in "${running_projects[@]}"; do
+            echo -e "  ${gl_lv}•${gl_bai} ${dir}"
+        done
+        if [[ ${#recommended_dirs[@]} -gt 0 ]]; then
+            echo -e "${gl_bai}推荐的工作目录:${gl_bai}"
+            for dir in "${recommended_dirs[@]}"; do
+                echo -e "  ${gl_hong}★${gl_bai} ${dir}"
+            done
+        fi
+    else
+        echo -e "${gl_huang}未找到运行中的 docker-compose 项目${gl_bai}"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e ""
+    echo -e "${gl_huang}>>> 请选择要下线的工作目录:${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    for i in "${!preset_dirs[@]}"; do
+        local marker=""
+        local dir_status=""
+        for rd in "${recommended_dirs[@]}"; do
+            if [[ "${preset_dirs[i]}" == "$rd" ]]; then
+                marker=" ${gl_hong}(推荐)${gl_bai}"
+                break
+            fi
+        done
+        if [[ -d "${preset_dirs[i]}" ]]; then
+            local compose_count=$(find "${preset_dirs[i]}" -maxdepth 2 -type f \( -name "docker-compose.yml" -o -name "docker-compose.yaml" \) 2>/dev/null | wc -l)
+            if [[ $compose_count -gt 0 ]]; then
+                dir_status="${gl_lv}[有 ${compose_count} 个项目]${gl_bai}"
+            else
+                dir_status="${gl_huang}[无 compose 项目]${gl_bai}"
+            fi
+        else
+            dir_status="${gl_huang}[目录不存在]${gl_bai}"
+        fi
+        echo -e "${gl_bufan}$((i + 1)).${gl_bai} ${preset_dirs[i]} $dir_status$marker"
+    done
+    echo -e "${gl_bufan}$((${#preset_dirs[@]} + 1)).${gl_bai} 手动指定路径"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_huang}0.${gl_bai} 返回上一级选单"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}请输入你的选择 (${gl_huang}0${gl_bai}-${gl_hong}$((${#preset_dirs[@]} + 1))${gl_bai}): ")" dir_choice
+    local COMPOSE_WORK_DIR=""
+    if [[ -z "$dir_choice" ]] && [[ ${#recommended_dirs[@]} -gt 0 ]]; then
+        COMPOSE_WORK_DIR="${recommended_dirs[0]}"
+        echo -e "${gl_bai}使用推荐目录: ${gl_huang}$COMPOSE_WORK_DIR${gl_bai}"
+    elif [[ "$dir_choice" =~ ^[0-9]+$ ]]; then
+        if [[ $dir_choice -eq 0 ]]; then
+            cancel_return "Compose 项目管理"
+            return
+        elif [[ $dir_choice -le ${#preset_dirs[@]} ]]; then
+            COMPOSE_WORK_DIR="${preset_dirs[$((dir_choice - 1))]}"
+        elif [[ $dir_choice -eq $((${#preset_dirs[@]} + 1)) ]]; then
+            read -r -e -p "$(echo -e "${gl_bai}请输入自定义路径: ")" COMPOSE_WORK_DIR
+        else
+            log_error "无效选择"
+            exit_animation
+            return
+        fi
+    else
+        COMPOSE_WORK_DIR="$dir_choice"
+    fi
+    if [[ -z "$COMPOSE_WORK_DIR" ]]; then
+        log_warn "路径不能为空"
+        exit_animation
+        return
+    fi
+    if [[ ! -d "$COMPOSE_WORK_DIR" ]]; then
+        log_warn "目录不存在: $COMPOSE_WORK_DIR"
+        exit_animation
+        return
+    fi
+    down_all_compose_projects "$COMPOSE_WORK_DIR" "false"
+}
+
+down_all_compose_projects() {
+    local COMPOSE_WORK_DIR="$1"
+    local SKIP_CONFIRM="${2:-false}"
+    clear
+    echo -e ""
+    echo -e "${gl_zi}>>> 下线所有 Compose 项目${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! docker info &>/dev/null; then
+        log_error "Docker 服务未运行"
+        exit_animation
+        return 1
+    fi
+    if [[ ! -d "$COMPOSE_WORK_DIR" ]]; then
+        log_error "目录不存在: $COMPOSE_WORK_DIR"
+        exit_animation
+        return 1
+    fi
+    echo -e "${gl_bai}工作目录: ${gl_huang}$COMPOSE_WORK_DIR${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ "$SKIP_CONFIRM" != "true" ]]; then
+        read -r -e -p "$(echo -e "${gl_hong}警告: ${gl_bai}确定下线 ${gl_huang}$COMPOSE_WORK_DIR${gl_bai} 下所有 Compose 项目吗？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+            echo -e "${gl_huang}已取消${gl_bai}"
+            exit_animation
+            return
+        fi
+    fi
+    if ! cd "$COMPOSE_WORK_DIR" 2>/dev/null; then
+        log_error "无法进入目录: $COMPOSE_WORK_DIR"
+        exit_animation
+        return 1
+    fi
+    local down_count=0
+    local warn_count=0
+    local fail_count=0
+    local total_count=0
+    echo -e "${gl_bai}正在扫描 ${gl_huang}$COMPOSE_WORK_DIR${gl_bai} 下的 Compose 项目 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ -f "docker-compose.yml" ]] || [[ -f "docker-compose.yaml" ]]; then
+        ((total_count++))
+        local current_dir_name=$(basename "$(pwd)")
+        echo -e ""
+        echo -e "${gl_huang}>>> 下线项目: ${gl_lv}$current_dir_name${gl_bai} (当前目录)"
+        local out
+        local ret
+        if command -v docker-compose &>/dev/null; then
+            out=$(docker-compose down 2> >(grep -v "No resource found to remove"))
+            ret=$?
+        elif docker compose version &>/dev/null; then
+            out=$(docker compose down 2> >(grep -v "No resource found to remove"))
+            ret=$?
+        else
+            log_error "未找到 docker-compose 命令"
+            return 1
+        fi
+        [[ -n "$out" ]] && echo "$out"
+        if [[ $ret -eq 0 ]]; then
+            log_ok "已下线: $current_dir_name"
+            ((down_count++))
+        else
+            log_error "项目 $current_dir_name down 执行失败"
+            ((fail_count++))
+        fi
+    fi
+    for dir in */; do
+        if [[ -d "$dir" ]]; then
+            cd "$dir" 2>/dev/null || continue
+            if [[ -f "docker-compose.yml" ]] || [[ -f "docker-compose.yaml" ]]; then
+                ((total_count++))
+                local project_name=$(basename "$dir")
+                echo -e ""
+                echo -e "${gl_huang}>>> 下线项目: ${gl_lv}$project_name${gl_bai}"
+                local out
+                local ret
+                if command -v docker-compose &>/dev/null; then
+                    out=$(docker-compose down 2> >(grep -v "No resource found to remove"))
+                    ret=$?
+                elif docker compose version &>/dev/null; then
+                    out=$(docker compose down 2> >(grep -v "No resource found to remove"))
+                    ret=$?
+                else
+                    log_error "未找到 docker-compose 命令"
+                    cd ..
+                    continue
+                fi
+                [[ -n "$out" ]] && echo "$out"
+                if [[ $ret -eq 0 ]]; then
+                    log_ok "已下线: $project_name"
+                    ((down_count++))
+                else
+                    log_error "项目 $project_name down 执行失败"
+                    ((fail_count++))
+                fi
+            fi
+            cd .. 2>/dev/null
+        fi
+    done
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ $total_count -eq 0 ]]; then
+        echo -e "${gl_huang}在 ${gl_hong}$COMPOSE_WORK_DIR${gl_huang} 中没有找到 Compose 项目${gl_bai}"
+    else
+        echo -e "${gl_bai}下线完成${gl_bai}"
+        echo -e "${gl_bai}总计项目: ${gl_huang}$total_count${gl_bai}"
+        echo -e "${gl_lv}成功下线: $down_count${gl_bai}"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ "$SKIP_CONFIRM" == "true" ]]; then
+        return
+    fi
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    read -r -n 1 -s -r -p ""
+    echo ""
+    clear
+}
+
+show_help() {
+    echo -e "${gl_lv}使用说明:${gl_bai}"
+    echo -e "  ${gl_bai}$0 ${gl_huang}[-y] ${gl_lan}[工作目录] [项目1 项目2 ...]${gl_bai}"
+    echo -e ""
+    echo -e "${gl_lv}选项:${gl_bai}"
+    echo -e "  ${gl_huang}-y, --yes${gl_bai}      自动确认，跳过提示，可放在任意位置"
+    echo -e "  ${gl_huang}-h, --help${gl_bai}    显示此帮助信息"
+    echo -e ""
+    echo -e "${gl_lv}示例:${gl_bai}"
+    echo -e "  ${gl_bai}$0                     # 使用【当前目录】作为工作目录，交互式确认${gl_bai}"
+    echo -e "  ${gl_bai}$0 -y                  # 使用【当前目录】，免确认直接全部下线${gl_bai}"
+    echo -e "  ${gl_bai}$0 /vol1/1000/compose hd-Icons litepan${gl_bai}"
+    echo -e "  ${gl_bai}$0 -y /vol1/1000/compose hd-Icons litepan${gl_bai}"
+    echo -e "  ${gl_bai}$0 /vol1/1000/compose -y${gl_bai}"
+    echo -e ""
+    exit 0
+}
+
+main() {
+    local SKIP_CONFIRM="false"
+    local positional=()
+    # 遍历所有参数，-y / --yes 任意位置识别
+    for arg in "$@"; do
+        case "$arg" in
+            -y|--yes)
+                SKIP_CONFIRM="true"
+                ;;
+            -h|--help)
+                show_help
+                ;;
+            *)
+                positional+=("$arg")
+                ;;
+        esac
+    done
+    if [[ ${#positional[@]} -ge 1 ]]; then
+        local TARGET_DIR="${positional[0]}"
+        local PROJECTS=("${positional[@]:1}")
+        if [[ ${#PROJECTS[@]} -ge 1 ]]; then
+            down_selected_compose_projects "$TARGET_DIR" "${PROJECTS[@]}" "$SKIP_CONFIRM"
+        else
+            down_all_compose_projects "$TARGET_DIR" "$SKIP_CONFIRM"
+        fi
+    else
+        local TARGET_DIR="."
+        if find "${TARGET_DIR}" -maxdepth 2 -type f \( -name "docker-compose.yml" -o -name "docker-compose.yaml" \) | grep -q .;then
+            down_all_compose_projects "${TARGET_DIR}" "${SKIP_CONFIRM}"
+        else
+            log_warn "当前目录未找到任何compose配置，进入目录选择菜单"
+            interactive_down
+        fi
+    fi
+}
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+    main "$@"
+fi

@@ -1,5 +1,4 @@
 #!/bin/bash
-set -uo pipefail
 
 list_color_init() {
     export gl_hui=$'\033[38;5;59m'
@@ -12,6 +11,7 @@ list_color_init() {
     export gl_bufan=$'\033[38;5;14m'
     export reset=$'\033[0m'
 }
+
 list_color_init
 
 log_info()  { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
@@ -24,12 +24,12 @@ sleep_fractional() {
     if sleep "$seconds" 2>/dev/null; then
         return 0
     fi
-    
+
     if command -v perl >/dev/null 2>&1; then
         perl -e "select(undef, undef, undef, $seconds)"
         return 0
     fi
-    
+
     if command -v python3 >/dev/null 2>&1; then
         python3 -c "import time; time.sleep($seconds)"
         return 0
@@ -37,7 +37,7 @@ sleep_fractional() {
         python -c "import time; time.sleep($seconds)"
         return 0
     fi
-    
+
     local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
     sleep "$int_seconds"
 }
@@ -64,8 +64,6 @@ exit_script() {
     local frame_len=${#frames[@]}
     local dot_idx=0
     local total_dots=${#dots[@]}
-
-
     for ((i=0; i<20; i++)); do
         if (( i > 0 && i % 3 == 0 && dot_idx < total_dots )); then
             dot_buffer+=${dots[$dot_idx]}
@@ -87,13 +85,113 @@ cancel_return() {
     clear
 }
 
+start_selected_compose_projects() {
+    local COMPOSE_WORK_DIR="$1"
+    shift
+    local PROJECT_LIST=("$@")
+    local SKIP_CONFIRM="${PROJECT_LIST[-1]}"
+    unset PROJECT_LIST[-1]
+
+    clear
+    echo -e ""
+    echo -e "${gl_zi}>>> 启动指定 Compose 项目${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    if ! docker info &>/dev/null; then
+        log_error "Docker 服务未运行"
+        exit_animation
+        return 1
+    fi
+
+    if [[ ! -d "$COMPOSE_WORK_DIR" ]]; then
+        log_error "目录不存在: $COMPOSE_WORK_DIR"
+        exit_animation
+        return 1
+    fi
+
+    echo -e "${gl_bai}工作目录: ${gl_huang}$COMPOSE_WORK_DIR${gl_bai}"
+    echo -e "${gl_bai}待处理项目列表: ${gl_huang}${PROJECT_LIST[*]}${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    if [[ "$SKIP_CONFIRM" != "true" ]]; then
+        read -r -e -p "$(echo -e "${gl_hong}警告: ${gl_bai}确定启动上面列出项目吗？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+        if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+            echo -e "${gl_huang}已取消${gl_bai}"
+            exit_animation
+            return
+        fi
+    fi
+
+    local started_count=0
+    local warn_count=0
+    local fail_count=0
+    local total_count=${#PROJECT_LIST[@]}
+
+    for proj in "${PROJECT_LIST[@]}"; do
+        local proj_dir="${COMPOSE_WORK_DIR}/${proj}"
+        local yml_file=""
+
+        if [[ -f "${proj_dir}/docker-compose.yml" ]]; then
+            yml_file="${proj_dir}/docker-compose.yml"
+        elif [[ -f "${proj_dir}/docker-compose.yaml" ]]; then
+            yml_file="${proj_dir}/docker-compose.yaml"
+        else
+            log_warn "项目 ${gl_huang}$proj${gl_bai} 目录下找不到 docker-compose.yml / yaml，跳过"
+            ((warn_count++))
+            continue
+        fi
+
+        echo -e ""
+        echo -e "${gl_huang}>>> 启动项目: ${gl_lv}$proj${gl_bai}"
+        local out
+        local ret
+
+        if command -v docker-compose &>/dev/null; then
+            out=$(docker-compose -f "$yml_file" up -d)
+            ret=$?
+        elif docker compose version &>/dev/null; then
+            out=$(docker compose -f "$yml_file" up -d)
+            ret=$?
+        else
+            log_error "未找到 docker-compose / docker compose 命令"
+            return 1
+        fi
+
+        [[ -n "$out" ]] && echo "$out"
+
+        if [[ $ret -eq 0 ]]; then
+            log_ok "已完成: $proj"
+            ((started_count++))
+        else
+            log_error "项目 $proj up 执行失败"
+            ((fail_count++))
+        fi
+        echo -e ""
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}任务结束${gl_bai}"
+    echo -e "${gl_bai}总计项目: ${gl_huang}$total_count${gl_bai}"
+    echo -e "${gl_lv}成功启动: $started_count${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    if [[ "$SKIP_CONFIRM" == "true" ]]; then
+        return
+    fi
+
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    read -r -n 1 -s -r -p ""
+    echo ""
+    clear
+}
+
 start_all_compose_projects() {
     local COMPOSE_WORK_DIR="$1"
     local SKIP_CONFIRM="${2:-false}"
-    
+
     clear
     echo -e ""
-    echo -e "${gl_zi}>>> 启动所有 Compose 项目 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_zi}>>> 启动所有 Compose 项目${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     if ! docker info &>/dev/null; then
@@ -113,7 +211,6 @@ start_all_compose_projects() {
 
     if [[ "$SKIP_CONFIRM" != "true" ]]; then
         read -r -e -p "$(echo -e "${gl_hong}警告: ${gl_bai}确定启动 ${gl_huang}$COMPOSE_WORK_DIR${gl_bai} 下的所有 Compose 项目吗？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
-
         if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
             echo -e "${gl_huang}已取消${gl_bai}"
             exit_animation
@@ -124,89 +221,92 @@ start_all_compose_projects() {
     if ! cd "$COMPOSE_WORK_DIR" 2>/dev/null; then
         log_error "无法进入目录: $COMPOSE_WORK_DIR"
         exit_animation
-        return
+        return 1
     fi
 
     local started_count=0
     local total_count=0
 
-    echo -e "${gl_bai}正在扫描 ${gl_huang}$COMPOSE_WORK_DIR${gl_bai} 下的 Compose 项目 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_bai}正在扫描 ${gl_huang}$COMPOSE_WORK_DIR${gl_bai} 下的 Compose 项目${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     if [[ -f "docker-compose.yml" ]] || [[ -f "docker-compose.yaml" ]]; then
+        ((total_count++))
         local current_dir_name=$(basename "$(pwd)")
         echo -e ""
         echo -e "${gl_huang}>>> 启动项目: ${gl_lv}$current_dir_name${gl_bai} (当前目录)"
 
+        local out
+        local ret
         if command -v docker-compose &>/dev/null; then
-            docker-compose up -d
+            out=$(docker-compose up -d)
+            ret=$?
         elif docker compose version &>/dev/null; then
-            docker compose up -d
+            out=$(docker compose up -d)
+            ret=$?
         else
             log_error "未找到 docker-compose 命令"
-            return
+            return 1
         fi
+        [[ -n "$out" ]] && echo "$out"
 
-        if [[ $? -eq 0 ]]; then
-            echo -e "${gl_lv}✓ 已启动: $current_dir_name${gl_bai}"
-            started_count=$((started_count + 1))
+        if [[ $ret -eq 0 ]]; then
+            log_ok "已启动: $current_dir_name"
+            ((started_count++))
         else
-            echo -e "${gl_hong}✗ 启动失败: $current_dir_name${gl_bai}"
+            log_error "启动失败: $current_dir_name"
         fi
-        total_count=$((total_count + 1))
     fi
 
     for dir in */; do
         if [[ -d "$dir" ]]; then
             cd "$dir" 2>/dev/null || continue
-
             if [[ -f "docker-compose.yml" ]] || [[ -f "docker-compose.yaml" ]]; then
+                ((total_count++))
                 local project_name=$(basename "$dir")
                 echo -e ""
                 echo -e "${gl_huang}>>> 启动项目: ${gl_lv}$project_name${gl_bai}"
 
+                local out
+                local ret
                 if command -v docker-compose &>/dev/null; then
-                    docker-compose up -d
+                    out=$(docker-compose up -d)
+                    ret=$?
                 elif docker compose version &>/dev/null; then
-                    docker compose up -d
+                    out=$(docker compose up -d)
+                    ret=$?
                 else
                     log_error "未找到 docker-compose 命令"
                     cd ..
                     continue
                 fi
+                [[ -n "$out" ]] && echo "$out"
 
-                if [[ $? -eq 0 ]]; then
-                    echo -e "${gl_lv}✓ 已启动: $project_name${gl_bai}"
-                    started_count=$((started_count + 1))
+                if [[ $ret -eq 0 ]]; then
+                    log_ok "已启动: $project_name"
+                    ((started_count++))
                 else
-                    echo -e "${gl_hong}✗ 启动失败: $project_name${gl_bai}"
+                    log_error "启动失败: $project_name"
                 fi
-                total_count=$((total_count + 1))
             fi
-
             cd .. 2>/dev/null
         fi
     done
 
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
     if [[ $total_count -eq 0 ]]; then
         echo -e "${gl_huang}在 ${gl_hong}$COMPOSE_WORK_DIR${gl_huang} 中没有找到 Compose 项目${gl_bai}"
     else
         echo -e "${gl_bai}启动完成${gl_bai}"
         echo -e "${gl_bai}总计项目: ${gl_huang}$total_count${gl_bai}"
-        echo -e "${gl_bai}成功启动: ${gl_lv}$started_count${gl_bai}"
-        if [[ $started_count -lt $total_count ]]; then
-            echo -e "${gl_hong}启动失败: $((total_count - started_count))${gl_bai}"
-        fi
+        echo -e "${gl_lv}成功启动: $started_count${gl_bai}"
     fi
-
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    
+
     if [[ "$SKIP_CONFIRM" == "true" ]]; then
         return
     fi
-    
+
     echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
     read -r -n 1 -s -r -p ""
     echo ""
@@ -216,7 +316,7 @@ start_all_compose_projects() {
 interactive_start() {
     clear
     echo -e ""
-    echo -e "${gl_zi}>>> 启动所有 Compose 项目 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_zi}>>> 启动所有 Compose 项目${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     if ! docker info &>/dev/null; then
@@ -231,16 +331,14 @@ interactive_start() {
         "/vol1/1000/compose"
         "/vol2/1000/compose"
     )
-
-    log_info "正在扫描所有 docker-compose 项目 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-
+    log_info "正在扫描所有 docker-compose 项目${gl_bai}"
     local all_projects=()
+
     for preset_dir in "${preset_dirs[@]}"; do
         if [[ -d "$preset_dir" ]]; then
             if [[ -f "$preset_dir/docker-compose.yml" ]] || [[ -f "$preset_dir/docker-compose.yaml" ]]; then
                 all_projects+=("$preset_dir")
             fi
-
             for dir in "$preset_dir"/*/; do
                 if [[ -d "$dir" ]] && ([[ -f "$dir/docker-compose.yml" ]] || [[ -f "$dir/docker-compose.yaml" ]]); then
                     all_projects+=("$(realpath "$dir")")
@@ -248,7 +346,6 @@ interactive_start() {
             done
         fi
     done
-
     all_projects=($(printf "%s\n" "${all_projects[@]}" | sort -u))
 
     local running_projects=()
@@ -273,7 +370,6 @@ interactive_start() {
                 break
             fi
         done
-
         if $has_projects; then
             local all_running=true
             for project in "${all_projects[@]}"; do
@@ -285,14 +381,12 @@ interactive_start() {
                             break
                         fi
                     done
-
                     if ! $is_running; then
                         all_running=false
                         break
                     fi
                 fi
             done
-
             if ! $all_running; then
                 recommended_dirs+=("$preset_dir")
             fi
@@ -310,10 +404,8 @@ interactive_start() {
                 fi
             done
             [[ -z "$is_running" ]] && is_running=" ${gl_huang}[已停止]${gl_bai}"
-
             echo -e "  ${gl_lv}•${gl_bai} ${dir}$is_running"
         done
-
         if [[ ${#recommended_dirs[@]} -gt 0 ]]; then
             echo -e "${gl_bai}推荐的工作目录（有未运行的项目）:${gl_bai}"
             for dir in "${recommended_dirs[@]}"; do
@@ -325,21 +417,19 @@ interactive_start() {
     fi
 
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
     echo -e ""
     echo -e "${gl_huang}>>> 请选择要启动的工作目录:${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
     for i in "${!preset_dirs[@]}"; do
         local marker=""
         local dir_status=""
-
         for rd in "${recommended_dirs[@]}"; do
             if [[ "${preset_dirs[i]}" == "$rd" ]]; then
                 marker=" ${gl_hong}(推荐)${gl_bai}"
                 break
             fi
         done
-
         if [[ -d "${preset_dirs[i]}" ]]; then
             local compose_count=$(find "${preset_dirs[i]}" -maxdepth 2 -type f \( -name "docker-compose.yml" -o -name "docker-compose.yaml" \) 2>/dev/null | wc -l)
             if [[ $compose_count -gt 0 ]]; then
@@ -349,7 +439,6 @@ interactive_start() {
                         running_count=$((running_count + 1))
                     fi
                 done
-
                 if [[ $running_count -eq 0 ]]; then
                     dir_status="${gl_huang}[${compose_count}个项目，均未运行]${gl_bai}"
                 elif [[ $running_count -eq $compose_count ]]; then
@@ -363,16 +452,15 @@ interactive_start() {
         else
             dir_status="${gl_huang}[目录不存在]${gl_bai}"
         fi
-
         echo -e "${gl_bufan}$((i + 1)).${gl_bai} ${preset_dirs[i]} $dir_status$marker"
     done
+
     echo -e "${gl_bufan}$((${#preset_dirs[@]} + 1)).${gl_bai} 手动指定路径"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     echo -e "${gl_huang}0.${gl_bai} 返回上一级选单"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     read -r -e -p "$(echo -e "${gl_bai}请输入你的选择 (${gl_huang}0${gl_bai}-${gl_hong}$((${#preset_dirs[@]} + 1))${gl_bai}): ")" dir_choice
-
     local COMPOSE_WORK_DIR=""
 
     if [[ -z "$dir_choice" ]] && [[ ${#recommended_dirs[@]} -gt 0 ]]; then
@@ -400,7 +488,6 @@ interactive_start() {
         exit_animation
         return
     fi
-
     if [[ ! -d "$COMPOSE_WORK_DIR" ]]; then
         log_warn "目录不存在: $COMPOSE_WORK_DIR"
         exit_animation
@@ -412,48 +499,50 @@ interactive_start() {
 
 show_help() {
     echo -e "${gl_lv}使用说明:${gl_bai}"
-    echo -e "  ${gl_bai}$0 ${gl_huang}[选项] ${gl_lan}[目录]${gl_bai}"
+    echo -e "  ${gl_bai}$0 ${gl_huang}[-y] ${gl_lan}[目录] [项目1 项目2 ...]${gl_bai}"
     echo -e ""
     echo -e "${gl_lv}选项:${gl_bai}"
-    echo -e "  ${gl_huang}-y, --yes${gl_bai}      自动确认，跳过提示"
+    echo -e "  ${gl_huang}-y, --yes${gl_bai}      自动确认，跳过提示，可放在任意位置"
     echo -e "  ${gl_huang}-h, --help${gl_bai}    显示此帮助信息"
     echo -e ""
     echo -e "${gl_lv}示例:${gl_bai}"
-    echo -e "  ${gl_bai}$0 ${gl_lan}/compose${gl_bai}         # 交互式确认后启动指定目录"
-    echo -e "  ${gl_bai}$0 ${gl_lan}-y /compose${gl_bai}     # 自动确认启动指定目录"
-    echo -e "  ${gl_bai}$0${gl_bai}                     # 交互式选择目录"
+    echo -e "  ${gl_bai}$0${gl_bai}                             # 不传参，交互式选择目录"
+    echo -e "  ${gl_bai}$0 .${gl_bai}                           # 当前目录，交互式确认，启动全部compose"
+    echo -e "  ${gl_bai}$0 -y .${gl_bai}                        # 当前目录免确认，全部上线"
+    echo -e "  ${gl_bai}$0 /vol1/1000/compose${gl_bai}          # 指定目录交互式启动全部"
+    echo -e "  ${gl_bai}$0 /vol1/1000/compose -y${gl_bai}       # 指定目录，-y放末尾免确认"
+    echo -e "  ${gl_bai}$0 -y /vol1/1000/compose projA projB${gl_bai} # 仅启动projA projB，免确认"
+    echo -e "  ${gl_bai}$0 /vol1/1000/compose projA projB${gl_bai}    # 仅启动projA projB，交互式确认"
     echo -e ""
     exit 0
 }
 
 main() {
-    local TARGET_DIR=""
     local SKIP_CONFIRM="false"
-    
-    while [[ $# -gt 0 ]]; do
-        case "$1" in
+    local positional=()
+
+    for arg in "$@"; do
+        case "$arg" in
             -y|--yes)
                 SKIP_CONFIRM="true"
-                shift
                 ;;
             -h|--help)
                 show_help
                 ;;
             *)
-                if [[ -z "$TARGET_DIR" ]]; then
-                    TARGET_DIR="$1"
-                else
-                    log_error "未知参数: $1"
-                    echo -e "${gl_bai}使用 ${gl_huang}$0 -h ${gl_bai}查看帮助${gl_bai}"
-                    exit 1
-                fi
-                shift
+                positional+=("$arg")
                 ;;
         esac
     done
 
-    if [[ -n "$TARGET_DIR" ]]; then
-        start_all_compose_projects "$TARGET_DIR" "$SKIP_CONFIRM"
+    if [[ ${#positional[@]} -ge 1 ]]; then
+        local TARGET_DIR="${positional[0]}"
+        local PROJECTS=("${positional[@]:1}")
+        if [[ ${#PROJECTS[@]} -ge 1 ]]; then
+            start_selected_compose_projects "$TARGET_DIR" "${PROJECTS[@]}" "$SKIP_CONFIRM"
+        else
+            start_all_compose_projects "$TARGET_DIR" "$SKIP_CONFIRM"
+        fi
     else
         interactive_start
     fi
