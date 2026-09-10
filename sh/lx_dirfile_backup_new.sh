@@ -1,5 +1,4 @@
 #!/bin/bash
-set -uo pipefail
 
 list_color_init() {
     export gl_hui=$'\033[38;5;59m'
