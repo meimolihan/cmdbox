@@ -1,6 +1,15 @@
 #!/bin/bash
 set -uo pipefail
 
+if [ -z "${LC_ALL:-}" ]; then
+    for loc in C.UTF-8 C.utf8 en_US.UTF-8 zh_CN.UTF-8; do
+        if locale -a 2>/dev/null | grep -qix "$loc"; then
+            export LC_ALL="$loc"
+            break
+        fi
+    done
+fi
+
 list_color_init() {
     gl_hui=$'\033[38;5;59m'
     gl_hong=$'\033[38;5;9m'
@@ -30,6 +39,10 @@ column_if_available() {
     fi
 }
 
+disp_width() {
+    printf '%s' "$1" | wc -L | tr -d '[:space:]'
+}
+
 parse_crontab() {
     crontab -l 2>/dev/null | grep -v '^#' | awk '
     NF {
@@ -42,8 +55,8 @@ parse_crontab() {
     }'
 }
 
-cron_desc() {
-    local min="$1" hour="$2" day="$3" mon="$4" week="$5" cmd="$6"
+cron_desc_text() {
+    local min="$1" hour="$2" day="$3" mon="$4" week="$5"
     local desc="" min_txt="" hour_txt="" step=""
     local w="" week_txt=""
     local is_min_single=0 is_hour_single=0
@@ -59,28 +72,17 @@ cron_desc() {
             *) desc="特殊定时标记 $min" ;;
         esac
     else
+        # 分钟
         case "$min" in
             */*) step="${min#*/}"; min_txt="每${step}分钟" ;;
-            *)
-                if [ "$min" = "*" ]; then
-                    min_txt="每分钟"
-                else
-                    min_txt="第${min}分"
-                fi
-            ;;
+            *) [ "$min" = "*" ] && min_txt="每分钟" || min_txt="第${min}分" ;;
         esac
-
+        # 小时
         case "$hour" in
             */*) step="${hour#*/}"; hour_txt="每${step}小时" ;;
-            *)
-                if [ "$hour" = "*" ]; then
-                    hour_txt=""
-                else
-                    hour_txt="${hour}点"
-                fi
-            ;;
+            *) [ "$hour" = "*" ] && hour_txt="" || hour_txt="${hour}点" ;;
         esac
-
+        # 单值判断
         case "$min"  in *[-,/*]*) ;; *) is_min_single=1  ;; esac
         case "$hour" in *[-,/*]*) ;; *) is_hour_single=1 ;; esac
 
@@ -91,8 +93,8 @@ cron_desc() {
             [ -n "$hour_txt" ] && desc="${desc}，${hour_txt}"
         fi
 
-        [ "$day"  != "*" ] && desc="${desc}，每月${day}日"
-        [ "$mon"  != "*" ] && desc="${desc}，${mon}月"
+        [ "$day" != "*" ] && desc="${desc}，每月${day}日"
+        [ "$mon" != "*" ] && desc="${desc}，${mon}月"
 
         if [ "$week" != "*" ]; then
             w="$week"
@@ -109,7 +111,7 @@ cron_desc() {
             desc="${desc}，${week_txt}"
         fi
     fi
-    echo -e "${gl_huang}${desc}${reset}    ${gl_lv}${cmd}${reset}"
+    printf '%s' "$desc"
 }
 
 list_beautify_linux_crontab() {
@@ -139,8 +141,31 @@ list_cron_desc() {
     echo ""
     echo -e "${gl_zi}>>> 中文详解${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    parse_crontab | while IFS=$'\t' read -r min hour day mon week cmd; do
-        cron_desc "$min" "$hour" "$day" "$mon" "$week" "$cmd"
+
+    local -a descs=() cmds=()
+    local min hour day mon week cmd
+    while IFS=$'\t' read -r min hour day mon week cmd; do
+        [ -z "$min" ] && continue
+        descs+=("$(cron_desc_text "$min" "$hour" "$day" "$mon" "$week")")
+        cmds+=("$cmd")
+    done < <(parse_crontab)
+
+    if [ ${#descs[@]} -eq 0 ]; then
+        echo -e "${gl_hui}（无定时任务）${reset}"
+        return
+    fi
+
+    local maxw=0 i w
+    for i in "${!descs[@]}"; do
+        w=$(disp_width "${descs[$i]}")
+        (( w > maxw )) && maxw=$w
+    done
+
+    for i in "${!descs[@]}"; do
+        w=$(disp_width "${descs[$i]}")
+        printf '%s%s%s' "${gl_huang}" "${descs[$i]}" "${reset}"
+        printf '%*s' $(( maxw - w + 4 )) ''
+        printf '%s%s%s\n' "${gl_lv}" "${cmds[$i]}" "${reset}"
     done
 }
 
