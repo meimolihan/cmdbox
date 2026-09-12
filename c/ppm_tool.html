@@ -3502,123 +3502,353 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span></span><span class="code-line line-number" line="2002"><span class="token string">    monitor_menu
 </span></span><span class="code-line line-number" line="2003"><span class="token string">}
 </span></span><span class="code-line line-number" line="2004"><span class="token string">
-</span></span><span class="code-line line-number" line="2005"><span class="token string">proj_mgmt_tool() {
-</span></span><span class="code-line line-number" line="2006"><span class="token string">    while true; do
-</span></span><span class="code-line line-number" line="2007"><span class="token string">        clear
-</span></span><span class="code-line line-number" line="2008"><span class="token string">        echo -e "</span><span class="token variable">${gl_zi}</span><span class="token operator">>></span><span class="token operator">></span> 个人项目管理工具<span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2009"><span class="token string">        echo -e "</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2010"><span class="token string">
-</span></span><span class="code-line line-number" line="2011"><span class="token string">        # 检测各服务运行状态（颜色变量）
-</span></span><span class="code-line line-number" line="2012"><span class="token string">        # 1. opencode 二进制
-</span></span><span class="code-line line-number" line="2013"><span class="token string">        if systemctl is-active --quiet opencode 2>/dev/null; then
-</span></span><span class="code-line line-number" line="2014"><span class="token string">            col1="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2015"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2016"><span class="token string">            col1="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2017"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2018"><span class="token string">
-</span></span><span class="code-line line-number" line="2019"><span class="token string">        # 2. fan-video 二进制
-</span></span><span class="code-line line-number" line="2020"><span class="token string">        if systemctl is-active --quiet fan-video 2>/dev/null; then
-</span></span><span class="code-line line-number" line="2021"><span class="token string">            col2="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2022"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2023"><span class="token string">            col2="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2024"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2025"><span class="token string">
-</span></span><span class="code-line line-number" line="2026"><span class="token string">        # 3. 2panel 二进制
-</span></span><span class="code-line line-number" line="2027"><span class="token string">        if systemctl is-active --quiet 2panel 2>/dev/null; then
-</span></span><span class="code-line line-number" line="2028"><span class="token string">            col3="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2029"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2030"><span class="token string">            col3="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2031"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2032"><span class="token string">
-</span></span><span class="code-line line-number" line="2033"><span class="token string">        # 4. 云文档 (docker compose)
-</span></span><span class="code-line line-number" line="2034"><span class="token string">        if is_compose_running "</span>/vol1/1000/compose/md<span class="token string">"; then
-</span></span><span class="code-line line-number" line="2035"><span class="token string">            col4="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2036"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2037"><span class="token string">            col4="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2038"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2039"><span class="token string">
-</span></span><span class="code-line line-number" line="2040"><span class="token string">        # 5. Fan-Panel (docker compose)
-</span></span><span class="code-line line-number" line="2041"><span class="token string">        if is_compose_running "</span>/vol1/1000/compose/fan-panel<span class="token string">"; then
-</span></span><span class="code-line line-number" line="2042"><span class="token string">            col5="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2043"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2044"><span class="token string">            col5="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2045"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2046"><span class="token string">
-</span></span><span class="code-line line-number" line="2047"><span class="token string">        # 6. Fan-Video (docker compose)
-</span></span><span class="code-line line-number" line="2048"><span class="token string">        if is_compose_running "</span>/vol1/1000/compose/fan-video<span class="token string">"; then
-</span></span><span class="code-line line-number" line="2049"><span class="token string">            col6="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2050"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2051"><span class="token string">            col6="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2052"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2053"><span class="token string">
-</span></span><span class="code-line line-number" line="2054"><span class="token string">        # 7. CmdBox (docker compose)
-</span></span><span class="code-line line-number" line="2055"><span class="token string">        if is_compose_running "</span>/vol1/1000/compose/cmdbox<span class="token string">"; then
-</span></span><span class="code-line line-number" line="2056"><span class="token string">            col7="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2057"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2058"><span class="token string">            col7="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2059"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2060"><span class="token string">
-</span></span><span class="code-line line-number" line="2061"><span class="token string">        # 8. monitor 服务（电视自动启动监控）
-</span></span><span class="code-line line-number" line="2062"><span class="token string">        if systemctl is-active --quiet monitor.service 2>/dev/null; then
-</span></span><span class="code-line line-number" line="2063"><span class="token string">            col8="</span><span class="token variable">${gl_lv}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2064"><span class="token string">        else
-</span></span><span class="code-line line-number" line="2065"><span class="token string">            col8="</span><span class="token variable">${gl_hong}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2066"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="2067"><span class="token string">
-</span></span><span class="code-line line-number" line="2068"><span class="token string">        echo -e "</span><span class="token variable">${col1}</span><span class="token number">1</span>.<span class="token variable">${gl_bai}</span>  OpenCode 二进制<span class="token string">"
-</span></span><span class="code-line line-number" line="2069"><span class="token string">        echo -e "</span><span class="token variable">${col2}</span><span class="token number">2</span>.<span class="token variable">${gl_bai}</span>  Fan-Video 二进制<span class="token string">"
-</span></span><span class="code-line line-number" line="2070"><span class="token string">        echo -e "</span><span class="token variable">${col3}</span><span class="token number">3</span>.<span class="token variable">${gl_bai}</span>  2Panel 二进制<span class="token string">"
-</span></span><span class="code-line line-number" line="2071"><span class="token string">        echo -e "</span><span class="token variable">${col4}</span><span class="token number">4</span>.<span class="token variable">${gl_bai}</span>  云文档<span class="token string">"
-</span></span><span class="code-line line-number" line="2072"><span class="token string">        echo -e "</span><span class="token variable">${col5}</span><span class="token number">5</span>.<span class="token variable">${gl_bai}</span>  Fan-Panel<span class="token string">"
-</span></span><span class="code-line line-number" line="2073"><span class="token string">        echo -e "</span><span class="token variable">${col6}</span><span class="token number">6</span>.<span class="token variable">${gl_bai}</span>  Fan-Video<span class="token string">"
-</span></span><span class="code-line line-number" line="2074"><span class="token string">        echo -e "</span><span class="token variable">${col7}</span><span class="token number">7</span>.<span class="token variable">${gl_bai}</span>  CmdBox<span class="token string">"
-</span></span><span class="code-line line-number" line="2075"><span class="token string">        echo -e "</span><span class="token variable">${col8}</span><span class="token number">8</span>.<span class="token variable">${gl_bai}</span>  TV monitor<span class="token string">"
-</span></span><span class="code-line line-number" line="2076"><span class="token string">        echo -e "</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2077"><span class="token string">        echo -e "</span><span class="token variable">${gl_huang}</span><span class="token number">0</span>.  <span class="token variable">${gl_bai}</span>返回上一级选单<span class="token string">"
-</span></span><span class="code-line line-number" line="2078"><span class="token string">        echo -e "</span><span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本<span class="token string">"
-</span></span><span class="code-line line-number" line="2079"><span class="token string">        echo -e "</span><span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span><span class="token string">"
-</span></span><span class="code-line line-number" line="2080"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span><span class="token string">" action
-</span></span><span class="code-line line-number" line="2081"><span class="token string">
-</span></span><span class="code-line line-number" line="2082"><span class="token string">        case "</span><span class="token variable">$action</span><span class="token string">" in
-</span></span><span class="code-line line-number" line="2083"><span class="token string">        1)
-</span></span><span class="code-line line-number" line="2084"><span class="token string">            manage_opencode
-</span></span><span class="code-line line-number" line="2085"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2086"><span class="token string">        2)
-</span></span><span class="code-line line-number" line="2087"><span class="token string">            manage_fan_video
-</span></span><span class="code-line line-number" line="2088"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2089"><span class="token string">        3)
-</span></span><span class="code-line line-number" line="2090"><span class="token string">            manage_2panel
-</span></span><span class="code-line line-number" line="2091"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2092"><span class="token string">        4)
-</span></span><span class="code-line line-number" line="2093"><span class="token string">            docker_compose_manager /vol1/1000/compose/md
-</span></span><span class="code-line line-number" line="2094"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2095"><span class="token string">        5)
-</span></span><span class="code-line line-number" line="2096"><span class="token string">            docker_compose_manager /vol1/1000/compose/fan-panel
-</span></span><span class="code-line line-number" line="2097"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2098"><span class="token string">        6)
-</span></span><span class="code-line line-number" line="2099"><span class="token string">            docker_compose_manager /vol1/1000/compose/fan-video
-</span></span><span class="code-line line-number" line="2100"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2101"><span class="token string">        7)
-</span></span><span class="code-line line-number" line="2102"><span class="token string">            docker_compose_manager /vol1/1000/compose/cmdbox
-</span></span><span class="code-line line-number" line="2103"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2104"><span class="token string">        8)
-</span></span><span class="code-line line-number" line="2105"><span class="token string">            monitor_tool
-</span></span><span class="code-line line-number" line="2106"><span class="token string">            ;;
-</span></span><span class="code-line line-number" line="2107"><span class="token string">        0)
-</span></span><span class="code-line line-number" line="2108"><span class="token string">            cancel_return "</span>已是主菜单"
-</span><span class="code-line line-number" line="2109">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="2110">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2111">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2112">            exit_script
-</span><span class="code-line line-number" line="2113">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2114">        *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="2115">            handle_invalid_input
-</span><span class="code-line line-number" line="2116">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="2117">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="2118">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="2119"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="2120">
-</span><span class="code-line line-number" line="2121">proj_mgmt_tool
+</span></span><span class="code-line line-number" line="2005"><span class="token string">fan_files_vars() {
+</span></span><span class="code-line line-number" line="2006"><span class="token string">    cat &#x3C;&#x3C;'EOF'
+</span></span><span class="code-line line-number" line="2007"><span class="token string">SERVICE="</span>fan-files<span class="token string">"
+</span></span><span class="code-line line-number" line="2008"><span class="token string">INSTALL_SCRIPT_URL="</span>https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/install.sh<span class="token string">"
+</span></span><span class="code-line line-number" line="2009"><span class="token string">UNINSTALL_SCRIPT_URL="</span>https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/uninstall.sh<span class="token string">"
+</span></span><span class="code-line line-number" line="2010"><span class="token string">BACKUP_SCRIPT_URL="</span>https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/fan-files_backup.sh<span class="token string">"
+</span></span><span class="code-line line-number" line="2011"><span class="token string">RECOVER_SCRIPT_URL="</span>https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/fan-files_recover.sh<span class="token string">"
+</span></span><span class="code-line line-number" line="2012"><span class="token string">EOF
+</span></span><span class="code-line line-number" line="2013"><span class="token string">}
+</span></span><span class="code-line line-number" line="2014"><span class="token string">
+</span></span><span class="code-line line-number" line="2015"><span class="token string">fan_files_show_service_url() {
+</span></span><span class="code-line line-number" line="2016"><span class="token string">    local service="</span><span class="token variable">${1<span class="token operator">:-</span>fan-files}</span><span class="token string">"
+</span></span><span class="code-line line-number" line="2017"><span class="token string">    local url="</span>"
+</span><span class="code-line line-number" line="2018">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">port</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="2019">    <span class="token builtin class-name">local</span> <span class="token function">ip</span>
+</span><span class="code-line line-number" line="2020">    <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">hostname</span> <span class="token parameter variable">-I</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2021">    <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$ip</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ip</span> route get <span class="token number">1</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $7}'</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2022">    <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$ip</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">ifconfig</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-Eo</span> <span class="token string">'inet (addr:)?([0-9]*\.){3}[0-9]*'</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-Eo</span> <span class="token string">'([0-9]*\.){3}[0-9]*'</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">'127.0.0.1'</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2023">    <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$ip</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token string">"127.0.0.1"</span>
+</span><span class="code-line line-number" line="2024">    <span class="token assign-left variable">port</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>journalctl <span class="token parameter variable">-u</span> <span class="token string">"<span class="token variable">$service</span>"</span> --no-pager <span class="token parameter variable">-n</span> <span class="token number">200</span> <span class="token parameter variable">-o</span> <span class="token function">cat</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token punctuation">\</span>
+</span></span><span class="code-line line-number" line="2025"><span class="token variable">        <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-E</span> <span class="token string">'fan-files 启动于 :[0-9]+'</span> <span class="token punctuation">\</span>
+</span></span><span class="code-line line-number" line="2026"><span class="token variable">        <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oE</span> <span class="token string">':[0-9]+$'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/^://'</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2027">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$port</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2028">        <span class="token builtin class-name">local</span> exec_cmd
+</span><span class="code-line line-number" line="2029">        <span class="token assign-left variable">exec_cmd</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>systemctl show <span class="token parameter variable">-p</span> ExecStart <span class="token string">"<span class="token variable">$service</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-d</span><span class="token operator">=</span> -f2-<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2030">        <span class="token assign-left variable">port</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$exec_cmd</span>"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oE</span> <span class="token string">' -{1,2}port[ =]+[0-9]+'</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oE</span> <span class="token string">'[0-9]+'</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2031">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2032">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$port</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> ss <span class="token operator">></span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2033">        <span class="token builtin class-name">local</span> pid
+</span><span class="code-line line-number" line="2034">        <span class="token assign-left variable">pid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>systemctl show <span class="token parameter variable">-p</span> MainPID <span class="token string">"<span class="token variable">$service</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-d</span><span class="token operator">=</span> -f2-<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2035">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$pid</span>"</span> <span class="token operator">=~</span> ^<span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span>+$ <span class="token operator">&#x26;&#x26;</span> <span class="token string">"<span class="token variable">$pid</span>"</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2036">            <span class="token assign-left variable">port</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>ss <span class="token parameter variable">-tlnp</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">",pid=<span class="token variable">$pid</span>,"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oE</span> <span class="token string">':[0-9]+'</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token string">'s/^://'</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2037">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2038">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2039">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$port</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2040">        <span class="token assign-left variable">url</span><span class="token operator">=</span><span class="token string">"http://<span class="token variable">${ip}</span>:<span class="token variable">${port}</span>"</span>
+</span><span class="code-line line-number" line="2041">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2042">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$url</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2043">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"访问地址：<span class="token variable">${gl_lv}</span><span class="token variable">${url}</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2044">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2045">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"访问地址：<span class="token variable">${gl_hong}</span>无法获取访问地址<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2046">        <span class="token builtin class-name">return</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="2047">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2048"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2049">
+</span><span class="code-line line-number" line="2050"><span class="token function-name function">fan_files_show_service_status</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2051">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">service</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${1<span class="token operator">:-</span>fan-files}</span>"</span>
+</span><span class="code-line line-number" line="2052">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="2053">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">ver_regex</span><span class="token operator">=</span><span class="token string">'\b(v[0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+\.[0-9]+)\b'</span>
+</span><span class="code-line line-number" line="2054">    <span class="token keyword">if</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token string">"<span class="token variable">$service</span>"</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2055">        <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>"$service<span class="token string">" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "</span>$ver_regex" <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2056">        <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$version</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>"$service<span class="token string">" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "</span>$ver_regex" <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2057">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2058">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$version</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2059">        <span class="token builtin class-name">local</span> exec_path
+</span><span class="code-line line-number" line="2060">        <span class="token assign-left variable">exec_path</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>systemctl show <span class="token parameter variable">-p</span> ExecStart <span class="token string">"<span class="token variable">$service</span>"</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">cut</span> <span class="token parameter variable">-d</span><span class="token operator">=</span> <span class="token parameter variable">-f2</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{print $1}'</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2061">        <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$exec_path</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">[</span> <span class="token parameter variable">-x</span> <span class="token string">"<span class="token variable">$exec_path</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2062">            <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>"$exec_path<span class="token string">" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "</span>$ver_regex" <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2063">            <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$version</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>"$exec_path<span class="token string">" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "</span>$ver_regex" <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2064">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2065">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2066">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$version</span>"</span> <span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> journalctl <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2067">        <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>journalctl <span class="token parameter variable">-u</span> <span class="token string">"<span class="token variable">$service</span>"</span> --no-pager <span class="token parameter variable">-n</span> <span class="token number">50</span> <span class="token parameter variable">-o</span> <span class="token function">cat</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-oE</span> <span class="token string">"<span class="token variable">$ver_regex</span>"</span> <span class="token operator">|</span> <span class="token function">head</span> <span class="token parameter variable">-1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2068">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2069">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token string">"<span class="token variable">$version</span>"</span> <span class="token operator">=~</span> <span class="token variable">$ver_regex</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2070">        <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="2071">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2072">    <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> <span class="token string">"<span class="token variable">$service</span>"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2073">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"运行状态：<span class="token variable">${gl_lv}</span><span class="token variable">$service</span> 正在运行<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2074">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2075">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"运行状态：<span class="token variable">${gl_hong}</span><span class="token variable">$service</span> 未运行<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2076">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2077">    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$version</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2078">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"版本信息：<span class="token variable">${gl_huang}</span><span class="token variable">$version</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2079">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2080">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"版本信息：<span class="token variable">${gl_huang}</span>无法获取<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2081">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2082"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2083">
+</span><span class="code-line line-number" line="2084"><span class="token function-name function">manage_fan_files</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2085">    <span class="token comment"># 一次性加载所有变量到当前函数作用域</span>
+</span><span class="code-line line-number" line="2086">    <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span>fan_files_vars<span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="2087">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="2088">        <span class="token function">clear</span>
+</span><span class="code-line line-number" line="2089">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2090">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> fan-files 管理工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2091">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2092">        fan_files_show_service_status fan-files
+</span><span class="code-line line-number" line="2093">        fan_files_show_service_url fan-files
+</span><span class="code-line line-number" line="2094">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2095">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>停止 fan-files       <span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>启动 fan-files"</span>
+</span><span class="code-line line-number" line="2096">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>3.  <span class="token variable">${gl_bai}</span>重启 fan-files       <span class="token variable">${gl_bufan}</span>4.  <span class="token variable">${gl_bai}</span>查看服务状态"</span>
+</span><span class="code-line line-number" line="2097">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>5.  <span class="token variable">${gl_bai}</span>查看开机自启状态     <span class="token variable">${gl_bufan}</span>6.  <span class="token variable">${gl_bai}</span>开启开机自启"</span>
+</span><span class="code-line line-number" line="2098">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>7.  <span class="token variable">${gl_bai}</span>禁用开机自启         <span class="token variable">${gl_bufan}</span>8.  <span class="token variable">${gl_bai}</span>查看日志(100行)"</span>
+</span><span class="code-line line-number" line="2099">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>9.  <span class="token variable">${gl_bai}</span>实时跟踪日志"</span>
+</span><span class="code-line line-number" line="2100">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2101">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>66. <span class="token variable">${gl_bai}</span>安装/升级 fan-files  <span class="token variable">${gl_huang}</span>77. <span class="token variable">${gl_bai}</span>备份数据"</span>
+</span><span class="code-line line-number" line="2102">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>88. <span class="token variable">${gl_bai}</span>恢复数据             <span class="token variable">${gl_hong}</span>99. <span class="token variable">${gl_bai}</span>卸载 fan-files"</span>
+</span><span class="code-line line-number" line="2103">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单       <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="2104">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2105">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> action
+</span><span class="code-line line-number" line="2106">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$action</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="2107">        <span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2108">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2109">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 正在停止 fan-files 服务 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2110">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2111">            <span class="token function">sudo</span> systemctl stop <span class="token variable">${SERVICE}</span>
+</span><span class="code-line line-number" line="2112">            log_ok <span class="token string">"fan-files 服务已停止"</span>
+</span><span class="code-line line-number" line="2113">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2114">            break_end
+</span><span class="code-line line-number" line="2115">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2116">        <span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2117">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2118">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 正在启动 fan-files 服务 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2119">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2120">            <span class="token function">sudo</span> systemctl start <span class="token variable">${SERVICE}</span>
+</span><span class="code-line line-number" line="2121">            log_ok <span class="token string">"fan-files 服务已启动"</span>
+</span><span class="code-line line-number" line="2122">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2123">            break_end
+</span><span class="code-line line-number" line="2124">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2125">        <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2126">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2127">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 正在重启 fan-files 服务 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2128">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2129">            <span class="token function">sudo</span> systemctl restart <span class="token variable">${SERVICE}</span>
+</span><span class="code-line line-number" line="2130">            log_ok <span class="token string">"fan-files 服务已重启"</span>
+</span><span class="code-line line-number" line="2131">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2132">            break_end
+</span><span class="code-line line-number" line="2133">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2134">        <span class="token number">4</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2135">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2136">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> fan-files 服务状态 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2137">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2138">            <span class="token function">sudo</span> systemctl status <span class="token variable">${SERVICE}</span>
+</span><span class="code-line line-number" line="2139">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2140">            break_end
+</span><span class="code-line line-number" line="2141">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2142">        <span class="token number">5</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2143">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2144">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> fan-files 开机自启状态 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2145">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2146">            <span class="token builtin class-name">local</span> <span class="token assign-left variable">status</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">sudo</span> systemctl is-enabled $<span class="token punctuation">{</span>SERVICE<span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="2147">            <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$status</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="2148">                enabled<span class="token punctuation">)</span>   <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>已启用<span class="token variable">${gl_bai}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2149">                disabled<span class="token punctuation">)</span>  <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>已禁用<span class="token variable">${gl_bai}</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2150">                static<span class="token punctuation">)</span>    <span class="token builtin class-name">echo</span> <span class="token string">"静态（非服务单元）"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2151">                indirect<span class="token punctuation">)</span>  <span class="token builtin class-name">echo</span> <span class="token string">"间接（依赖其他单元）"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2152">                *<span class="token punctuation">)</span>         <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">$status</span>"</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2153">            <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="2154">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2155">            break_end
+</span><span class="code-line line-number" line="2156">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2157">        <span class="token number">6</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2158">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2159">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 正在开启 fan-files 开机自启 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2160">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2161">            <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> <span class="token variable">${SERVICE}</span>
+</span><span class="code-line line-number" line="2162">            log_ok <span class="token string">"已开启 fan-files 开机自启"</span>
+</span><span class="code-line line-number" line="2163">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2164">            break_end
+</span><span class="code-line line-number" line="2165">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2166">        <span class="token number">7</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2167">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2168">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 正在禁用 fan-files 开机自启 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2169">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2170">            <span class="token function">sudo</span> systemctl disable <span class="token variable">${SERVICE}</span>
+</span><span class="code-line line-number" line="2171">            log_ok <span class="token string">"已禁用 fan-files 开机自启"</span>
+</span><span class="code-line line-number" line="2172">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2173">            break_end
+</span><span class="code-line line-number" line="2174">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2175">        <span class="token number">8</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2176">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2177">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> fan-files 日志（最近100行）<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2178">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2179">            <span class="token function">sudo</span> journalctl <span class="token parameter variable">-u</span> <span class="token variable">${SERVICE}</span> <span class="token parameter variable">-n</span> <span class="token number">100</span>
+</span><span class="code-line line-number" line="2180">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2181">            break_end
+</span><span class="code-line line-number" line="2182">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2183">        <span class="token number">9</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2184">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="2185">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 实时跟踪 fan-files 日志（按 Ctrl+C 退出）<span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2186">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2187">            <span class="token function">sudo</span> journalctl <span class="token parameter variable">-u</span> <span class="token variable">${SERVICE}</span> <span class="token parameter variable">-f</span>
+</span><span class="code-line line-number" line="2188">            <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2189">            break_end
+</span><span class="code-line line-number" line="2190">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2191">        <span class="token number">66</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2192">            <span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> $<span class="token punctuation">{</span>INSTALL_SCRIPT_URL<span class="token punctuation">}</span><span class="token variable">)</span></span>"</span>
+</span><span class="code-line line-number" line="2193">            break_end
+</span><span class="code-line line-number" line="2194">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="2195">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2196">        <span class="token number">77</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2197">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> <span class="token variable">${BACKUP_SCRIPT_URL}</span><span class="token punctuation">)</span> <span class="token number">6</span>
+</span><span class="code-line line-number" line="2198">            break_end
+</span><span class="code-line line-number" line="2199">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="2200">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2201">        <span class="token number">88</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2202">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> <span class="token variable">${RECOVER_SCRIPT_URL}</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2203">            break_end
+</span><span class="code-line line-number" line="2204">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="2205">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2206">        <span class="token number">99</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2207">            <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> <span class="token variable">${UNINSTALL_SCRIPT_URL}</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2208">            break_end
+</span><span class="code-line line-number" line="2209">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="2210">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2211">        <span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2212">            proj_mgmt_tool
+</span><span class="code-line line-number" line="2213">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2214">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2215">            exit_script
+</span><span class="code-line line-number" line="2216">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2217">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2218">            handle_invalid_input
+</span><span class="code-line line-number" line="2219">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2220">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="2221">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="2222"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2223">
+</span><span class="code-line line-number" line="2224"><span class="token function-name function">proj_mgmt_tool</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="2225">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="2226">        <span class="token function">clear</span>
+</span><span class="code-line line-number" line="2227">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 个人项目管理工具<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2228">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2229">
+</span><span class="code-line line-number" line="2230">        <span class="token comment"># 检测各服务运行状态（颜色变量）</span>
+</span><span class="code-line line-number" line="2231">        <span class="token comment"># 1. opencode 二进制</span>
+</span><span class="code-line line-number" line="2232">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> opencode <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2233">            <span class="token assign-left variable">col1</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2234">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2235">            <span class="token assign-left variable">col1</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2236">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2237">
+</span><span class="code-line line-number" line="2238">        <span class="token comment"># 2. fan-video 二进制</span>
+</span><span class="code-line line-number" line="2239">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> fan-video <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2240">            <span class="token assign-left variable">col2</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2241">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2242">            <span class="token assign-left variable">col2</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2243">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2244">
+</span><span class="code-line line-number" line="2245">        <span class="token comment"># 3. 2panel 二进制</span>
+</span><span class="code-line line-number" line="2246">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> 2panel <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2247">            <span class="token assign-left variable">col3</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2248">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2249">            <span class="token assign-left variable">col3</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2250">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2251">
+</span><span class="code-line line-number" line="2252">        <span class="token comment"># 4. 云文档 (docker compose)</span>
+</span><span class="code-line line-number" line="2253">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/md"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2254">            <span class="token assign-left variable">col4</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2255">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2256">            <span class="token assign-left variable">col4</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2257">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2258">
+</span><span class="code-line line-number" line="2259">        <span class="token comment"># 5. Fan-Panel (docker compose)</span>
+</span><span class="code-line line-number" line="2260">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/fan-panel"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2261">            <span class="token assign-left variable">col5</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2262">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2263">            <span class="token assign-left variable">col5</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2264">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2265">
+</span><span class="code-line line-number" line="2266">        <span class="token comment"># 6. Fan-Video (docker compose)</span>
+</span><span class="code-line line-number" line="2267">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/fan-video"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2268">            <span class="token assign-left variable">col6</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2269">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2270">            <span class="token assign-left variable">col6</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2271">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2272">
+</span><span class="code-line line-number" line="2273">        <span class="token comment"># 7. CmdBox (docker compose)</span>
+</span><span class="code-line line-number" line="2274">        <span class="token keyword">if</span> is_compose_running <span class="token string">"/vol1/1000/compose/cmdbox"</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2275">            <span class="token assign-left variable">col7</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2276">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2277">            <span class="token assign-left variable">col7</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2278">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2279">
+</span><span class="code-line line-number" line="2280">        <span class="token comment"># 8. monitor 服务（电视自动启动监控）</span>
+</span><span class="code-line line-number" line="2281">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> monitor.service <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2282">            <span class="token assign-left variable">col8</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2283">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2284">            <span class="token assign-left variable">col8</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2285">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2286">        
+</span><span class="code-line line-number" line="2287">        <span class="token comment"># 9. Fan-Flies 二进制</span>
+</span><span class="code-line line-number" line="2288">        <span class="token keyword">if</span> systemctl is-active <span class="token parameter variable">--quiet</span> fan-files <span class="token operator"><span class="token file-descriptor important">2</span>></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="2289">            <span class="token assign-left variable">col9</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_lv}</span>"</span>
+</span><span class="code-line line-number" line="2290">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="2291">            <span class="token assign-left variable">col9</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${gl_hong}</span>"</span>
+</span><span class="code-line line-number" line="2292">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="2293">
+</span><span class="code-line line-number" line="2294">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col1}</span>1.<span class="token variable">${gl_bai}</span>  OpenCode 二进制"</span>
+</span><span class="code-line line-number" line="2295">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col2}</span>2.<span class="token variable">${gl_bai}</span>  Fan-Video 二进制"</span>
+</span><span class="code-line line-number" line="2296">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col3}</span>3.<span class="token variable">${gl_bai}</span>  2Panel 二进制"</span>
+</span><span class="code-line line-number" line="2297">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col4}</span>4.<span class="token variable">${gl_bai}</span>  云文档"</span>
+</span><span class="code-line line-number" line="2298">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col5}</span>5.<span class="token variable">${gl_bai}</span>  Fan-Panel"</span>
+</span><span class="code-line line-number" line="2299">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col6}</span>6.<span class="token variable">${gl_bai}</span>  Fan-Video"</span>
+</span><span class="code-line line-number" line="2300">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col7}</span>7.<span class="token variable">${gl_bai}</span>  CmdBox"</span>
+</span><span class="code-line line-number" line="2301">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col8}</span>8.<span class="token variable">${gl_bai}</span>  TV monitor"</span>
+</span><span class="code-line line-number" line="2302">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${col9}</span>9.<span class="token variable">${gl_bai}</span>  Fan-Flies 二进制"</span>
+</span><span class="code-line line-number" line="2303">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2304">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单"</span>
+</span><span class="code-line line-number" line="2305">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="2306">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="2307">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> action
+</span><span class="code-line line-number" line="2308">
+</span><span class="code-line line-number" line="2309">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$action</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="2310">        <span class="token number">1</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2311">            manage_opencode
+</span><span class="code-line line-number" line="2312">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2313">        <span class="token number">2</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2314">            manage_fan_video
+</span><span class="code-line line-number" line="2315">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2316">        <span class="token number">3</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2317">            manage_2panel
+</span><span class="code-line line-number" line="2318">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2319">        <span class="token number">4</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2320">            docker_compose_manager /vol1/1000/compose/md
+</span><span class="code-line line-number" line="2321">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2322">        <span class="token number">5</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2323">            docker_compose_manager /vol1/1000/compose/fan-panel
+</span><span class="code-line line-number" line="2324">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2325">        <span class="token number">6</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2326">            docker_compose_manager /vol1/1000/compose/fan-video
+</span><span class="code-line line-number" line="2327">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2328">        <span class="token number">7</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2329">            docker_compose_manager /vol1/1000/compose/cmdbox
+</span><span class="code-line line-number" line="2330">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2331">        <span class="token number">8</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2332">            monitor_tool
+</span><span class="code-line line-number" line="2333">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2334">        <span class="token number">9</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2335">            manage_fan_files
+</span><span class="code-line line-number" line="2336">            <span class="token punctuation">;</span><span class="token punctuation">;</span>            
+</span><span class="code-line line-number" line="2337">        <span class="token number">0</span><span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2338">            cancel_return <span class="token string">"已是主菜单"</span>
+</span><span class="code-line line-number" line="2339">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="2340">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2341">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2342">            exit_script
+</span><span class="code-line line-number" line="2343">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2344">        *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="2345">            handle_invalid_input
+</span><span class="code-line line-number" line="2346">            <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="2347">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="2348">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="2349"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="2350">
+</span><span class="code-line line-number" line="2351">proj_mgmt_tool
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -5623,6 +5853,225 @@ EOF
     monitor_menu
 }
 
+fan_files_vars() {
+    cat <<&#x27;EOF&#x27;
+SERVICE=&#x22;fan-files&#x22;
+INSTALL_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/install.sh&#x22;
+UNINSTALL_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/uninstall.sh&#x22;
+BACKUP_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/fan-files_backup.sh&#x22;
+RECOVER_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/fan-files/main/scripts/fan-files_recover.sh&#x22;
+EOF
+}
+
+fan_files_show_service_url() {
+    local service=&#x22;${1:-fan-files}&#x22;
+    local url=&#x22;&#x22;
+    local port=&#x22;&#x22;
+    local ip
+    ip=$(hostname -I 2>/dev/null | awk &#x27;{print $1}&#x27;)
+    [ -z &#x22;$ip&#x22; ] &#x26;&#x26; ip=$(ip route get 1 2>/dev/null | awk &#x27;{print $7}&#x27; | head -1)
+    [ -z &#x22;$ip&#x22; ] &#x26;&#x26; ip=$(ifconfig | grep -Eo &#x27;inet (addr:)?([0-9]*\.){3}[0-9]*&#x27; | grep -Eo &#x27;([0-9]*\.){3}[0-9]*&#x27; | grep -v &#x27;127.0.0.1&#x27; | head -1)
+    [ -z &#x22;$ip&#x22; ] &#x26;&#x26; ip=&#x22;127.0.0.1&#x22;
+    port=$(journalctl -u &#x22;$service&#x22; --no-pager -n 200 -o cat 2>/dev/null \
+        | grep -E &#x27;fan-files 启动于 :[0-9]+&#x27; \
+        | grep -oE &#x27;:[0-9]+$&#x27; | sed &#x27;s/^://&#x27; | head -1)
+    if [ -z &#x22;$port&#x22; ];then
+        local exec_cmd
+        exec_cmd=$(systemctl show -p ExecStart &#x22;$service&#x22; 2>/dev/null | cut -d= -f2-)
+        port=$(echo &#x22;$exec_cmd&#x22; | grep -oE &#x27; -{1,2}port[ =]+[0-9]+&#x27; | grep -oE &#x27;[0-9]+&#x27; | head -1)
+    fi
+    if [ -z &#x22;$port&#x22; ] &#x26;&#x26; command -v ss >/dev/null 2>&#x26;1;then
+        local pid
+        pid=$(systemctl show -p MainPID &#x22;$service&#x22; 2>/dev/null | cut -d= -f2-)
+        if [[ &#x22;$pid&#x22; =~ ^[0-9]+$ &#x26;&#x26; &#x22;$pid&#x22; -gt 0 ]];then
+            port=$(ss -tlnp 2>/dev/null | grep &#x22;,pid=$pid,&#x22; | grep -oE &#x27;:[0-9]+&#x27; | sed &#x27;s/^://&#x27; | head -1)
+        fi
+    fi
+    if [ -n &#x22;$port&#x22; ]; then
+        url=&#x22;http://${ip}:${port}&#x22;
+    fi
+    if [ -n &#x22;$url&#x22; ]; then
+        echo -e &#x22;访问地址：${gl_lv}${url}${gl_bai}&#x22;
+    else
+        echo -e &#x22;访问地址：${gl_hong}无法获取访问地址${gl_bai}&#x22;
+        return 1
+    fi
+}
+
+fan_files_show_service_status() {
+    local service=&#x22;${1:-fan-files}&#x22;
+    local version=&#x22;&#x22;
+    local ver_regex=&#x27;\b(v[0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+\.[0-9]+)\b&#x27;
+    if command -v &#x22;$service&#x22; &#x26;>/dev/null; then
+        version=$(&#x22;$service&#x22; --version 2>/dev/null | grep -vE &#x27;[_#]{3,}&#x27; | grep -oE &#x22;$ver_regex&#x22; | head -1)
+        [ -z &#x22;$version&#x22; ] &#x26;&#x26; version=$(&#x22;$service&#x22; version 2>/dev/null | grep -vE &#x27;[_#]{3,}&#x27; | grep -oE &#x22;$ver_regex&#x22; | head -1)
+    fi
+    if [ -z &#x22;$version&#x22; ]; then
+        local exec_path
+        exec_path=$(systemctl show -p ExecStart &#x22;$service&#x22; 2>/dev/null | cut -d= -f2 | awk &#x27;{print $1}&#x27;)
+        if [ -n &#x22;$exec_path&#x22; ] &#x26;&#x26; [ -x &#x22;$exec_path&#x22; ]; then
+            version=$(&#x22;$exec_path&#x22; --version 2>/dev/null | grep -vE &#x27;[_#]{3,}&#x27; | grep -oE &#x22;$ver_regex&#x22; | head -1)
+            [ -z &#x22;$version&#x22; ] &#x26;&#x26; version=$(&#x22;$exec_path&#x22; version 2>/dev/null | grep -vE &#x27;[_#]{3,}&#x27; | grep -oE &#x22;$ver_regex&#x22; | head -1)
+        fi
+    fi
+    if [ -z &#x22;$version&#x22; ] &#x26;&#x26; command -v journalctl &#x26;>/dev/null; then
+        version=$(journalctl -u &#x22;$service&#x22; --no-pager -n 50 -o cat 2>/dev/null | grep -oE &#x22;$ver_regex&#x22; | head -1)
+    fi
+    if [[ ! &#x22;$version&#x22; =~ $ver_regex ]]; then
+        version=&#x22;&#x22;
+    fi
+    if systemctl is-active --quiet &#x22;$service&#x22;; then
+        echo -e &#x22;运行状态：${gl_lv}$service 正在运行${gl_bai}&#x22;
+    else
+        echo -e &#x22;运行状态：${gl_hong}$service 未运行${gl_bai}&#x22;
+    fi
+    if [ -n &#x22;$version&#x22; ]; then
+        echo -e &#x22;版本信息：${gl_huang}$version${gl_bai}&#x22;
+    else
+        echo -e &#x22;版本信息：${gl_huang}无法获取${gl_bai}&#x22;
+    fi
+}
+
+manage_fan_files() {
+    # 一次性加载所有变量到当前函数作用域
+    eval &#x22;$(fan_files_vars)&#x22;
+    while true; do
+        clear
+        echo -e &#x22;&#x22;
+        echo -e &#x22;${gl_zi}>>> fan-files 管理工具${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+        fan_files_show_service_status fan-files
+        fan_files_show_service_url fan-files
+        echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}1.  ${gl_bai}停止 fan-files       ${gl_bufan}2.  ${gl_bai}启动 fan-files&#x22;
+        echo -e &#x22;${gl_bufan}3.  ${gl_bai}重启 fan-files       ${gl_bufan}4.  ${gl_bai}查看服务状态&#x22;
+        echo -e &#x22;${gl_bufan}5.  ${gl_bai}查看开机自启状态     ${gl_bufan}6.  ${gl_bai}开启开机自启&#x22;
+        echo -e &#x22;${gl_bufan}7.  ${gl_bai}禁用开机自启         ${gl_bufan}8.  ${gl_bai}查看日志(100行)&#x22;
+        echo -e &#x22;${gl_bufan}9.  ${gl_bai}实时跟踪日志&#x22;
+        echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+        echo -e &#x22;${gl_lv}66. ${gl_bai}安装/升级 fan-files  ${gl_huang}77. ${gl_bai}备份数据&#x22;
+        echo -e &#x22;${gl_lv}88. ${gl_bai}恢复数据             ${gl_hong}99. ${gl_bai}卸载 fan-files&#x22;
+        echo -e &#x22;${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本&#x22;
+        echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+        read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}请输入你的选择: &#x22;)&#x22; action
+        case &#x22;$action&#x22; in
+        1)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> 正在停止 fan-files 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo systemctl stop ${SERVICE}
+            log_ok &#x22;fan-files 服务已停止&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        2)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> 正在启动 fan-files 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo systemctl start ${SERVICE}
+            log_ok &#x22;fan-files 服务已启动&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        3)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> 正在重启 fan-files 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo systemctl restart ${SERVICE}
+            log_ok &#x22;fan-files 服务已重启&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        4)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> fan-files 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo systemctl status ${SERVICE}
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        5)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> fan-files 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case &#x22;$status&#x22; in
+                enabled)   echo -e &#x22;${gl_lv}已启用${gl_bai}&#x22; ;;
+                disabled)  echo -e &#x22;${gl_hong}已禁用${gl_bai}&#x22; ;;
+                static)    echo &#x22;静态（非服务单元）&#x22; ;;
+                indirect)  echo &#x22;间接（依赖其他单元）&#x22; ;;
+                *)         echo &#x22;$status&#x22; ;;
+            esac
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        6)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> 正在开启 fan-files 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo systemctl enable ${SERVICE}
+            log_ok &#x22;已开启 fan-files 开机自启&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        7)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> 正在禁用 fan-files 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo systemctl disable ${SERVICE}
+            log_ok &#x22;已禁用 fan-files 开机自启&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        8)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> fan-files 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        9)
+            echo -e &#x22;&#x22;
+            echo -e &#x22;${gl_zi}>>> 实时跟踪 fan-files 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            sudo journalctl -u ${SERVICE} -f
+            echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+            break_end
+            ;;
+        66)
+            bash -c &#x22;$(curl -sSL ${INSTALL_SCRIPT_URL})&#x22;
+            break_end
+            continue
+            ;;
+        77)
+            bash <(curl -sL ${BACKUP_SCRIPT_URL}) 6
+            break_end
+            continue
+            ;;
+        88)
+            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
@@ -5685,6 +6134,13 @@ proj_mgmt_tool() {
         else
             col8=&#x22;${gl_hong}&#x22;
         fi
+        
+        # 9. Fan-Flies 二进制
+        if systemctl is-active --quiet fan-files 2>/dev/null; then
+            col9=&#x22;${gl_lv}&#x22;
+        else
+            col9=&#x22;${gl_hong}&#x22;
+        fi
 
         echo -e &#x22;${col1}1.${gl_bai}  OpenCode 二进制&#x22;
         echo -e &#x22;${col2}2.${gl_bai}  Fan-Video 二进制&#x22;
@@ -5694,6 +6150,7 @@ proj_mgmt_tool() {
         echo -e &#x22;${col6}6.${gl_bai}  Fan-Video&#x22;
         echo -e &#x22;${col7}7.${gl_bai}  CmdBox&#x22;
         echo -e &#x22;${col8}8.${gl_bai}  TV monitor&#x22;
+        echo -e &#x22;${col9}9.${gl_bai}  Fan-Flies 二进制&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
         echo -e &#x22;${gl_huang}0.  ${gl_bai}返回上一级选单&#x22;
         echo -e &#x22;${gl_hong}00. ${gl_bai}退出脚本&#x22;
@@ -5725,6 +6182,9 @@ proj_mgmt_tool() {
         8)
             monitor_tool
             ;;
+        9)
+            manage_fan_files
+            ;;            
         0)
             cancel_return &#x22;已是主菜单&#x22;
             continue
