@@ -1,3 +1,4 @@
+
 #!/bin/bash
 set -uo pipefail
 
@@ -40,8 +41,9 @@ sleep_fractional() {
     sleep "$int_seconds"
 }
 
-exit_animation() {
-    echo -ne "${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+cancel_return() {
+    local menu_name="${1:-退出脚本}"
+    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.5
     echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
@@ -77,418 +79,264 @@ exit_script() {
     exit 0
 }
 
-column_if_available() {
-    if command -v column &> /dev/null; then
-        column -t -s $'\t'
-    else
-        cat
-    fi
+handle_y_n() {
+    echo -ne "\r${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.3
+    echo -ne "\r${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.3
+    echo -ne "\r${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    return 2
 }
 
-root_use() {
+exit_animation() {
+    echo -ne "\r${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
     clear
-    if [ "$EUID" -ne 0 ]; then
-        echo -e "\n${gl_zi}>>> ROOT登录检查 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_huang}提示: ${gl_bai}该功能需要root用户才能运行！"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        break_end
-        return 1
-    fi
-    return 0
 }
 
-check_and_open_port() {
-    local PORT="$1"
-    if [[ -z "$PORT" ]]; then
-        log_error "未指定端口"
-        return 1
-    fi
-
-    log_info "检查端口 ${gl_huang}${PORT}${gl_bai} 是否放行 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-
-    # 检查端口是否已放行
-    if iptables -L INPUT -n 2>/dev/null | grep -qE "dpt:${PORT}[[:space:]]|dpt:${PORT}$" 2>/dev/null; then
-        log_ok "端口 ${PORT} 已放行，无需操作"
-        return 0
-    fi
-
-    log_warn "端口 ${gl_hong}${PORT}${gl_bai} 未放行，正在开放 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-
-    # 开放端口
-    iptables -I INPUT -p tcp --dport "${PORT}" -j ACCEPT 2>/dev/null
-    iptables -I INPUT -p udp --dport "${PORT}" -j ACCEPT 2>/dev/null
-
-    log_info "保存防火墙规则 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-
-    # 方法1: 使用 iptables-save 保存到文件（最可靠，不会卡住）
-    local SAVED=0
-    if command -v iptables-save >/dev/null 2>&1; then
-        mkdir -p /etc/iptables 2>/dev/null
-        if iptables-save > /etc/iptables/rules.v4 2>/dev/null; then
-            log_ok "IPv4 规则已保存到 /etc/iptables/rules.v4"
-            SAVED=1
-        fi
-        if command -v ip6tables-save >/dev/null 2>&1; then
-            ip6tables-save > /etc/iptables/rules.v6 2>/dev/null
-        fi
-    fi
-
-    # 方法2: 尝试使用 netfilter-persistent（带超时，避免卡住）
-    if command -v netfilter-persistent >/dev/null 2>&1; then
-        log_info "尝试 netfilter-persistent 保存..."
-        (
-            timeout 5 netfilter-persistent save >/dev/null 2>&1
-        ) &
-        local SAVE_PID=$!
-        local WAIT=0
-        while kill -0 $SAVE_PID 2>/dev/null && [ $WAIT -lt 6 ]; do
-            sleep 1
-            WAIT=$((WAIT + 1))
-        done
-        if kill -0 $SAVE_PID 2>/dev/null; then
-            kill -9 $SAVE_PID 2>/dev/null
-            log_warn "netfilter-persistent 保存超时，已跳过"
-        else
-            wait $SAVE_PID 2>/dev/null
-            if [ $? -eq 0 ]; then
-                log_ok "netfilter-persistent 保存成功"
-                SAVED=1
-            fi
-        fi
-    fi
-
-    # 方法3: 尝试使用 service iptables save（带超时）
-    if [ $SAVED -eq 0 ] && command -v service >/dev/null 2>&1; then
-        if service iptables status >/dev/null 2>&1; then
-            log_info "尝试 service iptables save..."
-            (
-                timeout 5 service iptables save >/dev/null 2>&1
-            ) &
-            local SAVE_PID=$!
-            local WAIT=0
-            while kill -0 $SAVE_PID 2>/dev/null && [ $WAIT -lt 6 ]; do
-                sleep 1
-                WAIT=$((WAIT + 1))
-            done
-            if kill -0 $SAVE_PID 2>/dev/null; then
-                kill -9 $SAVE_PID 2>/dev/null
-                log_warn "service iptables save 超时"
-            else
-                wait $SAVE_PID 2>/dev/null
-                if [ $? -eq 0 ]; then
-                    log_ok "service iptables save 成功"
-                    SAVED=1
-                fi
-            fi
-        fi
-    fi
-
-    # 方法4: 尝试使用 iptables-persistent（Debian/Ubuntu）
-    if [ $SAVED -eq 0 ] && command -v iptables-save >/dev/null 2>&1 && [ -f /etc/iptables/rules.v4 ]; then
-        log_info "iptables 规则已通过文件备份: /etc/iptables/rules.v4"
-        log_info "重启后如需恢复规则，可执行: iptables-restore < /etc/iptables/rules.v4"
-        SAVED=1
-    fi
-
-    if [ $SAVED -eq 0 ]; then
-        log_warn "无法自动持久化保存规则，但端口已临时开放"
-        log_info "如需永久保存，请手动执行: iptables-save > /etc/iptables/rules.v4"
-    fi
-
-    log_ok "端口 ${gl_lv}${PORT}${gl_bai} 已开放"
+cancel_empty() {
+    local menu_name="${1:-上一级选单}"
+    echo -e "${gl_hong}空输入，返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    clear
 }
 
-check_port_available() {
-    local PORT="$1"
-    if ss -tuln | grep -q ":${PORT} "; then
-        return 1
-    elif netstat -tuln 2>/dev/null | grep -q ":${PORT} "; then
-        return 1
+handle_invalid_input() {
+    echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
+    sleep_fractional 1
+    echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
+    sleep_fractional 0.5
+    echo -ne "\r\033[K"
+    return 2
+}
+
+show_service_url() {
+    local service="${1:-fan-files}"
+    local url=""
+    local port=""
+    local ip
+    ip=$(hostname -I 2>/dev/null | awk '{print $1}')
+    [ -z "$ip" ] && ip=$(ip route get 1 2>/dev/null | awk '{print $7}' | head -1)
+    [ -z "$ip" ] && ip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | head -1)
+    [ -z "$ip" ] && ip="127.0.0.1"
+
+    port=$(journalctl -u "$service" --no-pager -n 200 -o cat 2>/dev/null \
+        | grep -E 'fan-files 启动于 :[0-9]+' \
+        | grep -oE ':[0-9]+$' | sed 's/^://' | head -1)
+
+    if [ -z "$port" ];then
+        local exec_cmd
+        exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
+        port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
+    fi
+
+    if [ -z "$port" ] && command -v ss >/dev/null 2>&1;then
+        local pid
+        pid=$(systemctl show -p MainPID "$service" 2>/dev/null | cut -d= -f2-)
+        if [[ "$pid" =~ ^[0-9]+$ && "$pid" -gt 0 ]];then
+            port=$(ss -tlnp 2>/dev/null | grep ",pid=$pid," | grep -oE ':[0-9]+' | sed 's/^://' | head -1)
+        fi
+    fi
+
+    if [ -n "$port" ]; then
+        url="http://${ip}:${port}"
+    fi
+
+    if [ -n "$url" ]; then
+        echo -e "访问地址：${gl_lv}${url}${gl_bai}"
     else
-        return 0
+        echo -e "访问地址：${gl_hong}无法获取访问地址${gl_bai}"
+        return 1
     fi
 }
 
-get_free_port() {
-    local start_port=$1
-    local port=$start_port
-    while ! check_port_available $port; do
-        port=$((port + 1))
-        if [ $port -gt $((start_port + 100)) ]; then
-            echo ""
-            return 1
-        fi
-    done
-    echo $port
-}
+show_service_status() {
+    local service="${1:-fan-files}"
 
-docker-ps-cn() {
-    {
-        local filter_name="$1"
-        local docker_filter=""
+    local version=""
+    local ver_regex='\b(v[0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+\.[0-9]+)\b'
 
-        if [ -n "$filter_name" ]; then
-            docker_filter="--filter name=${filter_name}"
-        fi
-
-        printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "容器ID" "名称" "状态" "端口" "创建时间" "镜像" "$reset"
-        printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "----------" "----------" "----------" "----------" "----------" "----------" "$reset"
-
-        docker ps ${docker_filter} --format "{{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.RunningFor}}\t{{.Image}}" | \
-        awk -v green="$gl_lv" -v yellow="$gl_huang" -v cyan="$gl_bufan" -v blue="$gl_lan" -v white="$gl_bai" -v reset="$reset" -v gl_bai="$gl_bai" '
-        BEGIN {FS="\t"; OFS="\t"}
-        {
-            id = substr($1, 1, 12)
-            name = $2
-            status = $3
-            ports = $4
-            time = $5
-            image = $6
-
-            gsub(/ years ago/, "年前", time)
-            gsub(/ year ago/, "年前", time)
-            gsub(/ months ago/, "个月前", time)
-            gsub(/ month ago/, "个月前", time)
-            gsub(/ weeks ago/, "周前", time)
-            gsub(/ week ago/, "周前", time)
-            gsub(/ days ago/, "天前", time)
-            gsub(/ day ago/, "天前", time)
-            gsub(/ hours ago/, "小时前", time)
-            gsub(/ hour ago/, "小时前", time)
-            gsub(/ minutes ago/, "分钟前", time)
-            gsub(/ minute ago/, "分钟前", time)
-            gsub(/ seconds ago/, "秒前", time)
-            gsub(/ second ago/, "秒前", time)
-            gsub(/About /, "", time)
-
-            print cyan id reset, green name reset, yellow status reset, blue ports reset, white time reset, gl_bai image reset
-        }'
-    } | column_if_available
-}
-
-docker_check_env() {
-    if ! command -v docker &>/dev/null; then
-        log_info "正在检查 Docker 运行环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        log_warn "Docker 未安装，即将自动安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
-
-        if ! command -v docker &>/dev/null; then
-            log_error "Docker 安装失败，请手动安装后重试！"
-            sleep 1
-            exit 1
-        fi
-        log_ok "Docker 安装成功！"
+    if command -v "$service" &>/dev/null; then
+        version=$("$service" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+        [ -z "$version" ] && version=$("$service" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
     fi
 
-    if ! command -v docker-compose &>/dev/null; then
+    if [ -z "$version" ]; then
+        local exec_path
+        exec_path=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2 | awk '{print $1}')
+        if [ -n "$exec_path" ] && [ -x "$exec_path" ]; then
+            version=$("$exec_path" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+            [ -z "$version" ] && version=$("$exec_path" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
+        fi
+    fi
+
+    if [ -z "$version" ] && command -v journalctl &>/dev/null; then
+        version=$(journalctl -u "$service" --no-pager -n 50 -o cat 2>/dev/null | grep -oE "$ver_regex" | head -1)
+    fi
+
+    if [[ ! "$version" =~ $ver_regex ]]; then
+        version=""
+    fi
+
+    if systemctl is-active --quiet "$service"; then
+        echo -e "运行状态：${gl_lv}$service 正在运行${gl_bai}"
+    else
+        echo -e "运行状态：${gl_hong}$service 未运行${gl_bai}"
+    fi
+    if [ -n "$version" ]; then
+        echo -e "版本信息：${gl_huang}$version${gl_bai}"
+    else
+        echo -e "版本信息：${gl_huang}无法获取${gl_bai}"
+    fi
+}
+
+manage_fan_files() {
+    while true; do
+        clear
         echo -e ""
-        log_info "正在检查 Docker Compose 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        log_warn "Docker Compose 未安装，即将自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        echo -e "${gl_zi}>>> fan-files 管理工具${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
-
-        if ! command -v docker-compose &>/dev/null; then
-            log_error "Docker Compose 安装失败，请手动安装后重试！"
-            sleep 1
-            exit 1
-        fi
-        log_ok "Docker Compose 安装成功！"
-    fi
-}
-
-clean_old_container() {
-    if [ $# -eq 0 ]; then
-        log_warn "未传入任何容器名称参数，跳过清理"
-        return 1
-    fi
-
-    local targets=("$@")
-
-    echo -e ""
-    echo -e "${gl_huang}>>> 清理容器与相关镜像（目标：${targets[*]}）${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
-    for container_name in "${targets[@]}"; do
-        if docker ps -a --filter "name=^/${container_name}$" --format "{{.Names}}" | grep -q "^${container_name}$"; then
-            log_info "检测到容器 ${gl_huang}${container_name}${gl_bai}，正在停止并删除 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            docker rm -f "${container_name}" >/dev/null 2>&1
-            log_ok "容器 ${container_name} 清理完成"
-        else
-            log_ok "容器 ${container_name} 不存在，跳过"
-        fi
-    done
-
-    log_info "开始模糊清理相关镜像（关键词：${targets[*]}） ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    local image_ids=$(docker images --format "{{.ID}}" | grep -f <(printf "%s\n" "${targets[@]}" | sed 's/^/-i /;s/ / -i /g'))
-    if [ -n "$image_ids" ]; then
-        echo "$image_ids" | xargs docker rmi -f >/dev/null 2>&1
-        log_ok "相关镜像已全部删除"
-    else
-        log_ok "未找到相关镜像"
-    fi
-
-    log_info "清理悬空镜像与未使用镜像 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    docker image prune -a -f >/dev/null 2>&1
-    log_ok "未使用镜像清理完成"
-
-    log_info "清理Docker无用资源（容器/网络/卷/构建缓存） ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    docker system prune -a -f --volumes >/dev/null 2>&1
-    docker builder prune -af >/dev/null 2>&1
-    log_ok "Docker系统资源清理完成"
-
-    log_info "验证清理结果 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    local remain=0
-    for name in "${targets[@]}"; do
-        docker ps -a --filter "name=^/${name}$" --format "{{.Names}}" | grep -q "^${name}$" && remain=$((remain+1))
-    done
-
-    if [ "$remain" -eq 0 ]; then
-        log_ok "所有指定容器、镜像、残留资源已彻底清理，无名称冲突"
-    else
-        log_warn "仍有 ${gl_huang}${remain}${gl_bai} 个相关容器未清理，请手动检查"
-    fi
-}
-
-deploy_app() {
-    local COMPOSE_DIR=""
-    local HOST_PORT=""
-
-    root_use || return 1
-    clear
-    echo -e "${gl_zi}>>> fan-files 文件管理器 一键部署${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
-    docker_check_env
-
-    # 先解析参数：数字视为端口，其余视为目录
-    for arg in "$@"; do
-        if [[ "$arg" =~ ^[0-9]+$ ]]; then
-            HOST_PORT="$arg"
-        else
-            COMPOSE_DIR="$arg"
-        fi
-    done
-
-    if [ -z "${COMPOSE_DIR}" ]; then
-        read -r -e -p "${gl_bai}请输入 docker-compose 存放路径（回车默认：${gl_huang}${DEFAULT_COMPOSE_DIR}${gl_bai}）(${gl_hong}0${gl_bai} 退出安装）：" input_dir
-        COMPOSE_DIR=${input_dir:-$DEFAULT_COMPOSE_DIR}
-    else
-        log_info "已通过传参指定部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}"
-    fi
-
-    if [ "$COMPOSE_DIR" = "0" ]; then
-        exit_script
-        return 1
-    fi
-
-    log_info "部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}"
-    mkdir -p "${COMPOSE_DIR}" || { log_error "目录创建失败"; break_end; return 1; }
-    cd "${COMPOSE_DIR}" || { log_error "进入目录失败"; break_end; return 1; }
-
-    if [ -z "${HOST_PORT}" ]; then
-        read -r -e -p "${gl_bai}请输入映射端口（回车默认：${gl_huang}${DEFAULT_PORT}${gl_bai}）(${gl_hong}0${gl_bai} 退出安装）：" input_port
-        HOST_PORT=${input_port:-$DEFAULT_PORT}
-    else
-        log_info "已通过传参指定端口：${gl_lv}${HOST_PORT}${gl_bai}"
-    fi
-
-    if [ "$HOST_PORT" = "0" ]; then
-        exit_script
-        rm -rf "${COMPOSE_DIR}"
-        return 1
-    fi
-
-    log_info "使用端口：${gl_lv}${HOST_PORT}${gl_bai}"
-
-    if ! check_port_available $HOST_PORT; then
-        log_warn "端口 ${gl_hong}${HOST_PORT}${gl_bai} 已被占用"
-        NEW_PORT=$(get_free_port $((HOST_PORT + 1)))
-        if [ -n "$NEW_PORT" ]; then
-            log_info "自动分配新端口：${gl_lv}${NEW_PORT}${gl_bai}"
-            HOST_PORT=$NEW_PORT
-        else
-            log_error "无法找到可用端口，请手动指定"
-            break_end
-            return 1
-        fi
-    fi
-
-    check_and_open_port ${HOST_PORT}
-    clean_old_container "${DEFAULT_CONTAINER_NAME}"
-
-    echo -e ""
-    echo -e "${gl_huang}>>> 生成 ${gl_lv}docker-compose.yml${gl_huang} 文件 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    cat > docker-compose.yml << EOF
-services:
-   fan-files:
-     image: mobufan/fan-files:latest
-     container_name: fan-files
-     network_mode: bridge
-     restart: unless-stopped
-     environment:
-        - PUID=1000
-        - PGID=1000
-        - TZ=Asia/Shanghai
-     volumes:
-        - ./data:/var/lib/fan-files
-        - ./config:/etc/fan-files
-     ports:
-        - ${HOST_PORT}:8678
-     deploy:
-        resources:
-           limits:
-              cpus: "4"
-              memory: 4G
-EOF
-
-    if [ -f "docker-compose.yml" ]; then
-        log_ok "配置文件创建成功"
-    else
-        log_error "配置文件创建失败"
+        show_service_status fan-files
+        show_service_url fan-files
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        break_end
-        return 1
-    fi
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-files       ${gl_bufan}2.  ${gl_bai}启动 fan-files"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-files       ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态     ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启         ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-files  ${gl_huang}77. ${gl_bai}备份数据"
+        echo -e "${gl_lv}88. ${gl_bai}恢复数据             ${gl_hong}99. ${gl_bai}卸载 fan-files"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
 
-    echo -e ""
-    echo -e "${gl_huang}>>> 尝试启动容器 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    if docker-compose up -d; then
-        log_ok "容器启动成功"
-    else
-        log_warn "docker-compose 启动失败，尝试兼容版 docker compose ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        if docker compose up -d; then
-            log_ok "容器启动成功"
-        else
-            log_error "容器启动失败"
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-files 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-files 服务已停止"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             break_end
-            return 1
-        fi
-    fi
-
-    echo -e ""
-    echo -e "${gl_huang}>>> 容器运行状态${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    docker-ps-cn ${DEFAULT_CONTAINER_NAME}
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    LOCAL_IP=$(hostname -I | awk '{print $1}')
-    log_info "部署完成！"
-    log_info "访问地址：${gl_lv}http://${LOCAL_IP}:${HOST_PORT}${gl_bai}"
-    log_info "部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}"
-    log_info "数据目录：${gl_huang}${COMPOSE_DIR}/data${gl_bai} (数据库) / ${gl_huang}${COMPOSE_DIR}/config${gl_bai} (配置)"
-    log_info "首次登录：账号 ${gl_lv}admin${gl_bai}，默认密码见容器启动日志：${gl_huang}docker logs fan-files 2>&1 | grep -i password${gl_bai}"
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-files 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-files 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-files 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-files 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-files 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-files 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-files 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-files 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-files 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-files 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-files 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-files 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        77)
+            bash <(curl -sL ${BACKUP_SCRIPT_URL}) 6
+            break_end
+            continue
+            ;;
+        88)
+            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            cancel_return "已是主菜单"
+            continue
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
 }
 
-# 默认配置值
-DEFAULT_TITLE="fan-files 文件管理器 一键部署"
-DEFAULT_COMPOSE_DIR="/vol1/1000/compose/fan-files"
-DEFAULT_PORT="8678"
-DEFAULT_CONTAINER_NAME="fan-files"
-
-deploy_app "$@"
+manage_fan_files
