@@ -3,16 +3,16 @@ set -uo pipefail
 
 # ====================== 【可自定义配置区】 在这里修改所有默认参数 ======================
 # 项目标题
-DEFAULT_TITLE="Markdown 文档服务器 一键部署"
+DEFAULT_TITLE="fan-md 云文档服务器 一键部署"
 
 # 部署目录（不传参时的默认路径）
-DEFAULT_COMPOSE_DIR="/vol1/1000/compose/md"
+DEFAULT_COMPOSE_DIR="/vol1/1000/compose/fan-md"
 
 # 默认访问端口（不传参时使用）
 DEFAULT_PORT="9900"
 
 # 默认容器名称（可自定义）
-DEFAULT_CONTAINER_NAME="md"
+DEFAULT_CONTAINER_NAME="fan-md"
 # ====================================================================================
 
 list_color_init() {
@@ -283,7 +283,7 @@ docker_check_env() {
         log_info "正在检查 Docker 运行环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         log_warn "Docker 未安装，即将自动安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
 
         if ! command -v docker &>/dev/null; then
             log_error "Docker 安装失败，请手动安装后重试！"
@@ -298,7 +298,7 @@ docker_check_env() {
         log_info "正在检查 Docker Compose 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         log_warn "Docker Compose 未安装，即将自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
+        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
 
         if ! command -v docker-compose &>/dev/null; then
             log_error "Docker Compose 安装失败，请手动安装后重试！"
@@ -433,15 +433,15 @@ deploy_app() {
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     cat > docker-compose.yml << EOF
 services:
-   md:
-      image: streamerzero/md
-      container_name: md
+   fan-md:
+      image: mobufan/fan-md:latest
+      container_name: fan-md
       network_mode: bridge
       restart: always
       environment:
          - reg=true
       volumes:
-         - ./data:/md/data
+         - ./data:/fan-md/data
       ports:
          - ${HOST_PORT}:9900
 EOF
@@ -481,6 +481,8 @@ EOF
     log_info "部署完成！"
     log_info "访问地址：${gl_lv}http://${LOCAL_IP}:${HOST_PORT}${gl_bai}"
     log_info "部署目录：${gl_huang}${COMPOSE_DIR}${gl_bai}"
+    log_info "数据目录：${gl_huang}${COMPOSE_DIR}/data${gl_bai} (SQLite 数据库 md.db + resource 图片)"
+    log_info "首次使用：登录页点击注册创建账号（reg=true 允许注册），注册后建议关闭注册"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
 }
