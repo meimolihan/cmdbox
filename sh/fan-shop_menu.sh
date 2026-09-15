@@ -1,3 +1,4 @@
+
 #!/bin/bash
 set -uo pipefail
 
@@ -207,15 +208,14 @@ manage_fan_shop() {
         show_service_status fan-shop
         show_service_url fan-shop
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-shop   ${gl_bufan}2.  ${gl_bai}启动 fan-shop"
-        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-shop   ${gl_bufan}4.  ${gl_bai}查看服务状态"
-        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态 ${gl_bufan}6.  ${gl_bai}开启开机自启"
-        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启     ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-shop       ${gl_bufan}2.  ${gl_bai}启动 fan-shop"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-shop       ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态    ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启        ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
         echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-shop"
-        echo -e "${gl_hong}99. ${gl_bai}卸载 fan-shop"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单   ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-shop  ${gl_hong}99. ${gl_bai}卸载 fan-shop"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
 
