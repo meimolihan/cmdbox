@@ -1,6 +1,5 @@
 #!/bin/bash
 set -uo pipefail
-
 gl_hui='\033[38;5;59m'
 gl_hong='\033[38;5;9m'
 gl_lv='\033[38;5;10m'
@@ -9,20 +8,17 @@ gl_lan='\033[38;5;32m'
 gl_bai='\033[38;5;15m'
 gl_zi='\033[38;5;13m'
 gl_bufan='\033[38;5;14m'
-
 log_info() { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
 log_ok() { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn() { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
-
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
-    echo -e "${gl_bai}按任意键继续${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     read -r -n 1 -s -p ""
     echo ""
     clear
 }
-
 sleep_fractional() {
     local seconds=$1
     if sleep "$seconds" 2>/dev/null; then return 0; fi
@@ -32,7 +28,6 @@ sleep_fractional() {
     local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
     sleep "$int_seconds"
 }
-
 exit_animation() {
     echo -ne "${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.5
@@ -40,13 +35,11 @@ exit_animation() {
     sleep_fractional 0.6
     echo ""
 }
-
 install() {
     [[ $# -eq 0 ]] && {
         log_error "未提供软件包参数!"
         return 1
     }
-
     local pkg mgr ver cmd_ver pkg_ver installed=false
     for pkg in "$@"; do
         installed=false
@@ -161,66 +154,51 @@ install() {
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     done
 }
-
 git_push_all() {
     local start_dir="${1:-$(pwd)}"
-    local commit_msg="${2:-update}"
+    local commit_msg="${2:-日常更新}"
     local exclude_dirs="${3:-}"
-
     clear
-    echo -e "${gl_zi}>>> 正在推送所有仓库更改${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_zi}>>> 批量Git仓库同步（先pull，后提交推送）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    log_info "目标目录：${gl_lv}$start_dir${gl_bai}"
-
+    log_info "目标根目录：${gl_lv}$start_dir${gl_bai}"
     cd "$start_dir" || {
-        log_error "无法进入目录：$start_dir"
+        log_error "无法进入根目录：$start_dir"
         exit_animation
         return 1
     }
-
-    local find_cmd="find . -type d -name \".git\""
-    if [ -n "$exclude_dirs" ]; then
-        for dir in $exclude_dirs; do
-            find_cmd="$find_cmd -not -path \"*/$dir/*\""
-        done
-    fi
-
-    eval "$find_cmd" | while read -r git_dir; do
+    log_info "开始扫描目录下所有Git仓库 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    find . -type d -name ".git" ${exclude_dirs:+ $(for e in $exclude_dirs; do echo -n "-not -path */$e/* "; done)} | while read -r git_dir; do
         repo_dir=$(dirname "$git_dir")
-
-        if [ ! -f "$git_dir/config" ]; then
+        if [[ ! -f "${git_dir}/config" ]]; then
+            log_warn "跳过损坏git目录：${repo_dir}"
             continue
         fi
-
         echo
-        echo -e "${gl_huang}正在处理仓库：${gl_lv}$(basename "$repo_dir")${gl_bai}"
+        echo -e "${gl_huang}正在处理仓库：${gl_lv}$repo_dir${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
         (
-            if git -C "$repo_dir" status --porcelain | grep -q '.'; then
-                log_info "检测到更改，正在提交${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            log_info "[1] 拉取远程更新 git pull"
+            git -C "$repo_dir" pull
+            if [[ -n $(git -C "$repo_dir" status --porcelain) ]]; then
+                log_info "[2] 检测到本地变更，执行 add/commit"
                 git -C "$repo_dir" add .
                 git -C "$repo_dir" commit -m "$commit_msg"
+                log_info "[3] 推送至远程 git push"
+                git -C "$repo_dir" push
+                log_ok "✅ 当前仓库提交推送完成"
             else
-                log_info "工作区干净，无需提交"
+                log_info "✅ 本地无变更，跳过提交推送"
             fi
-
-            git -C "$repo_dir" pull --rebase 2>/dev/null || true
-            git -C "$repo_dir" push 2>/dev/null || {
-                log_error "推送失败：$(basename "$repo_dir")"
-                false
-            }
         )
-
-        if [ $? -eq 0 ]; then
-            log_ok "推送完成 ${gl_lv}$(basename "$repo_dir")${gl_bai}"
+        local ret=$?
+        if [[ ${ret} -eq 0 ]]; then
+            log_ok "仓库处理成功: ${repo_dir}"
         else
-            log_error "推送失败 ${gl_lv}$(basename "$repo_dir")${gl_bai}"
+            log_error "仓库处理失败: ${repo_dir} 返回码: ${ret}"
         fi
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     done
-
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
 }
-
-git_push_all "$1" "$2" "$3"
+git_push_all "${1:-}" "${2:-日常更新}" "${3:-}"

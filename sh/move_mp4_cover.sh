@@ -1,12 +1,19 @@
 #!/bin/bash
 
-gl_hong='\033[0;31m'
-gl_lv='\033[0;32m'
-gl_huang='\033[1;33m'
-gl_lan='\033[0;34m'
-gl_hui='\033[1;30m'
-gl_end='\033[0m'
-
+# ================== terminal colors ==================
+list_color_init() {
+    export gl_hui=$'\033[38;5;59m'
+    export gl_hong=$'\033[38;5;9m'
+    export gl_lv=$'\033[38;5;10m'
+    export gl_huang=$'\033[38;5;11m'
+    export gl_lan=$'\033[38;5;32m'
+    export gl_bai=$'\033[38;5;15m'
+    export gl_zi=$'\033[38;5;13m'
+    export gl_bufan=$'\033[38;5;14m'
+    export reset=$'\033[0m'
+}
+list_color_init
+export gl_end='\033[0m'
 STOP_FILE="./.move.stop"
 
 move_mp4_and_cover() {

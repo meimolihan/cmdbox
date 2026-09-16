@@ -1,14 +1,6 @@
 #!/bin/bash
 set -uo pipefail
 
-gl_hui='\033[38;5;59m'
-gl_hong='\033[38;5;9m'
-gl_lv='\033[38;5;10m'
-gl_huang='\033[38;5;11m'
-gl_lan='\033[38;5;32m'
-gl_bai='\033[38;5;15m'
-gl_zi='\033[38;5;13m'
-gl_bufan='\033[38;5;14m'
 
 log_info()  { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
 log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }

@@ -1,6 +1,14 @@
 #!/bin/bash
 set -uo pipefail
 
+: "${GH_TOKEN:=}"
+: "${DOCKERHUB_USERNAME:=mobufan}"
+: "${DOCKERHUB_TOKEN:=}"
+: "${EXTRA_TRIGGER_WORKFLOW:=0}"
+: "${SHOW_DOCKERHUB_INFO:=1}"
+: "${PRE_CLEAN_REMOTE_TAG:=1}"
+: "${LOCAL_DOCKER_LOGIN:=1}"
+
 list_color_init() {
     export gl_hui=$'\033[38;5;59m'
     export gl_hong=$'\033[38;5;9m'
@@ -19,18 +27,28 @@ log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 
+break_end() {
+    echo -e "${gl_lv}操作完成${gl_bai}"
+    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    read -r -n 1 -s -p ""
+    echo ""
+    clear
+}
+
 sleep_fractional() {
     local seconds=$1
     if sleep "$seconds" 2>/dev/null; then return 0; fi
     if command -v perl >/dev/null 2>&1; then perl -e "select(undef, undef, undef, $seconds)"; return 0; fi
     if command -v python3 >/dev/null 2>&1; then python3 -c "import time; time.sleep($seconds)"; return 0; fi
     if command -v python >/dev/null 2>&1; then python -c "import time; time.sleep($seconds)"; return 0; fi
-    local int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
+    local int_seconds
+    int_seconds=$(echo "$seconds" | awk '{print int($1+0.999)}')
     sleep "$int_seconds"
 }
 
-exit_animation() {
-    echo -ne "${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+cancel_return() {
+    local menu_name="${1:-退出脚本}"
+    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.5
     echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
@@ -53,30 +71,794 @@ exit_script() {
     local total_dots=${#dots[@]}
     for ((i=0; i<20; i++)); do
         if (( i > 0 && i % 3 == 0 && dot_idx < total_dots )); then
-            dot_buffer+=${dots[$dot_idx]}
+            dot_buffer+="${dots[$dot_idx]}"
             ((dot_idx++))
         fi
         echo -ne "\r\033[K${gl_bufan}${frames[i % frame_len]}${gl_bai} 正在退出 ${dot_buffer}"
         sleep_fractional 0.06
     done
-    echo -e "\r\033[K${gl_lv}✓${gl_bai} 成功退出\n"
+    echo -e "\r\033[K${gl_lv}✓${gl_bai} ${gl_lv}[成功]${gl_bai}退出\n"
     clear
     exit 0
 }
 
-cancel_return() {
-    local menu_name="${1:-上一级选单}"
-    echo -e "${gl_lv}即将返回到 ${gl_huang}${menu_name}${gl_lv} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+handle_y_n() {
+    echo -ne "\r${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.3
+    echo -ne "\r${gl_huang}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.3
+    echo -ne "\r${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
+    echo ""
+    return 2
+}
+
+exit_animation() {
+    echo -ne "\r${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
     echo ""
     clear
 }
 
-break_end() {
-    echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
-    read -r -n 1 -s -r -p ""
+cancel_empty() {
+    local menu_name="${1:-上一级选单}"
+    echo -e "${gl_hong}空输入，返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.5
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.6
     echo ""
     clear
+}
+
+handle_invalid_input() {
+    echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后返回"
+    sleep_fractional 1
+    echo -ne "\r\033[K${gl_lv}无效的输入,请重新输入! ${gl_zi}0${gl_lv} 秒后返回"
+    sleep_fractional 0.5
+    echo -ne "\r\033[K"
+    return 2
+}
+
+get_git_latest_tag() {
+    local repo_path="$1"
+    if [[ -z "$repo_path" ]]; then
+        repo_path="."
+    fi
+    local tag
+    tag=$(
+        cd "${repo_path}" || return
+        git tag --sort=-v:refname 2>/dev/null | head -n 1
+    )
+    if [[ -z "$tag" ]]; then
+        echo -e "${gl_huang}无版本标签${gl_bai}"
+    else
+        echo "$tag"
+    fi
+}
+
+next_version() {
+    local cur="$1"
+    cur=$(echo "$cur" | sed -E 's/\x1b\[[0-9;]*m//g' | tr -d '\r')
+    if [[ -z "$cur" || "$cur" == *"无版本标签"* ]]; then
+        echo "v1.0.0"
+        return
+    fi
+    if [[ "$cur" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+        echo "v${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((BASH_REMATCH[3] + 1))"
+    else
+        echo "$cur"
+    fi
+}
+
+get_repo_slug() {
+    local repo_path="${1:-.}"
+    local url
+    url=$(cd "$repo_path" 2>/dev/null && git remote get-url origin 2>/dev/null) || return 1
+    [[ -z "$url" ]] && return 1
+    echo "$url" | sed -E 's#^https?://[^/]+/##; s#^git@[^:]+:##; s#\.git$##'
+}
+
+check_tokens() {
+    local fail=0
+    if [[ -z "$GH_TOKEN" ]]; then
+        log_error "环境变量 GH_TOKEN 未设置"
+        echo -e "       ${gl_huang}export GH_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx${gl_bai}"
+        echo -e "       ${gl_hui}（需要 repo + workflow 权限）${gl_bai}"
+        fail=1
+    fi
+    if [[ -z "$DOCKERHUB_TOKEN" ]]; then
+        log_warn "环境变量 DOCKERHUB_TOKEN 未设置，将跳过 Actions secret 与本地 docker login"
+    fi
+    return "$fail"
+}
+
+pkg_install() {
+    local pkgs=("$@")
+    local need_install=()
+    if [[ $EUID -ne 0 ]]; then
+        log_error "需要root权限才能安装软件包，请使用sudo运行脚本！"
+        return 2
+    fi
+    log_info "检查依赖包: ${pkgs[*]}"
+    for pkg in "${pkgs[@]}"; do
+        if ! command -v "${pkg}" &>/dev/null; then
+            need_install+=("${pkg}")
+        fi
+    done
+    if [[ ${#need_install[@]} -eq 0 ]]; then
+        log_ok "所有依赖已安装，无需操作"
+        return 0
+    fi
+    log_warn "待安装软件包: ${need_install[*]}"
+    log_info "开始更新软件源并安装依赖 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    if apt update >/dev/null 2>&1 && apt install -y "${need_install[@]}"; then
+        log_ok "依赖安装完成"
+        return 0
+    else
+        log_error "软件包安装失败，请检查网络或软件源"
+        return 1
+    fi
+}
+
+column_if_available() {
+    if command -v column >/dev/null 2>&1; then
+        column -t
+    else
+        cat
+    fi
+}
+
+docker-ps-find() {
+    {
+        local filters=("$@")
+        printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "容器ID" "名称" "状态" "端口" "创建时间" "镜像" "$reset"
+        printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "----------" "----------" "----------" "----------" "----------" "----------" "$reset"
+        docker ps --format "{{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.RunningFor}}\t{{.Image}}" | \
+        if [ $# -gt 0 ]; then
+            awk -v filters="${filters[*]}" '
+            BEGIN {
+                split(filters, arr, " ")
+                for (i in arr) pattern[arr[i]] = 1
+            }
+            {
+                for (p in pattern) {
+                    if ($2 ~ p) {
+                        print
+                        next
+                    }
+                }
+            }'
+        else
+            cat
+        fi | \
+        awk -v green="$gl_lv" -v red="$gl_hong" -v yellow="$gl_huang" -v cyan="$gl_bufan" -v blue="$gl_lan" -v white="$gl_bai" -v reset="$reset" '
+        BEGIN {FS="\t"; OFS="\t"}
+        {
+            id = substr($1, 1, 12)
+            name = $2
+            status = $3
+            ports = $4
+            time = $5
+            image = $6
+            gsub(/healthy/, "健康", status)
+            gsub(/unhealthy/, "不健康", status)
+            gsub(/starting/, "启动中", status)
+            gsub(/Up /, "已运行 ", status)
+            gsub(/days/, "天", status)
+            gsub(/hours/, "小时", status)
+            gsub(/minutes/, "分钟", status)
+            gsub(/seconds/, "秒", status)
+            if (status !~ /健康|不健康|启动中/) {
+                status = status " (正常)"
+            }
+            gsub(/[0-9]+/, green "&" reset, status)
+            gsub(/健康/, green "&" reset, status)
+            gsub(/不健康/, red "&" reset, status)
+            gsub(/启动中/, yellow "&" reset, status)
+            gsub(/正常/, blue "&" reset, status)
+            gsub(/ years ago/, "年前", time)
+            gsub(/ year ago/, "年前", time)
+            gsub(/ months ago/, "个月前", time)
+            gsub(/ month ago/, "个月前", time)
+            gsub(/ weeks ago/, "周前", time)
+            gsub(/ week ago/, "周前", time)
+            gsub(/ days ago/, "天前", time)
+            gsub(/ day ago/, "天前", time)
+            gsub(/ hours ago/, "小时前", time)
+            gsub(/ hour ago/, "小时前", time)
+            gsub(/ minutes ago/, "分钟前", time)
+            gsub(/ minute ago/, "分钟前", time)
+            gsub(/ seconds ago/, "秒前", time)
+            gsub(/About /, "", time)
+            gsub(/[0-9]+/, green "&" reset, time)
+            print cyan id reset, green name reset, yellow status reset, blue ports reset, white time reset, white image reset
+        }'
+    } | column_if_available
+}
+
+pre_clean_remote_tag() {
+    local repo_path="$1"
+    local tag="$2"
+
+    if [[ "${PRE_CLEAN_REMOTE_TAG}" != "1" ]]; then
+        return 0
+    fi
+    if [[ -z "$repo_path" || -z "$tag" ]]; then
+        return 0
+    fi
+
+    pushd "$repo_path" >/dev/null 2>&1 || return 0
+
+    local repo_slug
+    repo_slug=$(get_repo_slug "$repo_path")
+
+    local release_deleted=0
+
+    if [[ -n "$repo_slug" ]] && command -v gh >/dev/null 2>&1; then
+        if gh release view "$tag" -R "$repo_slug" >/dev/null 2>&1; then
+            log_warn "远端已存在 Release ${tag}，删除 Release + tag"
+            if gh release delete "$tag" -R "$repo_slug" --yes --cleanup-tag >/dev/null 2>&1; then
+                log_ok "Release ${tag} 及远端 tag 已删除"
+                release_deleted=1
+            else
+                if gh release delete "$tag" -R "$repo_slug" --yes >/dev/null 2>&1; then
+                    log_ok "Release ${tag} 已删除"
+                    release_deleted=1
+                else
+                    log_warn "Release ${tag} 删除失败（继续尝试清理 tag）"
+                fi
+            fi
+        else
+            log_info "远端无同名 Release ${tag}"
+        fi
+    fi
+
+    if [[ "$release_deleted" != "1" ]]; then
+        local remote_has_tag
+        remote_has_tag=$(git ls-remote --tags origin "refs/tags/${tag}" 2>/dev/null)
+        if [[ -n "$remote_has_tag" ]]; then
+            log_warn "远端已存在 tag ${tag}，主动删除"
+            if git push origin --delete "$tag" >/dev/null 2>&1; then
+                log_ok "远端 tag ${tag} 已删除"
+            elif git push origin ":refs/tags/${tag}" >/dev/null 2>&1; then
+                log_ok "远端 tag ${tag} 已删除（refs 形式）"
+            else
+                log_warn "远端 tag ${tag} 删除失败（可能需要手动处理）"
+            fi
+        else
+            log_info "远端无同名 tag ${tag}"
+        fi
+    fi
+
+    if git rev-parse --verify "refs/tags/${tag}" >/dev/null 2>&1; then
+        git tag -d "$tag" >/dev/null 2>&1 && log_ok "本地 tag ${tag} 已删除" || true
+    fi
+
+    popd >/dev/null 2>&1
+    return 0
+}
+
+
+show_dockerhub_info() {
+    local repo="$1"
+    local limit="${2:-5}"
+
+    if [[ "${SHOW_DOCKERHUB_INFO}" != "1" ]]; then
+        return 0
+    fi
+    if [[ -z "$repo" ]]; then
+        log_error "用法: show_dockerhub_info <dockerhub_repo> [标签数量]"
+        return 1
+    fi
+
+    echo -e "${gl_zi}>>> Docker Hub 信息：${gl_huang}${repo}${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    echo -e "${gl_bai}Docker Hub 用户名：${gl_lv}${DOCKERHUB_USERNAME:-未设置}${gl_bai}"
+    if [[ -n "$DOCKERHUB_TOKEN" ]]; then
+        echo -e "${gl_bai}Docker Hub Token ：${gl_lv}已设置${gl_bai}（长度 ${#DOCKERHUB_TOKEN}）"
+    else
+        echo -e "${gl_bai}Docker Hub Token ：${gl_hong}未设置${gl_bai}"
+    fi
+
+    local tags=""
+    if command -v curl >/dev/null 2>&1; then
+        local api="https://hub.docker.com/v2/repositories/${repo}/tags?page_size=${limit}&ordering=last_updated"
+        local json
+        json=$(curl -sS --max-time 15 --retry 2 --retry-delay 1 "$api" 2>/dev/null)
+
+        if [[ -n "$json" ]]; then
+            if command -v jq >/dev/null 2>&1; then
+                tags=$(echo "$json" | jq -r '.results[] | "\(.name)\t\(.last_updated)"' 2>/dev/null)
+            elif command -v python3 >/dev/null 2>&1; then
+                tags=$(echo "$json" | python3 -c "
+import sys, json
+try:
+    data = json.load(sys.stdin)
+    for r in data.get('results', []):
+        print(f\"{r['name']}\t{r.get('last_updated','')}\")
+except Exception:
+    pass
+" 2>/dev/null)
+            else
+                tags=$(echo "$json" | grep -o '"name":"[^"]*"' | sed 's/"name":"//;s/"//' | head -n "$limit")
+            fi
+        fi
+    fi
+
+    if [[ -z "$tags" ]]; then
+        log_warn "无法访问 Docker Hub API，回退到本地 docker 镜像缓存"
+        if command -v docker >/dev/null 2>&1; then
+            local local_tags
+            local_tags=$(docker images --format "{{.Tag}}\t{{.CreatedSince}}" "${repo}" 2>/dev/null | head -n "$limit")
+            if [[ -n "$local_tags" ]]; then
+                echo -e "${gl_huang}（来自本地 docker 镜像缓存）${gl_bai}"
+                printf "${gl_hui}%-20s %s${gl_bai}\n" "标签" "创建时间"
+                printf "${gl_hui}%-20s %s${gl_bai}\n" "--------------------" "----------"
+                while IFS=$'\t' read -r name created; do
+                    [[ -z "$name" ]] && continue
+                    printf "${gl_lv}%-20s${gl_bai} ${gl_hui}%s${gl_bai}\n" "$name" "$created"
+                done <<< "$local_tags"
+                local latest_tag
+                latest_tag=$(echo "$local_tags" | head -n 1 | cut -f1)
+                if [[ -n "$latest_tag" ]]; then
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                    echo -e "${gl_bai}拉取最新镜像：${gl_bufan}docker pull ${repo}:${latest_tag}${gl_bai}"
+                fi
+            else
+                log_warn "本地也无该镜像缓存"
+            fi
+        fi
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        return 0
+    fi
+
+    echo -e "${gl_bai}最近 ${limit} 个标签：${gl_bai}"
+    printf "${gl_hui}%-20s %s${gl_bai}\n" "标签" "更新时间"
+    printf "${gl_hui}%-20s %s${gl_bai}\n" "--------------------" "----------"
+    while IFS=$'\t' read -r name updated; do
+        [[ -z "$name" ]] && continue
+        local short_date="${updated%%T*}"
+        printf "${gl_lv}%-20s${gl_bai} ${gl_hui}%s${gl_bai}\n" "$name" "$short_date"
+    done <<< "$tags"
+
+    local latest_tag
+    latest_tag=$(echo "$tags" | head -n 1 | cut -f1)
+    if [[ -n "$latest_tag" ]]; then
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bai}拉取最新镜像：${gl_bufan}docker pull ${repo}:${latest_tag}${gl_bai}"
+    fi
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+}
+
+ensure_gh_auth() {
+    local repo_path="${1:-.}"
+
+    if [[ -z "$GH_TOKEN" ]]; then
+        log_error "环境变量 GH_TOKEN 未设置，无法认证 GitHub CLI"
+        echo -e "       ${gl_huang}export GH_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx${gl_bai}"
+        return 1
+    fi
+
+    if ! command -v gh >/dev/null 2>&1; then
+        pkg_install gh || return 1
+    fi
+
+    if gh auth status -h github.com >/dev/null 2>&1; then
+        log_ok "GitHub CLI 已登录，跳过认证"
+    else
+        if ! echo "$GH_TOKEN" | gh auth login --with-token; then
+            log_error "GitHub CLI Token 登录失败（请检查 Token 是否有效/未过期）"
+            return 1
+        fi
+        log_ok "GitHub CLI 登录完成"
+    fi
+
+    local repo_slug
+    repo_slug=$(get_repo_slug "$repo_path")
+    if [[ -z "$repo_slug" ]]; then
+        log_error "无法从 git remote 解析 GitHub 仓库地址（owner/repo）"
+        return 1
+    fi
+
+    if gh repo set-default "$repo_slug" >/dev/null 2>&1; then
+        log_ok "默认仓库已设置为 ${repo_slug}"
+    else
+        log_warn "set-default 未成功（不影响后续，后续命令已显式使用 -R）"
+    fi
+
+    return 0
+}
+
+ensure_dockerhub_auth() {
+    if [[ "${LOCAL_DOCKER_LOGIN}" != "1" ]]; then
+        log_info "LOCAL_DOCKER_LOGIN=0，跳过本地 docker login"
+        return 0
+    fi
+
+    if ! command -v docker >/dev/null 2>&1; then
+        log_warn "未检测到 docker 命令，跳过本地 docker login"
+        return 0
+    fi
+
+    if [[ -z "$DOCKERHUB_USERNAME" || -z "$DOCKERHUB_TOKEN" ]]; then
+        log_warn "DOCKERHUB_USERNAME 或 DOCKERHUB_TOKEN 未设置，跳过本地 docker login"
+        return 0
+    fi
+
+    local current_user=""
+    local cfg="${HOME}/.docker/config.json"
+    if [[ -f "$cfg" ]]; then
+        if command -v jq >/dev/null 2>&1; then
+            current_user=$(jq -r '.auths["https://index.docker.io/v1/"].auth // empty' "$cfg" 2>/dev/null \
+                | base64 -d 2>/dev/null | cut -d: -f1)
+        elif command -v python3 >/dev/null 2>&1; then
+            current_user=$(python3 -c "
+import json,base64,os
+try:
+    with open(os.path.expanduser('~/.docker/config.json')) as f:
+        d = json.load(f)
+    a = d.get('auths', {}).get('https://index.docker.io/v1/', {}).get('auth')
+    if a:
+        print(base64.b64decode(a).decode().split(':',1)[0])
+except Exception:
+    pass
+" 2>/dev/null)
+        fi
+    fi
+
+    if [[ -n "$current_user" && "$current_user" == "$DOCKERHUB_USERNAME" ]]; then
+        log_ok "Docker Hub 已登录为 ${current_user}，跳过认证"
+        return 0
+    fi
+
+    echo "$DOCKERHUB_TOKEN" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin >/dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        log_ok "Docker Hub 登录完成（用户名：${DOCKERHUB_USERNAME}）"
+        return 0
+    else
+        log_error "Docker Hub 登录失败（请检查 Token 是否有效/未过期）"
+        return 1
+    fi
+}
+
+trigger_release_workflow() {
+    local repo_path="$1"
+    local version="${2:-}"
+
+    if [[ -z "$repo_path" ]]; then
+        log_error "用法: trigger_release_workflow <仓库绝对路径> [版本号]"
+        return 99
+    fi
+    if [[ ! -d "${repo_path}/.git" ]]; then
+        log_error "${repo_path} 不是 Git 仓库"
+        return 98
+    fi
+    if [[ -z "$GH_TOKEN" ]]; then
+        log_error "环境变量 GH_TOKEN 未设置，无法调用 GitHub API"
+        return 96
+    fi
+
+    local repo_slug
+    repo_slug=$(get_repo_slug "$repo_path")
+    if [[ -z "$repo_slug" ]]; then
+        log_error "无法从 git remote 解析 GitHub 仓库地址（owner/repo）"
+        return 95
+    fi
+
+    pushd "${repo_path}" >/dev/null || {
+        log_error "无法进入目录 ${repo_path}"
+        return 97
+    }
+
+    if ! gh auth status -h github.com >/dev/null 2>&1; then
+        if ! echo "$GH_TOKEN" | gh auth login --with-token; then
+            log_error "GitHub CLI Token 登录失败"
+            popd >/dev/null
+            return 10
+        fi
+    fi
+
+    echo -e "${gl_bai}【第 ${gl_huang}1${gl_bai} 步】设置 Actions 密钥 DOCKERHUB_USERNAME"
+    if [[ -n "$DOCKERHUB_USERNAME" ]]; then
+        if gh secret set DOCKERHUB_USERNAME -R "$repo_slug" --body "$DOCKERHUB_USERNAME" >/dev/null; then
+            log_ok "DOCKERHUB_USERNAME 已设置"
+        else
+            log_error "设置 DOCKERHUB_USERNAME 失败"
+            popd >/dev/null
+            return 1
+        fi
+    else
+        log_warn "DOCKERHUB_USERNAME 未配置，跳过"
+    fi
+
+    echo -e "${gl_bai}【第 ${gl_huang}2${gl_bai} 步】设置 Actions 密钥 DOCKERHUB_TOKEN"
+    if [[ -n "$DOCKERHUB_TOKEN" ]]; then
+        if gh secret set DOCKERHUB_TOKEN -R "$repo_slug" --body "$DOCKERHUB_TOKEN" >/dev/null; then
+            log_ok "DOCKERHUB_TOKEN 已设置"
+        else
+            log_error "设置 DOCKERHUB_TOKEN 失败"
+            popd >/dev/null
+            return 2
+        fi
+    else
+        log_warn "DOCKERHUB_TOKEN 未配置，跳过"
+    fi
+
+    if [[ "${EXTRA_TRIGGER_WORKFLOW}" == "1" ]]; then
+        echo -e "${gl_bai}【第 ${gl_huang}3${gl_bai} 步】手动触发 release workflow（main 分支）"
+        if ! gh workflow run release --ref main -R "$repo_slug"; then
+            log_error "启动 release workflow 失败"
+            popd >/dev/null
+            return 3
+        fi
+        log_ok "release workflow 已触发"
+    else
+        echo -e "${gl_bai}【第 ${gl_huang}3${gl_bai} 步】跳过手动触发（tag push 已自动触发 workflow）"
+        echo -e "       ${gl_hui}如需强制手动触发，请设置 EXTRA_TRIGGER_WORKFLOW=1${gl_bai}"
+    fi
+
+    echo
+    echo -e "${gl_lv}🎉 Workflow 处理完成！${gl_bai}"
+    if [[ -n "$version" ]]; then
+        echo -e "${gl_hui}💡 查看本次 tag 触发的运行记录：gh run list --workflow=release.yml -R ${repo_slug} --limit 5${gl_bai}"
+        echo -e "${gl_hui}💡 查看发布结果：gh release view ${version} -R ${repo_slug}${gl_bai}"
+    fi
+    popd >/dev/null
+    return 0
+}
+
+build_and_push() {
+    local project_root="$1"
+    local version="${2:-}"
+    local msg="${3:-}"
+
+    if [[ -z "$project_root" ]]; then
+        log_error "项目根目录为空，无法继续（应由菜单传入）"
+        return 1
+    fi
+
+    local script_path="${project_root}/scripts/build-and-push.sh"
+    if [[ ! -d "$project_root" ]]; then
+        log_error "目录不存在：$project_root"
+        return 1
+    fi
+    if [[ ! -f "$script_path" ]]; then
+        echo -e "${gl_huang}❌ 脚本不存在：$script_path${gl_bai}"
+        return 1
+    fi
+    if [[ ! -x "$script_path" ]]; then
+        echo -e "${gl_huang}⚠️ 脚本缺少执行权限，自动执行 chmod +x${gl_bai}"
+        chmod +x "$script_path"
+    fi
+
+    local cur_ver next_ver
+    cur_ver=$(get_git_latest_tag "$project_root")
+    next_ver=$(next_version "$cur_ver")
+
+    if [[ -z "$version" ]]; then
+        echo -e ""
+        echo -e "${gl_huang}>>> 添加版本号 ${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "当前版本：${gl_lv}${cur_ver}${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "  ${gl_bufan}1.${gl_bai} 将作为 GitHub 标签/发布 版本号"
+        echo -e "  ${gl_bufan}2.${gl_bai} 输入后回车开始构建、提交、推送（默认递增，如 ${gl_lv}${next_ver}${gl_bai}）"
+        echo -e "  ${gl_huang}0.${gl_bai} 返回上一级选单"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+        local v_prompt="请输入版本号（例如 ${next_ver}，0 返回）："
+        while true; do
+            read -r -e -p "$v_prompt " version
+
+            if [[ -z "$version" ]]; then
+                echo -ne "\033[1A\r\033[K"
+                v_prompt="${gl_hong}❌ 不能为空${gl_bai} → 请输入版本号（例如 ${next_ver}）："
+                continue
+            fi
+
+            if [[ "$version" == "0" ]]; then
+                echo -e "\r\033[K${gl_huang}📤 返回上级${gl_bai}"
+                sleep_fractional 0.5
+                return 2
+            fi
+
+            echo -ne "\r\033[K"
+            break
+        done
+    fi
+
+    if [[ -z "$msg" ]]; then
+        local m_prompt="请输入提交注释："
+        while true; do
+            read -r -e -p "$m_prompt " msg
+
+            if [[ -z "$msg" ]]; then
+                echo -ne "\033[1A\r\033[K"
+                m_prompt="${gl_hong}❌ 不能为空${gl_bai} → 请输入提交注释（0 返回）："
+                continue
+            fi
+
+            if [[ "$msg" == "0" ]]; then
+                echo -e "\r\033[K${gl_huang}📤 返回上级${gl_bai}"
+                sleep_fractional 0.5
+                return 2
+            fi
+
+            echo -ne "\r\033[K"
+            break
+        done
+    fi
+
+    echo
+    echo -e "项目目录:   ${gl_lv}$project_root${gl_bai}"
+    echo -e "脚本路径:   ${gl_lv}$script_path${gl_bai}"
+    echo -e "版 本 号:   ${gl_lv}$version${gl_bai}"
+    echo -e "注释内容:   ${gl_lv}$msg${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local confirm=""
+    local c_prompt="确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai})："
+    while true; do
+        read -r -e -p "$c_prompt " confirm
+
+        case "$confirm" in
+            "")
+                echo -ne "\033[1A\r\033[K"
+                c_prompt="${gl_hong}❌ 不能为空${gl_bai} → 确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}，0 返回)："
+                continue
+                ;;
+            "0")
+                echo -e "\r\033[K${gl_huang}📤 返回上级${gl_bai}"
+                sleep_fractional 0.5
+                return 2
+                ;;
+            [Yy])
+                echo -ne "\r\033[K"
+                break
+                ;;
+            [Nn])
+                echo -e "\r\033[K${gl_huang}✅ 已取消操作${gl_bai}"
+                sleep_fractional 0.5
+                return 2
+                ;;
+            *)
+                echo -ne "\033[1A\r\033[K"
+                c_prompt="${gl_hong}❌ 无效输入${gl_bai} → 确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}，0 返回)："
+                continue
+                ;;
+        esac
+    done
+
+    echo
+    echo -e "${gl_zi}>>> 第 1/5 步：确保 GitHub CLI 认证 ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! ensure_gh_auth "$project_root"; then
+        log_error "GitHub CLI 认证失败，中止后续步骤"
+        return 1
+    fi
+
+    echo
+    echo -e "${gl_zi}>>> 第 2/5 步：确保 Docker Hub 认证 ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! ensure_dockerhub_auth; then
+        log_warn "Docker Hub 认证失败，继续执行（如不需要本地推送镜像可忽略）"
+    fi
+
+    echo
+    echo -e "${gl_zi}>>> 第 3/5 步：清理远端 Release / 远端 tag / 本地 tag ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    pre_clean_remote_tag "$project_root" "$version"
+
+    echo
+    echo -e "${gl_zi}>>> 第 4/5 步：执行项目构建脚本 ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! "$script_path" "$version" --yes -m "$msg"; then
+        log_error "构建脚本执行失败，中止后续步骤"
+        return 1
+    fi
+
+    echo
+    echo -e "${gl_zi}>>> 第 5/5 步：处理 Release Workflow ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if ! trigger_release_workflow "$project_root" "$version"; then
+        log_error "Release Workflow 处理失败"
+        return 1
+    fi
+}
+
+project_push() {
+    local proj_name="$1"
+    local proj_dir="$2"
+    local docker_filter="$3"
+    local dockerhub_repo="$4"
+
+    echo -e ""
+    echo -e "${gl_zi}>>> ${proj_name} 项目推送 ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    if [[ -n "${docker_filter}" ]]; then
+        docker-ps-find "${docker_filter}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    fi
+
+    build_and_push "${proj_dir}"
+    local rc=$?
+
+    if [[ "$rc" -eq 2 ]]; then
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        return 0
+    fi
+
+    if [[ "$rc" -ne 0 ]]; then
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        return 0
+    fi
+
+    if [[ -n "$dockerhub_repo" ]]; then
+        echo
+        show_dockerhub_info "$dockerhub_repo" 5
+    fi
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+}
+
+fan_panel_push()  { project_push "Fan Panel"   "/vol1/1000/GitHub/fan-panel"   "fan-panel"  "mobufan/fan-panel"; }
+fan_video_push()  { project_push "Fan Video"   "/vol1/1000/GitHub/fan-video"   "fan-video"  "mobufan/fan-video"; }
+fan_md_push()     { project_push "Fan MD"      "/vol1/1000/GitHub/fan-md"      "fan-md"  "mobufan/fan-md"; }
+dufs-zh_push()    { project_push "Dufs-zh"     "/vol1/1000/GitHub/dufs-zh"     "dufs-zh" "mobufan/dufs-zh"; }
+2panel_push()    { project_push "2Panel"     "/vol1/1000/GitHub/2panel"     "" "mobufan/2panel"; }
+fan-shop_push()    { project_push "Fan Shop"     "/vol1/1000/GitHub/fan-shop"     "fan-shop" "mobufan/fan-shop"; }
+fan-files_push()    { project_push "Fan Files"     "/vol1/1000/GitHub/fan-files"     "" "mobufan/fan-files"; }
+fan-reubah_push()    { project_push "Fan Reubah"     "/vol1/1000/GitHub/fan-reubah"     "fan-reubah" "mobufan/fan-reubah"; }
+
+git_project_menu() {
+    check_tokens || true
+
+    while true; do
+        clear
+        echo -e "${gl_zi}>>> Git 项目管理${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}Fan Panel            ${gl_bufan}2.  ${gl_bai}Fan Video"
+        echo -e "${gl_bufan}3.  ${gl_bai}Fan MD               ${gl_bufan}4.  ${gl_bai}Dufs-zh"
+        echo -e "${gl_bufan}5.  ${gl_bai}2Panel               ${gl_bufan}6.  ${gl_bai}Fan Shop"
+        echo -e "${gl_bufan}7.  ${gl_bai}Fan Files            ${gl_bufan}8.  ${gl_bai}Fan Reubah"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+        case "$action" in
+            1) fan_panel_push ;;
+            2) fan_video_push ;;
+            3) fan_md_push ;;
+            4) dufs-zh_push ;;
+            5) 2panel_push ;;
+            6) fan-shop_push ;;
+            7) fan-files_push ;;
+            8) fan-reubah_push ;;
+            0)
+                cancel_return "已是主菜单"
+                continue
+                ;;
+            00 | 000 | 0000)
+                exit_script
+                ;;
+            "")
+                echo -ne "\033[1A\r\033[K"
+                echo -e "${gl_hong}❌ 不能为空${gl_bai}，请重新选择"
+                sleep_fractional 0.6
+                echo -ne "\033[1A\r\033[K"
+                continue
+                ;;
+            *)
+                handle_invalid_input
+                ;;
+        esac
+    done
 }
 
 show_service_url() {
@@ -2221,261 +3003,6 @@ manage_fan_files() {
     done
 }
 
-manage_fan_shop() {
-    while true; do
-        clear
-        echo -e ""
-        echo -e "${gl_zi}>>> fan-shop 管理工具${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-shop       ${gl_bufan}2.  ${gl_bai}启动 fan-shop"
-        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-shop       ${gl_bufan}4.  ${gl_bai}查看服务状态"
-        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态    ${gl_bufan}6.  ${gl_bai}开启开机自启"
-        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启        ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
-        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-shop  ${gl_hong}99. ${gl_bai}卸载 fan-shop"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
-
-        case "$action" in
-        1)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在停止 fan-shop 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl stop ${SERVICE}
-            log_ok "fan-shop 服务已停止"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        2)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在启动 fan-shop 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl start ${SERVICE}
-            log_ok "fan-shop 服务已启动"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        3)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在重启 fan-shop 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl restart ${SERVICE}
-            log_ok "fan-shop 服务已重启"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        4)
-            echo -e ""
-            echo -e "${gl_zi}>>> fan-shop 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl status ${SERVICE}
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        5)
-            echo -e ""
-            echo -e "${gl_zi}>>> fan-shop 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
-            case "$status" in
-                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
-                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
-                static)    echo "静态（非服务单元）" ;;
-                indirect)  echo "间接（依赖其他单元）" ;;
-                *)         echo "$status" ;;
-            esac
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        6)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在开启 fan-shop 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl enable ${SERVICE}
-            log_ok "已开启 fan-shop 开机自启"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        7)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在禁用 fan-shop 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl disable ${SERVICE}
-            log_ok "已禁用 fan-shop 开机自启"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        8)
-            echo -e ""
-            echo -e "${gl_zi}>>> fan-shop 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo journalctl -u ${SERVICE} -n 100
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        9)
-            echo -e ""
-            echo -e "${gl_zi}>>> 实时跟踪 fan-shop 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo journalctl -u ${SERVICE} -f
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        66)
-            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
-            break_end
-            continue
-            ;;
-        99)
-            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
-            break_end
-            continue
-            ;;
-        0)
-            proj_mgmt_tool
-            ;;
-        00 | 000 | 0000)
-            exit_script
-            ;;
-        *)
-            handle_invalid_input
-            ;;
-        esac
-    done
-}
-
-manage_fan_reubah() {
-    while true; do
-        clear
-        echo -e ""
-        echo -e "${gl_zi}>>> fan-reubah 管理工具${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        show_service_status fan-reubah
-        show_service_url fan-reubah
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-reubah   ${gl_bufan}2.  ${gl_bai}启动 fan-reubah"
-        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-reubah   ${gl_bufan}4.  ${gl_bai}查看服务状态"
-        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态  ${gl_bufan}6.  ${gl_bai}开启开机自启"
-        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启      ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
-        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_lv}66. ${gl_bai}安装/升级         ${gl_hong}99. ${gl_bai}卸载"
-        echo -e ""
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单    ${gl_hong}00. ${gl_bai}退出脚本"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
-
-
-        case "$action" in
-        1)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在停止 fan-reubah 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl stop ${SERVICE}
-            log_ok "fan-reubah 服务已停止"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        2)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在启动 fan-reubah 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl start ${SERVICE}
-            log_ok "fan-reubah 服务已启动"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        3)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在重启 fan-reubah 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl restart ${SERVICE}
-            log_ok "fan-reubah 服务已重启"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        4)
-            echo -e ""
-            echo -e "${gl_zi}>>> fan-reubah 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl status ${SERVICE}
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        5)
-            echo -e ""
-            echo -e "${gl_zi}>>> fan-reubah 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
-            case "$status" in
-                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
-                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
-                static)    echo "静态（非服务单元）" ;;
-                indirect)  echo "间接（依赖其他单元）" ;;
-                *)         echo "$status" ;;
-            esac
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        6)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在开启 fan-reubah 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl enable ${SERVICE}
-            log_ok "已开启 fan-reubah 开机自启"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        7)
-            echo -e ""
-            echo -e "${gl_zi}>>> 正在禁用 fan-reubah 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo systemctl disable ${SERVICE}
-            log_ok "已禁用 fan-reubah 开机自启"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        8)
-            echo -e ""
-            echo -e "${gl_zi}>>> fan-reubah 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo journalctl -u ${SERVICE} -n 100
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        9)
-            echo -e ""
-            echo -e "${gl_zi}>>> 实时跟踪 fan-reubah 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            sudo journalctl -u ${SERVICE} -f
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
-            ;;
-        66)
-            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
-            break_end
-            continue
-            ;;
-        99)
-            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
-            break_end
-            continue
-            ;;
-        0)
-            proj_mgmt_tool
-            ;;
-        00 | 000 | 0000)
-            exit_script
-            ;;
-        *)
-            handle_invalid_input
-            ;;
-        esac
-    done
-}
-
 proj_mgmt_tool() {
     while true; do
         clear
@@ -2504,78 +3031,61 @@ proj_mgmt_tool() {
             col3="${gl_hong}"
         fi
 
-        # 4. Fan-Flies 二进制
-        if systemctl is-active --quiet fan-files 2>/dev/null; then
+        # 4. 云文档 (docker compose)
+        if is_compose_running "/vol1/1000/compose/md"; then
             col4="${gl_lv}"
         else
             col4="${gl_hong}"
         fi
 
-        # 5. Fan-Shop 二进制
-        if systemctl is-active --quiet fan-shop 2>/dev/null; then
+        # 5. Fan-Panel (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-panel"; then
             col5="${gl_lv}"
         else
             col5="${gl_hong}"
         fi
 
-        # 6. Fan-Reubah 二进制
-        if systemctl is-active --quiet fan-reubah 2>/dev/null; then
+        # 6. Fan-Video (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-video"; then
             col6="${gl_lv}"
         else
             col6="${gl_hong}"
         fi
 
-
-
-        # 11. 云文档 (docker compose)
-        if is_compose_running "/vol1/1000/compose/fan-md"; then
-            col11="${gl_lv}"
-        else
-            col11="${gl_hong}"
-        fi
-
-        # 12. Fan-Panel (docker compose)
-        if is_compose_running "/vol1/1000/compose/fan-panel"; then
-            col12="${gl_lv}"
-        else
-            col12="${gl_hong}"
-        fi
-
-        # 13. Fan-Video (docker compose)
-        if is_compose_running "/vol1/1000/compose/fan-video"; then
-            col13="${gl_lv}"
-        else
-            col13="${gl_hong}"
-        fi
-
-        # 14. CmdBox (docker compose)
+        # 7. CmdBox (docker compose)
         if is_compose_running "/vol1/1000/compose/cmdbox"; then
-            col14="${gl_lv}"
+            col7="${gl_lv}"
         else
-            col14="${gl_hong}"
+            col7="${gl_hong}"
         fi
 
-        # 21. monitor 服务（电视自动启动监控）
+        # 8. monitor 服务（电视自动启动监控）
         if systemctl is-active --quiet monitor.service 2>/dev/null; then
-            col21="${gl_lv}"
+            col8="${gl_lv}"
         else
-            col21="${gl_hong}"
+            col8="${gl_hong}"
         fi
         
+        # 9. Fan-Flies 二进制
+        if systemctl is-active --quiet fan-files 2>/dev/null; then
+            col9="${gl_lv}"
+        else
+            col9="${gl_hong}"
+        fi
 
-
-        echo -e "${gl_huang}二进制项目${gl_bai}"
-        echo -e "${col1}1.${gl_bai}  OpenCode 智能代理     ${col2}2.${gl_bai}  Fan-Video 影视库"
-        echo -e "${col3}3.${gl_bai}  2Panel 定时任务       ${col4}4.${gl_bai}  Fan-Flies 文件管理"
-        echo -e "${col5}5.${gl_bai}  Fan Shop 容器管理     ${col6}6.${gl_bai}  Fan Reubah 格式转换"
-        echo -e ""
-        echo -e "${gl_huang}Dccker 项目${gl_bai}"
-        echo -e "${col11}11.${gl_bai} Fan MD 云文档         ${col12}12.${gl_bai} Fan-Panel 导航页"
-        echo -e "${col13}13.${gl_bai} Fan-Video 影视库      ${col14}14.${gl_bai}  CmdBox"
-
-        echo -e "${col21}21.${gl_bai} TV monitor"
+        echo -e "${col1}1.${gl_bai}  OpenCode 二进制"
+        echo -e "${col2}2.${gl_bai}  Fan-Video 二进制"
+        echo -e "${col3}3.${gl_bai}  2Panel 二进制"
+        echo -e "${col4}4.${gl_bai}  云文档"
+        echo -e "${col5}5.${gl_bai}  Fan-Panel"
+        echo -e "${col6}6.${gl_bai}  Fan-Video"
+        echo -e "${col7}7.${gl_bai}  CmdBox"
+        echo -e "${col8}8.${gl_bai}  TV monitor"
+        echo -e "${col9}9.${gl_bai}  Fan-Flies 二进制"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_lv}66. ${gl_bai}构建并推送"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单"
+        echo -e "${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
 
@@ -2590,30 +3100,26 @@ proj_mgmt_tool() {
             manage_2panel
             ;;
         4)
-            manage_fan_files
-            ;;   
-        5)
-            manage_fan_shop
-            ;;   
-        6)
-            manage_fan_reubah
-            ;;   
-        11)
-            docker_compose_manager /vol1/1000/compose/fan-md
+            docker_compose_manager /vol1/1000/compose/md
             ;;
-        12)
+        5)
             docker_compose_manager /vol1/1000/compose/fan-panel
             ;;
-        13)
+        6)
             docker_compose_manager /vol1/1000/compose/fan-video
             ;;
-        14)
+        7)
             docker_compose_manager /vol1/1000/compose/cmdbox
             ;;
-        21)
+        8)
             monitor_tool
             ;;
-         
+        9)
+            manage_fan_files
+            ;;    
+        66)
+            git_project_menu
+            ;;         
         0)
             cancel_return "已是主菜单"
             continue

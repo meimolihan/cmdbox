@@ -383,17 +383,23 @@ docker_image_backup_tools() {
 #!/bin/bash
 set -e
 
-gl_bai='\033[0m'
-gl_bufan='\033[96m'
-gl_lv='\033[32m'
-gl_huang='\033[33m'
-gl_hong='\033[31m'
-gl_zi='\033[35m'
+list_color_init() {
+    export gl_hui=$'[38;5;59m'
+    export gl_hong=$'[38;5;9m'
+    export gl_lv=$'[38;5;10m'
+    export gl_huang=$'[38;5;11m'
+    export gl_lan=$'[38;5;32m'
+    export gl_bai=$'[38;5;15m'
+    export gl_zi=$'[38;5;13m'
+    export gl_bufan=$'[38;5;14m'
+    export reset=$'[0m'
+}
+list_color_init
 
 exit_animation() {
-    echo -ne "\r${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    echo -ne "\r${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${reset}\c"
     sleep_fractional 0.5
-    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${reset}\c"
     sleep_fractional 0.6
     echo ""
 }
@@ -401,21 +407,21 @@ exit_animation() {
 BACKUP_DIR="$(cd "$(dirname "$0")"; pwd)"
 MANIFEST="${BACKUP_DIR}/manifest.json"
 
-echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-echo -e "${gl_zi}>>> 恢复 Docker 镜像 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
+echo -e "${gl_zi}>>> 恢复 Docker 镜像 ${gl_hong}.${gl_huang}.${gl_lv}.${reset}"
 
 if [[ ! -f "$MANIFEST" ]]; then
-    echo -e "${gl_hong}错误: 未找到 manifest.json 文件${gl_bai}"
+    echo -e "${gl_hong}错误: 未找到 manifest.json 文件${reset}"
     exit_animation
     exit 1
 fi
 
 IMAGE_COUNT=$(jq '.images | length' "$MANIFEST")
-echo -e "${gl_bai}发现 ${gl_huang}${IMAGE_COUNT}${gl_bai} 个镜像需要加载${gl_bai}"
+echo -e "${reset}发现 ${gl_huang}${IMAGE_COUNT}${reset} 个镜像需要加载${reset}"
 
-read -r -e -p "$(echo -e "${gl_bai}是否要加载所有镜像? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+read -r -e -p "$(echo -e "${reset}是否要加载所有镜像? (${gl_lv}y${reset}/${gl_hong}N${reset}): ")" confirm
 if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-    echo -e "${gl_huang}已取消${gl_bai}"
+    echo -e "${gl_huang}已取消${reset}"
     exit_animation
     exit 0
 fi
@@ -425,20 +431,20 @@ for i in $(seq 0 $((IMAGE_COUNT-1))); do
     IMAGE_FILE=$(jq -r ".images[$i].file" "$MANIFEST")
     IMAGE_PATH="${BACKUP_DIR}/${IMAGE_FILE}"
     
-    echo -e "${gl_bai}[$((i+1))/${IMAGE_COUNT}] 加载镜像: ${gl_huang}${IMAGE_NAME}${gl_bai}"
+    echo -e "${reset}[$((i+1))/${IMAGE_COUNT}] 加载镜像: ${gl_huang}${IMAGE_NAME}${reset}"
     
     if [[ -f "$IMAGE_PATH" ]]; then
         docker load -i "$IMAGE_PATH"
-        echo -e "${gl_lv}✓ 完成${gl_bai}"
+        echo -e "${gl_lv}✓ 完成${reset}"
     else
-        echo -e "${gl_hong}✗ 文件不存在: ${IMAGE_FILE}${gl_bai}"
+        echo -e "${gl_hong}✗ 文件不存在: ${IMAGE_FILE}${reset}"
     fi
 done
 
-echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-echo -e "${gl_lv}所有镜像加载完成！${gl_bai}"
-echo -e "${gl_bai}使用 ${gl_huang}docker images${gl_bai} 查看已加载的镜像${gl_bai}"
-echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
+echo -e "${gl_lv}所有镜像加载完成！${reset}"
+echo -e "${reset}使用 ${gl_huang}docker images${reset} 查看已加载的镜像${reset}"
+echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
 EOF
         chmod +x "$RESTORE_SCRIPT"
 

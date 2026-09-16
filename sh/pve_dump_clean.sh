@@ -2,17 +2,20 @@
 set -uo pipefail
 
 # 颜色定义
-gl_hui=$'\033[38;5;59m'
-gl_huang=$'\033[38;5;11m'
-gl_lan=$'\033[38;5;32m'
-gl_lv=$'\033[38;5;10m'
-gl_qing=$'\033[38;5;14m'
-gl_zi=$'\033[38;5;13m'
-gl_bai=$'\033[38;5;15m'
-gl_bufan=$'\033[38;5;14m'
-gl_hong=$'\033[38;5;9m'
-reset=$'\033[0m'
-
+# ================== terminal colors ==================
+list_color_init() {
+    export gl_hui=$'\033[38;5;59m'
+    export gl_hong=$'\033[38;5;9m'
+    export gl_lv=$'\033[38;5;10m'
+    export gl_huang=$'\033[38;5;11m'
+    export gl_lan=$'\033[38;5;32m'
+    export gl_bai=$'\033[38;5;15m'
+    export gl_zi=$'\033[38;5;13m'
+    export gl_bufan=$'\033[38;5;14m'
+    export reset=$'\033[0m'
+}
+list_color_init
+export gl_qing=$'\033[38;5;14m'
 # 要清理的文件路径
 CLEAN_DIR="/var/lib/vz/dump"
 CLEAN_FILES=("*.log" "*.notes")

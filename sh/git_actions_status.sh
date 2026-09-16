@@ -25,10 +25,9 @@ break_end() {
 
 # 获取最新 release.yaml workflow 运行记录
 get_gh_run_info() {
-    gh run list --workflow=release.yaml --limit 1 --json status,displayTitle,headBranch,event,databaseId,startedAt
+    gh run list --workflow=release.yml --limit 1 --json status,displayTitle,headBranch,event,databaseId,startedAt
 }
 
-# ISO8601时间转秒数，计算耗时，增加容错
 calc_elapsed() {
     local start_iso="$1"
     local start_ts

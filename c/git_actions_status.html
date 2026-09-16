@@ -1216,7 +1216,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="25">
 </span><span class="code-line line-number" line="26"><span class="token comment"># 获取最新 release.yaml workflow 运行记录</span>
 </span><span class="code-line line-number" line="27"><span class="token function-name function">get_gh_run_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="28">    gh run list <span class="token parameter variable">--workflow</span><span class="token operator">=</span>release.yaml <span class="token parameter variable">--limit</span> <span class="token number">1</span> <span class="token parameter variable">--json</span> status,displayTitle,headBranch,event,databaseId,startedAt
+</span><span class="code-line line-number" line="28">    gh run list <span class="token parameter variable">--workflow</span><span class="token operator">=</span>release.yml <span class="token parameter variable">--limit</span> <span class="token number">1</span> <span class="token parameter variable">--json</span> status,displayTitle,headBranch,event,databaseId,startedAt
 </span><span class="code-line line-number" line="29"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="30">
 </span><span class="code-line line-number" line="31"><span class="token comment"># ISO8601时间转秒数，计算耗时，增加容错</span>
@@ -1333,7 +1333,7 @@ break_end() {
 
 # 获取最新 release.yaml workflow 运行记录
 get_gh_run_info() {
-    gh run list --workflow=release.yaml --limit 1 --json status,displayTitle,headBranch,event,databaseId,startedAt
+    gh run list --workflow=release.yml --limit 1 --json status,displayTitle,headBranch,event,databaseId,startedAt
 }
 
 # ISO8601时间转秒数，计算耗时，增加容错

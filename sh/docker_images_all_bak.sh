@@ -131,22 +131,33 @@ backup_all_docker_images() {
     cat >"$RESTORE_SCRIPT" <<'EOF'
 #!/bin/bash
 set -e
-gl_bai='\033[0m';gl_bufan='\033[96m';gl_lv='\033[32m';gl_huang='\033[33m';gl_hong='\033[31m';gl_zi='\033[35m'
+list_color_init() {
+    export gl_hui=$'[38;5;59m'
+    export gl_hong=$'[38;5;9m'
+    export gl_lv=$'[38;5;10m'
+    export gl_huang=$'[38;5;11m'
+    export gl_lan=$'[38;5;32m'
+    export gl_bai=$'[38;5;15m'
+    export gl_zi=$'[38;5;13m'
+    export gl_bufan=$'[38;5;14m'
+    export reset=$'[0m'
+}
+list_color_init
 BACKUP_DIR="$(cd "$(dirname "$0")"; pwd)"
 MANIFEST="${BACKUP_DIR}/manifest.json"
-[[ ! -f "$MANIFEST" ]] && { echo -e "${gl_hong}错误:未找到manifest.json${gl_bai}";exit 1; }
+[[ ! -f "$MANIFEST" ]] && { echo -e "${gl_hong}错误:未找到manifest.json${reset}";exit 1; }
 IMAGE_COUNT=$(jq '.images | length' "$MANIFEST")
-echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-echo -e "${gl_zi}>>>恢复Docker镜像${gl_bai}"
+echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
+echo -e "${gl_zi}>>>恢复Docker镜像${reset}"
 for i in $(seq 0 $((IMAGE_COUNT-1))); do
     IMAGE_NAME=$(jq -r ".images[$i].name" "$MANIFEST")
     IMAGE_FILE=$(jq -r ".images[$i].file" "$MANIFEST")
     IMAGE_PATH="${BACKUP_DIR}/${IMAGE_FILE}"
-    echo -e "${gl_bai}[$((i+1))/${IMAGE_COUNT}]加载镜像:${gl_huang}${IMAGE_NAME}${gl_bai}"
-    [[ -f "$IMAGE_PATH" ]] && docker load -i "$IMAGE_PATH" && echo -e "${gl_lv}✓完成${gl_bai}" || echo -e "${gl_hong}✗文件不存在${IMAGE_FILE}${gl_bai}"
+    echo -e "${reset}[$((i+1))/${IMAGE_COUNT}]加载镜像:${gl_huang}${IMAGE_NAME}${reset}"
+    [[ -f "$IMAGE_PATH" ]] && docker load -i "$IMAGE_PATH" && echo -e "${gl_lv}✓完成${reset}" || echo -e "${gl_hong}✗文件不存在${IMAGE_FILE}${reset}"
 done
-echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-echo -e "${gl_lv}全部镜像加载完成！执行docker images查看${gl_bai}"
+echo -e "${gl_bufan}————————————————————————————————————————————————${reset}"
+echo -e "${gl_lv}全部镜像加载完成！执行docker images查看${reset}"
 EOF
     chmod +x "$RESTORE_SCRIPT"
 

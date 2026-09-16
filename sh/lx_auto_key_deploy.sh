@@ -1,14 +1,18 @@
 #!/bin/bash
 
-gl_hui='\e[37m'
-gl_hong='\033[31m'
-gl_lv='\033[32m'
-gl_huang='\033[33m'
-gl_lan='\033[34m'
-gl_zi='\033[35m'
-gl_bufan='\033[96m'
-gl_bai='\033[0m'
-
+# ================== terminal colors ==================
+list_color_init() {
+    export gl_hui=$'\033[38;5;59m'
+    export gl_hong=$'\033[38;5;9m'
+    export gl_lv=$'\033[38;5;10m'
+    export gl_huang=$'\033[38;5;11m'
+    export gl_lan=$'\033[38;5;32m'
+    export gl_bai=$'\033[38;5;15m'
+    export gl_zi=$'\033[38;5;13m'
+    export gl_bufan=$'\033[38;5;14m'
+    export reset=$'\033[0m'
+}
+list_color_init
 log_info()  { echo -e "${gl_lan}[信息]${gl_bai} $*"; }
 log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
