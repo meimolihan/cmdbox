@@ -738,7 +738,7 @@ build_and_push() {
     pre_clean_remote_tag "$project_root" "$version"
 
     echo
-    echo -e "${gl_hui}      —— 提交并推送工作区的未提交改动（保证构建脚本遇到干净工作区）${gl_bai}"
+    echo -e "${gl_hui} 提交并推送工作区的未提交改动（保证构建脚本遇到干净工作区）${gl_bai}"
     pushd "$project_root" >/dev/null 2>&1 || {
         log_error "无法进入目录 $project_root"
         return 1
