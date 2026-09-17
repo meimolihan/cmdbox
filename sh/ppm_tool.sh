@@ -337,101 +337,39 @@ pre_clean_remote_tag() {
     fi
 
     popd >/dev/null 2>&1
+
     return 0
 }
 
-
 show_dockerhub_info() {
     local repo="$1"
-    local limit="${2:-5}"
 
     if [[ "${SHOW_DOCKERHUB_INFO}" != "1" ]]; then
         return 0
     fi
+
     if [[ -z "$repo" ]]; then
-        log_error "用法: show_dockerhub_info <dockerhub_repo> [标签数量]"
+        log_error "用法: show_dockerhub_info <dockerhub_repo>"
         return 1
     fi
 
     echo -e "${gl_zi}>>> Docker Hub 信息：${gl_huang}${repo}${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
-    echo -e "${gl_bai}Docker Hub 用户名：${gl_lv}${DOCKERHUB_USERNAME:-未设置}${gl_bai}"
+    if [[ -n "$DOCKERHUB_USERNAME" ]]; then
+        echo -e "${gl_bai}Docker Hub 用户名：${gl_lv}${DOCKERHUB_USERNAME}${gl_bai}"
+    else
+        echo -e "${gl_bai}Docker Hub 用户名：${gl_hong}未设置${gl_bai}"
+    fi
+
     if [[ -n "$DOCKERHUB_TOKEN" ]]; then
         echo -e "${gl_bai}Docker Hub Token ：${gl_lv}已设置${gl_bai}（长度 ${#DOCKERHUB_TOKEN}）"
     else
         echo -e "${gl_bai}Docker Hub Token ：${gl_hong}未设置${gl_bai}"
     fi
 
-    local tags=""
-    if command -v curl >/dev/null 2>&1; then
-        local api="https://hub.docker.com/v2/repositories/${repo}/tags?page_size=${limit}&ordering=last_updated"
-        local json
-        json=$(curl -sS --max-time 15 --retry 2 --retry-delay 1 "$api" 2>/dev/null)
-
-        if [[ -n "$json" ]]; then
-            if command -v jq >/dev/null 2>&1; then
-                tags=$(echo "$json" | jq -r '.results[] | "\(.name)\t\(.last_updated)"' 2>/dev/null)
-            elif command -v python3 >/dev/null 2>&1; then
-                tags=$(echo "$json" | python3 -c "
-import sys, json
-try:
-    data = json.load(sys.stdin)
-    for r in data.get('results', []):
-        print(f\"{r['name']}\t{r.get('last_updated','')}\")
-except Exception:
-    pass
-" 2>/dev/null)
-            else
-                tags=$(echo "$json" | grep -o '"name":"[^"]*"' | sed 's/"name":"//;s/"//' | head -n "$limit")
-            fi
-        fi
-    fi
-
-    if [[ -z "$tags" ]]; then
-        log_warn "无法访问 Docker Hub API，回退到本地 docker 镜像缓存"
-        if command -v docker >/dev/null 2>&1; then
-            local local_tags
-            local_tags=$(docker images --format "{{.Tag}}\t{{.CreatedSince}}" "${repo}" 2>/dev/null | head -n "$limit")
-            if [[ -n "$local_tags" ]]; then
-                echo -e "${gl_huang}（来自本地 docker 镜像缓存）${gl_bai}"
-                printf "${gl_hui}%-20s %s${gl_bai}\n" "标签" "创建时间"
-                printf "${gl_hui}%-20s %s${gl_bai}\n" "--------------------" "----------"
-                while IFS=$'\t' read -r name created; do
-                    [[ -z "$name" ]] && continue
-                    printf "${gl_lv}%-20s${gl_bai} ${gl_hui}%s${gl_bai}\n" "$name" "$created"
-                done <<< "$local_tags"
-                local latest_tag
-                latest_tag=$(echo "$local_tags" | head -n 1 | cut -f1)
-                if [[ -n "$latest_tag" ]]; then
-                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                    echo -e "${gl_bai}拉取最新镜像：${gl_bufan}docker pull ${repo}:${latest_tag}${gl_bai}"
-                fi
-            else
-                log_warn "本地也无该镜像缓存"
-            fi
-        fi
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        return 0
-    fi
-
-    echo -e "${gl_bai}最近 ${limit} 个标签：${gl_bai}"
-    printf "${gl_hui}%-20s %s${gl_bai}\n" "标签" "更新时间"
-    printf "${gl_hui}%-20s %s${gl_bai}\n" "--------------------" "----------"
-    while IFS=$'\t' read -r name updated; do
-        [[ -z "$name" ]] && continue
-        local short_date="${updated%%T*}"
-        printf "${gl_lv}%-20s${gl_bai} ${gl_hui}%s${gl_bai}\n" "$name" "$short_date"
-    done <<< "$tags"
-
-    local latest_tag
-    latest_tag=$(echo "$tags" | head -n 1 | cut -f1)
-    if [[ -n "$latest_tag" ]]; then
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bai}拉取最新镜像：${gl_bufan}docker pull ${repo}:${latest_tag}${gl_bai}"
-    fi
-
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
 }
 
 ensure_gh_auth() {
@@ -618,16 +556,22 @@ build_and_push() {
 
     if [[ -z "$project_root" ]]; then
         log_error "项目根目录为空，无法继续（应由菜单传入）"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        break_end
         return 1
     fi
 
     local script_path="${project_root}/scripts/build-and-push.sh"
     if [[ ! -d "$project_root" ]]; then
         log_error "目录不存在：$project_root"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        break_end
         return 1
     fi
     if [[ ! -f "$script_path" ]]; then
         echo -e "${gl_huang}❌ 脚本不存在：$script_path${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        break_end
         return 1
     fi
     if [[ ! -x "$script_path" ]]; then
@@ -650,14 +594,13 @@ build_and_push() {
         echo -e "  ${gl_huang}0.${gl_bai} 返回上一级选单"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
-        local v_prompt="请输入版本号（例如 ${next_ver}，0 返回）："
         while true; do
-            read -r -e -p "$v_prompt " version
+            read -r -e -p "请输入版本号（回车默认 ${gl_huang}${next_ver}${gl_bai}）： " version
 
             if [[ -z "$version" ]]; then
-                echo -ne "\033[1A\r\033[K"
-                v_prompt="${gl_hong}❌ 不能为空${gl_bai} → 请输入版本号（例如 ${next_ver}）："
-                continue
+                version="$next_ver"
+                echo -ne "\r\033[K"
+                break
             fi
 
             if [[ "$version" == "0" ]]; then
@@ -672,14 +615,13 @@ build_and_push() {
     fi
 
     if [[ -z "$msg" ]]; then
-        local m_prompt="请输入提交注释："
         while true; do
-            read -r -e -p "$m_prompt " msg
+            read -r -e -p "请输入提交注释 (回车默认 ${gl_huang}日常更新${gl_bai}）： " msg
 
             if [[ -z "$msg" ]]; then
-                echo -ne "\033[1A\r\033[K"
-                m_prompt="${gl_hong}❌ 不能为空${gl_bai} → 请输入提交注释（0 返回）："
-                continue
+                msg="日常更新"
+                echo -ne "\r\033[K"
+                break
             fi
 
             if [[ "$msg" == "0" ]]; then
@@ -708,7 +650,7 @@ build_and_push() {
         case "$confirm" in
             "")
                 echo -ne "\033[1A\r\033[K"
-                c_prompt="${gl_hong}❌ 不能为空${gl_bai} → 确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}，0 返回)："
+                c_prompt="${gl_hong}❌ 不能为空${gl_bai} → 确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai})："
                 continue
                 ;;
             "0")
@@ -727,7 +669,7 @@ build_and_push() {
                 ;;
             *)
                 echo -ne "\033[1A\r\033[K"
-                c_prompt="${gl_hong}❌ 无效输入${gl_bai} → 确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}，0 返回)："
+                c_prompt="${gl_hong}❌ 无效输入${gl_bai} → 确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai})："
                 continue
                 ;;
         esac
@@ -814,35 +756,39 @@ dufs-zh_push()    { project_push "Dufs-zh"     "/vol1/1000/GitHub/dufs-zh"     "
 fan-shop_push()    { project_push "Fan Shop"     "/vol1/1000/GitHub/fan-shop"     "fan-shop" "mobufan/fan-shop"; }
 fan-files_push()    { project_push "Fan Files"     "/vol1/1000/GitHub/fan-files"     "" "mobufan/fan-files"; }
 fan-reubah_push()    { project_push "Fan Reubah"     "/vol1/1000/GitHub/fan-reubah"     "fan-reubah" "mobufan/fan-reubah"; }
+cmdbox-main_push()    { project_push "CmdBox"     "/vol1/1000/GitHub/cmdbox-main"     "cmdbox" "mobufan/cmdbox"; }
+fan-webssh_push()    { project_push "Fan WebSSH"     "/vol1/1000/GitHub/fan-webssh"     "fan-webssh" "mobufan/fan-webssh"; }
 
 git_project_menu() {
     check_tokens || true
 
     while true; do
         clear
-        echo -e "${gl_zi}>>> Git 项目管理${gl_bai}"
+        echo -e "${gl_zi}>>> Git 项目构建并推送${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bufan}1.  ${gl_bai}Fan Panel            ${gl_bufan}2.  ${gl_bai}Fan Video"
         echo -e "${gl_bufan}3.  ${gl_bai}Fan MD               ${gl_bufan}4.  ${gl_bai}Dufs-zh"
         echo -e "${gl_bufan}5.  ${gl_bai}2Panel               ${gl_bufan}6.  ${gl_bai}Fan Shop"
         echo -e "${gl_bufan}7.  ${gl_bai}Fan Files            ${gl_bufan}8.  ${gl_bai}Fan Reubah"
+        echo -e "${gl_bufan}9.  ${gl_bai}CmdBox              ${gl_bufan}10.  ${gl_bai}Fan WebSSH"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00.  ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
         case "$action" in
-            1) fan_panel_push ;;
-            2) fan_video_push ;;
-            3) fan_md_push ;;
-            4) dufs-zh_push ;;
-            5) 2panel_push ;;
-            6) fan-shop_push ;;
-            7) fan-files_push ;;
-            8) fan-reubah_push ;;
+            1)  fan_panel_push ;;
+            2)  fan_video_push ;;
+            3)  fan_md_push ;;
+            4)  dufs-zh_push ;;
+            5)  2panel_push ;;
+            6)  fan-shop_push ;;
+            7)  fan-files_push ;;
+            8)  fan-reubah_push ;;
+            9)  cmdbox-main_push ;;
+            10) fan-webssh_push ;;
             0)
-                cancel_return "已是主菜单"
-                continue
+                proj_mgmt_tool
                 ;;
             00 | 000 | 0000)
                 exit_script
@@ -2864,7 +2810,6 @@ fan_files_show_service_status() {
 }
 
 manage_fan_files() {
-    # 一次性加载所有变量到当前函数作用域
     eval "$(fan_files_vars)"
     while true; do
         clear
@@ -3031,61 +2976,86 @@ proj_mgmt_tool() {
             col3="${gl_hong}"
         fi
 
-        # 4. 云文档 (docker compose)
-        if is_compose_running "/vol1/1000/compose/md"; then
+        # 4. Fan-Flies 二进制
+        if systemctl is-active --quiet fan-files 2>/dev/null; then
             col4="${gl_lv}"
         else
             col4="${gl_hong}"
         fi
 
-        # 5. Fan-Panel (docker compose)
-        if is_compose_running "/vol1/1000/compose/fan-panel"; then
+        # 5. Fan-Shop 二进制
+        if systemctl is-active --quiet fan-shop 2>/dev/null; then
             col5="${gl_lv}"
         else
             col5="${gl_hong}"
         fi
 
-        # 6. Fan-Video (docker compose)
-        if is_compose_running "/vol1/1000/compose/fan-video"; then
+        # 6. Fan-Reubah 二进制
+        if systemctl is-active --quiet fan-reubah 2>/dev/null; then
             col6="${gl_lv}"
         else
             col6="${gl_hong}"
         fi
 
-        # 7. CmdBox (docker compose)
-        if is_compose_running "/vol1/1000/compose/cmdbox"; then
-            col7="${gl_lv}"
+
+
+        # 11. 云文档 (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-md"; then
+            col11="${gl_lv}"
         else
-            col7="${gl_hong}"
+            col11="${gl_hong}"
         fi
 
-        # 8. monitor 服务（电视自动启动监控）
-        if systemctl is-active --quiet monitor.service 2>/dev/null; then
-            col8="${gl_lv}"
+        # 12. Fan-Panel (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-panel"; then
+            col12="${gl_lv}"
         else
-            col8="${gl_hong}"
+            col12="${gl_hong}"
+        fi
+
+        # 13. Fan-Video (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-video"; then
+            col13="${gl_lv}"
+        else
+            col13="${gl_hong}"
+        fi
+
+        # 14. CmdBox (docker compose)
+        if is_compose_running "/vol1/1000/compose/cmdbox"; then
+            col14="${gl_lv}"
+        else
+            col14="${gl_hong}"
+        fi
+
+        # 15. Fan WebSSH (docker compose)
+        if is_compose_running "/vol1/1000/compose/fan-webssh"; then
+            col15="${gl_lv}"
+        else
+            col15="${gl_hong}"
+        fi
+
+        # 16. monitor 服务（电视自动启动监控）
+        if systemctl is-active --quiet monitor.service 2>/dev/null; then
+            col16="${gl_lv}"
+        else
+            col16="${gl_hong}"
         fi
         
-        # 9. Fan-Flies 二进制
-        if systemctl is-active --quiet fan-files 2>/dev/null; then
-            col9="${gl_lv}"
-        else
-            col9="${gl_hong}"
-        fi
 
-        echo -e "${col1}1.${gl_bai}  OpenCode 二进制"
-        echo -e "${col2}2.${gl_bai}  Fan-Video 二进制"
-        echo -e "${col3}3.${gl_bai}  2Panel 二进制"
-        echo -e "${col4}4.${gl_bai}  云文档"
-        echo -e "${col5}5.${gl_bai}  Fan-Panel"
-        echo -e "${col6}6.${gl_bai}  Fan-Video"
-        echo -e "${col7}7.${gl_bai}  CmdBox"
-        echo -e "${col8}8.${gl_bai}  TV monitor"
-        echo -e "${col9}9.${gl_bai}  Fan-Flies 二进制"
+
+        echo -e "${gl_huang}二进制项目${gl_bai}"
+        echo -e "${col1}1.${gl_bai}  OpenCode 智能代理     ${col2}2.${gl_bai}  FanVideo 影视库"
+        echo -e "${col3}3.${gl_bai}  2Panel 定时任务       ${col4}4.${gl_bai}  FanFlies 文件管理"
+        echo -e "${col5}5.${gl_bai}  FanShop 容器管理      ${col6}6.${gl_bai}  FanReubah 格式转换"
+        echo -e ""
+        echo -e "${gl_huang}Dccker 项目${gl_bai}"
+        echo -e "${col11}11.${gl_bai} FanMD 云文档          ${col12}12.${gl_bai} FanPanel 导航页"
+        echo -e "${col13}13.${gl_bai} FanVideo 影视库       ${col14}14.${gl_bai} CmdBox 命令"
+
+        echo -e "${col15}15.${gl_bai} FanWebSSH             ${col16}16.${gl_bai} TVmonitor"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_lv}66. ${gl_bai}构建并推送"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单"
-        echo -e "${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_lv}66.${gl_bai} 构建并推送"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
 
@@ -3100,26 +3070,35 @@ proj_mgmt_tool() {
             manage_2panel
             ;;
         4)
-            docker_compose_manager /vol1/1000/compose/md
-            ;;
+            manage_fan_files
+            ;;   
         5)
+            manage_fan_shop
+            ;;   
+        6)
+            manage_fan_reubah
+            ;;   
+        11)
+            docker_compose_manager /vol1/1000/compose/fan-md
+            ;;
+        12)
             docker_compose_manager /vol1/1000/compose/fan-panel
             ;;
-        6)
+        13)
             docker_compose_manager /vol1/1000/compose/fan-video
             ;;
-        7)
+        14)
             docker_compose_manager /vol1/1000/compose/cmdbox
             ;;
-        8)
+        15)
+            docker_compose_manager /vol1/1000/compose/fan-webssh
+            ;;
+        16)
             monitor_tool
             ;;
-        9)
-            manage_fan_files
-            ;;    
         66)
             git_project_menu
-            ;;         
+            ;;  
         0)
             cancel_return "已是主菜单"
             continue
