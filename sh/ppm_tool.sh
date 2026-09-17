@@ -160,6 +160,48 @@ get_repo_slug() {
     echo "$url" | sed -E 's#^https?://[^/]+/##; s#^git@[^:]+:##; s#\.git$##'
 }
 
+git_push() {
+    local msg="${1:-自动更新 $(date '+%Y-%m-%d %H:%M:%S')}"
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD)
+
+    if [ "$branch" = "HEAD" ]; then
+        log_error "当前处于游离HEAD状态，无法执行推送"
+        return 1
+    fi
+
+    log_info "当前分支：$branch"
+    log_info "开始拉取远端最新代码"
+    git pull origin "$branch"
+    if [ $? -ne 0 ]; then
+        log_error "拉取代码失败，请手动处理冲突"
+        return 1
+    fi
+
+    log_info "添加所有变更文件"
+    git add .
+
+    log_info "提交代码，提交信息：$msg"
+    git commit -m "$msg"
+    if [ $? -ne 0 ]; then
+        if git status | grep -q "nothing to commit"; then
+            log_warn "没有文件改动，无需提交推送"
+            return 0
+        fi
+        log_error "代码提交失败"
+        return 1
+    fi
+
+    log_info "推送到远端 origin/$branch"
+    git push origin "$branch"
+    if [ $? -eq 0 ]; then
+        log_ok "代码推送完成"
+    else
+        log_error "代码推送失败"
+        return 1
+    fi
+}
+
 check_tokens() {
     local fail=0
     if [[ -z "$GH_TOKEN" ]]; then
@@ -691,9 +733,23 @@ build_and_push() {
     fi
 
     echo
-    echo -e "${gl_zi}>>> 第 3/5 步：清理远端 Release / 远端 tag / 本地 tag ${gl_bai}"
+    echo -e "${gl_zi}>>> 第 3/5 步：清理远端 Release / tag & 推送未提交改动 ${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     pre_clean_remote_tag "$project_root" "$version"
+
+    echo
+    echo -e "${gl_hui}      —— 提交并推送工作区的未提交改动（保证构建脚本遇到干净工作区）${gl_bai}"
+    pushd "$project_root" >/dev/null 2>&1 || {
+        log_error "无法进入目录 $project_root"
+        return 1
+    }
+    git_push "$msg"
+    local push_rc=$?
+    popd >/dev/null 2>&1
+    if [[ "$push_rc" -ne 0 ]]; then
+        log_error "git_push 失败，中止后续步骤"
+        return 1
+    fi
 
     echo
     echo -e "${gl_zi}>>> 第 4/5 步：执行项目构建脚本 ${gl_bai}"
