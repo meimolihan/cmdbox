@@ -17,8 +17,8 @@ list_color_init() {
 list_color_init
 SERVICE="2panel"
 
-INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/install.sh"
-UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/uninstall.sh"
+INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/install.sh"
+UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/uninstall.sh"
 BACKUP_SCRIPT_URL="gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_backup.sh"
 RECOVER_SCRIPT_URL="gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_recover.sh"
 

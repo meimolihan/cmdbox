@@ -1204,18 +1204,18 @@ go mod download
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>项目目录结构</p>
 <pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">2panel/
-</span><span class="code-line line-number" line="2">├── install.sh                # 远程一键安装脚本
-</span><span class="code-line line-number" line="3">├── uninstall.sh              # 卸载脚本
+</span><span class="code-line line-number" line="2">├── scripts/install.sh        # 远程一键安装脚本
+</span><span class="code-line line-number" line="3">├── scripts/uninstall.sh      # 卸载脚本
 </span><span class="code-line line-number" line="4">├── scripts/build-release.sh  # 交叉编译脚本
 </span><span class="code-line line-number" line="5">└── internal/server/web/index.html  # 前端UI页面
 </span></code><div onclick="copied(this)" data-code="2panel/
-├── install.sh                # 远程一键安装脚本
-├── uninstall.sh              # 卸载脚本
+├── scripts/install.sh        # 远程一键安装脚本
+├── scripts/uninstall.sh      # 卸载脚本
 ├── scripts/build-release.sh  # 交叉编译脚本
 └── internal/server/web/index.html  # 前端UI页面
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="二配置一键安装脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二配置一键安装脚本"><span class="octicon octicon-link"></span></a>二、配置一键安装脚本</h2>
-<p>修改 <code>install.sh</code> 头部配置，填写你的 GitHub 用户名</p>
+<p>修改 <code>scripts/install.sh</code> 头部配置，填写你的 GitHub 用户名</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">GITHUB_OWNER</span><span class="token operator">=</span><span class="token string">"meimolihan"</span>
 </span><span class="code-line line-number" line="2"><span class="token assign-left variable">GITHUB_REPO</span><span class="token operator">=</span><span class="token string">"2Panel"</span>
 </span><span class="code-line line-number" line="3"><span class="token assign-left variable">DEFAULT_PORT</span><span class="token operator">=</span><span class="token number">8080</span>
@@ -1226,10 +1226,10 @@ DEFAULT_PORT=8080
 DEFAULT_DATA_DIR=&#x22;/var/lib/2panel&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>提交推送至 main 分支</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> <span class="token function">add</span> install.sh
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> <span class="token function">add</span> scripts/install.sh
 </span><span class="code-line line-number" line="2"><span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"fix: set github owner"</span>
 </span><span class="code-line line-number" line="3"><span class="token function">git</span> push origin main
-</span></code><div onclick="copied(this)" data-code="git add install.sh
+</span></code><div onclick="copied(this)" data-code="git add scripts/install.sh
 git commit -m &#x22;fix: set github owner&#x22;
 git push origin main
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
@@ -1290,20 +1290,20 @@ gh release create &#x22;$VERSION&#x22; \
   <p>目标服务器需要 root 权限，已安装 curl。</p>
 </blockquote>
 <h3 id="51-预检查国内网络"><a class="anchor" aria-hidden="true" tabindex="-1" href="#51-预检查国内网络"><span class="octicon octicon-link"></span></a>5.1 预检查国内网络</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/install.sh
-</span></code><div onclick="copied(this)" data-code="curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/install.sh
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/install.sh
+</span></code><div onclick="copied(this)" data-code="curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/install.sh
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <blockquote>
   <p>输出 shell 脚本内容 = 网络正常；卡住超时需要网络代理。</p>
 </blockquote>
 <h3 id="52-执行一键安装"><a class="anchor" aria-hidden="true" tabindex="-1" href="#52-执行一键安装"><span class="octicon octicon-link"></span></a>5.2 执行一键安装</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/install.sh<span class="token variable">)</span></span>"</span>
-</span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/install.sh)&#x22;
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/install.sh<span class="token variable">)</span></span>"</span>
+</span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/install.sh)&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>交互步骤：</p>
 <ol>
-  <li><code>Enter listen port [default: 8080]:</code> 回车使用默认，或填写自定义端口</li>
-  <li><code>Enter data directory [default: /var/lib/2panel]:</code> 回车使用默认路径</li>
+  <li><code>请输入监听端口 [默认: 8080]:</code> 回车使用默认，或填写自定义端口</li>
+  <li><code>请输入数据目录 [默认: /var/lib/2panel]:</code> 回车使用默认路径</li>
   <li>脚本自动下载二进制、创建 systemd 服务、启动程序</li>
   <li>输出 Web 访问地址，日志输出 admin 随机初始密码</li>
 </ol>
@@ -1331,15 +1331,21 @@ systemctl restart 2panel
   <li>密码：首次启动日志输出，登录后<strong>必须修改密码</strong></li>
 </ul>
 <h2 id="六一键卸载"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六一键卸载"><span class="octicon octicon-link"></span></a>六、一键卸载</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/uninstall.sh<span class="token variable">)</span></span>"</span>
-</span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/uninstall.sh)&#x22;
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/uninstall.sh<span class="token variable">)</span></span>"</span>
+</span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/uninstall.sh)&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>交互：</p>
 <ul>
-  <li><code>Remove data directory /var/lib/2panel ? [y/N]:</code>
+  <li><code>卸载将停止并移除 2panel 服务与程序，是否继续？[y/N]</code>
     <ul>
-      <li><code>y</code>：删除数据库、任务、全部数据</li>
-      <li><code>N</code>：保留业务数据，只删除程序与服务</li>
+      <li><code>y</code>：确认卸载，继续下一步</li>
+      <li><code>N</code>：取消卸载，退出脚本</li>
+    </ul>
+  </li>
+  <li><code>是否删除数据目录 /var/lib/2panel？（包含数据库、任务脚本和日志）[Y/n]</code>
+    <ul>
+      <li><code>Y</code>：删除数据库、任务、全部数据</li>
+      <li><code>n</code>：保留业务数据，只删除程序与服务</li>
     </ul>
   </li>
 </ul>
@@ -1369,9 +1375,9 @@ gh release create &#x22;$VERSION&#x22; dist/2panel_linux_amd64 dist/2panel_linux
 <blockquote>
   <p>目标服务器升级，直接重跑安装脚本，自动拉取 latest，覆盖二进制，systemd 自动重启</p>
 </blockquote>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/install.sh<span class="token variable">)</span></span>"</span>
+<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/install.sh<span class="token variable">)</span></span>"</span>
 </span><span class="code-line line-number" line="2">2panel <span class="token parameter variable">-version</span>
-</span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/install.sh)&#x22;
+</span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/2panel/main/scripts/install.sh)&#x22;
 2panel -version
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="模式-2删除重建同名-release仅限内测无线上用户"><a class="anchor" aria-hidden="true" tabindex="-1" href="#模式-2删除重建同名-release仅限内测无线上用户"><span class="octicon octicon-link"></span></a>模式 2：删除重建同名 Release（仅限内测，无线上用户）</h3>
@@ -1432,7 +1438,7 @@ dist/2panel_linux_arm64 \
     </tr>
     <tr>
       <td>raw.githubusercontent.com 卡住超时</td>
-      <td>国内网络限制，配置代理，或将 install.sh 镜像到 Gitee 中转</td>
+      <td>国内网络限制，配置代理，或将 scripts/install.sh 镜像到 Gitee 中转</td>
     </tr>
     <tr>
       <td>服务启动失败</td>

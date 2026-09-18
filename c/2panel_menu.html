@@ -1174,7 +1174,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>状态查看：查看服务运行状态（含版本检测）、开机自启状态（含启用/禁用切换）</li>
   <li>日志查看：查看最近100行日志，或实时跟踪日志</li>
   <li>数据管理：调用 cmdbox 的 <code>2panel_backup.sh</code> / <code>2panel_recover.sh</code> 一键备份与恢复</li>
-  <li>一键安装/升级/卸载：菜单内直接调用 2Panel 仓库的 <code>install.sh</code> / <code>uninstall.sh</code></li>
+  <li>一键安装/升级/卸载：菜单内直接调用 2Panel 仓库的 <code>scripts/install.sh</code> / <code>scripts/uninstall.sh</code></li>
   <li>退场动画：退出时显示 spinner 动画</li>
   <li>彩色终端输出，操作反馈清晰直观</li>
 </ul>
@@ -1236,7 +1236,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     <tr>
       <td><code>66</code></td>
       <td>安装/升级 2Panel</td>
-      <td>调用 2Panel 仓库 <code>install.sh</code></td>
+      <td>调用 2Panel 仓库 <code>scripts/install.sh</code></td>
     </tr>
     <tr>
       <td><code>77</code></td>
@@ -1251,7 +1251,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     <tr>
       <td><code>99</code></td>
       <td>卸载 2Panel</td>
-      <td>调用 2Panel 仓库 <code>uninstall.sh</code></td>
+      <td>调用 2Panel 仓库 <code>scripts/uninstall.sh</code></td>
     </tr>
     <tr>
       <td><code>0</code></td>
@@ -1292,8 +1292,8 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="13">
 </span><span class="code-line line-number" line="14"><span class="token assign-left variable">SERVICE</span><span class="token operator">=</span><span class="token string">"2panel"</span>
 </span><span class="code-line line-number" line="15">
-</span><span class="code-line line-number" line="16"><span class="token assign-left variable">INSTALL_SCRIPT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/meimolihan/2Panel/main/install.sh"</span>
-</span><span class="code-line line-number" line="17"><span class="token assign-left variable">UNINSTALL_SCRIPT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/meimolihan/2Panel/main/uninstall.sh"</span>
+</span><span class="code-line line-number" line="16"><span class="token assign-left variable">INSTALL_SCRIPT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/install.sh"</span>
+</span><span class="code-line line-number" line="17"><span class="token assign-left variable">UNINSTALL_SCRIPT_URL</span><span class="token operator">=</span><span class="token string">"https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/uninstall.sh"</span>
 </span><span class="code-line line-number" line="18"><span class="token assign-left variable">BACKUP_SCRIPT_URL</span><span class="token operator">=</span><span class="token string">"gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_backup.sh"</span>
 </span><span class="code-line line-number" line="19"><span class="token assign-left variable">RECOVER_SCRIPT_URL</span><span class="token operator">=</span><span class="token string">"gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_recover.sh"</span>
 </span><span class="code-line line-number" line="20">
@@ -1626,8 +1626,8 @@ gl_bufan=&#x27;\033[38;5;14m&#x27;
 
 SERVICE=&#x22;2panel&#x22;
 
-INSTALL_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/2Panel/main/install.sh&#x22;
-UNINSTALL_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/2Panel/main/uninstall.sh&#x22;
+INSTALL_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/install.sh&#x22;
+UNINSTALL_SCRIPT_URL=&#x22;https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/uninstall.sh&#x22;
 BACKUP_SCRIPT_URL=&#x22;gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_backup.sh&#x22;
 RECOVER_SCRIPT_URL=&#x22;gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_recover.sh&#x22;
 

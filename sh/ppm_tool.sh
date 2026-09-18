@@ -455,6 +455,21 @@ ensure_gh_auth() {
     return 0
 }
 
+ensure_cnb_token() {
+    if [[ "${ENABLE_CNB_CHECK:-}" != "1" ]]; then
+        log_info "ENABLE_CNB_CHECK=0，跳过CNB_ACCESS_TOKEN校验"
+        return 0
+    fi
+
+    if [[ -z "${CNB_ACCESS_TOKEN:-}" ]]; then
+        log_warn "CNB_ACCESS_TOKEN 未设置"
+        return 1
+    fi
+
+    log_ok "CNB_ACCESS_TOKEN 环境变量已配置"
+    return 0
+}
+
 ensure_dockerhub_auth() {
     if [[ "${LOCAL_DOCKER_LOGIN}" != "1" ]]; then
         log_info "LOCAL_DOCKER_LOGIN=0，跳过本地 docker login"
@@ -733,6 +748,12 @@ build_and_push() {
     if ! ensure_dockerhub_auth; then
         log_warn "Docker Hub 认证失败，继续执行（如不需要本地推送镜像可忽略）"
     fi
+
+    export ENABLE_CNB_CHECK=1
+    if ! ensure_cnb_token; then
+        log_warn "CNB_TOKEN 校验失败，继续执行（如不需要CNB能力可忽略）"
+    fi
+
 
     echo
     echo -e "${gl_zi}>>> 第 3/5 步：清理远端 Release / tag & 推送未提交改动 ${gl_bai}"
@@ -2135,8 +2156,8 @@ manage_opencode() {
 
 manage_2panel() {
     SERVICE="2panel"
-    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/install.sh"
-    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/uninstall.sh"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/2Panel/main/scripts/uninstall.sh"
     BACKUP_SCRIPT_URL="gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_backup.sh"
     RECOVER_SCRIPT_URL="gitee.com/meimolihan/cmdbox/raw/master/sh/2panel_recover.sh"
     while true; do
