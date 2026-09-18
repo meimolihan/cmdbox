@@ -1164,7 +1164,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <p>
     项目：fan-reubah｜通用文件转换与图像处理
     仓库：<a href="https://github.com/meimolihan/fan-reubah">https://github.com/meimolihan/fan-reubah</a>
-    编译发布主机：fnOS（Debian，本机 Go/Node/gcc/Make 环境齐全）
+    编译发布主机：fnOS（Debian，仅需 gh/git；本地编译验证另需 Go/Node/gcc/Rust）
     部署测试主机：Debian Linux（amd64/arm64）
   </p>
 </blockquote>
@@ -1173,16 +1173,16 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <ol>
     <li>GitHub <strong>不允许直接覆盖已发布 Release</strong>，正式环境版本号单向递增；内测可删除重建同名 tag（<code>build-and-push.sh</code> 已内置自动清理）。</li>
     <li>install.sh 使用 <code>releases/latest/download</code>，<strong>脚本不需要硬编码版本号</strong>。</li>
-    <li>编译机器 ≠ 业务运行机器；fnOS 只做编译发布，业务跑在目标主机。</li>
-    <li>fan-reubah 依赖 CGO（libwebp/libheif），交叉编译需用 <code>CGO_ENABLED=1</code>；无这些库时可用 <code>CGO_ENABLED=0</code> 构建（部分功能受限）。</li>
+    <li>编译机器 ≠ 业务运行机器；fnOS 只负责触发发布流水线，实际编译在 GitHub Actions 完成，业务跑在目标主机。</li>
+    <li>fan-reubah 依赖 CGO（libwebp/libheif），CI 交叉编译使用 <code>CGO_ENABLED=1</code>；无这些库时可用 <code>CGO_ENABLED=0</code> 构建（部分功能受限）。</li>
   </ol>
 </blockquote>
 <h2 id="一编译发布机fnos环境准备"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一编译发布机fnos环境准备"><span class="octicon octicon-link"></span></a>一、编译发布机（fnOS）环境准备</h2>
 <h3 id="11-安装依赖"><a class="anchor" aria-hidden="true" tabindex="-1" href="#11-安装依赖"><span class="octicon octicon-link"></span></a>1.1 安装依赖</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">apt</span> update
-</span><span class="code-line line-number" line="2"><span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> <span class="token function">curl</span> build-essential pkg-config libwebp-dev libheif-dev
+</span><span class="code-line line-number" line="2"><span class="token function">apt</span> <span class="token function">install</span> <span class="token function">git</span> <span class="token function">curl</span> build-essential pkg-config libwebp-dev libheif-dev libde265-dev libx265-dev
 </span></code><div onclick="copied(this)" data-code="apt update
-apt install git curl build-essential pkg-config libwebp-dev libheif-dev
+apt install git curl build-essential pkg-config libwebp-dev libheif-dev libde265-dev libx265-dev
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>Go（本机 <code>/usr/local/go/bin/go</code>，首次使用需 <code>export PATH=$PATH:/usr/local/go/bin</code>）、Node.js 18+、Make。如需编译 vtracer 还需安装 Rust（<code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code>）。</p>
 <h3 id="12-安装-gh-命令行工具并授权-github"><a class="anchor" aria-hidden="true" tabindex="-1" href="#12-安装-gh-命令行工具并授权-github"><span class="octicon octicon-link"></span></a>1.2 安装 gh 命令行工具并授权 GitHub</h3>
@@ -1207,25 +1207,27 @@ go mod download
 <pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">fan-reubah/
 </span><span class="code-line line-number" line="2">├── scripts/install.sh            # 远程一键安装脚本
 </span><span class="code-line line-number" line="3">├── scripts/uninstall.sh          # 卸载脚本
-</span><span class="code-line line-number" line="4">├── scripts/build-and-push.sh     # 构建+打tag+推送+Release脚本
-</span><span class="code-line line-number" line="5">├── scripts/build-vtracer.sh      # vtracer SVG矢量化工具编译脚本（可选）
-</span><span class="code-line line-number" line="6">├── cmd/server/                   # 后端入口
-</span><span class="code-line line-number" line="7">├── internal/                     # 业务逻辑包（handlers、vtracer 等）
+</span><span class="code-line line-number" line="4">├── scripts/build-and-push.sh     # 升版+打tag+推送+触发CI发布脚本
+</span><span class="code-line line-number" line="5">├── scripts/prepare-embed.sh      # 生成 go:embed 内嵌资源（前端+vtracer，本地构建用）
+</span><span class="code-line line-number" line="6">├── cmd/server/                   # 后端入口（编译为单个自包含二进制）
+</span><span class="code-line line-number" line="7">├── internal/                     # 业务逻辑包 + assets（内嵌 web/engine）
 </span><span class="code-line line-number" line="8">├── templates/                    # 前端（HTML + TailwindCSS + esbuild，npm run build 生成 CSS/JS 到 static/）
-</span><span class="code-line line-number" line="9">├── static/                       # 前端构建产物（css/js），打包进 Release 资产
-</span><span class="code-line line-number" line="10">├── vtracer/                      # Rust vendored 源码（可选）
-</span><span class="code-line line-number" line="11">└── bin/                          # 编译产物（构建后生成）
+</span><span class="code-line line-number" line="9">├── static/                       # 前端构建产物（css/js），内嵌进二进制
+</span><span class="code-line line-number" line="10">├── vtracer/                      # Rust vendored SVG 矢量化引擎源码
+</span><span class="code-line line-number" line="11">├── .github/workflows/release.yml # 发布流水线（workflow_dispatch 触发）
+</span><span class="code-line line-number" line="12">└── bin/                          # 编译产物（CI/构建后生成）
 </span></code><div onclick="copied(this)" data-code="fan-reubah/
 ├── scripts/install.sh            # 远程一键安装脚本
 ├── scripts/uninstall.sh          # 卸载脚本
-├── scripts/build-and-push.sh     # 构建+打tag+推送+Release脚本
-├── scripts/build-vtracer.sh      # vtracer SVG矢量化工具编译脚本（可选）
-├── cmd/server/                   # 后端入口
-├── internal/                     # 业务逻辑包（handlers、vtracer 等）
+├── scripts/build-and-push.sh     # 升版+打tag+推送+触发CI发布脚本
+├── scripts/prepare-embed.sh      # 生成 go:embed 内嵌资源（前端+vtracer，本地构建用）
+├── cmd/server/                   # 后端入口（编译为单个自包含二进制）
+├── internal/                     # 业务逻辑包 + assets（内嵌 web/engine）
 ├── templates/                    # 前端（HTML + TailwindCSS + esbuild，npm run build 生成 CSS/JS 到 static/）
-├── static/                       # 前端构建产物（css/js），打包进 Release 资产
-├── vtracer/                      # Rust vendored 源码（可选）
-└── bin/                          # 编译产物（构建后生成）
+├── static/                       # 前端构建产物（css/js），内嵌进二进制
+├── vtracer/                      # Rust vendored SVG 矢量化引擎源码
+├── .github/workflows/release.yml # 发布流水线（workflow_dispatch 触发）
+└── bin/                          # 编译产物（CI/构建后生成）
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="二配置一键安装脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二配置一键安装脚本"><span class="octicon octicon-link"></span></a>二、配置一键安装脚本</h2>
 <p>确认 <code>scripts/install.sh</code> 头部常量（无需改动，默认已正确定义）：</p>
@@ -1251,21 +1253,25 @@ git push origin main
 <h2 id="三构建与发布"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三构建与发布"><span class="octicon octicon-link"></span></a>三、构建与发布</h2>
 <h3 id="31-一键发布推荐"><a class="anchor" aria-hidden="true" tabindex="-1" href="#31-一键发布推荐"><span class="octicon octicon-link"></span></a>3.1 一键发布（推荐）</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> /vol1/1000/GitHub/fan-reubah
-</span><span class="code-line line-number" line="2"><span class="token function">bash</span> scripts/build-and-push.sh v1.0.0 <span class="token parameter variable">--yes</span>
+</span><span class="code-line line-number" line="2"><span class="token function">bash</span> scripts/build-and-push.sh v1.0.0 <span class="token parameter variable">--yes</span> <span class="token parameter variable">-m</span> <span class="token string">"本次发布的说明文字"</span>
 </span></code><div onclick="copied(this)" data-code="cd /vol1/1000/GitHub/fan-reubah
-bash scripts/build-and-push.sh v1.0.0 --yes
+bash scripts/build-and-push.sh v1.0.0 --yes -m &#x22;本次发布的说明文字&#x22;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<p>内部流程：</p>
+<p><code>build-and-push.sh</code> 本身<strong>不在本地编译</strong>，只负责升版并触发 CI：</p>
 <ol>
-  <li>检查 gh CLI、go、npm、gcc、pkg-config、libwebp、libheif</li>
-  <li>清理已存在的同名 Release 和 tag（内测场景）</li>
-  <li>更新 <code>templates/package.json</code> 版本号</li>
-  <li>构建前端：<code>cd templates &#x26;&#x26; npm ci &#x26;&#x26; npm run build</code>（生成 static/css、static/js）</li>
-  <li>构建后端：<code>CGO_ENABLED=1 go build -buildvcs=false -ldflags="-s -w" -o bin/fan-reubah ./cmd/server</code></li>
-  <li>复制为 <code>bin/fan-reubah_linux_amd64</code>，打包 <code>bin/fan-reubah-assets.tar.gz</code>（templates + static）</li>
-  <li>Git commit + tag + push</li>
-  <li>创建 GitHub Release，上传 <code>fan-reubah_linux_amd64</code> + <code>fan-reubah-assets.tar.gz</code></li>
+  <li>校验 tag 格式（<code>vX.Y.Z</code>）</li>
+  <li>清理已存在的同名 Release 与本地/远端 tag（内测场景）</li>
+  <li>更新 <code>templates/package.json</code> 版本号，写入 <code>RELEASE_NOTES.md</code></li>
+  <li><code>git commit</code> + <code>git push origin main</code>，再 <code>git tag</code> + <code>git push origin vX.Y.Z</code></li>
+  <li><code>gh workflow run release.yml -f tag=vX.Y.Z --ref vX.Y.Z</code> 触发发布流水线</li>
 </ol>
+<p>随后 <code>.github/workflows/release.yml</code> 链式作业自动完成：</p>
+<ul>
+  <li><code>build-binaries</code>：Node 构建前端 → cargo 编译 vtracer（amd64/arm64）→ <code>CGO_ENABLED=1</code> 交叉编译 Go → 两个自包含单文件</li>
+  <li><code>publish-release</code>：下载产物并 <code>gh release create</code> 上传 <code>fan-reubah_linux_amd64</code>、<code>fan-reubah_linux_arm64</code></li>
+  <li><code>build-docker</code>：buildx 构建并推送 multi-arch 镜像（Docker Hub + GHCR）</li>
+  <li><code>sync-cnb</code>：同步 Git 仓库与标签到 CNB</li>
+</ul>
 <h3 id="32-产物说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#32-产物说明"><span class="octicon octicon-link"></span></a>3.2 产物说明</h3>
 <table>
   <thead>
@@ -1276,16 +1282,12 @@ bash scripts/build-and-push.sh v1.0.0 --yes
   </thead>
   <tbody>
     <tr>
-      <td><code>bin/fan-reubah</code></td>
-      <td>编译后的 Go 二进制（CGO 启用，含 libwebp/libheif）</td>
+      <td><code>fan-reubah_linux_amd64</code></td>
+      <td>Release 二进制（CGO 启用，已内嵌前端与 vtracer 引擎）</td>
     </tr>
     <tr>
-      <td><code>bin/fan-reubah_linux_amd64</code></td>
-      <td>Release 用二进制（同上，按架构命名）</td>
-    </tr>
-    <tr>
-      <td><code>bin/fan-reubah-assets.tar.gz</code></td>
-      <td>前端资产包（templates/ + static/，install.sh 远程部署时下载）</td>
+      <td><code>fan-reubah_linux_arm64</code></td>
+      <td>Release 二进制（arm64，同上）</td>
     </tr>
   </tbody>
 </table>
@@ -1293,13 +1295,13 @@ bash scripts/build-and-push.sh v1.0.0 --yes
 <p>访问：<a href="https://github.com/meimolihan/fan-reubah/releases/tag/v1.0.0">https://github.com/meimolihan/fan-reubah/releases/tag/v1.0.0</a></p>
 <ol>
   <li>状态：<strong>Published，不是 Draft 草稿</strong></li>
-  <li>Assets 内必须存在 <code>fan-reubah_linux_amd64</code> 和 <code>fan-reubah-assets.tar.gz</code>。</li>
+  <li>Assets 内必须存在 <code>fan-reubah_linux_amd64</code> 和 <code>fan-reubah_linux_arm64</code>。</li>
 </ol>
 <p>测试下载链接有效性</p>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-I</span> https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-reubah_linux_amd64
-</span><span class="code-line line-number" line="2"><span class="token function">curl</span> <span class="token parameter variable">-I</span> https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-reubah-assets.tar.gz
+</span><span class="code-line line-number" line="2"><span class="token function">curl</span> <span class="token parameter variable">-I</span> https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-reubah_linux_arm64
 </span></code><div onclick="copied(this)" data-code="curl -I https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-reubah_linux_amd64
-curl -I https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-reubah-assets.tar.gz
+curl -I https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-reubah_linux_arm64
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>返回 <code>302 Found</code> 正常；返回 404 代表附件缺失。</p>
 <h2 id="四目标服务器远程一键安装"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四目标服务器远程一键安装"><span class="octicon octicon-link"></span></a>四、目标服务器远程一键安装</h2>
@@ -1321,7 +1323,7 @@ curl -I https://github.com/meimolihan/fan-reubah/releases/latest/download/fan-re
 <ol>
   <li><code>请输入监听端口 [默认: 8081]:</code> 回车使用默认，或填写自定义端口</li>
   <li><code>请输入应用部署目录 [默认: /var/lib/fan-reubah]:</code> 回车使用默认路径</li>
-  <li>脚本自动下载前端资产包（或使用本地构建产物）、安装二进制、创建 systemd 服务、启动程序</li>
+  <li>脚本自动从 Release 下载自包含单文件二进制（或使用本地构建产物）、安装二进制、创建 systemd 服务、启动程序</li>
   <li>输出 <code>Listening on [::]:端口</code>，可直接通过 <code>http://&#x3C;IP>:端口</code> 访问</li>
 </ol>
 <p>静默安装</p>
@@ -1420,7 +1422,7 @@ bash scripts/build-and-push.sh v1.0.0 --yes
   </tbody>
 </table>
 <h2 id="八前端-ui-修改流程"><a class="anchor" aria-hidden="true" tabindex="-1" href="#八前端-ui-修改流程"><span class="octicon octicon-link"></span></a>八、前端 UI 修改流程</h2>
-<p>前端位于 <code>templates/</code>（HTML + TailwindCSS），构建由 esbuild 完成，产物输出到 <code>static/css</code>、<code>static/js</code>，打包进 <code>fan-reubah-assets.tar.gz</code>：</p>
+<p>前端位于 <code>templates/</code>（HTML + TailwindCSS），构建由 esbuild 完成，产物输出到 <code>static/css</code>、<code>static/js</code>，最终内嵌进自包含单文件二进制：</p>
 <ol>
   <li>修改 <code>templates/</code> 前端代码</li>
   <li>本地构建验证：<code>cd templates &#x26;&#x26; npm run build</code></li>
@@ -1442,11 +1444,11 @@ bash scripts/build-and-push.sh v1.0.1 --yes
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/fan-reubah/main/scripts/uninstall.sh<span class="token variable">)</span></span>"</span> <span class="token parameter variable">-y</span> <span class="token parameter variable">--purge</span>
 </span></code><div onclick="copied(this)" data-code="bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/fan-reubah/main/scripts/uninstall.sh)&#x22; -y --purge
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h3 id="编译-vtracer可选"><a class="anchor" aria-hidden="true" tabindex="-1" href="#编译-vtracer可选"><span class="octicon octicon-link"></span></a>编译 vtracer（可选）</h3>
+<h3 id="准备内嵌资源本地构建可选"><a class="anchor" aria-hidden="true" tabindex="-1" href="#准备内嵌资源本地构建可选"><span class="octicon octicon-link"></span></a>准备内嵌资源（本地构建可选）</h3>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> /vol1/1000/GitHub/fan-reubah
-</span><span class="code-line line-number" line="2"><span class="token function">bash</span> scripts/build-vtracer.sh
+</span><span class="code-line line-number" line="2"><span class="token function">bash</span> scripts/prepare-embed.sh
 </span></code><div onclick="copied(this)" data-code="cd /vol1/1000/GitHub/fan-reubah
-bash scripts/build-vtracer.sh
+bash scripts/prepare-embed.sh
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="相关命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#相关命令"><span class="octicon octicon-link"></span></a>相关命令</h2>
 <ul>

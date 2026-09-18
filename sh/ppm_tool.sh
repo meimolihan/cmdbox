@@ -129,7 +129,9 @@ get_git_latest_tag() {
     local tag
     tag=$(
         cd "${repo_path}" || return
-        git tag --sort=-v:refname 2>/dev/null | head -n 1
+        git tag --sort=-v:refname 2>/dev/null \
+            | grep -E '^v?[0-9]+\.[0-9]+\.[0-9]+$' \
+            | head -n 1
     )
     if [[ -z "$tag" ]]; then
         echo -e "${gl_huang}无版本标签${gl_bai}"
@@ -145,8 +147,8 @@ next_version() {
         echo "v1.0.0"
         return
     fi
-    if [[ "$cur" =~ ^v([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
-        echo "v${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.$((BASH_REMATCH[3] + 1))"
+    if [[ "$cur" =~ ^(v?)([0-9]+)\.([0-9]+)\.([0-9]+)$ ]]; then
+        echo "${BASH_REMATCH[1]}${BASH_REMATCH[2]}.${BASH_REMATCH[3]}.$((BASH_REMATCH[4] + 1))"
     else
         echo "$cur"
     fi
@@ -2983,6 +2985,273 @@ manage_fan_files() {
             ;;
         88)
             bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+manage_fan_shop() {
+
+    SERVICE="fan-shop"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-shop/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-shop/main/scripts/uninstall.sh"
+
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-shop 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-shop
+        show_service_url fan-shop
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-shop        ${gl_bufan}2.  ${gl_bai}启动 fan-shop"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-shop        ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态     ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启         ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-shop  ${gl_hong}99. ${gl_bai}卸载 fan-shop"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-shop 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-shop 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-shop 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-shop 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-shop 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-shop 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-shop 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-shop 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-shop 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-shop 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-shop 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-shop 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-shop 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-shop 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+manage_fan_reubah() {
+
+    SERVICE="fan-reubah"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-reubah/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-reubah/main/scripts/uninstall.sh"
+
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-reubah 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-reubah
+        show_service_url fan-reubah
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-reubah      ${gl_bufan}2.  ${gl_bai}启动 fan-reubah"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-reubah      ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态     ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启         ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-reubah ${gl_hong}99. ${gl_bai}卸载 fan-reubah"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-reubah 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-reubah 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-reubah 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-reubah 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-reubah 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-reubah 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-reubah 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-reubah 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-reubah 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-reubah 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-reubah 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-reubah 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-reubah 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-reubah 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
             break_end
             continue
             ;;
