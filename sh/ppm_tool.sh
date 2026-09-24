@@ -95,9 +95,9 @@ handle_y_n() {
 
 exit_animation() {
     echo -ne "\r${gl_lv}即将退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
-    sleep_fractional 0.5
-    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.8
     echo ""
     clear
 }
@@ -105,9 +105,9 @@ exit_animation() {
 cancel_empty() {
     local menu_name="${1:-上一级选单}"
     echo -e "${gl_hong}空输入，返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
-    sleep_fractional 0.5
-    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
+    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
+    sleep_fractional 0.8
     echo ""
     clear
 }
@@ -254,72 +254,75 @@ column_if_available() {
     fi
 }
 
-docker-ps-find() {
+compose_ps_beautify() {
+    if [[ ! -f "docker-compose.yml" && ! -f "compose.yml" ]]; then
+        echo -e "${gl_hong}❌ 当前目录未找到 docker-compose.yml / compose.yml${gl_bai}"
+        return 1
+    fi
+
     {
-        local filters=("$@")
-        printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "容器ID" "名称" "状态" "端口" "创建时间" "镜像" "$reset"
-        printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "----------" "----------" "----------" "----------" "----------" "----------" "$reset"
-        docker ps --format "{{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.RunningFor}}\t{{.Image}}" | \
-        if [ $# -gt 0 ]; then
-            awk -v filters="${filters[*]}" '
-            BEGIN {
-                split(filters, arr, " ")
-                for (i in arr) pattern[arr[i]] = 1
-            }
-            {
-                for (p in pattern) {
-                    if ($2 ~ p) {
-                        print
-                        next
-                    }
-                }
-            }'
-        else
-            cat
-        fi | \
-        awk -v green="$gl_lv" -v red="$gl_hong" -v yellow="$gl_huang" -v cyan="$gl_bufan" -v blue="$gl_lan" -v white="$gl_bai" -v reset="$reset" '
-        BEGIN {FS="\t"; OFS="\t"}
-        {
-            id = substr($1, 1, 12)
-            name = $2
-            status = $3
-            ports = $4
-            time = $5
-            image = $6
-            gsub(/healthy/, "健康", status)
-            gsub(/unhealthy/, "不健康", status)
-            gsub(/starting/, "启动中", status)
-            gsub(/Up /, "已运行 ", status)
-            gsub(/days/, "天", status)
-            gsub(/hours/, "小时", status)
-            gsub(/minutes/, "分钟", status)
-            gsub(/seconds/, "秒", status)
-            if (status !~ /健康|不健康|启动中/) {
-                status = status " (正常)"
-            }
-            gsub(/[0-9]+/, green "&" reset, status)
-            gsub(/健康/, green "&" reset, status)
-            gsub(/不健康/, red "&" reset, status)
-            gsub(/启动中/, yellow "&" reset, status)
-            gsub(/正常/, blue "&" reset, status)
-            gsub(/ years ago/, "年前", time)
-            gsub(/ year ago/, "年前", time)
-            gsub(/ months ago/, "个月前", time)
-            gsub(/ month ago/, "个月前", time)
-            gsub(/ weeks ago/, "周前", time)
-            gsub(/ week ago/, "周前", time)
-            gsub(/ days ago/, "天前", time)
-            gsub(/ day ago/, "天前", time)
-            gsub(/ hours ago/, "小时前", time)
-            gsub(/ hour ago/, "小时前", time)
-            gsub(/ minutes ago/, "分钟前", time)
-            gsub(/ minute ago/, "分钟前", time)
-            gsub(/ seconds ago/, "秒前", time)
-            gsub(/About /, "", time)
-            gsub(/[0-9]+/, green "&" reset, time)
-            print cyan id reset, green name reset, yellow status reset, blue ports reset, white time reset, white image reset
-        }'
-    } | column_if_available
+        # 表头，使用 -- 隔离参数，防止 -- 开头解析错误
+        printf -- "容器ID\t名称\t状态\t端口\t创建时间\t镜像\n"
+        printf -- "----------\t----------\t----------\t----------\t----------\t----------\n"
+        docker compose ps --format "{{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.RunningFor}}\t{{.Image}}"
+    } | awk -v green="$gl_lv" -v red="$gl_hong" -v yellow="$gl_huang" -v blue="$gl_lan" -v cyan="$gl_bufan" -v white="$gl_bai" -v hui="$gl_hui" -v reset="$reset" '
+    BEGIN {FS="\t"; OFS="\t"}
+    {
+        if(NR == 1){
+            print hui $0 reset
+            next
+        }
+        if(NR == 2){
+            print hui $0 reset
+            next
+        }
+
+        id = substr($1, 1, 12)
+        name = $2
+        status = $3
+        ports = $4
+        time = $5
+        image = $6
+
+        gsub(/healthy/, "健康", status)
+        gsub(/unhealthy/, "不健康", status)
+        gsub(/starting/, "启动中", status)
+        gsub(/Up /, "已运行 ", status)
+        gsub(/days/, "天", status)
+        gsub(/hours/, "小时", status)
+        gsub(/minutes/, "分钟", status)
+        gsub(/seconds/, "秒", status)
+
+        if (status !~ /健康|不健康|启动中/) {
+            status = status " (正常)"
+        }
+        gsub(/[0-9]+/, green "&" reset, status)
+        gsub(/健康/, green "&" reset, status)
+        gsub(/不健康/, red "&" reset, status)
+        gsub(/启动中/, yellow "&" reset, status)
+
+        gsub(/ years ago/, "年前", time)
+        gsub(/ year ago/, "年前", time)
+        gsub(/ months ago/, "个月前", time)
+        gsub(/ month ago/, "个月前", time)
+        gsub(/ weeks ago/, "周前", time)
+        gsub(/ week ago/, "周前", time)
+        gsub(/ days ago/, "天前", time)
+        gsub(/ day ago/, "天前", time)
+        gsub(/ hours ago/, "小时前", time)
+        gsub(/ hour ago/, "小时前", time)
+        gsub(/ minutes ago/, "分钟前", time)
+        gsub(/ minute ago/, "分钟前", time)
+        gsub(/ seconds ago/, "秒前", time)
+        gsub(/ second ago/, "秒前", time)
+        gsub(/About /, "", time)
+        gsub(/[0-9]+/, green "&" reset, time)
+
+        if (length(ports) > 35) {
+            ports = substr(ports,1,35) "..."
+        }
+        print cyan id reset, green name reset, yellow status reset, blue ports reset, white time reset, white image reset
+    }' | column_if_available
 }
 
 pre_clean_remote_tag() {
@@ -615,7 +618,7 @@ build_and_push() {
 
     if [[ -z "$project_root" ]]; then
         log_error "项目根目录为空，无法继续（应由菜单传入）"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${col43}43.${gl_bai} FanVideoCT 视频剪切       ${col44}44.${gl_bai} FanNginx 反向代理"
         break_end
         return 1
     fi
@@ -791,6 +794,27 @@ build_and_push() {
     fi
 }
 
+function count_md_docs {
+    cd /vol1/1000/GitHub/cmdbox-main
+    local cmd_count
+    local ops_count
+    local win_count
+    local total_count
+    cmd_count=$(find "./command" -type f -name "*.md" -print0 | grep -zc .)
+    ops_count=$(find "./ops-script" -type f -name "*.md" -print0 | grep -zc .)
+    win_count=$(find "./windows" -type f -name "*.md" -print0 | grep -zc .)
+    total_count=$((cmd_count + ops_count + win_count))
+
+    echo
+    echo -e "${gl_huang}>>> CmdBox 文章统计${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo "- 命令文章：${gl_lv}${cmd_count}${reset} 篇"
+    echo "- 运维脚本：${gl_lv}${ops_count}${reset} 篇"
+    echo "- Win 脚本：${gl_lv}${win_count}${reset} 篇"
+    echo "- 合计文章：${gl_huang}${total_count}${reset} 篇"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+}
+
 project_push() {
     local proj_name="$1"
     local proj_dir="$2"
@@ -802,7 +826,7 @@ project_push() {
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     if [[ -n "${docker_filter}" ]]; then
-        docker-ps-find "${docker_filter}"
+        compose_ps_beautify
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     fi
 
@@ -839,6 +863,8 @@ cmdbox-main_push()    { project_push "CmdBox"     "/vol1/1000/GitHub/cmdbox-main
 fan-webssh_push()    { project_push "Fan WebSSH"     "/vol1/1000/GitHub/fan-webssh"     "fan-webssh" "mobufan/fan-webssh"; }
 fan_random_push()    { project_push "Fan Random"     "/vol1/1000/GitHub/fan-random"     "fan-random" "mobufan/fan-random"; }
 fan_video_dl_push()  { project_push "Fan Video DL"   "/vol1/1000/GitHub/fan-video-dl"   "fan-video-dl" "mobufan/fan-video-dl"; }
+fan_video_ct_push()  { project_push "Fan Video CT"   "/vol1/1000/GitHub/fan-video-ct"   "fan-video-ct" "mobufan/fan-video-ct"; }
+fan_nginx_push()  { project_push "Fan Nginx"   "/vol1/1000/GitHub/fan-nginx"   "fan-nginx" "mobufan/fan-nginx"; }
 
 git_project_menu() {
     check_tokens || true
@@ -847,14 +873,15 @@ git_project_menu() {
         clear
         echo -e "${gl_zi}>>> Git 项目构建并推送${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}Fan Panel            ${gl_bufan}2.  ${gl_bai}Fan Video"
-        echo -e "${gl_bufan}3.  ${gl_bai}Fan MD               ${gl_bufan}4.  ${gl_bai}Dufs-zh"
-        echo -e "${gl_bufan}5.  ${gl_bai}2Panel               ${gl_bufan}6.  ${gl_bai}Fan Shop"
-        echo -e "${gl_bufan}7.  ${gl_bai}Fan Files            ${gl_bufan}8.  ${gl_bai}Fan Reubah"
-        echo -e "${gl_bufan}9.  ${gl_bai}CmdBox               ${gl_bufan}10.  ${gl_bai}Fan WebSSH"
-echo -e "${gl_bufan}11. ${gl_bai}FanRandom            ${gl_bufan}12.  ${gl_bai}FanVideoDL"
+        echo -e "${gl_bufan}1.  ${gl_bai}FanPanel 导航页       ${gl_bufan}2.  ${gl_bai}FanVideo 影视库"
+        echo -e "${gl_bufan}3.  ${gl_bai}FanMD 云文档          ${gl_bufan}4.  ${gl_bai}Dufs-zh 文件服务"
+        echo -e "${gl_bufan}5.  ${gl_bai}2Panel 计划任务       ${gl_bufan}6.  ${gl_bai}FanShop 容器管理"
+        echo -e "${gl_bufan}7.  ${gl_bai}FanFiles 文件管理     ${gl_bufan}8.  ${gl_bai}FanReubah 格式转换"
+        echo -e "${gl_bufan}9.  ${gl_bai}CmdBox 命令           ${gl_bufan}10. ${gl_bai}FanWebSSH 终端面板"
+        echo -e "${gl_bufan}11. ${gl_bai}FanRandom 随机壁纸    ${gl_bufan}12. ${gl_bai}FanVideoDL 视频下载"
+        echo -e "${gl_bufan}13. ${gl_bai}FanVideoCT 视频剪切   ${gl_bufan}14. ${gl_bai}FanNginx 反向代理"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00.  ${gl_bai}退出脚本"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00.  ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
@@ -867,10 +894,12 @@ echo -e "${gl_bufan}11. ${gl_bai}FanRandom            ${gl_bufan}12.  ${gl_bai}F
             6)  fan-shop_push ;;
             7)  fan-files_push ;;
             8)  fan-reubah_push ;;
-            9)  cmdbox-main_push ;;
+            9)  count_md_docs; cmdbox-main_push ;;
             10) fan-webssh_push ;;
             11) fan_random_push ;;
             12) fan_video_dl_push ;;
+            13) fan_video_ct_push ;;
+            14) fan_nginx_push ;;
             0)
                 proj_mgmt_tool
                 ;;
@@ -913,7 +942,7 @@ show_service_url() {
         local exec_cmd
         exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
         port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
-        [ -z "$port" ] && port=$(echo "$exec_cmd" | grep -oE '--bind 0\.0\.0\.0:[0-9]+' | grep -oE '[0-9]+$' | head -1)
+        [ -z "$port" ] && port=$(echo "$exec_cmd" | grep -oE -e '--bind 0\.0\.0\.0:[0-9]+' | grep -oE '[0-9]+$' | head -1)
     fi
 
     if [ -z "$port" ] && command -v ss >/dev/null 2>&1;then
@@ -922,6 +951,19 @@ show_service_url() {
         if [[ "$pid" =~ ^[0-9]+$ && "$pid" -gt 0 ]];then
             port=$(ss -tlnp 2>/dev/null | grep ",pid=$pid," | grep -oE ':[0-9]+' | sed 's/^://' | head -1)
         fi
+    fi
+
+    if [ -z "$port" ] && command -v docker >/dev/null 2>&1;then
+        local dports
+        dports=$(docker port "$service" 2>/dev/null | head -1)
+        if [ -n "$dports" ];then
+            port=$(echo "$dports" | grep -oE '0\.0\.0\.0:[0-9]+|\[::\]:[0-9]+' | grep -oE '[0-9]+$' | head -1)
+        fi
+    fi
+
+    if [ -z "$port" ];then
+        port=$(grep -E "ports:" -A5 "/vol1/1000/compose/${service}/docker-compose.yml" 2>/dev/null \
+            | grep -oE '"[0-9]+:[0-9]+"|[0-9]+:[0-9]+' | head -1 | cut -d: -f1 | tr -d '"')
     fi
 
     if [ -n "$port" ]; then
@@ -971,6 +1013,13 @@ show_service_status() {
 }
 
 docker_compose_manager() {
+    local FWORK_DIR="${1:-$PWD}"
+    if ! cd "$FWORK_DIR" 2>/dev/null; then
+        echo -e ""
+        log_error "无法进入目录: ${gl_huang}$FWORK_DIR${gl_bai}"
+        exit_animation
+        return 1
+    fi
     safe_read() {
         local prompt="$1"
         local var_name="$2"
@@ -1049,72 +1098,69 @@ docker_compose_manager() {
             cat
         fi
     }
-    
-    docker-ps-find() {
+
+    list_beautify_compose_images() {
+        if [[ ! -f "docker-compose.yml" && ! -f "compose.yml" ]]; then
+            echo -e "${gl_hong}❌ 当前目录未找到 docker-compose.yml / compose.yml${gl_bai}"
+            return 1
+        fi
+
         {
-            local filters=("$@")
-            printf "%s%s\t%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "容器ID" "名称" "状态" "端口" "创建时间" "镜像" "$reset"
-            docker ps --format "{{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}\t{{.RunningFor}}\t{{.Image}}" | \
-            if [ $# -gt 0 ]; then
-                awk -v filters="${filters[*]}" '
-                BEGIN {
-                    split(filters, arr, " ")
-                    for (i in arr) pattern[arr[i]] = 1
-                }
-                {
-                    for (p in pattern) {
-                        if ($2 ~ p) {
-                            print
-                            next
-                        }
-                    }
-                }'
-            else
-                cat
-            fi | \
-            awk -v green="$gl_lv" -v red="$gl_hong" -v yellow="$gl_huang" -v cyan="$gl_bufan" -v blue="$gl_lan" -v white="$gl_bai" -v reset="$reset" '
-            BEGIN {FS="\t"; OFS="\t"}
-            {
-                id = substr($1, 1, 12)
-                name = $2
-                status = $3
-                ports = $4
-                time = $5
-                image = $6
-                gsub(/healthy/, "健康", status)
-                gsub(/unhealthy/, "不健康", status)
-                gsub(/starting/, "启动中", status)
-                gsub(/Up /, "已运行 ", status)
-                gsub(/days/, "天", status)
-                gsub(/hours/, "小时", status)
-                gsub(/minutes/, "分钟", status)
-                gsub(/seconds/, "秒", status)
-                if (status !~ /健康|不健康|启动中/) {
-                    status = status " (正常)"
-                }
-                gsub(/[0-9]+/, green "&" reset, status)
-                gsub(/健康/, green "&" reset, status)
-                gsub(/不健康/, red "&" reset, status)
-                gsub(/启动中/, yellow "&" reset, status)
-                gsub(/正常/, blue "&" reset, status)
-                gsub(/ years ago/, "年前", time)
-                gsub(/ year ago/, "年前", time)
-                gsub(/ months ago/, "个月前", time)
-                gsub(/ month ago/, "个月前", time)
-                gsub(/ weeks ago/, "周前", time)
-                gsub(/ week ago/, "周前", time)
-                gsub(/ days ago/, "天前", time)
-                gsub(/ day ago/, "天前", time)
-                gsub(/ hours ago/, "小时前", time)
-                gsub(/ hour ago/, "小时前", time)
-                gsub(/ minutes ago/, "分钟前", time)
-                gsub(/ minute ago/, "分钟前", time)
-                gsub(/ seconds ago/, "秒前", time)
-                gsub(/About /, "", time)
-                gsub(/[0-9]+/, green "&" reset, time)
-                print cyan id reset, green name reset, yellow status reset, blue ports reset, white time reset, white image reset
-            }'
+            printf "%s%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "服务名" "完整镜像名" "镜像ID" "大小" "架构" "$reset"
+            printf "%s%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "----------" "----------" "----------" "----------" "----------" "$reset"
+
+            docker compose config | awk '
+            BEGIN { in_svc=0; svc_name="" }
+            /^services:/ { in_svc=1; next }
+            in_svc == 1 && /^  [^ ]/ {
+                sub(/:$/,"");
+                svc_name=$0;
+                gsub(/^[ \t]+/,"",svc_name); # 移除服务名开头空格
+                next
+            }
+            in_svc ==1 && /^    image:/ {
+                sub(/^    image:[ \t]*/,"");
+                print svc_name "\t" $0;
+            }' | while IFS=$'\t' read -r svc img; do
+                if [[ -z "$svc" || -z "$img" ]]; then
+                    continue
+                fi
+                if ! docker image inspect "$img" &>/dev/null; then
+                    img_id="${gl_hong}镜像不存在${reset}"
+                    size=""
+                    platform=""
+                else
+                    img_id=$(docker image inspect --format '{{.Id}}' "$img" | sed 's/^sha256://' | cut -c1-12)
+                    size_raw=$(docker image inspect --format '{{.Size}}' "$img")
+                    if [[ "$size_raw" -gt 1073741824 ]]; then
+                        size=$(awk -v s="$size_raw" 'BEGIN{printf "%.2f GB", s/1073741824}')
+                    elif [[ "$size_raw" -gt 1048576 ]]; then
+                        size=$(awk -v s="$size_raw" 'BEGIN{printf "%.2f MB", s/1048576}')
+                    elif [[ "$size_raw" -gt 1024 ]]; then
+                        size=$(awk -v s="$size_raw" 'BEGIN{printf "%.2f KB", s/1024}')
+                    else
+                        size="${size_raw} B"
+                    fi
+                    platform=$(docker image inspect --format '{{.Os}}/{{.Architecture}}' "$img")
+                fi
+
+                printf "%s\t%s\t%s\t%s\t%s\n" \
+                    "${gl_lv}${svc}${reset}" \
+                    "${gl_huang}${img}${reset}" \
+                    "${gl_bufan}${img_id}${reset}" \
+                    "${gl_lan}${size}${reset}" \
+                    "${gl_bai}${platform}${reset}"
+            done
         } | column_if_available
+    }
+
+    list_beautify_all() {
+        echo
+        echo -e "${gl_zi}>>> 当前 ${gl_huang}$current_dir_name${gl_zi} 项目镜像详情${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        list_beautify_compose_images
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        break_end
     }
     
     get_internal_ip() {
@@ -1414,11 +1460,20 @@ docker_compose_manager() {
         fi
         echo ""
     }
+
+    view_compose_logs() {
+        echo -e ""
+        echo -e "${gl_bai}正在实时跟踪 ${gl_huang}$current_dir_name${gl_bai} 项目日志 ${gl_hong}(Ctrl+C 退出日志查看)${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        docker compose logs -f -t --tail 100
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    }
     
     show_compose_commands_menu() {
         local WORK_DIR="${1:-.}"
         if ! cd "$WORK_DIR" 2>/dev/null; then
-            log_error "无法进入目录: $WORK_DIR"
+            echo -e ""
+            log_error "无法进入目录: ${gl_huang}$WORK_DIR${gl_bai}"
             exit_animation
             return 1
         fi
@@ -1446,40 +1501,43 @@ docker_compose_manager() {
             show_inner_url
             local container_color=$(check_container_status "$MAIN_SERVICE")
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            docker-ps-find "$current_dir_name"
+            compose_ps_beautify
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}1.  ${gl_bai}启动${container_color}$current_dir_name${gl_bai}服务      ${gl_bufan}2.  ${gl_bai}停止${container_color}$current_dir_name${gl_bai}服务"
-        echo -e "${gl_bufan}3.  ${gl_bai}重启${container_color}$current_dir_name${gl_bai}服务      ${gl_bufan}4.  ${gl_bai}更新${container_color}$current_dir_name${gl_bai}容器"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}5.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}配置      ${gl_bufan}6.  ${gl_bai}编辑${container_color}$current_dir_name${gl_bai}配置"
-        echo -e "${gl_bufan}7.  ${container_color}$current_dir_name${gl_bai}服务状态      ${gl_bufan}8.  ${container_color}$current_dir_name${gl_bai}服务日志"
-        echo -e "${gl_bufan}9.  ${gl_hong}停止并清理${container_color}$current_dir_name${gl_bai}"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}11. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}最终配置  ${gl_bufan}12. ${gl_bai}打印${container_color}$current_dir_name${gl_bai}服务依赖拓扑图"
-        echo -e "${gl_bufan}13. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}资源占用  ${gl_bufan}14. ${gl_bai}仅拉取${container_color}$current_dir_name${gl_bai}镜像（不启动）"
-        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_bufan}21. ${gl_bai}创建${container_color}$current_dir_name${gl_bai}配置文件"
-        echo -e "${gl_bufan}23. ${gl_bai}开放${container_color}$current_dir_name${gl_bai}访问端口  ${gl_bufan}24. ${gl_bai}重新构建${container_color}$current_dir_name${gl_bai}"
-        echo -e "${gl_bufan}25. ${gl_bai}进入${container_color}$MAIN_SERVICE${gl_bai}服务          ${gl_bufan}26. ${gl_bai}修改${container_color}$MAIN_SERVICE${gl_bai}重启策略"
+            list_beautify_compose_images
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单                 ${gl_hong}00. ${gl_bai}退出脚本"
+            echo -e "${gl_bufan}1.  ${gl_bai}停止${container_color}$current_dir_name${gl_bai}服务      ${gl_bufan}2.  ${gl_bai}启动${container_color}$current_dir_name${gl_bai}服务"
+            echo -e "${gl_bufan}3.  ${gl_bai}重启${container_color}$current_dir_name${gl_bai}服务      ${gl_bufan}4.  ${gl_bai}更新${container_color}$current_dir_name${gl_bai}容器"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_bufan}5.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}配置文件  ${gl_bufan}6.  ${gl_bai}编辑${container_color}$current_dir_name${gl_bai}配置"
+            echo -e "${gl_bufan}7.  ${gl_bai}创建${container_color}$current_dir_name${gl_bai}配置文件  ${gl_bufan}8.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}最终配置"
+            echo -e "${gl_bufan}9.  ${container_color}$current_dir_name${gl_bai}服务日志      ${gl_bufan}10. ${gl_bai}跟踪${container_color}$current_dir_name${gl_bai}日志"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_bufan}11. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}服务状态  ${gl_bufan}12. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}镜像详情"
+            echo -e "${gl_bufan}13. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}资源占用  ${gl_bufan}14. ${gl_bai}拉取${container_color}$current_dir_name${gl_bai}镜像（不启动）"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_bufan}23. ${gl_bai}开放${container_color}$current_dir_name${gl_bai}访问端口  ${gl_bufan}24. ${gl_bai}重新构建${container_color}$current_dir_name${gl_bai}"
+            echo -e "${gl_bufan}25. ${gl_bai}进入${container_color}$MAIN_SERVICE${gl_bai}服务终端  ${gl_bufan}26. ${gl_bai}修改${container_color}$MAIN_SERVICE${gl_bai}重启策略"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_huang}88. ${gl_huang}停止并清理${container_color}$current_dir_name${gl_bai}    ${gl_hong}99. ${gl_hong}彻底清理${container_color}$current_dir_name${gl_bai}"
+            echo -e "${gl_huang}0.  ${gl_bai}返回${container_color}$MAIN_SERVICE${gl_bai}上一级    ${gl_hong}00. ${gl_bai}退出脚本"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
             read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" cmd_choice
             case $cmd_choice in
             1)
-                echo -e ""
-                echo -e "正在启动 ${gl_huang}$current_dir_name${gl_bai} 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                docker-compose up -d --remove-orphans
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                break_end
-                ;;
-            2)
                 echo -e ""
                 echo -e "${gl_bai}正在停止并删除 ${gl_huang}$current_dir_name${gl_bai} 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 docker-compose down
                 echo -e "\n"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                break_end
+                ;;
+            2)
+                echo -e ""
+                echo -e "正在启动 ${gl_huang}$current_dir_name${gl_bai} 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                docker-compose up -d --remove-orphans
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 break_end
                 ;;
@@ -1532,40 +1590,11 @@ echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单                 ${gl_hong
                 break_end
                 ;;
             7)
-                echo -e ""
-                echo -e "${gl_bai}正在显示 ${gl_huang}$current_dir_name${gl_bai} 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                docker-compose ps
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                break_end
+                echo
+                echo -e "${gl_bai}正在创建${gl_huang}$current_dir_name${gl_bai}配置文件"
+                create_file docker-compose.yml
                 ;;
             8)
-                echo -e ""
-                echo -e "${gl_bai}正在显示 ${gl_huang}$current_dir_name${gl_bai} 服务日志 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                docker-compose logs
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                break_end
-                ;;
-            9)
-                echo -e ""
-                echo -e "${gl_bai}正在停止并删除 ${gl_huang}$current_dir_name${gl_bai} 服务及相关资源 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                echo -e "${gl_hong}⚠️  警告: 此操作将删除容器、网络和卷！${gl_bai}"
-                echo -e "${gl_bai}数据卷不会被删除，但网络和相关资源将被清理${gl_bai}"
-                echo -e ""
-                read -r -e -p "$(echo -e "${gl_bai}确认执行？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
-                if [[ "$confirm" =~ ^[Yy]$ ]]; then
-                    docker-compose down --volumes --remove-orphans && docker system prune -af --volumes
-                    echo -e ""
-                    echo -e "${gl_lv}✓ 服务、网络和卷已清理完成${gl_bai}"
-                else
-                    echo -e "${gl_huang}已取消操作${gl_bai}"
-                fi
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                break_end
-                ;;
-            11)
                 echo -e ""
                 echo -e "${gl_bai}正在查看 ${gl_huang}$current_dir_name${gl_bai} 服务最终生效配置 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -1573,13 +1602,28 @@ echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单                 ${gl_hong
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 break_end
                 ;;
-            12)
-                echo
-                echo -e "${gl_bai}正在打印 ${gl_huang}$current_dir_name${gl_bai} 服务依赖拓扑图 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            9)
+                echo -e ""
+                echo -e "${gl_bai}正在显示 ${gl_huang}$current_dir_name${gl_bai} 服务日志 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                docker-compose images
+                docker-compose logs
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 break_end
+                ;;
+            10)
+                view_compose_logs
+                ;;
+            11)
+                echo -e ""
+                echo -e "${gl_bai}正在显示 ${gl_huang}$current_dir_name${gl_bai} 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                docker-compose ps
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                break_end
+                ;;
+            12)
+                # docker-compose images
+                list_beautify_all
                 ;;
             13)
                 echo
@@ -1596,11 +1640,7 @@ echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单                 ${gl_hong
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 break_end
                 ;;
-            21)
-                echo
-                echo -e "${gl_bai}正在创建${gl_huang}$current_dir_name${gl_bai}配置文件"
-                create_file docker-compose.yml
-                ;;
+
             23)
                 echo -e ""
                 echo -e "${gl_zi}>>> 开放$current_dir_name访问端口 ${gl_bai}"
@@ -1826,6 +1866,58 @@ echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单                 ${gl_hong
                 else
                     echo -e "${gl_huang}容器 $TARGET_SERVICE 未运行${gl_bai}"
                     echo -e "${gl_bai}下次启动容器时会应用新的重启策略${gl_bai}"
+                fi
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                break_end
+                ;;
+            88)
+                echo -e ""
+                echo -e "${gl_bai}正在停止并删除 ${gl_huang}$current_dir_name${gl_bai} 服务及相关资源 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                echo -e "${gl_hong}⚠️  警告: 此操作将删除容器、网络和卷、删除项目镜像！${gl_bai}"
+                echo -e "${gl_bai}数据卷不会被删除，但网络和相关资源将被清理${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                read -r -e -p "$(echo -e "${gl_bai}确认执行？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+                if [[ "$confirm" =~ ^[Yy]$ ]]; then
+                    # ⚠️ 警告: 此操作将删除当前项目容器、网络、项目数据卷；同时全局清理所有闲置镜像和闲置数据卷！
+                    # docker-compose down --volumes --remove-orphans && docker system prune -af --volumes
+                    # 停止容器、网络、删除项目镜像，同时清理孤儿容器 + 全部未使用镜像、全部未使用网络、全部未使用卷、悬空构建缓存
+                    docker compose down --rmi all --remove-orphans && docker system prune -af --volumes
+                    echo -e ""
+                    echo -e "${gl_lv}✓ 服务、网络和卷已清理完成${gl_bai}"
+                else
+                    echo -e "${gl_huang}已取消操作${gl_bai}"
+                fi
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                break_end
+                ;;
+            99)
+                echo -e ""
+                echo -e "${gl_bai}正在停止并删除 ${gl_huang}$current_dir_name${gl_bai} 服务及相关资源 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                echo -e "${gl_hong}⚠️  警告: 此操作将删除容器、网络、卷、镜像，并且【删除整个项目目录】！${gl_bai}"
+                echo -e "${gl_hong}项目目录路径：${gl_huang}${current_dir}${gl_bai}"
+                echo -e "${gl_bai}目录内所有文件都会被永久删除！${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                read -r -e -p "$(echo -e "${gl_hong}确认要执行吗？ ${gl_bai}(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm
+                if [[ "$confirm" =~ ^[Yy]$ ]]; then
+                    docker compose down --rmi all --remove-orphans && docker system prune -af --volumes
+                    echo -e "${gl_lv}✓ Compose容器、网络、卷已清理${gl_bai}"
+
+                    local parent_dir=$(dirname "${current_dir}")
+                    cd "${parent_dir}" || {
+                        log_error "无法切换到上级目录 ${parent_dir}"
+                        read -r
+                        break_end
+                    }
+
+                    echo -e "${gl_huang}正在删除项目目录：${current_dir}${gl_bai}"
+                    rm -rf "${current_dir}"
+                    echo -e "${gl_lv}✓ 项目目录已彻底删除${gl_bai}"
+
+                    return 0
+                else
+                    echo -e "${gl_huang}已取消操作${gl_bai}"
                 fi
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 break_end
@@ -3583,6 +3675,139 @@ manage_fan_video_dl() {
     done
 }
 
+manage_fan_video_ct() {
+
+    SERVICE="fan-video-ct"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-video-ct/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-video-ct/main/scripts/uninstall.sh"
+
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-video-ct 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-video-ct
+        show_service_url fan-video-ct
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-video-ct      ${gl_bufan}2.  ${gl_bai}启动 fan-video-ct"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-video-ct      ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态       ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启           ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-video-ct ${gl_hong}99. ${gl_bai}卸载 fan-video-ct"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单         ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-video-ct 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-video-ct 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-video-ct 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-video-ct 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-video-ct 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-video-ct 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-video-ct 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-video-ct 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-video-ct 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-video-ct 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-video-ct 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-video-ct 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-video-ct 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-video-ct 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})" -p 8788 -d /var/lib/fan-video-ct
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL}) -y
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
 manage_fan_webssh() {
 
     SERVICE="fan-webssh"
@@ -3708,6 +3933,454 @@ manage_fan_webssh() {
             ;;
         88)
             bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-webssh/backup"
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+svc_status() {
+    local name="$1"
+    if [ -f "/etc/systemd/system/${name}.service" ]; then
+        if systemctl is-active --quiet "$name" 2>/dev/null; then
+            echo active
+            return 0
+        fi
+        echo inactive
+        return 1
+    fi
+    if docker ps --format '{{.Names}}' 2>/dev/null | grep -qx "$name"; then
+        echo active
+        return 0
+    fi
+    echo inactive
+    return 1
+}
+
+manage_fan_panel() {
+    SERVICE="fan-panel"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-panel/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-panel/main/scripts/uninstall.sh"
+    BACKUP_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-panel/main/scripts/backup.sh"
+    RECOVER_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-panel/main/scripts/restore.sh"
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-panel 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-panel
+        show_service_url fan-panel
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-panel       ${gl_bufan}2.  ${gl_bai}启动 fan-panel"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-panel       ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态     ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启         ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-panel  ${gl_huang}77. ${gl_bai}备份数据"
+        echo -e "${gl_lv}88. ${gl_bai}恢复数据             ${gl_hong}99. ${gl_bai}卸载 fan-panel"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-panel 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-panel 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-panel 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-panel 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-panel 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-panel 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-panel 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-panel 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-panel 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-panel 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-panel 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-panel 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-panel 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-panel 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        77)
+            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        88)
+            local latest_backup
+            latest_backup=$(ls -t ./fan-panel-backup-*.tar.gz 2>/dev/null | head -1)
+            if [ -n "${latest_backup}" ]; then
+                bash <(curl -sL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
+            else
+                log_error "当前目录未找到 fan-panel-backup-*.tar.gz 备份文件"
+            fi
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+manage_dufs_zh() {
+    SERVICE="dufs"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/dufs-zh/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/dufs-zh/main/scripts/uninstall.sh"
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> dufs-zh 文件服务器管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status dufs
+        show_service_url dufs
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 dufs-zh           ${gl_bufan}2.  ${gl_bai}启动 dufs-zh"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 dufs-zh           ${gl_bufan}4.  ${gl_bai}查看服务状态"
+echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态       ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启           ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 dufs-zh"
+        echo -e "${gl_hong}99. ${gl_bai}卸载 dufs-zh"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单         ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 dufs-zh 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "dufs-zh 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 dufs-zh 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "dufs-zh 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 dufs-zh 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "dufs-zh 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> dufs-zh 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> dufs-zh 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 dufs-zh 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 dufs-zh 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 dufs-zh 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 dufs-zh 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> dufs-zh 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 dufs-zh 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+manage_fan_nginx() {
+
+    SERVICE="fan-nginx"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scripts/uninstall.sh"
+    BACKUP_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scripts/fan-nginx_backup.sh"
+    RECOVER_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scripts/fan-nginx_recover.sh"
+
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-nginx 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-nginx
+        show_service_url fan-nginx
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-nginx       ${gl_bufan}2.  ${gl_bai}启动 fan-nginx"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-nginx       ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态      ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启          ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 fan-nginx  ${gl_huang}77. ${gl_bai}备份数据"
+        echo -e "${gl_lv}88. ${gl_bai}恢复数据              ${gl_hong}99. ${gl_bai}卸载 fan-nginx"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-nginx 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-nginx 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-nginx 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-nginx 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-nginx 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-nginx 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-nginx 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-nginx 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-nginx 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-nginx 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-nginx 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-nginx 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-nginx 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-nginx 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        77)
+            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-nginx/backup" 6
+            break_end
+            continue
+            ;;
+        88)
+            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-nginx/backup"
             break_end
             continue
             ;;
@@ -4286,6 +4959,54 @@ manage_cmdbox() {
     done
 }
 
+git_push_all() {
+    local start_dir="${1:-$(pwd)}"
+    local commit_msg="${2:-日常更新}"
+    local exclude_dirs="${3:-}"
+    clear
+    echo -e "${gl_zi}>>> 批量Git仓库同步（先pull，后提交推送）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    log_info "目标根目录：${gl_lv}$start_dir${gl_bai}"
+    cd "$start_dir" || {
+        log_error "无法进入根目录：$start_dir"
+        exit_animation
+        return 1
+    }
+    log_info "开始扫描目录下所有Git仓库 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    find . -type d -name ".git" ${exclude_dirs:+ $(for e in $exclude_dirs; do echo -n "-not -path */$e/* "; done)} | while read -r git_dir; do
+        repo_dir=$(dirname "$git_dir")
+        if [[ ! -f "${git_dir}/config" ]]; then
+            log_warn "跳过损坏git目录：${repo_dir}"
+            continue
+        fi
+        echo
+        echo -e "${gl_huang}正在处理仓库：${gl_lv}$repo_dir${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        (
+            log_info "[1] 拉取远程更新 git pull"
+            git -C "$repo_dir" pull
+            if [[ -n $(git -C "$repo_dir" status --porcelain) ]]; then
+                log_info "[2] 检测到本地变更，执行 add/commit"
+                git -C "$repo_dir" add .
+                git -C "$repo_dir" commit -m "$commit_msg"
+                log_info "[3] 推送至远程 git push"
+                git -C "$repo_dir" push
+                log_ok "✅ 当前仓库提交推送完成"
+            else
+                log_info "✅ 本地无变更，跳过提交推送"
+            fi
+        )
+        local ret=$?
+        if [[ ${ret} -eq 0 ]]; then
+            log_ok "仓库处理成功: ${repo_dir}"
+        else
+            log_error "仓库处理失败: ${repo_dir} 返回码: ${ret}"
+        fi
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    done
+    break_end
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
@@ -4295,7 +5016,7 @@ proj_mgmt_tool() {
         # ============ 二进制/Docker 项目运行统计 ============
         local bin_run=0 bin_stop=0
         local svc_name
-        for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl; do
+        for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx; do
             if svc_status "$svc_name" >/dev/null; then
                 bin_run=$((bin_run + 1))
             else
@@ -4304,7 +5025,7 @@ proj_mgmt_tool() {
         done
         local dck_run=0 dck_stop=0
         local compose_dir
-        for compose_dir in fan-panel fan-video fan-md dufs-zh 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl; do
+        for compose_dir in fan-panel fan-video fan-md dufs-zh 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx; do
             if is_compose_running "/vol1/1000/compose/$compose_dir"; then
                 dck_run=$((dck_run + 1))
             else
@@ -4415,6 +5136,15 @@ proj_mgmt_tool() {
             col22="${gl_hong}"
         fi
 
+        # 23. Fan-Video-CT
+        if svc_status fan-video-ct >/dev/null; then
+            col23="${gl_lv}"
+            col24="${gl_lv}"
+        else
+            col23="${gl_hong}"
+            col24="${gl_hong}"
+        fi
+
         # ============ Dccker 项目（/vol1/1000/compose 目录） ============
         # 31. Fan-Panel
         if is_compose_running "/vol1/1000/compose/fan-panel"; then
@@ -4500,27 +5230,37 @@ proj_mgmt_tool() {
             col42="${gl_hong}"
         fi
 
+        # 43. Fan-Video-CT
+        if is_compose_running "/vol1/1000/compose/fan-video-ct"; then
+            col43="${gl_lv}"
+            col44="${gl_lv}"
+        else
+            col43="${gl_hong}"
+            col44="${gl_hong}"
+        fi
+
         echo -e "${gl_lan}公共项目${gl_bai}"
-        echo -e "${col1}1.${gl_bai}  OpenCode 智能代理         ${col2}2.${gl_bai}  TVmonitor 软件自启"
+        echo -e "${col1}1.${gl_bai}  OpenCode 智能代理    ${col2}2.${gl_bai}  TVmonitor 软件自启"
         echo -e ""
         echo -e "${gl_huang}二进制项目${gl_bai}"
-        echo -e "${col11}11.${gl_bai} FanPanel 导航页           ${col12}12.${gl_bai} FanVideo 影视库"
-        echo -e "${col13}13.${gl_bai} FanMD 云文档              ${col14}14.${gl_bai} Dufs-zh 文件服务"
-        echo -e "${col15}15.${gl_bai} 2Panel 定时任务           ${col16}16.${gl_bai} FanShop 容器管理"
-        echo -e "${col17}17.${gl_bai} FanFiles 文件管理         ${col18}18.${gl_bai} FanReubah 格式转换"
-        echo -e "${col19}19.${gl_bai} CmdBox 命令               ${col20}20.${gl_bai} FanWebSSH 终端面板"
-        echo -e "${col21}21.${gl_bai} FanRandom 随机壁纸        ${col22}22.${gl_bai} FanVideoDL 视频下载"
+        echo -e "${col11}11.${gl_bai} FanPanel 导航页      ${col12}12.${gl_bai} FanVideo 影视库"
+        echo -e "${col13}13.${gl_bai} FanMD 云文档         ${col14}14.${gl_bai} Dufs-zh 文件服务"
+        echo -e "${col15}15.${gl_bai} 2Panel 定时任务      ${col16}16.${gl_bai} FanShop 容器管理"
+        echo -e "${col17}17.${gl_bai} FanFiles 文件管理    ${col18}18.${gl_bai} FanReubah 格式转换"
+        echo -e "${col19}19.${gl_bai} CmdBox 命令          ${col20}20.${gl_bai} FanWebSSH 终端面板"
+        echo -e "${col21}21.${gl_bai} FanRandom 随机壁纸   ${col22}22.${gl_bai} FanVideoDL 视频下载"
+        echo -e "${col23}23.${gl_bai} FanVideoCT 视频剪切  ${col24}24.${gl_bai} FanNginx 反向代理"
         echo -e ""
         echo -e "${gl_huang}Dccker 项目${gl_bai}"
-        echo -e "${col31}31.${gl_bai} FanPanel 导航页           ${col32}32.${gl_bai} FanVideo 影视库"
-        echo -e "${col33}33.${gl_bai} FanMD 云文档              ${col34}34.${gl_bai} Dufs-zh 文件服务"
-        echo -e "${col35}35.${gl_bai} 2Panel 定时任务           ${col36}36.${gl_bai} FanShop 容器管理"
-        echo -e "${col37}37.${gl_bai} FanFiles 文件管理         ${col38}38.${gl_bai} FanReubah 格式转换"
-        echo -e "${col39}39.${gl_bai} CmdBox 命令               ${col40}40.${gl_bai} FanWebSSH 终端面板"
-        echo -e "${col41}41.${gl_bai} FanRandom 随机壁纸        ${col42}42.${gl_bai} FanVideoDL 视频下载"
+        echo -e "${col31}31.${gl_bai} FanPanel 导航页      ${col32}32.${gl_bai} FanVideo 影视库"
+        echo -e "${col33}33.${gl_bai} FanMD 云文档         ${col34}34.${gl_bai} Dufs-zh 文件服务"
+        echo -e "${col35}35.${gl_bai} 2Panel 定时任务      ${col36}36.${gl_bai} FanShop 容器管理"
+        echo -e "${col37}37.${gl_bai} FanFiles 文件管理    ${col38}38.${gl_bai} FanReubah 格式转换"
+        echo -e "${col39}39.${gl_bai} CmdBox 命令          ${col40}40.${gl_bai} FanWebSSH 终端面板"
+        echo -e "${col41}41.${gl_bai} FanRandom 随机壁纸   ${col42}42.${gl_bai} FanVideoDL 视频下载"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        echo -e "${gl_lv}66.${gl_bai} 构建并推送"
-        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单            ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_lv}66.${gl_bai} 构建并推送           ${gl_lv}77.${gl_bai} 推送所有更新"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
 
@@ -4567,6 +5307,12 @@ proj_mgmt_tool() {
         22)
             manage_fan_video_dl
             ;;
+        23)
+            manage_fan_video_ct
+            ;;
+        24)
+            manage_fan_nginx
+            ;;
         31)
             docker_compose_manager /vol1/1000/compose/fan-panel
             ;;
@@ -4603,8 +5349,17 @@ proj_mgmt_tool() {
         42)
             docker_compose_manager /vol1/1000/compose/fan-video-dl
             ;;
+        43)
+            docker_compose_manager /vol1/1000/compose/fan-video-ct
+            ;;
+        44)
+            docker_compose_manager /vol1/1000/compose/fan-nginx
+            ;;
         66)
             git_project_menu
+            ;;
+        77)
+            git_push_all "/vol1/1000/GitHub" "日常更新" ""
             ;;
         0)
             cancel_return "已是主菜单"
@@ -4621,3 +5376,4 @@ proj_mgmt_tool() {
 }
 
 proj_mgmt_tool
+
