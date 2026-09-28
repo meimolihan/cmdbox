@@ -618,7 +618,6 @@ build_and_push() {
 
     if [[ -z "$project_root" ]]; then
         log_error "项目根目录为空，无法继续（应由菜单传入）"
-        echo -e "${col43}43.${gl_bai} FanVideoCT 视频剪切       ${col44}44.${gl_bai} FanNginx 反向代理"
         break_end
         return 1
     fi
@@ -865,6 +864,8 @@ fan_random_push()    { project_push "Fan Random"     "/vol1/1000/GitHub/fan-rand
 fan_video_dl_push()  { project_push "Fan Video DL"   "/vol1/1000/GitHub/fan-video-dl"   "fan-video-dl" "mobufan/fan-video-dl"; }
 fan_video_ct_push()  { project_push "Fan Video CT"   "/vol1/1000/GitHub/fan-video-ct"   "fan-video-ct" "mobufan/fan-video-ct"; }
 fan_nginx_push()  { project_push "Fan Nginx"   "/vol1/1000/GitHub/fan-nginx"   "fan-nginx" "mobufan/fan-nginx"; }
+fan_video_tr_push()  { project_push "Fan Video TR"   "/vol1/1000/GitHub/fan-video-tr"   "fan-video-tr" "meimolihan/fan-video-tr"; }
+fan_image_tr_push()  { project_push "Fan Image TR"   "/vol1/1000/GitHub/fan-image-tr"   "fan-image-tr" "meimolihan/fan-image-tr"; }
 
 git_project_menu() {
     check_tokens || true
@@ -880,6 +881,7 @@ git_project_menu() {
         echo -e "${gl_bufan}9.  ${gl_bai}CmdBox 命令           ${gl_bufan}10. ${gl_bai}FanWebSSH 终端面板"
         echo -e "${gl_bufan}11. ${gl_bai}FanRandom 随机壁纸    ${gl_bufan}12. ${gl_bai}FanVideoDL 视频下载"
         echo -e "${gl_bufan}13. ${gl_bai}FanVideoCT 视频剪切   ${gl_bufan}14. ${gl_bai}FanNginx 反向代理"
+        echo -e "${gl_bufan}15. ${gl_bai}FanVideoTR 视频转码   ${gl_bufan}16. ${gl_bai}FanImageTR 图片转码"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00.  ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -900,6 +902,8 @@ git_project_menu() {
             12) fan_video_dl_push ;;
             13) fan_video_ct_push ;;
             14) fan_nginx_push ;;
+            15) fan_video_tr_push ;;
+            16) fan_image_tr_push ;;
             0)
                 proj_mgmt_tool
                 ;;
@@ -4402,6 +4406,302 @@ manage_fan_nginx() {
     done
 }
 
+manage_fan_video_tr() {
+
+    SERVICE="fan-video-tr"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-video-tr/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/fan-video-tr/main/scripts/uninstall.sh"
+
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-video-tr 管理工具${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-video-tr
+        show_service_url fan-video-tr
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-video-tr     ${gl_bufan}2.  ${gl_bai}启动 fan-video-tr"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-video-tr     ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态      ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启          ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级             ${gl_hong}99. ${gl_bai}卸载 fan-video-tr"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-video-tr 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-video-tr 服务已停止"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-video-tr 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-video-tr 服务已启动"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-video-tr 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-video-tr 服务已重启"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-video-tr 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-video-tr 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-video-tr 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-video-tr 开机自启"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-video-tr 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-video-tr 开机自启"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-video-tr 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-video-tr 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+manage_fan_image_tr() {
+
+    SERVICE="fan-image-tr"
+    FIT_SRC="/vol1/1000/GitHub/fan-image-tr"
+    FIT_UNIT="/etc/systemd/system/fan-image-tr.service"
+
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> fan-image-tr 管理工具${gl_bai}"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status fan-image-tr
+        show_service_url fan-image-tr
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 fan-image-tr     ${gl_bufan}2.  ${gl_bai}启动 fan-image-tr"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 fan-image-tr     ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态      ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启          ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级(源码构建)   ${gl_hong}99. ${gl_bai}卸载 fan-image-tr"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 fan-image-tr 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "fan-image-tr 服务已停止"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 fan-image-tr 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "fan-image-tr 服务已启动"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 fan-image-tr 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "fan-image-tr 服务已重启"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-image-tr 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-image-tr 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 fan-image-tr 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 fan-image-tr 开机自启"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 fan-image-tr 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 fan-image-tr 开机自启"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> fan-image-tr 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 fan-image-tr 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在从源码构建并安装 fan-image-tr ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            if [ ! -d "${FIT_SRC}" ]; then
+                log_error "源码目录不存在：${FIT_SRC}"
+                break_end
+                continue
+            fi
+            ( cd "${FIT_SRC}" && make build ) || { log_error "make build 失败"; break_end; continue; }
+            sudo install -m 0755 "${FIT_SRC}/bin/fan-image-tr" /usr/local/bin/fan-image-tr || { log_error "安装二进制失败"; break_end; continue; }
+            id fit >/dev/null 2>&1 || sudo useradd -r -M -s /usr/sbin/nologin fit
+            sudo mkdir -p /var/lib/fan-image-tr /srv/photos
+            sudo chown -R fit:fit /var/lib/fan-image-tr /srv/photos
+            sudo cp -f "${FIT_SRC}/scripts/fan-image-tr.service" "${FIT_UNIT}"
+            sudo systemctl daemon-reload
+            sudo systemctl enable fan-image-tr
+            sudo systemctl restart fan-image-tr
+            if systemctl is-active --quiet fan-image-tr; then
+                log_ok "fan-image-tr 服务已启动（端口 8791）"
+            else
+                log_error "fan-image-tr 启动失败，请查看日志：journalctl -u fan-image-tr -n 50"
+            fi
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            continue
+            ;;
+        99)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在卸载 fan-image-tr ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable --now fan-image-tr 2>/dev/null || true
+            sudo rm -f "${FIT_UNIT}"
+            sudo rm -f /usr/local/bin/fan-image-tr
+            sudo systemctl daemon-reload
+            log_ok "fan-image-tr 已卸载（数据目录 /var/lib/fan-image-tr 已保留）"
+                    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
 svc_status() {
     local name="$1"
     if [ -f "/etc/systemd/system/${name}.service" ]; then
@@ -5016,7 +5316,7 @@ proj_mgmt_tool() {
         # ============ 二进制/Docker 项目运行统计 ============
         local bin_run=0 bin_stop=0
         local svc_name
-        for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx; do
+        for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx fan-video-tr fan-image-tr; do
             if svc_status "$svc_name" >/dev/null; then
                 bin_run=$((bin_run + 1))
             else
@@ -5025,7 +5325,7 @@ proj_mgmt_tool() {
         done
         local dck_run=0 dck_stop=0
         local compose_dir
-        for compose_dir in fan-panel fan-video fan-md dufs-zh 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx; do
+        for compose_dir in fan-panel fan-video fan-md dufs-zh 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx fan-video-tr fan-image-tr; do
             if is_compose_running "/vol1/1000/compose/$compose_dir"; then
                 dck_run=$((dck_run + 1))
             else
@@ -5139,10 +5439,29 @@ proj_mgmt_tool() {
         # 23. Fan-Video-CT
         if svc_status fan-video-ct >/dev/null; then
             col23="${gl_lv}"
-            col24="${gl_lv}"
         else
             col23="${gl_hong}"
+        fi
+
+        # 24. Fan-Nginx
+        if svc_status fan-nginx >/dev/null; then
+            col24="${gl_lv}"
+        else
             col24="${gl_hong}"
+        fi
+
+        # 25. Fan-Video-TR
+        if svc_status fan-video-tr >/dev/null; then
+            col25="${gl_lv}"
+        else
+            col25="${gl_hong}"
+        fi
+
+        # 26. Fan-Image-TR
+        if svc_status fan-image-tr >/dev/null; then
+            col26="${gl_lv}"
+        else
+            col26="${gl_hong}"
         fi
 
         # ============ Dccker 项目（/vol1/1000/compose 目录） ============
@@ -5233,10 +5552,29 @@ proj_mgmt_tool() {
         # 43. Fan-Video-CT
         if is_compose_running "/vol1/1000/compose/fan-video-ct"; then
             col43="${gl_lv}"
-            col44="${gl_lv}"
         else
             col43="${gl_hong}"
+        fi
+
+        # 44. Fan-Nginx
+        if is_compose_running "/vol1/1000/compose/fan-nginx"; then
+            col44="${gl_lv}"
+        else
             col44="${gl_hong}"
+        fi
+
+        # 45. Fan-Video-TR
+        if is_compose_running "/vol1/1000/compose/fan-video-tr"; then
+            col45="${gl_lv}"
+        else
+            col45="${gl_hong}"
+        fi
+
+        # 46. Fan-Image-TR
+        if is_compose_running "/vol1/1000/compose/fan-image-tr"; then
+            col46="${gl_lv}"
+        else
+            col46="${gl_hong}"
         fi
 
         echo -e "${gl_lan}公共项目${gl_bai}"
@@ -5250,6 +5588,7 @@ proj_mgmt_tool() {
         echo -e "${col19}19.${gl_bai} CmdBox 命令          ${col20}20.${gl_bai} FanWebSSH 终端面板"
         echo -e "${col21}21.${gl_bai} FanRandom 随机壁纸   ${col22}22.${gl_bai} FanVideoDL 视频下载"
         echo -e "${col23}23.${gl_bai} FanVideoCT 视频剪切  ${col24}24.${gl_bai} FanNginx 反向代理"
+        echo -e "${col25}25.${gl_bai} FanVideoTR 视频转码  ${col26}26.${gl_bai} FanImageTR 图片转码"
         echo -e ""
         echo -e "${gl_huang}Dccker 项目${gl_bai}"
         echo -e "${col31}31.${gl_bai} FanPanel 导航页      ${col32}32.${gl_bai} FanVideo 影视库"
@@ -5258,6 +5597,8 @@ proj_mgmt_tool() {
         echo -e "${col37}37.${gl_bai} FanFiles 文件管理    ${col38}38.${gl_bai} FanReubah 格式转换"
         echo -e "${col39}39.${gl_bai} CmdBox 命令          ${col40}40.${gl_bai} FanWebSSH 终端面板"
         echo -e "${col41}41.${gl_bai} FanRandom 随机壁纸   ${col42}42.${gl_bai} FanVideoDL 视频下载"
+        echo -e "${col43}43.${gl_bai} FanVideoCT 视频剪切  ${col44}44.${gl_bai} FanNginx 反向代理"
+        echo -e "${col45}45.${gl_bai} FanVideoTR 视频转码  ${col46}46.${gl_bai} FanImageTR 图片转码"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_lv}66.${gl_bai} 构建并推送           ${gl_lv}77.${gl_bai} 推送所有更新"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
@@ -5313,6 +5654,12 @@ proj_mgmt_tool() {
         24)
             manage_fan_nginx
             ;;
+        25)
+            manage_fan_video_tr
+            ;;
+        26)
+            manage_fan_image_tr
+            ;;
         31)
             docker_compose_manager /vol1/1000/compose/fan-panel
             ;;
@@ -5354,6 +5701,12 @@ proj_mgmt_tool() {
             ;;
         44)
             docker_compose_manager /vol1/1000/compose/fan-nginx
+            ;;
+        45)
+            docker_compose_manager /vol1/1000/compose/fan-video-tr
+            ;;
+        46)
+            docker_compose_manager /vol1/1000/compose/fan-image-tr
             ;;
         66)
             git_project_menu
