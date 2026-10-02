@@ -866,6 +866,7 @@ fan_video_ct_push()  { project_push "Fan Video CT"   "/vol1/1000/GitHub/fan-vide
 fan_nginx_push()  { project_push "Fan Nginx"   "/vol1/1000/GitHub/fan-nginx"   "fan-nginx" "mobufan/fan-nginx"; }
 fan_video_tr_push()  { project_push "Fan Video TR"   "/vol1/1000/GitHub/fan-video-tr"   "fan-video-tr" "meimolihan/fan-video-tr"; }
 fan_image_tr_push()  { project_push "Fan Image TR"   "/vol1/1000/GitHub/fan-image-tr"   "fan-image-tr" "meimolihan/fan-image-tr"; }
+studybuddy_push()    { project_push "StudyBuddy"     "/vol1/1000/GitHub/StudyBuddy"     "studybuddy"   "mobufan/studybuddy"; }
 
 git_project_menu() {
     check_tokens || true
@@ -882,6 +883,7 @@ git_project_menu() {
         echo -e "${gl_bufan}11. ${gl_bai}FanRandom 随机壁纸    ${gl_bufan}12. ${gl_bai}FanVideoDL 视频下载"
         echo -e "${gl_bufan}13. ${gl_bai}FanVideoCT 视频剪切   ${gl_bufan}14. ${gl_bai}FanNginx 反向代理"
         echo -e "${gl_bufan}15. ${gl_bai}FanVideoTR 视频转码   ${gl_bufan}16. ${gl_bai}FanImageTR 图片转码"
+        echo -e "${gl_bufan}17. ${gl_bai}StudyBuddy 刷题系统"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00.  ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -904,6 +906,7 @@ git_project_menu() {
             14) fan_nginx_push ;;
             15) fan_video_tr_push ;;
             16) fan_image_tr_push ;;
+            17) studybuddy_push ;;
             0)
                 proj_mgmt_tool
                 ;;
@@ -935,7 +938,7 @@ show_service_url() {
     [ -z "$ip" ] && ip="127.0.0.1"
 
     port=$(journalctl -u "$service" --no-pager -n 200 -o cat 2>/dev/null \
-        | grep -E 'msg":"fan-video 启动于 :[0-9]+|Listening at: http://0\.0\.0\.0:[0-9]+|Server\(http\) is running on: http://localhost:[0-9]+' \
+        | grep -E 'msg":"fan-video 启动于 :[0-9]+|Listening at: http://0\.0\.0\.0:[0-9]+|Server\(http\) is running on: http://localhost:[0-9]+|Listening and serving HTTP on :[0-9]+' \
         | grep -oE ':[0-9]+$' | sed 's/^://' | head -1)
 
     if [ -z "$port" ];then
@@ -2126,6 +2129,149 @@ manage_fan_video() {
             ;;
         88)
             bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
+            break_end
+            continue
+            ;;
+        99)
+            bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})
+            break_end
+            continue
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
+manage_studybuddy() {
+    SERVICE="studybuddy"
+    INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/StudyBuddy/main/scripts/install.sh"
+    UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/StudyBuddy/main/scripts/uninstall.sh"
+    BACKUP_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/StudyBuddy/main/scripts/studybuddy_backup.sh"
+    RECOVER_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/StudyBuddy/main/scripts/studybuddy_recover.sh"
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> StudyBuddy 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        show_service_status studybuddy
+        show_service_url studybuddy
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}停止 StudyBuddy       ${gl_bufan}2.  ${gl_bai}启动 StudyBuddy"
+        echo -e "${gl_bufan}3.  ${gl_bai}重启 StudyBuddy       ${gl_bufan}4.  ${gl_bai}查看服务状态"
+        echo -e "${gl_bufan}5.  ${gl_bai}查看开机自启状态      ${gl_bufan}6.  ${gl_bai}开启开机自启"
+        echo -e "${gl_bufan}7.  ${gl_bai}禁用开机自启          ${gl_bufan}8.  ${gl_bai}查看日志(100行)"
+        echo -e "${gl_bufan}9.  ${gl_bai}实时跟踪日志"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装/升级 StudyBuddy  ${gl_huang}77. ${gl_bai}备份数据"
+        echo -e "${gl_lv}88. ${gl_bai}恢复数据              ${gl_hong}99. ${gl_bai}卸载 StudyBuddy"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在停止 StudyBuddy 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl stop ${SERVICE}
+            log_ok "StudyBuddy 服务已停止"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在启动 StudyBuddy 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl start ${SERVICE}
+            log_ok "StudyBuddy 服务已启动"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在重启 StudyBuddy 服务 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl restart ${SERVICE}
+            log_ok "StudyBuddy 服务已重启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> StudyBuddy 服务状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl status ${SERVICE}
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> StudyBuddy 开机自启状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local status=$(sudo systemctl is-enabled ${SERVICE} 2>/dev/null)
+            case "$status" in
+                enabled)   echo -e "${gl_lv}已启用${gl_bai}" ;;
+                disabled)  echo -e "${gl_hong}已禁用${gl_bai}" ;;
+                static)    echo "静态（非服务单元）" ;;
+                indirect)  echo "间接（依赖其他单元）" ;;
+                *)         echo "$status" ;;
+            esac
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在开启 StudyBuddy 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl enable ${SERVICE}
+            log_ok "已开启 StudyBuddy 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 正在禁用 StudyBuddy 开机自启 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo systemctl disable ${SERVICE}
+            log_ok "已禁用 StudyBuddy 开机自启"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> StudyBuddy 日志（最近100行）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -n 100
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> 实时跟踪 StudyBuddy 日志（按 Ctrl+C 退出）${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            sudo journalctl -u ${SERVICE} -f
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
+            break_end
+            continue
+            ;;
+        77)
+            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/StudyBuddy/backup" 6
+            break_end
+            continue
+            ;;
+        88)
+            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/StudyBuddy/backup"
             break_end
             continue
             ;;
@@ -5316,7 +5462,7 @@ proj_mgmt_tool() {
         # ============ 二进制/Docker 项目运行统计 ============
         local bin_run=0 bin_stop=0
         local svc_name
-        for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx fan-video-tr fan-image-tr; do
+        for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx fan-video-tr fan-image-tr studybuddy; do
             if svc_status "$svc_name" >/dev/null; then
                 bin_run=$((bin_run + 1))
             else
@@ -5464,6 +5610,13 @@ proj_mgmt_tool() {
             col26="${gl_hong}"
         fi
 
+        # 27. StudyBuddy
+        if svc_status studybuddy >/dev/null; then
+            col27="${gl_lv}"
+        else
+            col27="${gl_hong}"
+        fi
+
         # ============ Dccker 项目（/vol1/1000/compose 目录） ============
         # 31. Fan-Panel
         if is_compose_running "/vol1/1000/compose/fan-panel"; then
@@ -5577,6 +5730,13 @@ proj_mgmt_tool() {
             col46="${gl_hong}"
         fi
 
+        # 47. StudyBuddy
+        if is_compose_running "/vol1/1000/compose/studybuddy"; then
+            col47="${gl_lv}"
+        else
+            col47="${gl_hong}"
+        fi
+
         echo -e "${gl_lan}公共项目${gl_bai}"
         echo -e "${col1}1.${gl_bai}  OpenCode 智能代理    ${col2}2.${gl_bai}  TVmonitor 软件自启"
         echo -e ""
@@ -5589,6 +5749,7 @@ proj_mgmt_tool() {
         echo -e "${col21}21.${gl_bai} FanRandom 随机壁纸   ${col22}22.${gl_bai} FanVideoDL 视频下载"
         echo -e "${col23}23.${gl_bai} FanVideoCT 视频剪切  ${col24}24.${gl_bai} FanNginx 反向代理"
         echo -e "${col25}25.${gl_bai} FanVideoTR 视频转码  ${col26}26.${gl_bai} FanImageTR 图片转码"
+        echo -e "${col27}27.${gl_bai} StudyBuddy 刷题系统"
         echo -e ""
         echo -e "${gl_huang}Dccker 项目${gl_bai}"
         echo -e "${col31}31.${gl_bai} FanPanel 导航页      ${col32}32.${gl_bai} FanVideo 影视库"
@@ -5599,6 +5760,7 @@ proj_mgmt_tool() {
         echo -e "${col41}41.${gl_bai} FanRandom 随机壁纸   ${col42}42.${gl_bai} FanVideoDL 视频下载"
         echo -e "${col43}43.${gl_bai} FanVideoCT 视频剪切  ${col44}44.${gl_bai} FanNginx 反向代理"
         echo -e "${col45}45.${gl_bai} FanVideoTR 视频转码  ${col46}46.${gl_bai} FanImageTR 图片转码"
+        echo -e "${col47}47.${gl_bai} StudyBuddy 刷题系统"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_lv}66.${gl_bai} 构建并推送           ${gl_lv}77.${gl_bai} 推送所有更新"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单       ${gl_hong}00. ${gl_bai}退出脚本"
@@ -5660,6 +5822,9 @@ proj_mgmt_tool() {
         26)
             manage_fan_image_tr
             ;;
+        27)
+            manage_studybuddy
+            ;;
         31)
             docker_compose_manager /vol1/1000/compose/fan-panel
             ;;
@@ -5707,6 +5872,9 @@ proj_mgmt_tool() {
             ;;
         46)
             docker_compose_manager /vol1/1000/compose/fan-image-tr
+            ;;
+        47)
+            docker_compose_manager /vol1/1000/compose/studybuddy
             ;;
         66)
             git_project_menu
