@@ -929,48 +929,57 @@ git_project_menu() {
 
 show_service_url() {
     local service="${1:-fan-video}"
+    local alias_name="${2:-}"
     local url=""
     local port=""
     local ip
+    service="$(svc_resolve_name "$service" "$alias_name")"
     ip=$(hostname -I 2>/dev/null | awk '{print $1}')
     [ -z "$ip" ] && ip=$(ip route get 1 2>/dev/null | awk '{print $7}' | head -1)
     [ -z "$ip" ] && ip=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | head -1)
     [ -z "$ip" ] && ip="127.0.0.1"
 
-    port=$(journalctl -u "$service" --no-pager -n 200 -o cat 2>/dev/null \
-        | grep -E 'msg":"fan-video 启动于 :[0-9]+|Listening at: http://0\.0\.0\.0:[0-9]+|Server\(http\) is running on: http://localhost:[0-9]+|Listening and serving HTTP on :[0-9]+' \
-        | grep -oE ':[0-9]+$' | sed 's/^://' | head -1)
+    # 端口必须按"实际在跑的那一种"取：二进制在跑就从 systemd 配置取，
+    # 否则二进制与 Docker 共用端口时会显示成另一套根本没监听的端口。
+    if svc_running "$service"; then
+        if [ -z "$port" ]; then
+            local exec_cmd
+            exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
+            port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
+            [ -z "$port" ] && port=$(echo "$exec_cmd" | grep -oE -e '--bind 0\.0\.0\.0:[0-9]+' | grep -oE '[0-9]+$' | head -1)
+        fi
 
-    if [ -z "$port" ];then
-        port=$(grep -E '^PORT=' "/etc/${service}.conf" 2>/dev/null | head -1 | cut -d= -f2)
-    fi
+        if [ -z "$port" ];then
+            port=$(grep -E '^PORT=' "/etc/${service}.conf" 2>/dev/null | head -1 | cut -d= -f2)
+        fi
 
-    if [ -z "$port" ];then
-        local exec_cmd
-        exec_cmd=$(systemctl show -p ExecStart "$service" 2>/dev/null | cut -d= -f2-)
-        port=$(echo "$exec_cmd" | grep -oE ' -{1,2}port[ =]+[0-9]+' | grep -oE '[0-9]+' | head -1)
-        [ -z "$port" ] && port=$(echo "$exec_cmd" | grep -oE -e '--bind 0\.0\.0\.0:[0-9]+' | grep -oE '[0-9]+$' | head -1)
-    fi
+        if [ -z "$port" ] && command -v ss >/dev/null 2>&1;then
+            local pid
+            pid=$(systemctl show -p MainPID "$service" 2>/dev/null | cut -d= -f2-)
+            if [[ "$pid" =~ ^[0-9]+$ && "$pid" -gt 0 ]];then
+                port=$(ss -tlnp 2>/dev/null | grep ",pid=$pid," | grep -oE ':[0-9]+' | sed 's/^://' | head -1)
+            fi
+        fi
+    else
+        if [ -z "$port" ] && command -v docker >/dev/null 2>&1;then
+            local dports
+            dports=$(docker port "$service" 2>/dev/null | head -1)
+            if [ -n "$dports" ]; then
+                port=$(echo "$dports" | grep -oE '0\.0\.0\.0:[0-9]+|\[::\]:[0-9]+' | grep -oE '[0-9]+$' | head -1)
+            fi
+        fi
 
-    if [ -z "$port" ] && command -v ss >/dev/null 2>&1;then
-        local pid
-        pid=$(systemctl show -p MainPID "$service" 2>/dev/null | cut -d= -f2-)
-        if [[ "$pid" =~ ^[0-9]+$ && "$pid" -gt 0 ]];then
-            port=$(ss -tlnp 2>/dev/null | grep ",pid=$pid," | grep -oE ':[0-9]+' | sed 's/^://' | head -1)
+        if [ -z "$port" ];then
+            port=$(grep -E "ports:" -A5 "/vol1/1000/compose/${service}/docker-compose.yml" 2>/dev/null \
+                | grep -oE '"[0-9]+:[0-9]+"|[0-9]+:[0-9]+' | head -1 | cut -d: -f1 | tr -d '"')
         fi
     fi
 
-    if [ -z "$port" ] && command -v docker >/dev/null 2>&1;then
-        local dports
-        dports=$(docker port "$service" 2>/dev/null | head -1)
-        if [ -n "$dports" ];then
-            port=$(echo "$dports" | grep -oE '0\.0\.0\.0:[0-9]+|\[::\]:[0-9]+' | grep -oE '[0-9]+$' | head -1)
-        fi
-    fi
-
-    if [ -z "$port" ];then
-        port=$(grep -E "ports:" -A5 "/vol1/1000/compose/${service}/docker-compose.yml" 2>/dev/null \
-            | grep -oE '"[0-9]+:[0-9]+"|[0-9]+:[0-9]+' | head -1 | cut -d: -f1 | tr -d '"')
+    # 兜底：两者都取不到时才翻历史日志，避免旧日志端口盖掉真实运行端口
+    if [ -z "$port" ] && command -v journalctl >/dev/null 2>&1; then
+        port=$(journalctl -u "$service" --no-pager -n 200 -o cat 2>/dev/null \
+            | grep -E 'msg":"fan-video 启动于 :[0-9]+|Listening at: http://0\.0\.0\.0:[0-9]+|Server\(http\) is running on: http://localhost:[0-9]+|Listening and serving HTTP on :[0-9]+' \
+            | grep -oE ':[0-9]+$' | sed 's/^://' | head -1)
     fi
 
     if [ -n "$port" ]; then
@@ -987,8 +996,10 @@ show_service_url() {
 
 show_service_status() {
     local service="${1:-opencode}"
+    local alias_name="${2:-}"
     local version=""
     local ver_regex='\b(v[0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+\.[0-9]+)\b'
+    service="$(svc_resolve_name "$service" "$alias_name")"
     if command -v "$service" &>/dev/null; then
         version=$("$service" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
         [ -z "$version" ] && version=$("$service" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
@@ -1007,7 +1018,7 @@ show_service_status() {
     if [[ ! "$version" =~ $ver_regex ]]; then
         version=""
     fi
-    if systemctl is-active --quiet "$service"; then
+    if svc_running "$service"; then
         echo -e "运行状态：${gl_lv}$service 正在运行${gl_bai}"
     else
         echo -e "运行状态：${gl_hong}$service 未运行${gl_bai}"
@@ -1084,7 +1095,7 @@ docker_compose_manager() {
         log_error "输入尝试次数过多，返回上一级"
         return 1
     }
-    
+
     handle_invalid_input() {
         echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后"
         sleep_fractional 1
@@ -1097,7 +1108,7 @@ docker_compose_manager() {
         echo -ne "\r\033[K"
         return 2
     }
-    
+
     column_if_available() {
         if command -v column &> /dev/null; then
             column -t -s $'\t'
@@ -1169,7 +1180,7 @@ docker_compose_manager() {
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         break_end
     }
-    
+
     get_internal_ip() {
         local ip=""
         if command -v hostname >/dev/null 2>&1; then
@@ -1181,7 +1192,7 @@ docker_compose_manager() {
         fi
         echo "$ip"
     }
-    
+
     show_inner_url() {
         local yml="docker-compose.yml"
         [[ -f $yml ]] || {
@@ -1202,7 +1213,7 @@ docker_compose_manager() {
         local ip=$(hostname -I | awk '{print $1}')
         echo -e "服务访问链接：${gl_lv}http://${ip}:${port}${gl_bai}"
     }
-    
+
     check_container_status() {
         local container_name="$1"
         if docker inspect "$container_name" &>/dev/null; then
@@ -1215,7 +1226,7 @@ docker_compose_manager() {
             echo "${gl_hui}"
         fi
     }
-    
+
     create_file() {
         local file_name=${1:-}
         echo -e ""
@@ -1269,7 +1280,7 @@ docker_compose_manager() {
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         break_end
     }
-    
+
     install() {
         [[ $# -eq 0 ]] && {
             log_error "未提供软件包参数!"
@@ -1380,7 +1391,7 @@ docker_compose_manager() {
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         done
     }
-    
+
     get_main_service() {
         local compose_file="${1:-docker-compose.yml}"
         local service_name=""
@@ -1405,7 +1416,7 @@ docker_compose_manager() {
         fi
         echo "$service_name"
     }
-    
+
     select_service() {
         local compose_file="${1:-docker-compose.yml}"
         local services=()
@@ -1475,7 +1486,7 @@ docker_compose_manager() {
         docker compose logs -f -t --tail 100
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     }
-    
+
     show_compose_commands_menu() {
         local WORK_DIR="${1:-.}"
         if ! cd "$WORK_DIR" 2>/dev/null; then
@@ -1515,18 +1526,18 @@ docker_compose_manager() {
             echo -e "${gl_bufan}1.  ${gl_bai}停止${container_color}$current_dir_name${gl_bai}服务      ${gl_bufan}2.  ${gl_bai}启动${container_color}$current_dir_name${gl_bai}服务"
             echo -e "${gl_bufan}3.  ${gl_bai}重启${container_color}$current_dir_name${gl_bai}服务      ${gl_bufan}4.  ${gl_bai}更新${container_color}$current_dir_name${gl_bai}容器"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            echo -e "${gl_bufan}5.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}配置文件  ${gl_bufan}6.  ${gl_bai}编辑${container_color}$current_dir_name${gl_bai}配置"
+            echo -e "${gl_bufan}5.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}配置文件  ${gl_bufan}6.  ${gl_bai}编辑${container_color}$current_dir_name${gl_bai}配置文件"
             echo -e "${gl_bufan}7.  ${gl_bai}创建${container_color}$current_dir_name${gl_bai}配置文件  ${gl_bufan}8.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}最终配置"
-            echo -e "${gl_bufan}9.  ${container_color}$current_dir_name${gl_bai}服务日志      ${gl_bufan}10. ${gl_bai}跟踪${container_color}$current_dir_name${gl_bai}日志"
+            echo -e "${gl_bufan}9.  ${gl_bai}查看${container_color}$current_dir_name${gl_bai}服务日志  ${gl_bufan}10. ${gl_bai}跟踪${container_color}$current_dir_name${gl_bai}服务日志"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             echo -e "${gl_bufan}11. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}服务状态  ${gl_bufan}12. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}镜像详情"
-            echo -e "${gl_bufan}13. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}资源占用  ${gl_bufan}14. ${gl_bai}拉取${container_color}$current_dir_name${gl_bai}镜像（不启动）"
+            echo -e "${gl_bufan}13. ${gl_bai}查看${container_color}$current_dir_name${gl_bai}资源占用  ${gl_bufan}14. ${gl_bai}拉取${container_color}$current_dir_name${gl_bai}镜像文件"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            echo -e "${gl_bufan}23. ${gl_bai}开放${container_color}$current_dir_name${gl_bai}访问端口  ${gl_bufan}24. ${gl_bai}重新构建${container_color}$current_dir_name${gl_bai}"
+            echo -e "${gl_bufan}23. ${gl_bai}开放${container_color}$current_dir_name${gl_bai}访问端口  ${gl_bufan}24. ${gl_bai}重构${container_color}$current_dir_name${gl_bai}后并启动"
             echo -e "${gl_bufan}25. ${gl_bai}进入${container_color}$MAIN_SERVICE${gl_bai}服务终端  ${gl_bufan}26. ${gl_bai}修改${container_color}$MAIN_SERVICE${gl_bai}重启策略"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            echo -e "${gl_huang}88. ${gl_huang}停止并清理${container_color}$current_dir_name${gl_bai}    ${gl_hong}99. ${gl_hong}彻底清理${container_color}$current_dir_name${gl_bai}"
-            echo -e "${gl_huang}0.  ${gl_bai}返回${container_color}$MAIN_SERVICE${gl_bai}上一级    ${gl_hong}00. ${gl_bai}退出脚本"
+            echo -e "${gl_huang}88. ${gl_huang}停止${container_color}$current_dir_name${gl_huang}后并清理${gl_bai}  ${gl_hong}99. ${gl_hong}停止${container_color}$current_dir_name${gl_hong}彻底清理${gl_bai}"
+            echo -e "${gl_huang}0.  ${gl_bai}返回${container_color}$MAIN_SERVICE${gl_bai}上级      ${gl_hong}00. ${gl_bai}退出${container_color}$MAIN_SERVICE${gl_bai}脚本"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
             read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" cmd_choice
@@ -1939,7 +1950,7 @@ docker_compose_manager() {
             esac
         done
     }
-    
+
     show_help() {
         echo -e "${gl_lv}使用说明:${gl_bai}"
         echo -e "  ${gl_bai}$0 ${gl_lan}[项目目录]${gl_bai}"
@@ -1954,7 +1965,7 @@ docker_compose_manager() {
         echo -e ""
         return 0
     }
-    
+
     check_docker() {
         if ! docker info &>/dev/null; then
             log_error "Docker 服务未运行"
@@ -1966,7 +1977,7 @@ docker_compose_manager() {
             return 1
         fi
     }
-    
+
     main() {
         local WORK_DIR="."
         while [[ $# -gt 0 ]]; do
@@ -3108,8 +3119,10 @@ fan_files_show_service_url() {
 
 fan_files_show_service_status() {
     local service="${1:-fan-files}"
+    local alias_name="${2:-}"
     local version=""
     local ver_regex='\b(v[0-9]+\.[0-9]+\.[0-9]+|[0-9]+\.[0-9]+\.[0-9]+)\b'
+    service="$(svc_resolve_name "$service" "$alias_name")"
     if command -v "$service" &>/dev/null; then
         version=$("$service" --version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
         [ -z "$version" ] && version=$("$service" version 2>/dev/null | grep -vE '[_#]{3,}' | grep -oE "$ver_regex" | head -1)
@@ -3128,7 +3141,7 @@ fan_files_show_service_status() {
     if [[ ! "$version" =~ $ver_regex ]]; then
         version=""
     fi
-    if systemctl is-active --quiet "$service"; then
+    if svc_running "$service"; then
         echo -e "运行状态：${gl_lv}$service 正在运行${gl_bai}"
     else
         echo -e "运行状态：${gl_hong}$service 未运行${gl_bai}"
@@ -4104,17 +4117,41 @@ manage_fan_webssh() {
     done
 }
 
-svc_status() {
-    local name="$1"
-    if [ -f "/etc/systemd/system/${name}.service" ]; then
-        if systemctl is-active --quiet "$name" 2>/dev/null; then
-            echo active
+svc_running() {
+    local name="$1" alt="${2:-}"
+    local candidate
+    for candidate in "$name" "$alt"; do
+        [ -n "$candidate" ] || continue
+        # 二进制区的启停全部走 systemctl，因此状态也必须只看 systemd。
+        # 同名容器（可能与二进制共用端口）不参与判定，避免二进制明明没跑却显示运行中。
+        if [ -f "/etc/systemd/system/${candidate}.service" ]; then
+            systemctl is-active --quiet "$candidate" 2>/dev/null
+            return $?
+        fi
+    done
+    return 1
+}
+
+svc_resolve_name() {
+    local name="$1" alt="${2:-}"
+    local candidate
+    for candidate in "$name" "$alt"; do
+        [ -n "$candidate" ] || continue
+        if [ -f "/etc/systemd/system/${candidate}.service" ] ||
+            docker ps -a --format '{{.Names}}' 2>/dev/null | grep -qx "$candidate" ||
+            [ -e "/etc/${candidate}.conf" ] ||
+            [ -d "/vol1/1000/compose/${candidate}" ]; then
+            printf '%s\n' "$candidate"
             return 0
         fi
-        echo inactive
-        return 1
-    fi
-    if docker ps --format '{{.Names}}' 2>/dev/null | grep -qx "$name"; then
+    done
+    printf '%s\n' "$name"
+    return 1
+}
+
+svc_status() {
+    local name="$1" alt="${2:-}"
+    if svc_running "$name" "$alt"; then
         echo active
         return 0
     fi
@@ -4274,7 +4311,7 @@ manage_fan_panel() {
 }
 
 manage_dufs_zh() {
-    SERVICE="dufs"
+    SERVICE="dufs-zh"
     INSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/dufs-zh/main/scripts/install.sh"
     UNINSTALL_SCRIPT_URL="https://raw.githubusercontent.com/meimolihan/dufs-zh/main/scripts/uninstall.sh"
     while true; do
@@ -4282,8 +4319,8 @@ manage_dufs_zh() {
         echo -e ""
         echo -e "${gl_zi}>>> dufs-zh 文件服务器管理工具${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        show_service_status dufs
-        show_service_url dufs
+        show_service_status dufs dufs-zh
+        show_service_url dufs dufs-zh
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bufan}1.  ${gl_bai}停止 dufs-zh           ${gl_bufan}2.  ${gl_bai}启动 dufs-zh"
         echo -e "${gl_bufan}3.  ${gl_bai}重启 dufs-zh           ${gl_bufan}4.  ${gl_bai}查看服务状态"
@@ -4848,17 +4885,41 @@ manage_fan_image_tr() {
     done
 }
 
-svc_status() {
-    local name="$1"
-    if [ -f "/etc/systemd/system/${name}.service" ]; then
-        if systemctl is-active --quiet "$name" 2>/dev/null; then
-            echo active
+svc_running() {
+    local name="$1" alt="${2:-}"
+    local candidate
+    for candidate in "$name" "$alt"; do
+        [ -n "$candidate" ] || continue
+        # 二进制区的启停全部走 systemctl，因此状态也必须只看 systemd。
+        # 同名容器（可能与二进制共用端口）不参与判定，避免二进制明明没跑却显示运行中。
+        if [ -f "/etc/systemd/system/${candidate}.service" ]; then
+            systemctl is-active --quiet "$candidate" 2>/dev/null
+            return $?
+        fi
+    done
+    return 1
+}
+
+svc_resolve_name() {
+    local name="$1" alt="${2:-}"
+    local candidate
+    for candidate in "$name" "$alt"; do
+        [ -n "$candidate" ] || continue
+        if [ -f "/etc/systemd/system/${candidate}.service" ] ||
+            docker ps -a --format '{{.Names}}' 2>/dev/null | grep -qx "$candidate" ||
+            [ -e "/etc/${candidate}.conf" ] ||
+            [ -d "/vol1/1000/compose/${candidate}" ]; then
+            printf '%s\n' "$candidate"
             return 0
         fi
-        echo inactive
-        return 1
-    fi
-    if docker ps --format '{{.Names}}' 2>/dev/null | grep -qx "$name"; then
+    done
+    printf '%s\n' "$name"
+    return 1
+}
+
+svc_status() {
+    local name="$1" alt="${2:-}"
+    if svc_running "$name" "$alt"; then
         echo active
         return 0
     fi
@@ -5026,8 +5087,8 @@ manage_dufs_zh() {
         echo -e ""
         echo -e "${gl_zi}>>> dufs-zh 文件服务器管理工具${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        show_service_status dufs
-        show_service_url dufs
+        show_service_status dufs dufs-zh
+        show_service_url dufs dufs-zh
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bufan}1.  ${gl_bai}停止 dufs-zh           ${gl_bufan}2.  ${gl_bai}启动 dufs-zh"
         echo -e "${gl_bufan}3.  ${gl_bai}重启 dufs-zh           ${gl_bufan}4.  ${gl_bai}查看服务状态"
@@ -5463,7 +5524,7 @@ proj_mgmt_tool() {
         local bin_run=0 bin_stop=0
         local svc_name
         for svc_name in fan-panel fan-video fan-md dufs 2panel fan-shop fan-files fan-reubah cmdbox fan-webssh fan-random fan-video-dl fan-video-ct fan-nginx fan-video-tr fan-image-tr studybuddy; do
-            if svc_status "$svc_name" >/dev/null; then
+            if svc_status "$svc_name" dufs-zh >/dev/null; then
                 bin_run=$((bin_run + 1))
             else
                 bin_stop=$((bin_stop + 1))
@@ -5520,7 +5581,7 @@ proj_mgmt_tool() {
         fi
 
         # 14. Dufs-zh
-        if svc_status dufs >/dev/null; then
+        if svc_status dufs dufs-zh >/dev/null; then
             col14="${gl_lv}"
         else
             col14="${gl_hong}"
@@ -5897,4 +5958,3 @@ proj_mgmt_tool() {
 }
 
 proj_mgmt_tool
-
