@@ -27,6 +27,19 @@ log_ok()    { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn()  { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 
+load_gh_token() {
+    [[ -n "${GH_TOKEN:-}" ]] && return 0
+    if [[ -f "${HOME}/.gh_token" ]]; then
+        GH_TOKEN="$(<"${HOME}/.gh_token")"
+    elif command -v gh >/dev/null 2>&1; then
+        local t
+        t="$(gh auth token 2>/dev/null || true)"
+        [[ -n "$t" ]] && GH_TOKEN="$t"
+    fi
+    export GH_TOKEN
+    return 0
+}
+
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
     echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
@@ -205,6 +218,7 @@ git_push() {
 }
 
 check_tokens() {
+    load_gh_token
     local fail=0
     if [[ -z "$GH_TOKEN" ]]; then
         log_error "环境变量 GH_TOKEN 未设置"
@@ -422,14 +436,17 @@ show_dockerhub_info() {
 ensure_gh_auth() {
     local repo_path="${1:-.}"
 
-    if [[ -z "$GH_TOKEN" ]]; then
-        log_error "环境变量 GH_TOKEN 未设置，无法认证 GitHub CLI"
-        echo -e "       ${gl_huang}export GH_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx${gl_bai}"
-        return 1
-    fi
-
     if ! command -v gh >/dev/null 2>&1; then
         pkg_install gh || return 1
+    fi
+
+    load_gh_token
+
+    if [[ -z "$GH_TOKEN" ]]; then
+        log_error "环境变量 GH_TOKEN 未设置，且未检测到可用的 gh 登录凭证"
+        echo -e "       ${gl_huang}请执行：gh auth login${gl_bai}"
+        echo -e "       ${gl_huang}或设置：export GH_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxx${gl_bai}"
+        return 1
     fi
 
     if gh auth status -h github.com >/dev/null 2>&1; then
@@ -656,7 +673,11 @@ build_and_push() {
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
         while true; do
-            read -r -e -p "请输入版本号（回车默认 ${gl_huang}${next_ver}${gl_bai}）： " version
+            if ! read -r -e -p "请输入版本号（回车默认 ${gl_huang}${next_ver}${gl_bai}）： " version; then
+                echo
+                log_warn "输入已中断（EOF），取消构建"
+                return 2
+            fi
 
             if [[ -z "$version" ]]; then
                 version="$next_ver"
@@ -677,7 +698,11 @@ build_and_push() {
 
     if [[ -z "$msg" ]]; then
         while true; do
-            read -r -e -p "请输入提交注释 (回车默认 ${gl_huang}日常更新${gl_bai}）： " msg
+            if ! read -r -e -p "请输入提交注释 (回车默认 ${gl_huang}日常更新${gl_bai}）： " msg; then
+                echo
+                log_warn "输入已中断（EOF），取消构建"
+                return 2
+            fi
 
             if [[ -z "$msg" ]]; then
                 msg="日常更新"
@@ -706,7 +731,11 @@ build_and_push() {
     local confirm=""
     local c_prompt="确认开始构建推送？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai})："
     while true; do
-        read -r -e -p "$c_prompt " confirm
+        if ! read -r -e -p "$c_prompt " confirm; then
+            echo
+            log_warn "输入已中断（EOF），取消操作"
+            return 2
+        fi
 
         case "$confirm" in
             "")
@@ -794,7 +823,9 @@ build_and_push() {
 }
 
 function count_md_docs {
-    cd /vol1/1000/GitHub/cmdbox-main
+    local oldpwd
+    oldpwd="${PWD}"
+    cd /vol1/1000/GitHub/cmdbox-main || return 1
     local cmd_count
     local ops_count
     local win_count
@@ -812,6 +843,8 @@ function count_md_docs {
     echo "- Win 脚本：${gl_lv}${win_count}${reset} 篇"
     echo "- 合计文章：${gl_huang}${total_count}${reset} 篇"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    cd "${oldpwd}" || true
+    break_end
 }
 
 project_push() {
@@ -825,7 +858,14 @@ project_push() {
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     if [[ -n "${docker_filter}" ]]; then
+        local oldpwd
+        oldpwd="${PWD}"
+        local compose_dir_check="/vol1/1000/compose/${docker_filter}"
+        if [[ -d "$compose_dir_check" ]]; then
+            cd "$compose_dir_check" 2>/dev/null || true
+        fi
         compose_ps_beautify
+        cd "${oldpwd}" 2>/dev/null || true
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     fi
 
@@ -834,11 +874,15 @@ project_push() {
 
     if [[ "$rc" -eq 2 ]]; then
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        log_warn "${proj_name} 已取消（返回码 2）"
+        break_end
         return 0
     fi
 
     if [[ "$rc" -ne 0 ]]; then
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        log_error "${proj_name} 构建推送失败（返回码 ${rc}），请查看上方报错信息"
+        break_end
         return 0
     fi
 
