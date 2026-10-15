@@ -6299,7 +6299,7 @@ proj_mgmt_tool() {
 
         echo -e "${gl_lan}公共项目${gl_bai}"
         echo -e "${col1}1.${gl_bai}  OpenCode   智能代理  ${col2}2.${gl_bai}  TVmonitor  软件自启"
-        echo -e "${col3}3.${gl_bai}  Gitea-Tea  管理命令  ${col4}4.${gl_bai}  Gitea 代码托管"
+        echo -e "${col3}3.${gl_bai}  Gitea-Tea  管理命令  ${col4}4.${gl_bai}  Gitea      代码托管"
         echo -e ""
         echo -e "${gl_huang}二进制项目${gl_bai}"
         echo -e "${col11}11.${gl_bai} FanPanel   导 航 页  ${col12}12.${gl_bai} FanVideo   影 视 库"
