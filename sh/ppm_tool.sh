@@ -5514,6 +5514,447 @@ git_push_all() {
     break_end
 }
 
+# ============================================================================
+# Gitea + Tea 管理工具
+# ============================================================================
+GITEA_COMPOSE_DIR="/vol1/1000/compose/gitea"
+GITEA_WEB_PORT="3033"
+GITEA_SSH_PORT="2233"
+GITEA_URL="http://127.0.0.1:${GITEA_WEB_PORT}"
+TEA_VERSION="0.16.0"
+
+gitea_tea_installed() {
+    command -v tea >/dev/null 2>&1
+}
+
+gitea_container_running() {
+    is_compose_running "$GITEA_COMPOSE_DIR" 2>/dev/null && return 0
+    docker ps --format '{{.Names}}' 2>/dev/null | grep -qx "gitea"
+}
+
+gitea_install_tea() {
+    echo -e ""
+    echo -e "${gl_zi}>>> 安装 Tea 客户端 (v${TEA_VERSION}) ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    if [[ $EUID -ne 0 ]]; then
+        log_error "安装 Tea 需要 root 权限，请使用 sudo 运行脚本"
+        return 1
+    fi
+    if ! command -v wget >/dev/null 2>&1 && ! command -v curl >/dev/null 2>&1; then
+        log_info "未检测到 wget/curl，尝试自动安装 wget"
+        pkg_install wget || {
+            log_error "wget 安装失败，无法下载 Tea"
+            return 1
+        }
+    fi
+    mkdir -p /opt/gitea || {
+        log_error "创建目录 /opt/gitea 失败"
+        return 1
+    }
+    local url="https://gitea.com/gitea/tea/releases/download/v${TEA_VERSION}/tea-${TEA_VERSION}-linux-amd64"
+    log_info "下载地址：${gl_huang}${url}${gl_bai}"
+    if command -v wget >/dev/null 2>&1; then
+        wget -O /opt/gitea/tea "$url" || {
+            log_error "Tea 下载失败，请检查网络"
+            return 1
+        }
+    else
+        curl -fL -o /opt/gitea/tea "$url" || {
+            log_error "Tea 下载失败，请检查网络"
+            return 1
+        }
+    fi
+    chmod +x /opt/gitea/tea || {
+        log_error "添加执行权限失败"
+        return 1
+    }
+    ln -sf /opt/gitea/tea /usr/local/bin/tea
+    log_ok "Tea 安装完成，全局命令：tea"
+    /opt/gitea/tea --version
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+}
+
+gitea_ensure_tea() {
+    if gitea_tea_installed; then
+        return 0
+    fi
+    log_warn "未检测到 tea 命令"
+    local ans
+    read -r -e -p "$(echo -e "${gl_bai}是否立即安装 tea？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" ans
+    if [[ "$ans" == [yY] ]]; then
+        gitea_install_tea && gitea_tea_installed
+    else
+        return 1
+    fi
+}
+
+gitea_tea_login() {
+    local name url token
+    echo -e ""
+    echo -e "${gl_zi}>>> 配置 Tea 登录 Gitea ${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_hui}提示：令牌需在 Gitea 网页 设置 → 应用 → 个人访问令牌 生成（勾选 repo 权限）${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}登录名称（默认 ${gl_huang}mygitea${gl_bai}）: ")" name
+    name="${name:-mygitea}"
+    read -r -e -p "$(echo -e "${gl_bai}Gitea 地址（默认 ${gl_huang}${GITEA_URL}${gl_bai}）: ")" url
+    url="${url:-$GITEA_URL}"
+    read -r -e -p "$(echo -e "${gl_bai}访问令牌 Token: ")" token
+    if [[ -z "$token" ]]; then
+        log_error "Token 不能为空，已取消"
+        return 1
+    fi
+    if tea login add --name "$name" --url "$url" --token "$token"; then
+        log_ok "登录配置已保存：${name}"
+    else
+        log_error "登录配置失败"
+        return 1
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+}
+
+gitea_tea_read_repo() {
+    GITEA_TEA_REPO=""
+    read -r -e -p "$(echo -e "${gl_bai}目标仓库 (owner/repo，回车使用当前目录上下文): ")" GITEA_TEA_REPO
+}
+
+gitea_run_tea() {
+    gitea_ensure_tea || return 1
+    tea "$@"
+}
+
+gitea_run_tea_repo() {
+    local -a repo_opt=()
+    [[ -n "${GITEA_TEA_REPO:-}" ]] && repo_opt=(--repo "$GITEA_TEA_REPO")
+    gitea_run_tea "$@" ${repo_opt[@]+"${repo_opt[@]}"}
+}
+
+manage_gitea_tea() {
+    while true; do
+        clear
+        echo -e ""
+        echo -e "${gl_zi}>>> Gitea + Tea 管理工具${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        if gitea_container_running; then
+            echo -e "服务状态：${gl_lv}Gitea 正在运行${gl_bai}"
+        else
+            echo -e "服务状态：${gl_hong}Gitea 未运行${gl_bai}"
+        fi
+        if gitea_tea_installed; then
+            local tea_ver
+            tea_ver=$(tea --version 2>/dev/null | grep -oE '[0-9]+(\.[0-9]+)+' | head -n1)
+            echo -e "Tea 版本：${gl_huang}${tea_ver:-已安装}${gl_bai}"
+        else
+            echo -e "Tea 版本：${gl_hong}未安装${gl_bai}"
+        fi
+        echo -e "访问地址：${gl_lv}${GITEA_URL}${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}查看登录配置          ${gl_bufan}2.  ${gl_bai}当前登录用户"
+        echo -e "${gl_bufan}3.  ${gl_bai}列出仓库              ${gl_bufan}4.  ${gl_bai}创建仓库"
+        echo -e "${gl_bufan}5.  ${gl_bai}删除仓库              ${gl_bufan}6.  ${gl_bai}列出议题"
+        echo -e "${gl_bufan}7.  ${gl_bai}创建议题              ${gl_bufan}8.  ${gl_bai}关闭议题"
+        echo -e "${gl_bufan}9.  ${gl_bai}列出 PR               ${gl_bufan}10. ${gl_bai}创建 PR"
+        echo -e "${gl_bufan}11. ${gl_bai}列出标签              ${gl_bufan}12. ${gl_bai}创建标签"
+        echo -e "${gl_bufan}13. ${gl_bai}列出里程碑            ${gl_bufan}14. ${gl_bai}创建里程碑"
+        echo -e "${gl_bufan}15. ${gl_bai}列出发布              ${gl_bufan}16. ${gl_bai}列出分支"
+        echo -e "${gl_bufan}17. ${gl_bai}列出通知              ${gl_bufan}18. ${gl_bai}Gitea 仓库列表"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}66. ${gl_bai}安装 Tea              ${gl_lv}67. ${gl_bai}配置 Tea 登录"
+        echo -e "${gl_lv}68. ${gl_bai}查看 Gitea 容器状态   ${gl_lv}69. ${gl_bai}部署/升级 Gitea"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单        ${gl_hong}00. ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+
+        case "$action" in
+        1)
+            echo -e ""
+            echo -e "${gl_zi}>>> Tea 已保存的登录配置 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_run_tea login list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        2)
+            echo -e ""
+            echo -e "${gl_zi}>>> 当前登录用户 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_run_tea whoami
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        3)
+            echo -e ""
+            echo -e "${gl_zi}>>> 仓库列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_run_tea repos list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        4)
+            echo -e ""
+            echo -e "${gl_zi}>>> 创建仓库 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local repo_name repo_desc repo_vis
+            read -r -e -p "$(echo -e "${gl_bai}仓库名称: ")" repo_name
+            if [[ -z "$repo_name" ]]; then
+                log_warn "仓库名称不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            read -r -e -p "$(echo -e "${gl_bai}仓库描述（可空）: ")" repo_desc
+            read -r -e -p "$(echo -e "${gl_bai}是否私有仓库？ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" repo_vis
+            local -a copt=(repos create --name "$repo_name" --init)
+            [[ -n "$repo_desc" ]] && copt+=(--description "$repo_desc")
+            [[ "$repo_vis" == [yY] ]] && copt+=(--private)
+            gitea_run_tea "${copt[@]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        5)
+            echo -e ""
+            echo -e "${gl_zi}>>> 删除仓库 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            local del_name del_confirm
+            read -r -e -p "$(echo -e "${gl_bai}仓库名称: ")" del_name
+            if [[ -z "$del_name" ]]; then
+                log_warn "仓库名称不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            read -r -e -p "$(echo -e "${gl_hong}确认删除 ${del_name}？数据不可恢复！ (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" del_confirm
+            if [[ "$del_confirm" == [yY] ]]; then
+                gitea_run_tea repos delete --name "$del_name"
+            else
+                log_warn "已取消删除"
+            fi
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        6)
+            echo -e ""
+            echo -e "${gl_zi}>>> 议题列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_tea_read_repo
+            gitea_run_tea_repo issues list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        7)
+            echo -e ""
+            echo -e "${gl_zi}>>> 创建议题 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_ensure_tea || {
+                break_end
+                continue
+            }
+            gitea_tea_read_repo
+            local issue_title issue_body
+            read -r -e -p "$(echo -e "${gl_bai}议题标题: ")" issue_title
+            if [[ -z "$issue_title" ]]; then
+                log_warn "标题不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            read -r -e -p "$(echo -e "${gl_bai}议题内容（可空）: ")" issue_body
+            local -a iopt=(issues create --title "$issue_title")
+            [[ -n "$issue_body" ]] && iopt+=(--body "$issue_body")
+            [[ -n "${GITEA_TEA_REPO:-}" ]] && iopt+=(--repo "$GITEA_TEA_REPO")
+            gitea_run_tea "${iopt[@]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        8)
+            echo -e ""
+            echo -e "${gl_zi}>>> 关闭议题 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_ensure_tea || {
+                break_end
+                continue
+            }
+            gitea_tea_read_repo
+            local issue_id
+            read -r -e -p "$(echo -e "${gl_bai}议题编号: ")" issue_id
+            if [[ -z "$issue_id" ]]; then
+                log_warn "编号不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            gitea_run_tea_repo issues close "$issue_id"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        9)
+            echo -e ""
+            echo -e "${gl_zi}>>> Pull Request 列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_tea_read_repo
+            gitea_run_tea_repo pulls list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        10)
+            echo -e ""
+            echo -e "${gl_zi}>>> 创建 Pull Request ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_ensure_tea || {
+                break_end
+                continue
+            }
+            gitea_tea_read_repo
+            local pr_title pr_base pr_head
+            read -r -e -p "$(echo -e "${gl_bai}PR 标题: ")" pr_title
+            if [[ -z "$pr_title" ]]; then
+                log_warn "标题不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            read -r -e -p "$(echo -e "${gl_bai}目标分支 base（默认 ${gl_huang}main${gl_bai}）: ")" pr_base
+            pr_base="${pr_base:-main}"
+            read -r -e -p "$(echo -e "${gl_bai}源分支 head（默认当前分支）: ")" pr_head
+            local -a popt=(pulls create --title "$pr_title" --base "$pr_base")
+            [[ -n "$pr_head" ]] && popt+=(--head "$pr_head")
+            [[ -n "${GITEA_TEA_REPO:-}" ]] && popt+=(--repo "$GITEA_TEA_REPO")
+            gitea_run_tea "${popt[@]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        11)
+            echo -e ""
+            echo -e "${gl_zi}>>> 标签列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_tea_read_repo
+            gitea_run_tea_repo labels list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        12)
+            echo -e ""
+            echo -e "${gl_zi}>>> 创建标签 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_ensure_tea || {
+                break_end
+                continue
+            }
+            gitea_tea_read_repo
+            local label_name label_color
+            read -r -e -p "$(echo -e "${gl_bai}标签名称: ")" label_name
+            if [[ -z "$label_name" ]]; then
+                log_warn "名称不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            read -r -e -p "$(echo -e "${gl_bai}标签颜色（默认 ${gl_huang}#d73a4a${gl_bai}）: ")" label_color
+            label_color="${label_color:-#d73a4a}"
+            local -a lopt=(labels create --name "$label_name" --color "$label_color")
+            [[ -n "${GITEA_TEA_REPO:-}" ]] && lopt+=(--repo "$GITEA_TEA_REPO")
+            gitea_run_tea "${lopt[@]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        13)
+            echo -e ""
+            echo -e "${gl_zi}>>> 里程碑列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_tea_read_repo
+            gitea_run_tea_repo milestones list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        14)
+            echo -e ""
+            echo -e "${gl_zi}>>> 创建里程碑 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_ensure_tea || {
+                break_end
+                continue
+            }
+            gitea_tea_read_repo
+            local ms_title ms_desc
+            read -r -e -p "$(echo -e "${gl_bai}里程碑标题: ")" ms_title
+            if [[ -z "$ms_title" ]]; then
+                log_warn "标题不能为空，已取消"
+                sleep_fractional 1
+                continue
+            fi
+            read -r -e -p "$(echo -e "${gl_bai}里程碑描述（可空）: ")" ms_desc
+            local -a msopt=(milestones create --title "$ms_title")
+            [[ -n "$ms_desc" ]] && msopt+=(--description "$ms_desc")
+            [[ -n "${GITEA_TEA_REPO:-}" ]] && msopt+=(--repo "$GITEA_TEA_REPO")
+            gitea_run_tea "${msopt[@]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        15)
+            echo -e ""
+            echo -e "${gl_zi}>>> 发布列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_tea_read_repo
+            gitea_run_tea_repo releases list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        16)
+            echo -e ""
+            echo -e "${gl_zi}>>> 分支列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_tea_read_repo
+            gitea_run_tea_repo branches list
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        17)
+            echo -e ""
+            echo -e "${gl_zi}>>> 通知列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_run_tea notifications list --mine
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        18)
+            echo -e ""
+            echo -e "${gl_zi}>>> Gitea 仓库列表 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            gitea_run_tea repos list --output simple
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        66)
+            gitea_install_tea
+            break_end
+            ;;
+        67)
+            gitea_ensure_tea && gitea_tea_login
+            break_end
+            ;;
+        68)
+            echo -e ""
+            echo -e "${gl_zi}>>> Gitea 容器状态 ${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            docker ps -a --filter "name=^/gitea" \
+                --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
+            ;;
+        69)
+            echo -e ""
+            echo -e "${gl_zi}>>> 部署/升级 Gitea ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_gitea.sh) \
+                "$GITEA_WEB_PORT" "$GITEA_SSH_PORT" "$GITEA_COMPOSE_DIR"
+            break_end
+            ;;
+        0)
+            proj_mgmt_tool
+            ;;
+        00 | 000 | 0000)
+            exit_script
+            ;;
+        *)
+            handle_invalid_input
+            ;;
+        esac
+    done
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
@@ -5556,6 +5997,20 @@ proj_mgmt_tool() {
             col2="${gl_lv}"
         else
             col2="${gl_hong}"
+        fi
+
+        # 3. Gitea-Tea（Gitea 容器 / Compose 项目）
+        if gitea_container_running; then
+            col3="${gl_lv}"
+        else
+            col3="${gl_hong}"
+        fi
+
+        # 4. Gitea 代码托管（/vol1/1000/compose/gitea）
+        if is_compose_running "/vol1/1000/compose/gitea"; then
+            col4="${gl_lv}"
+        else
+            col4="${gl_hong}"
         fi
 
         # ============ 二进制项目（GitHub 仓库部署系统服务） ============
@@ -5800,6 +6255,7 @@ proj_mgmt_tool() {
 
         echo -e "${gl_lan}公共项目${gl_bai}"
         echo -e "${col1}1.${gl_bai}  OpenCode   智能代理  ${col2}2.${gl_bai}  TVmonitor  软件自启"
+        echo -e "${col3}3.${gl_bai}  Gitea-Tea  管理命令  ${col4}4.${gl_bai}  Gitea 代码托管"
         echo -e ""
         echo -e "${gl_huang}二进制项目${gl_bai}"
         echo -e "${col11}11.${gl_bai} FanPanel   导 航 页  ${col12}12.${gl_bai} FanVideo   影 视 库"
@@ -5834,6 +6290,12 @@ proj_mgmt_tool() {
             ;;
         2)
             monitor_tool
+            ;;
+        3)
+            manage_gitea_tea
+            ;;
+        4)
+            docker_compose_manager /vol1/1000/compose/gitea
             ;;
         11)
             manage_fan_panel

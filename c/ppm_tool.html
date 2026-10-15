@@ -18,7 +18,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ppm_tool 命令">
     <meta name="twitter:description" content="个人项目管理工具 交互式菜单 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=15909a3da01852a4">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=15909a3d73203f3a">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +132,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=15909a3da01852a4"></script>
+    <script src="../js/dt.js?v=15909a3d73203f3a"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1170,7 +1170,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <h3 id="功能特点"><a class="anchor" aria-hidden="true" tabindex="-1" href="#功能特点"><span class="octicon octicon-link"></span></a>功能特点</h3>
 <ul>
   <li>交互式菜单：可视化操作界面，输入序号即可进入对应的项目管理入口，彩色终端输出</li>
-  <li>三组项目：<strong>公共项目</strong>（OpenCode / TVmonitor）、<strong>二进制项目</strong>（13 个 systemd 服务）、<strong>Dccker 项目</strong>（13 个 Compose 目录）</li>
+  <li>三组项目：<strong>公共项目</strong>（OpenCode、TVmonitor、Gitea-Tea、Gitea）、<strong>二进制项目</strong>（13 个 systemd 服务）、<strong>Dccker 项目</strong>（13 个 Compose 目录）</li>
   <li>运行统计：菜单顶部实时统计二进制组与 Docker 组的已运行 / 未运行数量（红绿显示）</li>
   <li>服务管理：集成各二进制服务的停止、启动、重启、状态查看</li>
   <li>状态查看：查看各服务运行状态、开机自启状态（含启用/禁用切换）</li>
@@ -1181,7 +1181,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>退场动画：退出时显示 spinner 动画</li>
 </ul>
 <h3 id="主菜单选项说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#主菜单选项说明"><span class="octicon octicon-link"></span></a>主菜单选项说明</h3>
-<p>主菜单分为三组项目：<strong>公共项目</strong>(1-2)、<strong>二进制项目</strong>(11-23)、<strong>Dccker 项目</strong>(31-43)，同序号项目在二进制组走 systemd / 二进制管理，在 Dccker 组走 Compose 项目管理。菜单顶部实时统计二进制与 Docker 两组的运行/未运行数量。</p>
+<p>主菜单分为三组项目：<strong>公共项目</strong>(1-4)、<strong>二进制项目</strong>(11-27)、<strong>Dccker 项目</strong>(31-47)，同序号项目在二进制组走 systemd / 二进制管理，在 Dccker 组走 Compose 项目管理。菜单顶部实时统计二进制与 Docker 两组的运行/未运行数量。</p>
 <p><strong>公共项目</strong></p>
 <table>
   <thead>
@@ -1201,6 +1201,16 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
       <td><code>2</code></td>
       <td>TVmonitor 软件自启</td>
       <td>进入 monitor 服务管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>3</code></td>
+      <td>Gitea-Tea 管理命令</td>
+      <td>进入 Gitea + Tea 管理工具</td>
+    </tr>
+    <tr>
+      <td><code>4</code></td>
+      <td>Gitea 代码托管</td>
+      <td>进入 <code>/vol1/1000/compose/gitea</code> 的 Compose 项目管理菜单</td>
     </tr>
   </tbody>
 </table>
@@ -1279,6 +1289,26 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
       <td>FanVideoCT 视频剪切</td>
       <td>进入 FanVideoCT 服务管理菜单</td>
     </tr>
+    <tr>
+      <td><code>24</code></td>
+      <td>FanNginx 反向代理</td>
+      <td>进入 FanNginx 服务管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>25</code></td>
+      <td>FanVideoTR 视频转码</td>
+      <td>进入 FanVideoTR 服务管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>26</code></td>
+      <td>FanImageTR 图片转码</td>
+      <td>进入 FanImageTR 服务管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>27</code></td>
+      <td>StudyBuddy 刷题系统</td>
+      <td>进入 StudyBuddy 服务管理菜单</td>
+    </tr>
   </tbody>
 </table>
 <p><strong>Dccker 项目</strong>（Compose 项目管理）</p>
@@ -1355,6 +1385,26 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
       <td><code>43</code></td>
       <td>FanVideoCT 视频剪切</td>
       <td>进入 <code>/vol1/1000/compose/fan-video-ct</code> 的 Compose 项目管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>44</code></td>
+      <td>FanNginx 反向代理</td>
+      <td>进入 <code>/vol1/1000/compose/fan-nginx</code> 的 Compose 项目管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>45</code></td>
+      <td>FanVideoTR 视频转码</td>
+      <td>进入 <code>/vol1/1000/compose/fan-video-tr</code> 的 Compose 项目管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>46</code></td>
+      <td>FanImageTR 图片转码</td>
+      <td>进入 <code>/vol1/1000/compose/fan-image-tr</code> 的 Compose 项目管理菜单</td>
+    </tr>
+    <tr>
+      <td><code>47</code></td>
+      <td>StudyBuddy 刷题系统</td>
+      <td>进入 <code>/vol1/1000/compose/studybuddy</code> 的 Compose 项目管理菜单</td>
     </tr>
   </tbody>
 </table>
@@ -1509,7 +1559,129 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     </tr>
   </tbody>
 </table>
-<h3 id="二进制服务子菜单选项fanvideo--fanmd--dufs-zh--2panel--fanshop--fanfiles--fanreubah--cmdbox--fanwebssh--fanrandom--fanvideodl--fanvideoct--fanpanel"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二进制服务子菜单选项fanvideo--fanmd--dufs-zh--2panel--fanshop--fanfiles--fanreubah--cmdbox--fanwebssh--fanrandom--fanvideodl--fanvideoct--fanpanel"><span class="octicon octicon-link"></span></a>二进制服务子菜单选项（FanVideo / FanMD / Dufs-zh / 2Panel / FanShop / FanFiles / FanReubah / CmdBox / FanWebSSH / FanRandom / FanVideoDL / FanVideoCT / FanPanel）</h3>
+<h3 id="gitea--tea-子菜单选项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#gitea--tea-子菜单选项"><span class="octicon octicon-link"></span></a>Gitea + Tea 子菜单选项</h3>
+<table>
+  <thead>
+    <tr>
+      <th>选项</th>
+      <th>功能</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>1</code></td>
+      <td>查看登录配置</td>
+      <td><code>tea login list</code></td>
+    </tr>
+    <tr>
+      <td><code>2</code></td>
+      <td>当前登录用户</td>
+      <td><code>tea whoami</code></td>
+    </tr>
+    <tr>
+      <td><code>3</code></td>
+      <td>列出仓库</td>
+      <td><code>tea repos list</code></td>
+    </tr>
+    <tr>
+      <td><code>4</code></td>
+      <td>创建仓库</td>
+      <td><code>tea repos create</code>（可选私有、初始化）</td>
+    </tr>
+    <tr>
+      <td><code>5</code></td>
+      <td>删除仓库</td>
+      <td><code>tea repos delete</code>（需二次确认）</td>
+    </tr>
+    <tr>
+      <td><code>6</code></td>
+      <td>列出议题</td>
+      <td><code>tea issues list</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>7</code></td>
+      <td>创建议题</td>
+      <td><code>tea issues create</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>8</code></td>
+      <td>关闭议题</td>
+      <td><code>tea issues close</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>9</code></td>
+      <td>列出 PR</td>
+      <td><code>tea pulls list</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>10</code></td>
+      <td>创建 PR</td>
+      <td><code>tea pulls create</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>11</code></td>
+      <td>列出标签</td>
+      <td><code>tea labels list</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>12</code></td>
+      <td>创建标签</td>
+      <td><code>tea labels create</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>13</code></td>
+      <td>列出里程碑</td>
+      <td><code>tea milestones list</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>14</code></td>
+      <td>创建里程碑</td>
+      <td><code>tea milestones create</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>15</code></td>
+      <td>列出发布</td>
+      <td><code>tea releases list</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>16</code></td>
+      <td>列出分支</td>
+      <td><code>tea branches list</code>（支持指定仓库）</td>
+    </tr>
+    <tr>
+      <td><code>17</code></td>
+      <td>列出通知</td>
+      <td><code>tea notifications list --mine</code></td>
+    </tr>
+    <tr>
+      <td><code>18</code></td>
+      <td>Gitea 仓库列表</td>
+      <td><code>tea repos list --output simple</code></td>
+    </tr>
+    <tr>
+      <td><code>66</code></td>
+      <td>安装 Tea</td>
+      <td>下载并安装 Tea 客户端（v0.16.0）</td>
+    </tr>
+    <tr>
+      <td><code>67</code></td>
+      <td>配置 Tea 登录</td>
+      <td><code>tea login add</code>（交互式配置）</td>
+    </tr>
+    <tr>
+      <td><code>68</code></td>
+      <td>查看 Gitea 容器状态</td>
+      <td>查看 <code>gitea</code> 容器状态</td>
+    </tr>
+    <tr>
+      <td><code>69</code></td>
+      <td>部署/升级 Gitea</td>
+      <td>调用 <code>dc_inst_gitea.sh</code> 一键部署</td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="二进制服务子菜单选项fanvideo--fanmd--dufs-zh--2panel--fanshop--fanfiles--fanreubah--cmdbox--fanwebssh--fanrandom--fanvideodl--fanvideoct--fanpanel--fannginx--fanvideotr--fanimagetr--studybuddy"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二进制服务子菜单选项fanvideo--fanmd--dufs-zh--2panel--fanshop--fanfiles--fanreubah--cmdbox--fanwebssh--fanrandom--fanvideodl--fanvideoct--fanpanel--fannginx--fanvideotr--fanimagetr--studybuddy"><span class="octicon octicon-link"></span></a>二进制服务子菜单选项（FanVideo / FanMD / Dufs-zh / 2Panel / FanShop / FanFiles / FanReubah / CmdBox / FanWebSSH / FanRandom / FanVideoDL / FanVideoCT / FanPanel / FanNginx / FanVideoTR / FanImageTR / StudyBuddy）</h3>
 <table>
   <thead>
     <tr>
@@ -1708,7 +1880,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>实时跟踪日志按 <code>Ctrl+C</code> 退出，会自动返回菜单</li>
   <li>安装/卸载/备份/恢复操作依赖网络，需能访问对应的 GitHub / gitee 源</li>
   <li>2Panel 备份/恢复默认使用 <code>/vol2/1000/file/backup/2panel-backup</code>（保留 6 份）</li>
-  <li>Compose 项目目录固定于 <code>/vol1/1000/compose/</code> 下，对应 13 个项目同名目录（<code>fan-panel</code>、<code>fan-video</code>、<code>fan-md</code>、<code>dufs-zh</code>、<code>2panel</code>、<code>fan-shop</code>、<code>fan-files</code>、<code>fan-reubah</code>、<code>cmdbox</code>、<code>fan-webssh</code>、<code>fan-random</code>、<code>fan-video-dl</code>、<code>fan-video-ct</code>）</li>
+  <li>Compose 项目目录固定于 <code>/vol1/1000/compose/</code> 下，对应项目同名目录（<code>fan-panel</code>、<code>fan-video</code>、<code>fan-md</code>、<code>dufs-zh</code>、<code>2panel</code>、<code>fan-shop</code>、<code>fan-files</code>、<code>fan-reubah</code>、<code>cmdbox</code>、<code>fan-webssh</code>、<code>fan-random</code>、<code>fan-video-dl</code>、<code>fan-video-ct</code>、<code>fan-nginx</code>、<code>fan-video-tr</code>、<code>fan-image-tr</code>、<code>studybuddy</code>、<code>gitea</code>）</li>
   <li>恢复数据会覆盖现有数据，执行前请确认备份文件可用</li>
   <li>脚本内置彩色输出，需终端支持 ANSI 转义序列</li>
   <li>脚本以 bash 编写，确保运行环境支持 bash</li>
@@ -14153,8 +14325,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=15909a3da01852a4"></script>
-<script type="text/javascript" src="../js/enhance.js?v=15909a3da01852a4"></script>
+<script type="text/javascript" src="../js/index.js?v=15909a3d73203f3a"></script>
+<script type="text/javascript" src="../js/enhance.js?v=15909a3d73203f3a"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
