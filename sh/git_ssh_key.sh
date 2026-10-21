@@ -96,21 +96,25 @@ declare -A PLATFORMS=(
     [gitee]="gitee.com"
     [github]="github.com"
     [gitlab]="gitlab.com"
+    [gitea]="${GITEA_HOST:-127.0.0.1}"
 )
 declare -A KEY_URLS=(
     [gitee]="https://gitee.com/profile/sshkeys"
     [github]="https://github.com/settings/keys"
     [gitlab]="https://gitlab.com/-/profile/keys"
+    [gitea]="http://${GITEA_HOST:-127.0.0.1}:${GITEA_WEB_PORT:-3033}/user/settings/keys"
 )
 declare -A SSH_HOSTS=(
     [gitee]="gitee.com"
     [github]="ssh.github.com"
     [gitlab]="gitlab.com"
+    [gitea]="${GITEA_HOST:-127.0.0.1}"
 )
 declare -A SSH_PORTS=(
     [gitee]="22"
     [github]="443"
     [gitlab]="22"
+    [gitea]="${GITEA_SSH_PORT:-2233}"
 )
 
 log_info()  { echo -e "${gl_lan}[INFO]${gl_bai} $*"; }
@@ -132,6 +136,7 @@ select_platform() {
     echo -e "${gl_bufan}1.  ${gl_bai}Gitee"
     echo -e "${gl_bufan}2.  ${gl_bai}GitHub"
     echo -e "${gl_bufan}3.  ${gl_bai}GitLab"
+    echo -e "${gl_bufan}4.  ${gl_bai}Gitea（自建）"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     echo -e "${gl_hong}0.  ${gl_bai}退出脚本"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -141,6 +146,7 @@ select_platform() {
         1) SELECTED="gitee" ;;
         2) SELECTED="github" ;;
         3) SELECTED="gitlab" ;;
+        4) SELECTED="gitea" ;;
         0) exit_script ;; 
         *) handle_invalid_input ;;
     esac
@@ -155,6 +161,23 @@ init_config() {
     KEY_FILE="$HOME/.ssh/id_rsa_$PLATFORM"
     EMAIL="user@$PLATFORM.com"
     COMMENT="auto@$PLATFORM"
+
+    if [[ "$PLATFORM" == "gitea" ]]; then
+        local web_port="${GITEA_WEB_PORT:-3033}"
+        local ssh_port="${GITEA_SSH_PORT:-2233}"
+        local default_host="${GITEA_HOST:-$(hostname -I 2>/dev/null | awk '{print $1}')}"
+        default_host="${default_host:-127.0.0.1}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_huang}Gitea 为自建服务，请填写服务器地址${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}Gitea 地址（IP/域名，默认 ${gl_lv}${default_host}${gl_bai}）: ")" gitea_host
+        gitea_host="${gitea_host:-$default_host}"
+        DOMAIN="$gitea_host"
+        SSH_HOST="$gitea_host"
+        SSH_PORT="$ssh_port"
+        KEY_URL="http://${gitea_host}:${web_port}/user/settings/keys"
+        COMMENT="auto@gitea"
+        EMAIL="user@gitea"
+    fi
 }
 
 show_key_url() {
@@ -217,7 +240,7 @@ auto_load_ssh_key() {
 
 add_known_hosts() {
     log_info "添加主机信任"
-    ssh-keyscan -H "$DOMAIN" >> ~/.ssh/known_hosts 2>/dev/null || true
+    ssh-keyscan -H -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null || true
 }
 
 test_connection() {

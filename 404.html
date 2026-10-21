@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- 明暗模式防闪烁：内联脚本，置于 <head> 最前，早于样式表与首次绘制 -->
+    <script>
+    (function () {
+      try {
+        var st = localStorage.getItem('_dark_mode_theme_');
+        document.documentElement.setAttribute('data-color-mode', st === 'light' ? 'light' : 'dark');
+      } catch (e) {
+        document.documentElement.setAttribute('data-color-mode', 'dark');
+      }
+    })();
+    </script>
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
@@ -8,7 +19,7 @@
     <meta name="description" content="页面未找到 - CmdBox命令大全">
     <title>404 - 页面未找到 | CmdBox 命令搜索引擎</title>
     <link rel="shortcut icon" href="img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/index.css?v=15909a3d73203f3a">
+    <link rel="stylesheet" type="text/css" href="css/index.css?v=1d378b3b795aba25">
     <style>
       html[data-color-mode="light"] body {
         background-color: #f5f7fa !important;
@@ -18,14 +29,101 @@
         background-color: #0d1117 !important;
       }
     </style>
-    <script src="js/dt.js?v=15909a3d73203f3a"></script>
-    <script src="js/index.js?v=15909a3d73203f3a"></script>
+    <!-- 明暗模式切换 —— 径向揭示动画 (View Transitions)
+         旧快照静止垫底层（z=1），新主题快照在上层（z=2）以屏幕中心为圆心用径向遮罩向外扩张；
+         24% 为羽化带宽，170% 末端保证覆盖最远角落；同时关闭 VT 默认的整页交叉淡化。
+         @property 注册 --theme-r 为 <percentage>，是遮罩半径能够逐帧插值的前提。
+         注意：不支持 @property 的浏览器上 --theme-r 无法插值，动画会静默失效（揭示瞬间完成），
+         这是预期降级而非 bug。 -->
+    <style>
+      @property --theme-r {
+        syntax: '<percentage>';
+        inherits: false;
+        initial-value: 0%;
+      }
+      ::view-transition-old(root),
+      ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+      ::view-transition-old(root) { z-index: 1; }
+      ::view-transition-new(root) {
+        z-index: 2;
+        animation: theme-reveal 1.5s ease-out both;
+        mask-image: radial-gradient(circle at 50% 50%,
+          #000 var(--theme-r), transparent calc(var(--theme-r) + 24%));
+        -webkit-mask-image: radial-gradient(circle at 50% 50%,
+          #000 var(--theme-r), transparent calc(var(--theme-r) + 24%));
+      }
+      @keyframes theme-reveal {
+        from { --theme-r: 0%; }
+        to   { --theme-r: 170%; }
+      }
+      /* 减弱动效兜底：项目全局的 prefers-reduced-motion 规则只匹配 * 与 ::before/::after，
+         不会命中 ::view-transition-* 伪元素；JS 侧已守卫，此处再做一层 CSS 保险。 */
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-new(root) { animation: none; }
+      }
+    </style>
+    <script src="js/dt.js?v=1d378b3b795aba25"></script>
+    <script src="js/index.js?v=1d378b3b795aba25"></script>
 </head>
 <body>
 <div id="theme-toggle" onclick="toggleTheme()" style="position:fixed;left:10px;bottom:40px;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:999;transition:all 0.35s cubic-bezier(0.4,0,0.2,1);border:none;overflow:hidden;"></div>
 <script>
-function toggleTheme(){var e=document.documentElement,t=document.getElementById('theme-toggle');'dark'===e.getAttribute('data-color-mode')?(e.setAttribute('data-color-mode','light'),localStorage.setItem('_dark_mode_theme_','light'),t.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)',t.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)'):(e.setAttribute('data-color-mode','dark'),localStorage.setItem('_dark_mode_theme_','dark'),t.style.background='linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)',t.style.boxShadow='0 4px 15px rgba(88, 166, 255, 0.4)')}
-var _st=localStorage.getItem('_dark_mode_theme_'),_tt=document.getElementById('theme-toggle');if(_st==='dark'||_st===null){document.documentElement.setAttribute('data-color-mode','dark');_tt.style.background='linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';_tt.style.boxShadow='0 4px 15px rgba(88, 166, 255, 0.4)'}else{_tt.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)';_tt.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)'}
+/* ===== 明暗模式（沿用项目既有机制：html[data-color-mode] + localStorage._dark_mode_theme_） =====
+   两态状态机：深色 ⇄ 浅色，默认深色（与项目原行为一致）。
+   切换时使用 View Transitions 做「径向揭示」动画。 */
+var CMDBOX_THEME_KEY = '_dark_mode_theme_';
+
+/* 读取偏好：'dark' | 'light'；缺失或非法按项目默认值（dark） */
+function cmdboxThemePref() {
+  try {
+    var v = localStorage.getItem(CMDBOX_THEME_KEY);
+    return v === 'light' ? 'light' : 'dark';
+  } catch (e) {
+    return 'dark';
+  }
+}
+
+/* 当前生效的主题：优先取根元素属性（开屏校正后即为偏好值） */
+function cmdboxThemeEffective() {
+  var attr = document.documentElement.getAttribute('data-color-mode');
+  return (attr === 'light' || attr === 'dark') ? attr : cmdboxThemePref();
+}
+
+/* 应用主题：同步根元素属性、持久化偏好、刷新按钮配色 */
+function applyColorMode(mode) {
+  var html = document.documentElement;
+  var themeToggle = document.getElementById('theme-toggle');
+  html.setAttribute('data-color-mode', mode);
+  try { localStorage.setItem(CMDBOX_THEME_KEY, mode); } catch (e) {}
+  if (themeToggle) {
+    if (mode === 'light') {
+      themeToggle.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      themeToggle.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+    } else {
+      themeToggle.style.background = 'linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';
+      themeToggle.style.boxShadow = '0 4px 15px rgba(88, 166, 255, 0.4)';
+    }
+  }
+}
+
+function toggleTheme() {
+  var next = cmdboxThemeEffective() === 'dark' ? 'light' : 'dark';
+  /* 减弱动效必须在 JS 侧守卫：项目全局的 prefers-reduced-motion 规则只匹配 * / ::before / ::after，
+     不会命中 ::view-transition-* 伪元素，只靠 CSS 挡不住。 */
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (!document.startViewTransition || reduce) {
+    /* 回退：浏览器不支持 View Transitions 或用户要求减弱动效 —— 直接切换，无动画、无报错 */
+    applyColorMode(next);
+    return;
+  }
+  /* 带径向揭示动画切换；回调内只做同步的状态变更，不要 await 网络或异步操作 */
+  document.startViewTransition(function () {
+    applyColorMode(next);
+  });
+}
+
+/* 开屏校正：属性与偏好一致，避免闪烁 */
+applyColorMode(cmdboxThemePref());
 </script>
 
 <div class="page-404">

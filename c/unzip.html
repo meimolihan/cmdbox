@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <!-- 明暗模式防闪烁：内联脚本，置于 <head> 最前，早于样式表与首次绘制
+         读取 localStorage 偏好并同步根元素的 data-color-mode 属性，
+         保证刷新时首帧就是用户选择的主题，不会出现闪白/闪暗。
+         （与 body 末尾的主题初始化脚本共用同一个 localStorage 键 _dark_mode_theme_） -->
+    <script>
+    (function () {
+      try {
+        var st = localStorage.getItem('_dark_mode_theme_');
+        document.documentElement.setAttribute('data-color-mode', st === 'light' ? 'light' : 'dark');
+      } catch (e) {
+        document.documentElement.setAttribute('data-color-mode', 'dark');
+      }
+    })();
+    </script>
     <meta charset="UTF-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
@@ -18,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="unzip 命令">
     <meta name="twitter:description" content="用于解压缩由zip命令压缩的压缩包 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=15909a3d73203f3a">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1d378b3b795aba25">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -132,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=15909a3d73203f3a"></script>
+    <script src="../js/dt.js?v=1d378b3b795aba25"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -797,6 +811,39 @@
         }
       }
     </style>
+    <!-- 明暗模式切换 —— 径向揭示动画 (View Transitions)
+         旧快照静止垫底层（z=1），新主题快照在上层（z=2）以屏幕中心为圆心用径向遮罩向外扩张；
+         24% 为羽化带宽，170% 末端保证覆盖最远角落；同时关闭 VT 默认的整页交叉淡化。
+         @property 注册 --theme-r 为 <percentage>，是遮罩半径能够逐帧插值的前提。
+         注意：不支持 @property 的浏览器上 --theme-r 无法插值，动画会静默失效（揭示瞬间完成），
+         这是预期降级而非 bug。 -->
+    <style>
+      @property --theme-r {
+        syntax: '<percentage>';
+        inherits: false;
+        initial-value: 0%;
+      }
+      ::view-transition-old(root),
+      ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+      ::view-transition-old(root) { z-index: 1; }
+      ::view-transition-new(root) {
+        z-index: 2;
+        animation: theme-reveal 1.5s ease-out both;
+        mask-image: radial-gradient(circle at 50% 50%,
+          #000 var(--theme-r), transparent calc(var(--theme-r) + 24%));
+        -webkit-mask-image: radial-gradient(circle at 50% 50%,
+          #000 var(--theme-r), transparent calc(var(--theme-r) + 24%));
+      }
+      @keyframes theme-reveal {
+        from { --theme-r: 0%; }
+        to   { --theme-r: 170%; }
+      }
+      /* 减弱动效兜底：项目全局的 prefers-reduced-motion 规则只匹配 * 与 ::before/::after，
+         不会命中 ::view-transition-* 伪元素；JS 侧已守卫，此处再做一层 CSS 保险。 */
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-new(root) { animation: none; }
+      }
+    </style>
 </head>
 <body>
 <div id="wallpaper-bg"></div>
@@ -843,44 +890,70 @@
   <span id="wallpaper-label">随机</span>
 </div>
 <script>
-function toggleTheme() {
+/* ===== 明暗模式（沿用项目既有机制：html[data-color-mode] + localStorage._dark_mode_theme_） =====
+   两态状态机：深色 ⇄ 浅色，默认深色（与项目原行为一致）。
+   切换时使用 View Transitions 做「径向揭示」动画，详见 <head> 中的 ::view-transition-* 样式。 */
+var CMDBOX_THEME_KEY = '_dark_mode_theme_';
+
+/* 读取偏好：'dark' | 'light'；缺失或非法按项目默认值（dark） */
+function cmdboxThemePref() {
+  try {
+    var v = localStorage.getItem(CMDBOX_THEME_KEY);
+    return v === 'light' ? 'light' : 'dark';
+  } catch (e) {
+    return 'dark';
+  }
+}
+
+/* 当前生效的主题：优先取根元素属性（开屏校正后即为偏好值） */
+function cmdboxThemeEffective() {
+  var attr = document.documentElement.getAttribute('data-color-mode');
+  return (attr === 'light' || attr === 'dark') ? attr : cmdboxThemePref();
+}
+
+/* 应用主题：同步根元素属性、持久化偏好、刷新按钮图标与配色 */
+function applyColorMode(mode) {
   const html = document.documentElement;
   const sunBg = document.getElementById('sun-bg');
   const moonBg = document.getElementById('moon-bg');
   const themeToggle = document.getElementById('theme-toggle');
-  if (html.getAttribute('data-color-mode') === 'dark') {
-    html.setAttribute('data-color-mode', 'light');
-    localStorage.setItem('_dark_mode_theme_', 'light');
-    sunBg.style.display = 'none';
-    moonBg.style.display = 'flex';
-    themeToggle.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-    themeToggle.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+  html.setAttribute('data-color-mode', mode);
+  try { localStorage.setItem(CMDBOX_THEME_KEY, mode); } catch (e) {}
+  if (mode === 'light') {
+    if (sunBg) sunBg.style.display = 'none';
+    if (moonBg) moonBg.style.display = 'flex';
+    if (themeToggle) {
+      themeToggle.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+      themeToggle.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+    }
   } else {
-    html.setAttribute('data-color-mode', 'dark');
-    localStorage.setItem('_dark_mode_theme_', 'dark');
-    sunBg.style.display = 'flex';
-    moonBg.style.display = 'none';
-    themeToggle.style.background = 'linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';
-    themeToggle.style.boxShadow = '0 4px 15px rgba(88, 166, 255, 0.4)';
+    if (sunBg) sunBg.style.display = 'flex';
+    if (moonBg) moonBg.style.display = 'none';
+    if (themeToggle) {
+      themeToggle.style.background = 'linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';
+      themeToggle.style.boxShadow = '0 4px 15px rgba(88, 166, 255, 0.4)';
+    }
   }
 }
-const savedTheme = localStorage.getItem('_dark_mode_theme_');
-const sunBg = document.getElementById('sun-bg');
-const moonBg = document.getElementById('moon-bg');
-const themeToggle = document.getElementById('theme-toggle');
-if (savedTheme === 'dark' || savedTheme === null) {
-  document.documentElement.setAttribute('data-color-mode', 'dark');
-  document.getElementById('sun-bg').style.display = 'flex';
-  document.getElementById('moon-bg').style.display = 'none';
-  themeToggle.style.background = 'linear-gradient(135deg, #58a6ff 0%, #79c0ff 100%)';
-  themeToggle.style.boxShadow = '0 4px 15px rgba(88, 166, 255, 0.4)';
-} else if (savedTheme === 'light') {
-  document.documentElement.setAttribute('data-color-mode', 'light');
-  sunBg.style.display = 'none';
-  moonBg.style.display = 'flex';
-  themeToggle.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-  themeToggle.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.4)';
+
+function toggleTheme() {
+  const next = cmdboxThemeEffective() === 'dark' ? 'light' : 'dark';
+  /* 减弱动效必须在 JS 侧守卫：项目全局的 prefers-reduced-motion 规则只匹配 * / ::before / ::after，
+     不会命中 ::view-transition-* 伪元素，只靠 CSS 挡不住。 */
+  const reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (!document.startViewTransition || reduce) {
+    /* 回退：浏览器不支持 View Transitions 或用户要求减弱动效 —— 直接切换，无动画、无报错 */
+    applyColorMode(next);
+    return;
+  }
+  /* 带径向揭示动画切换；回调内只做同步的状态变更，不要 await 网络或异步操作 */
+  document.startViewTransition(function () {
+    applyColorMode(next);
+  });
 }
+
+/* 开屏校正：属性与偏好一致，避免闪烁（<head> 内联脚本已先行设置过属性，这里同时刷新按钮图标） */
+applyColorMode(cmdboxThemePref());
 </script>
 <script>
 /* 壁纸切换功能 */
@@ -1402,7 +1475,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">858</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">862</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1417,7 +1490,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">295</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">297</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -1434,7 +1507,7 @@ function copied(target, str) {
         <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
         <line x1="8" y1="16" x2="14" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">Win <span class="footer-count windows">102</span></span>
+      <span class="footer-text">Win <span class="footer-count windows">103</span></span>
     </a>
     <!-- 共计统计：command + ops-script + windows 总和 -->
     <a class="footer-item footer-total wow animate__animated animate__fadeInUp" data-wow-delay="0.55s" href="../all.html">
@@ -1448,7 +1521,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1255</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1262</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1481,8 +1554,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=15909a3d73203f3a"></script>
-<script type="text/javascript" src="../js/enhance.js?v=15909a3d73203f3a"></script>
+<script type="text/javascript" src="../js/index.js?v=1d378b3b795aba25"></script>
+<script type="text/javascript" src="../js/enhance.js?v=1d378b3b795aba25"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

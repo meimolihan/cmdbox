@@ -10,14 +10,14 @@
 
 ```bash
 cd /d "%USERPROFILE%\Downloads"
-curl.exe -L -o https://gitee.com/meimolihan/cmdbox/raw/master/bat/ffmpeg/convert_to_webp/convert_to_webp.bat
+curl.exe -L -o convert_to_webp.bat https://gitee.com/meimolihan/cmdbox/raw/master/bat/ffmpeg/convert_to_webp/convert_to_webp.bat
 ```
 
 - PowerShell 下载命令
 
 ```bash
 cd ~\Downloads
-curl.exe -L -o https://gitee.com/meimolihan/cmdbox/raw/master/bat/ffmpeg/convert_to_webp/convert_to_webp.bat
+curl.exe -L -o convert_to_webp.bat https://gitee.com/meimolihan/cmdbox/raw/master/bat/ffmpeg/convert_to_webp/convert_to_webp.bat
 ```
 
 ## 等价命令
