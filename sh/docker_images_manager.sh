@@ -1,6 +1,21 @@
 #!/bin/bash
 set -uo pipefail
 
+# ============================================================
+# 镜像备份根目录：可通过第一个参数指定，默认为 /mnt/backup_images
+# 用法: ./script.sh [备份目录]
+#   示例: ./script.sh /data/backup
+# ============================================================
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+    echo "用法: $0 [备份目录]"
+    echo "  备份目录默认: /mnt/backup_images"
+    echo "  示例: $0 /data/backup"
+    exit 0
+fi
+
+BACKUP_ROOT="${1:-/mnt/backup_images}"
+export BACKUP_ROOT
+
 list_color_init() {
     export gl_hui=$'\033[38;5;59m'
     export gl_hong=$'\033[38;5;9m'
@@ -48,16 +63,6 @@ exit_animation() {
 cancel_empty() {
     local menu_name="${1:-上一级选单}"
     echo -e "${gl_hong}空输入，返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
-    sleep_fractional 0.5
-    echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
-    sleep_fractional 0.6
-    echo ""
-    clear
-}
-
-cancel_return() {
-    local menu_name="${1:-上一级选单}"
-    echo -ne "${gl_lv}即将返回 ${gl_huang}${menu_name} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.5
     echo -ne "${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
@@ -137,7 +142,6 @@ exit_script() {
     local dot_idx=0
     local total_dots=${#dots[@]}
 
-
     for ((i=0; i<20; i++)); do
         if (( i > 0 && i % 3 == 0 && dot_idx < total_dots )); then
             dot_buffer+=${dots[$dot_idx]}
@@ -161,7 +165,7 @@ install() {
     for pkg in "$@"; do
         installed=false
         ver=""
-        
+
         if command -v "$pkg" &>/dev/null; then
             cmd_ver=$("$pkg" --version 2>/dev/null | head -n1 | tr -cd '[:print:]' | grep -oE '[0-9]+(\.[0-9]+)+' | head -n1 || echo "")
             [[ -n "$cmd_ver" ]] && ver="$cmd_ver"
@@ -203,24 +207,24 @@ install() {
                 fi
             fi
         fi
-        
+
         if [[ "$installed" == true ]]; then
             echo -e "${gl_huang}${pkg}${gl_bai} ${gl_lv}已安装${gl_bai}" \
                 "$([[ -n "$ver" ]] && echo "版本 ${gl_lv}${ver}${gl_bai}")"
             continue
         fi
-        
+
         echo -e ""
         echo -e "${gl_huang}开始安装：${gl_bai}${pkg}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        
+
         local install_success=false
-        
+
         for mgr in opkg dnf yum apt apk pacman zypper pkg; do
             if ! command -v "$mgr" &>/dev/null; then
                 continue
             fi
-            
+
             case $mgr in
             opkg)
                 echo -e "${gl_bai}使用包管理器: ${gl_zi}opkg (OpenWrt/iStoreOS)${gl_bai}"
@@ -260,16 +264,16 @@ install() {
                 pkg update && pkg install -y "$pkg" && install_success=true
                 ;;
             esac
-            
+
             [[ "$install_success" == true ]] && break
         done
-        
+
         if [[ "$install_success" == true ]]; then
             echo -e "${gl_lv}✓ ${pkg} 安装成功${gl_bai}"
         else
             echo -e "${gl_hong}✗ ${pkg} 安装失败${gl_bai}"
         fi
-        
+
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     done
 }
@@ -277,10 +281,9 @@ install() {
 docker_image_backup_tools() {
     clear
     list_image_backups() {
-        local BACKUP_ROOT="/mnt/backup_images"
         mkdir -p "$BACKUP_ROOT"
         chmod 755 "$BACKUP_ROOT"
-        echo -e "${gl_huang}>>> 当前镜像备份列表${gl_bai}"
+        echo -e "${gl_huang}>>> 当前镜像备份列表 (目录: ${gl_lv}$BACKUP_ROOT${gl_huang})${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         shopt -s nullglob
         local list
@@ -312,7 +315,6 @@ docker_image_backup_tools() {
             return 1
         fi
 
-        local BACKUP_ROOT="/mnt/backup_images"
         local DATE_STR=$(date +%Y%m%d_%H%M%S)
         local BACKUP_DIR="${BACKUP_ROOT}/images_backup_${DATE_STR}"
         mkdir -p "$BACKUP_DIR"
@@ -373,7 +375,7 @@ docker_image_backup_tools() {
             echo -e "${gl_zi}已选择 ${gl_huang}${#images_to_backup[@]}${gl_zi} 个镜像${gl_bai}"
 
             ;;
-        0) cancel_return; return ;;
+        0) rm -rf "$BACKUP_ROOT"; cancel_return; return ;;
         00 | 000 | 0000) exit_script ;;
         *) handle_invalid_input ;;
         esac
@@ -384,15 +386,15 @@ docker_image_backup_tools() {
 set -e
 
 list_color_init() {
-    export gl_hui=$'[38;5;59m'
-    export gl_hong=$'[38;5;9m'
-    export gl_lv=$'[38;5;10m'
-    export gl_huang=$'[38;5;11m'
-    export gl_lan=$'[38;5;32m'
-    export gl_bai=$'[38;5;15m'
-    export gl_zi=$'[38;5;13m'
-    export gl_bufan=$'[38;5;14m'
-    export reset=$'[0m'
+    export gl_hui=$'[38;5;59m'
+    export gl_hong=$'[38;5;9m'
+    export gl_lv=$'[38;5;10m'
+    export gl_huang=$'[38;5;11m'
+    export gl_lan=$'[38;5;32m'
+    export gl_bai=$'[38;5;15m'
+    export gl_zi=$'[38;5;13m'
+    export gl_bufan=$'[38;5;14m'
+    export reset=$'[0m'
 }
 list_color_init
 
@@ -430,9 +432,9 @@ for i in $(seq 0 $((IMAGE_COUNT-1))); do
     IMAGE_NAME=$(jq -r ".images[$i].name" "$MANIFEST")
     IMAGE_FILE=$(jq -r ".images[$i].file" "$MANIFEST")
     IMAGE_PATH="${BACKUP_DIR}/${IMAGE_FILE}"
-    
+
     echo -e "${reset}[$((i+1))/${IMAGE_COUNT}] 加载镜像: ${gl_huang}${IMAGE_NAME}${reset}"
-    
+
     if [[ -f "$IMAGE_PATH" ]]; then
         docker load -i "$IMAGE_PATH"
         echo -e "${gl_lv}✓ 完成${reset}"
@@ -526,7 +528,6 @@ EOF
         echo -e "${gl_zi}>>> 迁移 ${gl_huang}Docker${gl_zi} 镜像 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
-        local BACKUP_ROOT="/mnt/backup_images"
         mkdir -pm 755 "$BACKUP_ROOT"
 
         local latest_backup=""
@@ -561,6 +562,7 @@ EOF
             done
         else
             log_warn "无备份"
+            exit_animation
             return 1
         fi
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -597,12 +599,6 @@ EOF
             exit_animation
             return 1
         }
-
-        if [[ ! -d "$BACKUP_DIR" ]]; then
-            log_error "${gl_bai}备份目录不存在: ${gl_hong}$BACKUP_DIR${gl_bai}"
-            exit_animation
-            return 1
-        fi
 
         local img_count=$(jq '.images | length' "$BACKUP_DIR/manifest.json" 2>/dev/null || echo "0")
         local backup_date=$(jq -r '.backup_date' "$BACKUP_DIR/manifest.json" 2>/dev/null || echo "未知")
@@ -654,7 +650,7 @@ EOF
             fi
         fi
 
-        local target_backup_dir="/mnt/backup_images"
+        local target_backup_dir="$BACKUP_ROOT"
         local backup_base_name=$(basename "$BACKUP_DIR")
 
         log_info "开始传输镜像备份到目标服务器 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
@@ -728,7 +724,8 @@ EOF
 
         if ! command -v docker &>/dev/null || ! docker info &>/dev/null; then
             echo -e "${gl_hong}错误: Docker 未安装或未运行${gl_bai}"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"exit_animation
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            exit_animation
             return 1
         fi
 
@@ -736,7 +733,6 @@ EOF
         echo -e "${gl_zi}>>> 加载 ${gl_huang}Docker${gl_zi} 镜像 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
-        local BACKUP_ROOT="/mnt/backup_images"
         mkdir -pm 755 "$BACKUP_ROOT"
 
         local latest_backup=""
@@ -772,6 +768,7 @@ EOF
             done
         else
             log_warn "无备份"
+            exit_animation
             return
         fi
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -1059,7 +1056,7 @@ EOF
             4)
                 if [[ ${#ALL_IMAGES[@]} -eq 0 ]]; then
                     echo -e "${gl_huang}没有可导出的镜像${gl_bai}"
-                    exit_animation    # 即将退出动画
+                    exit_animation
                     continue
                 fi
 
@@ -1105,12 +1102,12 @@ EOF
                     local export_name="${repo}:${tag}"
 
                     local safe_name=$(echo "$export_name" | sed 's/[^a-zA-Z0-9._-]/-/g')
-                    local export_file="/mnt/backup_images/${safe_name}_$(date +%Y%m%d_%H%M%S).tar"
+                    local export_file="${BACKUP_ROOT}/${safe_name}_$(date +%Y%m%d_%H%M%S).tar"
 
                     echo -e "${gl_bai}正在导出镜像: ${gl_huang}${export_name}${gl_bai}"
                     echo -e "${gl_bai}保存到: ${gl_huang}${export_file}${gl_bai}"
 
-                    mkdir -p "/mnt/backup_images"
+                    mkdir -p "$BACKUP_ROOT"
                     if docker save -o "$export_file" "$export_name" 2>/dev/null; then
                         echo -e "${gl_lv}✓ 导出成功${gl_bai}"
 
@@ -1127,19 +1124,19 @@ EOF
                 fi
                 ;;
             5)
-                mkdir -p "/mnt/backup_images"
+                mkdir -p "$BACKUP_ROOT"
 
                 local backup_files=()
                 local i=1
 
-                echo -e "${gl_bai}正在扫描备份目录 /mnt/backup_images ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                echo -e "${gl_bai}正在扫描备份目录 ${gl_huang}${BACKUP_ROOT}${gl_bai} ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
 
                 while IFS= read -r -d $'\0' file; do
                     backup_files+=("$file")
-                done < <(find "/mnt/backup_images" -type f \( -name "*.tar" -o -name "*.tar.gz" -o -name "*.tgz" \) -print0 2>/dev/null | sort -z)
+                done < <(find "$BACKUP_ROOT" -type f \( -name "*.tar" -o -name "*.tar.gz" -o -name "*.tgz" \) -print0 2>/dev/null | sort -z)
 
                 if [[ ${#backup_files[@]} -eq 0 ]]; then
-                    echo -e "${gl_huang}在 /mnt/backup_images 目录中没有找到备份文件${gl_bai}"
+                    echo -e "${gl_huang}在 ${BACKUP_ROOT} 目录中没有找到备份文件${gl_bai}"
                     echo -e "${gl_bai}支持的格式: .tar, .tar.gz, .tgz${gl_bai}"
                     read -n 1 -s -r -p "$(echo -e "按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}")"
                     echo
@@ -1248,7 +1245,7 @@ EOF
                 echo
                 ;;
             6)
-                cd "/mnt/backup_images" && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_file_menu.sh)
+                cd "$BACKUP_ROOT" && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_file_menu.sh)
                 ;;
             0) cancel_return; break ;;
             00 | 000 | 0000) exit_script ;;
@@ -1259,8 +1256,6 @@ EOF
     }
 
     delete_image_backup() {
-        local BACKUP_ROOT="/mnt/backup_images"
-
         echo -e ""
         echo -e "${gl_zi}>>> 删除镜像备份 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -1334,7 +1329,7 @@ EOF
             echo -e "${gl_bufan}2.  ${gl_bai}迁移 Docker 镜像"
             echo -e "${gl_bufan}3.  ${gl_bai}加载 Docker 镜像"
             echo -e "${gl_bufan}4.  ${gl_bai}管理 Docker 镜像"
-            echo -e "${gl_bufan}5.  ${gl_bai}删除 Docker 镜像备份"
+            echo -e "${gl_bufan}5.  ${gl_bai}管理 Docker 镜像包"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单"
             echo -e "${gl_hong}00. ${gl_bai}退出脚本"
@@ -1355,6 +1350,5 @@ EOF
 
     main_menu
 }
-
 
 docker_image_backup_tools
