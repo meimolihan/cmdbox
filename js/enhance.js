@@ -182,6 +182,14 @@
 
 /* ⑦ 代码块语言标签 - 位于复制按钮左侧5px */
 (function() {
+  function findToolbar(pre) {
+    var parent = pre.parentNode;
+    if (!parent || !parent.querySelector) return null;
+    var toolbar = parent.querySelector('.code-toolbar');
+    // 只认同一包裹层内的工具栏
+    return (toolbar && toolbar.parentNode === parent) ? toolbar : null;
+  }
+
   function addLanguageLabels() {
     var preBlocks = document.querySelectorAll('pre[class*="language-"]');
     preBlocks.forEach(function(pre) {
@@ -189,10 +197,23 @@
       pre._langLabelAdded = true;
 
       var match = pre.className.match(/language-(\w+)/);
-      if (match) {
-        var label = document.createElement('span');
-        label.className = 'code-language-label';
-        label.textContent = match[1];
+      if (!match) return;
+
+      var label = document.createElement('span');
+      label.className = 'code-language-label';
+      label.textContent = match[1];
+
+      var toolbar = findToolbar(pre);
+      if (toolbar) {
+        // 放入工具栏：绝对定位交给 CSS（flex 布局，随工具栏常驻）
+        label.style.cssText = '';
+        var btn = toolbar.querySelector('.copied');
+        if (btn) {
+          toolbar.insertBefore(label, btn);
+        } else {
+          toolbar.appendChild(label);
+        }
+      } else {
         label.style.cssText = 'position:absolute;font-size:11px;color:#6b7280;opacity:0.6;font-family:"SF Mono",Consolas,monospace;text-transform:uppercase;letter-spacing:0.5px;pointer-events:none;z-index:10;';
         pre.style.position = 'relative';
         pre.appendChild(label);
