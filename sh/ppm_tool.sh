@@ -6171,10 +6171,459 @@ install_fan_script() {
     echo "   若当前终端未生效，请新开终端或执行： source ~/.bashrc"
 }
 
+# ==============================================================================
+# Git 批量克隆工具（由 git_clone_menu.sh 融入，主菜单入口：777）
+# Author: meimolihan
+#
+# 功能：
+#   1. 交互式菜单 / 手动逐行输入，批量克隆仓库
+#   2. https 链接克隆超时后自动依次尝试 ghproxy 镜像；ssh(git@) 地址不使用镜像
+#   3. 目录已存在自动跳过；自动去重；汇总成功/跳过/失败；失败清单单独输出
+#   4. 支持浅克隆、仅镜像模式、自定义超时、自定义镜像列表
+#   5. 【66】一键批量克隆全部 Fan 系列项目
+#
+# 融入说明（相对原 git_clone_menu.sh 的调整）：
+#   - 公共函数直接复用 ppm_tool 已有实现，未重复定义：
+#     log_info/log_ok/log_warn/log_error、break_end、sleep_fractional、
+#     exit_script、handle_invalid_input、cancel_empty、exit_animation
+#   - 未引入原脚本的 set -o errexit -o nounset -o pipefail，避免影响 ppm_tool 全局行为
+#   - 原 install() 更名为 clone_dep_install()，避免与脚本内其他 install 冲突
+#   - 原 proj_mgmt_tool() 占位菜单移除，克隆菜单中 0 直接返回 ppm_tool 主菜单
+#   - Ctrl+C 捕获仅在克隆菜单内生效，返回主菜单时恢复默认行为
+#   - 顺手修复原脚本两处小问题：enter_directory 序号列表未填充；
+#     手动输入为空时 printf 空数组误触发一次空地址克隆
+# ==============================================================================
+
+# --------------------------- 可配置区（环境变量可覆盖） ---------------------------
+CLONE_TIMEOUT="${CLONE_TIMEOUT:-120}"
+DEPTH="${DEPTH:-}"
+PROXY_MODE="${PROXY_MODE:-direct}"
+VERBOSE="${VERBOSE:-0}"
+GIT_CLONE_ARGS="${GIT_CLONE_ARGS:-}"
+
+# 默认镜像前缀，外部可通过 PROXY_LIST 覆盖
+if [[ -z "${PROXY_LIST:-}" ]]; then
+    PROXY_LIST=(
+        "https://ghfast.top/"
+        "https://ghproxy.net/"
+        "https://gh.xxooo.cf/"
+        "https://v6.gh-proxy.org/"
+        "https://githubproxy.cc/"
+    )
+fi
+
+# Ctrl+C 捕获（仅克隆菜单内生效）
+sigint_handler() {
+    echo -e "\n${gl_hong}⚠️ 捕获 Ctrl+C，准备退出...${gl_bai}"
+    exit_script
+}
+
+# 克隆依赖安装（仅root自动安装，非root跳过，保持原脚本行为）
+clone_dep_install() {
+    [[ $# -eq 0 ]] && return 1
+    [[ "$(id -u)" -ne 0 ]] && { log_warn "非root用户，跳过自动安装"; return 0; }
+    for pkg in "$@"; do
+        command -v "$pkg" &>/dev/null && continue
+        log_info "正在安装依赖：${gl_huang}$pkg${gl_bai}"
+        if command -v apt &>/dev/null; then
+            apt update -y && apt install -y "$pkg" &>/dev/null
+        elif command -v dnf &>/dev/null; then
+            dnf install -y "$pkg" &>/dev/null
+        elif command -v yum &>/dev/null; then
+            yum install -y "$pkg" &>/dev/null
+        fi
+    done
+}
+
+enter_directory() {
+    local current_path
+    current_path="$(pwd)"
+    clear
+    local dirs=()
+    echo -e "${gl_huang}>>> 当前目录子目录列表：${gl_bai}(${gl_lv}$current_path${gl_bai})"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    # 收集当前目录条目（与下方 ls 展示顺序一致），供序号选择使用
+    while IFS= read -r d; do
+        [[ -n "$d" ]] && dirs+=("$d")
+    done < <(ls -1)
+
+    ls --color=auto -x
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e ""
+    echo -e "${gl_zi}>>> 进入指定目录${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}请输入 ${gl_huang}序号${gl_bai} ${gl_lv}目录名${gl_bai} ${gl_lan}路径${gl_bai} (${gl_hui}..上级${gl_bai} ${gl_zi}~家${gl_bai} ${gl_hong}/根${gl_bai}) 或 ${gl_huang}0${gl_bai}返回: ")" input
+
+    if [[ -z "$input" ]]; then
+        cancel_empty
+        return 1
+    fi
+
+    if [[ "$input" == "0" ]]; then
+        git_clone_menu
+        return 1
+    fi
+
+    if [[ "$input" =~ ^[0-9]+$ ]]; then
+        if [[ ${#dirs[@]} -eq 0 ]]; then
+            echo -e "${gl_hong}当前目录没有可用的子目录列表，无法通过序号选择${gl_bai}"
+            exit_animation
+            return 1
+        fi
+
+        if [[ "$input" -ge 1 ]] && [[ "$input" -le ${#dirs[@]} ]]; then
+            local selected_dir="${dirs[$((input - 1))]}"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            echo -e "${gl_bai}已选择: ${gl_lv}$selected_dir${gl_bai}"
+
+            if cd "$selected_dir" 2>/dev/null; then
+                echo -e "${gl_bai}成功进入目录: ${gl_lv}$(pwd)${gl_bai}"
+            else
+                echo -e "${gl_hong}无法进入目录: $selected_dir${gl_bai}"
+                echo -e "${gl_hong}可能的原因：${gl_bai}"
+                echo -e "${gl_huang}1. 目录不存在${gl_bai}"
+                echo -e "${gl_huang}2. 没有访问权限${gl_bai}"
+                echo -e "${gl_huang}3. 输入路径有误${gl_bai}"
+            fi
+        else
+            echo -e "${gl_hong}序号 $input 超出范围 (1-${#dirs[@]})${gl_bai}"
+        fi
+    else
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_lv}尝试进入: $input${gl_bai}"
+
+        local target_path="$input"
+        if [[ "$input" == ".." ]]; then
+            target_path=".."
+        elif [[ "$input" == "~" ]]; then
+            target_path=~
+        elif [[ "$input" == "/" ]]; then
+            target_path="/"
+        fi
+
+        if cd "$target_path" 2>/dev/null; then
+            local new_path
+            new_path="$(pwd)"
+            echo -e "${gl_lv}成功进入目录: $new_path${gl_bai}"
+
+            if [[ ! -d "$new_path" ]]; then
+                echo -e "${gl_hong}警告：目标不是一个有效的目录${gl_bai}"
+                cd "$current_path" 2>/dev/null || return
+            fi
+        else
+            echo -e "${gl_hong}无法进入目录: $input${gl_bai}"
+            echo -e "${gl_hong}可能的原因：${gl_bai}"
+            echo -e "${gl_huang}1. 路径不存在${gl_bai}"
+            echo -e "${gl_huang}2. 没有访问权限${gl_bai}"
+            echo -e "${gl_huang}3. 不是有效的目录${gl_bai}"
+            echo -e "${gl_huang}4. 路径格式错误${gl_bai}"
+
+            if [[ -e "$input" ]] && [[ ! -d "$input" ]]; then
+                echo -e "${gl_huang}注意：'$input' 是一个文件，不是目录${gl_bai}"
+            fi
+        fi
+    fi
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_huang}即将进入 ${gl_lv}$(basename "$(pwd)")${gl_huang} 目录 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai} \c"
+    sleep_fractional 1.6
+    return 0
+}
+
+# 手动输入仓库列表
+input_repo_list() {
+    local repo_list=()
+    clear
+    echo -e "${gl_huang}当前工作目录: ${gl_lv}$(pwd)${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    ls --color=auto -x
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e ""
+    echo -e "${gl_zi}>>> Git批量克隆仓库${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}逐行输入仓库地址，输入 ${gl_hong}0${gl_bai} 退出，空行结束输入${gl_bai}"
+    echo -e "${gl_bai}————————————————————————————————————————————————${gl_bai}"
+    while true; do
+        read -r -e -p "$(echo -e "${gl_bai}> ")" input_tmp
+        input_tmp=$(echo "$input_tmp" | xargs)
+        if [[ "$input_tmp" == "0" ]]; then
+            exit_script
+        fi
+        if [[ -z "$input_tmp" ]]; then
+            break
+        fi
+        repo_list+=("$input_tmp")
+    done
+    # 空列表时不输出，避免下游把空行误判为一次空地址克隆
+    if [[ ${#repo_list[@]} -gt 0 ]]; then
+        printf "%s\n" "${repo_list[@]}"
+    fi
+}
+
+# 提取仓库目录名，兼容 ssh / https / 带镜像前缀地址
+get_repo_name() {
+    local url="$1"
+    url="${url%/.git}"
+    url="${url%.git}"
+    # ssh git@xxx:owner/repo.git
+    if [[ "$url" == git@* ]]; then
+        url="${url#*:}"
+        echo "${url##*/}"
+        return 0
+    fi
+    # https 链接，去掉协议、镜像前缀
+    url="${url#*://}"
+    # 去掉第一层域名
+    url="${url#*/}"
+    url="${url#*/}"
+    echo "${url##*/}"
+}
+
+# 判断是否是 ssh 地址（ssh 无法使用 ghproxy）
+is_ssh_url() {
+    [[ "$1" == git@* ]]
+}
+
+# 单个仓库克隆逻辑
+clone_single() {
+    local url="$1"
+    local name="$2"
+    local extra_args=()
+    [[ -n "$DEPTH" ]] && extra_args+=(--depth "$DEPTH")
+    [[ -n "$GIT_CLONE_ARGS" ]] && extra_args+=($GIT_CLONE_ARGS)
+
+    local candidates=()
+    # ssh地址：只尝试原始链接，不追加镜像
+    if is_ssh_url "$url"; then
+        candidates+=("$url")
+    else
+        if [[ "$PROXY_MODE" != "only" ]]; then
+            candidates+=("$url")
+        fi
+        for p in "${PROXY_LIST[@]}"; do
+            candidates+=("${p}${url}")
+        done
+    fi
+
+    local n=${#candidates[@]}
+    for ((i=0; i<n; i++)); do
+        local target="${candidates[$i]}"
+        local source_name
+        if (( i == 0 )); then
+            if is_ssh_url "$url"; then
+                source_name="SSH原始链接"
+            else
+                source_name="原始链接"
+            fi
+        else
+            source_name="镜像$i(${PROXY_LIST[$((i-1))]})"
+        fi
+
+        echo -e "${gl_huang}>>> [${name}] 尝试 ${gl_bufan}${source_name}${gl_bai}"
+        local ret=0
+        if [[ "$VERBOSE" -eq 1 ]]; then
+            timeout "$CLONE_TIMEOUT" git clone "${extra_args[@]}" -- "$target"
+            ret=$?
+        else
+            timeout "$CLONE_TIMEOUT" git clone "${extra_args[@]}" -- "$target" >/dev/null 2>&1
+            ret=$?
+        fi
+        if [[ $ret -eq 0 ]]; then
+            log_ok "[$name] 克隆成功（${source_name}）"
+            return 0
+        fi
+        log_warn "[$name] ${source_name} 超时或失败，继续下一个源…"
+    done
+    log_error "[$name] 所有可用源均克隆失败"
+    return 1
+}
+
+# 批量克隆入口
+clone_repository() {
+    clone_dep_install git timeout
+    local repo_input_list=()
+    if [[ $# -eq 0 ]]; then
+        # 交互式输入
+        mapfile -t repo_input_list < <(input_repo_list)
+        if [[ ${#repo_input_list[@]} -eq 0 ]]; then
+            log_warn "未输入任何仓库地址"
+            break_end
+            return 1
+        fi
+    else
+        repo_input_list=("$@")
+    fi
+
+    # 数组去重
+    local -A seen
+    local unique_list=()
+    for item in "${repo_input_list[@]}"; do
+        [[ ! -v seen[$item] ]] && unique_list+=("$item") && seen[$item]=1
+    done
+    repo_input_list=("${unique_list[@]}")
+
+    echo -e ""
+    echo -e "${gl_zi}>>> 开始批量克隆，总计 ${gl_lv}${#repo_input_list[@]}${gl_huang} 个仓库 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    log_info "克隆目标目录：${gl_huang}$(pwd)${gl_bai}"
+    log_info "单次超时：${gl_huang}${CLONE_TIMEOUT}${gl_bai} 秒 | 镜像数量：${gl_huang}${#PROXY_LIST[@]}${gl_bai} | 模式：${gl_huang}${PROXY_MODE}${gl_bai}"
+    [[ -n "$DEPTH" ]] && log_info "浅克隆深度：${gl_huang}${DEPTH}${gl_bai}"
+    [[ "$VERBOSE" -eq 1 ]] && log_info "VERBOSE 模式开启，输出git原始日志"
+    echo ""
+
+    # 计数初始化（全部用 +=1 写法，避免set -e误退出）
+    local succ=0 skip=0 fail=0
+    local fail_list=()
+    for url in "${repo_input_list[@]}"; do
+        local name
+        name=$(get_repo_name "$url")
+        if [[ -d "$name" ]]; then
+            log_warn "[$name] 目录已存在，自动跳过"
+            ((skip += 1))
+            continue
+        fi
+        echo -e "${gl_huang}>>> 正在处理：${gl_huang}$url${gl_bai}"
+        if clone_single "$url" "$name"; then
+            ((succ += 1))
+        else
+            ((fail += 1))
+            fail_list+=("$url")
+        fi
+    done
+
+    echo -e "\n${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    log_info "批量任务汇总：${gl_lv}成功${succ}${gl_bai} 个，${gl_huang}跳过${skip}${gl_bai} 个，${gl_hong}失败${fail}${gl_bai} 个"
+    if [[ ${#fail_list[@]} -gt 0 ]]; then
+        echo -e "${gl_hong}失败清单：${gl_bai}"
+        for u in "${fail_list[@]}"; do
+            echo " - $u"
+        done
+    fi
+    break_end
+}
+
+cd_workdir() {
+    local target="/vol1/1000/GitHub"
+    if [[ -d "$target" ]]; then
+        cd "$target"
+        log_ok "已切换工作目录：${gl_lv}$target${gl_bai}"
+        return 0
+    fi
+
+    log_warn "目标目录不存在：${gl_huang}$target${gl_bai}"
+    read -r -e -p "$(echo -e "${gl_bai}是否现在创建该目录？(${gl_lv}Y${gl_bai}/n) ")" ans
+    ans="${ans:-Y}"
+    if [[ "$ans" =~ ^[Yy]$ ]]; then
+        log_info "正在创建目录：${gl_huang}$target${gl_bai}"
+        if mkdir -p "$target"; then
+            cd "$target"
+            log_ok "创建并切换至：${gl_lv}$target${gl_bai}"
+            return 0
+        else
+            log_error "创建目录失败，权限不足？"
+            return 1
+        fi
+    else
+        log_info "取消创建，保持当前目录：$(pwd)"
+        return 1
+    fi
+}
+
+git_clone_menu() {
+    # 进入克隆菜单时启用 Ctrl+C 捕获，返回主菜单时恢复默认
+    trap sigint_handler SIGINT
+    while true; do
+        cd_workdir
+        clear
+        echo -e "${gl_zi}>>> Fan 系列项目一键克隆${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "当前目录: ${gl_huang}$(pwd)${gl_bai}"
+        echo -e "切换目录: ${gl_lv}输入 77${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}1.  ${gl_bai}FanPanel  导 航 页  ${gl_bufan}2.  ${gl_bai}FanVideo    影 视 库"
+        echo -e "${gl_bufan}3.  ${gl_bai}FanMD     云 文 档  ${gl_bufan}4.  ${gl_bai}Dufs-zh     文件服务"
+        echo -e "${gl_bufan}5.  ${gl_bai}2Panel    计划任务  ${gl_bufan}6.  ${gl_bai}FanShop     容器管理"
+        echo -e "${gl_bufan}7.  ${gl_bai}FanFiles  文件管理  ${gl_bufan}8.  ${gl_bai}FanReubah   格式转换"
+        echo -e "${gl_bufan}9.  ${gl_bai}CmdBox    命令大全  ${gl_bufan}10. ${gl_bai}FanWebSSH   终端面板"
+        echo -e "${gl_bufan}11. ${gl_bai}FanRandom 随机壁纸  ${gl_bufan}12. ${gl_bai}FanVideoDL  视频下载"
+        echo -e "${gl_bufan}13. ${gl_bai}FanVideoCT视频剪切  ${gl_bufan}14. ${gl_bai}FanNginx    反向代理"
+        echo -e "${gl_bufan}15. ${gl_bai}FanVideoTR视频转码  ${gl_bufan}16. ${gl_bai}FanImageTR  图片转码"
+        echo -e "${gl_bufan}17. ${gl_bai}StudyBuddy刷题系统  ${gl_bufan}18. ${gl_bai}FanImageHost简单图床"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}66.${gl_huang}一键克隆全部项目     ${gl_bufan}99. ${gl_bai}手动输入仓库地址${gl_bai}"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00.  ${gl_bai}退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" action
+        case "$action" in
+            1)  clone_repository git@github.com:meimolihan/fan-panel.git ;;
+            2)  clone_repository git@github.com:meimolihan/fan-video.git ;;
+            3)  clone_repository git@github.com:meimolihan/fan-md.git ;;
+            4)  clone_repository git@github.com:meimolihan/dufs-zh.git ;;
+            5)  clone_repository git@github.com:meimolihan/2panel.git ;;
+            6)  clone_repository git@github.com:meimolihan/fan-shop.git ;;
+            7)  clone_repository git@github.com:meimolihan/fan-files.git ;;
+            8)  clone_repository git@github.com:meimolihan/fan-reubah.git ;;
+            9)  clone_repository git@github.com:meimolihan/cmdbox-main.git ;;
+            10) clone_repository git@github.com:meimolihan/fan-webssh.git ;;
+            11) clone_repository git@github.com:meimolihan/fan-random.git ;;
+            12) clone_repository git@github.com:meimolihan/fan-video-dl.git ;;
+            13) clone_repository git@github.com:meimolihan/fan-video-ct.git ;;
+            14) clone_repository git@github.com:meimolihan/fan-nginx.git ;;
+            15) clone_repository git@github.com:meimolihan/fan-video-tr.git ;;
+            16) clone_repository git@github.com:meimolihan/fan-image-tr.git ;;
+            17) clone_repository git@github.com:meimolihan/StudyBuddy.git ;;
+            18) clone_repository git@github.com:meimolihan/fan-imagehost.git ;;
+            66)
+                clone_repository \
+                    git@github.com:meimolihan/fan-panel.git \
+                    git@github.com:meimolihan/fan-video.git \
+                    git@github.com:meimolihan/fan-md.git \
+                    git@github.com:meimolihan/dufs-zh.git \
+                    git@github.com:meimolihan/2panel.git \
+                    git@github.com:meimolihan/fan-shop.git \
+                    git@github.com:meimolihan/fan-files.git \
+                    git@github.com:meimolihan/fan-reubah.git \
+                    git@github.com:meimolihan/cmdbox-main.git \
+                    git@github.com:meimolihan/fan-webssh.git \
+                    git@github.com:meimolihan/fan-random.git \
+                    git@github.com:meimolihan/fan-video-dl.git \
+                    git@github.com:meimolihan/fan-video-ct.git \
+                    git@github.com:meimolihan/fan-nginx.git \
+                    git@github.com:meimolihan/fan-video-tr.git \
+                    git@github.com:meimolihan/fan-image-tr.git \
+                    git@github.com:meimolihan/StudyBuddy.git \
+                    git@github.com:meimolihan/fan-imagehost.git
+                ;;
+            99) clone_repository ;;
+            77) enter_directory ;;
+            0)
+                trap - SIGINT
+                return 0
+                ;;
+            00 | 000 | 0000)
+                exit_script
+                ;;
+            "")
+                echo -ne "\033[1A\r\033[K"
+                echo -e "${gl_hong}❌ 不能为空${gl_bai}，请重新选择"
+                sleep_fractional 0.6
+                echo -ne "\033[1A\r\033[K"
+                continue
+                ;;
+            *)
+                handle_invalid_input
+                ;;
+        esac
+    done
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
-        echo -e "${gl_zi}>>> 个人项目管理工具 - ${gl_huang}666 ${gl_zi}更新脚本${gl_bai}"
+        echo -e "${gl_zi}>>> 个人项目管理 - ${gl_huang}666 ${gl_zi}更新脚本 - ${gl_huang}777 ${gl_zi}克隆项目${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
         local bin_run=0 bin_stop=0
@@ -6639,6 +7088,9 @@ proj_mgmt_tool() {
             ;;
         666)
             install_fan_script
+            ;;
+        777)
+            git_clone_menu
             ;;
         0)
             cancel_return "已是主菜单"
