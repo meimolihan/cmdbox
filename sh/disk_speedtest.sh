@@ -165,6 +165,37 @@ handle_invalid_input() {
 }
 
 
+parse_speed_mbps() {
+    local out="$1"
+    local token
+    token=$(printf '%s\n' "${out}" | grep -Eo '[0-9]+([.,][0-9]+)?[[:space:]]*([kKmMgGtTpP]i?)?B/s' | tail -n 1)
+    if [[ -z "${token}" ]]; then
+        token=$(printf '%s\n' "${out}" | grep -Eo '[0-9]+([.,][0-9]+)?[[:space:]]*bytes/sec' | tail -n 1)
+    fi
+    [[ -z "${token}" ]] && return 1
+    printf '%s\n' "${token}" | awk '{
+        gsub(",", ".", $1)
+        value = $1 + 0
+        unit = $2
+        sub("/s$", "", unit)
+        sub("/sec$", "", unit)
+        if (unit == "B" || unit == "bytes") mult = 0.000001
+        else if (unit == "kB") mult = 0.001
+        else if (unit == "MB") mult = 1
+        else if (unit == "GB") mult = 1000
+        else if (unit == "TB") mult = 1000000
+        else if (unit == "PB") mult = 1000000000
+        else if (unit == "KiB") mult = 1024 / 1000000
+        else if (unit == "MiB") mult = 1048576 / 1000000
+        else if (unit == "GiB") mult = 1073741824 / 1000000
+        else if (unit == "TiB") mult = 1099511627776 / 1000000
+        else if (unit == "PiB") mult = 1125899906842624 / 1000000
+        else mult = 1
+        printf "%.1f\n", value * mult
+    }'
+}
+
+
 disk_speed_test() {
     local test_dir="$1"
     local test_file="${test_dir}/.speed_test_tmp.dat"
@@ -197,7 +228,7 @@ disk_speed_test() {
         dd_out=$(dd if=/dev/zero of="${test_file}" bs=${bs} count=${count} 2>&1)
         echo "${dd_out}"
     fi
-    write_speed=$(echo "${dd_out}" | grep -Eo '[0-9.]+ MB/s' | awk '{print $1}')
+    write_speed=$(parse_speed_mbps "${dd_out}")
 
 
     echo -e ""
@@ -212,7 +243,7 @@ disk_speed_test() {
         dd_out=$(dd if="${test_file}" of=/dev/null bs=${bs} 2>&1)
         echo "${dd_out}"
     fi
-    read_speed=$(echo "${dd_out}" | grep -Eo '[0-9.]+ MB/s' | awk '{print $1}')
+    read_speed=$(parse_speed_mbps "${dd_out}")
 
 
     # log_info "清理临时测速文件"
