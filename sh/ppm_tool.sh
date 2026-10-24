@@ -175,6 +175,48 @@ get_repo_slug() {
 }
 
 git_push() {
+    local msg="${1:-自动更新 $(date '+%Y-%m-%d %H:%M:%S')}"
+    local branch
+    branch=$(git rev-parse --abbrev-ref HEAD)
+
+    if [ "$branch" = "HEAD" ]; then
+        log_error "当前处于游离HEAD状态，无法执行推送"
+        return 1
+    fi
+
+    log_info "当前分支：$branch"
+    log_info "开始拉取远端最新代码"
+    git pull origin "$branch"
+    if [ $? -ne 0 ]; then
+        log_error "拉取代码失败，请手动处理冲突"
+        return 1
+    fi
+
+    log_info "添加所有变更文件"
+    git add .
+
+    log_info "提交代码，提交信息：$msg"
+    git commit -m "$msg"
+    if [ $? -ne 0 ]; then
+        if git status | grep -q "nothing to commit"; then
+            log_warn "没有文件改动，无需提交推送"
+            return 0
+        fi
+        log_error "代码提交失败"
+        return 1
+    fi
+
+    log_info "推送到远端 origin/$branch"
+    git push origin "$branch"
+    if [ $? -eq 0 ]; then
+        log_ok "代码推送完成"
+    else
+        log_error "代码推送失败"
+        return 1
+    fi
+}
+
+git_push_pro() {
     local target_dir="${1:-.}"
 
     if [[ ! -d "$target_dir" ]]; then
@@ -195,7 +237,7 @@ git_push() {
         return 1
     fi
 
-    install git
+    pkg_install git
 
     if [[ -z $(git config user.name) || -z $(git config user.email) ]]; then
         log_error "Git 用户名或邮箱未配置，请先配置。"
@@ -228,12 +270,10 @@ git_push() {
     
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     
-    # 1. 检查是否有任何更改（包括已暂存和未暂存）
     local status_output
     status_output=$(git status --porcelain 2>/dev/null)
     
     if [[ -z "$status_output" ]]; then
-        # 2. 没有本地更改，检查是否有未推送的提交
         local ahead_count=0
         if git rev-parse @{u} >/dev/null 2>&1; then
             ahead_count=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
@@ -243,85 +283,66 @@ git_push() {
             log_info "有 ${gl_huang}${ahead_count}${gl_lan} 个已提交但未推送的更改"
         else
             log_ok "无变更，无需提交"
-            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            break_end
             return 0
         fi
     else
-        # 3. 有本地更改，分析更改类型
         local has_staged_changes=false
         local has_unstaged_changes=false
         local has_untracked_files=false
         
-        # 逐行分析状态
         while IFS= read -r line; do
             if [[ -z "$line" ]]; then
                 continue
             fi
             
-            # 获取状态标记
             local staged="${line:0:1}"
             local unstaged="${line:1:1}"
             
-            # 检查是否有已暂存的更改
             if [[ "$staged" != " " ]] && [[ "$staged" != "?" ]]; then
                 has_staged_changes=true
             fi
             
-            # 检查是否有未暂存的更改
             if [[ "$unstaged" != " " ]] && [[ "$unstaged" != "?" ]]; then
                 has_unstaged_changes=true
             fi
             
-            # 检查是否有未跟踪的文件
             if [[ "$staged" == "?" ]] && [[ "$unstaged" == "?" ]]; then
                 has_untracked_files=true
             fi
         done <<< "$status_output"
         
-        # 4. 处理不同类型的更改
         if [[ "$has_unstaged_changes" == true ]] || [[ "$has_untracked_files" == true ]]; then
             log_info "正在添加所有未跟踪/修改的文件到暂存区 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
             git add .
             
             if [[ $? -ne 0 ]]; then
                 log_error "添加文件失败"
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                break_end
                 return 1
             fi
             
-            # 重新检查是否有已暂存的更改
             has_staged_changes=true
         fi
         
-        # 5. 提交更改
         if [[ "$has_staged_changes" == true ]]; then
-            # 显示将要提交的更改
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             log_info "将要提交的更改:${gl_bai}"
             git status --short
-            
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             log_info "正在提交更改 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
             git commit -m "update $(date '+%Y-%m-%d %H:%M:%S')"
             
             if [[ $? -ne 0 ]]; then
                 log_error "提交失败，请检查 Git 状态。"
-                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                break_end
                 return 1
             fi
         fi
     fi
     
-    # 6. 检查是否有未推送的提交
     local ahead_count=0
     if git rev-parse @{u} >/dev/null 2>&1; then
         ahead_count=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
     fi
     
-    # 7. 推送更改
     if [[ "$ahead_count" -gt 0 ]]; then
         log_info "正在推送到远程仓库 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
         
@@ -360,8 +381,7 @@ git_push() {
         log_ok "已是最新，无需推送"
     fi
     
-    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    break_end
+    echo -e ""
     return 0
 }
 
@@ -5852,9 +5872,6 @@ git_push_all() {
     break_end
 }
 
-# ============================================================================
-# Gitea + Tea 管理工具
-# ============================================================================
 GITEA_COMPOSE_DIR="/vol1/1000/compose/gitea"
 GITEA_WEB_PORT="3033"
 GITEA_SSH_PORT="2233"
@@ -6320,37 +6337,12 @@ install_fan_script() {
     echo "   若当前终端未生效，请新开终端或执行： source ~/.bashrc"
 }
 
-# ==============================================================================
-# Git 批量克隆工具（由 git_clone_menu.sh 融入，主菜单入口：777）
-# Author: meimolihan
-#
-# 功能：
-#   1. 交互式菜单 / 手动逐行输入，批量克隆仓库
-#   2. https 链接克隆超时后自动依次尝试 ghproxy 镜像；ssh(git@) 地址不使用镜像
-#   3. 目录已存在自动跳过；自动去重；汇总成功/跳过/失败；失败清单单独输出
-#   4. 支持浅克隆、仅镜像模式、自定义超时、自定义镜像列表
-#   5. 【66】一键批量克隆全部 Fan 系列项目
-#
-# 融入说明（相对原 git_clone_menu.sh 的调整）：
-#   - 公共函数直接复用 ppm_tool 已有实现，未重复定义：
-#     log_info/log_ok/log_warn/log_error、break_end、sleep_fractional、
-#     exit_script、handle_invalid_input、cancel_empty、exit_animation
-#   - 未引入原脚本的 set -o errexit -o nounset -o pipefail，避免影响 ppm_tool 全局行为
-#   - 原 install() 更名为 clone_dep_install()，避免与脚本内其他 install 冲突
-#   - 原 proj_mgmt_tool() 占位菜单移除，克隆菜单中 0 直接返回 ppm_tool 主菜单
-#   - Ctrl+C 捕获仅在克隆菜单内生效，返回主菜单时恢复默认行为
-#   - 顺手修复原脚本两处小问题：enter_directory 序号列表未填充；
-#     手动输入为空时 printf 空数组误触发一次空地址克隆
-# ==============================================================================
-
-# --------------------------- 可配置区（环境变量可覆盖） ---------------------------
 CLONE_TIMEOUT="${CLONE_TIMEOUT:-120}"
 DEPTH="${DEPTH:-}"
 PROXY_MODE="${PROXY_MODE:-direct}"
 VERBOSE="${VERBOSE:-0}"
 GIT_CLONE_ARGS="${GIT_CLONE_ARGS:-}"
 
-# 默认镜像前缀，外部可通过 PROXY_LIST 覆盖
 if [[ -z "${PROXY_LIST:-}" ]]; then
     PROXY_LIST=(
         "https://ghfast.top/"
@@ -6361,13 +6353,11 @@ if [[ -z "${PROXY_LIST:-}" ]]; then
     )
 fi
 
-# Ctrl+C 捕获（仅克隆菜单内生效）
 sigint_handler() {
     echo -e "\n${gl_hong}⚠️ 捕获 Ctrl+C，准备退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     exit_script
 }
 
-# 克隆依赖安装（仅root自动安装，非root跳过，保持原脚本行为）
 clone_dep_install() {
     [[ $# -eq 0 ]] && return 1
     [[ "$(id -u)" -ne 0 ]] && { log_warn "非root用户，跳过自动安装"; return 0; }
@@ -6392,7 +6382,6 @@ enter_directory() {
     echo -e "${gl_huang}>>> 当前目录子目录列表：${gl_bai}(${gl_lv}$current_path${gl_bai})"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
-    # 收集当前目录条目（与下方 ls 展示顺序一致），供序号选择使用
     while IFS= read -r d; do
         [[ -n "$d" ]] && dirs+=("$d")
     done < <(ls -1)
@@ -6481,7 +6470,6 @@ enter_directory() {
     return 0
 }
 
-# 手动输入仓库列表
 input_repo_list() {
     local repo_list=()
     clear
@@ -6505,37 +6493,30 @@ input_repo_list() {
         fi
         repo_list+=("$input_tmp")
     done
-    # 空列表时不输出，避免下游把空行误判为一次空地址克隆
     if [[ ${#repo_list[@]} -gt 0 ]]; then
         printf "%s\n" "${repo_list[@]}"
     fi
 }
 
-# 提取仓库目录名，兼容 ssh / https / 带镜像前缀地址
 get_repo_name() {
     local url="$1"
     url="${url%/.git}"
     url="${url%.git}"
-    # ssh git@xxx:owner/repo.git
     if [[ "$url" == git@* ]]; then
         url="${url#*:}"
         echo "${url##*/}"
         return 0
     fi
-    # https 链接，去掉协议、镜像前缀
     url="${url#*://}"
-    # 去掉第一层域名
     url="${url#*/}"
     url="${url#*/}"
     echo "${url##*/}"
 }
 
-# 判断是否是 ssh 地址（ssh 无法使用 ghproxy）
 is_ssh_url() {
     [[ "$1" == git@* ]]
 }
 
-# 单个仓库克隆逻辑
 clone_single() {
     local url="$1"
     local name="$2"
@@ -6589,7 +6570,6 @@ clone_single() {
     return 1
 }
 
-# 批量克隆入口
 clone_repository() {
     clone_dep_install git timeout
     local repo_input_list=()
@@ -6605,7 +6585,6 @@ clone_repository() {
         repo_input_list=("$@")
     fi
 
-    # 数组去重
     local -A seen
     local unique_list=()
     for item in "${repo_input_list[@]}"; do
@@ -6622,7 +6601,6 @@ clone_repository() {
     [[ "$VERBOSE" -eq 1 ]] && log_info "VERBOSE 模式开启，输出git原始日志"
     echo ""
 
-    # 计数初始化（全部用 +=1 写法，避免set -e误退出）
     local succ=0 skip=0 fail=0
     local fail_list=()
     for url in "${repo_input_list[@]}"; do
@@ -6681,7 +6659,6 @@ cd_workdir() {
 }
 
 git_clone_menu() {
-    # 进入克隆菜单时启用 Ctrl+C 捕获，返回主菜单时恢复默认
     trap sigint_handler SIGINT
     while true; do
         cd_workdir
@@ -6773,22 +6750,28 @@ git_push_mobufan_sh() {
     echo -e ""
     echo -e "${gl_huang}>>> 推送 /vol1/1000/Gitee/sh${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    git_push /vol1/1000/Gitee/sh
+    git_push_pro /vol1/1000/Gitee/sh
     echo -e ""
     echo -e "${gl_huang}>>> 推送 /vol1/1000/GitHub/sh${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    git_push /vol1/1000/GitHub/sh
+    git_push_pro /vol1/1000/GitHub/sh
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
+    return 1
 }
 
 git_push_Gitee_cmdbox() {
     echo -e ""
     echo -e "${gl_huang}>>> 推送 /vol1/1000/Gitee/cmdbox${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    git_push /vol1/1000/Gitee/cmdbox
+    git_push_pro /vol1/1000/Gitee/cmdbox
+    echo -e ""
+    echo -e "${gl_huang}>>> 推送 /vol1/1000/GitHub/cmdbox-main${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    git_push_pro /vol1/1000/GitHub/cmdbox-main
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
+    return 1
 }
 
 proj_mgmt_tool() {
