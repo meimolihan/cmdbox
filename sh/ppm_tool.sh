@@ -175,45 +175,194 @@ get_repo_slug() {
 }
 
 git_push() {
-    local msg="${1:-自动更新 $(date '+%Y-%m-%d %H:%M:%S')}"
-    local branch
-    branch=$(git rev-parse --abbrev-ref HEAD)
+    local target_dir="${1:-.}"
 
-    if [ "$branch" = "HEAD" ]; then
-        log_error "当前处于游离HEAD状态，无法执行推送"
+    if [[ ! -d "$target_dir" ]]; then
+        log_error "目录不存在：$target_dir"
+        exit_animation
         return 1
     fi
 
-    log_info "当前分支：$branch"
-    log_info "开始拉取远端最新代码"
-    git pull origin "$branch"
-    if [ $? -ne 0 ]; then
-        log_error "拉取代码失败，请手动处理冲突"
+    cd "$target_dir" || {
+        log_error "无法进入目录：$target_dir"
+        exit_animation
+        return 1
+    }
+
+    if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        log_error "当前目录不是 Git 仓库"
+        exit_animation
         return 1
     fi
 
-    log_info "添加所有变更文件"
-    git add .
+    install git
 
-    log_info "提交代码，提交信息：$msg"
-    git commit -m "$msg"
-    if [ $? -ne 0 ]; then
-        if git status | grep -q "nothing to commit"; then
-            log_warn "没有文件改动，无需提交推送"
+    if [[ -z $(git config user.name) || -z $(git config user.email) ]]; then
+        log_error "Git 用户名或邮箱未配置，请先配置。"
+        echo -e "       ${gl_huang}git config --global user.name \"Your Name\"${gl_bai}"
+        echo -e "       ${gl_huang}git config --global user.email \"your.email@example.com\"${gl_bai}"
+        return 2
+    fi
+
+    echo -e ""
+    echo -e "${gl_zi}>>> 推送当前项目更新${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_bai}当前工作目录: ${gl_huang}$(pwd)${gl_bai}"
+    repo_dir=$(basename "$(pwd)")
+    echo -e "${gl_bai}当前项目名称: ${gl_huang}${repo_dir} ${gl_bai}仓库${gl_bai}"
+    echo -e "${gl_bai}当前分支: ${gl_lv}$(git branch --show-current 2>/dev/null)${gl_bai}"
+    
+    if ! git remote | grep -q .; then
+        log_error "没有配置远程仓库"
+        echo -e "       ${gl_huang}请先添加远程仓库: git remote add origin <repository-url>${gl_bai}"
+        exit_animation
+        return 1
+    fi
+    
+    echo -e "${gl_bai}远程仓库: ${gl_lv}$(git remote -v | head -1)${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
+    log_info "检查当前 Git 状态 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+    echo -e "${gl_bai}状态:${gl_bai}"
+    git status --short 2>/dev/null || echo -e "  ${gl_huang}无法获取 Git 状态${gl_bai}"
+    
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    
+    # 1. 检查是否有任何更改（包括已暂存和未暂存）
+    local status_output
+    status_output=$(git status --porcelain 2>/dev/null)
+    
+    if [[ -z "$status_output" ]]; then
+        # 2. 没有本地更改，检查是否有未推送的提交
+        local ahead_count=0
+        if git rev-parse @{u} >/dev/null 2>&1; then
+            ahead_count=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
+        fi
+        
+        if [[ "$ahead_count" -gt 0 ]]; then
+            log_info "有 ${gl_huang}${ahead_count}${gl_lan} 个已提交但未推送的更改"
+        else
+            log_ok "无变更，无需提交"
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            break_end
             return 0
         fi
-        log_error "代码提交失败"
-        return 1
-    fi
-
-    log_info "推送到远端 origin/$branch"
-    git push origin "$branch"
-    if [ $? -eq 0 ]; then
-        log_ok "代码推送完成"
     else
-        log_error "代码推送失败"
-        return 1
+        # 3. 有本地更改，分析更改类型
+        local has_staged_changes=false
+        local has_unstaged_changes=false
+        local has_untracked_files=false
+        
+        # 逐行分析状态
+        while IFS= read -r line; do
+            if [[ -z "$line" ]]; then
+                continue
+            fi
+            
+            # 获取状态标记
+            local staged="${line:0:1}"
+            local unstaged="${line:1:1}"
+            
+            # 检查是否有已暂存的更改
+            if [[ "$staged" != " " ]] && [[ "$staged" != "?" ]]; then
+                has_staged_changes=true
+            fi
+            
+            # 检查是否有未暂存的更改
+            if [[ "$unstaged" != " " ]] && [[ "$unstaged" != "?" ]]; then
+                has_unstaged_changes=true
+            fi
+            
+            # 检查是否有未跟踪的文件
+            if [[ "$staged" == "?" ]] && [[ "$unstaged" == "?" ]]; then
+                has_untracked_files=true
+            fi
+        done <<< "$status_output"
+        
+        # 4. 处理不同类型的更改
+        if [[ "$has_unstaged_changes" == true ]] || [[ "$has_untracked_files" == true ]]; then
+            log_info "正在添加所有未跟踪/修改的文件到暂存区 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            git add .
+            
+            if [[ $? -ne 0 ]]; then
+                log_error "添加文件失败"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                break_end
+                return 1
+            fi
+            
+            # 重新检查是否有已暂存的更改
+            has_staged_changes=true
+        fi
+        
+        # 5. 提交更改
+        if [[ "$has_staged_changes" == true ]]; then
+            # 显示将要提交的更改
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            log_info "将要提交的更改:${gl_bai}"
+            git status --short
+            
+            echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+            log_info "正在提交更改 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+            git commit -m "update $(date '+%Y-%m-%d %H:%M:%S')"
+            
+            if [[ $? -ne 0 ]]; then
+                log_error "提交失败，请检查 Git 状态。"
+                echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+                break_end
+                return 1
+            fi
+        fi
     fi
+    
+    # 6. 检查是否有未推送的提交
+    local ahead_count=0
+    if git rev-parse @{u} >/dev/null 2>&1; then
+        ahead_count=$(git rev-list --count @{u}..HEAD 2>/dev/null || echo 0)
+    fi
+    
+    # 7. 推送更改
+    if [[ "$ahead_count" -gt 0 ]]; then
+        log_info "正在推送到远程仓库 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+        
+        if git push; then
+            log_ok "推送成功！"
+        else
+            log_warn "推送失败，尝试使用 SSH 方式或检查网络连接"
+            
+            local remote_url=$(git remote get-url origin 2>/dev/null || echo "")
+            if [[ -n "$remote_url" ]]; then
+                if [[ "$remote_url" == https://* ]]; then
+                    echo -e "${gl_huang}当前使用 HTTPS 协议，尝试切换到 SSH 协议${gl_bai}"
+                    read -r -e -p "$(echo -e "${gl_bai}是否切换到 SSH 协议? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" switch_to_ssh
+                    
+                    if [[ "$switch_to_ssh" =~ ^[Yy]$ ]]; then
+                        local ssh_url=$(echo "$remote_url" | sed -E 's|^https://([^/]+)/(.+)$|git@\1:\2|')
+                        echo -e "${gl_bai}新的 SSH URL: ${gl_huang}$ssh_url${gl_bai}"
+                        
+                        read -r -e -p "$(echo -e "${gl_bai}确认更新远程 URL? (${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" confirm_update
+                        
+                        if [[ "$confirm_update" =~ ^[Yy]$ ]]; then
+                            git remote set-url origin "$ssh_url"
+                            log_info "已更新远程 URL，正在尝试推送 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
+                            
+                            if git push; then
+                                log_ok "使用 SSH 协议推送成功！"
+                            else
+                                log_error "SSH 推送也失败，请检查 SSH 密钥配置和网络连接"
+                            fi
+                        fi
+                    fi
+                fi
+            fi
+        fi
+    else
+        log_ok "已是最新，无需推送"
+    fi
+    
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+    return 0
 }
 
 check_tokens() {
@@ -2815,7 +2964,7 @@ fi
 # ============================================================
 start_app()
 {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] 正在尝试启动 APP ..."
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] 正在尝试启动 APP ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] 包名: ${APP_PACKAGE}"
     RESPONSE=$(curl \
         --silent \
@@ -6214,7 +6363,7 @@ fi
 
 # Ctrl+C 捕获（仅克隆菜单内生效）
 sigint_handler() {
-    echo -e "\n${gl_hong}⚠️ 捕获 Ctrl+C，准备退出...${gl_bai}"
+    echo -e "\n${gl_hong}⚠️ 捕获 Ctrl+C，准备退出 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     exit_script
 }
 
@@ -6620,6 +6769,28 @@ git_clone_menu() {
     done
 }
 
+git_push_mobufan_sh() {
+    echo -e ""
+    echo -e "${gl_huang}>>> 推送 /vol1/1000/Gitee/sh${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    git_push /vol1/1000/Gitee/sh
+    echo -e ""
+    echo -e "${gl_huang}>>> 推送 /vol1/1000/GitHub/sh${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    git_push /vol1/1000/GitHub/sh
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
+git_push_Gitee_cmdbox() {
+    echo -e ""
+    echo -e "${gl_huang}>>> 推送 /vol1/1000/Gitee/cmdbox${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    git_push /vol1/1000/Gitee/cmdbox
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    break_end
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
@@ -6954,6 +7125,7 @@ proj_mgmt_tool() {
         echo -e "${col45}45.${gl_bai} FanVideoTR视频转码  ${col46}46.${gl_bai} FanImageTR  图片转码"
         echo -e "${col47}47.${gl_bai} StudyBuddy刷题系统  ${col48}48.${gl_bai} FanImageHost简单图床"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}61.${gl_bai} 推送mobufan_sh      ${gl_bufan}71.${gl_bai} 推送CmdBox"
         echo -e "${gl_lv}66.${gl_bai} 构建并推送          ${gl_lv}77.${gl_bai} 推送所有更新"
         echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -7080,8 +7252,14 @@ proj_mgmt_tool() {
         48)
             docker_compose_manager /vol1/1000/compose/fan-imagehost
             ;;
+        61)
+            git_push_mobufan_sh
+            ;;
         66)
             git_project_menu
+            ;;
+        71)
+            git_push_Gitee_cmdbox
             ;;
         77)
             git_push_all "/vol1/1000/GitHub" "日常更新" ""
