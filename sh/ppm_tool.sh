@@ -1239,6 +1239,64 @@ show_service_status() {
     fi
 }
 
+safe_read() {
+    local prompt="$1"
+    local var_name="$2"
+    local type="${3:-"string"}"
+    local default_value="${4:-}"
+    local min_value="${5:-}"
+    local max_value="${6:-}"
+    local max_retry=3
+    local retry_count=0
+    while [[ $retry_count -lt $max_retry ]]; do
+        if [[ -n "$default_value" ]]; then
+            read -r -e -p "$(echo -e "${gl_bai}$prompt (${gl_huang}默认: $default_value${gl_bai}): ")" "$var_name"
+            [[ -z "${!var_name}" ]] && eval "$var_name=\"\$default_value\""
+        else
+            read -r -e -p "$(echo -e "${gl_bai}$prompt: ")" "$var_name"
+        fi
+        if [[ -z "${!var_name}" ]]; then
+            if [[ -n "$default_value" ]]; then
+                eval "$var_name=\"\$default_value\""
+                return 0
+            else
+                log_error "输入不能为空"
+                retry_count=$((retry_count + 1))
+                continue
+            fi
+        fi
+        case "$type" in
+            "number")
+                if ! [[ "${!var_name}" =~ ^[0-9]+$ ]]; then
+                    log_error "请输入数字"
+                    retry_count=$((retry_count + 1))
+                    continue
+                fi
+                if [[ -n "$min_value" ]] && [[ "${!var_name}" -lt "$min_value" ]]; then
+                    log_error "输入值不能小于 $min_value"
+                    retry_count=$((retry_count + 1))
+                    continue
+                fi
+                if [[ -n "$max_value" ]] && [[ "${!var_name}" -gt "$max_value" ]]; then
+                    log_error "输入值不能大于 $max_value"
+                    retry_count=$((retry_count + 1))
+                    continue
+                fi
+                ;;
+            "y/n")
+                if ! [[ "${!var_name}" =~ ^[YyNn]$ ]]; then
+                    log_error "请输入 y 或 n"
+                    retry_count=$((retry_count + 1))
+                    continue
+                fi
+                ;;
+        esac
+        return 0
+    done
+    log_error "输入尝试次数过多，返回上一级"
+    return 1
+}
+
 docker_compose_manager() {
     local FWORK_DIR="${1:-$PWD}"
     if ! cd "$FWORK_DIR" 2>/dev/null; then
@@ -1247,63 +1305,6 @@ docker_compose_manager() {
         exit_animation
         return 1
     fi
-    safe_read() {
-        local prompt="$1"
-        local var_name="$2"
-        local type="${3:-"string"}"
-        local default_value="${4:-}"
-        local min_value="${5:-}"
-        local max_value="${6:-}"
-        local max_retry=3
-        local retry_count=0
-        while [[ $retry_count -lt $max_retry ]]; do
-            if [[ -n "$default_value" ]]; then
-                read -r -e -p "$(echo -e "${gl_bai}$prompt (${gl_huang}默认: $default_value${gl_bai}): ")" "$var_name"
-                [[ -z "${!var_name}" ]] && eval "$var_name=\"\$default_value\""
-            else
-                read -r -e -p "$(echo -e "${gl_bai}$prompt: ")" "$var_name"
-            fi
-            if [[ -z "${!var_name}" ]]; then
-                if [[ -n "$default_value" ]]; then
-                    eval "$var_name=\"\$default_value\""
-                    return 0
-                else
-                    log_error "输入不能为空"
-                    retry_count=$((retry_count + 1))
-                    continue
-                fi
-            fi
-            case "$type" in
-                "number")
-                    if ! [[ "${!var_name}" =~ ^[0-9]+$ ]]; then
-                        log_error "请输入数字"
-                        retry_count=$((retry_count + 1))
-                        continue
-                    fi
-                    if [[ -n "$min_value" ]] && [[ "${!var_name}" -lt "$min_value" ]]; then
-                        log_error "输入值不能小于 $min_value"
-                        retry_count=$((retry_count + 1))
-                        continue
-                    fi
-                    if [[ -n "$max_value" ]] && [[ "${!var_name}" -gt "$max_value" ]]; then
-                        log_error "输入值不能大于 $max_value"
-                        retry_count=$((retry_count + 1))
-                        continue
-                    fi
-                    ;;
-                "y/n")
-                    if ! [[ "${!var_name}" =~ ^[YyNn]$ ]]; then
-                        log_error "请输入 y 或 n"
-                        retry_count=$((retry_count + 1))
-                        continue
-                    fi
-                    ;;
-            esac
-            return 0
-        done
-        log_error "输入尝试次数过多，返回上一级"
-        return 1
-    }
 
     handle_invalid_input() {
         echo -ne "\r\033[K${gl_huang}无效的输入,请重新输入! ${gl_zi} 1 ${gl_huang} 秒后"
@@ -6774,6 +6775,77 @@ git_push_Gitee_cmdbox() {
     return 1
 }
 
+file_list_menu() {
+    local base_dir
+    base_dir="$(pwd)"
+
+    local -a dir_list=()
+    while IFS= read -r -d '' item; do
+        dir_list+=("${item}")
+    done < <(find "${base_dir}" -maxdepth 1 -type d ! -path "${base_dir}" ! -name '.*' -print0 | sort -z)
+
+    if [[ ${#dir_list[@]} -eq 0 ]]; then
+        echo "当前目录下没有可选择的子目录"
+        return 1
+    fi
+
+    echo
+    echo -e "${gl_huang}>>> Compose 项目列表${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    local total=${#dir_list[@]}
+    local half=$(( (total + 1) / 2 ))
+
+    for ((i=0; i < half; i++)); do
+        local left_idx=$((i + 1))
+        local left_name
+        left_name="$(basename "${dir_list[$i]}")"
+
+        local right_idx=$((i + half + 1))
+        local right_name=""
+        if (( right_idx <= total )); then
+            right_name="$(basename "${dir_list[$right_idx - 1]}")"
+            printf "${gl_bufan}%2d.${gl_bai} %-20s    ${gl_bufan}%2d.${gl_bai} %s\n" "$left_idx" "$left_name" "$right_idx" "$right_name"
+        else
+            printf "${gl_bufan}%2d.${gl_bai} %s\n" "$left_idx" "$left_name"
+        fi
+    done
+
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+
+    local input
+    if ! safe_read "请输入序号或目录名称" input any ""; then
+        return 1
+    fi
+
+    if [[ "$input" == "0" ]]; then
+        return 0
+    fi
+
+    local target_path=""
+    if [[ "${input}" =~ ^[0-9]+$ ]]; then
+        local idx=$((input - 1))
+        if [[ ${idx} -ge 0 && ${idx} -lt ${#dir_list[@]} ]]; then
+            target_path="${dir_list[${idx}]}"
+        else
+            echo "错误：序号超出范围"
+            return 1
+        fi
+    else
+        target_path="${base_dir}/${input}"
+        target_path="${target_path/#\~/$HOME}"
+        if [[ ! -d "${target_path}" ]]; then
+            echo "错误：目录 ${input} 不存在"
+            return 1
+        fi
+    fi
+
+    target_path="$(realpath "${target_path}")"
+    echo "已选择：${target_path}"
+    docker_compose_manager "${target_path}"
+}
+
 proj_mgmt_tool() {
     while true; do
         clear
@@ -7085,6 +7157,7 @@ proj_mgmt_tool() {
         echo -e "${gl_lan}公共项目${gl_bai}"
         echo -e "${col1}1.${gl_bai}  OpenCode  智能代理  ${col2}2.${gl_bai}  TVmonitor   软件自启"
         echo -e "${col3}3.${gl_bai}  Gitea-Tea 管理命令  ${col4}4.${gl_bai}  Gitea       代码托管"
+        echo -e "${gl_bufan}5.${gl_bai}  Compose   项目管理"
         echo -e ""
         echo -e "${gl_huang}二进制项目${gl_bai}"
         echo -e "${col11}11.${gl_bai} FanPanel  导 航 页  ${col12}12.${gl_bai} FanVideo    影 视 库"
@@ -7127,6 +7200,9 @@ proj_mgmt_tool() {
         4)
             docker_compose_manager /vol1/1000/compose/gitea
             ;;
+        5)
+            cd /vol1/1000/compose && file_list_menu
+            ;;            
         11)
             manage_fan_panel
             ;;

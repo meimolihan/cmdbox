@@ -88,28 +88,29 @@ break_end() {
     clear
 }
 
-
 safe_read() {
     local prompt="$1"
-    local var_name="$2"
     local type="${3:-"string"}"
     local default_value="${4:-}"
     local min_value="${5:-}"
     local max_value="${6:-}"
     local max_retry=3
     local retry_count=0
-    
+    local input_val=""
+
     while [[ $retry_count -lt $max_retry ]]; do
+        input_val=""
         if [[ -n "$default_value" ]]; then
-            read -r -e -p "$(echo -e "${gl_bai}$prompt (${gl_huang}默认: $default_value${gl_bai}): ")" "$var_name"
-            [[ -z "${!var_name}" ]] && eval "$var_name=\"\$default_value\""
+            read -r -e -p "$(echo -e "${gl_bai}$prompt (${gl_huang}默认: $default_value${gl_bai}): ")" input_val
+            [[ -z "$input_val" ]] && input_val="$default_value"
         else
-            read -r -e -p "$(echo -e "${gl_bai}$prompt: ")" "$var_name"
+            read -r -e -p "$(echo -e "${gl_bai}$prompt: ")" input_val
         fi
-        
-        if [[ -z "${!var_name}" ]]; then
+
+        if [[ -z "$input_val" ]]; then
             if [[ -n "$default_value" ]]; then
-                eval "$var_name=\"\$default_value\""
+                input_val="$default_value"
+                printf "%s" "$input_val"
                 return 0
             else
                 log_error "输入不能为空"
@@ -117,39 +118,38 @@ safe_read() {
                 continue
             fi
         fi
-        
+
         case "$type" in
             "number")
-                if ! [[ "${!var_name}" =~ ^[0-9]+$ ]]; then
+                if ! [[ "$input_val" =~ ^[0-9]+$ ]]; then
                     log_error "请输入数字"
                     retry_count=$((retry_count + 1))
                     continue
                 fi
-                
-                if [[ -n "$min_value" ]] && [[ "${!var_name}" -lt "$min_value" ]]; then
+                if [[ -n "$min_value" ]] && [[ "$input_val" -lt "$min_value" ]]; then
                     log_error "输入值不能小于 $min_value"
                     retry_count=$((retry_count + 1))
                     continue
                 fi
-                
-                if [[ -n "$max_value" ]] && [[ "${!var_name}" -gt "$max_value" ]]; then
+                if [[ -n "$max_value" ]] && [[ "$input_val" -gt "$max_value" ]]; then
                     log_error "输入值不能大于 $max_value"
                     retry_count=$((retry_count + 1))
                     continue
                 fi
                 ;;
             "y/n")
-                if ! [[ "${!var_name}" =~ ^[YyNn]$ ]]; then
+                if ! [[ "$input_val" =~ ^[YyNn]$ ]]; then
                     log_error "请输入 y 或 n"
                     retry_count=$((retry_count + 1))
                     continue
                 fi
                 ;;
         esac
-        
+
+        printf "%s" "$input_val"
         return 0
     done
-    
+
     log_error "输入尝试次数过多，返回上一级"
     return 1
 }
@@ -198,21 +198,26 @@ parse_speed_mbps() {
 
 disk_speed_test() {
     local test_dir="$1"
+    local bs="${2:-1M}"
+    local count="${3:-500}"
     local test_file="${test_dir}/.speed_test_tmp.dat"
-    local bs="1M"
-    local count="500"
     local write_speed=""
     local read_speed=""
 
-
     [[ -d "${test_dir}" ]] || { log_error "目录不存在：${test_dir}"; return 1; }
+    [[ -w "${test_dir}" ]] || { log_error "目录无写入权限：${test_dir}"; return 1; }
+
+    cleanup_tmp() {
+        rm -f "${test_file}"
+    }
+    trap cleanup_tmp EXIT SIGINT SIGTERM
 
     clear
     echo -e ""
     echo -e "${gl_zi}>>> 磁盘读写测速${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_info "测速目录地址: ${gl_huang}${test_dir}${gl_bai}"
-    log_info "测试文件大小: ${gl_huang}${count}MiB${gl_bai}, 块大小=${gl_huang}${bs}${gl_bai}, 启用直接IO"
+    log_info "测试文件大小: ${gl_huang}${count}MiB${gl_bai}, 块大小=${gl_huang}${bs}${gl_bai}, 优先启用直接IO"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
 
@@ -221,7 +226,6 @@ disk_speed_test() {
     dd_out=$(dd if=/dev/zero of="${test_file}" bs=${bs} count=${count} oflag=direct 2>&1)
     local wr_ret=$?
     echo "${dd_out}"
-
 
     if [[ ${wr_ret} -ne 0 ]]; then
         log_warn "直接IO写入失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）"
@@ -237,17 +241,16 @@ disk_speed_test() {
     local rd_ret=$?
     echo "${dd_out}"
 
-
     if [[ ${rd_ret} -ne 0 ]]; then
         log_warn "直接IO读取失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）"
-        dd_out=$(dd if="${test_file}" of=/dev/null bs=${bs} 2>&1)
+        dd_out=$(dd if="${test_file}" of=/dev/null bs=${bs} count=${count} 2>&1)
         echo "${dd_out}"
     fi
     read_speed=$(parse_speed_mbps "${dd_out}")
 
 
-    # log_info "清理临时测速文件"
-    rm -f "${test_file}"
+    cleanup_tmp
+    trap - EXIT SIGINT SIGTERM
 
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     echo -e "${gl_huang}测速汇总：${gl_bai}"
@@ -268,14 +271,16 @@ disk_speed_test() {
 
 show_help() {
     echo -e "${gl_lv}使用说明:${gl_bai}"
-    echo -e "  ${gl_bai}$0 ${gl_lan}[测速目录]${gl_bai}"
+    echo -e "  ${gl_bai}$0 ${gl_lan}[测速目录] [bs] [count]${gl_bai}"
     echo -e ""
     echo -e "${gl_lv}参数:${gl_bai}"
-    echo -e "  ${gl_lan}[测速目录]${gl_bai}  要测试的目录路径（默认为当前目录）"
+    echo -e "  ${gl_lan}[测速目录]${gl_bai}  要测试的目录路径（不传参进入交互式）"
+    echo -e "  ${gl_lan}[bs]${gl_bai}       dd块大小，默认1M"
+    echo -e "  ${gl_lan}[count]${gl_bai}    dd块数量，默认500"
     echo -e ""
     echo -e "${gl_lv}示例:${gl_bai}"
     echo -e "  ${gl_bai}$0 ${gl_lan}/mnt/data${gl_bai}    # 测试指定目录的磁盘速度"
-    echo -e "  ${gl_bai}$0${gl_bai}                 # 测试当前目录的磁盘速度"
+    echo -e "  ${gl_bai}$0${gl_bai}                 # 进入交互式输入路径"
     echo -e "  ${gl_bai}$0 ${gl_lan}-h${gl_bai}           # 显示帮助信息"
     echo -e ""
     exit 0
@@ -285,13 +290,19 @@ show_help() {
 interactive_menu() {
     clear
     echo -e ""
-    echo -e "${gl_zi}>>> 磁盘读写测速工具${gl_bai}"
+    echo -e "${gl_zi}>>> 磁盘读写测速工具【交互模式】${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    
+
     local target_dir
-    safe_read "输入测速目录" "target_dir" "string" "$(pwd)"
-    
-    disk_speed_test "${target_dir}"
+    target_dir=$(safe_read "输入测速目录" "" "string" "$(pwd)") || {
+        cancel_return
+        return
+    }
+
+    # 固定默认参数，不再询问自定义
+    local bs="1M"
+    local count="500"
+    disk_speed_test "${target_dir}" "${bs}" "${count}"
 
     break_end
 }
@@ -304,16 +315,17 @@ main() {
                 show_help
                 ;;
             *)
-                disk_speed_test "$1"
+                local p_dir="$1"
+                local p_bs="${2:-1M}"
+                local p_count="${3:-500}"
+                disk_speed_test "${p_dir}" "${p_bs}" "${p_count}"
                 exit 0
                 ;;
         esac
     done
-    
     interactive_menu
 }
 
-
-if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+if [[ -n "${BASH_SOURCE[0]+x}" && "${BASH_SOURCE[0]}" == "${0}" ]]; then
     main "$@"
 fi

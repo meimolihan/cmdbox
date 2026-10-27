@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="disk_speedtest 命令">
     <meta name="twitter:description" content="Linux 磁盘读写测速工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=241eef021ae5ed14">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=241eef026d9b32dc">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=241eef021ae5ed14"></script>
+    <script src="../js/dt.js?v=241eef026d9b32dc"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1455,68 +1455,68 @@ bash disk_speedtest.sh -h
 </span><span class="code-line line-number" line="88">    <span class="token function">clear</span>
 </span><span class="code-line line-number" line="89"><span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="90">
-</span><span class="code-line line-number" line="91">
-</span><span class="code-line line-number" line="92"><span class="token function-name function">safe_read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="93">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">prompt</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="94">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">var_name</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$2</span>"</span>
-</span><span class="code-line line-number" line="95">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">"${3:-"</span>string<span class="token string">"}"</span>
-</span><span class="code-line line-number" line="96">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">default_value</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${4<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="97">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">min_value</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${5<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="98">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">max_value</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${6<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="99">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">max_retry</span><span class="token operator">=</span><span class="token number">3</span>
-</span><span class="code-line line-number" line="100">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">retry_count</span><span class="token operator">=</span><span class="token number">0</span>
-</span><span class="code-line line-number" line="101">    
-</span><span class="code-line line-number" line="102">    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$retry_count</span> <span class="token parameter variable">-lt</span> <span class="token variable">$max_retry</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="91"><span class="token function-name function">safe_read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="92">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">prompt</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="93">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">type</span><span class="token operator">=</span><span class="token string">"${3:-"</span>string<span class="token string">"}"</span>
+</span><span class="code-line line-number" line="94">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">default_value</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${4<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="95">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">min_value</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${5<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="96">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">max_value</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${6<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="97">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">max_retry</span><span class="token operator">=</span><span class="token number">3</span>
+</span><span class="code-line line-number" line="98">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">retry_count</span><span class="token operator">=</span><span class="token number">0</span>
+</span><span class="code-line line-number" line="99">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">input_val</span><span class="token operator">=</span><span class="token string">""</span>
+</span><span class="code-line line-number" line="100">
+</span><span class="code-line line-number" line="101">    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$retry_count</span> <span class="token parameter variable">-lt</span> <span class="token variable">$max_retry</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="102">        <span class="token assign-left variable">input_val</span><span class="token operator">=</span><span class="token string">""</span>
 </span><span class="code-line line-number" line="103">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$default_value</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="104">            <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span><span class="token variable">$prompt</span> (<span class="token variable">${gl_huang}</span>默认: <span class="token variable">$default_value</span><span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" "</span><span class="token variable">$var_name</span><span class="token string">"
-</span></span><span class="code-line line-number" line="105"><span class="token string">            [[ -z "</span><span class="token variable">${<span class="token operator">!</span>var_name}</span><span class="token string">" ]] &#x26;&#x26; eval "</span><span class="token variable">$var_name</span><span class="token operator">=</span><span class="token punctuation">\</span>"<span class="token punctuation">\</span><span class="token variable">$default_value</span><span class="token punctuation">\</span>"<span class="token string">"
+</span><span class="code-line line-number" line="104">            <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_bai}</span><span class="token variable">$prompt</span> (<span class="token variable">${gl_huang}</span>默认: <span class="token variable">$default_value</span><span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" input_val
+</span></span><span class="code-line line-number" line="105"><span class="token string">            [[ -z "</span><span class="token variable">$input_val</span><span class="token string">" ]] &#x26;&#x26; input_val="</span><span class="token variable">$default_value</span><span class="token string">"
 </span></span><span class="code-line line-number" line="106"><span class="token string">        else
-</span></span><span class="code-line line-number" line="107"><span class="token string">            read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span><span class="token variable">$prompt</span>: "</span><span class="token variable">)</span></span><span class="token string">" "</span><span class="token variable">$var_name</span><span class="token string">"
+</span></span><span class="code-line line-number" line="107"><span class="token string">            read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span><span class="token variable">$prompt</span>: "</span><span class="token variable">)</span></span><span class="token string">" input_val
 </span></span><span class="code-line line-number" line="108"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="109"><span class="token string">        
-</span></span><span class="code-line line-number" line="110"><span class="token string">        if [[ -z "</span><span class="token variable">${<span class="token operator">!</span>var_name}</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="109"><span class="token string">
+</span></span><span class="code-line line-number" line="110"><span class="token string">        if [[ -z "</span><span class="token variable">$input_val</span><span class="token string">" ]]; then
 </span></span><span class="code-line line-number" line="111"><span class="token string">            if [[ -n "</span><span class="token variable">$default_value</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="112"><span class="token string">                eval "</span><span class="token variable">$var_name</span><span class="token operator">=</span><span class="token punctuation">\</span>"<span class="token punctuation">\</span><span class="token variable">$default_value</span><span class="token punctuation">\</span>"<span class="token string">"
-</span></span><span class="code-line line-number" line="113"><span class="token string">                return 0
-</span></span><span class="code-line line-number" line="114"><span class="token string">            else
-</span></span><span class="code-line line-number" line="115"><span class="token string">                log_error "</span>输入不能为空<span class="token string">"
-</span></span><span class="code-line line-number" line="116"><span class="token string">                retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
-</span></span><span class="code-line line-number" line="117"><span class="token string">                continue
-</span></span><span class="code-line line-number" line="118"><span class="token string">            fi
-</span></span><span class="code-line line-number" line="119"><span class="token string">        fi
-</span></span><span class="code-line line-number" line="120"><span class="token string">        
-</span></span><span class="code-line line-number" line="121"><span class="token string">        case "</span><span class="token variable">$type</span><span class="token string">" in
-</span></span><span class="code-line line-number" line="122"><span class="token string">            "</span>number<span class="token string">")
-</span></span><span class="code-line line-number" line="123"><span class="token string">                if ! [[ "</span><span class="token variable">${<span class="token operator">!</span>var_name}</span><span class="token string">" =~ ^[0-9]+$ ]]; then
-</span></span><span class="code-line line-number" line="124"><span class="token string">                    log_error "</span>请输入数字<span class="token string">"
-</span></span><span class="code-line line-number" line="125"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
-</span></span><span class="code-line line-number" line="126"><span class="token string">                    continue
-</span></span><span class="code-line line-number" line="127"><span class="token string">                fi
-</span></span><span class="code-line line-number" line="128"><span class="token string">                
-</span></span><span class="code-line line-number" line="129"><span class="token string">                if [[ -n "</span><span class="token variable">$min_value</span><span class="token string">" ]] &#x26;&#x26; [[ "</span><span class="token variable">${<span class="token operator">!</span>var_name}</span><span class="token string">" -lt "</span><span class="token variable">$min_value</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="112"><span class="token string">                input_val="</span><span class="token variable">$default_value</span><span class="token string">"
+</span></span><span class="code-line line-number" line="113"><span class="token string">                printf "</span>%s<span class="token string">" "</span><span class="token variable">$input_val</span><span class="token string">"
+</span></span><span class="code-line line-number" line="114"><span class="token string">                return 0
+</span></span><span class="code-line line-number" line="115"><span class="token string">            else
+</span></span><span class="code-line line-number" line="116"><span class="token string">                log_error "</span>输入不能为空<span class="token string">"
+</span></span><span class="code-line line-number" line="117"><span class="token string">                retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+</span></span><span class="code-line line-number" line="118"><span class="token string">                continue
+</span></span><span class="code-line line-number" line="119"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="120"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="121"><span class="token string">
+</span></span><span class="code-line line-number" line="122"><span class="token string">        case "</span><span class="token variable">$type</span><span class="token string">" in
+</span></span><span class="code-line line-number" line="123"><span class="token string">            "</span>number<span class="token string">")
+</span></span><span class="code-line line-number" line="124"><span class="token string">                if ! [[ "</span><span class="token variable">$input_val</span><span class="token string">" =~ ^[0-9]+$ ]]; then
+</span></span><span class="code-line line-number" line="125"><span class="token string">                    log_error "</span>请输入数字<span class="token string">"
+</span></span><span class="code-line line-number" line="126"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+</span></span><span class="code-line line-number" line="127"><span class="token string">                    continue
+</span></span><span class="code-line line-number" line="128"><span class="token string">                fi
+</span></span><span class="code-line line-number" line="129"><span class="token string">                if [[ -n "</span><span class="token variable">$min_value</span><span class="token string">" ]] &#x26;&#x26; [[ "</span><span class="token variable">$input_val</span><span class="token string">" -lt "</span><span class="token variable">$min_value</span><span class="token string">" ]]; then
 </span></span><span class="code-line line-number" line="130"><span class="token string">                    log_error "</span>输入值不能小于 <span class="token variable">$min_value</span><span class="token string">"
 </span></span><span class="code-line line-number" line="131"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
 </span></span><span class="code-line line-number" line="132"><span class="token string">                    continue
 </span></span><span class="code-line line-number" line="133"><span class="token string">                fi
-</span></span><span class="code-line line-number" line="134"><span class="token string">                
-</span></span><span class="code-line line-number" line="135"><span class="token string">                if [[ -n "</span><span class="token variable">$max_value</span><span class="token string">" ]] &#x26;&#x26; [[ "</span><span class="token variable">${<span class="token operator">!</span>var_name}</span><span class="token string">" -gt "</span><span class="token variable">$max_value</span><span class="token string">" ]]; then
-</span></span><span class="code-line line-number" line="136"><span class="token string">                    log_error "</span>输入值不能大于 <span class="token variable">$max_value</span><span class="token string">"
-</span></span><span class="code-line line-number" line="137"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
-</span></span><span class="code-line line-number" line="138"><span class="token string">                    continue
-</span></span><span class="code-line line-number" line="139"><span class="token string">                fi
-</span></span><span class="code-line line-number" line="140"><span class="token string">                ;;
-</span></span><span class="code-line line-number" line="141"><span class="token string">            "</span>y/n<span class="token string">")
-</span></span><span class="code-line line-number" line="142"><span class="token string">                if ! [[ "</span><span class="token variable">${<span class="token operator">!</span>var_name}</span><span class="token string">" =~ ^[YyNn]$ ]]; then
-</span></span><span class="code-line line-number" line="143"><span class="token string">                    log_error "</span>请输入 y 或 n<span class="token string">"
-</span></span><span class="code-line line-number" line="144"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
-</span></span><span class="code-line line-number" line="145"><span class="token string">                    continue
-</span></span><span class="code-line line-number" line="146"><span class="token string">                fi
-</span></span><span class="code-line line-number" line="147"><span class="token string">                ;;
-</span></span><span class="code-line line-number" line="148"><span class="token string">        esac
-</span></span><span class="code-line line-number" line="149"><span class="token string">        
+</span></span><span class="code-line line-number" line="134"><span class="token string">                if [[ -n "</span><span class="token variable">$max_value</span><span class="token string">" ]] &#x26;&#x26; [[ "</span><span class="token variable">$input_val</span><span class="token string">" -gt "</span><span class="token variable">$max_value</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="135"><span class="token string">                    log_error "</span>输入值不能大于 <span class="token variable">$max_value</span><span class="token string">"
+</span></span><span class="code-line line-number" line="136"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+</span></span><span class="code-line line-number" line="137"><span class="token string">                    continue
+</span></span><span class="code-line line-number" line="138"><span class="token string">                fi
+</span></span><span class="code-line line-number" line="139"><span class="token string">                ;;
+</span></span><span class="code-line line-number" line="140"><span class="token string">            "</span>y/n<span class="token string">")
+</span></span><span class="code-line line-number" line="141"><span class="token string">                if ! [[ "</span><span class="token variable">$input_val</span><span class="token string">" =~ ^[YyNn]$ ]]; then
+</span></span><span class="code-line line-number" line="142"><span class="token string">                    log_error "</span>请输入 y 或 n<span class="token string">"
+</span></span><span class="code-line line-number" line="143"><span class="token string">                    retry_count=<span class="token variable"><span class="token variable">$((</span>retry_count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+</span></span><span class="code-line line-number" line="144"><span class="token string">                    continue
+</span></span><span class="code-line line-number" line="145"><span class="token string">                fi
+</span></span><span class="code-line line-number" line="146"><span class="token string">                ;;
+</span></span><span class="code-line line-number" line="147"><span class="token string">        esac
+</span></span><span class="code-line line-number" line="148"><span class="token string">
+</span></span><span class="code-line line-number" line="149"><span class="token string">        printf "</span>%s<span class="token string">" "</span><span class="token variable">$input_val</span><span class="token string">"
 </span></span><span class="code-line line-number" line="150"><span class="token string">        return 0
 </span></span><span class="code-line line-number" line="151"><span class="token string">    done
-</span></span><span class="code-line line-number" line="152"><span class="token string">    
+</span></span><span class="code-line line-number" line="152"><span class="token string">
 </span></span><span class="code-line line-number" line="153"><span class="token string">    log_error "</span>输入尝试次数过多，返回上一级<span class="token string">"
 </span></span><span class="code-line line-number" line="154"><span class="token string">    return 1
 </span></span><span class="code-line line-number" line="155"><span class="token string">}
@@ -1565,126 +1565,137 @@ bash disk_speedtest.sh -h
 </span><span class="code-line line-number" line="198">
 </span><span class="code-line line-number" line="199"><span class="token function-name function">disk_speed_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="200">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">test_dir</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="201">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">test_file</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_dir}</span>/.speed_test_tmp.dat"</span>
-</span><span class="code-line line-number" line="202">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span><span class="token string">"1M"</span>
-</span><span class="code-line line-number" line="203">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token string">"500"</span>
+</span><span class="code-line line-number" line="201">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>1M}</span>"</span>
+</span><span class="code-line line-number" line="202">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${3<span class="token operator">:-</span>500}</span>"</span>
+</span><span class="code-line line-number" line="203">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">test_file</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_dir}</span>/.speed_test_tmp.dat"</span>
 </span><span class="code-line line-number" line="204">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">write_speed</span><span class="token operator">=</span><span class="token string">""</span>
 </span><span class="code-line line-number" line="205">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">read_speed</span><span class="token operator">=</span><span class="token string">""</span>
 </span><span class="code-line line-number" line="206">
-</span><span class="code-line line-number" line="207">
-</span><span class="code-line line-number" line="208">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">${test_dir}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">{</span> log_error <span class="token string">"目录不存在：<span class="token variable">${test_dir}</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="207">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">${test_dir}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">{</span> log_error <span class="token string">"目录不存在：<span class="token variable">${test_dir}</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="208">    <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-w</span> <span class="token string">"<span class="token variable">${test_dir}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token punctuation">{</span> log_error <span class="token string">"目录无写入权限：<span class="token variable">${test_dir}</span>"</span><span class="token punctuation">;</span> <span class="token builtin class-name">return</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="209">
-</span><span class="code-line line-number" line="210">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="211">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="212">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 磁盘读写测速<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="213">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="214">    log_info <span class="token string">"测速目录地址: <span class="token variable">${gl_huang}</span><span class="token variable">${test_dir}</span><span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="215">    log_info <span class="token string">"测试文件大小: <span class="token variable">${gl_huang}</span><span class="token variable">${count}</span>MiB<span class="token variable">${gl_bai}</span>, 块大小=<span class="token variable">${gl_huang}</span><span class="token variable">${bs}</span><span class="token variable">${gl_bai}</span>, 启用直接IO"</span>
-</span><span class="code-line line-number" line="216">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="217">
-</span><span class="code-line line-number" line="218">
-</span><span class="code-line line-number" line="219">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>▶ <span class="token variable">${gl_bai}</span>正在执行<span class="token variable">${gl_lv}</span>写入<span class="token variable">${gl_bai}</span>测速 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="220">    <span class="token builtin class-name">local</span> dd_out
-</span><span class="code-line line-number" line="221">    <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">of</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">count</span><span class="token operator">=</span>$<span class="token punctuation">{</span>count<span class="token punctuation">}</span> <span class="token assign-left variable">oflag</span><span class="token operator">=</span>direct <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="222">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">wr_ret</span><span class="token operator">=</span><span class="token variable">$?</span>
-</span><span class="code-line line-number" line="223">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
-</span><span class="code-line line-number" line="224">
-</span><span class="code-line line-number" line="225">
-</span><span class="code-line line-number" line="226">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${wr_ret}</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="227">        log_warn <span class="token string">"直接IO写入失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）"</span>
-</span><span class="code-line line-number" line="228">        <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">of</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">count</span><span class="token operator">=</span>$<span class="token punctuation">{</span>count<span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="229">        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
-</span><span class="code-line line-number" line="230">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="231">    <span class="token assign-left variable">write_speed</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>parse_speed_mbps <span class="token string">"<span class="token variable">${dd_out}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="232">
-</span><span class="code-line line-number" line="233">
-</span><span class="code-line line-number" line="234">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="235">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>▶ <span class="token variable">${gl_bai}</span>正在执行<span class="token variable">${gl_lv}</span>读取<span class="token variable">${gl_bai}</span>测速 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="236">    <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/null <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">iflag</span><span class="token operator">=</span>direct <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="237">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">rd_ret</span><span class="token operator">=</span><span class="token variable">$?</span>
-</span><span class="code-line line-number" line="238">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
-</span><span class="code-line line-number" line="239">
-</span><span class="code-line line-number" line="240">
-</span><span class="code-line line-number" line="241">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${rd_ret}</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="242">        log_warn <span class="token string">"直接IO读取失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）"</span>
-</span><span class="code-line line-number" line="243">        <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/null <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="244">        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
-</span><span class="code-line line-number" line="245">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="246">    <span class="token assign-left variable">read_speed</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>parse_speed_mbps <span class="token string">"<span class="token variable">${dd_out}</span>"</span><span class="token variable">)</span></span>
-</span><span class="code-line line-number" line="247">
-</span><span class="code-line line-number" line="248">
-</span><span class="code-line line-number" line="249">    <span class="token comment"># log_info "清理临时测速文件"</span>
-</span><span class="code-line line-number" line="250">    <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">${test_file}</span>"</span>
+</span><span class="code-line line-number" line="210">    <span class="token function-name function">cleanup_tmp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="211">        <span class="token function">rm</span> <span class="token parameter variable">-f</span> <span class="token string">"<span class="token variable">${test_file}</span>"</span>
+</span><span class="code-line line-number" line="212">    <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="213">    <span class="token builtin class-name">trap</span> cleanup_tmp EXIT SIGINT SIGTERM
+</span><span class="code-line line-number" line="214">
+</span><span class="code-line line-number" line="215">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="216">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="217">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 磁盘读写测速<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="218">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="219">    log_info <span class="token string">"测速目录地址: <span class="token variable">${gl_huang}</span><span class="token variable">${test_dir}</span><span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="220">    log_info <span class="token string">"测试文件大小: <span class="token variable">${gl_huang}</span><span class="token variable">${count}</span>MiB<span class="token variable">${gl_bai}</span>, 块大小=<span class="token variable">${gl_huang}</span><span class="token variable">${bs}</span><span class="token variable">${gl_bai}</span>, 优先启用直接IO"</span>
+</span><span class="code-line line-number" line="221">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="222">
+</span><span class="code-line line-number" line="223">
+</span><span class="code-line line-number" line="224">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>▶ <span class="token variable">${gl_bai}</span>正在执行<span class="token variable">${gl_lv}</span>写入<span class="token variable">${gl_bai}</span>测速 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="225">    <span class="token builtin class-name">local</span> dd_out
+</span><span class="code-line line-number" line="226">    <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">of</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">count</span><span class="token operator">=</span>$<span class="token punctuation">{</span>count<span class="token punctuation">}</span> <span class="token assign-left variable">oflag</span><span class="token operator">=</span>direct <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="227">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">wr_ret</span><span class="token operator">=</span><span class="token variable">$?</span>
+</span><span class="code-line line-number" line="228">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
+</span><span class="code-line line-number" line="229">
+</span><span class="code-line line-number" line="230">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${wr_ret}</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="231">        log_warn <span class="token string">"直接IO写入失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）"</span>
+</span><span class="code-line line-number" line="232">        <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/zero <span class="token assign-left variable">of</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">count</span><span class="token operator">=</span>$<span class="token punctuation">{</span>count<span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="233">        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
+</span><span class="code-line line-number" line="234">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="235">    <span class="token assign-left variable">write_speed</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>parse_speed_mbps <span class="token string">"<span class="token variable">${dd_out}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="236">
+</span><span class="code-line line-number" line="237">
+</span><span class="code-line line-number" line="238">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="239">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>▶ <span class="token variable">${gl_bai}</span>正在执行<span class="token variable">${gl_lv}</span>读取<span class="token variable">${gl_bai}</span>测速 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="240">    <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/null <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">iflag</span><span class="token operator">=</span>direct <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="241">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">rd_ret</span><span class="token operator">=</span><span class="token variable">$?</span>
+</span><span class="code-line line-number" line="242">    <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
+</span><span class="code-line line-number" line="243">
+</span><span class="code-line line-number" line="244">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${rd_ret}</span> <span class="token parameter variable">-ne</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="245">        log_warn <span class="token string">"直接IO读取失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）"</span>
+</span><span class="code-line line-number" line="246">        <span class="token assign-left variable">dd_out</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${test_file}</span>"</span> <span class="token assign-left variable">of</span><span class="token operator">=</span>/dev/null <span class="token assign-left variable">bs</span><span class="token operator">=</span>$<span class="token punctuation">{</span>bs<span class="token punctuation">}</span> <span class="token assign-left variable">count</span><span class="token operator">=</span>$<span class="token punctuation">{</span>count<span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&#x26;1</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="247">        <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${dd_out}</span>"</span>
+</span><span class="code-line line-number" line="248">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="249">    <span class="token assign-left variable">read_speed</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>parse_speed_mbps <span class="token string">"<span class="token variable">${dd_out}</span>"</span><span class="token variable">)</span></span>
+</span><span class="code-line line-number" line="250">
 </span><span class="code-line line-number" line="251">
-</span><span class="code-line line-number" line="252">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="253">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>测速汇总：<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="254">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${write_speed}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="255">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>写入<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_lv}</span><span class="token variable">${write_speed}</span> MB/s<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="256">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="257">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>写入<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_hong}</span>获取失败<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="258">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="259">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${read_speed}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="260">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>读取<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_lv}</span><span class="token variable">${read_speed}</span> MB/s<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="261">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="262">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>读取<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_hong}</span>获取失败<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="263">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="264">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="265">    log_ok <span class="token string">"磁盘测速完成"</span>
-</span><span class="code-line line-number" line="266"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="267">
-</span><span class="code-line line-number" line="268">
-</span><span class="code-line line-number" line="269"><span class="token function-name function">show_help</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="270">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>使用说明:<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="271">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span> <span class="token variable">${gl_lan}</span>[测速目录]<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="272">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="273">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>参数:<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="274">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>[测速目录]<span class="token variable">${gl_bai}</span>  要测试的目录路径（默认为当前目录）"</span>
+</span><span class="code-line line-number" line="252">    cleanup_tmp
+</span><span class="code-line line-number" line="253">    <span class="token builtin class-name">trap</span> - EXIT SIGINT SIGTERM
+</span><span class="code-line line-number" line="254">
+</span><span class="code-line line-number" line="255">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="256">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>测速汇总：<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="257">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${write_speed}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="258">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>写入<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_lv}</span><span class="token variable">${write_speed}</span> MB/s<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="259">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="260">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>写入<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_hong}</span>获取失败<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="261">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="262">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${read_speed}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="263">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>读取<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_lv}</span><span class="token variable">${read_speed}</span> MB/s<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="264">    <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="265">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span>顺序<span class="token variable">${gl_lv}</span>读取<span class="token variable">${gl_bai}</span>速度：<span class="token variable">${gl_hong}</span>获取失败<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="266">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="267">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="268">    log_ok <span class="token string">"磁盘测速完成"</span>
+</span><span class="code-line line-number" line="269"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="270">
+</span><span class="code-line line-number" line="271">
+</span><span class="code-line line-number" line="272"><span class="token function-name function">show_help</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="273">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>使用说明:<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="274">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span> <span class="token variable">${gl_lan}</span>[测速目录] [bs] [count]<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="275">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="276">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>示例:<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="277">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span> <span class="token variable">${gl_lan}</span>/mnt/data<span class="token variable">${gl_bai}</span>    # 测试指定目录的磁盘速度"</span>
-</span><span class="code-line line-number" line="278">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span><span class="token variable">${gl_bai}</span>                 # 测试当前目录的磁盘速度"</span>
-</span><span class="code-line line-number" line="279">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span> <span class="token variable">${gl_lan}</span>-h<span class="token variable">${gl_bai}</span>           # 显示帮助信息"</span>
+</span><span class="code-line line-number" line="276">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>参数:<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="277">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>[测速目录]<span class="token variable">${gl_bai}</span>  要测试的目录路径（不传参进入交互式）"</span>
+</span><span class="code-line line-number" line="278">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>[bs]<span class="token variable">${gl_bai}</span>       dd块大小，默认1M"</span>
+</span><span class="code-line line-number" line="279">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_lan}</span>[count]<span class="token variable">${gl_bai}</span>    dd块数量，默认500"</span>
 </span><span class="code-line line-number" line="280">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="281">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="282"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="283">
-</span><span class="code-line line-number" line="284">
-</span><span class="code-line line-number" line="285"><span class="token function-name function">interactive_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="286">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="287">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
-</span><span class="code-line line-number" line="288">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 磁盘读写测速工具<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="289">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="290">    
-</span><span class="code-line line-number" line="291">    <span class="token builtin class-name">local</span> target_dir
-</span><span class="code-line line-number" line="292">    safe_read <span class="token string">"输入测速目录"</span> <span class="token string">"target_dir"</span> <span class="token string">"string"</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span>
-</span><span class="code-line line-number" line="293">    
-</span><span class="code-line line-number" line="294">    disk_speed_test <span class="token string">"<span class="token variable">${target_dir}</span>"</span>
+</span><span class="code-line line-number" line="281">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>示例:<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="282">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span> <span class="token variable">${gl_lan}</span>/mnt/data<span class="token variable">${gl_bai}</span>    # 测试指定目录的磁盘速度"</span>
+</span><span class="code-line line-number" line="283">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span><span class="token variable">${gl_bai}</span>                 # 进入交互式输入路径"</span>
+</span><span class="code-line line-number" line="284">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"  <span class="token variable">${gl_bai}</span><span class="token variable">$0</span> <span class="token variable">${gl_lan}</span>-h<span class="token variable">${gl_bai}</span>           # 显示帮助信息"</span>
+</span><span class="code-line line-number" line="285">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="286">    <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="287"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="288">
+</span><span class="code-line line-number" line="289">
+</span><span class="code-line line-number" line="290"><span class="token function-name function">interactive_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="291">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="292">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">""</span>
+</span><span class="code-line line-number" line="293">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> 磁盘读写测速工具【交互模式】<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="294">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="295">
-</span><span class="code-line line-number" line="296">    break_end
-</span><span class="code-line line-number" line="297"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="298">
-</span><span class="code-line line-number" line="299">
-</span><span class="code-line line-number" line="300"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="301">    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="302">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="303">            -h<span class="token operator">|</span>--help<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="304">                show_help
-</span><span class="code-line line-number" line="305">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="306">            *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="307">                disk_speed_test <span class="token string">"<span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="308">                <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="309">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="310">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="311">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="312">    
-</span><span class="code-line line-number" line="313">    interactive_menu
-</span><span class="code-line line-number" line="314"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="315">
-</span><span class="code-line line-number" line="316">
-</span><span class="code-line line-number" line="317"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">${0}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="318">    main <span class="token string">"<span class="token variable">$@</span>"</span>
-</span><span class="code-line line-number" line="319"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="320">
+</span><span class="code-line line-number" line="296">    <span class="token builtin class-name">local</span> target_dir
+</span><span class="code-line line-number" line="297">    <span class="token assign-left variable">target_dir</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>safe_read <span class="token string">"输入测速目录"</span> <span class="token string">""</span> <span class="token string">"string"</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>"</span><span class="token variable">)</span></span> <span class="token operator">||</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="298">        cancel_return
+</span><span class="code-line line-number" line="299">        <span class="token builtin class-name">return</span>
+</span><span class="code-line line-number" line="300">    <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="301">
+</span><span class="code-line line-number" line="302">    <span class="token comment"># 固定默认参数，不再询问自定义</span>
+</span><span class="code-line line-number" line="303">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">bs</span><span class="token operator">=</span><span class="token string">"1M"</span>
+</span><span class="code-line line-number" line="304">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token string">"500"</span>
+</span><span class="code-line line-number" line="305">    disk_speed_test <span class="token string">"<span class="token variable">${target_dir}</span>"</span> <span class="token string">"<span class="token variable">${bs}</span>"</span> <span class="token string">"<span class="token variable">${count}</span>"</span>
+</span><span class="code-line line-number" line="306">
+</span><span class="code-line line-number" line="307">    break_end
+</span><span class="code-line line-number" line="308"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="309">
+</span><span class="code-line line-number" line="310">
+</span><span class="code-line line-number" line="311"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="312">    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="313">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="314">            -h<span class="token operator">|</span>--help<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="315">                show_help
+</span><span class="code-line line-number" line="316">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="317">            *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="318">                <span class="token builtin class-name">local</span> <span class="token assign-left variable">p_dir</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="319">                <span class="token builtin class-name">local</span> <span class="token assign-left variable">p_bs</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>1M}</span>"</span>
+</span><span class="code-line line-number" line="320">                <span class="token builtin class-name">local</span> <span class="token assign-left variable">p_count</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${3<span class="token operator">:-</span>500}</span>"</span>
+</span><span class="code-line line-number" line="321">                disk_speed_test <span class="token string">"<span class="token variable">${p_dir}</span>"</span> <span class="token string">"<span class="token variable">${p_bs}</span>"</span> <span class="token string">"<span class="token variable">${p_count}</span>"</span>
+</span><span class="code-line line-number" line="322">                <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="323">                <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="324">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="325">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="326">    interactive_menu
+</span><span class="code-line line-number" line="327"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="328">
+</span><span class="code-line line-number" line="329"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>+x}</span>"</span> <span class="token operator">&#x26;&#x26;</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> <span class="token operator">==</span> <span class="token string">"<span class="token variable">${0}</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="330">    main <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="331"><span class="token keyword">fi</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -1775,28 +1786,29 @@ break_end() {
     clear
 }
 
-
 safe_read() {
     local prompt=&#x22;$1&#x22;
-    local var_name=&#x22;$2&#x22;
     local type=&#x22;${3:-&#x22;string&#x22;}&#x22;
     local default_value=&#x22;${4:-}&#x22;
     local min_value=&#x22;${5:-}&#x22;
     local max_value=&#x22;${6:-}&#x22;
     local max_retry=3
     local retry_count=0
-    
+    local input_val=&#x22;&#x22;
+
     while [[ $retry_count -lt $max_retry ]]; do
+        input_val=&#x22;&#x22;
         if [[ -n &#x22;$default_value&#x22; ]]; then
-            read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}$prompt (${gl_huang}默认: $default_value${gl_bai}): &#x22;)&#x22; &#x22;$var_name&#x22;
-            [[ -z &#x22;${!var_name}&#x22; ]] &#x26;&#x26; eval &#x22;$var_name=\&#x22;\$default_value\&#x22;&#x22;
+            read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}$prompt (${gl_huang}默认: $default_value${gl_bai}): &#x22;)&#x22; input_val
+            [[ -z &#x22;$input_val&#x22; ]] &#x26;&#x26; input_val=&#x22;$default_value&#x22;
         else
-            read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}$prompt: &#x22;)&#x22; &#x22;$var_name&#x22;
+            read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}$prompt: &#x22;)&#x22; input_val
         fi
-        
-        if [[ -z &#x22;${!var_name}&#x22; ]]; then
+
+        if [[ -z &#x22;$input_val&#x22; ]]; then
             if [[ -n &#x22;$default_value&#x22; ]]; then
-                eval &#x22;$var_name=\&#x22;\$default_value\&#x22;&#x22;
+                input_val=&#x22;$default_value&#x22;
+                printf &#x22;%s&#x22; &#x22;$input_val&#x22;
                 return 0
             else
                 log_error &#x22;输入不能为空&#x22;
@@ -1804,39 +1816,38 @@ safe_read() {
                 continue
             fi
         fi
-        
+
         case &#x22;$type&#x22; in
             &#x22;number&#x22;)
-                if ! [[ &#x22;${!var_name}&#x22; =~ ^[0-9]+$ ]]; then
+                if ! [[ &#x22;$input_val&#x22; =~ ^[0-9]+$ ]]; then
                     log_error &#x22;请输入数字&#x22;
                     retry_count=$((retry_count + 1))
                     continue
                 fi
-                
-                if [[ -n &#x22;$min_value&#x22; ]] &#x26;&#x26; [[ &#x22;${!var_name}&#x22; -lt &#x22;$min_value&#x22; ]]; then
+                if [[ -n &#x22;$min_value&#x22; ]] &#x26;&#x26; [[ &#x22;$input_val&#x22; -lt &#x22;$min_value&#x22; ]]; then
                     log_error &#x22;输入值不能小于 $min_value&#x22;
                     retry_count=$((retry_count + 1))
                     continue
                 fi
-                
-                if [[ -n &#x22;$max_value&#x22; ]] &#x26;&#x26; [[ &#x22;${!var_name}&#x22; -gt &#x22;$max_value&#x22; ]]; then
+                if [[ -n &#x22;$max_value&#x22; ]] &#x26;&#x26; [[ &#x22;$input_val&#x22; -gt &#x22;$max_value&#x22; ]]; then
                     log_error &#x22;输入值不能大于 $max_value&#x22;
                     retry_count=$((retry_count + 1))
                     continue
                 fi
                 ;;
             &#x22;y/n&#x22;)
-                if ! [[ &#x22;${!var_name}&#x22; =~ ^[YyNn]$ ]]; then
+                if ! [[ &#x22;$input_val&#x22; =~ ^[YyNn]$ ]]; then
                     log_error &#x22;请输入 y 或 n&#x22;
                     retry_count=$((retry_count + 1))
                     continue
                 fi
                 ;;
         esac
-        
+
+        printf &#x22;%s&#x22; &#x22;$input_val&#x22;
         return 0
     done
-    
+
     log_error &#x22;输入尝试次数过多，返回上一级&#x22;
     return 1
 }
@@ -1885,21 +1896,26 @@ parse_speed_mbps() {
 
 disk_speed_test() {
     local test_dir=&#x22;$1&#x22;
+    local bs=&#x22;${2:-1M}&#x22;
+    local count=&#x22;${3:-500}&#x22;
     local test_file=&#x22;${test_dir}/.speed_test_tmp.dat&#x22;
-    local bs=&#x22;1M&#x22;
-    local count=&#x22;500&#x22;
     local write_speed=&#x22;&#x22;
     local read_speed=&#x22;&#x22;
 
-
     [[ -d &#x22;${test_dir}&#x22; ]] || { log_error &#x22;目录不存在：${test_dir}&#x22;; return 1; }
+    [[ -w &#x22;${test_dir}&#x22; ]] || { log_error &#x22;目录无写入权限：${test_dir}&#x22;; return 1; }
+
+    cleanup_tmp() {
+        rm -f &#x22;${test_file}&#x22;
+    }
+    trap cleanup_tmp EXIT SIGINT SIGTERM
 
     clear
     echo -e &#x22;&#x22;
     echo -e &#x22;${gl_zi}>>> 磁盘读写测速${gl_bai}&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
     log_info &#x22;测速目录地址: ${gl_huang}${test_dir}${gl_bai}&#x22;
-    log_info &#x22;测试文件大小: ${gl_huang}${count}MiB${gl_bai}, 块大小=${gl_huang}${bs}${gl_bai}, 启用直接IO&#x22;
+    log_info &#x22;测试文件大小: ${gl_huang}${count}MiB${gl_bai}, 块大小=${gl_huang}${bs}${gl_bai}, 优先启用直接IO&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
 
 
@@ -1908,7 +1924,6 @@ disk_speed_test() {
     dd_out=$(dd if=/dev/zero of=&#x22;${test_file}&#x22; bs=${bs} count=${count} oflag=direct 2>&#x26;1)
     local wr_ret=$?
     echo &#x22;${dd_out}&#x22;
-
 
     if [[ ${wr_ret} -ne 0 ]]; then
         log_warn &#x22;直接IO写入失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）&#x22;
@@ -1924,17 +1939,16 @@ disk_speed_test() {
     local rd_ret=$?
     echo &#x22;${dd_out}&#x22;
 
-
     if [[ ${rd_ret} -ne 0 ]]; then
         log_warn &#x22;直接IO读取失败，关闭直接IO重试（受系统缓存影响，结果仅供参考）&#x22;
-        dd_out=$(dd if=&#x22;${test_file}&#x22; of=/dev/null bs=${bs} 2>&#x26;1)
+        dd_out=$(dd if=&#x22;${test_file}&#x22; of=/dev/null bs=${bs} count=${count} 2>&#x26;1)
         echo &#x22;${dd_out}&#x22;
     fi
     read_speed=$(parse_speed_mbps &#x22;${dd_out}&#x22;)
 
 
-    # log_info &#x22;清理临时测速文件&#x22;
-    rm -f &#x22;${test_file}&#x22;
+    cleanup_tmp
+    trap - EXIT SIGINT SIGTERM
 
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
     echo -e &#x22;${gl_huang}测速汇总：${gl_bai}&#x22;
@@ -1955,14 +1969,16 @@ disk_speed_test() {
 
 show_help() {
     echo -e &#x22;${gl_lv}使用说明:${gl_bai}&#x22;
-    echo -e &#x22;  ${gl_bai}$0 ${gl_lan}[测速目录]${gl_bai}&#x22;
+    echo -e &#x22;  ${gl_bai}$0 ${gl_lan}[测速目录] [bs] [count]${gl_bai}&#x22;
     echo -e &#x22;&#x22;
     echo -e &#x22;${gl_lv}参数:${gl_bai}&#x22;
-    echo -e &#x22;  ${gl_lan}[测速目录]${gl_bai}  要测试的目录路径（默认为当前目录）&#x22;
+    echo -e &#x22;  ${gl_lan}[测速目录]${gl_bai}  要测试的目录路径（不传参进入交互式）&#x22;
+    echo -e &#x22;  ${gl_lan}[bs]${gl_bai}       dd块大小，默认1M&#x22;
+    echo -e &#x22;  ${gl_lan}[count]${gl_bai}    dd块数量，默认500&#x22;
     echo -e &#x22;&#x22;
     echo -e &#x22;${gl_lv}示例:${gl_bai}&#x22;
     echo -e &#x22;  ${gl_bai}$0 ${gl_lan}/mnt/data${gl_bai}    # 测试指定目录的磁盘速度&#x22;
-    echo -e &#x22;  ${gl_bai}$0${gl_bai}                 # 测试当前目录的磁盘速度&#x22;
+    echo -e &#x22;  ${gl_bai}$0${gl_bai}                 # 进入交互式输入路径&#x22;
     echo -e &#x22;  ${gl_bai}$0 ${gl_lan}-h${gl_bai}           # 显示帮助信息&#x22;
     echo -e &#x22;&#x22;
     exit 0
@@ -1972,13 +1988,19 @@ show_help() {
 interactive_menu() {
     clear
     echo -e &#x22;&#x22;
-    echo -e &#x22;${gl_zi}>>> 磁盘读写测速工具${gl_bai}&#x22;
+    echo -e &#x22;${gl_zi}>>> 磁盘读写测速工具【交互模式】${gl_bai}&#x22;
     echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-    
+
     local target_dir
-    safe_read &#x22;输入测速目录&#x22; &#x22;target_dir&#x22; &#x22;string&#x22; &#x22;$(pwd)&#x22;
-    
-    disk_speed_test &#x22;${target_dir}&#x22;
+    target_dir=$(safe_read &#x22;输入测速目录&#x22; &#x22;&#x22; &#x22;string&#x22; &#x22;$(pwd)&#x22;) || {
+        cancel_return
+        return
+    }
+
+    # 固定默认参数，不再询问自定义
+    local bs=&#x22;1M&#x22;
+    local count=&#x22;500&#x22;
+    disk_speed_test &#x22;${target_dir}&#x22; &#x22;${bs}&#x22; &#x22;${count}&#x22;
 
     break_end
 }
@@ -1991,20 +2013,20 @@ main() {
                 show_help
                 ;;
             *)
-                disk_speed_test &#x22;$1&#x22;
+                local p_dir=&#x22;$1&#x22;
+                local p_bs=&#x22;${2:-1M}&#x22;
+                local p_count=&#x22;${3:-500}&#x22;
+                disk_speed_test &#x22;${p_dir}&#x22; &#x22;${p_bs}&#x22; &#x22;${p_count}&#x22;
                 exit 0
                 ;;
         esac
     done
-    
     interactive_menu
 }
 
-
-if [[ &#x22;${BASH_SOURCE[0]}&#x22; == &#x22;${0}&#x22; ]]; then
+if [[ -n &#x22;${BASH_SOURCE[0]+x}&#x22; &#x26;&#x26; &#x22;${BASH_SOURCE[0]}&#x22; == &#x22;${0}&#x22; ]]; then
     main &#x22;$@&#x22;
 fi
-
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="创建本地脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#创建本地脚本"><span class="octicon octicon-link"></span></a>创建本地脚本</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token assign-left variable">new_script</span><span class="token operator">=</span><span class="token string">"disk_speedtest.sh"</span>
@@ -2220,7 +2242,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">301</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">302</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -2251,7 +2273,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1269</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1270</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -2284,8 +2306,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=241eef021ae5ed14"></script>
-<script type="text/javascript" src="../js/enhance.js?v=241eef021ae5ed14"></script>
+<script type="text/javascript" src="../js/index.js?v=241eef026d9b32dc"></script>
+<script type="text/javascript" src="../js/enhance.js?v=241eef026d9b32dc"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
