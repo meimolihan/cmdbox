@@ -1596,9 +1596,264 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实例">
+              <a class="post-toc-link" href="#实例" data-level="3">实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-和-netstat-效率对比">
+              <a class="post-toc-link" href="#ss-和-netstat-效率对比" data-level="1">ss 和 netstat 效率对比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="匹配远程地址和端口号">
+              <a class="post-toc-link" href="#匹配远程地址和端口号" data-level="1">匹配远程地址和端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-dst-address_pattern">
+              <a class="post-toc-link" href="#ss-dst-address_pattern" data-level="1">ss dst ADDRESS_PATTERN</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="匹配本地地址和端口号">
+              <a class="post-toc-link" href="#匹配本地地址和端口号" data-level="1">匹配本地地址和端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-src-address_pattern">
+              <a class="post-toc-link" href="#ss-src-address_pattern" data-level="1">ss src ADDRESS_PATTERN</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-dport-op-port-远程端口和一个数比较">
+              <a class="post-toc-link" href="#ss-dport-op-port-远程端口和一个数比较" data-level="1">ss dport OP PORT 远程端口和一个数比较；</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-sport-op-port-本地端口和一个数比较">
+              <a class="post-toc-link" href="#ss-sport-op-port-本地端口和一个数比较" data-level="1">ss sport OP PORT 本地端口和一个数比较</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="op-可以代表以下任意一个">
+              <a class="post-toc-link" href="#op-可以代表以下任意一个" data-level="1">OP 可以代表以下任意一个:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="or-le-小于或等于端口号">
+              <a class="post-toc-link" href="#or-le-小于或等于端口号" data-level="1">&lt;= or le : 小于或等于端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="or-ge-大于或等于端口号">
+              <a class="post-toc-link" href="#or-ge-大于或等于端口号" data-level="1">&gt;= or ge : 大于或等于端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="or-eq-等于端口号">
+              <a class="post-toc-link" href="#or-eq-等于端口号" data-level="1">== or eq : 等于端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="or-ne-不等于端口号">
+              <a class="post-toc-link" href="#or-ne-不等于端口号" data-level="1">!= or ne : 不等于端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="or-gt-小于端口号">
+              <a class="post-toc-link" href="#or-gt-小于端口号" data-level="1">&lt; or gt : 小于端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="or-lt-大于端口号">
+              <a class="post-toc-link" href="#or-lt-大于端口号" data-level="1">&gt; or lt : 大于端口号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-4-state-filter-name-here">
+              <a class="post-toc-link" href="#ss-4-state-filter-name-here" data-level="1">ss -4 state FILTER-NAME-HERE</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ss-6-state-filter-name-here">
+              <a class="post-toc-link" href="#ss-6-state-filter-name-here" data-level="1">ss -6 state FILTER-NAME-HERE</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="filter-name-here-可以代表以下任何一个">
+              <a class="post-toc-link" href="#filter-name-here-可以代表以下任何一个" data-level="1">FILTER-NAME-HERE 可以代表以下任何一个：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="established-syn-sent-syn-recv-fin-wait-1-fin-wait-2-time-wait-closed-close-wait-last-ack-listen-closing">
+              <a class="post-toc-link" href="#established-syn-sent-syn-recv-fin-wait-1-fin-wait-2-time-wait-closed-close-wait-last-ack-listen-closing" data-level="1">established、 syn-sent、 syn-recv、 fin-wait-1、 fin-wait-2、 time-wait、 closed、 close-wait、 last-ack、 listen、 closing、</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="all-所有以上状态">
+              <a class="post-toc-link" href="#all-所有以上状态" data-level="1">all : 所有以上状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="connected-除了listen-and-closed的所有状态">
+              <a class="post-toc-link" href="#connected-除了listen-and-closed的所有状态" data-level="1">connected : 除了listen and closed的所有状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="synchronized-所有已连接的状态除了syn-sent">
+              <a class="post-toc-link" href="#synchronized-所有已连接的状态除了syn-sent" data-level="1">synchronized :所有已连接的状态除了syn-sent</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="bucket-显示状态为maintained-as-minisockets-如-time-wait和syn-recv">
+              <a class="post-toc-link" href="#bucket-显示状态为maintained-as-minisockets-如-time-wait和syn-recv" data-level="1">bucket : 显示状态为maintained as minisockets,如：time-wait和syn-recv.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="big-和bucket相反">
+              <a class="post-toc-link" href="#big-和bucket相反" data-level="1">big : 和bucket相反.</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实例">
+          <a class="post-toc-link" href="#实例" data-level="3">实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-和-netstat-效率对比">
+          <a class="post-toc-link" href="#ss-和-netstat-效率对比" data-level="1">ss 和 netstat 效率对比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="匹配远程地址和端口号">
+          <a class="post-toc-link" href="#匹配远程地址和端口号" data-level="1">匹配远程地址和端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-dst-address_pattern">
+          <a class="post-toc-link" href="#ss-dst-address_pattern" data-level="1">ss dst ADDRESS_PATTERN</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="匹配本地地址和端口号">
+          <a class="post-toc-link" href="#匹配本地地址和端口号" data-level="1">匹配本地地址和端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-src-address_pattern">
+          <a class="post-toc-link" href="#ss-src-address_pattern" data-level="1">ss src ADDRESS_PATTERN</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-dport-op-port-远程端口和一个数比较">
+          <a class="post-toc-link" href="#ss-dport-op-port-远程端口和一个数比较" data-level="1">ss dport OP PORT 远程端口和一个数比较；</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-sport-op-port-本地端口和一个数比较">
+          <a class="post-toc-link" href="#ss-sport-op-port-本地端口和一个数比较" data-level="1">ss sport OP PORT 本地端口和一个数比较</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="op-可以代表以下任意一个">
+          <a class="post-toc-link" href="#op-可以代表以下任意一个" data-level="1">OP 可以代表以下任意一个:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="or-le-小于或等于端口号">
+          <a class="post-toc-link" href="#or-le-小于或等于端口号" data-level="1">&lt;= or le : 小于或等于端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="or-ge-大于或等于端口号">
+          <a class="post-toc-link" href="#or-ge-大于或等于端口号" data-level="1">&gt;= or ge : 大于或等于端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="or-eq-等于端口号">
+          <a class="post-toc-link" href="#or-eq-等于端口号" data-level="1">== or eq : 等于端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="or-ne-不等于端口号">
+          <a class="post-toc-link" href="#or-ne-不等于端口号" data-level="1">!= or ne : 不等于端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="or-gt-小于端口号">
+          <a class="post-toc-link" href="#or-gt-小于端口号" data-level="1">&lt; or gt : 小于端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="or-lt-大于端口号">
+          <a class="post-toc-link" href="#or-lt-大于端口号" data-level="1">&gt; or lt : 大于端口号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-4-state-filter-name-here">
+          <a class="post-toc-link" href="#ss-4-state-filter-name-here" data-level="1">ss -4 state FILTER-NAME-HERE</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ss-6-state-filter-name-here">
+          <a class="post-toc-link" href="#ss-6-state-filter-name-here" data-level="1">ss -6 state FILTER-NAME-HERE</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="filter-name-here-可以代表以下任何一个">
+          <a class="post-toc-link" href="#filter-name-here-可以代表以下任何一个" data-level="1">FILTER-NAME-HERE 可以代表以下任何一个：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="established-syn-sent-syn-recv-fin-wait-1-fin-wait-2-time-wait-closed-close-wait-last-ack-listen-closing">
+          <a class="post-toc-link" href="#established-syn-sent-syn-recv-fin-wait-1-fin-wait-2-time-wait-closed-close-wait-last-ack-listen-closing" data-level="1">established、 syn-sent、 syn-recv、 fin-wait-1、 fin-wait-2、 time-wait、 closed、 close-wait、 last-ack、 listen、 closing、</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="all-所有以上状态">
+          <a class="post-toc-link" href="#all-所有以上状态" data-level="1">all : 所有以上状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="connected-除了listen-and-closed的所有状态">
+          <a class="post-toc-link" href="#connected-除了listen-and-closed的所有状态" data-level="1">connected : 除了listen and closed的所有状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="synchronized-所有已连接的状态除了syn-sent">
+          <a class="post-toc-link" href="#synchronized-所有已连接的状态除了syn-sent" data-level="1">synchronized :所有已连接的状态除了syn-sent</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="bucket-显示状态为maintained-as-minisockets-如-time-wait和syn-recv">
+          <a class="post-toc-link" href="#bucket-显示状态为maintained-as-minisockets-如-time-wait和syn-recv" data-level="1">bucket : 显示状态为maintained as minisockets,如：time-wait和syn-recv.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="big-和bucket相反">
+          <a class="post-toc-link" href="#big-和bucket相反" data-level="1">big : 和bucket相反.</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

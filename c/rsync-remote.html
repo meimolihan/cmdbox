@@ -1621,9 +1621,304 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装依赖">
+              <a class="post-toc-link" href="#安装依赖" data-level="2">安装依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="本机安装依赖">
+              <a class="post-toc-link" href="#本机安装依赖" data-level="3">本机安装依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
+              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rocky-almalinux">
+              <a class="post-toc-link" href="#centos-rocky-almalinux" data-level="1">CentOS / Rocky / AlmaLinux</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
+              <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="openwrt-istoreos">
+              <a class="post-toc-link" href="#openwrt-istoreos" data-level="1">OpenWrt / iStoreOS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="远端主机安装-rsync">
+              <a class="post-toc-link" href="#远端主机安装-rsync" data-level="3">远端主机安装 Rsync</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="远端-rsync-同步命令">
+              <a class="post-toc-link" href="#远端-rsync-同步命令" data-level="2">远端 Rsync 同步命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基础同步">
+              <a class="post-toc-link" href="#基础同步" data-level="3">基础同步</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="源路径结尾斜杠的区别">
+              <a class="post-toc-link" href="#源路径结尾斜杠的区别" data-level="3">源路径结尾斜杠的区别</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录本身-结果-mnt-compose-xunlei">
+              <a class="post-toc-link" href="#同步-目录本身-结果-mnt-compose-xunlei" data-level="1">同步「目录本身」：结果 → /mnt/compose/xunlei/</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录内容-结果-mnt-compose-下直接是文件">
+              <a class="post-toc-link" href="#同步-目录内容-结果-mnt-compose-下直接是文件" data-level="1">同步「目录内容」：结果 → /mnt/compose/ 下直接是文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败-远端找不到-rsync">
+              <a class="post-toc-link" href="#常见失败-远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="usr-bin-rsync">
+              <a class="post-toc-link" href="#usr-bin-rsync" data-level="1">/usr/bin/rsync</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="更安全的密码传递">
+              <a class="post-toc-link" href="#更安全的密码传递" data-level="3">更安全的密码传递</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接-tmux">
+              <a class="post-toc-link" href="#保持长连接-tmux" data-level="2">保持长连接（tmux）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-tmux-会话">
+              <a class="post-toc-link" href="#创建-tmux-会话" data-level="1">创建 tmux 会话</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="脱离会话-后台继续跑-先按-ctrl-b-再按-d">
+              <a class="post-toc-link" href="#脱离会话-后台继续跑-先按-ctrl-b-再按-d" data-level="1">脱离会话（后台继续跑）：先按 Ctrl+b，再按 d</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新接入查看传输进度">
+              <a class="post-toc-link" href="#重新接入查看传输进度" data-level="1">重新接入查看传输进度</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有-tmux-会话">
+              <a class="post-toc-link" href="#列出所有-tmux-会话" data-level="1">列出所有 tmux 会话</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="传输完成后杀掉会话">
+              <a class="post-toc-link" href="#传输完成后杀掉会话" data-level="1">传输完成后杀掉会话</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="screen">
+              <a class="post-toc-link" href="#screen" data-level="1">screen</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="脱离-ctrl-a-再按-d-恢复-screen-r-work">
+              <a class="post-toc-link" href="#脱离-ctrl-a-再按-d-恢复-screen-r-work" data-level="1">脱离：Ctrl+a 再按 d；恢复：screen -r work</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="nohup">
+              <a class="post-toc-link" href="#nohup" data-level="1">nohup</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常用增强参数">
+              <a class="post-toc-link" href="#常用增强参数" data-level="2">常用增强参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="反向同步-远端-本地">
+              <a class="post-toc-link" href="#反向同步-远端-本地" data-level="2">反向同步（远端 → 本地）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步-cron">
+              <a class="post-toc-link" href="#定时同步-cron" data-level="2">定时同步（cron）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
+              <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
+              <a class="post-toc-link" href="#故障排查" data-level="2">故障排查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="2">注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装依赖">
+          <a class="post-toc-link" href="#安装依赖" data-level="2">安装依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="本机安装依赖">
+          <a class="post-toc-link" href="#本机安装依赖" data-level="3">本机安装依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
+          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rocky-almalinux">
+          <a class="post-toc-link" href="#centos-rocky-almalinux" data-level="1">CentOS / Rocky / AlmaLinux</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
+          <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="openwrt-istoreos">
+          <a class="post-toc-link" href="#openwrt-istoreos" data-level="1">OpenWrt / iStoreOS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="远端主机安装-rsync">
+          <a class="post-toc-link" href="#远端主机安装-rsync" data-level="3">远端主机安装 Rsync</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="远端-rsync-同步命令">
+          <a class="post-toc-link" href="#远端-rsync-同步命令" data-level="2">远端 Rsync 同步命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基础同步">
+          <a class="post-toc-link" href="#基础同步" data-level="3">基础同步</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="源路径结尾斜杠的区别">
+          <a class="post-toc-link" href="#源路径结尾斜杠的区别" data-level="3">源路径结尾斜杠的区别</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录本身-结果-mnt-compose-xunlei">
+          <a class="post-toc-link" href="#同步-目录本身-结果-mnt-compose-xunlei" data-level="1">同步「目录本身」：结果 → /mnt/compose/xunlei/</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录内容-结果-mnt-compose-下直接是文件">
+          <a class="post-toc-link" href="#同步-目录内容-结果-mnt-compose-下直接是文件" data-level="1">同步「目录内容」：结果 → /mnt/compose/ 下直接是文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败-远端找不到-rsync">
+          <a class="post-toc-link" href="#常见失败-远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="usr-bin-rsync">
+          <a class="post-toc-link" href="#usr-bin-rsync" data-level="1">/usr/bin/rsync</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="更安全的密码传递">
+          <a class="post-toc-link" href="#更安全的密码传递" data-level="3">更安全的密码传递</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接-tmux">
+          <a class="post-toc-link" href="#保持长连接-tmux" data-level="2">保持长连接（tmux）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-tmux-会话">
+          <a class="post-toc-link" href="#创建-tmux-会话" data-level="1">创建 tmux 会话</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="脱离会话-后台继续跑-先按-ctrl-b-再按-d">
+          <a class="post-toc-link" href="#脱离会话-后台继续跑-先按-ctrl-b-再按-d" data-level="1">脱离会话（后台继续跑）：先按 Ctrl+b，再按 d</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新接入查看传输进度">
+          <a class="post-toc-link" href="#重新接入查看传输进度" data-level="1">重新接入查看传输进度</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有-tmux-会话">
+          <a class="post-toc-link" href="#列出所有-tmux-会话" data-level="1">列出所有 tmux 会话</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="传输完成后杀掉会话">
+          <a class="post-toc-link" href="#传输完成后杀掉会话" data-level="1">传输完成后杀掉会话</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="screen">
+          <a class="post-toc-link" href="#screen" data-level="1">screen</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="脱离-ctrl-a-再按-d-恢复-screen-r-work">
+          <a class="post-toc-link" href="#脱离-ctrl-a-再按-d-恢复-screen-r-work" data-level="1">脱离：Ctrl+a 再按 d；恢复：screen -r work</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="nohup">
+          <a class="post-toc-link" href="#nohup" data-level="1">nohup</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常用增强参数">
+          <a class="post-toc-link" href="#常用增强参数" data-level="2">常用增强参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="反向同步-远端-本地">
+          <a class="post-toc-link" href="#反向同步-远端-本地" data-level="2">反向同步（远端 → 本地）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步-cron">
+          <a class="post-toc-link" href="#定时同步-cron" data-level="2">定时同步（cron）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
+          <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
+          <a class="post-toc-link" href="#故障排查" data-level="2">故障排查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="2">注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

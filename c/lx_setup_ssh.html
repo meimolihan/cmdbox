@@ -2341,9 +2341,464 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
+              <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
+              <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="功能概述">
+              <a class="post-toc-link" href="#功能概述" data-level="3">功能概述</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="兼容发行版">
+              <a class="post-toc-link" href="#兼容发行版" data-level="3">兼容发行版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安全优化项">
+              <a class="post-toc-link" href="#安全优化项" data-level="3">安全优化项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-ssh-服务">
+              <a class="post-toc-link" href="#安装-ssh-服务" data-level="3">安装 SSH 服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
+              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-rocky">
+              <a class="post-toc-link" href="#centos-rhel-rocky" data-level="1">CentOS / RHEL / Rocky</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse">
+              <a class="post-toc-link" href="#opensuse" data-level="1">openSUSE</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="arch-manjaro">
+              <a class="post-toc-link" href="#arch-manjaro" data-level="1">Arch / Manjaro</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="启用-ssh-服务">
+              <a class="post-toc-link" href="#启用-ssh-服务" data-level="3">启用 SSH 服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu-opensuse-arch">
+              <a class="post-toc-link" href="#debian-ubuntu-opensuse-arch" data-level="1">Debian / Ubuntu / openSUSE / Arch</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-fedora">
+              <a class="post-toc-link" href="#centos-rhel-fedora" data-level="1">CentOS / RHEL / Fedora</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+              <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置备份与修改">
+              <a class="post-toc-link" href="#配置备份与修改" data-level="3">配置备份与修改</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份原始配置">
+              <a class="post-toc-link" href="#备份原始配置" data-level="1">备份原始配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="修改关键配置-以提升连接稳定性为例">
+              <a class="post-toc-link" href="#修改关键配置-以提升连接稳定性为例" data-level="1">修改关键配置（以提升连接稳定性为例）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证配置语法">
+              <a class="post-toc-link" href="#验证配置语法" data-level="1">验证配置语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启生效">
+              <a class="post-toc-link" href="#重启生效" data-level="1">重启生效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙放行">
+              <a class="post-toc-link" href="#防火墙放行" data-level="3">防火墙放行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ufw-debian-ubuntu">
+              <a class="post-toc-link" href="#ufw-debian-ubuntu" data-level="1">ufw（Debian/Ubuntu）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld-centos-rhel-fedora">
+              <a class="post-toc-link" href="#firewalld-centos-rhel-fedora" data-level="1">firewalld（CentOS/RHEL/Fedora）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="iptables-通用">
+              <a class="post-toc-link" href="#iptables-通用" data-level="1">iptables（通用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="客户端连接">
+              <a class="post-toc-link" href="#客户端连接" data-level="3">客户端连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="默认端口连接">
+              <a class="post-toc-link" href="#默认端口连接" data-level="1">默认端口连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口连接">
+              <a class="post-toc-link" href="#指定端口连接" data-level="1">指定端口连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器-ip">
+              <a class="post-toc-link" href="#查看服务器-ip" data-level="1">查看服务器 IP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安全加固建议">
+              <a class="post-toc-link" href="#安全加固建议" data-level="3">安全加固建议</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-更改默认端口-减少扫描攻击">
+              <a class="post-toc-link" href="#1-更改默认端口-减少扫描攻击" data-level="1">1. 更改默认端口（减少扫描攻击）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-etc-ssh-sshd_config-将-port-22-改为其他端口-如-2222">
+              <a class="post-toc-link" href="#编辑-etc-ssh-sshd_config-将-port-22-改为其他端口-如-2222" data-level="1">编辑 /etc/ssh/sshd_config，将 Port 22 改为其他端口（如 2222）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="修改后需对应更新防火墙规则">
+              <a class="post-toc-link" href="#修改后需对应更新防火墙规则" data-level="1">修改后需对应更新防火墙规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-限制登录用户">
+              <a class="post-toc-link" href="#2-限制登录用户" data-level="1">2. 限制登录用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-限制最大认证尝试次数">
+              <a class="post-toc-link" href="#3-限制最大认证尝试次数" data-level="1">3. 限制最大认证尝试次数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-禁用密码认证-仅允许密钥">
+              <a class="post-toc-link" href="#4-禁用密码认证-仅允许密钥" data-level="1">4. 禁用密码认证（仅允许密钥）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-生成密钥对-客户端执行">
+              <a class="post-toc-link" href="#5-生成密钥对-客户端执行" data-level="1">5. 生成密钥对（客户端执行）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="6-复制公钥到服务器">
+              <a class="post-toc-link" href="#6-复制公钥到服务器" data-level="1">6. 复制公钥到服务器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="日志与监控">
+              <a class="post-toc-link" href="#日志与监控" data-level="3">日志与监控</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-ssh-服务日志">
+              <a class="post-toc-link" href="#查看-ssh-服务日志" data-level="1">查看 SSH 服务日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看登录记录">
+              <a class="post-toc-link" href="#查看登录记录" data-level="1">查看登录记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看失败登录尝试">
+              <a class="post-toc-link" href="#查看失败登录尝试" data-level="1">查看失败登录尝试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ssh-配置语法检查">
+              <a class="post-toc-link" href="#ssh-配置语法检查" data-level="1">SSH 配置语法检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="故障排查">
+              <a class="post-toc-link" href="#故障排查" data-level="3">故障排查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务是否运行">
+              <a class="post-toc-link" href="#检查服务是否运行" data-level="1">检查服务是否运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查端口监听状态">
+              <a class="post-toc-link" href="#检查端口监听状态" data-level="1">检查端口监听状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查防火墙规则">
+              <a class="post-toc-link" href="#检查防火墙规则" data-level="1">检查防火墙规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细调试连接">
+              <a class="post-toc-link" href="#详细调试连接" data-level="1">详细调试连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
+              <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
+              <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
+              <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
+              <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
+          <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
+          <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="功能概述">
+          <a class="post-toc-link" href="#功能概述" data-level="3">功能概述</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="兼容发行版">
+          <a class="post-toc-link" href="#兼容发行版" data-level="3">兼容发行版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安全优化项">
+          <a class="post-toc-link" href="#安全优化项" data-level="3">安全优化项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-ssh-服务">
+          <a class="post-toc-link" href="#安装-ssh-服务" data-level="3">安装 SSH 服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
+          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-rocky">
+          <a class="post-toc-link" href="#centos-rhel-rocky" data-level="1">CentOS / RHEL / Rocky</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse">
+          <a class="post-toc-link" href="#opensuse" data-level="1">openSUSE</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="arch-manjaro">
+          <a class="post-toc-link" href="#arch-manjaro" data-level="1">Arch / Manjaro</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="启用-ssh-服务">
+          <a class="post-toc-link" href="#启用-ssh-服务" data-level="3">启用 SSH 服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu-opensuse-arch">
+          <a class="post-toc-link" href="#debian-ubuntu-opensuse-arch" data-level="1">Debian / Ubuntu / openSUSE / Arch</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-fedora">
+          <a class="post-toc-link" href="#centos-rhel-fedora" data-level="1">CentOS / RHEL / Fedora</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+          <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置备份与修改">
+          <a class="post-toc-link" href="#配置备份与修改" data-level="3">配置备份与修改</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份原始配置">
+          <a class="post-toc-link" href="#备份原始配置" data-level="1">备份原始配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="修改关键配置-以提升连接稳定性为例">
+          <a class="post-toc-link" href="#修改关键配置-以提升连接稳定性为例" data-level="1">修改关键配置（以提升连接稳定性为例）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证配置语法">
+          <a class="post-toc-link" href="#验证配置语法" data-level="1">验证配置语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启生效">
+          <a class="post-toc-link" href="#重启生效" data-level="1">重启生效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙放行">
+          <a class="post-toc-link" href="#防火墙放行" data-level="3">防火墙放行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ufw-debian-ubuntu">
+          <a class="post-toc-link" href="#ufw-debian-ubuntu" data-level="1">ufw（Debian/Ubuntu）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld-centos-rhel-fedora">
+          <a class="post-toc-link" href="#firewalld-centos-rhel-fedora" data-level="1">firewalld（CentOS/RHEL/Fedora）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="iptables-通用">
+          <a class="post-toc-link" href="#iptables-通用" data-level="1">iptables（通用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="客户端连接">
+          <a class="post-toc-link" href="#客户端连接" data-level="3">客户端连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="默认端口连接">
+          <a class="post-toc-link" href="#默认端口连接" data-level="1">默认端口连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口连接">
+          <a class="post-toc-link" href="#指定端口连接" data-level="1">指定端口连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器-ip">
+          <a class="post-toc-link" href="#查看服务器-ip" data-level="1">查看服务器 IP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安全加固建议">
+          <a class="post-toc-link" href="#安全加固建议" data-level="3">安全加固建议</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-更改默认端口-减少扫描攻击">
+          <a class="post-toc-link" href="#1-更改默认端口-减少扫描攻击" data-level="1">1. 更改默认端口（减少扫描攻击）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-etc-ssh-sshd_config-将-port-22-改为其他端口-如-2222">
+          <a class="post-toc-link" href="#编辑-etc-ssh-sshd_config-将-port-22-改为其他端口-如-2222" data-level="1">编辑 /etc/ssh/sshd_config，将 Port 22 改为其他端口（如 2222）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="修改后需对应更新防火墙规则">
+          <a class="post-toc-link" href="#修改后需对应更新防火墙规则" data-level="1">修改后需对应更新防火墙规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-限制登录用户">
+          <a class="post-toc-link" href="#2-限制登录用户" data-level="1">2. 限制登录用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-限制最大认证尝试次数">
+          <a class="post-toc-link" href="#3-限制最大认证尝试次数" data-level="1">3. 限制最大认证尝试次数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-禁用密码认证-仅允许密钥">
+          <a class="post-toc-link" href="#4-禁用密码认证-仅允许密钥" data-level="1">4. 禁用密码认证（仅允许密钥）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-生成密钥对-客户端执行">
+          <a class="post-toc-link" href="#5-生成密钥对-客户端执行" data-level="1">5. 生成密钥对（客户端执行）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="6-复制公钥到服务器">
+          <a class="post-toc-link" href="#6-复制公钥到服务器" data-level="1">6. 复制公钥到服务器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="日志与监控">
+          <a class="post-toc-link" href="#日志与监控" data-level="3">日志与监控</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-ssh-服务日志">
+          <a class="post-toc-link" href="#查看-ssh-服务日志" data-level="1">查看 SSH 服务日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看登录记录">
+          <a class="post-toc-link" href="#查看登录记录" data-level="1">查看登录记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看失败登录尝试">
+          <a class="post-toc-link" href="#查看失败登录尝试" data-level="1">查看失败登录尝试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ssh-配置语法检查">
+          <a class="post-toc-link" href="#ssh-配置语法检查" data-level="1">SSH 配置语法检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="故障排查">
+          <a class="post-toc-link" href="#故障排查" data-level="3">故障排查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务是否运行">
+          <a class="post-toc-link" href="#检查服务是否运行" data-level="1">检查服务是否运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查端口监听状态">
+          <a class="post-toc-link" href="#检查端口监听状态" data-level="1">检查端口监听状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查防火墙规则">
+          <a class="post-toc-link" href="#检查防火墙规则" data-level="1">检查防火墙规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细调试连接">
+          <a class="post-toc-link" href="#详细调试连接" data-level="1">详细调试连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
+          <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
+          <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
+          <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
+          <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

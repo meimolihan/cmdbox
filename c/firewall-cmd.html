@@ -1764,9 +1764,336 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实例">
+              <a class="post-toc-link" href="#实例" data-level="3">实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装firewalld">
+              <a class="post-toc-link" href="#安装firewalld" data-level="1">安装firewalld</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭服务的方法">
+              <a class="post-toc-link" href="#关闭服务的方法" data-level="1">关闭服务的方法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="你也可以关闭目前还不熟悉的firewalld防火墙-而使用iptables-命令如下">
+              <a class="post-toc-link" href="#你也可以关闭目前还不熟悉的firewalld防火墙-而使用iptables-命令如下" data-level="1">你也可以关闭目前还不熟悉的FirewallD防火墙，而使用iptables，命令如下：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看设置">
+              <a class="post-toc-link" href="#查看设置" data-level="1">查看设置：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="两者的区别就是第一个无需断开连接-就是firewalld特性之一动态添加规则-第二个需要断开连接-类似重启服务">
+              <a class="post-toc-link" href="#两者的区别就是第一个无需断开连接-就是firewalld特性之一动态添加规则-第二个需要断开连接-类似重启服务" data-level="1">两者的区别就是第一个无需断开连接，就是firewalld特性之一动态添加规则，第二个需要断开连接，类似重启服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将接口添加到区域-默认接口都在public">
+              <a class="post-toc-link" href="#将接口添加到区域-默认接口都在public" data-level="1">将接口添加到区域，默认接口都在public</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="永久生效再加上-permanent-然后reload防火墙">
+              <a class="post-toc-link" href="#永久生效再加上-permanent-然后reload防火墙" data-level="1">永久生效再加上 --permanent 然后reload防火墙</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置默认接口区域-立即生效无需重启">
+              <a class="post-toc-link" href="#设置默认接口区域-立即生效无需重启" data-level="1">设置默认接口区域，立即生效无需重启</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有打开的端口">
+              <a class="post-toc-link" href="#查看所有打开的端口" data-level="1">查看所有打开的端口：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="加入一个端口到区域">
+              <a class="post-toc-link" href="#加入一个端口到区域" data-level="1">加入一个端口到区域：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="若要永久生效方法同上">
+              <a class="post-toc-link" href="#若要永久生效方法同上" data-level="1">若要永久生效方法同上</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开一个服务-类似于将端口可视化-服务需要在配置文件中添加-etc-firewalld-目录下有services文件夹-这个不详细说了-详情参考文档">
+              <a class="post-toc-link" href="#打开一个服务-类似于将端口可视化-服务需要在配置文件中添加-etc-firewalld-目录下有services文件夹-这个不详细说了-详情参考文档" data-level="1">打开一个服务，类似于将端口可视化，服务需要在配置文件中添加，/etc/firewalld 目录下有services文件夹，这个不详细说了，详情参考文档</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="移除服务">
+              <a class="post-toc-link" href="#移除服务" data-level="1">移除服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示支持的区域列表">
+              <a class="post-toc-link" href="#显示支持的区域列表" data-level="1">显示支持的区域列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置为家庭区域">
+              <a class="post-toc-link" href="#设置为家庭区域" data-level="1">设置为家庭区域</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前区域">
+              <a class="post-toc-link" href="#查看当前区域" data-level="1">查看当前区域</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置当前区域的接口">
+              <a class="post-toc-link" href="#设置当前区域的接口" data-level="1">设置当前区域的接口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有公共区域-public">
+              <a class="post-toc-link" href="#显示所有公共区域-public" data-level="1">显示所有公共区域（public）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="临时修改网络接口-enp0s3-为内部区域-internal">
+              <a class="post-toc-link" href="#临时修改网络接口-enp0s3-为内部区域-internal" data-level="1">临时修改网络接口（enp0s3）为内部区域（internal）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="永久修改网络接口enp03s为内部区域-internal">
+              <a class="post-toc-link" href="#永久修改网络接口enp03s为内部区域-internal" data-level="1">永久修改网络接口enp03s为内部区域（internal）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示服务列表">
+              <a class="post-toc-link" href="#显示服务列表" data-level="1">显示服务列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="允许ssh服务通过">
+              <a class="post-toc-link" href="#允许ssh服务通过" data-level="1">允许SSH服务通过</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="禁止ssh服务通过">
+              <a class="post-toc-link" href="#禁止ssh服务通过" data-level="1">禁止SSH服务通过</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开tcp的8080端口">
+              <a class="post-toc-link" href="#打开tcp的8080端口" data-level="1">打开TCP的8080端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="临时允许samba服务通过600秒">
+              <a class="post-toc-link" href="#临时允许samba服务通过600秒" data-level="1">临时允许Samba服务通过600秒</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示当前服务">
+              <a class="post-toc-link" href="#显示当前服务" data-level="1">显示当前服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加http服务到内部区域-internal">
+              <a class="post-toc-link" href="#添加http服务到内部区域-internal" data-level="1">添加HTTP服务到内部区域（internal）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开443-tcp端口">
+              <a class="post-toc-link" href="#打开443-tcp端口" data-level="1">打开443/TCP端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="永久打开3690-tcp端口">
+              <a class="post-toc-link" href="#永久打开3690-tcp端口" data-level="1">永久打开3690/TCP端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="永久打开端口好像需要reload一下-临时打开好像不用-如果用了reload临时打开的端口就失效了">
+              <a class="post-toc-link" href="#永久打开端口好像需要reload一下-临时打开好像不用-如果用了reload临时打开的端口就失效了" data-level="1">永久打开端口好像需要reload一下，临时打开好像不用，如果用了reload临时打开的端口就失效了</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="其它服务也可能是这样的-这个没有测试">
+              <a class="post-toc-link" href="#其它服务也可能是这样的-这个没有测试" data-level="1">其它服务也可能是这样的，这个没有测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看防火墙-添加的端口也可以看到">
+              <a class="post-toc-link" href="#查看防火墙-添加的端口也可以看到" data-level="1">查看防火墙，添加的端口也可以看到</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld包括一种直接模式-使用它可以完成一些工作-例如打开tcp协议的9999端口">
+              <a class="post-toc-link" href="#firewalld包括一种直接模式-使用它可以完成一些工作-例如打开tcp协议的9999端口" data-level="1">FirewallD包括一种直接模式，使用它可以完成一些工作，例如打开TCP协议的9999端口</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实例">
+          <a class="post-toc-link" href="#实例" data-level="3">实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装firewalld">
+          <a class="post-toc-link" href="#安装firewalld" data-level="1">安装firewalld</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭服务的方法">
+          <a class="post-toc-link" href="#关闭服务的方法" data-level="1">关闭服务的方法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="你也可以关闭目前还不熟悉的firewalld防火墙-而使用iptables-命令如下">
+          <a class="post-toc-link" href="#你也可以关闭目前还不熟悉的firewalld防火墙-而使用iptables-命令如下" data-level="1">你也可以关闭目前还不熟悉的FirewallD防火墙，而使用iptables，命令如下：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看设置">
+          <a class="post-toc-link" href="#查看设置" data-level="1">查看设置：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="两者的区别就是第一个无需断开连接-就是firewalld特性之一动态添加规则-第二个需要断开连接-类似重启服务">
+          <a class="post-toc-link" href="#两者的区别就是第一个无需断开连接-就是firewalld特性之一动态添加规则-第二个需要断开连接-类似重启服务" data-level="1">两者的区别就是第一个无需断开连接，就是firewalld特性之一动态添加规则，第二个需要断开连接，类似重启服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将接口添加到区域-默认接口都在public">
+          <a class="post-toc-link" href="#将接口添加到区域-默认接口都在public" data-level="1">将接口添加到区域，默认接口都在public</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="永久生效再加上-permanent-然后reload防火墙">
+          <a class="post-toc-link" href="#永久生效再加上-permanent-然后reload防火墙" data-level="1">永久生效再加上 --permanent 然后reload防火墙</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置默认接口区域-立即生效无需重启">
+          <a class="post-toc-link" href="#设置默认接口区域-立即生效无需重启" data-level="1">设置默认接口区域，立即生效无需重启</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有打开的端口">
+          <a class="post-toc-link" href="#查看所有打开的端口" data-level="1">查看所有打开的端口：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="加入一个端口到区域">
+          <a class="post-toc-link" href="#加入一个端口到区域" data-level="1">加入一个端口到区域：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="若要永久生效方法同上">
+          <a class="post-toc-link" href="#若要永久生效方法同上" data-level="1">若要永久生效方法同上</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开一个服务-类似于将端口可视化-服务需要在配置文件中添加-etc-firewalld-目录下有services文件夹-这个不详细说了-详情参考文档">
+          <a class="post-toc-link" href="#打开一个服务-类似于将端口可视化-服务需要在配置文件中添加-etc-firewalld-目录下有services文件夹-这个不详细说了-详情参考文档" data-level="1">打开一个服务，类似于将端口可视化，服务需要在配置文件中添加，/etc/firewalld 目录下有services文件夹，这个不详细说了，详情参考文档</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="移除服务">
+          <a class="post-toc-link" href="#移除服务" data-level="1">移除服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示支持的区域列表">
+          <a class="post-toc-link" href="#显示支持的区域列表" data-level="1">显示支持的区域列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置为家庭区域">
+          <a class="post-toc-link" href="#设置为家庭区域" data-level="1">设置为家庭区域</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前区域">
+          <a class="post-toc-link" href="#查看当前区域" data-level="1">查看当前区域</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置当前区域的接口">
+          <a class="post-toc-link" href="#设置当前区域的接口" data-level="1">设置当前区域的接口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有公共区域-public">
+          <a class="post-toc-link" href="#显示所有公共区域-public" data-level="1">显示所有公共区域（public）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="临时修改网络接口-enp0s3-为内部区域-internal">
+          <a class="post-toc-link" href="#临时修改网络接口-enp0s3-为内部区域-internal" data-level="1">临时修改网络接口（enp0s3）为内部区域（internal）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="永久修改网络接口enp03s为内部区域-internal">
+          <a class="post-toc-link" href="#永久修改网络接口enp03s为内部区域-internal" data-level="1">永久修改网络接口enp03s为内部区域（internal）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示服务列表">
+          <a class="post-toc-link" href="#显示服务列表" data-level="1">显示服务列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="允许ssh服务通过">
+          <a class="post-toc-link" href="#允许ssh服务通过" data-level="1">允许SSH服务通过</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="禁止ssh服务通过">
+          <a class="post-toc-link" href="#禁止ssh服务通过" data-level="1">禁止SSH服务通过</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开tcp的8080端口">
+          <a class="post-toc-link" href="#打开tcp的8080端口" data-level="1">打开TCP的8080端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="临时允许samba服务通过600秒">
+          <a class="post-toc-link" href="#临时允许samba服务通过600秒" data-level="1">临时允许Samba服务通过600秒</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示当前服务">
+          <a class="post-toc-link" href="#显示当前服务" data-level="1">显示当前服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加http服务到内部区域-internal">
+          <a class="post-toc-link" href="#添加http服务到内部区域-internal" data-level="1">添加HTTP服务到内部区域（internal）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开443-tcp端口">
+          <a class="post-toc-link" href="#打开443-tcp端口" data-level="1">打开443/TCP端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="永久打开3690-tcp端口">
+          <a class="post-toc-link" href="#永久打开3690-tcp端口" data-level="1">永久打开3690/TCP端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="永久打开端口好像需要reload一下-临时打开好像不用-如果用了reload临时打开的端口就失效了">
+          <a class="post-toc-link" href="#永久打开端口好像需要reload一下-临时打开好像不用-如果用了reload临时打开的端口就失效了" data-level="1">永久打开端口好像需要reload一下，临时打开好像不用，如果用了reload临时打开的端口就失效了</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="其它服务也可能是这样的-这个没有测试">
+          <a class="post-toc-link" href="#其它服务也可能是这样的-这个没有测试" data-level="1">其它服务也可能是这样的，这个没有测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看防火墙-添加的端口也可以看到">
+          <a class="post-toc-link" href="#查看防火墙-添加的端口也可以看到" data-level="1">查看防火墙，添加的端口也可以看到</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld包括一种直接模式-使用它可以完成一些工作-例如打开tcp协议的9999端口">
+          <a class="post-toc-link" href="#firewalld包括一种直接模式-使用它可以完成一些工作-例如打开tcp协议的9999端口" data-level="1">FirewallD包括一种直接模式，使用它可以完成一些工作，例如打开TCP协议的9999端口</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

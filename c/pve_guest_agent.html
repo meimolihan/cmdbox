@@ -2547,9 +2547,752 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="qemu-guest-agent-简介">
+              <a class="post-toc-link" href="#qemu-guest-agent-简介" data-level="2">qemu-guest-agent 简介</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-proxmox-ve-后台配置">
+              <a class="post-toc-link" href="#一-proxmox-ve-后台配置" data-level="2">一、Proxmox VE 后台配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-启用虚拟机代理">
+              <a class="post-toc-link" href="#1-启用虚拟机代理" data-level="3">1. 启用虚拟机代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-配置注意事项">
+              <a class="post-toc-link" href="#2-配置注意事项" data-level="3">2. 配置注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一键脚本">
+              <a class="post-toc-link" href="#一键脚本" data-level="3">一键脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="效果预览">
+              <a class="post-toc-link" href="#效果预览" data-level="3">效果预览</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="脚本源码">
+              <a class="post-toc-link" href="#脚本源码" data-level="3">脚本源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="主要功能">
+              <a class="post-toc-link" href="#主要功能" data-level="3">主要功能：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="使用优势">
+              <a class="post-toc-link" href="#使用优势" data-level="3">使用优势：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-linux-系统安装指南">
+              <a class="post-toc-link" href="#二-linux-系统安装指南" data-level="2">二、Linux 系统安装指南</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-debian-ubuntu-系统">
+              <a class="post-toc-link" href="#1-debian-ubuntu-系统" data-level="3">1. Debian/Ubuntu 系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表">
+              <a class="post-toc-link" href="#更新软件包列表" data-level="1">更新软件包列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-qemu-guest-agent">
+              <a class="post-toc-link" href="#安装-qemu-guest-agent" data-level="1">安装 qemu-guest-agent</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务并设置开机自启">
+              <a class="post-toc-link" href="#启动服务并设置开机自启" data-level="1">启动服务并设置开机自启</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+              <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志-如果有问题">
+              <a class="post-toc-link" href="#查看日志-如果有问题" data-level="1">查看日志（如果有问题）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-centos-rhel-系统">
+              <a class="post-toc-link" href="#2-centos-rhel-系统" data-level="3">2. CentOS/RHEL 系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-7-及以下版本">
+              <a class="post-toc-link" href="#centos-rhel-7-及以下版本" data-level="1">CentOS/RHEL 7 及以下版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-8-及以上版本">
+              <a class="post-toc-link" href="#centos-rhel-8-及以上版本" data-level="1">CentOS/RHEL 8 及以上版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="对于-almalinux-rocky-linux">
+              <a class="post-toc-link" href="#对于-almalinux-rocky-linux" data-level="1">对于 AlmaLinux/Rocky Linux</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-opensuse-系统">
+              <a class="post-toc-link" href="#3-opensuse-系统" data-level="3">3. OpenSUSE 系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse-leap-tumbleweed">
+              <a class="post-toc-link" href="#opensuse-leap-tumbleweed" data-level="1">OpenSUSE Leap/Tumbleweed</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证安装">
+              <a class="post-toc-link" href="#验证安装" data-level="1">验证安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-openwrt-istoreos-安装">
+              <a class="post-toc-link" href="#三-openwrt-istoreos-安装" data-level="2">三、OpenWRT/iStoreOS 安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装步骤">
+              <a class="post-toc-link" href="#1-安装步骤" data-level="3">1. 安装步骤</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表">
+              <a class="post-toc-link" href="#更新软件包列表" data-level="1">更新软件包列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-qemu-guest-agent">
+              <a class="post-toc-link" href="#安装-qemu-guest-agent" data-level="1">安装 qemu-guest-agent</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或者使用-pkg-命令">
+              <a class="post-toc-link" href="#或者使用-pkg-命令" data-level="1">或者使用 pkg 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置脚本权限">
+              <a class="post-toc-link" href="#设置脚本权限" data-level="1">设置脚本权限</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用服务">
+              <a class="post-toc-link" href="#启用服务" data-level="1">启用服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
+              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启系统-可选">
+              <a class="post-toc-link" href="#重启系统-可选" data-level="1">重启系统（可选）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-服务配置">
+              <a class="post-toc-link" href="#2-服务配置" data-level="3">2. 服务配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+              <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看进程">
+              <a class="post-toc-link" href="#查看进程" data-level="1">查看进程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查日志">
+              <a class="post-toc-link" href="#检查日志" data-level="1">检查日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="手动测试代理">
+              <a class="post-toc-link" href="#手动测试代理" data-level="1">手动测试代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="配置高级选项-如果需要">
+              <a class="post-toc-link" href="#配置高级选项-如果需要" data-level="1">配置高级选项（如果需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-windows-系统安装">
+              <a class="post-toc-link" href="#四-windows-系统安装" data-level="2">四、Windows 系统安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-驱动下载">
+              <a class="post-toc-link" href="#1-驱动下载" data-level="3">1. 驱动下载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-安装方法">
+              <a class="post-toc-link" href="#2-安装方法" data-level="3">2. 安装方法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-powershell-安装">
+              <a class="post-toc-link" href="#使用-powershell-安装" data-level="1">使用 PowerShell 安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+              <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
+              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置自动启动">
+              <a class="post-toc-link" href="#设置自动启动" data-level="1">设置自动启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-验证与测试">
+              <a class="post-toc-link" href="#五-验证与测试" data-level="2">五、验证与测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-基础验证">
+              <a class="post-toc-link" href="#1-基础验证" data-level="3">1. 基础验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有虚拟机">
+              <a class="post-toc-link" href="#列出所有虚拟机" data-level="1">列出所有虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查特定虚拟机的代理状态">
+              <a class="post-toc-link" href="#检查特定虚拟机的代理状态" data-level="1">检查特定虚拟机的代理状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取虚拟机信息">
+              <a class="post-toc-link" href="#获取虚拟机信息" data-level="1">获取虚拟机信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取网络信息">
+              <a class="post-toc-link" href="#获取网络信息" data-level="1">获取网络信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取操作系统信息">
+              <a class="post-toc-link" href="#获取操作系统信息" data-level="1">获取操作系统信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-高级测试">
+              <a class="post-toc-link" href="#2-高级测试" data-level="3">2. 高级测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="测试文件系统冻结-解冻-用于备份">
+              <a class="post-toc-link" href="#测试文件系统冻结-解冻-用于备份" data-level="1">测试文件系统冻结/解冻（用于备份）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行客户机命令">
+              <a class="post-toc-link" href="#执行客户机命令" data-level="1">执行客户机命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取时间同步状态">
+              <a class="post-toc-link" href="#获取时间同步状态" data-level="1">获取时间同步状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置时间-需要权限">
+              <a class="post-toc-link" href="#设置时间-需要权限" data-level="1">设置时间（需要权限）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关机测试">
+              <a class="post-toc-link" href="#关机测试" data-level="1">关机测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-高级配置与优化">
+              <a class="post-toc-link" href="#六-高级配置与优化" data-level="2">六、高级配置与优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-自定义配置">
+              <a class="post-toc-link" href="#1-自定义配置" data-level="3">1. 自定义配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑配置文件">
+              <a class="post-toc-link" href="#编辑配置文件" data-level="1">编辑配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或">
+              <a class="post-toc-link" href="#或" data-level="1">或</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="常见配置选项">
+              <a class="post-toc-link" href="#常见配置选项" data-level="1">常见配置选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="d-守护进程模式">
+              <a class="post-toc-link" href="#d-守护进程模式" data-level="1">-d: 守护进程模式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="v-详细输出">
+              <a class="post-toc-link" href="#v-详细输出" data-level="1">-v: 详细输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="p-指定-virtio-serial-端口">
+              <a class="post-toc-link" href="#p-指定-virtio-serial-端口" data-level="1">-p: 指定 virtio-serial 端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务使配置生效">
+              <a class="post-toc-link" href="#重启服务使配置生效" data-level="1">重启服务使配置生效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-性能优化">
+              <a class="post-toc-link" href="#2-性能优化" data-level="3">2. 性能优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="调整日志级别-减少日志量">
+              <a class="post-toc-link" href="#调整日志级别-减少日志量" data-level="1">调整日志级别（减少日志量）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在配置文件中添加">
+              <a class="post-toc-link" href="#在配置文件中添加" data-level="1">在配置文件中添加：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="限制资源使用-在内存有限的系统中">
+              <a class="post-toc-link" href="#限制资源使用-在内存有限的系统中" data-level="1">限制资源使用（在内存有限的系统中）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建系统服务限制">
+              <a class="post-toc-link" href="#创建系统服务限制" data-level="1">创建系统服务限制</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加内容">
+              <a class="post-toc-link" href="#添加内容" data-level="1">添加内容：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-故障排除">
+              <a class="post-toc-link" href="#七-故障排除" data-level="2">七、故障排除</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-常见问题">
+              <a class="post-toc-link" href="#1-常见问题" data-level="3">1. 常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-解决方案">
+              <a class="post-toc-link" href="#2-解决方案" data-level="3">2. 解决方案</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="诊断连接问题">
+              <a class="post-toc-link" href="#诊断连接问题" data-level="1">诊断连接问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在客户机中检查-virtio-serial-设备">
+              <a class="post-toc-link" href="#在客户机中检查-virtio-serial-设备" data-level="1">在客户机中检查 virtio-serial 设备</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查内核消息">
+              <a class="post-toc-link" href="#检查内核消息" data-level="1">检查内核消息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="手动测试串行端口">
+              <a class="post-toc-link" href="#手动测试串行端口" data-level="1">手动测试串行端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新安装代理">
+              <a class="post-toc-link" href="#重新安装代理" data-level="1">重新安装代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查防火墙设置-某些系统可能需要">
+              <a class="post-toc-link" href="#检查防火墙设置-某些系统可能需要" data-level="1">检查防火墙设置（某些系统可能需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查事件日志">
+              <a class="post-toc-link" href="#检查事件日志" data-level="1">检查事件日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新注册服务">
+              <a class="post-toc-link" href="#重新注册服务" data-level="1">重新注册服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八-最佳实践">
+              <a class="post-toc-link" href="#八-最佳实践" data-level="2">八、最佳实践</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安全建议">
+              <a class="post-toc-link" href="#1-安全建议" data-level="3">1. 安全建议</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-维护技巧">
+              <a class="post-toc-link" href="#2-维护技巧" data-level="3">2. 维护技巧</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="qemu-guest-agent-简介">
+          <a class="post-toc-link" href="#qemu-guest-agent-简介" data-level="2">qemu-guest-agent 简介</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-proxmox-ve-后台配置">
+          <a class="post-toc-link" href="#一-proxmox-ve-后台配置" data-level="2">一、Proxmox VE 后台配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-启用虚拟机代理">
+          <a class="post-toc-link" href="#1-启用虚拟机代理" data-level="3">1. 启用虚拟机代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-配置注意事项">
+          <a class="post-toc-link" href="#2-配置注意事项" data-level="3">2. 配置注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一键脚本">
+          <a class="post-toc-link" href="#一键脚本" data-level="3">一键脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="效果预览">
+          <a class="post-toc-link" href="#效果预览" data-level="3">效果预览</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="脚本源码">
+          <a class="post-toc-link" href="#脚本源码" data-level="3">脚本源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="主要功能">
+          <a class="post-toc-link" href="#主要功能" data-level="3">主要功能：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="使用优势">
+          <a class="post-toc-link" href="#使用优势" data-level="3">使用优势：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-linux-系统安装指南">
+          <a class="post-toc-link" href="#二-linux-系统安装指南" data-level="2">二、Linux 系统安装指南</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-debian-ubuntu-系统">
+          <a class="post-toc-link" href="#1-debian-ubuntu-系统" data-level="3">1. Debian/Ubuntu 系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表">
+          <a class="post-toc-link" href="#更新软件包列表" data-level="1">更新软件包列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-qemu-guest-agent">
+          <a class="post-toc-link" href="#安装-qemu-guest-agent" data-level="1">安装 qemu-guest-agent</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务并设置开机自启">
+          <a class="post-toc-link" href="#启动服务并设置开机自启" data-level="1">启动服务并设置开机自启</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+          <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志-如果有问题">
+          <a class="post-toc-link" href="#查看日志-如果有问题" data-level="1">查看日志（如果有问题）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-centos-rhel-系统">
+          <a class="post-toc-link" href="#2-centos-rhel-系统" data-level="3">2. CentOS/RHEL 系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-7-及以下版本">
+          <a class="post-toc-link" href="#centos-rhel-7-及以下版本" data-level="1">CentOS/RHEL 7 及以下版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel-8-及以上版本">
+          <a class="post-toc-link" href="#centos-rhel-8-及以上版本" data-level="1">CentOS/RHEL 8 及以上版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="对于-almalinux-rocky-linux">
+          <a class="post-toc-link" href="#对于-almalinux-rocky-linux" data-level="1">对于 AlmaLinux/Rocky Linux</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-opensuse-系统">
+          <a class="post-toc-link" href="#3-opensuse-系统" data-level="3">3. OpenSUSE 系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse-leap-tumbleweed">
+          <a class="post-toc-link" href="#opensuse-leap-tumbleweed" data-level="1">OpenSUSE Leap/Tumbleweed</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证安装">
+          <a class="post-toc-link" href="#验证安装" data-level="1">验证安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-openwrt-istoreos-安装">
+          <a class="post-toc-link" href="#三-openwrt-istoreos-安装" data-level="2">三、OpenWRT/iStoreOS 安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装步骤">
+          <a class="post-toc-link" href="#1-安装步骤" data-level="3">1. 安装步骤</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表">
+          <a class="post-toc-link" href="#更新软件包列表" data-level="1">更新软件包列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-qemu-guest-agent">
+          <a class="post-toc-link" href="#安装-qemu-guest-agent" data-level="1">安装 qemu-guest-agent</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或者使用-pkg-命令">
+          <a class="post-toc-link" href="#或者使用-pkg-命令" data-level="1">或者使用 pkg 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置脚本权限">
+          <a class="post-toc-link" href="#设置脚本权限" data-level="1">设置脚本权限</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用服务">
+          <a class="post-toc-link" href="#启用服务" data-level="1">启用服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
+          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启系统-可选">
+          <a class="post-toc-link" href="#重启系统-可选" data-level="1">重启系统（可选）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-服务配置">
+          <a class="post-toc-link" href="#2-服务配置" data-level="3">2. 服务配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+          <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看进程">
+          <a class="post-toc-link" href="#查看进程" data-level="1">查看进程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查日志">
+          <a class="post-toc-link" href="#检查日志" data-level="1">检查日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="手动测试代理">
+          <a class="post-toc-link" href="#手动测试代理" data-level="1">手动测试代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="配置高级选项-如果需要">
+          <a class="post-toc-link" href="#配置高级选项-如果需要" data-level="1">配置高级选项（如果需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-windows-系统安装">
+          <a class="post-toc-link" href="#四-windows-系统安装" data-level="2">四、Windows 系统安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-驱动下载">
+          <a class="post-toc-link" href="#1-驱动下载" data-level="3">1. 驱动下载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-安装方法">
+          <a class="post-toc-link" href="#2-安装方法" data-level="3">2. 安装方法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-powershell-安装">
+          <a class="post-toc-link" href="#使用-powershell-安装" data-level="1">使用 PowerShell 安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+          <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
+          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置自动启动">
+          <a class="post-toc-link" href="#设置自动启动" data-level="1">设置自动启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-验证与测试">
+          <a class="post-toc-link" href="#五-验证与测试" data-level="2">五、验证与测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-基础验证">
+          <a class="post-toc-link" href="#1-基础验证" data-level="3">1. 基础验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有虚拟机">
+          <a class="post-toc-link" href="#列出所有虚拟机" data-level="1">列出所有虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查特定虚拟机的代理状态">
+          <a class="post-toc-link" href="#检查特定虚拟机的代理状态" data-level="1">检查特定虚拟机的代理状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取虚拟机信息">
+          <a class="post-toc-link" href="#获取虚拟机信息" data-level="1">获取虚拟机信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取网络信息">
+          <a class="post-toc-link" href="#获取网络信息" data-level="1">获取网络信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取操作系统信息">
+          <a class="post-toc-link" href="#获取操作系统信息" data-level="1">获取操作系统信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-高级测试">
+          <a class="post-toc-link" href="#2-高级测试" data-level="3">2. 高级测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="测试文件系统冻结-解冻-用于备份">
+          <a class="post-toc-link" href="#测试文件系统冻结-解冻-用于备份" data-level="1">测试文件系统冻结/解冻（用于备份）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行客户机命令">
+          <a class="post-toc-link" href="#执行客户机命令" data-level="1">执行客户机命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取时间同步状态">
+          <a class="post-toc-link" href="#获取时间同步状态" data-level="1">获取时间同步状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置时间-需要权限">
+          <a class="post-toc-link" href="#设置时间-需要权限" data-level="1">设置时间（需要权限）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关机测试">
+          <a class="post-toc-link" href="#关机测试" data-level="1">关机测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-高级配置与优化">
+          <a class="post-toc-link" href="#六-高级配置与优化" data-level="2">六、高级配置与优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-自定义配置">
+          <a class="post-toc-link" href="#1-自定义配置" data-level="3">1. 自定义配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑配置文件">
+          <a class="post-toc-link" href="#编辑配置文件" data-level="1">编辑配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或">
+          <a class="post-toc-link" href="#或" data-level="1">或</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="常见配置选项">
+          <a class="post-toc-link" href="#常见配置选项" data-level="1">常见配置选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="d-守护进程模式">
+          <a class="post-toc-link" href="#d-守护进程模式" data-level="1">-d: 守护进程模式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="v-详细输出">
+          <a class="post-toc-link" href="#v-详细输出" data-level="1">-v: 详细输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="p-指定-virtio-serial-端口">
+          <a class="post-toc-link" href="#p-指定-virtio-serial-端口" data-level="1">-p: 指定 virtio-serial 端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务使配置生效">
+          <a class="post-toc-link" href="#重启服务使配置生效" data-level="1">重启服务使配置生效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-性能优化">
+          <a class="post-toc-link" href="#2-性能优化" data-level="3">2. 性能优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="调整日志级别-减少日志量">
+          <a class="post-toc-link" href="#调整日志级别-减少日志量" data-level="1">调整日志级别（减少日志量）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在配置文件中添加">
+          <a class="post-toc-link" href="#在配置文件中添加" data-level="1">在配置文件中添加：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="限制资源使用-在内存有限的系统中">
+          <a class="post-toc-link" href="#限制资源使用-在内存有限的系统中" data-level="1">限制资源使用（在内存有限的系统中）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建系统服务限制">
+          <a class="post-toc-link" href="#创建系统服务限制" data-level="1">创建系统服务限制</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加内容">
+          <a class="post-toc-link" href="#添加内容" data-level="1">添加内容：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-故障排除">
+          <a class="post-toc-link" href="#七-故障排除" data-level="2">七、故障排除</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-常见问题">
+          <a class="post-toc-link" href="#1-常见问题" data-level="3">1. 常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-解决方案">
+          <a class="post-toc-link" href="#2-解决方案" data-level="3">2. 解决方案</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="诊断连接问题">
+          <a class="post-toc-link" href="#诊断连接问题" data-level="1">诊断连接问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在客户机中检查-virtio-serial-设备">
+          <a class="post-toc-link" href="#在客户机中检查-virtio-serial-设备" data-level="1">在客户机中检查 virtio-serial 设备</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查内核消息">
+          <a class="post-toc-link" href="#检查内核消息" data-level="1">检查内核消息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="手动测试串行端口">
+          <a class="post-toc-link" href="#手动测试串行端口" data-level="1">手动测试串行端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新安装代理">
+          <a class="post-toc-link" href="#重新安装代理" data-level="1">重新安装代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查防火墙设置-某些系统可能需要">
+          <a class="post-toc-link" href="#检查防火墙设置-某些系统可能需要" data-level="1">检查防火墙设置（某些系统可能需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查事件日志">
+          <a class="post-toc-link" href="#检查事件日志" data-level="1">检查事件日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新注册服务">
+          <a class="post-toc-link" href="#重新注册服务" data-level="1">重新注册服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八-最佳实践">
+          <a class="post-toc-link" href="#八-最佳实践" data-level="2">八、最佳实践</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安全建议">
+          <a class="post-toc-link" href="#1-安全建议" data-level="3">1. 安全建议</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-维护技巧">
+          <a class="post-toc-link" href="#2-维护技巧" data-level="3">2. 维护技巧</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

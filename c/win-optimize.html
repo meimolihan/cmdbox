@@ -1604,9 +1604,464 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-磁盘空间清理">
+              <a class="post-toc-link" href="#一-磁盘空间清理" data-level="2">一、磁盘空间清理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-自带磁盘清理工具">
+              <a class="post-toc-link" href="#1-自带磁盘清理工具" data-level="3">1. 自带磁盘清理工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-清理-windows-更新缓存">
+              <a class="post-toc-link" href="#2-清理-windows-更新缓存" data-level="3">2. 清理 Windows 更新缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-清理-winsxs-组件存储">
+              <a class="post-toc-link" href="#3-清理-winsxs-组件存储" data-level="3">3. 清理 WinSxS 组件存储</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-清理临时文件夹">
+              <a class="post-toc-link" href="#4-清理临时文件夹" data-level="3">4. 清理临时文件夹</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-关闭休眠-释放磁盘空间">
+              <a class="post-toc-link" href="#5-关闭休眠-释放磁盘空间" data-level="3">5. 关闭休眠（释放磁盘空间）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-开机速度优化">
+              <a class="post-toc-link" href="#二-开机速度优化" data-level="2">二、开机速度优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-禁用开机自启程序">
+              <a class="post-toc-link" href="#1-禁用开机自启程序" data-level="3">1. 禁用开机自启程序</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有开机自启项">
+              <a class="post-toc-link" href="#查看所有开机自启项" data-level="1">查看所有开机自启项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="通过任务管理器-ctrl-shift-esc-启动-禁用无用项目">
+              <a class="post-toc-link" href="#通过任务管理器-ctrl-shift-esc-启动-禁用无用项目" data-level="1">通过任务管理器：Ctrl+Shift+Esc → 启动 → 禁用无用项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-启用快速启动">
+              <a class="post-toc-link" href="#2-启用快速启动" data-level="3">2. 启用快速启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-调整-windows-视觉效果">
+              <a class="post-toc-link" href="#3-调整-windows-视觉效果" data-level="3">3. 调整 Windows 视觉效果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-优化系统服务">
+              <a class="post-toc-link" href="#4-优化系统服务" data-level="3">4. 优化系统服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将诊断相关服务设为手动启动-非必须保留">
+              <a class="post-toc-link" href="#将诊断相关服务设为手动启动-非必须保留" data-level="1">将诊断相关服务设为手动启动（非必须保留）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="如不使用打印机-可禁用-print-spooler">
+              <a class="post-toc-link" href="#如不使用打印机-可禁用-print-spooler" data-level="1">如不使用打印机，可禁用 Print Spooler</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-系统瘦身-功能卸载">
+              <a class="post-toc-link" href="#三-系统瘦身-功能卸载" data-level="2">三、系统瘦身（功能卸载）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-卸载预装-appx-应用">
+              <a class="post-toc-link" href="#1-卸载预装-appx-应用" data-level="3">1. 卸载预装 Appx 应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装的-appx-包">
+              <a class="post-toc-link" href="#查看已安装的-appx-包" data-level="1">查看已安装的 Appx 包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载指定应用-示例-卸载-onedrive">
+              <a class="post-toc-link" href="#卸载指定应用-示例-卸载-onedrive" data-level="1">卸载指定应用（示例：卸载 OneDrive）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量卸载非必要预装应用">
+              <a class="post-toc-link" href="#批量卸载非必要预装应用" data-level="1">批量卸载非必要预装应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-卸载可选功能">
+              <a class="post-toc-link" href="#2-卸载可选功能" data-level="3">2. 卸载可选功能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装功能">
+              <a class="post-toc-link" href="#查看已安装功能" data-level="1">查看已安装功能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载指定功能-示例-internet-explorer">
+              <a class="post-toc-link" href="#卸载指定功能-示例-internet-explorer" data-level="1">卸载指定功能（示例：Internet Explorer）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-清理旧版本-windows">
+              <a class="post-toc-link" href="#3-清理旧版本-windows" data-level="3">3. 清理旧版本 Windows</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="如果从旧版-windows-升级而来-可清理-windows-old">
+              <a class="post-toc-link" href="#如果从旧版-windows-升级而来-可清理-windows-old" data-level="1">如果从旧版 Windows 升级而来，可清理 Windows.old</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-性能优化">
+              <a class="post-toc-link" href="#四-性能优化" data-level="2">四、性能优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-虚拟内存设置">
+              <a class="post-toc-link" href="#1-虚拟内存设置" data-level="3">1. 虚拟内存设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-关闭透明效果-win11">
+              <a class="post-toc-link" href="#2-关闭透明效果-win11" data-level="3">2. 关闭透明效果（Win11）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭透明效果和动画">
+              <a class="post-toc-link" href="#关闭透明效果和动画" data-level="1">关闭透明效果和动画</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-启用-gpu-硬件加速">
+              <a class="post-toc-link" href="#3-启用-gpu-硬件加速" data-level="3">3. 启用 GPU 硬件加速</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开图形设置">
+              <a class="post-toc-link" href="#打开图形设置" data-level="1">打开图形设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-降低搜索索引负担">
+              <a class="post-toc-link" href="#4-降低搜索索引负担" data-level="3">4. 降低搜索索引负担</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开索引选项">
+              <a class="post-toc-link" href="#打开索引选项" data-level="1">打开索引选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-隐私与安全优化">
+              <a class="post-toc-link" href="#五-隐私与安全优化" data-level="2">五、隐私与安全优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-关闭遥测与诊断数据">
+              <a class="post-toc-link" href="#1-关闭遥测与诊断数据" data-level="3">1. 关闭遥测与诊断数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭诊断数据收集">
+              <a class="post-toc-link" href="#关闭诊断数据收集" data-level="1">关闭诊断数据收集</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭活动历史记录">
+              <a class="post-toc-link" href="#关闭活动历史记录" data-level="1">关闭活动历史记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-关闭广告-id-与个性化推荐">
+              <a class="post-toc-link" href="#2-关闭广告-id-与个性化推荐" data-level="3">2. 关闭广告 ID 与个性化推荐</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用广告-id">
+              <a class="post-toc-link" href="#禁用广告-id" data-level="1">禁用广告 ID</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-关闭自动更新驱动">
+              <a class="post-toc-link" href="#3-关闭自动更新驱动" data-level="3">3. 关闭自动更新驱动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开系统属性-硬件-设备安装设置">
+              <a class="post-toc-link" href="#打开系统属性-硬件-设备安装设置" data-level="1">打开系统属性 → 硬件 → 设备安装设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-一键优化脚本">
+              <a class="post-toc-link" href="#六-一键优化脚本" data-level="2">六、一键优化脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="需要以管理员身份运行">
+              <a class="post-toc-link" href="#需要以管理员身份运行" data-level="1">需要以管理员身份运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭休眠">
+              <a class="post-toc-link" href="#关闭休眠" data-level="1">关闭休眠</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理临时文件">
+              <a class="post-toc-link" href="#清理临时文件" data-level="1">清理临时文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载-xbox-相关应用">
+              <a class="post-toc-link" href="#卸载-xbox-相关应用" data-level="1">卸载 Xbox 相关应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭诊断跟踪服务">
+              <a class="post-toc-link" href="#关闭诊断跟踪服务" data-level="1">关闭诊断跟踪服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭遥测">
+              <a class="post-toc-link" href="#关闭遥测" data-level="1">关闭遥测</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理-winsxs">
+              <a class="post-toc-link" href="#清理-winsxs" data-level="1">清理 WinSxS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-恢复说明">
+              <a class="post-toc-link" href="#七-恢复说明" data-level="2">七、恢复说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+              <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-磁盘空间清理">
+          <a class="post-toc-link" href="#一-磁盘空间清理" data-level="2">一、磁盘空间清理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-自带磁盘清理工具">
+          <a class="post-toc-link" href="#1-自带磁盘清理工具" data-level="3">1. 自带磁盘清理工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-清理-windows-更新缓存">
+          <a class="post-toc-link" href="#2-清理-windows-更新缓存" data-level="3">2. 清理 Windows 更新缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-清理-winsxs-组件存储">
+          <a class="post-toc-link" href="#3-清理-winsxs-组件存储" data-level="3">3. 清理 WinSxS 组件存储</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-清理临时文件夹">
+          <a class="post-toc-link" href="#4-清理临时文件夹" data-level="3">4. 清理临时文件夹</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-关闭休眠-释放磁盘空间">
+          <a class="post-toc-link" href="#5-关闭休眠-释放磁盘空间" data-level="3">5. 关闭休眠（释放磁盘空间）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-开机速度优化">
+          <a class="post-toc-link" href="#二-开机速度优化" data-level="2">二、开机速度优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-禁用开机自启程序">
+          <a class="post-toc-link" href="#1-禁用开机自启程序" data-level="3">1. 禁用开机自启程序</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有开机自启项">
+          <a class="post-toc-link" href="#查看所有开机自启项" data-level="1">查看所有开机自启项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="通过任务管理器-ctrl-shift-esc-启动-禁用无用项目">
+          <a class="post-toc-link" href="#通过任务管理器-ctrl-shift-esc-启动-禁用无用项目" data-level="1">通过任务管理器：Ctrl+Shift+Esc → 启动 → 禁用无用项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-启用快速启动">
+          <a class="post-toc-link" href="#2-启用快速启动" data-level="3">2. 启用快速启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-调整-windows-视觉效果">
+          <a class="post-toc-link" href="#3-调整-windows-视觉效果" data-level="3">3. 调整 Windows 视觉效果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-优化系统服务">
+          <a class="post-toc-link" href="#4-优化系统服务" data-level="3">4. 优化系统服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将诊断相关服务设为手动启动-非必须保留">
+          <a class="post-toc-link" href="#将诊断相关服务设为手动启动-非必须保留" data-level="1">将诊断相关服务设为手动启动（非必须保留）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="如不使用打印机-可禁用-print-spooler">
+          <a class="post-toc-link" href="#如不使用打印机-可禁用-print-spooler" data-level="1">如不使用打印机，可禁用 Print Spooler</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-系统瘦身-功能卸载">
+          <a class="post-toc-link" href="#三-系统瘦身-功能卸载" data-level="2">三、系统瘦身（功能卸载）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-卸载预装-appx-应用">
+          <a class="post-toc-link" href="#1-卸载预装-appx-应用" data-level="3">1. 卸载预装 Appx 应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装的-appx-包">
+          <a class="post-toc-link" href="#查看已安装的-appx-包" data-level="1">查看已安装的 Appx 包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载指定应用-示例-卸载-onedrive">
+          <a class="post-toc-link" href="#卸载指定应用-示例-卸载-onedrive" data-level="1">卸载指定应用（示例：卸载 OneDrive）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量卸载非必要预装应用">
+          <a class="post-toc-link" href="#批量卸载非必要预装应用" data-level="1">批量卸载非必要预装应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-卸载可选功能">
+          <a class="post-toc-link" href="#2-卸载可选功能" data-level="3">2. 卸载可选功能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装功能">
+          <a class="post-toc-link" href="#查看已安装功能" data-level="1">查看已安装功能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载指定功能-示例-internet-explorer">
+          <a class="post-toc-link" href="#卸载指定功能-示例-internet-explorer" data-level="1">卸载指定功能（示例：Internet Explorer）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-清理旧版本-windows">
+          <a class="post-toc-link" href="#3-清理旧版本-windows" data-level="3">3. 清理旧版本 Windows</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="如果从旧版-windows-升级而来-可清理-windows-old">
+          <a class="post-toc-link" href="#如果从旧版-windows-升级而来-可清理-windows-old" data-level="1">如果从旧版 Windows 升级而来，可清理 Windows.old</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-性能优化">
+          <a class="post-toc-link" href="#四-性能优化" data-level="2">四、性能优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-虚拟内存设置">
+          <a class="post-toc-link" href="#1-虚拟内存设置" data-level="3">1. 虚拟内存设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-关闭透明效果-win11">
+          <a class="post-toc-link" href="#2-关闭透明效果-win11" data-level="3">2. 关闭透明效果（Win11）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭透明效果和动画">
+          <a class="post-toc-link" href="#关闭透明效果和动画" data-level="1">关闭透明效果和动画</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-启用-gpu-硬件加速">
+          <a class="post-toc-link" href="#3-启用-gpu-硬件加速" data-level="3">3. 启用 GPU 硬件加速</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开图形设置">
+          <a class="post-toc-link" href="#打开图形设置" data-level="1">打开图形设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-降低搜索索引负担">
+          <a class="post-toc-link" href="#4-降低搜索索引负担" data-level="3">4. 降低搜索索引负担</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开索引选项">
+          <a class="post-toc-link" href="#打开索引选项" data-level="1">打开索引选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-隐私与安全优化">
+          <a class="post-toc-link" href="#五-隐私与安全优化" data-level="2">五、隐私与安全优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-关闭遥测与诊断数据">
+          <a class="post-toc-link" href="#1-关闭遥测与诊断数据" data-level="3">1. 关闭遥测与诊断数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭诊断数据收集">
+          <a class="post-toc-link" href="#关闭诊断数据收集" data-level="1">关闭诊断数据收集</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭活动历史记录">
+          <a class="post-toc-link" href="#关闭活动历史记录" data-level="1">关闭活动历史记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-关闭广告-id-与个性化推荐">
+          <a class="post-toc-link" href="#2-关闭广告-id-与个性化推荐" data-level="3">2. 关闭广告 ID 与个性化推荐</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用广告-id">
+          <a class="post-toc-link" href="#禁用广告-id" data-level="1">禁用广告 ID</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-关闭自动更新驱动">
+          <a class="post-toc-link" href="#3-关闭自动更新驱动" data-level="3">3. 关闭自动更新驱动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开系统属性-硬件-设备安装设置">
+          <a class="post-toc-link" href="#打开系统属性-硬件-设备安装设置" data-level="1">打开系统属性 → 硬件 → 设备安装设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-一键优化脚本">
+          <a class="post-toc-link" href="#六-一键优化脚本" data-level="2">六、一键优化脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="需要以管理员身份运行">
+          <a class="post-toc-link" href="#需要以管理员身份运行" data-level="1">需要以管理员身份运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭休眠">
+          <a class="post-toc-link" href="#关闭休眠" data-level="1">关闭休眠</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理临时文件">
+          <a class="post-toc-link" href="#清理临时文件" data-level="1">清理临时文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载-xbox-相关应用">
+          <a class="post-toc-link" href="#卸载-xbox-相关应用" data-level="1">卸载 Xbox 相关应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭诊断跟踪服务">
+          <a class="post-toc-link" href="#关闭诊断跟踪服务" data-level="1">关闭诊断跟踪服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭遥测">
+          <a class="post-toc-link" href="#关闭遥测" data-level="1">关闭遥测</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理-winsxs">
+          <a class="post-toc-link" href="#清理-winsxs" data-level="1">清理 WinSxS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-恢复说明">
+          <a class="post-toc-link" href="#七-恢复说明" data-level="2">七、恢复说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+          <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

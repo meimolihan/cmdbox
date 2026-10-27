@@ -1775,9 +1775,424 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="适用范围">
+              <a class="post-toc-link" href="#适用范围" data-level="2">适用范围</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="1-用户账户基础管理">
+              <a class="post-toc-link" href="#1-用户账户基础管理" data-level="2">1. 用户账户基础管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-1-查看本机全部用户-cmd">
+              <a class="post-toc-link" href="#1-1-查看本机全部用户-cmd" data-level="3">1.1 查看本机全部用户（CMD）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-2-powershell-查看账户详细信息">
+              <a class="post-toc-link" href="#1-2-powershell-查看账户详细信息" data-level="3">1.2 PowerShell 查看账户详细信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看单个账户状态">
+              <a class="post-toc-link" href="#查看单个账户状态" data-level="1">查看单个账户状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="完整详情输出-常用属性">
+              <a class="post-toc-link" href="#完整详情输出-常用属性" data-level="1">完整详情输出（常用属性）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有本地账户-并区分账户来源类型">
+              <a class="post-toc-link" href="#列出所有本地账户-并区分账户来源类型" data-level="1">列出所有本地账户，并区分账户来源类型</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-3-启用被禁用的账户">
+              <a class="post-toc-link" href="#1-3-启用被禁用的账户" data-level="3">1.3 启用被禁用的账户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-4-设置账户密码-交互式-不输出明文">
+              <a class="post-toc-link" href="#1-4-设置账户密码-交互式-不输出明文" data-level="3">1.4 设置账户密码（交互式，不输出明文）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-5-创建全新纯本地管理员账户-推荐用于-rdp">
+              <a class="post-toc-link" href="#1-5-创建全新纯本地管理员账户-推荐用于-rdp" data-level="3">1.5 创建全新纯本地管理员账户（推荐用于 RDP）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="2-rdp-权限配置-组策略与安全策略">
+              <a class="post-toc-link" href="#2-rdp-权限配置-组策略与安全策略" data-level="2">2. RDP 权限配置（组策略与安全策略）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-1-将用户加入远程桌面用户组">
+              <a class="post-toc-link" href="#2-1-将用户加入远程桌面用户组" data-level="3">2.1 将用户加入远程桌面用户组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-2-查看远程桌面用户组成员">
+              <a class="post-toc-link" href="#2-2-查看远程桌面用户组成员" data-level="3">2.2 查看远程桌面用户组成员</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-3-查看管理员组成员">
+              <a class="post-toc-link" href="#2-3-查看管理员组成员" data-level="3">2.3 查看管理员组成员</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-4-导出安全策略-检查-rdp-允许-拒绝登录列表">
+              <a class="post-toc-link" href="#2-4-导出安全策略-检查-rdp-允许-拒绝登录列表" data-level="3">2.4 导出安全策略，检查 RDP 允许/拒绝登录列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-5-刷新本地安全策略-立即生效">
+              <a class="post-toc-link" href="#2-5-刷新本地安全策略-立即生效" data-level="3">2.5 刷新本地安全策略，立即生效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="3-rdp-服务与防火墙检查">
+              <a class="post-toc-link" href="#3-rdp-服务与防火墙检查" data-level="2">3. RDP 服务与防火墙检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-1-检查-rdp-服务状态">
+              <a class="post-toc-link" href="#3-1-检查-rdp-服务状态" data-level="3">3.1 检查 RDP 服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-2-rdp-关键注册表参数">
+              <a class="post-toc-link" href="#3-2-rdp-关键注册表参数" data-level="3">3.2 RDP 关键注册表参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="fdenytsconnections-0-开启-rdp-1-关闭-rdp">
+              <a class="post-toc-link" href="#fdenytsconnections-0-开启-rdp-1-关闭-rdp" data-level="1">fDenyTSConnections：0 开启 RDP，1 关闭 RDP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="userauthentication-1-启用-nla-网络级别身份验证-0-关闭-nla-仅排错时临时使用">
+              <a class="post-toc-link" href="#userauthentication-1-启用-nla-网络级别身份验证-0-关闭-nla-仅排错时临时使用" data-level="1">UserAuthentication：1 启用 NLA（网络级别身份验证），0 关闭 NLA（仅排错时临时使用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-3-防火墙放行-rdp">
+              <a class="post-toc-link" href="#3-3-防火墙放行-rdp" data-level="3">3.3 防火墙放行 RDP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="4-网络信息与-rdp-端口配置">
+              <a class="post-toc-link" href="#4-网络信息与-rdp-端口配置" data-level="2">4. 网络信息与 RDP 端口配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-1-查看本机-ipv4-地址">
+              <a class="post-toc-link" href="#4-1-查看本机-ipv4-地址" data-level="3">4.1 查看本机 IPv4 地址</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-2-rdp-默认端口说明">
+              <a class="post-toc-link" href="#4-2-rdp-默认端口说明" data-level="3">4.2 RDP 默认端口说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-3-查看当前-rdp-端口">
+              <a class="post-toc-link" href="#4-3-查看当前-rdp-端口" data-level="3">4.3 查看当前 RDP 端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-4-修改-rdp-端口-管理员">
+              <a class="post-toc-link" href="#4-4-修改-rdp-端口-管理员" data-level="3">4.4 修改 RDP 端口（管理员）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-5-检查网络连通性">
+              <a class="post-toc-link" href="#4-5-检查网络连通性" data-level="3">4.5 检查网络连通性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="5-会话查询与会话注销">
+              <a class="post-toc-link" href="#5-会话查询与会话注销" data-level="2">5. 会话查询与会话注销</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-1-查看当前登录会话">
+              <a class="post-toc-link" href="#5-1-查看当前登录会话" data-level="3">5.1 查看当前登录会话</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-2-查看全部会话-包含已断开但未注销的残留会话">
+              <a class="post-toc-link" href="#5-2-查看全部会话-包含已断开但未注销的残留会话" data-level="3">5.2 查看全部会话（包含已断开但未注销的残留会话）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-3-注销指定会话-释放占用资源">
+              <a class="post-toc-link" href="#5-3-注销指定会话-释放占用资源" data-level="3">5.3 注销指定会话（释放占用资源）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="6-客户端历史凭据清理-在本地电脑执行-非远程服务器">
+              <a class="post-toc-link" href="#6-客户端历史凭据清理-在本地电脑执行-非远程服务器" data-level="2">6. 客户端历史凭据清理（在本地电脑执行，非远程服务器）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一键清理批处理-cmd-管理员或普通用户均可">
+              <a class="post-toc-link" href="#一键清理批处理-cmd-管理员或普通用户均可" data-level="3">一键清理批处理（CMD 管理员或普通用户均可）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="强制弹出密码输入框-忽略保存的凭据">
+              <a class="post-toc-link" href="#强制弹出密码输入框-忽略保存的凭据" data-level="3">强制弹出密码输入框（忽略保存的凭据）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="图形化打开凭据管理器">
+              <a class="post-toc-link" href="#图形化打开凭据管理器" data-level="3">图形化打开凭据管理器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="7-常见加固操作-保留账户-禁止-rdp-锁屏隐藏">
+              <a class="post-toc-link" href="#7-常见加固操作-保留账户-禁止-rdp-锁屏隐藏" data-level="2">7. 常见加固操作（保留账户、禁止 RDP、锁屏隐藏）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-1-通过安全策略拒绝-administrator-远程登录">
+              <a class="post-toc-link" href="#7-1-通过安全策略拒绝-administrator-远程登录" data-level="3">7.1 通过安全策略拒绝 Administrator 远程登录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-c-secpol-cfg-在-sedenyremoteinteractivelogonright-后添加-s-1-5-32-500">
+              <a class="post-toc-link" href="#编辑-c-secpol-cfg-在-sedenyremoteinteractivelogonright-后添加-s-1-5-32-500" data-level="1">编辑 c:\secpol.cfg，在 SeDenyRemoteInteractiveLogonRight 后添加 *S-1-5-32-500</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-2-锁屏界面隐藏-administrator-注册表">
+              <a class="post-toc-link" href="#7-2-锁屏界面隐藏-administrator-注册表" data-level="3">7.2 锁屏界面隐藏 Administrator（注册表）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="8-常见故障排查">
+              <a class="post-toc-link" href="#8-常见故障排查" data-level="2">8. 常见故障排查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-1-微软账户-rdp-报错-用户账户当前被禁用">
+              <a class="post-toc-link" href="#8-1-微软账户-rdp-报错-用户账户当前被禁用" data-level="3">8.1 微软账户 RDP 报错&#34;用户账户当前被禁用&#34;</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-2-mstsc-不弹出密码输入窗口-直接尝试自动登录失败">
+              <a class="post-toc-link" href="#8-2-mstsc-不弹出密码输入窗口-直接尝试自动登录失败" data-level="3">8.2 mstsc 不弹出密码输入窗口（直接尝试自动登录失败）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-3-登录失败-查看详细错误日志">
+              <a class="post-toc-link" href="#8-3-登录失败-查看详细错误日志" data-level="3">8.3 登录失败，查看详细错误日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="9-一键校验全套状态脚本">
+              <a class="post-toc-link" href="#9-一键校验全套状态脚本" data-level="2">9. 一键校验全套状态脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="10-rdp-登录用户名格式速查表">
+              <a class="post-toc-link" href="#10-rdp-登录用户名格式速查表" data-level="2">10. RDP 登录用户名格式速查表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="总结">
+              <a class="post-toc-link" href="#总结" data-level="2">总结</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="适用范围">
+          <a class="post-toc-link" href="#适用范围" data-level="2">适用范围</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="1-用户账户基础管理">
+          <a class="post-toc-link" href="#1-用户账户基础管理" data-level="2">1. 用户账户基础管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-1-查看本机全部用户-cmd">
+          <a class="post-toc-link" href="#1-1-查看本机全部用户-cmd" data-level="3">1.1 查看本机全部用户（CMD）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-2-powershell-查看账户详细信息">
+          <a class="post-toc-link" href="#1-2-powershell-查看账户详细信息" data-level="3">1.2 PowerShell 查看账户详细信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看单个账户状态">
+          <a class="post-toc-link" href="#查看单个账户状态" data-level="1">查看单个账户状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="完整详情输出-常用属性">
+          <a class="post-toc-link" href="#完整详情输出-常用属性" data-level="1">完整详情输出（常用属性）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有本地账户-并区分账户来源类型">
+          <a class="post-toc-link" href="#列出所有本地账户-并区分账户来源类型" data-level="1">列出所有本地账户，并区分账户来源类型</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-3-启用被禁用的账户">
+          <a class="post-toc-link" href="#1-3-启用被禁用的账户" data-level="3">1.3 启用被禁用的账户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-4-设置账户密码-交互式-不输出明文">
+          <a class="post-toc-link" href="#1-4-设置账户密码-交互式-不输出明文" data-level="3">1.4 设置账户密码（交互式，不输出明文）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-5-创建全新纯本地管理员账户-推荐用于-rdp">
+          <a class="post-toc-link" href="#1-5-创建全新纯本地管理员账户-推荐用于-rdp" data-level="3">1.5 创建全新纯本地管理员账户（推荐用于 RDP）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="2-rdp-权限配置-组策略与安全策略">
+          <a class="post-toc-link" href="#2-rdp-权限配置-组策略与安全策略" data-level="2">2. RDP 权限配置（组策略与安全策略）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-1-将用户加入远程桌面用户组">
+          <a class="post-toc-link" href="#2-1-将用户加入远程桌面用户组" data-level="3">2.1 将用户加入远程桌面用户组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-2-查看远程桌面用户组成员">
+          <a class="post-toc-link" href="#2-2-查看远程桌面用户组成员" data-level="3">2.2 查看远程桌面用户组成员</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-3-查看管理员组成员">
+          <a class="post-toc-link" href="#2-3-查看管理员组成员" data-level="3">2.3 查看管理员组成员</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-4-导出安全策略-检查-rdp-允许-拒绝登录列表">
+          <a class="post-toc-link" href="#2-4-导出安全策略-检查-rdp-允许-拒绝登录列表" data-level="3">2.4 导出安全策略，检查 RDP 允许/拒绝登录列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-5-刷新本地安全策略-立即生效">
+          <a class="post-toc-link" href="#2-5-刷新本地安全策略-立即生效" data-level="3">2.5 刷新本地安全策略，立即生效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="3-rdp-服务与防火墙检查">
+          <a class="post-toc-link" href="#3-rdp-服务与防火墙检查" data-level="2">3. RDP 服务与防火墙检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-1-检查-rdp-服务状态">
+          <a class="post-toc-link" href="#3-1-检查-rdp-服务状态" data-level="3">3.1 检查 RDP 服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-2-rdp-关键注册表参数">
+          <a class="post-toc-link" href="#3-2-rdp-关键注册表参数" data-level="3">3.2 RDP 关键注册表参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="fdenytsconnections-0-开启-rdp-1-关闭-rdp">
+          <a class="post-toc-link" href="#fdenytsconnections-0-开启-rdp-1-关闭-rdp" data-level="1">fDenyTSConnections：0 开启 RDP，1 关闭 RDP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="userauthentication-1-启用-nla-网络级别身份验证-0-关闭-nla-仅排错时临时使用">
+          <a class="post-toc-link" href="#userauthentication-1-启用-nla-网络级别身份验证-0-关闭-nla-仅排错时临时使用" data-level="1">UserAuthentication：1 启用 NLA（网络级别身份验证），0 关闭 NLA（仅排错时临时使用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-3-防火墙放行-rdp">
+          <a class="post-toc-link" href="#3-3-防火墙放行-rdp" data-level="3">3.3 防火墙放行 RDP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="4-网络信息与-rdp-端口配置">
+          <a class="post-toc-link" href="#4-网络信息与-rdp-端口配置" data-level="2">4. 网络信息与 RDP 端口配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-1-查看本机-ipv4-地址">
+          <a class="post-toc-link" href="#4-1-查看本机-ipv4-地址" data-level="3">4.1 查看本机 IPv4 地址</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-2-rdp-默认端口说明">
+          <a class="post-toc-link" href="#4-2-rdp-默认端口说明" data-level="3">4.2 RDP 默认端口说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-3-查看当前-rdp-端口">
+          <a class="post-toc-link" href="#4-3-查看当前-rdp-端口" data-level="3">4.3 查看当前 RDP 端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-4-修改-rdp-端口-管理员">
+          <a class="post-toc-link" href="#4-4-修改-rdp-端口-管理员" data-level="3">4.4 修改 RDP 端口（管理员）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-5-检查网络连通性">
+          <a class="post-toc-link" href="#4-5-检查网络连通性" data-level="3">4.5 检查网络连通性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="5-会话查询与会话注销">
+          <a class="post-toc-link" href="#5-会话查询与会话注销" data-level="2">5. 会话查询与会话注销</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-1-查看当前登录会话">
+          <a class="post-toc-link" href="#5-1-查看当前登录会话" data-level="3">5.1 查看当前登录会话</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-2-查看全部会话-包含已断开但未注销的残留会话">
+          <a class="post-toc-link" href="#5-2-查看全部会话-包含已断开但未注销的残留会话" data-level="3">5.2 查看全部会话（包含已断开但未注销的残留会话）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-3-注销指定会话-释放占用资源">
+          <a class="post-toc-link" href="#5-3-注销指定会话-释放占用资源" data-level="3">5.3 注销指定会话（释放占用资源）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="6-客户端历史凭据清理-在本地电脑执行-非远程服务器">
+          <a class="post-toc-link" href="#6-客户端历史凭据清理-在本地电脑执行-非远程服务器" data-level="2">6. 客户端历史凭据清理（在本地电脑执行，非远程服务器）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一键清理批处理-cmd-管理员或普通用户均可">
+          <a class="post-toc-link" href="#一键清理批处理-cmd-管理员或普通用户均可" data-level="3">一键清理批处理（CMD 管理员或普通用户均可）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="强制弹出密码输入框-忽略保存的凭据">
+          <a class="post-toc-link" href="#强制弹出密码输入框-忽略保存的凭据" data-level="3">强制弹出密码输入框（忽略保存的凭据）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="图形化打开凭据管理器">
+          <a class="post-toc-link" href="#图形化打开凭据管理器" data-level="3">图形化打开凭据管理器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="7-常见加固操作-保留账户-禁止-rdp-锁屏隐藏">
+          <a class="post-toc-link" href="#7-常见加固操作-保留账户-禁止-rdp-锁屏隐藏" data-level="2">7. 常见加固操作（保留账户、禁止 RDP、锁屏隐藏）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-1-通过安全策略拒绝-administrator-远程登录">
+          <a class="post-toc-link" href="#7-1-通过安全策略拒绝-administrator-远程登录" data-level="3">7.1 通过安全策略拒绝 Administrator 远程登录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-c-secpol-cfg-在-sedenyremoteinteractivelogonright-后添加-s-1-5-32-500">
+          <a class="post-toc-link" href="#编辑-c-secpol-cfg-在-sedenyremoteinteractivelogonright-后添加-s-1-5-32-500" data-level="1">编辑 c:\secpol.cfg，在 SeDenyRemoteInteractiveLogonRight 后添加 *S-1-5-32-500</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-2-锁屏界面隐藏-administrator-注册表">
+          <a class="post-toc-link" href="#7-2-锁屏界面隐藏-administrator-注册表" data-level="3">7.2 锁屏界面隐藏 Administrator（注册表）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="8-常见故障排查">
+          <a class="post-toc-link" href="#8-常见故障排查" data-level="2">8. 常见故障排查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-1-微软账户-rdp-报错-用户账户当前被禁用">
+          <a class="post-toc-link" href="#8-1-微软账户-rdp-报错-用户账户当前被禁用" data-level="3">8.1 微软账户 RDP 报错&#34;用户账户当前被禁用&#34;</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-2-mstsc-不弹出密码输入窗口-直接尝试自动登录失败">
+          <a class="post-toc-link" href="#8-2-mstsc-不弹出密码输入窗口-直接尝试自动登录失败" data-level="3">8.2 mstsc 不弹出密码输入窗口（直接尝试自动登录失败）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-3-登录失败-查看详细错误日志">
+          <a class="post-toc-link" href="#8-3-登录失败-查看详细错误日志" data-level="3">8.3 登录失败，查看详细错误日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="9-一键校验全套状态脚本">
+          <a class="post-toc-link" href="#9-一键校验全套状态脚本" data-level="2">9. 一键校验全套状态脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="10-rdp-登录用户名格式速查表">
+          <a class="post-toc-link" href="#10-rdp-登录用户名格式速查表" data-level="2">10. RDP 登录用户名格式速查表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="总结">
+          <a class="post-toc-link" href="#总结" data-level="2">总结</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

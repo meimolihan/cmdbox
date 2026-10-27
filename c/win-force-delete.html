@@ -1440,9 +1440,208 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="命令提要与对比">
+              <a class="post-toc-link" href="#命令提要与对比" data-level="2">命令提要与对比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-cmd-命令">
+              <a class="post-toc-link" href="#一-cmd-命令" data-level="2">一、CMD 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-强制删除目录-含所有子目录和文件">
+              <a class="post-toc-link" href="#1-强制删除目录-含所有子目录和文件" data-level="3">1. 强制删除目录（含所有子目录和文件）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制删除文件-忽略只读属性">
+              <a class="post-toc-link" href="#2-强制删除文件-忽略只读属性" data-level="3">2. 强制删除文件（忽略只读属性）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-删除当前目录下全部文件及子目录">
+              <a class="post-toc-link" href="#3-删除当前目录下全部文件及子目录" data-level="3">3. 删除当前目录下全部文件及子目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-powershell-命令">
+              <a class="post-toc-link" href="#二-powershell-命令" data-level="2">二、PowerShell 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-强制删除目录-含所有子目录和文件">
+              <a class="post-toc-link" href="#1-强制删除目录-含所有子目录和文件" data-level="3">1. 强制删除目录（含所有子目录和文件）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制删除文件">
+              <a class="post-toc-link" href="#2-强制删除文件" data-level="3">2. 强制删除文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-删除目录内全部内容但保留目录本身">
+              <a class="post-toc-link" href="#3-删除目录内全部内容但保留目录本身" data-level="3">3. 删除目录内全部内容但保留目录本身</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-批处理脚本模板">
+              <a class="post-toc-link" href="#三-批处理脚本模板" data-level="2">三、批处理脚本模板</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-进阶用法">
+              <a class="post-toc-link" href="#四-进阶用法" data-level="2">四、进阶用法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-处理长路径-超过-260-字符">
+              <a class="post-toc-link" href="#1-处理长路径-超过-260-字符" data-level="3">1. 处理长路径（超过 260 字符）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-删除被进程占用的文件">
+              <a class="post-toc-link" href="#2-删除被进程占用的文件" data-level="3">2. 删除被进程占用的文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找占用文件的进程">
+              <a class="post-toc-link" href="#查找占用文件的进程" data-level="1">查找占用文件的进程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-删除大量小文件-提升速度">
+              <a class="post-toc-link" href="#3-删除大量小文件-提升速度" data-level="3">3. 删除大量小文件（提升速度）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="直接删除整个目录而非遍历">
+              <a class="post-toc-link" href="#直接删除整个目录而非遍历" data-level="1">直接删除整个目录而非遍历</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-排除特定文件-子目录">
+              <a class="post-toc-link" href="#4-排除特定文件-子目录" data-level="3">4. 排除特定文件/子目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除目录内所有内容-但保留指定文件">
+              <a class="post-toc-link" href="#删除目录内所有内容-但保留指定文件" data-level="1">删除目录内所有内容，但保留指定文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-安全与注意事项">
+              <a class="post-toc-link" href="#五-安全与注意事项" data-level="2">五、安全与注意事项</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="命令提要与对比">
+          <a class="post-toc-link" href="#命令提要与对比" data-level="2">命令提要与对比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-cmd-命令">
+          <a class="post-toc-link" href="#一-cmd-命令" data-level="2">一、CMD 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-强制删除目录-含所有子目录和文件">
+          <a class="post-toc-link" href="#1-强制删除目录-含所有子目录和文件" data-level="3">1. 强制删除目录（含所有子目录和文件）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制删除文件-忽略只读属性">
+          <a class="post-toc-link" href="#2-强制删除文件-忽略只读属性" data-level="3">2. 强制删除文件（忽略只读属性）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-删除当前目录下全部文件及子目录">
+          <a class="post-toc-link" href="#3-删除当前目录下全部文件及子目录" data-level="3">3. 删除当前目录下全部文件及子目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-powershell-命令">
+          <a class="post-toc-link" href="#二-powershell-命令" data-level="2">二、PowerShell 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-强制删除目录-含所有子目录和文件">
+          <a class="post-toc-link" href="#1-强制删除目录-含所有子目录和文件" data-level="3">1. 强制删除目录（含所有子目录和文件）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制删除文件">
+          <a class="post-toc-link" href="#2-强制删除文件" data-level="3">2. 强制删除文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-删除目录内全部内容但保留目录本身">
+          <a class="post-toc-link" href="#3-删除目录内全部内容但保留目录本身" data-level="3">3. 删除目录内全部内容但保留目录本身</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-批处理脚本模板">
+          <a class="post-toc-link" href="#三-批处理脚本模板" data-level="2">三、批处理脚本模板</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-进阶用法">
+          <a class="post-toc-link" href="#四-进阶用法" data-level="2">四、进阶用法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-处理长路径-超过-260-字符">
+          <a class="post-toc-link" href="#1-处理长路径-超过-260-字符" data-level="3">1. 处理长路径（超过 260 字符）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-删除被进程占用的文件">
+          <a class="post-toc-link" href="#2-删除被进程占用的文件" data-level="3">2. 删除被进程占用的文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找占用文件的进程">
+          <a class="post-toc-link" href="#查找占用文件的进程" data-level="1">查找占用文件的进程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-删除大量小文件-提升速度">
+          <a class="post-toc-link" href="#3-删除大量小文件-提升速度" data-level="3">3. 删除大量小文件（提升速度）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="直接删除整个目录而非遍历">
+          <a class="post-toc-link" href="#直接删除整个目录而非遍历" data-level="1">直接删除整个目录而非遍历</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-排除特定文件-子目录">
+          <a class="post-toc-link" href="#4-排除特定文件-子目录" data-level="3">4. 排除特定文件/子目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除目录内所有内容-但保留指定文件">
+          <a class="post-toc-link" href="#删除目录内所有内容-但保留指定文件" data-level="1">删除目录内所有内容，但保留指定文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-安全与注意事项">
+          <a class="post-toc-link" href="#五-安全与注意事项" data-level="2">五、安全与注意事项</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

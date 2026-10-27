@@ -1496,9 +1496,336 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装">
+              <a class="post-toc-link" href="#安装" data-level="2">安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-samba">
+              <a class="post-toc-link" href="#安装-samba" data-level="3">安装 Samba</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
+              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="rhel-centos-rocky-almalinux">
+              <a class="post-toc-link" href="#rhel-centos-rocky-almalinux" data-level="1">RHEL / CentOS / Rocky / AlmaLinux</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
+              <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse">
+              <a class="post-toc-link" href="#opensuse" data-level="1">openSUSE</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
+              <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="启动并设置自启动">
+              <a class="post-toc-link" href="#启动并设置自启动" data-level="3">启动并设置自启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="创建-samba-用户">
+              <a class="post-toc-link" href="#创建-samba-用户" data-level="3">创建 Samba 用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建系统用户-如已存在可跳过">
+              <a class="post-toc-link" href="#创建系统用户-如已存在可跳过" data-level="1">创建系统用户（如已存在可跳过）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-samba-密码">
+              <a class="post-toc-link" href="#添加-samba-密码" data-level="1">添加 Samba 密码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置共享目录">
+              <a class="post-toc-link" href="#配置共享目录" data-level="3">配置共享目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="编辑配置文件">
+              <a class="post-toc-link" href="#编辑配置文件" data-level="3">编辑配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="重启服务">
+              <a class="post-toc-link" href="#重启服务" data-level="3">重启服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置防火墙">
+              <a class="post-toc-link" href="#配置防火墙" data-level="3">配置防火墙</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld-rhel-centos-fedora">
+              <a class="post-toc-link" href="#firewalld-rhel-centos-fedora" data-level="1">firewalld（RHEL/CentOS/Fedora）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ufw-debian-ubuntu">
+              <a class="post-toc-link" href="#ufw-debian-ubuntu" data-level="1">ufw（Debian/Ubuntu）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="验证">
+              <a class="post-toc-link" href="#验证" data-level="2">验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看-samba-用户">
+              <a class="post-toc-link" href="#查看-samba-用户" data-level="3">查看 Samba 用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看共享配置">
+              <a class="post-toc-link" href="#查看共享配置" data-level="3">查看共享配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="本地验证共享">
+              <a class="post-toc-link" href="#本地验证共享" data-level="3">本地验证共享</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-smbclient-如未安装">
+              <a class="post-toc-link" href="#安装-smbclient-如未安装" data-level="1">安装 smbclient（如未安装）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器共享列表">
+              <a class="post-toc-link" href="#查看服务器共享列表" data-level="1">查看服务器共享列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接共享">
+              <a class="post-toc-link" href="#连接共享" data-level="1">连接共享</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看本机-ip">
+              <a class="post-toc-link" href="#查看本机-ip" data-level="3">查看本机 IP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="权限拒绝">
+              <a class="post-toc-link" href="#权限拒绝" data-level="3">权限拒绝</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="确认共享目录权限">
+              <a class="post-toc-link" href="#确认共享目录权限" data-level="1">确认共享目录权限</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="确认-samba-用户存在">
+              <a class="post-toc-link" href="#确认-samba-用户存在" data-level="1">确认 Samba 用户存在</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查配置文件语法">
+              <a class="post-toc-link" href="#检查配置文件语法" data-level="1">检查配置文件语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙阻挡">
+              <a class="post-toc-link" href="#防火墙阻挡" data-level="3">防火墙阻挡</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="确认-samba-端口放行-137-udp-138-udp-139-tcp-445-tcp">
+              <a class="post-toc-link" href="#确认-samba-端口放行-137-udp-138-udp-139-tcp-445-tcp" data-level="1">确认 Samba 端口放行：137/udp、138/udp、139/tcp、445/tcp</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="selinux-阻挡-rhel-centos">
+              <a class="post-toc-link" href="#selinux-阻挡-rhel-centos" data-level="3">SELinux 阻挡（RHEL/CentOS）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-selinux-状态">
+              <a class="post-toc-link" href="#查看-selinux-状态" data-level="1">查看 SELinux 状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="允许-samba-共享目录">
+              <a class="post-toc-link" href="#允许-samba-共享目录" data-level="1">允许 Samba 共享目录</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装">
+          <a class="post-toc-link" href="#安装" data-level="2">安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-samba">
+          <a class="post-toc-link" href="#安装-samba" data-level="3">安装 Samba</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
+          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="rhel-centos-rocky-almalinux">
+          <a class="post-toc-link" href="#rhel-centos-rocky-almalinux" data-level="1">RHEL / CentOS / Rocky / AlmaLinux</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
+          <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse">
+          <a class="post-toc-link" href="#opensuse" data-level="1">openSUSE</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
+          <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="启动并设置自启动">
+          <a class="post-toc-link" href="#启动并设置自启动" data-level="3">启动并设置自启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="创建-samba-用户">
+          <a class="post-toc-link" href="#创建-samba-用户" data-level="3">创建 Samba 用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建系统用户-如已存在可跳过">
+          <a class="post-toc-link" href="#创建系统用户-如已存在可跳过" data-level="1">创建系统用户（如已存在可跳过）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-samba-密码">
+          <a class="post-toc-link" href="#添加-samba-密码" data-level="1">添加 Samba 密码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置共享目录">
+          <a class="post-toc-link" href="#配置共享目录" data-level="3">配置共享目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="编辑配置文件">
+          <a class="post-toc-link" href="#编辑配置文件" data-level="3">编辑配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="重启服务">
+          <a class="post-toc-link" href="#重启服务" data-level="3">重启服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置防火墙">
+          <a class="post-toc-link" href="#配置防火墙" data-level="3">配置防火墙</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld-rhel-centos-fedora">
+          <a class="post-toc-link" href="#firewalld-rhel-centos-fedora" data-level="1">firewalld（RHEL/CentOS/Fedora）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ufw-debian-ubuntu">
+          <a class="post-toc-link" href="#ufw-debian-ubuntu" data-level="1">ufw（Debian/Ubuntu）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="验证">
+          <a class="post-toc-link" href="#验证" data-level="2">验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看-samba-用户">
+          <a class="post-toc-link" href="#查看-samba-用户" data-level="3">查看 Samba 用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看共享配置">
+          <a class="post-toc-link" href="#查看共享配置" data-level="3">查看共享配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="本地验证共享">
+          <a class="post-toc-link" href="#本地验证共享" data-level="3">本地验证共享</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-smbclient-如未安装">
+          <a class="post-toc-link" href="#安装-smbclient-如未安装" data-level="1">安装 smbclient（如未安装）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器共享列表">
+          <a class="post-toc-link" href="#查看服务器共享列表" data-level="1">查看服务器共享列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接共享">
+          <a class="post-toc-link" href="#连接共享" data-level="1">连接共享</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看本机-ip">
+          <a class="post-toc-link" href="#查看本机-ip" data-level="3">查看本机 IP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="权限拒绝">
+          <a class="post-toc-link" href="#权限拒绝" data-level="3">权限拒绝</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="确认共享目录权限">
+          <a class="post-toc-link" href="#确认共享目录权限" data-level="1">确认共享目录权限</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="确认-samba-用户存在">
+          <a class="post-toc-link" href="#确认-samba-用户存在" data-level="1">确认 Samba 用户存在</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查配置文件语法">
+          <a class="post-toc-link" href="#检查配置文件语法" data-level="1">检查配置文件语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙阻挡">
+          <a class="post-toc-link" href="#防火墙阻挡" data-level="3">防火墙阻挡</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="确认-samba-端口放行-137-udp-138-udp-139-tcp-445-tcp">
+          <a class="post-toc-link" href="#确认-samba-端口放行-137-udp-138-udp-139-tcp-445-tcp" data-level="1">确认 Samba 端口放行：137/udp、138/udp、139/tcp、445/tcp</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="selinux-阻挡-rhel-centos">
+          <a class="post-toc-link" href="#selinux-阻挡-rhel-centos" data-level="3">SELinux 阻挡（RHEL/CentOS）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-selinux-状态">
+          <a class="post-toc-link" href="#查看-selinux-状态" data-level="1">查看 SELinux 状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="允许-samba-共享目录">
+          <a class="post-toc-link" href="#允许-samba-共享目录" data-level="1">允许 Samba 共享目录</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1517,9 +1517,208 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
+              <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="docker-运行">
+              <a class="post-toc-link" href="#docker-运行" data-level="2">Docker 运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="systemd-脚本安装-原生部署">
+              <a class="post-toc-link" href="#systemd-脚本安装-原生部署" data-level="2">systemd 脚本安装（原生部署）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式安装">
+              <a class="post-toc-link" href="#交互式安装" data-level="1">交互式安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员">
+              <a class="post-toc-link" href="#静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员" data-level="1">静默安装：端口 8080 + 数据目录 /var/lib/fan-nginx + 初始化管理员</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在线下载-github-releases-预编译-jar-默认方式-无需源码-maven">
+              <a class="post-toc-link" href="#在线下载-github-releases-预编译-jar-默认方式-无需源码-maven" data-level="1">在线下载 GitHub Releases 预编译 jar（默认方式，无需源码/maven）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键安装">
+              <a class="post-toc-link" href="#远程一键安装" data-level="1">远程一键安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="内置-cli-命令">
+              <a class="post-toc-link" href="#内置-cli-命令" data-level="2">内置 CLI 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="备份与恢复">
+              <a class="post-toc-link" href="#备份与恢复" data-level="2">备份与恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份-在线打包-不停服-保留-6-份-自动排除-log-目录">
+              <a class="post-toc-link" href="#备份-在线打包-不停服-保留-6-份-自动排除-log-目录" data-level="1">备份（在线打包、不停服，保留 6 份，自动排除 log 目录）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-自动取最新备份-停服-清空-解压-启动">
+              <a class="post-toc-link" href="#恢复-自动取最新备份-停服-清空-解压-启动" data-level="1">恢复（自动取最新备份：停服→清空→解压→启动）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定备份文件">
+              <a class="post-toc-link" href="#恢复指定备份文件" data-level="1">恢复指定备份文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理">
+              <a class="post-toc-link" href="#服务管理" data-level="2">服务管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="卸载">
+              <a class="post-toc-link" href="#卸载" data-level="2">卸载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="systemd-方式">
+              <a class="post-toc-link" href="#systemd-方式" data-level="1">systemd 方式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-方式">
+              <a class="post-toc-link" href="#docker-方式" data-level="1">Docker 方式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="数据目录说明">
+              <a class="post-toc-link" href="#数据目录说明" data-level="2">数据目录说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
+              <a class="post-toc-link" href="#项目简介" data-level="2">项目简介</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="快捷访问">
+              <a class="post-toc-link" href="#快捷访问" data-level="2">快捷访问</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
+          <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="docker-运行">
+          <a class="post-toc-link" href="#docker-运行" data-level="2">Docker 运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="systemd-脚本安装-原生部署">
+          <a class="post-toc-link" href="#systemd-脚本安装-原生部署" data-level="2">systemd 脚本安装（原生部署）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式安装">
+          <a class="post-toc-link" href="#交互式安装" data-level="1">交互式安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员">
+          <a class="post-toc-link" href="#静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员" data-level="1">静默安装：端口 8080 + 数据目录 /var/lib/fan-nginx + 初始化管理员</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在线下载-github-releases-预编译-jar-默认方式-无需源码-maven">
+          <a class="post-toc-link" href="#在线下载-github-releases-预编译-jar-默认方式-无需源码-maven" data-level="1">在线下载 GitHub Releases 预编译 jar（默认方式，无需源码/maven）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键安装">
+          <a class="post-toc-link" href="#远程一键安装" data-level="1">远程一键安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="内置-cli-命令">
+          <a class="post-toc-link" href="#内置-cli-命令" data-level="2">内置 CLI 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="备份与恢复">
+          <a class="post-toc-link" href="#备份与恢复" data-level="2">备份与恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份-在线打包-不停服-保留-6-份-自动排除-log-目录">
+          <a class="post-toc-link" href="#备份-在线打包-不停服-保留-6-份-自动排除-log-目录" data-level="1">备份（在线打包、不停服，保留 6 份，自动排除 log 目录）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-自动取最新备份-停服-清空-解压-启动">
+          <a class="post-toc-link" href="#恢复-自动取最新备份-停服-清空-解压-启动" data-level="1">恢复（自动取最新备份：停服→清空→解压→启动）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定备份文件">
+          <a class="post-toc-link" href="#恢复指定备份文件" data-level="1">恢复指定备份文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理">
+          <a class="post-toc-link" href="#服务管理" data-level="2">服务管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="卸载">
+          <a class="post-toc-link" href="#卸载" data-level="2">卸载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="systemd-方式">
+          <a class="post-toc-link" href="#systemd-方式" data-level="1">systemd 方式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-方式">
+          <a class="post-toc-link" href="#docker-方式" data-level="1">Docker 方式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="数据目录说明">
+          <a class="post-toc-link" href="#数据目录说明" data-level="2">数据目录说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
+          <a class="post-toc-link" href="#项目简介" data-level="2">项目简介</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="快捷访问">
+          <a class="post-toc-link" href="#快捷访问" data-level="2">快捷访问</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

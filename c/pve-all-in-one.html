@@ -1995,9 +1995,280 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="方案特点与功能">
+              <a class="post-toc-link" href="#方案特点与功能" data-level="2">✨ 方案特点与功能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-pve-系统安装">
+              <a class="post-toc-link" href="#一-pve-系统安装" data-level="2">⚙️ 一、PVE 系统安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-下载-pve-系统及写盘软件">
+              <a class="post-toc-link" href="#1-下载-pve-系统及写盘软件" data-level="3">1、下载 PVE 系统及写盘软件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-winpe-格式硬盘-按需要">
+              <a class="post-toc-link" href="#2-winpe-格式硬盘-按需要" data-level="3">2、WinPE 格式硬盘（按需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-pve-系统写盘">
+              <a class="post-toc-link" href="#3-pve-系统写盘" data-level="3">3、PVE 系统写盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-bios-设置">
+              <a class="post-toc-link" href="#4-bios-设置" data-level="3">4、BIOS 设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-安装-pve-系统">
+              <a class="post-toc-link" href="#5-安装-pve-系统" data-level="3">5、安装 PVE 系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="6-给-pve-的扩容-可选项">
+              <a class="post-toc-link" href="#6-给-pve-的扩容-可选项" data-level="3">6、给 PVE 的扩容（可选项）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输入-y-确认">
+              <a class="post-toc-link" href="#输入-y-确认" data-level="1">输入 y 确认</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-去除-pve-无有效订阅提示">
+              <a class="post-toc-link" href="#7-去除-pve-无有效订阅提示" data-level="3">7、去除 PVE 无有效订阅提示</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-开启-pve-直通功能">
+              <a class="post-toc-link" href="#8-开启-pve-直通功能" data-level="3">8、开启 PVE 直通功能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-虚拟路由安装">
+              <a class="post-toc-link" href="#二-虚拟路由安装" data-level="2">🌐 二、虚拟路由安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装-ikuai-主路由-若需要">
+              <a class="post-toc-link" href="#1-安装-ikuai-主路由-若需要" data-level="3">1、安装 iKuai（主路由，若需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-安装-istoreos-或-openwrt-旁路由-若需要">
+              <a class="post-toc-link" href="#2-安装-istoreos-或-openwrt-旁路由-若需要" data-level="3">2、安装 iStoreOS 或 OpenWrt（旁路由，若需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-给-pve-换源-建议">
+              <a class="post-toc-link" href="#三-给-pve-换源-建议" data-level="2">📦 三、给 PVE 换源（建议）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="pve-9-x-换源步骤">
+              <a class="post-toc-link" href="#pve-9-x-换源步骤" data-level="3">📌 PVE 9.x 换源步骤</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="让更新源生效">
+              <a class="post-toc-link" href="#让更新源生效" data-level="3">🔄 让更新源生效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件列表并升级系统">
+              <a class="post-toc-link" href="#更新软件列表并升级系统" data-level="1">更新软件列表并升级系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启相关服务">
+              <a class="post-toc-link" href="#重启相关服务" data-level="1">重启相关服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="建议重启pve">
+              <a class="post-toc-link" href="#建议重启pve" data-level="1">建议重启PVE</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-开启核显-sr-iov-若需要">
+              <a class="post-toc-link" href="#四-开启核显-sr-iov-若需要" data-level="2">🎮 四、开启核显 SR-IOV（若需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-虚拟机安装-按需选择">
+              <a class="post-toc-link" href="#五-虚拟机安装-按需选择" data-level="2">🖥️ 五、虚拟机安装（按需选择）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装飞牛-fnos">
+              <a class="post-toc-link" href="#1-安装飞牛-fnos" data-level="3">1、安装飞牛 fnOS 🐂</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-安装黑群晖">
+              <a class="post-toc-link" href="#2-安装黑群晖" data-level="3">2、安装黑群晖 🖧</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-安装-truenas">
+              <a class="post-toc-link" href="#3-安装-truenas" data-level="3">3、安装 TrueNAS 💽</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-安装-windows-10">
+              <a class="post-toc-link" href="#4-安装-windows-10" data-level="3">4、安装 Windows 10 🪟</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-安装-lxc-容器-如-jellyfin">
+              <a class="post-toc-link" href="#5-安装-lxc-容器-如-jellyfin" data-level="3">5、安装 LXC 容器（如 Jellyfin） 🐳</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-尾巴">
+              <a class="post-toc-link" href="#六-尾巴" data-level="2">🔚 六、尾巴</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="方案特点与功能">
+          <a class="post-toc-link" href="#方案特点与功能" data-level="2">✨ 方案特点与功能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-pve-系统安装">
+          <a class="post-toc-link" href="#一-pve-系统安装" data-level="2">⚙️ 一、PVE 系统安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-下载-pve-系统及写盘软件">
+          <a class="post-toc-link" href="#1-下载-pve-系统及写盘软件" data-level="3">1、下载 PVE 系统及写盘软件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-winpe-格式硬盘-按需要">
+          <a class="post-toc-link" href="#2-winpe-格式硬盘-按需要" data-level="3">2、WinPE 格式硬盘（按需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-pve-系统写盘">
+          <a class="post-toc-link" href="#3-pve-系统写盘" data-level="3">3、PVE 系统写盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-bios-设置">
+          <a class="post-toc-link" href="#4-bios-设置" data-level="3">4、BIOS 设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-安装-pve-系统">
+          <a class="post-toc-link" href="#5-安装-pve-系统" data-level="3">5、安装 PVE 系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="6-给-pve-的扩容-可选项">
+          <a class="post-toc-link" href="#6-给-pve-的扩容-可选项" data-level="3">6、给 PVE 的扩容（可选项）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输入-y-确认">
+          <a class="post-toc-link" href="#输入-y-确认" data-level="1">输入 y 确认</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-去除-pve-无有效订阅提示">
+          <a class="post-toc-link" href="#7-去除-pve-无有效订阅提示" data-level="3">7、去除 PVE 无有效订阅提示</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-开启-pve-直通功能">
+          <a class="post-toc-link" href="#8-开启-pve-直通功能" data-level="3">8、开启 PVE 直通功能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-虚拟路由安装">
+          <a class="post-toc-link" href="#二-虚拟路由安装" data-level="2">🌐 二、虚拟路由安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装-ikuai-主路由-若需要">
+          <a class="post-toc-link" href="#1-安装-ikuai-主路由-若需要" data-level="3">1、安装 iKuai（主路由，若需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-安装-istoreos-或-openwrt-旁路由-若需要">
+          <a class="post-toc-link" href="#2-安装-istoreos-或-openwrt-旁路由-若需要" data-level="3">2、安装 iStoreOS 或 OpenWrt（旁路由，若需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-给-pve-换源-建议">
+          <a class="post-toc-link" href="#三-给-pve-换源-建议" data-level="2">📦 三、给 PVE 换源（建议）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="pve-9-x-换源步骤">
+          <a class="post-toc-link" href="#pve-9-x-换源步骤" data-level="3">📌 PVE 9.x 换源步骤</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="让更新源生效">
+          <a class="post-toc-link" href="#让更新源生效" data-level="3">🔄 让更新源生效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件列表并升级系统">
+          <a class="post-toc-link" href="#更新软件列表并升级系统" data-level="1">更新软件列表并升级系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启相关服务">
+          <a class="post-toc-link" href="#重启相关服务" data-level="1">重启相关服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="建议重启pve">
+          <a class="post-toc-link" href="#建议重启pve" data-level="1">建议重启PVE</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-开启核显-sr-iov-若需要">
+          <a class="post-toc-link" href="#四-开启核显-sr-iov-若需要" data-level="2">🎮 四、开启核显 SR-IOV（若需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-虚拟机安装-按需选择">
+          <a class="post-toc-link" href="#五-虚拟机安装-按需选择" data-level="2">🖥️ 五、虚拟机安装（按需选择）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装飞牛-fnos">
+          <a class="post-toc-link" href="#1-安装飞牛-fnos" data-level="3">1、安装飞牛 fnOS 🐂</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-安装黑群晖">
+          <a class="post-toc-link" href="#2-安装黑群晖" data-level="3">2、安装黑群晖 🖧</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-安装-truenas">
+          <a class="post-toc-link" href="#3-安装-truenas" data-level="3">3、安装 TrueNAS 💽</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-安装-windows-10">
+          <a class="post-toc-link" href="#4-安装-windows-10" data-level="3">4、安装 Windows 10 🪟</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-安装-lxc-容器-如-jellyfin">
+          <a class="post-toc-link" href="#5-安装-lxc-容器-如-jellyfin" data-level="3">5、安装 LXC 容器（如 Jellyfin） 🐳</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-尾巴">
+          <a class="post-toc-link" href="#六-尾巴" data-level="2">🔚 六、尾巴</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

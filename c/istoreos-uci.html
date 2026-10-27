@@ -1763,9 +1763,576 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="命令">
+              <a class="post-toc-link" href="#命令" data-level="3">命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+              <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="网络配置">
+              <a class="post-toc-link" href="#网络配置" data-level="1">========== 网络配置 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-lan-ip-地址">
+              <a class="post-toc-link" href="#获取-lan-ip-地址" data-level="1">获取 LAN IP 地址</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-192-168-100-1">
+              <a class="post-toc-link" href="#输出-192-168-100-1" data-level="1">输出：192.168.100.1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-lan-网关">
+              <a class="post-toc-link" href="#获取-lan-网关" data-level="1">获取 LAN 网关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-192-168-1-1">
+              <a class="post-toc-link" href="#输出-192-168-1-1" data-level="1">输出：192.168.1.1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-lan-dns">
+              <a class="post-toc-link" href="#获取-lan-dns" data-level="1">获取 LAN DNS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-8-8-8-8-8-8-4-4">
+              <a class="post-toc-link" href="#输出-8-8-8-8-8-8-4-4" data-level="1">输出：8.8.8.8 8.8.4.4</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-wan-协议类型">
+              <a class="post-toc-link" href="#获取-wan-协议类型" data-level="1">获取 WAN 协议类型</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-dhcp-或-pppoe">
+              <a class="post-toc-link" href="#输出-dhcp-或-pppoe" data-level="1">输出：dhcp 或 pppoe</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-lan-ip-地址">
+              <a class="post-toc-link" href="#设置-lan-ip-地址" data-level="1">设置 LAN IP 地址</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-lan-网关">
+              <a class="post-toc-link" href="#设置-lan-网关" data-level="1">设置 LAN 网关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-lan-dns">
+              <a class="post-toc-link" href="#设置-lan-dns" data-level="1">设置 LAN DNS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置静态-ip">
+              <a class="post-toc-link" href="#设置静态-ip" data-level="1">设置静态 IP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-dhcp-自动获取">
+              <a class="post-toc-link" href="#设置-dhcp-自动获取" data-level="1">设置 DHCP 自动获取</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交更改并重启网络">
+              <a class="post-toc-link" href="#提交更改并重启网络" data-level="1">提交更改并重启网络</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="无线配置">
+              <a class="post-toc-link" href="#无线配置" data-level="1">========== 无线配置 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看无线配置">
+              <a class="post-toc-link" href="#查看无线配置" data-level="1">查看无线配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-wifi-名称">
+              <a class="post-toc-link" href="#获取-wifi-名称" data-level="1">获取 WiFi 名称</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-wifi-名称">
+              <a class="post-toc-link" href="#设置-wifi-名称" data-level="1">设置 WiFi 名称</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-wifi-密码">
+              <a class="post-toc-link" href="#设置-wifi-密码" data-level="1">设置 WiFi 密码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="开启-wifi">
+              <a class="post-toc-link" href="#开启-wifi" data-level="1">开启 WiFi</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-wifi">
+              <a class="post-toc-link" href="#关闭-wifi" data-level="1">关闭 WiFi</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交并重启无线">
+              <a class="post-toc-link" href="#提交并重启无线" data-level="1">提交并重启无线</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="防火墙配置">
+              <a class="post-toc-link" href="#防火墙配置" data-level="1">========== 防火墙配置 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看防火墙配置">
+              <a class="post-toc-link" href="#查看防火墙配置" data-level="1">查看防火墙配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="开放端口">
+              <a class="post-toc-link" href="#开放端口" data-level="1">开放端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="端口转发">
+              <a class="post-toc-link" href="#端口转发" data-level="1">端口转发</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="dhcp-配置">
+              <a class="post-toc-link" href="#dhcp-配置" data-level="1">========== DHCP 配置 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-dhcp-配置">
+              <a class="post-toc-link" href="#查看-dhcp-配置" data-level="1">查看 DHCP 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-dhcp-范围">
+              <a class="post-toc-link" href="#设置-dhcp-范围" data-level="1">设置 DHCP 范围</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置静态-ip-绑定">
+              <a class="post-toc-link" href="#设置静态-ip-绑定" data-level="1">设置静态 IP 绑定</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="系统配置">
+              <a class="post-toc-link" href="#系统配置" data-level="1">========== 系统配置 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统配置">
+              <a class="post-toc-link" href="#查看系统配置" data-level="1">查看系统配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置主机名">
+              <a class="post-toc-link" href="#设置主机名" data-level="1">设置主机名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置时区">
+              <a class="post-toc-link" href="#设置时区" data-level="1">设置时区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-ntp-服务器">
+              <a class="post-toc-link" href="#设置-ntp-服务器" data-level="1">设置 NTP 服务器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交更改">
+              <a class="post-toc-link" href="#提交更改" data-level="1">提交更改</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件列表">
+              <a class="post-toc-link" href="#配置文件列表" data-level="3">配置文件列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置查询技巧">
+              <a class="post-toc-link" href="#配置查询技巧" data-level="3">配置查询技巧</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有网络配置">
+              <a class="post-toc-link" href="#显示所有网络配置" data-level="1">显示所有网络配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示指定-section-的所有配置">
+              <a class="post-toc-link" href="#显示指定-section-的所有配置" data-level="1">显示指定 section 的所有配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导出配置为-uci-格式">
+              <a class="post-toc-link" href="#导出配置为-uci-格式" data-level="1">导出配置为 UCI 格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看未提交的更改">
+              <a class="post-toc-link" href="#查看未提交的更改" data-level="1">查看未提交的更改</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销未提交的更改">
+              <a class="post-toc-link" href="#撤销未提交的更改" data-level="1">撤销未提交的更改</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量查看多个配置">
+              <a class="post-toc-link" href="#批量查看多个配置" data-level="1">批量查看多个配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="高级用法">
+              <a class="post-toc-link" href="#高级用法" data-level="3">高级用法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加匿名-section">
+              <a class="post-toc-link" href="#添加匿名-section" data-level="1">添加匿名 section</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加列表项">
+              <a class="post-toc-link" href="#添加列表项" data-level="1">添加列表项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除列表项">
+              <a class="post-toc-link" href="#删除列表项" data-level="1">删除列表项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除整个-section">
+              <a class="post-toc-link" href="#删除整个-section" data-level="1">删除整个 section</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重命名-section">
+              <a class="post-toc-link" href="#重命名-section" data-level="1">重命名 section</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量设置">
+              <a class="post-toc-link" href="#批量设置" data-level="1">批量设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置备份与恢复">
+              <a class="post-toc-link" href="#配置备份与恢复" data-level="3">配置备份与恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份配置">
+              <a class="post-toc-link" href="#备份配置" data-level="1">备份配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复配置">
+              <a class="post-toc-link" href="#恢复配置" data-level="1">恢复配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或直接复制配置文件">
+              <a class="post-toc-link" href="#或直接复制配置文件" data-level="1">或直接复制配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="脚本示例">
+              <a class="post-toc-link" href="#脚本示例" data-level="3">脚本示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-网络配置脚本">
+              <a class="post-toc-link" href="#istoreos-网络配置脚本" data-level="1">iStoreOS 网络配置脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取当前-lan-ip">
+              <a class="post-toc-link" href="#获取当前-lan-ip" data-level="1">获取当前 LAN IP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置新的-lan-ip">
+              <a class="post-toc-link" href="#设置新的-lan-ip" data-level="1">设置新的 LAN IP</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启网络">
+              <a class="post-toc-link" href="#重启网络" data-level="1">重启网络</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="命令">
+          <a class="post-toc-link" href="#命令" data-level="3">命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+          <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="网络配置">
+          <a class="post-toc-link" href="#网络配置" data-level="1">========== 网络配置 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-lan-ip-地址">
+          <a class="post-toc-link" href="#获取-lan-ip-地址" data-level="1">获取 LAN IP 地址</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-192-168-100-1">
+          <a class="post-toc-link" href="#输出-192-168-100-1" data-level="1">输出：192.168.100.1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-lan-网关">
+          <a class="post-toc-link" href="#获取-lan-网关" data-level="1">获取 LAN 网关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-192-168-1-1">
+          <a class="post-toc-link" href="#输出-192-168-1-1" data-level="1">输出：192.168.1.1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-lan-dns">
+          <a class="post-toc-link" href="#获取-lan-dns" data-level="1">获取 LAN DNS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-8-8-8-8-8-8-4-4">
+          <a class="post-toc-link" href="#输出-8-8-8-8-8-8-4-4" data-level="1">输出：8.8.8.8 8.8.4.4</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-wan-协议类型">
+          <a class="post-toc-link" href="#获取-wan-协议类型" data-level="1">获取 WAN 协议类型</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-dhcp-或-pppoe">
+          <a class="post-toc-link" href="#输出-dhcp-或-pppoe" data-level="1">输出：dhcp 或 pppoe</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-lan-ip-地址">
+          <a class="post-toc-link" href="#设置-lan-ip-地址" data-level="1">设置 LAN IP 地址</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-lan-网关">
+          <a class="post-toc-link" href="#设置-lan-网关" data-level="1">设置 LAN 网关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-lan-dns">
+          <a class="post-toc-link" href="#设置-lan-dns" data-level="1">设置 LAN DNS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置静态-ip">
+          <a class="post-toc-link" href="#设置静态-ip" data-level="1">设置静态 IP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-dhcp-自动获取">
+          <a class="post-toc-link" href="#设置-dhcp-自动获取" data-level="1">设置 DHCP 自动获取</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交更改并重启网络">
+          <a class="post-toc-link" href="#提交更改并重启网络" data-level="1">提交更改并重启网络</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="无线配置">
+          <a class="post-toc-link" href="#无线配置" data-level="1">========== 无线配置 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看无线配置">
+          <a class="post-toc-link" href="#查看无线配置" data-level="1">查看无线配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-wifi-名称">
+          <a class="post-toc-link" href="#获取-wifi-名称" data-level="1">获取 WiFi 名称</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-wifi-名称">
+          <a class="post-toc-link" href="#设置-wifi-名称" data-level="1">设置 WiFi 名称</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-wifi-密码">
+          <a class="post-toc-link" href="#设置-wifi-密码" data-level="1">设置 WiFi 密码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="开启-wifi">
+          <a class="post-toc-link" href="#开启-wifi" data-level="1">开启 WiFi</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-wifi">
+          <a class="post-toc-link" href="#关闭-wifi" data-level="1">关闭 WiFi</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交并重启无线">
+          <a class="post-toc-link" href="#提交并重启无线" data-level="1">提交并重启无线</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="防火墙配置">
+          <a class="post-toc-link" href="#防火墙配置" data-level="1">========== 防火墙配置 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看防火墙配置">
+          <a class="post-toc-link" href="#查看防火墙配置" data-level="1">查看防火墙配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="开放端口">
+          <a class="post-toc-link" href="#开放端口" data-level="1">开放端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="端口转发">
+          <a class="post-toc-link" href="#端口转发" data-level="1">端口转发</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="dhcp-配置">
+          <a class="post-toc-link" href="#dhcp-配置" data-level="1">========== DHCP 配置 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-dhcp-配置">
+          <a class="post-toc-link" href="#查看-dhcp-配置" data-level="1">查看 DHCP 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-dhcp-范围">
+          <a class="post-toc-link" href="#设置-dhcp-范围" data-level="1">设置 DHCP 范围</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置静态-ip-绑定">
+          <a class="post-toc-link" href="#设置静态-ip-绑定" data-level="1">设置静态 IP 绑定</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="系统配置">
+          <a class="post-toc-link" href="#系统配置" data-level="1">========== 系统配置 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统配置">
+          <a class="post-toc-link" href="#查看系统配置" data-level="1">查看系统配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置主机名">
+          <a class="post-toc-link" href="#设置主机名" data-level="1">设置主机名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置时区">
+          <a class="post-toc-link" href="#设置时区" data-level="1">设置时区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-ntp-服务器">
+          <a class="post-toc-link" href="#设置-ntp-服务器" data-level="1">设置 NTP 服务器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交更改">
+          <a class="post-toc-link" href="#提交更改" data-level="1">提交更改</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件列表">
+          <a class="post-toc-link" href="#配置文件列表" data-level="3">配置文件列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置查询技巧">
+          <a class="post-toc-link" href="#配置查询技巧" data-level="3">配置查询技巧</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有网络配置">
+          <a class="post-toc-link" href="#显示所有网络配置" data-level="1">显示所有网络配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示指定-section-的所有配置">
+          <a class="post-toc-link" href="#显示指定-section-的所有配置" data-level="1">显示指定 section 的所有配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导出配置为-uci-格式">
+          <a class="post-toc-link" href="#导出配置为-uci-格式" data-level="1">导出配置为 UCI 格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看未提交的更改">
+          <a class="post-toc-link" href="#查看未提交的更改" data-level="1">查看未提交的更改</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销未提交的更改">
+          <a class="post-toc-link" href="#撤销未提交的更改" data-level="1">撤销未提交的更改</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量查看多个配置">
+          <a class="post-toc-link" href="#批量查看多个配置" data-level="1">批量查看多个配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="高级用法">
+          <a class="post-toc-link" href="#高级用法" data-level="3">高级用法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加匿名-section">
+          <a class="post-toc-link" href="#添加匿名-section" data-level="1">添加匿名 section</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加列表项">
+          <a class="post-toc-link" href="#添加列表项" data-level="1">添加列表项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除列表项">
+          <a class="post-toc-link" href="#删除列表项" data-level="1">删除列表项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除整个-section">
+          <a class="post-toc-link" href="#删除整个-section" data-level="1">删除整个 section</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重命名-section">
+          <a class="post-toc-link" href="#重命名-section" data-level="1">重命名 section</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量设置">
+          <a class="post-toc-link" href="#批量设置" data-level="1">批量设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置备份与恢复">
+          <a class="post-toc-link" href="#配置备份与恢复" data-level="3">配置备份与恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份配置">
+          <a class="post-toc-link" href="#备份配置" data-level="1">备份配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复配置">
+          <a class="post-toc-link" href="#恢复配置" data-level="1">恢复配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或直接复制配置文件">
+          <a class="post-toc-link" href="#或直接复制配置文件" data-level="1">或直接复制配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="脚本示例">
+          <a class="post-toc-link" href="#脚本示例" data-level="3">脚本示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-网络配置脚本">
+          <a class="post-toc-link" href="#istoreos-网络配置脚本" data-level="1">iStoreOS 网络配置脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取当前-lan-ip">
+          <a class="post-toc-link" href="#获取当前-lan-ip" data-level="1">获取当前 LAN IP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置新的-lan-ip">
+          <a class="post-toc-link" href="#设置新的-lan-ip" data-level="1">设置新的 LAN IP</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启网络">
+          <a class="post-toc-link" href="#重启网络" data-level="1">重启网络</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1547,9 +1547,416 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="概要">
+              <a class="post-toc-link" href="#概要" data-level="2">概要</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="描述">
+              <a class="post-toc-link" href="#描述" data-level="2">描述</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="2">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定base-url的地址">
+              <a class="post-toc-link" href="#指定base-url的地址" data-level="1">指定Base URL的地址</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定元数据的输出位置">
+              <a class="post-toc-link" href="#指定元数据的输出位置" data-level="1">指定元数据的输出位置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定在形成元数据时需要排除的包">
+              <a class="post-toc-link" href="#指定在形成元数据时需要排除的包" data-level="1">指定在形成元数据时需要排除的包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定一个文件-该文件内的包信息将被包含在即将生成的元数据中-格式为每个包信息独占一行-不含通配符-正则-以及范围表达式">
+              <a class="post-toc-link" href="#指定一个文件-该文件内的包信息将被包含在即将生成的元数据中-格式为每个包信息独占一行-不含通配符-正则-以及范围表达式" data-level="1">指定一个文件，该文件内的包信息将被包含在即将生成的元数据中，格式为每个包信息独占一行，不含通配符、正则，以及范围表达式。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="通过命令行指定要纳入本地库中的包信息-需要提供url或本地路径">
+              <a class="post-toc-link" href="#通过命令行指定要纳入本地库中的包信息-需要提供url或本地路径" data-level="1">通过命令行指定要纳入本地库中的包信息，需要提供URL或本地路径。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安静模式执行操作-不输出任何信息">
+              <a class="post-toc-link" href="#安静模式执行操作-不输出任何信息" data-level="1">安静模式执行操作，不输出任何信息。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定本地软件仓库的组划分-示例-createrepo-g-comps-xml-path-to-rpms">
+              <a class="post-toc-link" href="#指定本地软件仓库的组划分-示例-createrepo-g-comps-xml-path-to-rpms" data-level="1">指定本地软件仓库的组划分，示例：createrepo -g comps.xml /path/to/rpms</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="注意-组文件需要和rpm包放置于同一路径下">
+              <a class="post-toc-link" href="#注意-组文件需要和rpm包放置于同一路径下" data-level="1">注意：组文件需要和rpm包放置于同一路径下。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出详细信息">
+              <a class="post-toc-link" href="#输出详细信息" data-level="1">输出详细信息。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定一个目录-用作存放软件仓库中软件包的校验和信息">
+              <a class="post-toc-link" href="#指定一个目录-用作存放软件仓库中软件包的校验和信息" data-level="1">指定一个目录，用作存放软件仓库中软件包的校验和信息。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="当createrepo在未发生明显改变的相同仓库文件上持续多次运行时-指定cachedir会明显提高其性能">
+              <a class="post-toc-link" href="#当createrepo在未发生明显改变的相同仓库文件上持续多次运行时-指定cachedir会明显提高其性能" data-level="1">当createrepo在未发生明显改变的相同仓库文件上持续多次运行时，指定cachedir会明显提高其性能。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="basedir为repodata中目录的路径-默认为当前工作目录">
+              <a class="post-toc-link" href="#basedir为repodata中目录的路径-默认为当前工作目录" data-level="1">Basedir为repodata中目录的路径，默认为当前工作目录。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="如果元数据已经存在-且软件仓库中只有部分软件发生了改变或增减">
+              <a class="post-toc-link" href="#如果元数据已经存在-且软件仓库中只有部分软件发生了改变或增减" data-level="1">如果元数据已经存在，且软件仓库中只有部分软件发生了改变或增减，</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="则可用update参数直接对原有元数据进行升级-效率比重新分析rpm包依赖并生成新的元数据要高很多">
+              <a class="post-toc-link" href="#则可用update参数直接对原有元数据进行升级-效率比重新分析rpm包依赖并生成新的元数据要高很多" data-level="1">则可用update参数直接对原有元数据进行升级，效率比重新分析rpm包依赖并生成新的元数据要高很多。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="跳过-update上的stat-调用-假设如果文件名相同-则文件仍然相同-仅在您相当信任或容易受骗时使用此方法">
+              <a class="post-toc-link" href="#跳过-update上的stat-调用-假设如果文件名相同-则文件仍然相同-仅在您相当信任或容易受骗时使用此方法" data-level="1">跳过--update上的stat()调用，假设如果文件名相同，则文件仍然相同(仅在您相当信任或容易受骗时使用此方法)。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从这个路径使用现有的repodata来升级">
+              <a class="post-toc-link" href="#从这个路径使用现有的repodata来升级" data-level="1">从这个路径使用现有的repodata来升级。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不要生成回购元数据-如果它们的时间戳比rpm更新-如果您碰巧开启了该选项-则此选项将再次大幅减少处理时间一个未修改的回购-但它-目前-与-split选项互斥-注意-当包从repo中删除时-这个命令不会注意到-使用-update来处理这个">
+              <a class="post-toc-link" href="#不要生成回购元数据-如果它们的时间戳比rpm更新-如果您碰巧开启了该选项-则此选项将再次大幅减少处理时间一个未修改的回购-但它-目前-与-split选项互斥-注意-当包从repo中删除时-这个命令不会注意到-使用-update来处理这个" data-level="1">不要生成回购元数据，如果它们的时间戳比rpm更新。如果您碰巧开启了该选项，则此选项将再次大幅减少处理时间一个未修改的回购，但它(目前)与——split选项互斥。注意:当包从repo中删除时，这个命令不会注意到。使用——update来处理这个。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在拆分媒体模式下运行-与其传递单个目录-不如获取一组对应于媒体集中不同卷的目录">
+              <a class="post-toc-link" href="#在拆分媒体模式下运行-与其传递单个目录-不如获取一组对应于媒体集中不同卷的目录" data-level="1">在拆分媒体模式下运行。与其传递单个目录，不如获取一组对应于媒体集中不同卷的目录。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="以整洁的格式输出xml文件">
+              <a class="post-toc-link" href="#以整洁的格式输出xml文件" data-level="1">以整洁的格式输出xml文件。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出版本">
+              <a class="post-toc-link" href="#输出版本" data-level="1">输出版本。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示帮助菜单">
+              <a class="post-toc-link" href="#显示帮助菜单" data-level="1">显示帮助菜单。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="该选项指定使用sqlite来存储生成的元数据-默认项">
+              <a class="post-toc-link" href="#该选项指定使用sqlite来存储生成的元数据-默认项" data-level="1">该选项指定使用SQLite来存储生成的元数据，默认项。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不要在存储库中生成sqlite数据库">
+              <a class="post-toc-link" href="#不要在存储库中生成sqlite数据库" data-level="1">不要在存储库中生成sqlite数据库。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="忽略包的符号链接">
+              <a class="post-toc-link" href="#忽略包的符号链接" data-level="1">忽略包的符号链接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="选择repmed-xml中使用的校验和类型以及元数据中的包-默认值现在是-sha256-如果python有hashlib-旧的默认值是-sha-它实际上是-sha1-但是显式使用-sha1-在旧版本-3-0-x-的yum上不起作用-您需要指定-sha">
+              <a class="post-toc-link" href="#选择repmed-xml中使用的校验和类型以及元数据中的包-默认值现在是-sha256-如果python有hashlib-旧的默认值是-sha-它实际上是-sha1-但是显式使用-sha1-在旧版本-3-0-x-的yum上不起作用-您需要指定-sha" data-level="1">选择repmed .xml中使用的校验和类型以及元数据中的包。默认值现在是“sha256”(如果python有hashlib)。旧的默认值是“sha”，它实际上是“sha1”，但是显式使用“sha1”在旧版本(3.0.x)的yum上不起作用，您需要指定“sha”。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出基于时间的分析信息">
+              <a class="post-toc-link" href="#输出基于时间的分析信息" data-level="1">输出基于时间的分析信息。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只将每个rpm中的最后n个变更日志条目导入元数据">
+              <a class="post-toc-link" href="#只将每个rpm中的最后n个变更日志条目导入元数据" data-level="1">只将每个rpm中的最后N个变更日志条目导入元数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在元数据文件名中包含文件的校验和-有助于http缓存-默认">
+              <a class="post-toc-link" href="#在元数据文件名中包含文件的校验和-有助于http缓存-默认" data-level="1">在元数据文件名中包含文件的校验和，有助于HTTP缓存(默认)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不要在元数据文件名中包含文件的校验和">
+              <a class="post-toc-link" href="#不要在元数据文件名中包含文件的校验和" data-level="1">不要在元数据文件名中包含文件的校验和。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="保留旧repodata的最新-按时间戳-n个副本-这样使用旧repodata-xml文件的客户端仍然可以访问它-默认为0">
+              <a class="post-toc-link" href="#保留旧repodata的最新-按时间戳-n个副本-这样使用旧repodata-xml文件的客户端仍然可以访问它-默认为0" data-level="1">保留旧repodata的最新(按时间戳)N个副本(这样使用旧repodata .xml文件的客户端仍然可以访问它)。默认为0。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定关于存储库内容的关键字-标记-可以多次指定">
+              <a class="post-toc-link" href="#指定关于存储库内容的关键字-标记-可以多次指定" data-level="1">指定关于存储库内容的关键字/标记。可以多次指定。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定关于存储库本身的关键字-标签-可以多次指定">
+              <a class="post-toc-link" href="#指定关于存储库本身的关键字-标签-可以多次指定" data-level="1">指定关于存储库本身的关键字/标签。可以多次指定。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="存储库修订的任意字符串">
+              <a class="post-toc-link" href="#存储库修订的任意字符串" data-level="1">存储库修订的任意字符串。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="告诉createrepo生成增量数据和增量元数据">
+              <a class="post-toc-link" href="#告诉createrepo生成增量数据和增量元数据" data-level="1">告诉createrepo生成增量数据和增量元数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="寻找更老的pkgs来对抗的路径-可以指定多次吗">
+              <a class="post-toc-link" href="#寻找更老的pkgs来对抗的路径-可以指定多次吗" data-level="1">寻找更老的PKGS来对抗的路径。可以指定多次吗</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="要进行增量处理的旧版本的数量-默认为1">
+              <a class="post-toc-link" href="#要进行增量处理的旧版本的数量-默认为1" data-level="1">要进行增量处理的旧版本的数量。默认为1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-update将路径输出到pkgs实际读起来很有用">
+              <a class="post-toc-link" href="#使用-update将路径输出到pkgs实际读起来很有用" data-level="1">使用——update将路径输出到PKGS实际读起来很有用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="要运行deltarpm的rpm的最大大小-以字节为单位">
+              <a class="post-toc-link" href="#要运行deltarpm的rpm的最大大小-以字节为单位" data-level="1">要运行deltarpm的RPM的最大大小(以字节为单位)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="为读取rpms而生成的工作线程数">
+              <a class="post-toc-link" href="#为读取rpms而生成的工作线程数" data-level="1">为读取RPMS而生成的工作线程数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定要使用的压缩方法-compat-默认-xz-可能不可用-gz-bz2">
+              <a class="post-toc-link" href="#指定要使用的压缩方法-compat-默认-xz-可能不可用-gz-bz2" data-level="1">指定要使用的压缩方法:compat(默认)，xz(可能不可用)，gz, bz2。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="返回值">
+              <a class="post-toc-link" href="#返回值" data-level="2">返回值</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="例子">
+              <a class="post-toc-link" href="#例子" data-level="2">例子</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成带有groups文件的存储库-注意groups文件应该和rpm包在同一个目录下-即-path-to-rpms-comps-xml">
+              <a class="post-toc-link" href="#生成带有groups文件的存储库-注意groups文件应该和rpm包在同一个目录下-即-path-to-rpms-comps-xml" data-level="1">生成带有groups文件的存储库。注意groups文件应该和rpm包在同一个目录下(即/path/to/rpms/comps.xml)。</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="概要">
+          <a class="post-toc-link" href="#概要" data-level="2">概要</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="描述">
+          <a class="post-toc-link" href="#描述" data-level="2">描述</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="2">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定base-url的地址">
+          <a class="post-toc-link" href="#指定base-url的地址" data-level="1">指定Base URL的地址</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定元数据的输出位置">
+          <a class="post-toc-link" href="#指定元数据的输出位置" data-level="1">指定元数据的输出位置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定在形成元数据时需要排除的包">
+          <a class="post-toc-link" href="#指定在形成元数据时需要排除的包" data-level="1">指定在形成元数据时需要排除的包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定一个文件-该文件内的包信息将被包含在即将生成的元数据中-格式为每个包信息独占一行-不含通配符-正则-以及范围表达式">
+          <a class="post-toc-link" href="#指定一个文件-该文件内的包信息将被包含在即将生成的元数据中-格式为每个包信息独占一行-不含通配符-正则-以及范围表达式" data-level="1">指定一个文件，该文件内的包信息将被包含在即将生成的元数据中，格式为每个包信息独占一行，不含通配符、正则，以及范围表达式。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="通过命令行指定要纳入本地库中的包信息-需要提供url或本地路径">
+          <a class="post-toc-link" href="#通过命令行指定要纳入本地库中的包信息-需要提供url或本地路径" data-level="1">通过命令行指定要纳入本地库中的包信息，需要提供URL或本地路径。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安静模式执行操作-不输出任何信息">
+          <a class="post-toc-link" href="#安静模式执行操作-不输出任何信息" data-level="1">安静模式执行操作，不输出任何信息。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定本地软件仓库的组划分-示例-createrepo-g-comps-xml-path-to-rpms">
+          <a class="post-toc-link" href="#指定本地软件仓库的组划分-示例-createrepo-g-comps-xml-path-to-rpms" data-level="1">指定本地软件仓库的组划分，示例：createrepo -g comps.xml /path/to/rpms</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="注意-组文件需要和rpm包放置于同一路径下">
+          <a class="post-toc-link" href="#注意-组文件需要和rpm包放置于同一路径下" data-level="1">注意：组文件需要和rpm包放置于同一路径下。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出详细信息">
+          <a class="post-toc-link" href="#输出详细信息" data-level="1">输出详细信息。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定一个目录-用作存放软件仓库中软件包的校验和信息">
+          <a class="post-toc-link" href="#指定一个目录-用作存放软件仓库中软件包的校验和信息" data-level="1">指定一个目录，用作存放软件仓库中软件包的校验和信息。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="当createrepo在未发生明显改变的相同仓库文件上持续多次运行时-指定cachedir会明显提高其性能">
+          <a class="post-toc-link" href="#当createrepo在未发生明显改变的相同仓库文件上持续多次运行时-指定cachedir会明显提高其性能" data-level="1">当createrepo在未发生明显改变的相同仓库文件上持续多次运行时，指定cachedir会明显提高其性能。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="basedir为repodata中目录的路径-默认为当前工作目录">
+          <a class="post-toc-link" href="#basedir为repodata中目录的路径-默认为当前工作目录" data-level="1">Basedir为repodata中目录的路径，默认为当前工作目录。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="如果元数据已经存在-且软件仓库中只有部分软件发生了改变或增减">
+          <a class="post-toc-link" href="#如果元数据已经存在-且软件仓库中只有部分软件发生了改变或增减" data-level="1">如果元数据已经存在，且软件仓库中只有部分软件发生了改变或增减，</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="则可用update参数直接对原有元数据进行升级-效率比重新分析rpm包依赖并生成新的元数据要高很多">
+          <a class="post-toc-link" href="#则可用update参数直接对原有元数据进行升级-效率比重新分析rpm包依赖并生成新的元数据要高很多" data-level="1">则可用update参数直接对原有元数据进行升级，效率比重新分析rpm包依赖并生成新的元数据要高很多。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="跳过-update上的stat-调用-假设如果文件名相同-则文件仍然相同-仅在您相当信任或容易受骗时使用此方法">
+          <a class="post-toc-link" href="#跳过-update上的stat-调用-假设如果文件名相同-则文件仍然相同-仅在您相当信任或容易受骗时使用此方法" data-level="1">跳过--update上的stat()调用，假设如果文件名相同，则文件仍然相同(仅在您相当信任或容易受骗时使用此方法)。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从这个路径使用现有的repodata来升级">
+          <a class="post-toc-link" href="#从这个路径使用现有的repodata来升级" data-level="1">从这个路径使用现有的repodata来升级。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不要生成回购元数据-如果它们的时间戳比rpm更新-如果您碰巧开启了该选项-则此选项将再次大幅减少处理时间一个未修改的回购-但它-目前-与-split选项互斥-注意-当包从repo中删除时-这个命令不会注意到-使用-update来处理这个">
+          <a class="post-toc-link" href="#不要生成回购元数据-如果它们的时间戳比rpm更新-如果您碰巧开启了该选项-则此选项将再次大幅减少处理时间一个未修改的回购-但它-目前-与-split选项互斥-注意-当包从repo中删除时-这个命令不会注意到-使用-update来处理这个" data-level="1">不要生成回购元数据，如果它们的时间戳比rpm更新。如果您碰巧开启了该选项，则此选项将再次大幅减少处理时间一个未修改的回购，但它(目前)与——split选项互斥。注意:当包从repo中删除时，这个命令不会注意到。使用——update来处理这个。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在拆分媒体模式下运行-与其传递单个目录-不如获取一组对应于媒体集中不同卷的目录">
+          <a class="post-toc-link" href="#在拆分媒体模式下运行-与其传递单个目录-不如获取一组对应于媒体集中不同卷的目录" data-level="1">在拆分媒体模式下运行。与其传递单个目录，不如获取一组对应于媒体集中不同卷的目录。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="以整洁的格式输出xml文件">
+          <a class="post-toc-link" href="#以整洁的格式输出xml文件" data-level="1">以整洁的格式输出xml文件。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出版本">
+          <a class="post-toc-link" href="#输出版本" data-level="1">输出版本。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示帮助菜单">
+          <a class="post-toc-link" href="#显示帮助菜单" data-level="1">显示帮助菜单。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="该选项指定使用sqlite来存储生成的元数据-默认项">
+          <a class="post-toc-link" href="#该选项指定使用sqlite来存储生成的元数据-默认项" data-level="1">该选项指定使用SQLite来存储生成的元数据，默认项。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不要在存储库中生成sqlite数据库">
+          <a class="post-toc-link" href="#不要在存储库中生成sqlite数据库" data-level="1">不要在存储库中生成sqlite数据库。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="忽略包的符号链接">
+          <a class="post-toc-link" href="#忽略包的符号链接" data-level="1">忽略包的符号链接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="选择repmed-xml中使用的校验和类型以及元数据中的包-默认值现在是-sha256-如果python有hashlib-旧的默认值是-sha-它实际上是-sha1-但是显式使用-sha1-在旧版本-3-0-x-的yum上不起作用-您需要指定-sha">
+          <a class="post-toc-link" href="#选择repmed-xml中使用的校验和类型以及元数据中的包-默认值现在是-sha256-如果python有hashlib-旧的默认值是-sha-它实际上是-sha1-但是显式使用-sha1-在旧版本-3-0-x-的yum上不起作用-您需要指定-sha" data-level="1">选择repmed .xml中使用的校验和类型以及元数据中的包。默认值现在是“sha256”(如果python有hashlib)。旧的默认值是“sha”，它实际上是“sha1”，但是显式使用“sha1”在旧版本(3.0.x)的yum上不起作用，您需要指定“sha”。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出基于时间的分析信息">
+          <a class="post-toc-link" href="#输出基于时间的分析信息" data-level="1">输出基于时间的分析信息。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只将每个rpm中的最后n个变更日志条目导入元数据">
+          <a class="post-toc-link" href="#只将每个rpm中的最后n个变更日志条目导入元数据" data-level="1">只将每个rpm中的最后N个变更日志条目导入元数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在元数据文件名中包含文件的校验和-有助于http缓存-默认">
+          <a class="post-toc-link" href="#在元数据文件名中包含文件的校验和-有助于http缓存-默认" data-level="1">在元数据文件名中包含文件的校验和，有助于HTTP缓存(默认)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不要在元数据文件名中包含文件的校验和">
+          <a class="post-toc-link" href="#不要在元数据文件名中包含文件的校验和" data-level="1">不要在元数据文件名中包含文件的校验和。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="保留旧repodata的最新-按时间戳-n个副本-这样使用旧repodata-xml文件的客户端仍然可以访问它-默认为0">
+          <a class="post-toc-link" href="#保留旧repodata的最新-按时间戳-n个副本-这样使用旧repodata-xml文件的客户端仍然可以访问它-默认为0" data-level="1">保留旧repodata的最新(按时间戳)N个副本(这样使用旧repodata .xml文件的客户端仍然可以访问它)。默认为0。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定关于存储库内容的关键字-标记-可以多次指定">
+          <a class="post-toc-link" href="#指定关于存储库内容的关键字-标记-可以多次指定" data-level="1">指定关于存储库内容的关键字/标记。可以多次指定。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定关于存储库本身的关键字-标签-可以多次指定">
+          <a class="post-toc-link" href="#指定关于存储库本身的关键字-标签-可以多次指定" data-level="1">指定关于存储库本身的关键字/标签。可以多次指定。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="存储库修订的任意字符串">
+          <a class="post-toc-link" href="#存储库修订的任意字符串" data-level="1">存储库修订的任意字符串。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="告诉createrepo生成增量数据和增量元数据">
+          <a class="post-toc-link" href="#告诉createrepo生成增量数据和增量元数据" data-level="1">告诉createrepo生成增量数据和增量元数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="寻找更老的pkgs来对抗的路径-可以指定多次吗">
+          <a class="post-toc-link" href="#寻找更老的pkgs来对抗的路径-可以指定多次吗" data-level="1">寻找更老的PKGS来对抗的路径。可以指定多次吗</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="要进行增量处理的旧版本的数量-默认为1">
+          <a class="post-toc-link" href="#要进行增量处理的旧版本的数量-默认为1" data-level="1">要进行增量处理的旧版本的数量。默认为1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-update将路径输出到pkgs实际读起来很有用">
+          <a class="post-toc-link" href="#使用-update将路径输出到pkgs实际读起来很有用" data-level="1">使用——update将路径输出到PKGS实际读起来很有用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="要运行deltarpm的rpm的最大大小-以字节为单位">
+          <a class="post-toc-link" href="#要运行deltarpm的rpm的最大大小-以字节为单位" data-level="1">要运行deltarpm的RPM的最大大小(以字节为单位)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="为读取rpms而生成的工作线程数">
+          <a class="post-toc-link" href="#为读取rpms而生成的工作线程数" data-level="1">为读取RPMS而生成的工作线程数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定要使用的压缩方法-compat-默认-xz-可能不可用-gz-bz2">
+          <a class="post-toc-link" href="#指定要使用的压缩方法-compat-默认-xz-可能不可用-gz-bz2" data-level="1">指定要使用的压缩方法:compat(默认)，xz(可能不可用)，gz, bz2。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="返回值">
+          <a class="post-toc-link" href="#返回值" data-level="2">返回值</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="例子">
+          <a class="post-toc-link" href="#例子" data-level="2">例子</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成带有groups文件的存储库-注意groups文件应该和rpm包在同一个目录下-即-path-to-rpms-comps-xml">
+          <a class="post-toc-link" href="#生成带有groups文件的存储库-注意groups文件应该和rpm包在同一个目录下-即-path-to-rpms-comps-xml" data-level="1">生成带有groups文件的存储库。注意groups文件应该和rpm包在同一个目录下(即/path/to/rpms/comps.xml)。</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

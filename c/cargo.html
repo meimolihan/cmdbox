@@ -1881,9 +1881,680 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="创建项目">
+              <a class="post-toc-link" href="#创建项目" data-level="3">创建项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建新项目">
+              <a class="post-toc-link" href="#创建新项目" data-level="1">创建新项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="项目结构">
+              <a class="post-toc-link" href="#项目结构" data-level="1">项目结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在当前目录初始化">
+              <a class="post-toc-link" href="#在当前目录初始化" data-level="1">在当前目录初始化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="cargo-toml-示例">
+              <a class="post-toc-link" href="#cargo-toml-示例" data-level="1">Cargo.toml 示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="构建项目">
+              <a class="post-toc-link" href="#构建项目" data-level="3">构建项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编译项目">
+              <a class="post-toc-link" href="#编译项目" data-level="1">编译项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编译并运行">
+              <a class="post-toc-link" href="#编译并运行" data-level="1">编译并运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查代码-快速">
+              <a class="post-toc-link" href="#检查代码-快速" data-level="1">检查代码（快速）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定包构建">
+              <a class="post-toc-link" href="#指定包构建" data-level="1">指定包构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建所有工作空间成员">
+              <a class="post-toc-link" href="#构建所有工作空间成员" data-level="1">构建所有工作空间成员</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建特定目标">
+              <a class="post-toc-link" href="#构建特定目标" data-level="1">构建特定目标</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看构建配置">
+              <a class="post-toc-link" href="#查看构建配置" data-level="1">查看构建配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="依赖管理">
+              <a class="post-toc-link" href="#依赖管理" data-level="3">依赖管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加依赖">
+              <a class="post-toc-link" href="#添加依赖" data-level="1">添加依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除依赖">
+              <a class="post-toc-link" href="#删除依赖" data-level="1">删除依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新依赖">
+              <a class="post-toc-link" href="#更新依赖" data-level="1">更新依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出依赖">
+              <a class="post-toc-link" href="#列出依赖" data-level="1">列出依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看过时依赖">
+              <a class="post-toc-link" href="#查看过时依赖" data-level="1">查看过时依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看依赖许可证">
+              <a class="post-toc-link" href="#查看依赖许可证" data-level="1">查看依赖许可证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载依赖">
+              <a class="post-toc-link" href="#下载依赖" data-level="1">下载依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="测试">
+              <a class="post-toc-link" href="#测试" data-level="3">测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行测试">
+              <a class="post-toc-link" href="#运行测试" data-level="1">运行测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行特定测试">
+              <a class="post-toc-link" href="#运行特定测试" data-level="1">运行特定测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
+              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="并行测试">
+              <a class="post-toc-link" href="#并行测试" data-level="1">并行测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行文档测试">
+              <a class="post-toc-link" href="#运行文档测试" data-level="1">运行文档测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行基准测试">
+              <a class="post-toc-link" href="#运行基准测试" data-level="1">运行基准测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="测试覆盖率-需要安装">
+              <a class="post-toc-link" href="#测试覆盖率-需要安装" data-level="1">测试覆盖率（需要安装）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="文档">
+              <a class="post-toc-link" href="#文档" data-level="3">文档</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成文档">
+              <a class="post-toc-link" href="#生成文档" data-level="1">生成文档</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="文档测试">
+              <a class="post-toc-link" href="#文档测试" data-level="1">文档测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打开本地文档">
+              <a class="post-toc-link" href="#打开本地文档" data-level="1">打开本地文档</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="发布与安装">
+              <a class="post-toc-link" href="#发布与安装" data-level="3">发布与安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布到-crates-io">
+              <a class="post-toc-link" href="#发布到-crates-io" data-level="1">发布到 crates.io</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装二进制包">
+              <a class="post-toc-link" href="#安装二进制包" data-level="1">安装二进制包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装到指定目录">
+              <a class="post-toc-link" href="#安装到指定目录" data-level="1">安装到指定目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出已安装的包">
+              <a class="post-toc-link" href="#列出已安装的包" data-level="1">列出已安装的包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载包">
+              <a class="post-toc-link" href="#卸载包" data-level="1">卸载包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从-git-安装">
+              <a class="post-toc-link" href="#从-git-安装" data-level="1">从 git 安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从本地安装">
+              <a class="post-toc-link" href="#从本地安装" data-level="1">从本地安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="工作空间">
+              <a class="post-toc-link" href="#工作空间" data-level="3">工作空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建工作空间">
+              <a class="post-toc-link" href="#创建工作空间" data-level="1">创建工作空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="cargo-toml-根目录">
+              <a class="post-toc-link" href="#cargo-toml-根目录" data-level="1">Cargo.toml（根目录）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="工作空间命令">
+              <a class="post-toc-link" href="#工作空间命令" data-level="1">工作空间命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看工作空间成员">
+              <a class="post-toc-link" href="#查看工作空间成员" data-level="1">查看工作空间成员</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="清理">
+              <a class="post-toc-link" href="#清理" data-level="3">清理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理构建产物">
+              <a class="post-toc-link" href="#清理构建产物" data-level="1">清理构建产物</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存-慎重">
+              <a class="post-toc-link" href="#清理缓存-慎重" data-level="1">清理缓存（慎重）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="格式化与检查">
+              <a class="post-toc-link" href="#格式化与检查" data-level="3">格式化与检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化代码">
+              <a class="post-toc-link" href="#格式化代码" data-level="1">格式化代码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="代码检查-clippy">
+              <a class="post-toc-link" href="#代码检查-clippy" data-level="1">代码检查（Clippy）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
+              <a class="post-toc-link" href="#查看包信息" data-level="1">查看包信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静态分析">
+              <a class="post-toc-link" href="#静态分析" data-level="1">静态分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用第三方工具">
+              <a class="post-toc-link" href="#常用第三方工具" data-level="3">常用第三方工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装常用工具">
+              <a class="post-toc-link" href="#安装常用工具" data-level="1">安装常用工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="代码格式化-已内置">
+              <a class="post-toc-link" href="#代码格式化-已内置" data-level="1">代码格式化（已内置）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="linter-已内置">
+              <a class="post-toc-link" href="#linter-已内置" data-level="1">Linter（已内置）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="依赖检查">
+              <a class="post-toc-link" href="#依赖检查" data-level="1">依赖检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安全审计">
+              <a class="post-toc-link" href="#安全审计" data-level="1">安全审计</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="传递依赖检查">
+              <a class="post-toc-link" href="#传递依赖检查" data-level="1">传递依赖检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="项目初始化模板">
+              <a class="post-toc-link" href="#项目初始化模板" data-level="1">项目初始化模板</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="热重载开发">
+              <a class="post-toc-link" href="#热重载开发" data-level="1">热重载开发</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出构建时间">
+              <a class="post-toc-link" href="#输出构建时间" data-level="1">输出构建时间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="依赖大小分析">
+              <a class="post-toc-link" href="#依赖大小分析" data-level="1">依赖大小分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="火焰图">
+              <a class="post-toc-link" href="#火焰图" data-level="1">火焰图</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布自动化">
+              <a class="post-toc-link" href="#发布自动化" data-level="1">发布自动化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="常用镜像源-cargo-config-toml">
+              <a class="post-toc-link" href="#常用镜像源-cargo-config-toml" data-level="1">常用镜像源（~/.cargo/config.toml）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="字节跳动镜像">
+              <a class="post-toc-link" href="#字节跳动镜像" data-level="1">字节跳动镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件-cargo-config-toml">
+              <a class="post-toc-link" href="#配置文件-cargo-config-toml" data-level="3">配置文件 (~/.cargo/config.toml)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="镜像源配置">
+              <a class="post-toc-link" href="#镜像源配置" data-level="1">镜像源配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建优化">
+              <a class="post-toc-link" href="#构建优化" data-level="1">构建优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="网络配置">
+              <a class="post-toc-link" href="#网络配置" data-level="1">网络配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令速查">
+              <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="开发流程">
+              <a class="post-toc-link" href="#开发流程" data-level="1">开发流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布流程">
+              <a class="post-toc-link" href="#发布流程" data-level="1">发布流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ci-常用组合">
+              <a class="post-toc-link" href="#ci-常用组合" data-level="1">CI 常用组合</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="创建项目">
+          <a class="post-toc-link" href="#创建项目" data-level="3">创建项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建新项目">
+          <a class="post-toc-link" href="#创建新项目" data-level="1">创建新项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="项目结构">
+          <a class="post-toc-link" href="#项目结构" data-level="1">项目结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在当前目录初始化">
+          <a class="post-toc-link" href="#在当前目录初始化" data-level="1">在当前目录初始化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="cargo-toml-示例">
+          <a class="post-toc-link" href="#cargo-toml-示例" data-level="1">Cargo.toml 示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="构建项目">
+          <a class="post-toc-link" href="#构建项目" data-level="3">构建项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编译项目">
+          <a class="post-toc-link" href="#编译项目" data-level="1">编译项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编译并运行">
+          <a class="post-toc-link" href="#编译并运行" data-level="1">编译并运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查代码-快速">
+          <a class="post-toc-link" href="#检查代码-快速" data-level="1">检查代码（快速）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定包构建">
+          <a class="post-toc-link" href="#指定包构建" data-level="1">指定包构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建所有工作空间成员">
+          <a class="post-toc-link" href="#构建所有工作空间成员" data-level="1">构建所有工作空间成员</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建特定目标">
+          <a class="post-toc-link" href="#构建特定目标" data-level="1">构建特定目标</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看构建配置">
+          <a class="post-toc-link" href="#查看构建配置" data-level="1">查看构建配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="依赖管理">
+          <a class="post-toc-link" href="#依赖管理" data-level="3">依赖管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加依赖">
+          <a class="post-toc-link" href="#添加依赖" data-level="1">添加依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除依赖">
+          <a class="post-toc-link" href="#删除依赖" data-level="1">删除依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新依赖">
+          <a class="post-toc-link" href="#更新依赖" data-level="1">更新依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出依赖">
+          <a class="post-toc-link" href="#列出依赖" data-level="1">列出依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看过时依赖">
+          <a class="post-toc-link" href="#查看过时依赖" data-level="1">查看过时依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看依赖许可证">
+          <a class="post-toc-link" href="#查看依赖许可证" data-level="1">查看依赖许可证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载依赖">
+          <a class="post-toc-link" href="#下载依赖" data-level="1">下载依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="测试">
+          <a class="post-toc-link" href="#测试" data-level="3">测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行测试">
+          <a class="post-toc-link" href="#运行测试" data-level="1">运行测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行特定测试">
+          <a class="post-toc-link" href="#运行特定测试" data-level="1">运行特定测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
+          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="并行测试">
+          <a class="post-toc-link" href="#并行测试" data-level="1">并行测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行文档测试">
+          <a class="post-toc-link" href="#运行文档测试" data-level="1">运行文档测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行基准测试">
+          <a class="post-toc-link" href="#运行基准测试" data-level="1">运行基准测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="测试覆盖率-需要安装">
+          <a class="post-toc-link" href="#测试覆盖率-需要安装" data-level="1">测试覆盖率（需要安装）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="文档">
+          <a class="post-toc-link" href="#文档" data-level="3">文档</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成文档">
+          <a class="post-toc-link" href="#生成文档" data-level="1">生成文档</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="文档测试">
+          <a class="post-toc-link" href="#文档测试" data-level="1">文档测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打开本地文档">
+          <a class="post-toc-link" href="#打开本地文档" data-level="1">打开本地文档</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="发布与安装">
+          <a class="post-toc-link" href="#发布与安装" data-level="3">发布与安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布到-crates-io">
+          <a class="post-toc-link" href="#发布到-crates-io" data-level="1">发布到 crates.io</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装二进制包">
+          <a class="post-toc-link" href="#安装二进制包" data-level="1">安装二进制包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装到指定目录">
+          <a class="post-toc-link" href="#安装到指定目录" data-level="1">安装到指定目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出已安装的包">
+          <a class="post-toc-link" href="#列出已安装的包" data-level="1">列出已安装的包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载包">
+          <a class="post-toc-link" href="#卸载包" data-level="1">卸载包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从-git-安装">
+          <a class="post-toc-link" href="#从-git-安装" data-level="1">从 git 安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从本地安装">
+          <a class="post-toc-link" href="#从本地安装" data-level="1">从本地安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="工作空间">
+          <a class="post-toc-link" href="#工作空间" data-level="3">工作空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建工作空间">
+          <a class="post-toc-link" href="#创建工作空间" data-level="1">创建工作空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="cargo-toml-根目录">
+          <a class="post-toc-link" href="#cargo-toml-根目录" data-level="1">Cargo.toml（根目录）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="工作空间命令">
+          <a class="post-toc-link" href="#工作空间命令" data-level="1">工作空间命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看工作空间成员">
+          <a class="post-toc-link" href="#查看工作空间成员" data-level="1">查看工作空间成员</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="清理">
+          <a class="post-toc-link" href="#清理" data-level="3">清理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理构建产物">
+          <a class="post-toc-link" href="#清理构建产物" data-level="1">清理构建产物</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存-慎重">
+          <a class="post-toc-link" href="#清理缓存-慎重" data-level="1">清理缓存（慎重）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="格式化与检查">
+          <a class="post-toc-link" href="#格式化与检查" data-level="3">格式化与检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化代码">
+          <a class="post-toc-link" href="#格式化代码" data-level="1">格式化代码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="代码检查-clippy">
+          <a class="post-toc-link" href="#代码检查-clippy" data-level="1">代码检查（Clippy）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
+          <a class="post-toc-link" href="#查看包信息" data-level="1">查看包信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静态分析">
+          <a class="post-toc-link" href="#静态分析" data-level="1">静态分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用第三方工具">
+          <a class="post-toc-link" href="#常用第三方工具" data-level="3">常用第三方工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装常用工具">
+          <a class="post-toc-link" href="#安装常用工具" data-level="1">安装常用工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="代码格式化-已内置">
+          <a class="post-toc-link" href="#代码格式化-已内置" data-level="1">代码格式化（已内置）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="linter-已内置">
+          <a class="post-toc-link" href="#linter-已内置" data-level="1">Linter（已内置）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="依赖检查">
+          <a class="post-toc-link" href="#依赖检查" data-level="1">依赖检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安全审计">
+          <a class="post-toc-link" href="#安全审计" data-level="1">安全审计</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="传递依赖检查">
+          <a class="post-toc-link" href="#传递依赖检查" data-level="1">传递依赖检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="项目初始化模板">
+          <a class="post-toc-link" href="#项目初始化模板" data-level="1">项目初始化模板</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="热重载开发">
+          <a class="post-toc-link" href="#热重载开发" data-level="1">热重载开发</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出构建时间">
+          <a class="post-toc-link" href="#输出构建时间" data-level="1">输出构建时间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="依赖大小分析">
+          <a class="post-toc-link" href="#依赖大小分析" data-level="1">依赖大小分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="火焰图">
+          <a class="post-toc-link" href="#火焰图" data-level="1">火焰图</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布自动化">
+          <a class="post-toc-link" href="#发布自动化" data-level="1">发布自动化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="常用镜像源-cargo-config-toml">
+          <a class="post-toc-link" href="#常用镜像源-cargo-config-toml" data-level="1">常用镜像源（~/.cargo/config.toml）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="字节跳动镜像">
+          <a class="post-toc-link" href="#字节跳动镜像" data-level="1">字节跳动镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件-cargo-config-toml">
+          <a class="post-toc-link" href="#配置文件-cargo-config-toml" data-level="3">配置文件 (~/.cargo/config.toml)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="镜像源配置">
+          <a class="post-toc-link" href="#镜像源配置" data-level="1">镜像源配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建优化">
+          <a class="post-toc-link" href="#构建优化" data-level="1">构建优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="网络配置">
+          <a class="post-toc-link" href="#网络配置" data-level="1">网络配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令速查">
+          <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="开发流程">
+          <a class="post-toc-link" href="#开发流程" data-level="1">开发流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布流程">
+          <a class="post-toc-link" href="#发布流程" data-level="1">发布流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ci-常用组合">
+          <a class="post-toc-link" href="#ci-常用组合" data-level="1">CI 常用组合</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1797,9 +1797,448 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="文件和目录操作命令">
+              <a class="post-toc-link" href="#文件和目录操作命令" data-level="3">文件和目录操作命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="查看当前目录">
+              <a class="post-toc-link" href="#查看当前目录" data-level="4">查看当前目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="列出目录内容">
+              <a class="post-toc-link" href="#列出目录内容" data-level="4">列出目录内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="进入目录">
+              <a class="post-toc-link" href="#进入目录" data-level="4">进入目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="创建目录">
+              <a class="post-toc-link" href="#创建目录" data-level="4">创建目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="删除目录">
+              <a class="post-toc-link" href="#删除目录" data-level="4">删除目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="复制文件">
+              <a class="post-toc-link" href="#复制文件" data-level="4">复制文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="移动文件">
+              <a class="post-toc-link" href="#移动文件" data-level="4">移动文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="删除文件">
+              <a class="post-toc-link" href="#删除文件" data-level="4">删除文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="重命名文件">
+              <a class="post-toc-link" href="#重命名文件" data-level="4">重命名文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示文件内容">
+              <a class="post-toc-link" href="#显示文件内容" data-level="4">显示文件内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="查看或修改文件属性">
+              <a class="post-toc-link" href="#查看或修改文件属性" data-level="4">查看或修改文件属性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="以树形结构显示目录">
+              <a class="post-toc-link" href="#以树形结构显示目录" data-level="4">以树形结构显示目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="高级复制">
+              <a class="post-toc-link" href="#高级复制" data-level="4">高级复制</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="强力复制">
+              <a class="post-toc-link" href="#强力复制" data-level="4">强力复制</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="系统信息查询命令">
+              <a class="post-toc-link" href="#系统信息查询命令" data-level="3">系统信息查询命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示windows版本">
+              <a class="post-toc-link" href="#显示windows版本" data-level="4">显示Windows版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示系统详细信息">
+              <a class="post-toc-link" href="#显示系统详细信息" data-level="4">显示系统详细信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示计算机名">
+              <a class="post-toc-link" href="#显示计算机名" data-level="4">显示计算机名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示当前用户名">
+              <a class="post-toc-link" href="#显示当前用户名" data-level="4">显示当前用户名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="网络诊断命令">
+              <a class="post-toc-link" href="#网络诊断命令" data-level="3">网络诊断命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示网络配置">
+              <a class="post-toc-link" href="#显示网络配置" data-level="4">显示网络配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="测试网络连通性">
+              <a class="post-toc-link" href="#测试网络连通性" data-level="4">测试网络连通性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="追踪路由">
+              <a class="post-toc-link" href="#追踪路由" data-level="4">追踪路由</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示网络连接状态">
+              <a class="post-toc-link" href="#显示网络连接状态" data-level="4">显示网络连接状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="dns查询">
+              <a class="post-toc-link" href="#dns查询" data-level="4">DNS查询</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示arp缓存">
+              <a class="post-toc-link" href="#显示arp缓存" data-level="4">显示ARP缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="进程管理命令">
+              <a class="post-toc-link" href="#进程管理命令" data-level="3">进程管理命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="查看进程列表">
+              <a class="post-toc-link" href="#查看进程列表" data-level="4">查看进程列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="结束进程">
+              <a class="post-toc-link" href="#结束进程" data-level="4">结束进程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="磁盘管理命令">
+              <a class="post-toc-link" href="#磁盘管理命令" data-level="3">磁盘管理命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="检查磁盘">
+              <a class="post-toc-link" href="#检查磁盘" data-level="4">检查磁盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="格式化磁盘">
+              <a class="post-toc-link" href="#格式化磁盘" data-level="4">格式化磁盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="磁盘分区工具">
+              <a class="post-toc-link" href="#磁盘分区工具" data-level="4">磁盘分区工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="其他常用命令">
+              <a class="post-toc-link" href="#其他常用命令" data-level="3">其他常用命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="清除屏幕">
+              <a class="post-toc-link" href="#清除屏幕" data-level="4">清除屏幕</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="显示帮助">
+              <a class="post-toc-link" href="#显示帮助" data-level="4">显示帮助</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="关闭或重启计算机">
+              <a class="post-toc-link" href="#关闭或重启计算机" data-level="4">关闭或重启计算机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="创建共享">
+              <a class="post-toc-link" href="#创建共享" data-level="4">创建共享</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="查看服务状态">
+              <a class="post-toc-link" href="#查看服务状态" data-level="4">查看服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="cmd-命令行-进入目录">
+              <a class="post-toc-link" href="#cmd-命令行-进入目录" data-level="2">CMD 命令行 进入目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="用户根目录">
+              <a class="post-toc-link" href="#用户根目录" data-level="1">用户根目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="桌面">
+              <a class="post-toc-link" href="#桌面" data-level="1">桌面</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载">
+              <a class="post-toc-link" href="#下载" data-level="1">下载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="文档">
+              <a class="post-toc-link" href="#文档" data-level="1">文档</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="图片">
+              <a class="post-toc-link" href="#图片" data-level="1">图片</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="视频">
+              <a class="post-toc-link" href="#视频" data-level="1">视频</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="音乐">
+              <a class="post-toc-link" href="#音乐" data-level="1">音乐</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="文件和目录操作命令">
+          <a class="post-toc-link" href="#文件和目录操作命令" data-level="3">文件和目录操作命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="查看当前目录">
+          <a class="post-toc-link" href="#查看当前目录" data-level="4">查看当前目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="列出目录内容">
+          <a class="post-toc-link" href="#列出目录内容" data-level="4">列出目录内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="进入目录">
+          <a class="post-toc-link" href="#进入目录" data-level="4">进入目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="创建目录">
+          <a class="post-toc-link" href="#创建目录" data-level="4">创建目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="删除目录">
+          <a class="post-toc-link" href="#删除目录" data-level="4">删除目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="复制文件">
+          <a class="post-toc-link" href="#复制文件" data-level="4">复制文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="移动文件">
+          <a class="post-toc-link" href="#移动文件" data-level="4">移动文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="删除文件">
+          <a class="post-toc-link" href="#删除文件" data-level="4">删除文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="重命名文件">
+          <a class="post-toc-link" href="#重命名文件" data-level="4">重命名文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示文件内容">
+          <a class="post-toc-link" href="#显示文件内容" data-level="4">显示文件内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="查看或修改文件属性">
+          <a class="post-toc-link" href="#查看或修改文件属性" data-level="4">查看或修改文件属性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="以树形结构显示目录">
+          <a class="post-toc-link" href="#以树形结构显示目录" data-level="4">以树形结构显示目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="高级复制">
+          <a class="post-toc-link" href="#高级复制" data-level="4">高级复制</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="强力复制">
+          <a class="post-toc-link" href="#强力复制" data-level="4">强力复制</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="系统信息查询命令">
+          <a class="post-toc-link" href="#系统信息查询命令" data-level="3">系统信息查询命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示windows版本">
+          <a class="post-toc-link" href="#显示windows版本" data-level="4">显示Windows版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示系统详细信息">
+          <a class="post-toc-link" href="#显示系统详细信息" data-level="4">显示系统详细信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示计算机名">
+          <a class="post-toc-link" href="#显示计算机名" data-level="4">显示计算机名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示当前用户名">
+          <a class="post-toc-link" href="#显示当前用户名" data-level="4">显示当前用户名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="网络诊断命令">
+          <a class="post-toc-link" href="#网络诊断命令" data-level="3">网络诊断命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示网络配置">
+          <a class="post-toc-link" href="#显示网络配置" data-level="4">显示网络配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="测试网络连通性">
+          <a class="post-toc-link" href="#测试网络连通性" data-level="4">测试网络连通性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="追踪路由">
+          <a class="post-toc-link" href="#追踪路由" data-level="4">追踪路由</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示网络连接状态">
+          <a class="post-toc-link" href="#显示网络连接状态" data-level="4">显示网络连接状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="dns查询">
+          <a class="post-toc-link" href="#dns查询" data-level="4">DNS查询</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示arp缓存">
+          <a class="post-toc-link" href="#显示arp缓存" data-level="4">显示ARP缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="进程管理命令">
+          <a class="post-toc-link" href="#进程管理命令" data-level="3">进程管理命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="查看进程列表">
+          <a class="post-toc-link" href="#查看进程列表" data-level="4">查看进程列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="结束进程">
+          <a class="post-toc-link" href="#结束进程" data-level="4">结束进程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="磁盘管理命令">
+          <a class="post-toc-link" href="#磁盘管理命令" data-level="3">磁盘管理命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="检查磁盘">
+          <a class="post-toc-link" href="#检查磁盘" data-level="4">检查磁盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="格式化磁盘">
+          <a class="post-toc-link" href="#格式化磁盘" data-level="4">格式化磁盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="磁盘分区工具">
+          <a class="post-toc-link" href="#磁盘分区工具" data-level="4">磁盘分区工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="其他常用命令">
+          <a class="post-toc-link" href="#其他常用命令" data-level="3">其他常用命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="清除屏幕">
+          <a class="post-toc-link" href="#清除屏幕" data-level="4">清除屏幕</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="显示帮助">
+          <a class="post-toc-link" href="#显示帮助" data-level="4">显示帮助</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="关闭或重启计算机">
+          <a class="post-toc-link" href="#关闭或重启计算机" data-level="4">关闭或重启计算机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="创建共享">
+          <a class="post-toc-link" href="#创建共享" data-level="4">创建共享</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="查看服务状态">
+          <a class="post-toc-link" href="#查看服务状态" data-level="4">查看服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="cmd-命令行-进入目录">
+          <a class="post-toc-link" href="#cmd-命令行-进入目录" data-level="2">CMD 命令行 进入目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="用户根目录">
+          <a class="post-toc-link" href="#用户根目录" data-level="1">用户根目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="桌面">
+          <a class="post-toc-link" href="#桌面" data-level="1">桌面</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载">
+          <a class="post-toc-link" href="#下载" data-level="1">下载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="文档">
+          <a class="post-toc-link" href="#文档" data-level="1">文档</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="图片">
+          <a class="post-toc-link" href="#图片" data-level="1">图片</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="视频">
+          <a class="post-toc-link" href="#视频" data-level="1">视频</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="音乐">
+          <a class="post-toc-link" href="#音乐" data-level="1">音乐</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

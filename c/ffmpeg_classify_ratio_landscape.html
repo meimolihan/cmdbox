@@ -1865,9 +1865,296 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="分类逻辑">
+              <a class="post-toc-link" href="#分类逻辑" data-level="3">分类逻辑</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键执行命令">
+              <a class="post-toc-link" href="#一键执行命令" data-level="2">一键执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+              <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="landscape-图片按宽高比自动分类-综合命令">
+              <a class="post-toc-link" href="#landscape-图片按宽高比自动分类-综合命令" data-level="1">Landscape 图片按宽高比自动分类（综合命令）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="支持比例-4-3-3-2-16-10-16-9-17-9-19-10-2-1-20-9-21-9">
+              <a class="post-toc-link" href="#支持比例-4-3-3-2-16-10-16-9-17-9-19-10-2-1-20-9-21-9" data-level="1">支持比例：4:3, 3:2, 16:10, 16:9, 17:9, 19:10, 2:1, 20:9, 21:9</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="容差-5">
+              <a class="post-toc-link" href="#容差-5" data-level="1">容差：±5%</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+              <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="定义常见宽高比">
+              <a class="post-toc-link" href="#定义常见宽高比" data-level="1">定义常见宽高比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取所有图片文件-排除子目录">
+              <a class="post-toc-link" href="#获取所有图片文件-排除子目录" data-level="1">获取所有图片文件（排除子目录）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="统计哈希表">
+              <a class="post-toc-link" href="#统计哈希表" data-level="1">统计哈希表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出统计结果">
+              <a class="post-toc-link" href="#输出统计结果" data-level="1">输出统计结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证总数">
+              <a class="post-toc-link" href="#验证总数" data-level="1">验证总数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="linux-版本">
+              <a class="post-toc-link" href="#linux-版本" data-level="2">Linux 版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="支持的比例">
+              <a class="post-toc-link" href="#支持的比例" data-level="2">支持的比例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="执行后的目录结构">
+              <a class="post-toc-link" href="#执行后的目录结构" data-level="2">执行后的目录结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="自定义修改">
+              <a class="post-toc-link" href="#自定义修改" data-level="2">自定义修改</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="修改容差-默认-5">
+              <a class="post-toc-link" href="#修改容差-默认-5" data-level="3">修改容差（默认 ±5%）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="改为-2">
+              <a class="post-toc-link" href="#改为-2" data-level="1">改为 ±2%</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="改为-10">
+              <a class="post-toc-link" href="#改为-10" data-level="1">改为 ±10%</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="添加新比例">
+              <a class="post-toc-link" href="#添加新比例" data-level="3">添加新比例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="修改源目录">
+              <a class="post-toc-link" href="#修改源目录" data-level="3">修改源目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="验证结果">
+              <a class="post-toc-link" href="#验证结果" data-level="2">验证结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看各目录文件数">
+              <a class="post-toc-link" href="#查看各目录文件数" data-level="1">查看各目录文件数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查总数">
+              <a class="post-toc-link" href="#检查总数" data-level="1">检查总数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-ffprobe-不是内部或外部命令">
+              <a class="post-toc-link" href="#1-ffprobe-不是内部或外部命令" data-level="3">1. ffprobe 不是内部或外部命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-ffprobe-是否在-path-中">
+              <a class="post-toc-link" href="#检查-ffprobe-是否在-path-中" data-level="1">检查 ffprobe 是否在 PATH 中</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="如果未找到-需要安装-ffmpeg-并添加到-path">
+              <a class="post-toc-link" href="#如果未找到-需要安装-ffmpeg-并添加到-path" data-level="1">如果未找到，需要安装 FFmpeg 并添加到 PATH</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="功能说明">
+              <a class="post-toc-link" href="#功能说明" data-level="2">功能说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="分类逻辑">
+          <a class="post-toc-link" href="#分类逻辑" data-level="3">分类逻辑</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键执行命令">
+          <a class="post-toc-link" href="#一键执行命令" data-level="2">一键执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+          <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="landscape-图片按宽高比自动分类-综合命令">
+          <a class="post-toc-link" href="#landscape-图片按宽高比自动分类-综合命令" data-level="1">Landscape 图片按宽高比自动分类（综合命令）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="支持比例-4-3-3-2-16-10-16-9-17-9-19-10-2-1-20-9-21-9">
+          <a class="post-toc-link" href="#支持比例-4-3-3-2-16-10-16-9-17-9-19-10-2-1-20-9-21-9" data-level="1">支持比例：4:3, 3:2, 16:10, 16:9, 17:9, 19:10, 2:1, 20:9, 21:9</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="容差-5">
+          <a class="post-toc-link" href="#容差-5" data-level="1">容差：±5%</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+          <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="定义常见宽高比">
+          <a class="post-toc-link" href="#定义常见宽高比" data-level="1">定义常见宽高比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取所有图片文件-排除子目录">
+          <a class="post-toc-link" href="#获取所有图片文件-排除子目录" data-level="1">获取所有图片文件（排除子目录）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="统计哈希表">
+          <a class="post-toc-link" href="#统计哈希表" data-level="1">统计哈希表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出统计结果">
+          <a class="post-toc-link" href="#输出统计结果" data-level="1">输出统计结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证总数">
+          <a class="post-toc-link" href="#验证总数" data-level="1">验证总数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="linux-版本">
+          <a class="post-toc-link" href="#linux-版本" data-level="2">Linux 版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="支持的比例">
+          <a class="post-toc-link" href="#支持的比例" data-level="2">支持的比例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="执行后的目录结构">
+          <a class="post-toc-link" href="#执行后的目录结构" data-level="2">执行后的目录结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="自定义修改">
+          <a class="post-toc-link" href="#自定义修改" data-level="2">自定义修改</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="修改容差-默认-5">
+          <a class="post-toc-link" href="#修改容差-默认-5" data-level="3">修改容差（默认 ±5%）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="改为-2">
+          <a class="post-toc-link" href="#改为-2" data-level="1">改为 ±2%</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="改为-10">
+          <a class="post-toc-link" href="#改为-10" data-level="1">改为 ±10%</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="添加新比例">
+          <a class="post-toc-link" href="#添加新比例" data-level="3">添加新比例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="修改源目录">
+          <a class="post-toc-link" href="#修改源目录" data-level="3">修改源目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="验证结果">
+          <a class="post-toc-link" href="#验证结果" data-level="2">验证结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看各目录文件数">
+          <a class="post-toc-link" href="#查看各目录文件数" data-level="1">查看各目录文件数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查总数">
+          <a class="post-toc-link" href="#检查总数" data-level="1">检查总数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-ffprobe-不是内部或外部命令">
+          <a class="post-toc-link" href="#1-ffprobe-不是内部或外部命令" data-level="3">1. ffprobe 不是内部或外部命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-ffprobe-是否在-path-中">
+          <a class="post-toc-link" href="#检查-ffprobe-是否在-path-中" data-level="1">检查 ffprobe 是否在 PATH 中</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="如果未找到-需要安装-ffmpeg-并添加到-path">
+          <a class="post-toc-link" href="#如果未找到-需要安装-ffmpeg-并添加到-path" data-level="1">如果未找到，需要安装 FFmpeg 并添加到 PATH</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="功能说明">
+          <a class="post-toc-link" href="#功能说明" data-level="2">功能说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

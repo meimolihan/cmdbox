@@ -2531,9 +2531,840 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
+              <a class="post-toc-link" href="#项目简介" data-level="2">项目简介</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
+              <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-部署-gitea-docker-compose">
+              <a class="post-toc-link" href="#一-部署-gitea-docker-compose" data-level="2">一、部署 Gitea（Docker Compose）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一键脚本">
+              <a class="post-toc-link" href="#一键脚本" data-level="3">一键脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="生成的-docker-compose-yml">
+              <a class="post-toc-link" href="#生成的-docker-compose-yml" data-level="3">生成的 docker-compose.yml</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="端口说明">
+              <a class="post-toc-link" href="#端口说明" data-level="3">端口说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-安装-tea-客户端">
+              <a class="post-toc-link" href="#二-安装-tea-客户端" data-level="2">二、安装 Tea 客户端</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-创建存放目录">
+              <a class="post-toc-link" href="#1-创建存放目录" data-level="1">1. 创建存放目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-下载-tea-二进制文件-v0-16-0">
+              <a class="post-toc-link" href="#2-下载-tea-二进制文件-v0-16-0" data-level="1">2. 下载 tea 二进制文件（v0.16.0）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-将二进制文件移动到-opt-gitea">
+              <a class="post-toc-link" href="#3-将二进制文件移动到-opt-gitea" data-level="1">3. 将二进制文件移动到 /opt/gitea</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-添加可执行权限">
+              <a class="post-toc-link" href="#4-添加可执行权限" data-level="1">4. 添加可执行权限</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-创建全局软链接-全局直接使用-tea-命令">
+              <a class="post-toc-link" href="#5-创建全局软链接-全局直接使用-tea-命令" data-level="1">5. 创建全局软链接，全局直接使用 tea 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="6-校验版本-确认安装成功">
+              <a class="post-toc-link" href="#6-校验版本-确认安装成功" data-level="1">6. 校验版本，确认安装成功</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-gitea-网页生成访问令牌">
+              <a class="post-toc-link" href="#三-gitea-网页生成访问令牌" data-level="2">三、Gitea 网页生成访问令牌</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-tea-登录连接-gitea">
+              <a class="post-toc-link" href="#四-tea-登录连接-gitea" data-level="2">四、Tea 登录连接 Gitea</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已保存登录配置">
+              <a class="post-toc-link" href="#查看已保存登录配置" data-level="1">查看已保存登录配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取仓库列表-验证-token-与-api-连通性">
+              <a class="post-toc-link" href="#获取仓库列表-验证-token-与-api-连通性" data-level="1">获取仓库列表，验证 token 与 API 连通性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-tea-全部命令参考">
+              <a class="post-toc-link" href="#五-tea-全部命令参考" data-level="2">五、Tea 全部命令参考</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-1-登录管理">
+              <a class="post-toc-link" href="#5-1-登录管理" data-level="3">5.1 登录管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加登录-交互式-会提示输入-url-和-token">
+              <a class="post-toc-link" href="#添加登录-交互式-会提示输入-url-和-token" data-level="1">添加登录（交互式，会提示输入 URL 和 Token）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="非交互式添加">
+              <a class="post-toc-link" href="#非交互式添加" data-level="1">非交互式添加</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已保存的登录">
+              <a class="post-toc-link" href="#查看已保存的登录" data-level="1">查看已保存的登录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认登录">
+              <a class="post-toc-link" href="#切换默认登录" data-level="1">切换默认登录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除登录">
+              <a class="post-toc-link" href="#删除登录" data-level="1">删除登录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前登录用户">
+              <a class="post-toc-link" href="#查看当前登录用户" data-level="1">查看当前登录用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-2-仓库管理">
+              <a class="post-toc-link" href="#5-2-仓库管理" data-level="3">5.2 仓库管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出仓库">
+              <a class="post-toc-link" href="#列出仓库" data-level="1">---- 列出仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建仓库">
+              <a class="post-toc-link" href="#创建仓库" data-level="1">---- 创建仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="私有仓库-init-自动初始化生成-readme">
+              <a class="post-toc-link" href="#私有仓库-init-自动初始化生成-readme" data-level="1">私有仓库（--init 自动初始化生成 README）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="公开仓库-不加-private-即为公开">
+              <a class="post-toc-link" href="#公开仓库-不加-private-即为公开" data-level="1">公开仓库（不加 --private 即为公开）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="完整参数示例">
+              <a class="post-toc-link" href="#完整参数示例" data-level="1">完整参数示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除仓库">
+              <a class="post-toc-link" href="#删除仓库" data-level="1">---- 删除仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行后需输入-y-确认删除-仓库删除后数据不可恢复">
+              <a class="post-toc-link" href="#执行后需输入-y-确认删除-仓库删除后数据不可恢复" data-level="1">执行后需输入 y 确认删除，仓库删除后数据不可恢复！</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="fork-仓库">
+              <a class="post-toc-link" href="#fork-仓库" data-level="1">---- Fork 仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索仓库">
+              <a class="post-toc-link" href="#搜索仓库" data-level="1">---- 搜索仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="迁移仓库">
+              <a class="post-toc-link" href="#迁移仓库" data-level="1">---- 迁移仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-3-议题管理">
+              <a class="post-toc-link" href="#5-3-议题管理" data-level="3">5.3 议题管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出议题">
+              <a class="post-toc-link" href="#列出议题" data-level="1">---- 列出议题 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建议题">
+              <a class="post-toc-link" href="#创建议题" data-level="1">---- 创建议题 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑议题">
+              <a class="post-toc-link" href="#编辑议题" data-level="1">---- 编辑议题 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-重新打开">
+              <a class="post-toc-link" href="#关闭-重新打开" data-level="1">---- 关闭 / 重新打开 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="评论议题">
+              <a class="post-toc-link" href="#评论议题" data-level="1">---- 评论议题 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在浏览器打开">
+              <a class="post-toc-link" href="#在浏览器打开" data-level="1">---- 在浏览器打开 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-4-pull-request-管理">
+              <a class="post-toc-link" href="#5-4-pull-request-管理" data-level="3">5.4 Pull Request 管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出-pr">
+              <a class="post-toc-link" href="#列出-pr" data-level="1">---- 列出 PR ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-pr">
+              <a class="post-toc-link" href="#创建-pr" data-level="1">---- 创建 PR ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检出-pr-到本地">
+              <a class="post-toc-link" href="#检出-pr-到本地" data-level="1">---- 检出 PR 到本地 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-重新打开">
+              <a class="post-toc-link" href="#关闭-重新打开" data-level="1">---- 关闭 / 重新打开 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="审查-pr">
+              <a class="post-toc-link" href="#审查-pr" data-level="1">---- 审查 PR ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理已合并的-pr-分支">
+              <a class="post-toc-link" href="#清理已合并的-pr-分支" data-level="1">---- 清理已合并的 PR 分支 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-5-标签管理">
+              <a class="post-toc-link" href="#5-5-标签管理" data-level="3">5.5 标签管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出标签">
+              <a class="post-toc-link" href="#列出标签" data-level="1">---- 列出标签 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建标签">
+              <a class="post-toc-link" href="#创建标签" data-level="1">---- 创建标签 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从文件批量导入标签">
+              <a class="post-toc-link" href="#从文件批量导入标签" data-level="1">---- 从文件批量导入标签 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新标签-注意-更新-删除使用-id-而非名称">
+              <a class="post-toc-link" href="#更新标签-注意-更新-删除使用-id-而非名称" data-level="1">---- 更新标签（注意：更新/删除使用 ID，而非名称）----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除标签">
+              <a class="post-toc-link" href="#删除标签" data-level="1">---- 删除标签 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-6-里程碑管理">
+              <a class="post-toc-link" href="#5-6-里程碑管理" data-level="3">5.6 里程碑管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出里程碑">
+              <a class="post-toc-link" href="#列出里程碑" data-level="1">---- 列出里程碑 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建里程碑">
+              <a class="post-toc-link" href="#创建里程碑" data-level="1">---- 创建里程碑 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看里程碑下的议题">
+              <a class="post-toc-link" href="#查看里程碑下的议题" data-level="1">---- 查看里程碑下的议题 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-删除里程碑">
+              <a class="post-toc-link" href="#关闭-删除里程碑" data-level="1">---- 关闭 / 删除里程碑 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-7-发布管理">
+              <a class="post-toc-link" href="#5-7-发布管理" data-level="3">5.7 发布管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出发布">
+              <a class="post-toc-link" href="#列出发布" data-level="1">---- 列出发布 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建发布">
+              <a class="post-toc-link" href="#创建发布" data-level="1">---- 创建发布 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑发布">
+              <a class="post-toc-link" href="#编辑发布" data-level="1">---- 编辑发布 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除发布">
+              <a class="post-toc-link" href="#删除发布" data-level="1">---- 删除发布 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="管理发布附件">
+              <a class="post-toc-link" href="#管理发布附件" data-level="1">---- 管理发布附件 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-8-组织管理">
+              <a class="post-toc-link" href="#5-8-组织管理" data-level="3">5.8 组织管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出组织">
+              <a class="post-toc-link" href="#列出组织" data-level="1">---- 列出组织 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建组织">
+              <a class="post-toc-link" href="#创建组织" data-level="1">---- 创建组织 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除组织">
+              <a class="post-toc-link" href="#删除组织" data-level="1">---- 删除组织 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-9-分支管理">
+              <a class="post-toc-link" href="#5-9-分支管理" data-level="3">5.9 分支管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出分支">
+              <a class="post-toc-link" href="#列出分支" data-level="1">---- 列出分支 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-10-通知管理">
+              <a class="post-toc-link" href="#5-10-通知管理" data-level="3">5.10 通知管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出通知">
+              <a class="post-toc-link" href="#列出通知" data-level="1">---- 列出通知 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="标记为已读-未读">
+              <a class="post-toc-link" href="#标记为已读-未读" data-level="1">---- 标记为已读 / 未读 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="配合桌面通知使用-每5分钟轮询一次">
+              <a class="post-toc-link" href="#配合桌面通知使用-每5分钟轮询一次" data-level="1">配合桌面通知使用（每5分钟轮询一次）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="while-do-tea-notifications-mine-o-simple-xargs-i-notify-send-sleep-300-done">
+              <a class="post-toc-link" href="#while-do-tea-notifications-mine-o-simple-xargs-i-notify-send-sleep-300-done" data-level="1">while :; do tea notifications --mine -o simple | xargs -i notify-send {}; sleep 300; done</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-11-其他辅助命令">
+              <a class="post-toc-link" href="#5-11-其他辅助命令" data-level="3">5.11 其他辅助命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在浏览器打开">
+              <a class="post-toc-link" href="#在浏览器打开" data-level="1">---- 在浏览器打开 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="克隆仓库">
+              <a class="post-toc-link" href="#克隆仓库" data-level="1">---- 克隆仓库 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="webhook-管理">
+              <a class="post-toc-link" href="#webhook-管理" data-level="1">---- Webhook 管理 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="actions-管理">
+              <a class="post-toc-link" href="#actions-管理" data-level="1">---- Actions 管理 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="shell-自动补全">
+              <a class="post-toc-link" href="#shell-自动补全" data-level="1">---- Shell 自动补全 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="bash">
+              <a class="post-toc-link" href="#bash" data-level="1">Bash</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="zsh">
+              <a class="post-toc-link" href="#zsh" data-level="1">Zsh</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="fish">
+              <a class="post-toc-link" href="#fish" data-level="1">Fish</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="管理员操作">
+              <a class="post-toc-link" href="#管理员操作" data-level="1">---- 管理员操作 ----</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-常用命令速查表">
+              <a class="post-toc-link" href="#六-常用命令速查表" data-level="2">六、常用命令速查表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-补充说明">
+              <a class="post-toc-link" href="#七-补充说明" data-level="2">七、补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="端口说明">
+              <a class="post-toc-link" href="#端口说明" data-level="3">端口说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="克隆仓库示例-ssh-方式">
+              <a class="post-toc-link" href="#克隆仓库示例-ssh-方式" data-level="3">克隆仓库示例（SSH 方式）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="关于-owner-参数的原理">
+              <a class="post-toc-link" href="#关于-owner-参数的原理" data-level="3">关于 --owner 参数的原理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="仓库上下文自动识别">
+              <a class="post-toc-link" href="#仓库上下文自动识别" data-level="3">仓库上下文自动识别</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
+              <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="附-gitea-web-管理界面额外配置">
+              <a class="post-toc-link" href="#附-gitea-web-管理界面额外配置" data-level="2">附：Gitea Web 管理界面额外配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="用户注册管理">
+              <a class="post-toc-link" href="#用户注册管理" data-level="3">用户注册管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="站点配置">
+              <a class="post-toc-link" href="#站点配置" data-level="3">站点配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
+          <a class="post-toc-link" href="#项目简介" data-level="2">项目简介</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
+          <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-部署-gitea-docker-compose">
+          <a class="post-toc-link" href="#一-部署-gitea-docker-compose" data-level="2">一、部署 Gitea（Docker Compose）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一键脚本">
+          <a class="post-toc-link" href="#一键脚本" data-level="3">一键脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="生成的-docker-compose-yml">
+          <a class="post-toc-link" href="#生成的-docker-compose-yml" data-level="3">生成的 docker-compose.yml</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="端口说明">
+          <a class="post-toc-link" href="#端口说明" data-level="3">端口说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-安装-tea-客户端">
+          <a class="post-toc-link" href="#二-安装-tea-客户端" data-level="2">二、安装 Tea 客户端</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-创建存放目录">
+          <a class="post-toc-link" href="#1-创建存放目录" data-level="1">1. 创建存放目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-下载-tea-二进制文件-v0-16-0">
+          <a class="post-toc-link" href="#2-下载-tea-二进制文件-v0-16-0" data-level="1">2. 下载 tea 二进制文件（v0.16.0）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-将二进制文件移动到-opt-gitea">
+          <a class="post-toc-link" href="#3-将二进制文件移动到-opt-gitea" data-level="1">3. 将二进制文件移动到 /opt/gitea</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-添加可执行权限">
+          <a class="post-toc-link" href="#4-添加可执行权限" data-level="1">4. 添加可执行权限</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-创建全局软链接-全局直接使用-tea-命令">
+          <a class="post-toc-link" href="#5-创建全局软链接-全局直接使用-tea-命令" data-level="1">5. 创建全局软链接，全局直接使用 tea 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="6-校验版本-确认安装成功">
+          <a class="post-toc-link" href="#6-校验版本-确认安装成功" data-level="1">6. 校验版本，确认安装成功</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-gitea-网页生成访问令牌">
+          <a class="post-toc-link" href="#三-gitea-网页生成访问令牌" data-level="2">三、Gitea 网页生成访问令牌</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-tea-登录连接-gitea">
+          <a class="post-toc-link" href="#四-tea-登录连接-gitea" data-level="2">四、Tea 登录连接 Gitea</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已保存登录配置">
+          <a class="post-toc-link" href="#查看已保存登录配置" data-level="1">查看已保存登录配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取仓库列表-验证-token-与-api-连通性">
+          <a class="post-toc-link" href="#获取仓库列表-验证-token-与-api-连通性" data-level="1">获取仓库列表，验证 token 与 API 连通性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-tea-全部命令参考">
+          <a class="post-toc-link" href="#五-tea-全部命令参考" data-level="2">五、Tea 全部命令参考</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-1-登录管理">
+          <a class="post-toc-link" href="#5-1-登录管理" data-level="3">5.1 登录管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加登录-交互式-会提示输入-url-和-token">
+          <a class="post-toc-link" href="#添加登录-交互式-会提示输入-url-和-token" data-level="1">添加登录（交互式，会提示输入 URL 和 Token）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="非交互式添加">
+          <a class="post-toc-link" href="#非交互式添加" data-level="1">非交互式添加</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已保存的登录">
+          <a class="post-toc-link" href="#查看已保存的登录" data-level="1">查看已保存的登录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认登录">
+          <a class="post-toc-link" href="#切换默认登录" data-level="1">切换默认登录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除登录">
+          <a class="post-toc-link" href="#删除登录" data-level="1">删除登录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前登录用户">
+          <a class="post-toc-link" href="#查看当前登录用户" data-level="1">查看当前登录用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-2-仓库管理">
+          <a class="post-toc-link" href="#5-2-仓库管理" data-level="3">5.2 仓库管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出仓库">
+          <a class="post-toc-link" href="#列出仓库" data-level="1">---- 列出仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建仓库">
+          <a class="post-toc-link" href="#创建仓库" data-level="1">---- 创建仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="私有仓库-init-自动初始化生成-readme">
+          <a class="post-toc-link" href="#私有仓库-init-自动初始化生成-readme" data-level="1">私有仓库（--init 自动初始化生成 README）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="公开仓库-不加-private-即为公开">
+          <a class="post-toc-link" href="#公开仓库-不加-private-即为公开" data-level="1">公开仓库（不加 --private 即为公开）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="完整参数示例">
+          <a class="post-toc-link" href="#完整参数示例" data-level="1">完整参数示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除仓库">
+          <a class="post-toc-link" href="#删除仓库" data-level="1">---- 删除仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行后需输入-y-确认删除-仓库删除后数据不可恢复">
+          <a class="post-toc-link" href="#执行后需输入-y-确认删除-仓库删除后数据不可恢复" data-level="1">执行后需输入 y 确认删除，仓库删除后数据不可恢复！</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="fork-仓库">
+          <a class="post-toc-link" href="#fork-仓库" data-level="1">---- Fork 仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索仓库">
+          <a class="post-toc-link" href="#搜索仓库" data-level="1">---- 搜索仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="迁移仓库">
+          <a class="post-toc-link" href="#迁移仓库" data-level="1">---- 迁移仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-3-议题管理">
+          <a class="post-toc-link" href="#5-3-议题管理" data-level="3">5.3 议题管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出议题">
+          <a class="post-toc-link" href="#列出议题" data-level="1">---- 列出议题 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建议题">
+          <a class="post-toc-link" href="#创建议题" data-level="1">---- 创建议题 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑议题">
+          <a class="post-toc-link" href="#编辑议题" data-level="1">---- 编辑议题 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-重新打开">
+          <a class="post-toc-link" href="#关闭-重新打开" data-level="1">---- 关闭 / 重新打开 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="评论议题">
+          <a class="post-toc-link" href="#评论议题" data-level="1">---- 评论议题 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在浏览器打开">
+          <a class="post-toc-link" href="#在浏览器打开" data-level="1">---- 在浏览器打开 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-4-pull-request-管理">
+          <a class="post-toc-link" href="#5-4-pull-request-管理" data-level="3">5.4 Pull Request 管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出-pr">
+          <a class="post-toc-link" href="#列出-pr" data-level="1">---- 列出 PR ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-pr">
+          <a class="post-toc-link" href="#创建-pr" data-level="1">---- 创建 PR ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检出-pr-到本地">
+          <a class="post-toc-link" href="#检出-pr-到本地" data-level="1">---- 检出 PR 到本地 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-重新打开">
+          <a class="post-toc-link" href="#关闭-重新打开" data-level="1">---- 关闭 / 重新打开 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="审查-pr">
+          <a class="post-toc-link" href="#审查-pr" data-level="1">---- 审查 PR ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理已合并的-pr-分支">
+          <a class="post-toc-link" href="#清理已合并的-pr-分支" data-level="1">---- 清理已合并的 PR 分支 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-5-标签管理">
+          <a class="post-toc-link" href="#5-5-标签管理" data-level="3">5.5 标签管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出标签">
+          <a class="post-toc-link" href="#列出标签" data-level="1">---- 列出标签 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建标签">
+          <a class="post-toc-link" href="#创建标签" data-level="1">---- 创建标签 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从文件批量导入标签">
+          <a class="post-toc-link" href="#从文件批量导入标签" data-level="1">---- 从文件批量导入标签 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新标签-注意-更新-删除使用-id-而非名称">
+          <a class="post-toc-link" href="#更新标签-注意-更新-删除使用-id-而非名称" data-level="1">---- 更新标签（注意：更新/删除使用 ID，而非名称）----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除标签">
+          <a class="post-toc-link" href="#删除标签" data-level="1">---- 删除标签 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-6-里程碑管理">
+          <a class="post-toc-link" href="#5-6-里程碑管理" data-level="3">5.6 里程碑管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出里程碑">
+          <a class="post-toc-link" href="#列出里程碑" data-level="1">---- 列出里程碑 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建里程碑">
+          <a class="post-toc-link" href="#创建里程碑" data-level="1">---- 创建里程碑 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看里程碑下的议题">
+          <a class="post-toc-link" href="#查看里程碑下的议题" data-level="1">---- 查看里程碑下的议题 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-删除里程碑">
+          <a class="post-toc-link" href="#关闭-删除里程碑" data-level="1">---- 关闭 / 删除里程碑 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-7-发布管理">
+          <a class="post-toc-link" href="#5-7-发布管理" data-level="3">5.7 发布管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出发布">
+          <a class="post-toc-link" href="#列出发布" data-level="1">---- 列出发布 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建发布">
+          <a class="post-toc-link" href="#创建发布" data-level="1">---- 创建发布 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑发布">
+          <a class="post-toc-link" href="#编辑发布" data-level="1">---- 编辑发布 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除发布">
+          <a class="post-toc-link" href="#删除发布" data-level="1">---- 删除发布 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="管理发布附件">
+          <a class="post-toc-link" href="#管理发布附件" data-level="1">---- 管理发布附件 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-8-组织管理">
+          <a class="post-toc-link" href="#5-8-组织管理" data-level="3">5.8 组织管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出组织">
+          <a class="post-toc-link" href="#列出组织" data-level="1">---- 列出组织 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建组织">
+          <a class="post-toc-link" href="#创建组织" data-level="1">---- 创建组织 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除组织">
+          <a class="post-toc-link" href="#删除组织" data-level="1">---- 删除组织 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-9-分支管理">
+          <a class="post-toc-link" href="#5-9-分支管理" data-level="3">5.9 分支管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出分支">
+          <a class="post-toc-link" href="#列出分支" data-level="1">---- 列出分支 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-10-通知管理">
+          <a class="post-toc-link" href="#5-10-通知管理" data-level="3">5.10 通知管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出通知">
+          <a class="post-toc-link" href="#列出通知" data-level="1">---- 列出通知 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="标记为已读-未读">
+          <a class="post-toc-link" href="#标记为已读-未读" data-level="1">---- 标记为已读 / 未读 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="配合桌面通知使用-每5分钟轮询一次">
+          <a class="post-toc-link" href="#配合桌面通知使用-每5分钟轮询一次" data-level="1">配合桌面通知使用（每5分钟轮询一次）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="while-do-tea-notifications-mine-o-simple-xargs-i-notify-send-sleep-300-done">
+          <a class="post-toc-link" href="#while-do-tea-notifications-mine-o-simple-xargs-i-notify-send-sleep-300-done" data-level="1">while :; do tea notifications --mine -o simple | xargs -i notify-send {}; sleep 300; done</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-11-其他辅助命令">
+          <a class="post-toc-link" href="#5-11-其他辅助命令" data-level="3">5.11 其他辅助命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在浏览器打开">
+          <a class="post-toc-link" href="#在浏览器打开" data-level="1">---- 在浏览器打开 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="克隆仓库">
+          <a class="post-toc-link" href="#克隆仓库" data-level="1">---- 克隆仓库 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="webhook-管理">
+          <a class="post-toc-link" href="#webhook-管理" data-level="1">---- Webhook 管理 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="actions-管理">
+          <a class="post-toc-link" href="#actions-管理" data-level="1">---- Actions 管理 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="shell-自动补全">
+          <a class="post-toc-link" href="#shell-自动补全" data-level="1">---- Shell 自动补全 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="bash">
+          <a class="post-toc-link" href="#bash" data-level="1">Bash</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="zsh">
+          <a class="post-toc-link" href="#zsh" data-level="1">Zsh</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="fish">
+          <a class="post-toc-link" href="#fish" data-level="1">Fish</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="管理员操作">
+          <a class="post-toc-link" href="#管理员操作" data-level="1">---- 管理员操作 ----</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-常用命令速查表">
+          <a class="post-toc-link" href="#六-常用命令速查表" data-level="2">六、常用命令速查表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-补充说明">
+          <a class="post-toc-link" href="#七-补充说明" data-level="2">七、补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="端口说明">
+          <a class="post-toc-link" href="#端口说明" data-level="3">端口说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="克隆仓库示例-ssh-方式">
+          <a class="post-toc-link" href="#克隆仓库示例-ssh-方式" data-level="3">克隆仓库示例（SSH 方式）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="关于-owner-参数的原理">
+          <a class="post-toc-link" href="#关于-owner-参数的原理" data-level="3">关于 --owner 参数的原理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="仓库上下文自动识别">
+          <a class="post-toc-link" href="#仓库上下文自动识别" data-level="3">仓库上下文自动识别</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
+          <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="附-gitea-web-管理界面额外配置">
+          <a class="post-toc-link" href="#附-gitea-web-管理界面额外配置" data-level="2">附：Gitea Web 管理界面额外配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="用户注册管理">
+          <a class="post-toc-link" href="#用户注册管理" data-level="3">用户注册管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="站点配置">
+          <a class="post-toc-link" href="#站点配置" data-level="3">站点配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

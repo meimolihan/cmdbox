@@ -1732,9 +1732,664 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="目录">
+              <a class="post-toc-link" href="#目录" data-level="2">目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-配置-首次安装-git-必做">
+              <a class="post-toc-link" href="#一-配置-首次安装-git-必做" data-level="2">一、配置（首次安装 Git 必做）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置用户名-全局-所有仓库">
+              <a class="post-toc-link" href="#设置用户名-全局-所有仓库" data-level="1">设置用户名（全局，所有仓库）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置邮箱-全局-和-gitee-github-一致">
+              <a class="post-toc-link" href="#设置邮箱-全局-和-gitee-github-一致" data-level="1">设置邮箱（全局，和 Gitee/GitHub 一致）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看全局配置">
+              <a class="post-toc-link" href="#查看全局配置" data-level="1">查看全局配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="单独给当前仓库设置-不加-global-仅对当前仓库生效">
+              <a class="post-toc-link" href="#单独给当前仓库设置-不加-global-仅对当前仓库生效" data-level="1">单独给当前仓库设置（不加 --global，仅对当前仓库生效）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-仓库初始化-克隆">
+              <a class="post-toc-link" href="#二-仓库初始化-克隆" data-level="2">二、仓库初始化 &amp; 克隆</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在当前文件夹初始化为-git-仓库">
+              <a class="post-toc-link" href="#在当前文件夹初始化为-git-仓库" data-level="1">在当前文件夹初始化为 Git 仓库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="克隆整个仓库">
+              <a class="post-toc-link" href="#克隆整个仓库" data-level="1">克隆整个仓库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="克隆指定分支-仅克隆该分支-减少体积">
+              <a class="post-toc-link" href="#克隆指定分支-仅克隆该分支-减少体积" data-level="1">克隆指定分支（仅克隆该分支，减少体积）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-查看状态-日志">
+              <a class="post-toc-link" href="#三-查看状态-日志" data-level="2">三、查看状态、日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看工作区状态-最常用">
+              <a class="post-toc-link" href="#查看工作区状态-最常用" data-level="1">查看工作区状态（最常用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看提交日志">
+              <a class="post-toc-link" href="#查看提交日志" data-level="1">查看提交日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="简洁单行日志">
+              <a class="post-toc-link" href="#简洁单行日志" data-level="1">简洁单行日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="图形化分支日志">
+              <a class="post-toc-link" href="#图形化分支日志" data-level="1">图形化分支日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看远程仓库信息">
+              <a class="post-toc-link" href="#查看远程仓库信息" data-level="1">查看远程仓库信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-暂存区-add-提交-commit">
+              <a class="post-toc-link" href="#四-暂存区-add-提交-commit" data-level="2">四、暂存区（add）、提交（commit）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加单个文件到暂存区">
+              <a class="post-toc-link" href="#添加单个文件到暂存区" data-level="1">添加单个文件到暂存区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加所有修改文件到暂存区">
+              <a class="post-toc-link" href="#添加所有修改文件到暂存区" data-level="1">添加所有修改文件到暂存区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加指定目录到暂存区">
+              <a class="post-toc-link" href="#添加指定目录到暂存区" data-level="1">添加指定目录到暂存区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交暂存区内容并添加备注">
+              <a class="post-toc-link" href="#提交暂存区内容并添加备注" data-level="1">提交暂存区内容并添加备注</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="修改上一次提交备注-仅限还未-push-到远程时使用">
+              <a class="post-toc-link" href="#修改上一次提交备注-仅限还未-push-到远程时使用" data-level="1">修改上一次提交备注（仅限还未 push 到远程时使用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-分支操作-重点-多人协作高频">
+              <a class="post-toc-link" href="#五-分支操作-重点-多人协作高频" data-level="2">五、分支操作（重点！多人协作高频）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看本地分支">
+              <a class="post-toc-link" href="#查看本地分支" data-level="1">查看本地分支</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看本地-远程全部分支">
+              <a class="post-toc-link" href="#查看本地-远程全部分支" data-level="1">查看本地 + 远程全部分支</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只查看远程分支">
+              <a class="post-toc-link" href="#只查看远程分支" data-level="1">只查看远程分支</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="新建分支-不切换">
+              <a class="post-toc-link" href="#新建分支-不切换" data-level="1">新建分支（不切换）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="新建分支并切换过去-旧写法">
+              <a class="post-toc-link" href="#新建分支并切换过去-旧写法" data-level="1">新建分支并切换过去（旧写法）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="新建分支并切换过去-新版推荐">
+              <a class="post-toc-link" href="#新建分支并切换过去-新版推荐" data-level="1">新建分支并切换过去（新版推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="切换到已有分支-旧写法">
+              <a class="post-toc-link" href="#切换到已有分支-旧写法" data-level="1">切换到已有分支（旧写法）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="切换到已有分支-新版推荐">
+              <a class="post-toc-link" href="#切换到已有分支-新版推荐" data-level="1">切换到已有分支（新版推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地分支-已合并">
+              <a class="post-toc-link" href="#删除本地分支-已合并" data-level="1">删除本地分支（已合并）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="强制删除本地分支-未合并">
+              <a class="post-toc-link" href="#强制删除本地分支-未合并" data-level="1">强制删除本地分支（未合并）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除远程分支">
+              <a class="post-toc-link" href="#删除远程分支" data-level="1">删除远程分支</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-拉取-推送远程">
+              <a class="post-toc-link" href="#六-拉取-推送远程" data-level="2">六、拉取、推送远程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取远程更新-仅下载-不自动合并-最安全推荐">
+              <a class="post-toc-link" href="#拉取远程更新-仅下载-不自动合并-最安全推荐" data-level="1">拉取远程更新（仅下载，不自动合并，最安全推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取并自动合并-fetch-merge">
+              <a class="post-toc-link" href="#拉取并自动合并-fetch-merge" data-level="1">拉取并自动合并（fetch + merge）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="推送本地分支到远程">
+              <a class="post-toc-link" href="#推送本地分支到远程" data-level="1">推送本地分支到远程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="第一次推送并建立本地分支与远程分支的关联">
+              <a class="post-toc-link" href="#第一次推送并建立本地分支与远程分支的关联" data-level="1">第一次推送并建立本地分支与远程分支的关联</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-合并分支-merge-rebase">
+              <a class="post-toc-link" href="#七-合并分支-merge-rebase" data-level="2">七、合并分支 merge / rebase</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="先切换到目标分支-例如-main">
+              <a class="post-toc-link" href="#先切换到目标分支-例如-main" data-level="1">先切换到目标分支（例如 main）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将-dev-分支合并到当前分支-main">
+              <a class="post-toc-link" href="#将-dev-分支合并到当前分支-main" data-level="1">将 dev 分支合并到当前分支（main）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-rebase-整理提交记录-使提交线更干净">
+              <a class="post-toc-link" href="#使用-rebase-整理提交记录-使提交线更干净" data-level="1">使用 rebase（整理提交记录，使提交线更干净）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八-冲突处理">
+              <a class="post-toc-link" href="#八-冲突处理" data-level="2">八、冲突处理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="九-暂存修改-stash-临时保存-不想-commit-切换分支">
+              <a class="post-toc-link" href="#九-暂存修改-stash-临时保存-不想-commit-切换分支" data-level="2">九、暂存修改（stash：临时保存，不想 commit 切换分支）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="暂存当前所有改动">
+              <a class="post-toc-link" href="#暂存当前所有改动" data-level="1">暂存当前所有改动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="带备注暂存当前所有改动">
+              <a class="post-toc-link" href="#带备注暂存当前所有改动" data-level="1">带备注暂存当前所有改动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看暂存列表">
+              <a class="post-toc-link" href="#查看暂存列表" data-level="1">查看暂存列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复最近一次暂存-保留-stash-记录">
+              <a class="post-toc-link" href="#恢复最近一次暂存-保留-stash-记录" data-level="1">恢复最近一次暂存（保留 stash 记录）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复最近一次暂存并删除该条-stash-记录">
+              <a class="post-toc-link" href="#恢复最近一次暂存并删除该条-stash-记录" data-level="1">恢复最近一次暂存并删除该条 stash 记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定的-stash">
+              <a class="post-toc-link" href="#恢复指定的-stash" data-level="1">恢复指定的 stash</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除指定的-stash">
+              <a class="post-toc-link" href="#删除指定的-stash" data-level="1">删除指定的 stash</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清空所有暂存">
+              <a class="post-toc-link" href="#清空所有暂存" data-level="1">清空所有暂存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十-撤销-回退-高危-谨慎操作">
+              <a class="post-toc-link" href="#十-撤销-回退-高危-谨慎操作" data-level="2">十、撤销、回退（高危！谨慎操作）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销工作区修改-文件恢复到上次-commit-的状态-未-add-时使用">
+              <a class="post-toc-link" href="#撤销工作区修改-文件恢复到上次-commit-的状态-未-add-时使用" data-level="1">撤销工作区修改（文件恢复到上次 commit 的状态，未 add 时使用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销暂存-将文件从暂存区退回工作区-不删除代码">
+              <a class="post-toc-link" href="#撤销暂存-将文件从暂存区退回工作区-不删除代码" data-level="1">撤销暂存（将文件从暂存区退回工作区，不删除代码）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="版本回退-已-commit-本地操作">
+              <a class="post-toc-link" href="#版本回退-已-commit-本地操作" data-level="1">版本回退（已 commit，本地操作）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="soft-回退到指定提交-仅回退-commit-代码仍保留在暂存区">
+              <a class="post-toc-link" href="#soft-回退到指定提交-仅回退-commit-代码仍保留在暂存区" data-level="1">--soft：回退到指定提交，仅回退 commit，代码仍保留在暂存区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="mixed-默认-回退到指定提交-commit-和暂存区回退-代码保留在工作区">
+              <a class="post-toc-link" href="#mixed-默认-回退到指定提交-commit-和暂存区回退-代码保留在工作区" data-level="1">--mixed（默认）：回退到指定提交，commit 和暂存区回退，代码保留在工作区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="hard-强制回退到指定提交-工作区-暂存区-commit-全部回退-直接删除改动-不可恢复-慎用">
+              <a class="post-toc-link" href="#hard-强制回退到指定提交-工作区-暂存区-commit-全部回退-直接删除改动-不可恢复-慎用" data-level="1">--hard：强制回退到指定提交，工作区、暂存区、commit 全部回退，**直接删除改动，不可恢复！慎用**</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="已-push-到远程-强制回退远程分支-极度谨慎-多人协作时禁止随意使用">
+              <a class="post-toc-link" href="#已-push-到远程-强制回退远程分支-极度谨慎-多人协作时禁止随意使用" data-level="1">已 push 到远程，强制回退远程分支（极度谨慎！多人协作时禁止随意使用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十一-标签-tag-版本发布-v1-0-0">
+              <a class="post-toc-link" href="#十一-标签-tag-版本发布-v1-0-0" data-level="2">十一、标签 tag（版本发布，v1.0.0）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建轻量标签">
+              <a class="post-toc-link" href="#创建轻量标签" data-level="1">创建轻量标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="给指定提交打标签">
+              <a class="post-toc-link" href="#给指定提交打标签" data-level="1">给指定提交打标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有标签">
+              <a class="post-toc-link" href="#查看所有标签" data-level="1">查看所有标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="推送单个标签到远程">
+              <a class="post-toc-link" href="#推送单个标签到远程" data-level="1">推送单个标签到远程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="推送所有本地标签到远程">
+              <a class="post-toc-link" href="#推送所有本地标签到远程" data-level="1">推送所有本地标签到远程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地标签">
+              <a class="post-toc-link" href="#删除本地标签" data-level="1">删除本地标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除远程标签">
+              <a class="post-toc-link" href="#删除远程标签" data-level="1">删除远程标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十二-cherry-pick-挑选某一条提交-复制到当前分支">
+              <a class="post-toc-link" href="#十二-cherry-pick-挑选某一条提交-复制到当前分支" data-level="2">十二、cherry-pick（挑选某一条提交，复制到当前分支）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将指定-commit-的改动复制到当前分支">
+              <a class="post-toc-link" href="#将指定-commit-的改动复制到当前分支" data-level="1">将指定 commit 的改动复制到当前分支</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十三-忽略文件-gitignore">
+              <a class="post-toc-link" href="#十三-忽略文件-gitignore" data-level="2">十三、忽略文件 .gitignore</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="高频简写工作流">
+              <a class="post-toc-link" href="#高频简写工作流" data-level="2">高频简写工作流</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-拉取最新代码">
+              <a class="post-toc-link" href="#1-拉取最新代码" data-level="1">1. 拉取最新代码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-修改代码后提交">
+              <a class="post-toc-link" href="#2-修改代码后提交" data-level="1">2. 修改代码后提交</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-推送到远程">
+              <a class="post-toc-link" href="#3-推送到远程" data-level="1">3. 推送到远程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="危险命令提醒">
+              <a class="post-toc-link" href="#危险命令提醒" data-level="2">危险命令提醒</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="目录">
+          <a class="post-toc-link" href="#目录" data-level="2">目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-配置-首次安装-git-必做">
+          <a class="post-toc-link" href="#一-配置-首次安装-git-必做" data-level="2">一、配置（首次安装 Git 必做）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置用户名-全局-所有仓库">
+          <a class="post-toc-link" href="#设置用户名-全局-所有仓库" data-level="1">设置用户名（全局，所有仓库）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置邮箱-全局-和-gitee-github-一致">
+          <a class="post-toc-link" href="#设置邮箱-全局-和-gitee-github-一致" data-level="1">设置邮箱（全局，和 Gitee/GitHub 一致）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看全局配置">
+          <a class="post-toc-link" href="#查看全局配置" data-level="1">查看全局配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="单独给当前仓库设置-不加-global-仅对当前仓库生效">
+          <a class="post-toc-link" href="#单独给当前仓库设置-不加-global-仅对当前仓库生效" data-level="1">单独给当前仓库设置（不加 --global，仅对当前仓库生效）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-仓库初始化-克隆">
+          <a class="post-toc-link" href="#二-仓库初始化-克隆" data-level="2">二、仓库初始化 &amp; 克隆</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在当前文件夹初始化为-git-仓库">
+          <a class="post-toc-link" href="#在当前文件夹初始化为-git-仓库" data-level="1">在当前文件夹初始化为 Git 仓库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="克隆整个仓库">
+          <a class="post-toc-link" href="#克隆整个仓库" data-level="1">克隆整个仓库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="克隆指定分支-仅克隆该分支-减少体积">
+          <a class="post-toc-link" href="#克隆指定分支-仅克隆该分支-减少体积" data-level="1">克隆指定分支（仅克隆该分支，减少体积）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-查看状态-日志">
+          <a class="post-toc-link" href="#三-查看状态-日志" data-level="2">三、查看状态、日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看工作区状态-最常用">
+          <a class="post-toc-link" href="#查看工作区状态-最常用" data-level="1">查看工作区状态（最常用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看提交日志">
+          <a class="post-toc-link" href="#查看提交日志" data-level="1">查看提交日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="简洁单行日志">
+          <a class="post-toc-link" href="#简洁单行日志" data-level="1">简洁单行日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="图形化分支日志">
+          <a class="post-toc-link" href="#图形化分支日志" data-level="1">图形化分支日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看远程仓库信息">
+          <a class="post-toc-link" href="#查看远程仓库信息" data-level="1">查看远程仓库信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-暂存区-add-提交-commit">
+          <a class="post-toc-link" href="#四-暂存区-add-提交-commit" data-level="2">四、暂存区（add）、提交（commit）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加单个文件到暂存区">
+          <a class="post-toc-link" href="#添加单个文件到暂存区" data-level="1">添加单个文件到暂存区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加所有修改文件到暂存区">
+          <a class="post-toc-link" href="#添加所有修改文件到暂存区" data-level="1">添加所有修改文件到暂存区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加指定目录到暂存区">
+          <a class="post-toc-link" href="#添加指定目录到暂存区" data-level="1">添加指定目录到暂存区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交暂存区内容并添加备注">
+          <a class="post-toc-link" href="#提交暂存区内容并添加备注" data-level="1">提交暂存区内容并添加备注</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="修改上一次提交备注-仅限还未-push-到远程时使用">
+          <a class="post-toc-link" href="#修改上一次提交备注-仅限还未-push-到远程时使用" data-level="1">修改上一次提交备注（仅限还未 push 到远程时使用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-分支操作-重点-多人协作高频">
+          <a class="post-toc-link" href="#五-分支操作-重点-多人协作高频" data-level="2">五、分支操作（重点！多人协作高频）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看本地分支">
+          <a class="post-toc-link" href="#查看本地分支" data-level="1">查看本地分支</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看本地-远程全部分支">
+          <a class="post-toc-link" href="#查看本地-远程全部分支" data-level="1">查看本地 + 远程全部分支</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只查看远程分支">
+          <a class="post-toc-link" href="#只查看远程分支" data-level="1">只查看远程分支</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="新建分支-不切换">
+          <a class="post-toc-link" href="#新建分支-不切换" data-level="1">新建分支（不切换）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="新建分支并切换过去-旧写法">
+          <a class="post-toc-link" href="#新建分支并切换过去-旧写法" data-level="1">新建分支并切换过去（旧写法）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="新建分支并切换过去-新版推荐">
+          <a class="post-toc-link" href="#新建分支并切换过去-新版推荐" data-level="1">新建分支并切换过去（新版推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="切换到已有分支-旧写法">
+          <a class="post-toc-link" href="#切换到已有分支-旧写法" data-level="1">切换到已有分支（旧写法）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="切换到已有分支-新版推荐">
+          <a class="post-toc-link" href="#切换到已有分支-新版推荐" data-level="1">切换到已有分支（新版推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地分支-已合并">
+          <a class="post-toc-link" href="#删除本地分支-已合并" data-level="1">删除本地分支（已合并）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="强制删除本地分支-未合并">
+          <a class="post-toc-link" href="#强制删除本地分支-未合并" data-level="1">强制删除本地分支（未合并）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除远程分支">
+          <a class="post-toc-link" href="#删除远程分支" data-level="1">删除远程分支</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-拉取-推送远程">
+          <a class="post-toc-link" href="#六-拉取-推送远程" data-level="2">六、拉取、推送远程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取远程更新-仅下载-不自动合并-最安全推荐">
+          <a class="post-toc-link" href="#拉取远程更新-仅下载-不自动合并-最安全推荐" data-level="1">拉取远程更新（仅下载，不自动合并，最安全推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取并自动合并-fetch-merge">
+          <a class="post-toc-link" href="#拉取并自动合并-fetch-merge" data-level="1">拉取并自动合并（fetch + merge）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="推送本地分支到远程">
+          <a class="post-toc-link" href="#推送本地分支到远程" data-level="1">推送本地分支到远程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="第一次推送并建立本地分支与远程分支的关联">
+          <a class="post-toc-link" href="#第一次推送并建立本地分支与远程分支的关联" data-level="1">第一次推送并建立本地分支与远程分支的关联</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-合并分支-merge-rebase">
+          <a class="post-toc-link" href="#七-合并分支-merge-rebase" data-level="2">七、合并分支 merge / rebase</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="先切换到目标分支-例如-main">
+          <a class="post-toc-link" href="#先切换到目标分支-例如-main" data-level="1">先切换到目标分支（例如 main）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将-dev-分支合并到当前分支-main">
+          <a class="post-toc-link" href="#将-dev-分支合并到当前分支-main" data-level="1">将 dev 分支合并到当前分支（main）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-rebase-整理提交记录-使提交线更干净">
+          <a class="post-toc-link" href="#使用-rebase-整理提交记录-使提交线更干净" data-level="1">使用 rebase（整理提交记录，使提交线更干净）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八-冲突处理">
+          <a class="post-toc-link" href="#八-冲突处理" data-level="2">八、冲突处理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="九-暂存修改-stash-临时保存-不想-commit-切换分支">
+          <a class="post-toc-link" href="#九-暂存修改-stash-临时保存-不想-commit-切换分支" data-level="2">九、暂存修改（stash：临时保存，不想 commit 切换分支）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="暂存当前所有改动">
+          <a class="post-toc-link" href="#暂存当前所有改动" data-level="1">暂存当前所有改动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="带备注暂存当前所有改动">
+          <a class="post-toc-link" href="#带备注暂存当前所有改动" data-level="1">带备注暂存当前所有改动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看暂存列表">
+          <a class="post-toc-link" href="#查看暂存列表" data-level="1">查看暂存列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复最近一次暂存-保留-stash-记录">
+          <a class="post-toc-link" href="#恢复最近一次暂存-保留-stash-记录" data-level="1">恢复最近一次暂存（保留 stash 记录）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复最近一次暂存并删除该条-stash-记录">
+          <a class="post-toc-link" href="#恢复最近一次暂存并删除该条-stash-记录" data-level="1">恢复最近一次暂存并删除该条 stash 记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定的-stash">
+          <a class="post-toc-link" href="#恢复指定的-stash" data-level="1">恢复指定的 stash</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除指定的-stash">
+          <a class="post-toc-link" href="#删除指定的-stash" data-level="1">删除指定的 stash</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清空所有暂存">
+          <a class="post-toc-link" href="#清空所有暂存" data-level="1">清空所有暂存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十-撤销-回退-高危-谨慎操作">
+          <a class="post-toc-link" href="#十-撤销-回退-高危-谨慎操作" data-level="2">十、撤销、回退（高危！谨慎操作）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销工作区修改-文件恢复到上次-commit-的状态-未-add-时使用">
+          <a class="post-toc-link" href="#撤销工作区修改-文件恢复到上次-commit-的状态-未-add-时使用" data-level="1">撤销工作区修改（文件恢复到上次 commit 的状态，未 add 时使用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销暂存-将文件从暂存区退回工作区-不删除代码">
+          <a class="post-toc-link" href="#撤销暂存-将文件从暂存区退回工作区-不删除代码" data-level="1">撤销暂存（将文件从暂存区退回工作区，不删除代码）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="版本回退-已-commit-本地操作">
+          <a class="post-toc-link" href="#版本回退-已-commit-本地操作" data-level="1">版本回退（已 commit，本地操作）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="soft-回退到指定提交-仅回退-commit-代码仍保留在暂存区">
+          <a class="post-toc-link" href="#soft-回退到指定提交-仅回退-commit-代码仍保留在暂存区" data-level="1">--soft：回退到指定提交，仅回退 commit，代码仍保留在暂存区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="mixed-默认-回退到指定提交-commit-和暂存区回退-代码保留在工作区">
+          <a class="post-toc-link" href="#mixed-默认-回退到指定提交-commit-和暂存区回退-代码保留在工作区" data-level="1">--mixed（默认）：回退到指定提交，commit 和暂存区回退，代码保留在工作区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="hard-强制回退到指定提交-工作区-暂存区-commit-全部回退-直接删除改动-不可恢复-慎用">
+          <a class="post-toc-link" href="#hard-强制回退到指定提交-工作区-暂存区-commit-全部回退-直接删除改动-不可恢复-慎用" data-level="1">--hard：强制回退到指定提交，工作区、暂存区、commit 全部回退，**直接删除改动，不可恢复！慎用**</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="已-push-到远程-强制回退远程分支-极度谨慎-多人协作时禁止随意使用">
+          <a class="post-toc-link" href="#已-push-到远程-强制回退远程分支-极度谨慎-多人协作时禁止随意使用" data-level="1">已 push 到远程，强制回退远程分支（极度谨慎！多人协作时禁止随意使用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十一-标签-tag-版本发布-v1-0-0">
+          <a class="post-toc-link" href="#十一-标签-tag-版本发布-v1-0-0" data-level="2">十一、标签 tag（版本发布，v1.0.0）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建轻量标签">
+          <a class="post-toc-link" href="#创建轻量标签" data-level="1">创建轻量标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="给指定提交打标签">
+          <a class="post-toc-link" href="#给指定提交打标签" data-level="1">给指定提交打标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有标签">
+          <a class="post-toc-link" href="#查看所有标签" data-level="1">查看所有标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="推送单个标签到远程">
+          <a class="post-toc-link" href="#推送单个标签到远程" data-level="1">推送单个标签到远程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="推送所有本地标签到远程">
+          <a class="post-toc-link" href="#推送所有本地标签到远程" data-level="1">推送所有本地标签到远程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地标签">
+          <a class="post-toc-link" href="#删除本地标签" data-level="1">删除本地标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除远程标签">
+          <a class="post-toc-link" href="#删除远程标签" data-level="1">删除远程标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十二-cherry-pick-挑选某一条提交-复制到当前分支">
+          <a class="post-toc-link" href="#十二-cherry-pick-挑选某一条提交-复制到当前分支" data-level="2">十二、cherry-pick（挑选某一条提交，复制到当前分支）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将指定-commit-的改动复制到当前分支">
+          <a class="post-toc-link" href="#将指定-commit-的改动复制到当前分支" data-level="1">将指定 commit 的改动复制到当前分支</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十三-忽略文件-gitignore">
+          <a class="post-toc-link" href="#十三-忽略文件-gitignore" data-level="2">十三、忽略文件 .gitignore</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="高频简写工作流">
+          <a class="post-toc-link" href="#高频简写工作流" data-level="2">高频简写工作流</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-拉取最新代码">
+          <a class="post-toc-link" href="#1-拉取最新代码" data-level="1">1. 拉取最新代码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-修改代码后提交">
+          <a class="post-toc-link" href="#2-修改代码后提交" data-level="1">2. 修改代码后提交</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-推送到远程">
+          <a class="post-toc-link" href="#3-推送到远程" data-level="1">3. 推送到远程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="危险命令提醒">
+          <a class="post-toc-link" href="#危险命令提醒" data-level="2">危险命令提醒</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1705,9 +1705,520 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="仓库管理">
+              <a class="post-toc-link" href="#仓库管理" data-level="3">仓库管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-helm-仓库">
+              <a class="post-toc-link" href="#添加-helm-仓库" data-level="1">添加 Helm 仓库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看仓库列表">
+              <a class="post-toc-link" href="#查看仓库列表" data-level="1">查看仓库列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新仓库索引">
+              <a class="post-toc-link" href="#更新仓库索引" data-level="1">更新仓库索引</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除仓库">
+              <a class="post-toc-link" href="#删除仓库" data-level="1">删除仓库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="搜索-chart">
+              <a class="post-toc-link" href="#搜索-chart" data-level="3">搜索 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索仓库中的-chart">
+              <a class="post-toc-link" href="#搜索仓库中的-chart" data-level="1">搜索仓库中的 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从-artifact-hub-搜索">
+              <a class="post-toc-link" href="#从-artifact-hub-搜索" data-level="1">从 Artifact Hub 搜索</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-chart-详情">
+              <a class="post-toc-link" href="#查看-chart-详情" data-level="1">查看 Chart 详情</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装管理">
+              <a class="post-toc-link" href="#安装管理" data-level="3">安装管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-chart">
+              <a class="post-toc-link" href="#安装-chart" data-level="1">安装 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装时指定命名空间">
+              <a class="post-toc-link" href="#安装时指定命名空间" data-level="1">安装时指定命名空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装时配置参数">
+              <a class="post-toc-link" href="#安装时配置参数" data-level="1">安装时配置参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-values-文件安装">
+              <a class="post-toc-link" href="#使用-values-文件安装" data-level="1">使用 values 文件安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装时设置多种参数">
+              <a class="post-toc-link" href="#安装时设置多种参数" data-level="1">安装时设置多种参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="升级回滚">
+              <a class="post-toc-link" href="#升级回滚" data-level="3">升级回滚</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级应用">
+              <a class="post-toc-link" href="#升级应用" data-level="1">升级应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级并添加新参数">
+              <a class="post-toc-link" href="#升级并添加新参数" data-level="1">升级并添加新参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级并安装-推荐">
+              <a class="post-toc-link" href="#升级并安装-推荐" data-level="1">升级并安装（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看历史版本">
+              <a class="post-toc-link" href="#查看历史版本" data-level="1">查看历史版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="回滚到上一版本">
+              <a class="post-toc-link" href="#回滚到上一版本" data-level="1">回滚到上一版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="回滚到指定版本">
+              <a class="post-toc-link" href="#回滚到指定版本" data-level="1">回滚到指定版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新-values-文件">
+              <a class="post-toc-link" href="#更新-values-文件" data-level="1">更新 values 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看状态">
+              <a class="post-toc-link" href="#查看状态" data-level="3">查看状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装的-release">
+              <a class="post-toc-link" href="#查看已安装的-release" data-level="1">查看已安装的 Release</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-状态">
+              <a class="post-toc-link" href="#查看-release-状态" data-level="1">查看 Release 状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-历史">
+              <a class="post-toc-link" href="#查看-release-历史" data-level="1">查看 Release 历史</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-的-values">
+              <a class="post-toc-link" href="#查看-release-的-values" data-level="1">查看 Release 的 values</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-的-manifest">
+              <a class="post-toc-link" href="#查看-release-的-manifest" data-level="1">查看 Release 的 manifest</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-的-notes">
+              <a class="post-toc-link" href="#查看-release-的-notes" data-level="1">查看 Release 的 notes</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="删除应用">
+              <a class="post-toc-link" href="#删除应用" data-level="3">删除应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除-release">
+              <a class="post-toc-link" href="#删除-release" data-level="1">删除 Release</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除时保留历史记录">
+              <a class="post-toc-link" href="#删除时保留历史记录" data-level="1">删除时保留历史记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="强制删除卡住的-release">
+              <a class="post-toc-link" href="#强制删除卡住的-release" data-level="1">强制删除卡住的 Release</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="创建-chart">
+              <a class="post-toc-link" href="#创建-chart" data-level="3">创建 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建新-chart">
+              <a class="post-toc-link" href="#创建新-chart" data-level="1">创建新 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="chart-结构">
+              <a class="post-toc-link" href="#chart-结构" data-level="1">Chart 结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证-chart">
+              <a class="post-toc-link" href="#验证-chart" data-level="1">验证 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="打包-chart">
+              <a class="post-toc-link" href="#打包-chart" data-level="1">打包 Chart</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从本地安装">
+              <a class="post-toc-link" href="#从本地安装" data-level="1">从本地安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="chart-开发">
+              <a class="post-toc-link" href="#chart-开发" data-level="3">Chart 开发</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="chart-yaml-示例">
+              <a class="post-toc-link" href="#chart-yaml-示例" data-level="1">Chart.yaml 示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="调试模板渲染">
+              <a class="post-toc-link" href="#调试模板渲染" data-level="1">调试模板渲染</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证模板语法">
+              <a class="post-toc-link" href="#验证模板语法" data-level="1">验证模板语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新依赖">
+              <a class="post-toc-link" href="#更新依赖" data-level="1">更新依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用配置">
+              <a class="post-toc-link" href="#常用配置" data-level="3">常用配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="values-yaml-常用配置示例">
+              <a class="post-toc-link" href="#values-yaml-常用配置示例" data-level="1">values.yaml 常用配置示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="插件管理">
+              <a class="post-toc-link" href="#插件管理" data-level="3">插件管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装插件">
+              <a class="post-toc-link" href="#安装插件" data-level="1">安装插件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装插件">
+              <a class="post-toc-link" href="#查看已安装插件" data-level="1">查看已安装插件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新插件">
+              <a class="post-toc-link" href="#更新插件" data-level="1">更新插件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载插件">
+              <a class="post-toc-link" href="#卸载插件" data-level="1">卸载插件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令速查">
+              <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="一键安装常用应用">
+              <a class="post-toc-link" href="#一键安装常用应用" data-level="1">一键安装常用应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量查看状态">
+              <a class="post-toc-link" href="#批量查看状态" data-level="1">批量查看状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导出-values-文件">
+              <a class="post-toc-link" href="#导出-values-文件" data-level="1">导出 values 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="强制重新部署">
+              <a class="post-toc-link" href="#强制重新部署" data-level="1">强制重新部署</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="仓库管理">
+          <a class="post-toc-link" href="#仓库管理" data-level="3">仓库管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-helm-仓库">
+          <a class="post-toc-link" href="#添加-helm-仓库" data-level="1">添加 Helm 仓库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看仓库列表">
+          <a class="post-toc-link" href="#查看仓库列表" data-level="1">查看仓库列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新仓库索引">
+          <a class="post-toc-link" href="#更新仓库索引" data-level="1">更新仓库索引</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除仓库">
+          <a class="post-toc-link" href="#删除仓库" data-level="1">删除仓库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="搜索-chart">
+          <a class="post-toc-link" href="#搜索-chart" data-level="3">搜索 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索仓库中的-chart">
+          <a class="post-toc-link" href="#搜索仓库中的-chart" data-level="1">搜索仓库中的 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从-artifact-hub-搜索">
+          <a class="post-toc-link" href="#从-artifact-hub-搜索" data-level="1">从 Artifact Hub 搜索</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-chart-详情">
+          <a class="post-toc-link" href="#查看-chart-详情" data-level="1">查看 Chart 详情</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装管理">
+          <a class="post-toc-link" href="#安装管理" data-level="3">安装管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-chart">
+          <a class="post-toc-link" href="#安装-chart" data-level="1">安装 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装时指定命名空间">
+          <a class="post-toc-link" href="#安装时指定命名空间" data-level="1">安装时指定命名空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装时配置参数">
+          <a class="post-toc-link" href="#安装时配置参数" data-level="1">安装时配置参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-values-文件安装">
+          <a class="post-toc-link" href="#使用-values-文件安装" data-level="1">使用 values 文件安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装时设置多种参数">
+          <a class="post-toc-link" href="#安装时设置多种参数" data-level="1">安装时设置多种参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="升级回滚">
+          <a class="post-toc-link" href="#升级回滚" data-level="3">升级回滚</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级应用">
+          <a class="post-toc-link" href="#升级应用" data-level="1">升级应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级并添加新参数">
+          <a class="post-toc-link" href="#升级并添加新参数" data-level="1">升级并添加新参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级并安装-推荐">
+          <a class="post-toc-link" href="#升级并安装-推荐" data-level="1">升级并安装（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看历史版本">
+          <a class="post-toc-link" href="#查看历史版本" data-level="1">查看历史版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="回滚到上一版本">
+          <a class="post-toc-link" href="#回滚到上一版本" data-level="1">回滚到上一版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="回滚到指定版本">
+          <a class="post-toc-link" href="#回滚到指定版本" data-level="1">回滚到指定版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新-values-文件">
+          <a class="post-toc-link" href="#更新-values-文件" data-level="1">更新 values 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看状态">
+          <a class="post-toc-link" href="#查看状态" data-level="3">查看状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装的-release">
+          <a class="post-toc-link" href="#查看已安装的-release" data-level="1">查看已安装的 Release</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-状态">
+          <a class="post-toc-link" href="#查看-release-状态" data-level="1">查看 Release 状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-历史">
+          <a class="post-toc-link" href="#查看-release-历史" data-level="1">查看 Release 历史</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-的-values">
+          <a class="post-toc-link" href="#查看-release-的-values" data-level="1">查看 Release 的 values</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-的-manifest">
+          <a class="post-toc-link" href="#查看-release-的-manifest" data-level="1">查看 Release 的 manifest</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-release-的-notes">
+          <a class="post-toc-link" href="#查看-release-的-notes" data-level="1">查看 Release 的 notes</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="删除应用">
+          <a class="post-toc-link" href="#删除应用" data-level="3">删除应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除-release">
+          <a class="post-toc-link" href="#删除-release" data-level="1">删除 Release</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除时保留历史记录">
+          <a class="post-toc-link" href="#删除时保留历史记录" data-level="1">删除时保留历史记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="强制删除卡住的-release">
+          <a class="post-toc-link" href="#强制删除卡住的-release" data-level="1">强制删除卡住的 Release</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="创建-chart">
+          <a class="post-toc-link" href="#创建-chart" data-level="3">创建 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建新-chart">
+          <a class="post-toc-link" href="#创建新-chart" data-level="1">创建新 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="chart-结构">
+          <a class="post-toc-link" href="#chart-结构" data-level="1">Chart 结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证-chart">
+          <a class="post-toc-link" href="#验证-chart" data-level="1">验证 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="打包-chart">
+          <a class="post-toc-link" href="#打包-chart" data-level="1">打包 Chart</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从本地安装">
+          <a class="post-toc-link" href="#从本地安装" data-level="1">从本地安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="chart-开发">
+          <a class="post-toc-link" href="#chart-开发" data-level="3">Chart 开发</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="chart-yaml-示例">
+          <a class="post-toc-link" href="#chart-yaml-示例" data-level="1">Chart.yaml 示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="调试模板渲染">
+          <a class="post-toc-link" href="#调试模板渲染" data-level="1">调试模板渲染</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证模板语法">
+          <a class="post-toc-link" href="#验证模板语法" data-level="1">验证模板语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新依赖">
+          <a class="post-toc-link" href="#更新依赖" data-level="1">更新依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用配置">
+          <a class="post-toc-link" href="#常用配置" data-level="3">常用配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="values-yaml-常用配置示例">
+          <a class="post-toc-link" href="#values-yaml-常用配置示例" data-level="1">values.yaml 常用配置示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="插件管理">
+          <a class="post-toc-link" href="#插件管理" data-level="3">插件管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装插件">
+          <a class="post-toc-link" href="#安装插件" data-level="1">安装插件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装插件">
+          <a class="post-toc-link" href="#查看已安装插件" data-level="1">查看已安装插件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新插件">
+          <a class="post-toc-link" href="#更新插件" data-level="1">更新插件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载插件">
+          <a class="post-toc-link" href="#卸载插件" data-level="1">卸载插件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令速查">
+          <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="一键安装常用应用">
+          <a class="post-toc-link" href="#一键安装常用应用" data-level="1">一键安装常用应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量查看状态">
+          <a class="post-toc-link" href="#批量查看状态" data-level="1">批量查看状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导出-values-文件">
+          <a class="post-toc-link" href="#导出-values-文件" data-level="1">导出 values 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="强制重新部署">
+          <a class="post-toc-link" href="#强制重新部署" data-level="1">强制重新部署</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

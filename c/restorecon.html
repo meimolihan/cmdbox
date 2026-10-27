@@ -1385,9 +1385,152 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实例">
+              <a class="post-toc-link" href="#实例" data-level="3">实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="随便输入一段文字-保存退出">
+              <a class="post-toc-link" href="#随便输入一段文字-保存退出" data-level="1">随便输入一段文字，保存退出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将这个文件mv到网页默认目录下">
+              <a class="post-toc-link" href="#将这个文件mv到网页默认目录下" data-level="1">将这个文件mv到网页默认目录下</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开">
+              <a class="post-toc-link" href="#这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开" data-level="1"># 这个时候我们使用firefox浏览器输入127.0.0.1/index.html发现打不开，</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出">
+              <a class="post-toc-link" href="#查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出" data-level="1">查看一下SELinux的日志文件，发现了下面这一段报错信息，从这个报错信息不难看出，</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确">
+              <a class="post-toc-link" href="#进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确" data-level="1">进程httpd访问网页主目录中的index.html时被SELinux阻止，原因是因为，SELinux配置信息不正确,</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="正确的selinux配置信息应该是scontext-后面的部分">
+              <a class="post-toc-link" href="#正确的selinux配置信息应该是scontext-后面的部分" data-level="1">正确的SELinux配置信息应该是scontext=后面的部分，</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="而index-html文件的selinux配置信息却是tcontext-后面的部分">
+              <a class="post-toc-link" href="#而index-html文件的selinux配置信息却是tcontext-后面的部分" data-level="1">而index.html文件的SELinux配置信息却是tcontext=后面的部分，</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的">
+              <a class="post-toc-link" href="#从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的" data-level="1">从tcontext=的第三段“admin_home_t”不难看出，这个文件的SELinux配置信息是root用户家目录的。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file">
+              <a class="post-toc-link" href="#type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file" data-level="1">type=AVC msg=audit(1378974214.610:465): avc:  denied  { open } for  pid=2359 comm=&#34;httpd&#34; path=&#34;/var/www/html/index.html&#34; dev=&#34;sda1&#34; ino=1317685 scontext=system_u:system_r:httpd_t:s0 tcontext=unconfined_u:object_r:admin_home_t:s0 tclass=file</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实例">
+          <a class="post-toc-link" href="#实例" data-level="3">实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="随便输入一段文字-保存退出">
+          <a class="post-toc-link" href="#随便输入一段文字-保存退出" data-level="1">随便输入一段文字，保存退出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将这个文件mv到网页默认目录下">
+          <a class="post-toc-link" href="#将这个文件mv到网页默认目录下" data-level="1">将这个文件mv到网页默认目录下</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开">
+          <a class="post-toc-link" href="#这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开" data-level="1"># 这个时候我们使用firefox浏览器输入127.0.0.1/index.html发现打不开，</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出">
+          <a class="post-toc-link" href="#查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出" data-level="1">查看一下SELinux的日志文件，发现了下面这一段报错信息，从这个报错信息不难看出，</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确">
+          <a class="post-toc-link" href="#进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确" data-level="1">进程httpd访问网页主目录中的index.html时被SELinux阻止，原因是因为，SELinux配置信息不正确,</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="正确的selinux配置信息应该是scontext-后面的部分">
+          <a class="post-toc-link" href="#正确的selinux配置信息应该是scontext-后面的部分" data-level="1">正确的SELinux配置信息应该是scontext=后面的部分，</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="而index-html文件的selinux配置信息却是tcontext-后面的部分">
+          <a class="post-toc-link" href="#而index-html文件的selinux配置信息却是tcontext-后面的部分" data-level="1">而index.html文件的SELinux配置信息却是tcontext=后面的部分，</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的">
+          <a class="post-toc-link" href="#从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的" data-level="1">从tcontext=的第三段“admin_home_t”不难看出，这个文件的SELinux配置信息是root用户家目录的。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file">
+          <a class="post-toc-link" href="#type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file" data-level="1">type=AVC msg=audit(1378974214.610:465): avc:  denied  { open } for  pid=2359 comm=&#34;httpd&#34; path=&#34;/var/www/html/index.html&#34; dev=&#34;sda1&#34; ino=1317685 scontext=system_u:system_r:httpd_t:s0 tcontext=unconfined_u:object_r:admin_home_t:s0 tclass=file</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

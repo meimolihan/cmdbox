@@ -1421,9 +1421,216 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装-onecommander">
+              <a class="post-toc-link" href="#安装-onecommander" data-level="2">安装 OneCommander</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="cmd-下载安装命令">
+              <a class="post-toc-link" href="#cmd-下载安装命令" data-level="3">CMD 下载安装命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="powershell-下载安装命令">
+              <a class="post-toc-link" href="#powershell-下载安装命令" data-level="3">PowerShell 下载安装命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="winget-安装命令">
+              <a class="post-toc-link" href="#winget-安装命令" data-level="3">winget 安装命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静默安装-onecommander-e-精确匹配包-id-防止装错">
+              <a class="post-toc-link" href="#静默安装-onecommander-e-精确匹配包-id-防止装错" data-level="1">静默安装 OneCommander（-e 精确匹配包 ID，防止装错）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看本机已安装-onecommander">
+              <a class="post-toc-link" href="#查看本机已安装-onecommander" data-level="1">查看本机已安装 OneCommander</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="winget-参数说明">
+              <a class="post-toc-link" href="#winget-参数说明" data-level="2">winget 参数说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="winget-检查升级">
+              <a class="post-toc-link" href="#winget-检查升级" data-level="2">winget 检查升级</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查并静默升级-onecommander">
+              <a class="post-toc-link" href="#检查并静默升级-onecommander" data-level="1">检查并静默升级 OneCommander</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="windows-winget-卸载-onecommander">
+              <a class="post-toc-link" href="#windows-winget-卸载-onecommander" data-level="2">Windows winget 卸载 OneCommander</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="管理员powershell-静默无弹窗卸载主程序">
+              <a class="post-toc-link" href="#管理员powershell-静默无弹窗卸载主程序" data-level="1">管理员PowerShell，静默无弹窗卸载主程序</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证卸载成功-无输出即代表主程序已移除">
+              <a class="post-toc-link" href="#验证卸载成功-无输出即代表主程序已移除" data-level="1">验证卸载成功（无输出即代表主程序已移除）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="彻底卸载-清理配置残留-完整一键脚本">
+              <a class="post-toc-link" href="#彻底卸载-清理配置残留-完整一键脚本" data-level="3">【彻底卸载，清理配置残留】完整一键脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="结束onecommander进程">
+              <a class="post-toc-link" href="#结束onecommander进程" data-level="1">结束OneCommander进程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载主程序">
+              <a class="post-toc-link" href="#卸载主程序" data-level="1">卸载主程序</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地所有配置-布局-标签缓存">
+              <a class="post-toc-link" href="#删除本地所有配置-布局-标签缓存" data-level="1">删除本地所有配置、布局、标签缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="使用前提">
+              <a class="post-toc-link" href="#使用前提" data-level="2">使用前提</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="执行结果">
+              <a class="post-toc-link" href="#执行结果" data-level="2">执行结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充要点">
+              <a class="post-toc-link" href="#补充要点" data-level="2">补充要点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装-onecommander">
+          <a class="post-toc-link" href="#安装-onecommander" data-level="2">安装 OneCommander</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="cmd-下载安装命令">
+          <a class="post-toc-link" href="#cmd-下载安装命令" data-level="3">CMD 下载安装命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="powershell-下载安装命令">
+          <a class="post-toc-link" href="#powershell-下载安装命令" data-level="3">PowerShell 下载安装命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="winget-安装命令">
+          <a class="post-toc-link" href="#winget-安装命令" data-level="3">winget 安装命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静默安装-onecommander-e-精确匹配包-id-防止装错">
+          <a class="post-toc-link" href="#静默安装-onecommander-e-精确匹配包-id-防止装错" data-level="1">静默安装 OneCommander（-e 精确匹配包 ID，防止装错）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看本机已安装-onecommander">
+          <a class="post-toc-link" href="#查看本机已安装-onecommander" data-level="1">查看本机已安装 OneCommander</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="winget-参数说明">
+          <a class="post-toc-link" href="#winget-参数说明" data-level="2">winget 参数说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="winget-检查升级">
+          <a class="post-toc-link" href="#winget-检查升级" data-level="2">winget 检查升级</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查并静默升级-onecommander">
+          <a class="post-toc-link" href="#检查并静默升级-onecommander" data-level="1">检查并静默升级 OneCommander</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="windows-winget-卸载-onecommander">
+          <a class="post-toc-link" href="#windows-winget-卸载-onecommander" data-level="2">Windows winget 卸载 OneCommander</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="管理员powershell-静默无弹窗卸载主程序">
+          <a class="post-toc-link" href="#管理员powershell-静默无弹窗卸载主程序" data-level="1">管理员PowerShell，静默无弹窗卸载主程序</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证卸载成功-无输出即代表主程序已移除">
+          <a class="post-toc-link" href="#验证卸载成功-无输出即代表主程序已移除" data-level="1">验证卸载成功（无输出即代表主程序已移除）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="彻底卸载-清理配置残留-完整一键脚本">
+          <a class="post-toc-link" href="#彻底卸载-清理配置残留-完整一键脚本" data-level="3">【彻底卸载，清理配置残留】完整一键脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="结束onecommander进程">
+          <a class="post-toc-link" href="#结束onecommander进程" data-level="1">结束OneCommander进程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载主程序">
+          <a class="post-toc-link" href="#卸载主程序" data-level="1">卸载主程序</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地所有配置-布局-标签缓存">
+          <a class="post-toc-link" href="#删除本地所有配置-布局-标签缓存" data-level="1">删除本地所有配置、布局、标签缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="使用前提">
+          <a class="post-toc-link" href="#使用前提" data-level="2">使用前提</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="执行结果">
+          <a class="post-toc-link" href="#执行结果" data-level="2">执行结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充要点">
+          <a class="post-toc-link" href="#补充要点" data-level="2">补充要点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

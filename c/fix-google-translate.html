@@ -1455,9 +1455,248 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-现状检测">
+              <a class="post-toc-link" href="#一-现状检测" data-level="2">一、现状检测</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-手动修改-hosts-文件">
+              <a class="post-toc-link" href="#二-手动修改-hosts-文件" data-level="2">二、手动修改 Hosts 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-打开-hosts-文件">
+              <a class="post-toc-link" href="#1-打开-hosts-文件" data-level="3">1. 打开 Hosts 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-hosts-完整内容">
+              <a class="post-toc-link" href="#2-hosts-完整内容" data-level="3">2. Hosts 完整内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="copyright-c-1993-2009-microsoft-corp">
+              <a class="post-toc-link" href="#copyright-c-1993-2009-microsoft-corp" data-level="1">Copyright (c) 1993-2009 Microsoft Corp.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="this-is-a-sample-hosts-file-used-by-microsoft-tcp-ip-for-windows">
+              <a class="post-toc-link" href="#this-is-a-sample-hosts-file-used-by-microsoft-tcp-ip-for-windows" data-level="1"># This is a sample HOSTS file used by Microsoft TCP/IP for Windows.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="this-file-contains-the-mappings-of-ip-addresses-to-host-names-each">
+              <a class="post-toc-link" href="#this-file-contains-the-mappings-of-ip-addresses-to-host-names-each" data-level="1"># This file contains the mappings of IP addresses to host names. Each</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="entry-should-be-kept-on-an-individual-line-the-ip-address-should">
+              <a class="post-toc-link" href="#entry-should-be-kept-on-an-individual-line-the-ip-address-should" data-level="1">entry should be kept on an individual line. The IP address should</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="be-placed-in-the-first-column-followed-by-the-corresponding-host-name">
+              <a class="post-toc-link" href="#be-placed-in-the-first-column-followed-by-the-corresponding-host-name" data-level="1">be placed in the first column followed by the corresponding host name.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="the-ip-address-and-the-host-name-should-be-separated-by-at-least-one">
+              <a class="post-toc-link" href="#the-ip-address-and-the-host-name-should-be-separated-by-at-least-one" data-level="1">The IP address and the host name should be separated by at least one</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="space">
+              <a class="post-toc-link" href="#space" data-level="1">space.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="additionally-comments-such-as-these-may-be-inserted-on-individual">
+              <a class="post-toc-link" href="#additionally-comments-such-as-these-may-be-inserted-on-individual" data-level="1"># Additionally, comments (such as these) may be inserted on individual</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="lines-or-following-the-machine-name-denoted-by-a-symbol">
+              <a class="post-toc-link" href="#lines-or-following-the-machine-name-denoted-by-a-symbol" data-level="1">lines or following the machine name denoted by a &#39;#&#39; symbol.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="for-example">
+              <a class="post-toc-link" href="#for-example" data-level="1"># For example:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="102-54-94-97-rhino-acme-com-source-server">
+              <a class="post-toc-link" href="#102-54-94-97-rhino-acme-com-source-server" data-level="1">#      102.54.94.97     rhino.acme.com          # source server</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="38-25-63-10-x-acme-com-x-client-host">
+              <a class="post-toc-link" href="#38-25-63-10-x-acme-com-x-client-host" data-level="1">38.25.63.10     x.acme.com              # x client host</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="localhost-name-resolution-is-handled-within-dns-itself">
+              <a class="post-toc-link" href="#localhost-name-resolution-is-handled-within-dns-itself" data-level="1">localhost name resolution is handled within DNS itself.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="127-0-0-1-localhost">
+              <a class="post-toc-link" href="#127-0-0-1-localhost" data-level="1">127.0.0.1       localhost</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-localhost">
+              <a class="post-toc-link" href="#1-localhost" data-level="1">::1             localhost</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-补充完整解析规则">
+              <a class="post-toc-link" href="#3-补充完整解析规则" data-level="3">3. 补充完整解析规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-一键自动修复脚本-推荐">
+              <a class="post-toc-link" href="#三-一键自动修复脚本-推荐" data-level="2">三、一键自动修复脚本（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-cmd-快速生成脚本">
+              <a class="post-toc-link" href="#1-cmd-快速生成脚本" data-level="3">1. CMD 快速生成脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-脚本使用方法">
+              <a class="post-toc-link" href="#2-脚本使用方法" data-level="3">2. 脚本使用方法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-验证是否生效">
+              <a class="post-toc-link" href="#四-验证是否生效" data-level="2">四、验证是否生效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-补充说明">
+              <a class="post-toc-link" href="#五-补充说明" data-level="2">五、补充说明</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-现状检测">
+          <a class="post-toc-link" href="#一-现状检测" data-level="2">一、现状检测</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-手动修改-hosts-文件">
+          <a class="post-toc-link" href="#二-手动修改-hosts-文件" data-level="2">二、手动修改 Hosts 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-打开-hosts-文件">
+          <a class="post-toc-link" href="#1-打开-hosts-文件" data-level="3">1. 打开 Hosts 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-hosts-完整内容">
+          <a class="post-toc-link" href="#2-hosts-完整内容" data-level="3">2. Hosts 完整内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="copyright-c-1993-2009-microsoft-corp">
+          <a class="post-toc-link" href="#copyright-c-1993-2009-microsoft-corp" data-level="1">Copyright (c) 1993-2009 Microsoft Corp.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="this-is-a-sample-hosts-file-used-by-microsoft-tcp-ip-for-windows">
+          <a class="post-toc-link" href="#this-is-a-sample-hosts-file-used-by-microsoft-tcp-ip-for-windows" data-level="1"># This is a sample HOSTS file used by Microsoft TCP/IP for Windows.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="this-file-contains-the-mappings-of-ip-addresses-to-host-names-each">
+          <a class="post-toc-link" href="#this-file-contains-the-mappings-of-ip-addresses-to-host-names-each" data-level="1"># This file contains the mappings of IP addresses to host names. Each</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="entry-should-be-kept-on-an-individual-line-the-ip-address-should">
+          <a class="post-toc-link" href="#entry-should-be-kept-on-an-individual-line-the-ip-address-should" data-level="1">entry should be kept on an individual line. The IP address should</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="be-placed-in-the-first-column-followed-by-the-corresponding-host-name">
+          <a class="post-toc-link" href="#be-placed-in-the-first-column-followed-by-the-corresponding-host-name" data-level="1">be placed in the first column followed by the corresponding host name.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="the-ip-address-and-the-host-name-should-be-separated-by-at-least-one">
+          <a class="post-toc-link" href="#the-ip-address-and-the-host-name-should-be-separated-by-at-least-one" data-level="1">The IP address and the host name should be separated by at least one</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="space">
+          <a class="post-toc-link" href="#space" data-level="1">space.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="additionally-comments-such-as-these-may-be-inserted-on-individual">
+          <a class="post-toc-link" href="#additionally-comments-such-as-these-may-be-inserted-on-individual" data-level="1"># Additionally, comments (such as these) may be inserted on individual</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="lines-or-following-the-machine-name-denoted-by-a-symbol">
+          <a class="post-toc-link" href="#lines-or-following-the-machine-name-denoted-by-a-symbol" data-level="1">lines or following the machine name denoted by a &#39;#&#39; symbol.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="for-example">
+          <a class="post-toc-link" href="#for-example" data-level="1"># For example:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="102-54-94-97-rhino-acme-com-source-server">
+          <a class="post-toc-link" href="#102-54-94-97-rhino-acme-com-source-server" data-level="1">#      102.54.94.97     rhino.acme.com          # source server</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="38-25-63-10-x-acme-com-x-client-host">
+          <a class="post-toc-link" href="#38-25-63-10-x-acme-com-x-client-host" data-level="1">38.25.63.10     x.acme.com              # x client host</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="localhost-name-resolution-is-handled-within-dns-itself">
+          <a class="post-toc-link" href="#localhost-name-resolution-is-handled-within-dns-itself" data-level="1">localhost name resolution is handled within DNS itself.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="127-0-0-1-localhost">
+          <a class="post-toc-link" href="#127-0-0-1-localhost" data-level="1">127.0.0.1       localhost</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-localhost">
+          <a class="post-toc-link" href="#1-localhost" data-level="1">::1             localhost</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-补充完整解析规则">
+          <a class="post-toc-link" href="#3-补充完整解析规则" data-level="3">3. 补充完整解析规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-一键自动修复脚本-推荐">
+          <a class="post-toc-link" href="#三-一键自动修复脚本-推荐" data-level="2">三、一键自动修复脚本（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-cmd-快速生成脚本">
+          <a class="post-toc-link" href="#1-cmd-快速生成脚本" data-level="3">1. CMD 快速生成脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-脚本使用方法">
+          <a class="post-toc-link" href="#2-脚本使用方法" data-level="3">2. 脚本使用方法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-验证是否生效">
+          <a class="post-toc-link" href="#四-验证是否生效" data-level="2">四、验证是否生效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-补充说明">
+          <a class="post-toc-link" href="#五-补充说明" data-level="2">五、补充说明</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

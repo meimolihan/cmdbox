@@ -1601,9 +1601,184 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基础-https-配置">
+              <a class="post-toc-link" href="#基础-https-配置" data-level="3">基础 HTTPS 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="完整安全配置">
+              <a class="post-toc-link" href="#完整安全配置" data-level="3">完整安全配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="http-重定向到-https">
+              <a class="post-toc-link" href="#http-重定向到-https" data-level="3">HTTP 重定向到 HTTPS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="方式一-单独-server-块-推荐">
+              <a class="post-toc-link" href="#方式一-单独-server-块-推荐" data-level="1">方式一：单独 server 块（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="方式二-在一个-server-块中">
+              <a class="post-toc-link" href="#方式二-在一个-server-块中" data-level="1">方式二：在一个 server 块中</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="let-s-encrypt-证书配置">
+              <a class="post-toc-link" href="#let-s-encrypt-证书配置" data-level="3">Let&#39;s Encrypt 证书配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="生成自签名证书-测试用">
+              <a class="post-toc-link" href="#生成自签名证书-测试用" data-level="3">生成自签名证书（测试用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成私钥">
+              <a class="post-toc-link" href="#生成私钥" data-level="1">生成私钥</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成证书">
+              <a class="post-toc-link" href="#生成证书" data-level="1">生成证书</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="合并证书">
+              <a class="post-toc-link" href="#合并证书" data-level="1">合并证书</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="ssl-测试">
+              <a class="post-toc-link" href="#ssl-测试" data-level="3">SSL 测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-openssl-测试">
+              <a class="post-toc-link" href="#使用-openssl-测试" data-level="1">使用 OpenSSL 测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-curl-测试">
+              <a class="post-toc-link" href="#使用-curl-测试" data-level="1">使用 curl 测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在线测试">
+              <a class="post-toc-link" href="#在线测试" data-level="1">在线测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="https-www-ssllabs-com-ssltest">
+              <a class="post-toc-link" href="#https-www-ssllabs-com-ssltest" data-level="1">https://www.ssllabs.com/ssltest/</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基础-https-配置">
+          <a class="post-toc-link" href="#基础-https-配置" data-level="3">基础 HTTPS 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="完整安全配置">
+          <a class="post-toc-link" href="#完整安全配置" data-level="3">完整安全配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="http-重定向到-https">
+          <a class="post-toc-link" href="#http-重定向到-https" data-level="3">HTTP 重定向到 HTTPS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="方式一-单独-server-块-推荐">
+          <a class="post-toc-link" href="#方式一-单独-server-块-推荐" data-level="1">方式一：单独 server 块（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="方式二-在一个-server-块中">
+          <a class="post-toc-link" href="#方式二-在一个-server-块中" data-level="1">方式二：在一个 server 块中</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="let-s-encrypt-证书配置">
+          <a class="post-toc-link" href="#let-s-encrypt-证书配置" data-level="3">Let&#39;s Encrypt 证书配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="生成自签名证书-测试用">
+          <a class="post-toc-link" href="#生成自签名证书-测试用" data-level="3">生成自签名证书（测试用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成私钥">
+          <a class="post-toc-link" href="#生成私钥" data-level="1">生成私钥</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成证书">
+          <a class="post-toc-link" href="#生成证书" data-level="1">生成证书</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="合并证书">
+          <a class="post-toc-link" href="#合并证书" data-level="1">合并证书</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="ssl-测试">
+          <a class="post-toc-link" href="#ssl-测试" data-level="3">SSL 测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-openssl-测试">
+          <a class="post-toc-link" href="#使用-openssl-测试" data-level="1">使用 OpenSSL 测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-curl-测试">
+          <a class="post-toc-link" href="#使用-curl-测试" data-level="1">使用 curl 测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在线测试">
+          <a class="post-toc-link" href="#在线测试" data-level="1">在线测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="https-www-ssllabs-com-ssltest">
+          <a class="post-toc-link" href="#https-www-ssllabs-com-ssltest" data-level="1">https://www.ssllabs.com/ssltest/</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

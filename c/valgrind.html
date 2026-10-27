@@ -1759,9 +1759,704 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基本用法">
+              <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基本内存检查">
+              <a class="post-toc-link" href="#基本内存检查" data-level="1">基本内存检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="带参数运行">
+              <a class="post-toc-link" href="#带参数运行" data-level="1">带参数运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定输出文件">
+              <a class="post-toc-link" href="#指定输出文件" data-level="1">指定输出文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细程度">
+              <a class="post-toc-link" href="#详细程度" data-level="1">详细程度</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安静模式">
+              <a class="post-toc-link" href="#安静模式" data-level="1">安静模式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="内存检测-memcheck">
+              <a class="post-toc-link" href="#内存检测-memcheck" data-level="3">内存检测（memcheck）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用内存检查">
+              <a class="post-toc-link" href="#启用内存检查" data-level="1">启用内存检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检测未初始化内存">
+              <a class="post-toc-link" href="#检测未初始化内存" data-level="1">检测未初始化内存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检测越界访问">
+              <a class="post-toc-link" href="#检测越界访问" data-level="1">检测越界访问</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检测内存泄漏">
+              <a class="post-toc-link" href="#检测内存泄漏" data-level="1">检测内存泄漏</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示泄漏详情">
+              <a class="post-toc-link" href="#显示泄漏详情" data-level="1">显示泄漏详情</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="统计泄漏">
+              <a class="post-toc-link" href="#统计泄漏" data-level="1">统计泄漏</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="内存泄漏类型">
+              <a class="post-toc-link" href="#内存泄漏类型" data-level="3">内存泄漏类型</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="堆分析">
+              <a class="post-toc-link" href="#堆分析" data-level="3">堆分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用堆信息">
+              <a class="post-toc-link" href="#启用堆信息" data-level="1">启用堆信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="完整的堆信息">
+              <a class="post-toc-link" href="#完整的堆信息" data-level="1">完整的堆信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="部分堆调试">
+              <a class="post-toc-link" href="#部分堆调试" data-level="1">部分堆调试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="gdb-集成">
+              <a class="post-toc-link" href="#gdb-集成" data-level="3">GDB 集成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-支持">
+              <a class="post-toc-link" href="#gdb-支持" data-level="1">GDB 支持</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式调试">
+              <a class="post-toc-link" href="#交互式调试" data-level="1">交互式调试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在另一个终端运行-gdb-program">
+              <a class="post-toc-link" href="#在另一个终端运行-gdb-program" data-level="1">在另一个终端运行：gdb ./program</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-中-target-remote-vgdb">
+              <a class="post-toc-link" href="#gdb-中-target-remote-vgdb" data-level="1">GDB 中：target remote | vgdb</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-断点">
+              <a class="post-toc-link" href="#gdb-断点" data-level="1">GDB 断点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="callgrind-调用图">
+              <a class="post-toc-link" href="#callgrind-调用图" data-level="3">Callgrind（调用图）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成调用图">
+              <a class="post-toc-link" href="#生成调用图" data-level="1">生成调用图</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出文件">
+              <a class="post-toc-link" href="#输出文件" data-level="1">输出文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-kcachegrind-查看">
+              <a class="post-toc-link" href="#使用-kcachegrind-查看" data-level="1">使用 KCachegrind 查看</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="采样率">
+              <a class="post-toc-link" href="#采样率" data-level="1">采样率</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="cachegrind-缓存分析">
+              <a class="post-toc-link" href="#cachegrind-缓存分析" data-level="3">Cachegrind（缓存分析）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="缓存分析">
+              <a class="post-toc-link" href="#缓存分析" data-level="1">缓存分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="l1-l2-缓存分析">
+              <a class="post-toc-link" href="#l1-l2-缓存分析" data-level="1">L1/L2 缓存分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="注释源码">
+              <a class="post-toc-link" href="#注释源码" data-level="1">注释源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="合并输出">
+              <a class="post-toc-link" href="#合并输出" data-level="1">合并输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="helgrind-线程分析">
+              <a class="post-toc-link" href="#helgrind-线程分析" data-level="3">Helgrind（线程分析）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="线程错误检测">
+              <a class="post-toc-link" href="#线程错误检测" data-level="1">线程错误检测</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检测锁顺序">
+              <a class="post-toc-link" href="#检测锁顺序" data-level="1">检测锁顺序</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录">
+              <a class="post-toc-link" href="#历史记录" data-level="1">历史记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="drd-线程分析">
+              <a class="post-toc-link" href="#drd-线程分析" data-level="3">DRD（线程分析）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="drd-工具">
+              <a class="post-toc-link" href="#drd-工具" data-level="1">DRD 工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="互斥锁分析">
+              <a class="post-toc-link" href="#互斥锁分析" data-level="1">互斥锁分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="报告所有互斥锁">
+              <a class="post-toc-link" href="#报告所有互斥锁" data-level="1">报告所有互斥锁</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="massif-堆分析">
+              <a class="post-toc-link" href="#massif-堆分析" data-level="3">Massif（堆分析）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="堆内存分析">
+              <a class="post-toc-link" href="#堆内存分析" data-level="1">堆内存分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细程度">
+              <a class="post-toc-link" href="#详细程度" data-level="1">详细程度</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出文件">
+              <a class="post-toc-link" href="#输出文件" data-level="1">输出文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看快照">
+              <a class="post-toc-link" href="#查看快照" data-level="1">查看快照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="峰值的更多信息">
+              <a class="post-toc-link" href="#峰值的更多信息" data-level="1">峰值的更多信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="时间命令">
+              <a class="post-toc-link" href="#时间命令" data-level="1">时间命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
+              <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检测内存泄漏">
+              <a class="post-toc-link" href="#检测内存泄漏" data-level="1">检测内存泄漏</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检测越界">
+              <a class="post-toc-link" href="#检测越界" data-level="1">检测越界</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="性能分析">
+              <a class="post-toc-link" href="#性能分析" data-level="1">性能分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="线程安全">
+              <a class="post-toc-link" href="#线程安全" data-level="1">线程安全</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="堆使用">
+              <a class="post-toc-link" href="#堆使用" data-level="1">堆使用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查">
+              <a class="post-toc-link" href="#快速检查" data-level="1">快速检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-调试">
+              <a class="post-toc-link" href="#gdb-调试" data-level="1">GDB 调试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="输出控制">
+              <a class="post-toc-link" href="#输出控制" data-level="3">输出控制</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="错误数量">
+              <a class="post-toc-link" href="#错误数量" data-level="1">错误数量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="忽略错误">
+              <a class="post-toc-link" href="#忽略错误" data-level="1">忽略错误</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="过滤错误">
+              <a class="post-toc-link" href="#过滤错误" data-level="1">过滤错误</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成抑制文件">
+              <a class="post-toc-link" href="#生成抑制文件" data-level="1">生成抑制文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用抑制文件">
+              <a class="post-toc-link" href="#使用抑制文件" data-level="1">使用抑制文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="编译要求">
+              <a class="post-toc-link" href="#编译要求" data-level="3">编译要求</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用调试符号编译">
+              <a class="post-toc-link" href="#使用调试符号编译" data-level="1">使用调试符号编译</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-gdb-调试符号">
+              <a class="post-toc-link" href="#使用-gdb-调试符号" data-level="1">使用 gdb 调试符号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="优化级别-0-避免混淆">
+              <a class="post-toc-link" href="#优化级别-0-避免混淆" data-level="1">优化级别 0（避免混淆）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="保留符号表">
+              <a class="post-toc-link" href="#保留符号表" data-level="1">保留符号表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="报告解读">
+              <a class="post-toc-link" href="#报告解读" data-level="3">报告解读</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="memcheck-报告示例">
+              <a class="post-toc-link" href="#memcheck-报告示例" data-level="1">Memcheck 报告示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="泄漏报告">
+              <a class="post-toc-link" href="#泄漏报告" data-level="1">泄漏报告</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项速查">
+              <a class="post-toc-link" href="#常用选项速查" data-level="3">常用选项速查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="内存检查">
+              <a class="post-toc-link" href="#内存检查" data-level="1">内存检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出控制">
+              <a class="post-toc-link" href="#输出控制" data-level="1">输出控制</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gdb">
+              <a class="post-toc-link" href="#gdb" data-level="1">GDB</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="性能">
+              <a class="post-toc-link" href="#性能" data-level="1">性能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="与其他工具集成">
+              <a class="post-toc-link" href="#与其他工具集成" data-level="3">与其他工具集成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-调试-valgrind-程序">
+              <a class="post-toc-link" href="#gdb-调试-valgrind-程序" data-level="1">GDB 调试 valgrind 程序</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成火焰图">
+              <a class="post-toc-link" href="#生成火焰图" data-level="1">生成火焰图</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ci-cd-集成">
+              <a class="post-toc-link" href="#ci-cd-集成" data-level="1">CI/CD 集成</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基本用法">
+          <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基本内存检查">
+          <a class="post-toc-link" href="#基本内存检查" data-level="1">基本内存检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="带参数运行">
+          <a class="post-toc-link" href="#带参数运行" data-level="1">带参数运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定输出文件">
+          <a class="post-toc-link" href="#指定输出文件" data-level="1">指定输出文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细程度">
+          <a class="post-toc-link" href="#详细程度" data-level="1">详细程度</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安静模式">
+          <a class="post-toc-link" href="#安静模式" data-level="1">安静模式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="内存检测-memcheck">
+          <a class="post-toc-link" href="#内存检测-memcheck" data-level="3">内存检测（memcheck）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用内存检查">
+          <a class="post-toc-link" href="#启用内存检查" data-level="1">启用内存检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检测未初始化内存">
+          <a class="post-toc-link" href="#检测未初始化内存" data-level="1">检测未初始化内存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检测越界访问">
+          <a class="post-toc-link" href="#检测越界访问" data-level="1">检测越界访问</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检测内存泄漏">
+          <a class="post-toc-link" href="#检测内存泄漏" data-level="1">检测内存泄漏</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示泄漏详情">
+          <a class="post-toc-link" href="#显示泄漏详情" data-level="1">显示泄漏详情</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="统计泄漏">
+          <a class="post-toc-link" href="#统计泄漏" data-level="1">统计泄漏</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="内存泄漏类型">
+          <a class="post-toc-link" href="#内存泄漏类型" data-level="3">内存泄漏类型</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="堆分析">
+          <a class="post-toc-link" href="#堆分析" data-level="3">堆分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用堆信息">
+          <a class="post-toc-link" href="#启用堆信息" data-level="1">启用堆信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="完整的堆信息">
+          <a class="post-toc-link" href="#完整的堆信息" data-level="1">完整的堆信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="部分堆调试">
+          <a class="post-toc-link" href="#部分堆调试" data-level="1">部分堆调试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="gdb-集成">
+          <a class="post-toc-link" href="#gdb-集成" data-level="3">GDB 集成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-支持">
+          <a class="post-toc-link" href="#gdb-支持" data-level="1">GDB 支持</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式调试">
+          <a class="post-toc-link" href="#交互式调试" data-level="1">交互式调试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在另一个终端运行-gdb-program">
+          <a class="post-toc-link" href="#在另一个终端运行-gdb-program" data-level="1">在另一个终端运行：gdb ./program</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-中-target-remote-vgdb">
+          <a class="post-toc-link" href="#gdb-中-target-remote-vgdb" data-level="1">GDB 中：target remote | vgdb</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-断点">
+          <a class="post-toc-link" href="#gdb-断点" data-level="1">GDB 断点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="callgrind-调用图">
+          <a class="post-toc-link" href="#callgrind-调用图" data-level="3">Callgrind（调用图）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成调用图">
+          <a class="post-toc-link" href="#生成调用图" data-level="1">生成调用图</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出文件">
+          <a class="post-toc-link" href="#输出文件" data-level="1">输出文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-kcachegrind-查看">
+          <a class="post-toc-link" href="#使用-kcachegrind-查看" data-level="1">使用 KCachegrind 查看</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="采样率">
+          <a class="post-toc-link" href="#采样率" data-level="1">采样率</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="cachegrind-缓存分析">
+          <a class="post-toc-link" href="#cachegrind-缓存分析" data-level="3">Cachegrind（缓存分析）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="缓存分析">
+          <a class="post-toc-link" href="#缓存分析" data-level="1">缓存分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="l1-l2-缓存分析">
+          <a class="post-toc-link" href="#l1-l2-缓存分析" data-level="1">L1/L2 缓存分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="注释源码">
+          <a class="post-toc-link" href="#注释源码" data-level="1">注释源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="合并输出">
+          <a class="post-toc-link" href="#合并输出" data-level="1">合并输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="helgrind-线程分析">
+          <a class="post-toc-link" href="#helgrind-线程分析" data-level="3">Helgrind（线程分析）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="线程错误检测">
+          <a class="post-toc-link" href="#线程错误检测" data-level="1">线程错误检测</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检测锁顺序">
+          <a class="post-toc-link" href="#检测锁顺序" data-level="1">检测锁顺序</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录">
+          <a class="post-toc-link" href="#历史记录" data-level="1">历史记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="drd-线程分析">
+          <a class="post-toc-link" href="#drd-线程分析" data-level="3">DRD（线程分析）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="drd-工具">
+          <a class="post-toc-link" href="#drd-工具" data-level="1">DRD 工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="互斥锁分析">
+          <a class="post-toc-link" href="#互斥锁分析" data-level="1">互斥锁分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="报告所有互斥锁">
+          <a class="post-toc-link" href="#报告所有互斥锁" data-level="1">报告所有互斥锁</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="massif-堆分析">
+          <a class="post-toc-link" href="#massif-堆分析" data-level="3">Massif（堆分析）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="堆内存分析">
+          <a class="post-toc-link" href="#堆内存分析" data-level="1">堆内存分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细程度">
+          <a class="post-toc-link" href="#详细程度" data-level="1">详细程度</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出文件">
+          <a class="post-toc-link" href="#输出文件" data-level="1">输出文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看快照">
+          <a class="post-toc-link" href="#查看快照" data-level="1">查看快照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="峰值的更多信息">
+          <a class="post-toc-link" href="#峰值的更多信息" data-level="1">峰值的更多信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="时间命令">
+          <a class="post-toc-link" href="#时间命令" data-level="1">时间命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
+          <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检测内存泄漏">
+          <a class="post-toc-link" href="#检测内存泄漏" data-level="1">检测内存泄漏</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检测越界">
+          <a class="post-toc-link" href="#检测越界" data-level="1">检测越界</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="性能分析">
+          <a class="post-toc-link" href="#性能分析" data-level="1">性能分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="线程安全">
+          <a class="post-toc-link" href="#线程安全" data-level="1">线程安全</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="堆使用">
+          <a class="post-toc-link" href="#堆使用" data-level="1">堆使用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查">
+          <a class="post-toc-link" href="#快速检查" data-level="1">快速检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-调试">
+          <a class="post-toc-link" href="#gdb-调试" data-level="1">GDB 调试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="输出控制">
+          <a class="post-toc-link" href="#输出控制" data-level="3">输出控制</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="错误数量">
+          <a class="post-toc-link" href="#错误数量" data-level="1">错误数量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="忽略错误">
+          <a class="post-toc-link" href="#忽略错误" data-level="1">忽略错误</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="过滤错误">
+          <a class="post-toc-link" href="#过滤错误" data-level="1">过滤错误</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成抑制文件">
+          <a class="post-toc-link" href="#生成抑制文件" data-level="1">生成抑制文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用抑制文件">
+          <a class="post-toc-link" href="#使用抑制文件" data-level="1">使用抑制文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="编译要求">
+          <a class="post-toc-link" href="#编译要求" data-level="3">编译要求</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用调试符号编译">
+          <a class="post-toc-link" href="#使用调试符号编译" data-level="1">使用调试符号编译</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-gdb-调试符号">
+          <a class="post-toc-link" href="#使用-gdb-调试符号" data-level="1">使用 gdb 调试符号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="优化级别-0-避免混淆">
+          <a class="post-toc-link" href="#优化级别-0-避免混淆" data-level="1">优化级别 0（避免混淆）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="保留符号表">
+          <a class="post-toc-link" href="#保留符号表" data-level="1">保留符号表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="报告解读">
+          <a class="post-toc-link" href="#报告解读" data-level="3">报告解读</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="memcheck-报告示例">
+          <a class="post-toc-link" href="#memcheck-报告示例" data-level="1">Memcheck 报告示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="泄漏报告">
+          <a class="post-toc-link" href="#泄漏报告" data-level="1">泄漏报告</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项速查">
+          <a class="post-toc-link" href="#常用选项速查" data-level="3">常用选项速查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="内存检查">
+          <a class="post-toc-link" href="#内存检查" data-level="1">内存检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出控制">
+          <a class="post-toc-link" href="#输出控制" data-level="1">输出控制</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gdb">
+          <a class="post-toc-link" href="#gdb" data-level="1">GDB</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="性能">
+          <a class="post-toc-link" href="#性能" data-level="1">性能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="与其他工具集成">
+          <a class="post-toc-link" href="#与其他工具集成" data-level="3">与其他工具集成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gdb-调试-valgrind-程序">
+          <a class="post-toc-link" href="#gdb-调试-valgrind-程序" data-level="1">GDB 调试 valgrind 程序</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成火焰图">
+          <a class="post-toc-link" href="#生成火焰图" data-level="1">生成火焰图</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ci-cd-集成">
+          <a class="post-toc-link" href="#ci-cd-集成" data-level="1">CI/CD 集成</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

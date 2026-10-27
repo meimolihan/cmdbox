@@ -3874,9 +3874,328 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
+              <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="交互菜单">
+              <a class="post-toc-link" href="#交互菜单" data-level="1">交互菜单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="站点源">
+              <a class="post-toc-link" href="#站点源" data-level="1">站点源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
+              <a class="post-toc-link" href="#功能特点" data-level="3">功能特点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="参数说明">
+              <a class="post-toc-link" href="#参数说明" data-level="3">参数说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="目录与命名规则">
+              <a class="post-toc-link" href="#目录与命名规则" data-level="3">目录与命名规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="备份流程">
+              <a class="post-toc-link" href="#备份流程" data-level="3">备份流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="恢复流程">
+              <a class="post-toc-link" href="#恢复流程" data-level="3">恢复流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="使用示例">
+              <a class="post-toc-link" href="#使用示例" data-level="3">使用示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="仅指定目录-直接进入交互式主菜单-子菜单沿用该目录">
+              <a class="post-toc-link" href="#仅指定目录-直接进入交互式主菜单-子菜单沿用该目录" data-level="1">仅指定目录：直接进入交互式主菜单，子菜单沿用该目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="命令行直接批量备份">
+              <a class="post-toc-link" href="#命令行直接批量备份" data-level="1">命令行直接批量备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份单个项目">
+              <a class="post-toc-link" href="#备份单个项目" data-level="1">备份单个项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="试运行-不产生任何文件">
+              <a class="post-toc-link" href="#试运行-不产生任何文件" data-level="1">试运行（不产生任何文件）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复全部">
+              <a class="post-toc-link" href="#恢复全部" data-level="1">恢复全部</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复单个项目-并删除已加载的镜像包">
+              <a class="post-toc-link" href="#恢复单个项目-并删除已加载的镜像包" data-level="1">恢复单个项目，并删除已加载的镜像包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="输出说明">
+              <a class="post-toc-link" href="#输出说明" data-level="3">输出说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
+              <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+              <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose-项目备份-迁移-恢复-管理工具">
+              <a class="post-toc-link" href="#compose-项目备份-迁移-恢复-管理工具" data-level="1">Compose 项目备份 / 迁移 / 恢复 / 管理工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="参考-docker_images_manager-sh">
+              <a class="post-toc-link" href="#参考-docker_images_manager-sh" data-level="1">参考: docker_images_manager.sh</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="用法">
+              <a class="post-toc-link" href="#用法" data-level="1">用法:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-交互菜单">
+              <a class="post-toc-link" href="#compose_images_manager-sh-交互菜单" data-level="1">./compose_images_manager.sh                      # 交互菜单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-c-目录-b-目录-备份-进入选择菜单">
+              <a class="post-toc-link" href="#compose_images_manager-sh-c-目录-b-目录-备份-进入选择菜单" data-level="1">./compose_images_manager.sh -c &lt;目录&gt; -b &lt;目录&gt;   # 备份（进入选择菜单）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-c-目录-b-目录-a-备份全部子项目">
+              <a class="post-toc-link" href="#compose_images_manager-sh-c-目录-b-目录-a-备份全部子项目" data-level="1">./compose_images_manager.sh -c &lt;目录&gt; -b &lt;目录&gt; -a   # 备份全部子项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-c-目录-b-目录-p-项目名-备份单个项目">
+              <a class="post-toc-link" href="#compose_images_manager-sh-c-目录-b-目录-p-项目名-备份单个项目" data-level="1">./compose_images_manager.sh -c &lt;目录&gt; -b &lt;目录&gt; -p &lt;项目名&gt;  # 备份单个项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-r-a-恢复全部备份">
+              <a class="post-toc-link" href="#compose_images_manager-sh-r-a-恢复全部备份" data-level="1">./compose_images_manager.sh -r -a                # 恢复全部备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-r-p-项目名-恢复单个项目">
+              <a class="post-toc-link" href="#compose_images_manager-sh-r-p-项目名-恢复单个项目" data-level="1">./compose_images_manager.sh -r -p &lt;项目名&gt;       # 恢复单个项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-r-c-目录-b-目录-a-指定目录恢复全部">
+              <a class="post-toc-link" href="#compose_images_manager-sh-r-c-目录-b-目录-a-指定目录恢复全部" data-level="1">./compose_images_manager.sh -r -c &lt;目录&gt; -b &lt;目录&gt; -a        # 指定目录恢复全部</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="追加-dry-run-仅打印将执行的动作-不导出-不打包">
+              <a class="post-toc-link" href="#追加-dry-run-仅打印将执行的动作-不导出-不打包" data-level="1">追加 --dry-run 仅打印将执行的动作，不导出、不打包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+              <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
+              <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
+              <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
+          <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="交互菜单">
+          <a class="post-toc-link" href="#交互菜单" data-level="1">交互菜单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="站点源">
+          <a class="post-toc-link" href="#站点源" data-level="1">站点源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
+          <a class="post-toc-link" href="#功能特点" data-level="3">功能特点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="参数说明">
+          <a class="post-toc-link" href="#参数说明" data-level="3">参数说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="目录与命名规则">
+          <a class="post-toc-link" href="#目录与命名规则" data-level="3">目录与命名规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="备份流程">
+          <a class="post-toc-link" href="#备份流程" data-level="3">备份流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="恢复流程">
+          <a class="post-toc-link" href="#恢复流程" data-level="3">恢复流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="使用示例">
+          <a class="post-toc-link" href="#使用示例" data-level="3">使用示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="仅指定目录-直接进入交互式主菜单-子菜单沿用该目录">
+          <a class="post-toc-link" href="#仅指定目录-直接进入交互式主菜单-子菜单沿用该目录" data-level="1">仅指定目录：直接进入交互式主菜单，子菜单沿用该目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="命令行直接批量备份">
+          <a class="post-toc-link" href="#命令行直接批量备份" data-level="1">命令行直接批量备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份单个项目">
+          <a class="post-toc-link" href="#备份单个项目" data-level="1">备份单个项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="试运行-不产生任何文件">
+          <a class="post-toc-link" href="#试运行-不产生任何文件" data-level="1">试运行（不产生任何文件）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复全部">
+          <a class="post-toc-link" href="#恢复全部" data-level="1">恢复全部</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复单个项目-并删除已加载的镜像包">
+          <a class="post-toc-link" href="#恢复单个项目-并删除已加载的镜像包" data-level="1">恢复单个项目，并删除已加载的镜像包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="输出说明">
+          <a class="post-toc-link" href="#输出说明" data-level="3">输出说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
+          <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+          <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose-项目备份-迁移-恢复-管理工具">
+          <a class="post-toc-link" href="#compose-项目备份-迁移-恢复-管理工具" data-level="1">Compose 项目备份 / 迁移 / 恢复 / 管理工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="参考-docker_images_manager-sh">
+          <a class="post-toc-link" href="#参考-docker_images_manager-sh" data-level="1">参考: docker_images_manager.sh</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="用法">
+          <a class="post-toc-link" href="#用法" data-level="1">用法:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-交互菜单">
+          <a class="post-toc-link" href="#compose_images_manager-sh-交互菜单" data-level="1">./compose_images_manager.sh                      # 交互菜单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-c-目录-b-目录-备份-进入选择菜单">
+          <a class="post-toc-link" href="#compose_images_manager-sh-c-目录-b-目录-备份-进入选择菜单" data-level="1">./compose_images_manager.sh -c &lt;目录&gt; -b &lt;目录&gt;   # 备份（进入选择菜单）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-c-目录-b-目录-a-备份全部子项目">
+          <a class="post-toc-link" href="#compose_images_manager-sh-c-目录-b-目录-a-备份全部子项目" data-level="1">./compose_images_manager.sh -c &lt;目录&gt; -b &lt;目录&gt; -a   # 备份全部子项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-c-目录-b-目录-p-项目名-备份单个项目">
+          <a class="post-toc-link" href="#compose_images_manager-sh-c-目录-b-目录-p-项目名-备份单个项目" data-level="1">./compose_images_manager.sh -c &lt;目录&gt; -b &lt;目录&gt; -p &lt;项目名&gt;  # 备份单个项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-r-a-恢复全部备份">
+          <a class="post-toc-link" href="#compose_images_manager-sh-r-a-恢复全部备份" data-level="1">./compose_images_manager.sh -r -a                # 恢复全部备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-r-p-项目名-恢复单个项目">
+          <a class="post-toc-link" href="#compose_images_manager-sh-r-p-项目名-恢复单个项目" data-level="1">./compose_images_manager.sh -r -p &lt;项目名&gt;       # 恢复单个项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="compose_images_manager-sh-r-c-目录-b-目录-a-指定目录恢复全部">
+          <a class="post-toc-link" href="#compose_images_manager-sh-r-c-目录-b-目录-a-指定目录恢复全部" data-level="1">./compose_images_manager.sh -r -c &lt;目录&gt; -b &lt;目录&gt; -a        # 指定目录恢复全部</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="追加-dry-run-仅打印将执行的动作-不导出-不打包">
+          <a class="post-toc-link" href="#追加-dry-run-仅打印将执行的动作-不导出-不打包" data-level="1">追加 --dry-run 仅打印将执行的动作，不导出、不打包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+          <a class="post-toc-link" href="#section" data-level="1">============================================================</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
+          <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
+          <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

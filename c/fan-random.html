@@ -1590,9 +1590,240 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="api-端点">
+              <a class="post-toc-link" href="#api-端点" data-level="2">API 端点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="直接获取随机图片-返回完整图片内容-无需跟随跳转">
+              <a class="post-toc-link" href="#直接获取随机图片-返回完整图片内容-无需跟随跳转" data-level="1">直接获取随机图片（返回完整图片内容，无需跟随跳转）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-json-格式">
+              <a class="post-toc-link" href="#获取-json-格式" data-level="1">获取 JSON 格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="url-pc-pc-117-webp-type-pc-count-418">
+              <a class="post-toc-link" href="#url-pc-pc-117-webp-type-pc-count-418" data-level="1">{&#34;url&#34;:&#34;/pc/pc-117.webp&#34;,&#34;type&#34;:&#34;pc&#34;,&#34;count&#34;:418}</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装与卸载-systemd-一键脚本">
+              <a class="post-toc-link" href="#安装与卸载-systemd-一键脚本" data-level="2">安装与卸载（systemd 一键脚本）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-升级">
+              <a class="post-toc-link" href="#安装-升级" data-level="3">安装 / 升级</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="默认端口-8588-程序目录-var-lib-fan-random-壁纸目录-程序目录-public-pc-mp">
+              <a class="post-toc-link" href="#默认端口-8588-程序目录-var-lib-fan-random-壁纸目录-程序目录-public-pc-mp" data-level="1">默认端口 8588，程序目录 /var/lib/fan-random，壁纸目录 {程序目录}/public/{pc,mp}</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键安装-国内网络可加-fan_random_repo-https-ghfast-top-https-github-com-meimolihan-fan-random-git">
+              <a class="post-toc-link" href="#远程一键安装-国内网络可加-fan_random_repo-https-ghfast-top-https-github-com-meimolihan-fan-random-git" data-level="1">远程一键安装（国内网络可加 FAN_RANDOM_REPO=https://ghfast.top/https://github.com/meimolihan/fan-random.git）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="自定义安装目录-端口-pc-mp-壁纸目录-免交互">
+              <a class="post-toc-link" href="#自定义安装目录-端口-pc-mp-壁纸目录-免交互" data-level="1">自定义安装目录、端口、pc/mp 壁纸目录，免交互</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一键脚本参数">
+              <a class="post-toc-link" href="#一键脚本参数" data-level="3">一键脚本参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="卸载命令">
+              <a class="post-toc-link" href="#卸载命令" data-level="3">卸载命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键卸载">
+              <a class="post-toc-link" href="#远程一键卸载" data-level="1">远程一键卸载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="docker-部署">
+              <a class="post-toc-link" href="#docker-部署" data-level="2">Docker 部署</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="compose-一键部署-推荐">
+              <a class="post-toc-link" href="#compose-一键部署-推荐" data-level="3">Compose 一键部署（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="使用项目自带-compose">
+              <a class="post-toc-link" href="#使用项目自带-compose" data-level="3">使用项目自带 Compose</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="docker-手动运行">
+              <a class="post-toc-link" href="#docker-手动运行" data-level="3">Docker 手动运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="内置-cli-管理命令">
+              <a class="post-toc-link" href="#内置-cli-管理命令" data-level="2">内置 CLI 管理命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="日常管理命令">
+              <a class="post-toc-link" href="#日常管理命令" data-level="2">日常管理命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="添加-替换壁纸">
+              <a class="post-toc-link" href="#添加-替换壁纸" data-level="2">添加 / 替换壁纸</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="pc-桌面端-横屏-壁纸">
+              <a class="post-toc-link" href="#pc-桌面端-横屏-壁纸" data-level="1">pc 桌面端（横屏）壁纸</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="mp-移动端-竖屏-壁纸">
+              <a class="post-toc-link" href="#mp-移动端-竖屏-壁纸" data-level="1">mp 移动端（竖屏）壁纸</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="目录说明">
+              <a class="post-toc-link" href="#目录说明" data-level="2">目录说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="api-端点">
+          <a class="post-toc-link" href="#api-端点" data-level="2">API 端点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="直接获取随机图片-返回完整图片内容-无需跟随跳转">
+          <a class="post-toc-link" href="#直接获取随机图片-返回完整图片内容-无需跟随跳转" data-level="1">直接获取随机图片（返回完整图片内容，无需跟随跳转）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-json-格式">
+          <a class="post-toc-link" href="#获取-json-格式" data-level="1">获取 JSON 格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="url-pc-pc-117-webp-type-pc-count-418">
+          <a class="post-toc-link" href="#url-pc-pc-117-webp-type-pc-count-418" data-level="1">{&#34;url&#34;:&#34;/pc/pc-117.webp&#34;,&#34;type&#34;:&#34;pc&#34;,&#34;count&#34;:418}</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装与卸载-systemd-一键脚本">
+          <a class="post-toc-link" href="#安装与卸载-systemd-一键脚本" data-level="2">安装与卸载（systemd 一键脚本）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-升级">
+          <a class="post-toc-link" href="#安装-升级" data-level="3">安装 / 升级</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="默认端口-8588-程序目录-var-lib-fan-random-壁纸目录-程序目录-public-pc-mp">
+          <a class="post-toc-link" href="#默认端口-8588-程序目录-var-lib-fan-random-壁纸目录-程序目录-public-pc-mp" data-level="1">默认端口 8588，程序目录 /var/lib/fan-random，壁纸目录 {程序目录}/public/{pc,mp}</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键安装-国内网络可加-fan_random_repo-https-ghfast-top-https-github-com-meimolihan-fan-random-git">
+          <a class="post-toc-link" href="#远程一键安装-国内网络可加-fan_random_repo-https-ghfast-top-https-github-com-meimolihan-fan-random-git" data-level="1">远程一键安装（国内网络可加 FAN_RANDOM_REPO=https://ghfast.top/https://github.com/meimolihan/fan-random.git）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="自定义安装目录-端口-pc-mp-壁纸目录-免交互">
+          <a class="post-toc-link" href="#自定义安装目录-端口-pc-mp-壁纸目录-免交互" data-level="1">自定义安装目录、端口、pc/mp 壁纸目录，免交互</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一键脚本参数">
+          <a class="post-toc-link" href="#一键脚本参数" data-level="3">一键脚本参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="卸载命令">
+          <a class="post-toc-link" href="#卸载命令" data-level="3">卸载命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键卸载">
+          <a class="post-toc-link" href="#远程一键卸载" data-level="1">远程一键卸载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="docker-部署">
+          <a class="post-toc-link" href="#docker-部署" data-level="2">Docker 部署</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="compose-一键部署-推荐">
+          <a class="post-toc-link" href="#compose-一键部署-推荐" data-level="3">Compose 一键部署（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="使用项目自带-compose">
+          <a class="post-toc-link" href="#使用项目自带-compose" data-level="3">使用项目自带 Compose</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="docker-手动运行">
+          <a class="post-toc-link" href="#docker-手动运行" data-level="3">Docker 手动运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="内置-cli-管理命令">
+          <a class="post-toc-link" href="#内置-cli-管理命令" data-level="2">内置 CLI 管理命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="日常管理命令">
+          <a class="post-toc-link" href="#日常管理命令" data-level="2">日常管理命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="添加-替换壁纸">
+          <a class="post-toc-link" href="#添加-替换壁纸" data-level="2">添加 / 替换壁纸</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="pc-桌面端-横屏-壁纸">
+          <a class="post-toc-link" href="#pc-桌面端-横屏-壁纸" data-level="1">pc 桌面端（横屏）壁纸</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="mp-移动端-竖屏-壁纸">
+          <a class="post-toc-link" href="#mp-移动端-竖屏-壁纸" data-level="1">mp 移动端（竖屏）壁纸</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="目录说明">
+          <a class="post-toc-link" href="#目录说明" data-level="2">目录说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1793,9 +1793,656 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="kube-子命令">
+              <a class="post-toc-link" href="#kube-子命令" data-level="3">kube 子命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-kubernetes-yaml">
+              <a class="post-toc-link" href="#生成-kubernetes-yaml" data-level="1">生成 Kubernetes YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成服务-暴露端口">
+              <a class="post-toc-link" href="#生成服务-暴露端口" data-level="1">生成服务（暴露端口）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从正在运行的容器生成">
+              <a class="post-toc-link" href="#从正在运行的容器生成" data-level="1">从正在运行的容器生成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-pod-名称">
+              <a class="post-toc-link" href="#指定-pod-名称" data-level="1">指定 Pod 名称</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="生成选项">
+              <a class="post-toc-link" href="#生成选项" data-level="3">生成选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-service">
+              <a class="post-toc-link" href="#生成-service" data-level="1">生成 Service</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不生成卷">
+              <a class="post-toc-link" href="#不生成卷" data-level="1">不生成卷</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定命名空间">
+              <a class="post-toc-link" href="#指定命名空间" data-level="1">指定命名空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-init-容器">
+              <a class="post-toc-link" href="#使用-init-容器" data-level="1">使用 init 容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加注释">
+              <a class="post-toc-link" href="#添加注释" data-level="1">添加注释</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-json-格式">
+              <a class="post-toc-link" href="#生成-json-格式" data-level="1">生成 JSON 格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="systemd-子命令">
+              <a class="post-toc-link" href="#systemd-子命令" data-level="3">systemd 子命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-systemd-服务文件">
+              <a class="post-toc-link" href="#生成-systemd-服务文件" data-level="1">生成 systemd 服务文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成服务文件到目录">
+              <a class="post-toc-link" href="#生成服务文件到目录" data-level="1">生成服务文件到目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成带依赖的服务">
+              <a class="post-toc-link" href="#生成带依赖的服务" data-level="1">生成带依赖的服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新启动策略">
+              <a class="post-toc-link" href="#重新启动策略" data-level="1">重新启动策略</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不包含容器">
+              <a class="post-toc-link" href="#不包含容器" data-level="1">不包含容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定超时">
+              <a class="post-toc-link" href="#指定超时" data-level="1">指定超时</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="停止超时">
+              <a class="post-toc-link" href="#停止超时" data-level="1">停止超时</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
+              <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建测试容器">
+              <a class="post-toc-link" href="#创建测试容器" data-level="1">创建测试容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-kubernetes-yaml">
+              <a class="post-toc-link" href="#生成-kubernetes-yaml" data-level="1">生成 Kubernetes YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看生成的-yaml">
+              <a class="post-toc-link" href="#查看生成的-yaml" data-level="1">查看生成的 YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="生成的-yaml-结构">
+              <a class="post-toc-link" href="#生成的-yaml-结构" data-level="3">生成的 YAML 结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="pod-模式">
+              <a class="post-toc-link" href="#pod-模式" data-level="1">Pod 模式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="service-模式">
+              <a class="post-toc-link" href="#service-模式" data-level="1">Service 模式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="从-pod-生成">
+              <a class="post-toc-link" href="#从-pod-生成" data-level="3">从 Pod 生成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-pod">
+              <a class="post-toc-link" href="#创建-pod" data-level="1">创建 Pod</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在-pod-中运行容器">
+              <a class="post-toc-link" href="#在-pod-中运行容器" data-level="1">在 Pod 中运行容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-pod-yaml">
+              <a class="post-toc-link" href="#生成-pod-yaml" data-level="1">生成 Pod YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成带服务的-pod-yaml">
+              <a class="post-toc-link" href="#生成带服务的-pod-yaml" data-level="1">生成带服务的 Pod YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="systemd-集成">
+              <a class="post-toc-link" href="#systemd-集成" data-level="3">systemd 集成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务容器">
+              <a class="post-toc-link" href="#创建服务容器" data-level="1">创建服务容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-systemd-服务">
+              <a class="post-toc-link" href="#生成-systemd-服务" data-level="1">生成 systemd 服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出">
+              <a class="post-toc-link" href="#输出" data-level="1">输出：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="container-myapp-service">
+              <a class="post-toc-link" href="#container-myapp-service" data-level="1"># container-myapp.service</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="unit">
+              <a class="post-toc-link" href="#unit" data-level="1">[Unit]</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="description-podman-container-myapp-service">
+              <a class="post-toc-link" href="#description-podman-container-myapp-service" data-level="1">Description=Podman container-myapp.service</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+              <a class="post-toc-link" href="#section" data-level="1">...</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成并保存">
+              <a class="post-toc-link" href="#生成并保存" data-level="1">生成并保存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用服务">
+              <a class="post-toc-link" href="#启用服务" data-level="1">启用服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
+              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
+              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="完整工作流">
+              <a class="post-toc-link" href="#完整工作流" data-level="3">完整工作流</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-在本地开发并测试">
+              <a class="post-toc-link" href="#1-在本地开发并测试" data-level="1">1. 在本地开发并测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-生成-kubernetes-yaml">
+              <a class="post-toc-link" href="#2-生成-kubernetes-yaml" data-level="1">2. 生成 Kubernetes YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-手动调整-yaml-如添加资源限制">
+              <a class="post-toc-link" href="#3-手动调整-yaml-如添加资源限制" data-level="1">3. 手动调整 YAML（如添加资源限制）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-部署到-kubernetes">
+              <a class="post-toc-link" href="#4-部署到-kubernetes" data-level="1">4. 部署到 Kubernetes</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-或者使用-podman-play">
+              <a class="post-toc-link" href="#5-或者使用-podman-play" data-level="1">5. 或者使用 podman play</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="多容器生成">
+              <a class="post-toc-link" href="#多容器生成" data-level="3">多容器生成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml">
+              <a class="post-toc-link" href="#docker-compose-yml" data-level="1">docker-compose.yml</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-podman-compose-生成">
+              <a class="post-toc-link" href="#使用-podman-compose-生成" data-level="1">使用 podman-compose 生成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="为每个服务生成-yaml">
+              <a class="post-toc-link" href="#为每个服务生成-yaml" data-level="1">为每个服务生成 YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或者使用-podman-kube-play">
+              <a class="post-toc-link" href="#或者使用-podman-kube-play" data-level="1">或者使用 podman kube play</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-kubectl">
+              <a class="post-toc-link" href="#生成-kubectl" data-level="1">生成 KubeCtl</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+              <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看帮助">
+              <a class="post-toc-link" href="#查看帮助" data-level="1">查看帮助</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有子命令">
+              <a class="post-toc-link" href="#列出所有子命令" data-level="1">列出所有子命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="生成的资源类型">
+              <a class="post-toc-link" href="#生成的资源类型" data-level="3">生成的资源类型</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="pod-默认">
+              <a class="post-toc-link" href="#pod-默认" data-level="1">Pod (默认)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="deployment-需要-service">
+              <a class="post-toc-link" href="#deployment-需要-service" data-level="1">Deployment (需要 --service)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="kubernetes-deployment-service">
+              <a class="post-toc-link" href="#kubernetes-deployment-service" data-level="1">Kubernetes Deployment + Service</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="init-container">
+              <a class="post-toc-link" href="#init-container" data-level="1">Init Container</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="configmap-如果有环境变量文件">
+              <a class="post-toc-link" href="#configmap-如果有环境变量文件" data-level="1">ConfigMap (如果有环境变量文件)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="rootless-容器生成的-yaml">
+              <a class="post-toc-link" href="#rootless-容器生成的-yaml" data-level="1">Rootless 容器生成的 YAML</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="需要确保-k8s-节点支持-rootless">
+              <a class="post-toc-link" href="#需要确保-k8s-节点支持-rootless" data-level="1">需要确保 K8s 节点支持 rootless</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卷处理">
+              <a class="post-toc-link" href="#卷处理" data-level="1">卷处理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="本地卷会转换为-persistentvolumeclaim">
+              <a class="post-toc-link" href="#本地卷会转换为-persistentvolumeclaim" data-level="1">本地卷会转换为 PersistentVolumeClaim</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="需要手动创建对应的-pvc">
+              <a class="post-toc-link" href="#需要手动创建对应的-pvc" data-level="1">需要手动创建对应的 PVC</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="网络">
+              <a class="post-toc-link" href="#网络" data-level="1">网络</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="默认使用-bridge-网络">
+              <a class="post-toc-link" href="#默认使用-bridge-网络" data-level="1">默认使用 bridge 网络</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在-k8s-中需要配置相应的网络策略">
+              <a class="post-toc-link" href="#在-k8s-中需要配置相应的网络策略" data-level="1">在 K8s 中需要配置相应的网络策略</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="kube-子命令">
+          <a class="post-toc-link" href="#kube-子命令" data-level="3">kube 子命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-kubernetes-yaml">
+          <a class="post-toc-link" href="#生成-kubernetes-yaml" data-level="1">生成 Kubernetes YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成服务-暴露端口">
+          <a class="post-toc-link" href="#生成服务-暴露端口" data-level="1">生成服务（暴露端口）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从正在运行的容器生成">
+          <a class="post-toc-link" href="#从正在运行的容器生成" data-level="1">从正在运行的容器生成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-pod-名称">
+          <a class="post-toc-link" href="#指定-pod-名称" data-level="1">指定 Pod 名称</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="生成选项">
+          <a class="post-toc-link" href="#生成选项" data-level="3">生成选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-service">
+          <a class="post-toc-link" href="#生成-service" data-level="1">生成 Service</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不生成卷">
+          <a class="post-toc-link" href="#不生成卷" data-level="1">不生成卷</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定命名空间">
+          <a class="post-toc-link" href="#指定命名空间" data-level="1">指定命名空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-init-容器">
+          <a class="post-toc-link" href="#使用-init-容器" data-level="1">使用 init 容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加注释">
+          <a class="post-toc-link" href="#添加注释" data-level="1">添加注释</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-json-格式">
+          <a class="post-toc-link" href="#生成-json-格式" data-level="1">生成 JSON 格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="systemd-子命令">
+          <a class="post-toc-link" href="#systemd-子命令" data-level="3">systemd 子命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-systemd-服务文件">
+          <a class="post-toc-link" href="#生成-systemd-服务文件" data-level="1">生成 systemd 服务文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成服务文件到目录">
+          <a class="post-toc-link" href="#生成服务文件到目录" data-level="1">生成服务文件到目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成带依赖的服务">
+          <a class="post-toc-link" href="#生成带依赖的服务" data-level="1">生成带依赖的服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新启动策略">
+          <a class="post-toc-link" href="#重新启动策略" data-level="1">重新启动策略</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不包含容器">
+          <a class="post-toc-link" href="#不包含容器" data-level="1">不包含容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定超时">
+          <a class="post-toc-link" href="#指定超时" data-level="1">指定超时</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="停止超时">
+          <a class="post-toc-link" href="#停止超时" data-level="1">停止超时</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
+          <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建测试容器">
+          <a class="post-toc-link" href="#创建测试容器" data-level="1">创建测试容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-kubernetes-yaml">
+          <a class="post-toc-link" href="#生成-kubernetes-yaml" data-level="1">生成 Kubernetes YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看生成的-yaml">
+          <a class="post-toc-link" href="#查看生成的-yaml" data-level="1">查看生成的 YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="生成的-yaml-结构">
+          <a class="post-toc-link" href="#生成的-yaml-结构" data-level="3">生成的 YAML 结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="pod-模式">
+          <a class="post-toc-link" href="#pod-模式" data-level="1">Pod 模式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="service-模式">
+          <a class="post-toc-link" href="#service-模式" data-level="1">Service 模式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="从-pod-生成">
+          <a class="post-toc-link" href="#从-pod-生成" data-level="3">从 Pod 生成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-pod">
+          <a class="post-toc-link" href="#创建-pod" data-level="1">创建 Pod</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在-pod-中运行容器">
+          <a class="post-toc-link" href="#在-pod-中运行容器" data-level="1">在 Pod 中运行容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-pod-yaml">
+          <a class="post-toc-link" href="#生成-pod-yaml" data-level="1">生成 Pod YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成带服务的-pod-yaml">
+          <a class="post-toc-link" href="#生成带服务的-pod-yaml" data-level="1">生成带服务的 Pod YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="systemd-集成">
+          <a class="post-toc-link" href="#systemd-集成" data-level="3">systemd 集成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务容器">
+          <a class="post-toc-link" href="#创建服务容器" data-level="1">创建服务容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-systemd-服务">
+          <a class="post-toc-link" href="#生成-systemd-服务" data-level="1">生成 systemd 服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出">
+          <a class="post-toc-link" href="#输出" data-level="1">输出：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="container-myapp-service">
+          <a class="post-toc-link" href="#container-myapp-service" data-level="1"># container-myapp.service</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="unit">
+          <a class="post-toc-link" href="#unit" data-level="1">[Unit]</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="description-podman-container-myapp-service">
+          <a class="post-toc-link" href="#description-podman-container-myapp-service" data-level="1">Description=Podman container-myapp.service</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
+          <a class="post-toc-link" href="#section" data-level="1">...</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成并保存">
+          <a class="post-toc-link" href="#生成并保存" data-level="1">生成并保存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用服务">
+          <a class="post-toc-link" href="#启用服务" data-level="1">启用服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
+          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
+          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="完整工作流">
+          <a class="post-toc-link" href="#完整工作流" data-level="3">完整工作流</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-在本地开发并测试">
+          <a class="post-toc-link" href="#1-在本地开发并测试" data-level="1">1. 在本地开发并测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-生成-kubernetes-yaml">
+          <a class="post-toc-link" href="#2-生成-kubernetes-yaml" data-level="1">2. 生成 Kubernetes YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-手动调整-yaml-如添加资源限制">
+          <a class="post-toc-link" href="#3-手动调整-yaml-如添加资源限制" data-level="1">3. 手动调整 YAML（如添加资源限制）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-部署到-kubernetes">
+          <a class="post-toc-link" href="#4-部署到-kubernetes" data-level="1">4. 部署到 Kubernetes</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-或者使用-podman-play">
+          <a class="post-toc-link" href="#5-或者使用-podman-play" data-level="1">5. 或者使用 podman play</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="多容器生成">
+          <a class="post-toc-link" href="#多容器生成" data-level="3">多容器生成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml">
+          <a class="post-toc-link" href="#docker-compose-yml" data-level="1">docker-compose.yml</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-podman-compose-生成">
+          <a class="post-toc-link" href="#使用-podman-compose-生成" data-level="1">使用 podman-compose 生成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="为每个服务生成-yaml">
+          <a class="post-toc-link" href="#为每个服务生成-yaml" data-level="1">为每个服务生成 YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或者使用-podman-kube-play">
+          <a class="post-toc-link" href="#或者使用-podman-kube-play" data-level="1">或者使用 podman kube play</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-kubectl">
+          <a class="post-toc-link" href="#生成-kubectl" data-level="1">生成 KubeCtl</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+          <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看帮助">
+          <a class="post-toc-link" href="#查看帮助" data-level="1">查看帮助</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有子命令">
+          <a class="post-toc-link" href="#列出所有子命令" data-level="1">列出所有子命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="生成的资源类型">
+          <a class="post-toc-link" href="#生成的资源类型" data-level="3">生成的资源类型</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="pod-默认">
+          <a class="post-toc-link" href="#pod-默认" data-level="1">Pod (默认)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="deployment-需要-service">
+          <a class="post-toc-link" href="#deployment-需要-service" data-level="1">Deployment (需要 --service)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="kubernetes-deployment-service">
+          <a class="post-toc-link" href="#kubernetes-deployment-service" data-level="1">Kubernetes Deployment + Service</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="init-container">
+          <a class="post-toc-link" href="#init-container" data-level="1">Init Container</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="configmap-如果有环境变量文件">
+          <a class="post-toc-link" href="#configmap-如果有环境变量文件" data-level="1">ConfigMap (如果有环境变量文件)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="rootless-容器生成的-yaml">
+          <a class="post-toc-link" href="#rootless-容器生成的-yaml" data-level="1">Rootless 容器生成的 YAML</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="需要确保-k8s-节点支持-rootless">
+          <a class="post-toc-link" href="#需要确保-k8s-节点支持-rootless" data-level="1">需要确保 K8s 节点支持 rootless</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卷处理">
+          <a class="post-toc-link" href="#卷处理" data-level="1">卷处理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="本地卷会转换为-persistentvolumeclaim">
+          <a class="post-toc-link" href="#本地卷会转换为-persistentvolumeclaim" data-level="1">本地卷会转换为 PersistentVolumeClaim</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="需要手动创建对应的-pvc">
+          <a class="post-toc-link" href="#需要手动创建对应的-pvc" data-level="1">需要手动创建对应的 PVC</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="网络">
+          <a class="post-toc-link" href="#网络" data-level="1">网络</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="默认使用-bridge-网络">
+          <a class="post-toc-link" href="#默认使用-bridge-网络" data-level="1">默认使用 bridge 网络</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在-k8s-中需要配置相应的网络策略">
+          <a class="post-toc-link" href="#在-k8s-中需要配置相应的网络策略" data-level="1">在 K8s 中需要配置相应的网络策略</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

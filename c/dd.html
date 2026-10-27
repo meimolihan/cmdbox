@@ -1575,9 +1575,280 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="dd-通用参数说明表">
+              <a class="post-toc-link" href="#dd-通用参数说明表" data-level="3">dd 通用参数说明表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四大常用操作">
+              <a class="post-toc-link" href="#四大常用操作" data-level="2">四大常用操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="场景1-制作-ubuntu-系统安装启动盘">
+              <a class="post-toc-link" href="#场景1-制作-ubuntu-系统安装启动盘" data-level="3">场景1：制作 Ubuntu 系统安装启动盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="执行命令">
+              <a class="post-toc-link" href="#执行命令" data-level="4">执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="关键说明">
+              <a class="post-toc-link" href="#关键说明" data-level="4">关键说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="前置要求">
+              <a class="post-toc-link" href="#前置要求" data-level="4">前置要求</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="场景2-全盘系统硬盘备份-硬盘-img镜像">
+              <a class="post-toc-link" href="#场景2-全盘系统硬盘备份-硬盘-img镜像" data-level="3">场景2：全盘系统硬盘备份（硬盘 → img镜像）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="执行命令">
+              <a class="post-toc-link" href="#执行命令" data-level="4">执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="硬性规则">
+              <a class="post-toc-link" href="#硬性规则" data-level="4">硬性规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="场景3-系统镜像还原-img镜像-整块硬盘">
+              <a class="post-toc-link" href="#场景3-系统镜像还原-img镜像-整块硬盘" data-level="3">场景3：系统镜像还原（img镜像 → 整块硬盘）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="执行命令">
+              <a class="post-toc-link" href="#执行命令" data-level="4">执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="重要提醒">
+              <a class="post-toc-link" href="#重要提醒" data-level="4">重要提醒</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="场景4-dd-安全擦除-清零整块硬盘">
+              <a class="post-toc-link" href="#场景4-dd-安全擦除-清零整块硬盘" data-level="3">场景4：dd 安全擦除/清零整块硬盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="方式1-快速清零-日常数据销毁">
+              <a class="post-toc-link" href="#方式1-快速清零-日常数据销毁" data-level="4">方式1：快速清零（日常数据销毁）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="整块硬盘-dev-sda-全部写入0-彻底清空所有分区与数据">
+              <a class="post-toc-link" href="#整块硬盘-dev-sda-全部写入0-彻底清空所有分区与数据" data-level="1">整块硬盘 /dev/sda 全部写入0，彻底清空所有分区与数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="方式2-高安全随机覆写-隐私-涉密硬盘">
+              <a class="post-toc-link" href="#方式2-高安全随机覆写-隐私-涉密硬盘" data-level="4">方式2：高安全随机覆写（隐私/涉密硬盘）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="用随机数覆写整块硬盘-防专业数据恢复">
+              <a class="post-toc-link" href="#用随机数覆写整块硬盘-防专业数据恢复" data-level="1">用随机数覆写整块硬盘，防专业数据恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="高危警告">
+              <a class="post-toc-link" href="#高危警告" data-level="4">⚠️ 高危警告</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四大场景总览对照表">
+              <a class="post-toc-link" href="#四大场景总览对照表" data-level="2">四大场景总览对照表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充-坏道硬盘容错通用模板">
+              <a class="post-toc-link" href="#补充-坏道硬盘容错通用模板" data-level="2">补充：坏道硬盘容错通用模板</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常用实例">
+              <a class="post-toc-link" href="#常用实例" data-level="2">常用实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基础示例">
+              <a class="post-toc-link" href="#基础示例" data-level="3">基础示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="块大小计量单位表">
+              <a class="post-toc-link" href="#块大小计量单位表" data-level="3">块大小计量单位表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="生成随机字符串">
+              <a class="post-toc-link" href="#生成随机字符串" data-level="3">生成随机字符串</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="测试磁盘写入速度">
+              <a class="post-toc-link" href="#测试磁盘写入速度" data-level="3">测试磁盘写入速度</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="测试磁盘读取速度">
+              <a class="post-toc-link" href="#测试磁盘读取速度" data-level="3">测试磁盘读取速度</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="dd-通用参数说明表">
+          <a class="post-toc-link" href="#dd-通用参数说明表" data-level="3">dd 通用参数说明表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四大常用操作">
+          <a class="post-toc-link" href="#四大常用操作" data-level="2">四大常用操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="场景1-制作-ubuntu-系统安装启动盘">
+          <a class="post-toc-link" href="#场景1-制作-ubuntu-系统安装启动盘" data-level="3">场景1：制作 Ubuntu 系统安装启动盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="执行命令">
+          <a class="post-toc-link" href="#执行命令" data-level="4">执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="关键说明">
+          <a class="post-toc-link" href="#关键说明" data-level="4">关键说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="前置要求">
+          <a class="post-toc-link" href="#前置要求" data-level="4">前置要求</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="场景2-全盘系统硬盘备份-硬盘-img镜像">
+          <a class="post-toc-link" href="#场景2-全盘系统硬盘备份-硬盘-img镜像" data-level="3">场景2：全盘系统硬盘备份（硬盘 → img镜像）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="执行命令">
+          <a class="post-toc-link" href="#执行命令" data-level="4">执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="硬性规则">
+          <a class="post-toc-link" href="#硬性规则" data-level="4">硬性规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="场景3-系统镜像还原-img镜像-整块硬盘">
+          <a class="post-toc-link" href="#场景3-系统镜像还原-img镜像-整块硬盘" data-level="3">场景3：系统镜像还原（img镜像 → 整块硬盘）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="执行命令">
+          <a class="post-toc-link" href="#执行命令" data-level="4">执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="重要提醒">
+          <a class="post-toc-link" href="#重要提醒" data-level="4">重要提醒</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="场景4-dd-安全擦除-清零整块硬盘">
+          <a class="post-toc-link" href="#场景4-dd-安全擦除-清零整块硬盘" data-level="3">场景4：dd 安全擦除/清零整块硬盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="方式1-快速清零-日常数据销毁">
+          <a class="post-toc-link" href="#方式1-快速清零-日常数据销毁" data-level="4">方式1：快速清零（日常数据销毁）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="整块硬盘-dev-sda-全部写入0-彻底清空所有分区与数据">
+          <a class="post-toc-link" href="#整块硬盘-dev-sda-全部写入0-彻底清空所有分区与数据" data-level="1">整块硬盘 /dev/sda 全部写入0，彻底清空所有分区与数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="方式2-高安全随机覆写-隐私-涉密硬盘">
+          <a class="post-toc-link" href="#方式2-高安全随机覆写-隐私-涉密硬盘" data-level="4">方式2：高安全随机覆写（隐私/涉密硬盘）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="用随机数覆写整块硬盘-防专业数据恢复">
+          <a class="post-toc-link" href="#用随机数覆写整块硬盘-防专业数据恢复" data-level="1">用随机数覆写整块硬盘，防专业数据恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="高危警告">
+          <a class="post-toc-link" href="#高危警告" data-level="4">⚠️ 高危警告</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四大场景总览对照表">
+          <a class="post-toc-link" href="#四大场景总览对照表" data-level="2">四大场景总览对照表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充-坏道硬盘容错通用模板">
+          <a class="post-toc-link" href="#补充-坏道硬盘容错通用模板" data-level="2">补充：坏道硬盘容错通用模板</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常用实例">
+          <a class="post-toc-link" href="#常用实例" data-level="2">常用实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基础示例">
+          <a class="post-toc-link" href="#基础示例" data-level="3">基础示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="块大小计量单位表">
+          <a class="post-toc-link" href="#块大小计量单位表" data-level="3">块大小计量单位表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="生成随机字符串">
+          <a class="post-toc-link" href="#生成随机字符串" data-level="3">生成随机字符串</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="测试磁盘写入速度">
+          <a class="post-toc-link" href="#测试磁盘写入速度" data-level="3">测试磁盘写入速度</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="测试磁盘读取速度">
+          <a class="post-toc-link" href="#测试磁盘读取速度" data-level="3">测试磁盘读取速度</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

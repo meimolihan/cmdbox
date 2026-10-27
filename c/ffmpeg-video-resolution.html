@@ -1574,9 +1574,328 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-cmd-版本-批量处理-自动分类存档">
+              <a class="post-toc-link" href="#一-cmd-版本-批量处理-自动分类存档" data-level="2">一、CMD 版本（批量处理 + 自动分类存档）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-等比例缩放-限定最大宽高-不拉伸-不放大原视频">
+              <a class="post-toc-link" href="#1-等比例缩放-限定最大宽高-不拉伸-不放大原视频" data-level="3">1. 等比例缩放（限定最大宽高，不拉伸、不放大原视频）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制拉伸为固定尺寸-1920x1080-无视比例">
+              <a class="post-toc-link" href="#2-强制拉伸为固定尺寸-1920x1080-无视比例" data-level="3">2. 强制拉伸为固定尺寸 1920x1080（无视比例）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-等比例缩放-居中黑边补边-1920x1080">
+              <a class="post-toc-link" href="#3-等比例缩放-居中黑边补边-1920x1080" data-level="3">3. 等比例缩放 + 居中黑边补边 1920x1080</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-仅固定宽度-高度自动等比例">
+              <a class="post-toc-link" href="#4-仅固定宽度-高度自动等比例" data-level="3">4. 仅固定宽度，高度自动等比例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-仅固定高度-宽度自动等比例">
+              <a class="post-toc-link" href="#5-仅固定高度-宽度自动等比例" data-level="3">5. 仅固定高度，宽度自动等比例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="6-降分辨率并转-h-265-压缩-体积减少-50">
+              <a class="post-toc-link" href="#6-降分辨率并转-h-265-压缩-体积减少-50" data-level="3">6. 降分辨率并转 H.265 压缩（体积减少 50%+）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-裁剪视频画面-裁掉边缘">
+              <a class="post-toc-link" href="#7-裁剪视频画面-裁掉边缘" data-level="3">7. 裁剪视频画面（裁掉边缘）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-按百分比缩放-整体缩小-50">
+              <a class="post-toc-link" href="#8-按百分比缩放-整体缩小-50" data-level="3">8. 按百分比缩放（整体缩小 50%）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-powershell-版本-批量处理-自动分类存档">
+              <a class="post-toc-link" href="#二-powershell-版本-批量处理-自动分类存档" data-level="2">二、PowerShell 版本（批量处理 + 自动分类存档）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-等比例缩放-限定最大宽高-不放大原视频">
+              <a class="post-toc-link" href="#1-等比例缩放-限定最大宽高-不放大原视频" data-level="3">1. 等比例缩放（限定最大宽高，不放大原视频）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制拉伸为固定尺寸-1920x1080">
+              <a class="post-toc-link" href="#2-强制拉伸为固定尺寸-1920x1080" data-level="3">2. 强制拉伸为固定尺寸 1920x1080</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-等比例缩放-居中补边-1920x1080">
+              <a class="post-toc-link" href="#3-等比例缩放-居中补边-1920x1080" data-level="3">3. 等比例缩放 + 居中补边 1920x1080</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-固定宽度-高度自适应">
+              <a class="post-toc-link" href="#4-固定宽度-高度自适应" data-level="3">4. 固定宽度、高度自适应</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-固定高度-宽度自适应">
+              <a class="post-toc-link" href="#5-固定高度-宽度自适应" data-level="3">5. 固定高度、宽度自适应</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="6-降分辨率-转-h-265-压缩">
+              <a class="post-toc-link" href="#6-降分辨率-转-h-265-压缩" data-level="3">6. 降分辨率 + 转 H.265 压缩</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-裁剪视频">
+              <a class="post-toc-link" href="#7-裁剪视频" data-level="3">7. 裁剪视频</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-按百分比缩放">
+              <a class="post-toc-link" href="#8-按百分比缩放" data-level="3">8. 按百分比缩放</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-linux-版本-批量处理-自动分类存档">
+              <a class="post-toc-link" href="#三-linux-版本-批量处理-自动分类存档" data-level="2">三、Linux 版本（批量处理 + 自动分类存档）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-等比例缩放-限定最大宽高-不拉伸-不放大原视频">
+              <a class="post-toc-link" href="#1-等比例缩放-限定最大宽高-不拉伸-不放大原视频" data-level="3">1. 等比例缩放（限定最大宽高，不拉伸、不放大原视频）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制拉伸为固定尺寸-1920x1080-无视比例">
+              <a class="post-toc-link" href="#2-强制拉伸为固定尺寸-1920x1080-无视比例" data-level="3">2. 强制拉伸为固定尺寸 1920x1080（无视比例）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-等比例缩放-居中黑边补边-1920x1080">
+              <a class="post-toc-link" href="#3-等比例缩放-居中黑边补边-1920x1080" data-level="3">3. 等比例缩放 + 居中黑边补边 1920x1080</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-仅固定宽度-高度自动等比例">
+              <a class="post-toc-link" href="#4-仅固定宽度-高度自动等比例" data-level="3">4. 仅固定宽度，高度自动等比例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-仅固定高度-宽度自动等比例">
+              <a class="post-toc-link" href="#5-仅固定高度-宽度自动等比例" data-level="3">5. 仅固定高度，宽度自动等比例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="6-降分辨率-转-h-265-压缩">
+              <a class="post-toc-link" href="#6-降分辨率-转-h-265-压缩" data-level="3">6. 降分辨率 + 转 H.265 压缩</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-裁剪视频画面">
+              <a class="post-toc-link" href="#7-裁剪视频画面" data-level="3">7. 裁剪视频画面</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-按百分比缩放-整体缩小-50">
+              <a class="post-toc-link" href="#8-按百分比缩放-整体缩小-50" data-level="3">8. 按百分比缩放（整体缩小 50%）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-扩展用法">
+              <a class="post-toc-link" href="#四-扩展用法" data-level="2">四、扩展用法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-修改补边底色-默认黑色-改为白色">
+              <a class="post-toc-link" href="#1-修改补边底色-默认黑色-改为白色" data-level="3">1. 修改补边底色（默认黑色，改为白色）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-自定义特定分辨率-竖屏-1080x1920">
+              <a class="post-toc-link" href="#2-自定义特定分辨率-竖屏-1080x1920" data-level="3">2. 自定义特定分辨率（竖屏 1080x1920）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-禁止覆盖输出文件夹内文件">
+              <a class="post-toc-link" href="#3-禁止覆盖输出文件夹内文件" data-level="3">3. 禁止覆盖输出文件夹内文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-参数速查-视频分辨率">
+              <a class="post-toc-link" href="#五-参数速查-视频分辨率" data-level="2">五、参数速查（视频分辨率）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-常见分辨率对照">
+              <a class="post-toc-link" href="#六-常见分辨率对照" data-level="2">六、常见分辨率对照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-功能说明">
+              <a class="post-toc-link" href="#七-功能说明" data-level="2">七、功能说明</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-cmd-版本-批量处理-自动分类存档">
+          <a class="post-toc-link" href="#一-cmd-版本-批量处理-自动分类存档" data-level="2">一、CMD 版本（批量处理 + 自动分类存档）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-等比例缩放-限定最大宽高-不拉伸-不放大原视频">
+          <a class="post-toc-link" href="#1-等比例缩放-限定最大宽高-不拉伸-不放大原视频" data-level="3">1. 等比例缩放（限定最大宽高，不拉伸、不放大原视频）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制拉伸为固定尺寸-1920x1080-无视比例">
+          <a class="post-toc-link" href="#2-强制拉伸为固定尺寸-1920x1080-无视比例" data-level="3">2. 强制拉伸为固定尺寸 1920x1080（无视比例）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-等比例缩放-居中黑边补边-1920x1080">
+          <a class="post-toc-link" href="#3-等比例缩放-居中黑边补边-1920x1080" data-level="3">3. 等比例缩放 + 居中黑边补边 1920x1080</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-仅固定宽度-高度自动等比例">
+          <a class="post-toc-link" href="#4-仅固定宽度-高度自动等比例" data-level="3">4. 仅固定宽度，高度自动等比例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-仅固定高度-宽度自动等比例">
+          <a class="post-toc-link" href="#5-仅固定高度-宽度自动等比例" data-level="3">5. 仅固定高度，宽度自动等比例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="6-降分辨率并转-h-265-压缩-体积减少-50">
+          <a class="post-toc-link" href="#6-降分辨率并转-h-265-压缩-体积减少-50" data-level="3">6. 降分辨率并转 H.265 压缩（体积减少 50%+）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-裁剪视频画面-裁掉边缘">
+          <a class="post-toc-link" href="#7-裁剪视频画面-裁掉边缘" data-level="3">7. 裁剪视频画面（裁掉边缘）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-按百分比缩放-整体缩小-50">
+          <a class="post-toc-link" href="#8-按百分比缩放-整体缩小-50" data-level="3">8. 按百分比缩放（整体缩小 50%）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-powershell-版本-批量处理-自动分类存档">
+          <a class="post-toc-link" href="#二-powershell-版本-批量处理-自动分类存档" data-level="2">二、PowerShell 版本（批量处理 + 自动分类存档）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-等比例缩放-限定最大宽高-不放大原视频">
+          <a class="post-toc-link" href="#1-等比例缩放-限定最大宽高-不放大原视频" data-level="3">1. 等比例缩放（限定最大宽高，不放大原视频）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制拉伸为固定尺寸-1920x1080">
+          <a class="post-toc-link" href="#2-强制拉伸为固定尺寸-1920x1080" data-level="3">2. 强制拉伸为固定尺寸 1920x1080</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-等比例缩放-居中补边-1920x1080">
+          <a class="post-toc-link" href="#3-等比例缩放-居中补边-1920x1080" data-level="3">3. 等比例缩放 + 居中补边 1920x1080</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-固定宽度-高度自适应">
+          <a class="post-toc-link" href="#4-固定宽度-高度自适应" data-level="3">4. 固定宽度、高度自适应</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-固定高度-宽度自适应">
+          <a class="post-toc-link" href="#5-固定高度-宽度自适应" data-level="3">5. 固定高度、宽度自适应</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="6-降分辨率-转-h-265-压缩">
+          <a class="post-toc-link" href="#6-降分辨率-转-h-265-压缩" data-level="3">6. 降分辨率 + 转 H.265 压缩</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-裁剪视频">
+          <a class="post-toc-link" href="#7-裁剪视频" data-level="3">7. 裁剪视频</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-按百分比缩放">
+          <a class="post-toc-link" href="#8-按百分比缩放" data-level="3">8. 按百分比缩放</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-linux-版本-批量处理-自动分类存档">
+          <a class="post-toc-link" href="#三-linux-版本-批量处理-自动分类存档" data-level="2">三、Linux 版本（批量处理 + 自动分类存档）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-等比例缩放-限定最大宽高-不拉伸-不放大原视频">
+          <a class="post-toc-link" href="#1-等比例缩放-限定最大宽高-不拉伸-不放大原视频" data-level="3">1. 等比例缩放（限定最大宽高，不拉伸、不放大原视频）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-强制拉伸为固定尺寸-1920x1080-无视比例">
+          <a class="post-toc-link" href="#2-强制拉伸为固定尺寸-1920x1080-无视比例" data-level="3">2. 强制拉伸为固定尺寸 1920x1080（无视比例）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-等比例缩放-居中黑边补边-1920x1080">
+          <a class="post-toc-link" href="#3-等比例缩放-居中黑边补边-1920x1080" data-level="3">3. 等比例缩放 + 居中黑边补边 1920x1080</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-仅固定宽度-高度自动等比例">
+          <a class="post-toc-link" href="#4-仅固定宽度-高度自动等比例" data-level="3">4. 仅固定宽度，高度自动等比例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-仅固定高度-宽度自动等比例">
+          <a class="post-toc-link" href="#5-仅固定高度-宽度自动等比例" data-level="3">5. 仅固定高度，宽度自动等比例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="6-降分辨率-转-h-265-压缩">
+          <a class="post-toc-link" href="#6-降分辨率-转-h-265-压缩" data-level="3">6. 降分辨率 + 转 H.265 压缩</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-裁剪视频画面">
+          <a class="post-toc-link" href="#7-裁剪视频画面" data-level="3">7. 裁剪视频画面</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-按百分比缩放-整体缩小-50">
+          <a class="post-toc-link" href="#8-按百分比缩放-整体缩小-50" data-level="3">8. 按百分比缩放（整体缩小 50%）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-扩展用法">
+          <a class="post-toc-link" href="#四-扩展用法" data-level="2">四、扩展用法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-修改补边底色-默认黑色-改为白色">
+          <a class="post-toc-link" href="#1-修改补边底色-默认黑色-改为白色" data-level="3">1. 修改补边底色（默认黑色，改为白色）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-自定义特定分辨率-竖屏-1080x1920">
+          <a class="post-toc-link" href="#2-自定义特定分辨率-竖屏-1080x1920" data-level="3">2. 自定义特定分辨率（竖屏 1080x1920）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-禁止覆盖输出文件夹内文件">
+          <a class="post-toc-link" href="#3-禁止覆盖输出文件夹内文件" data-level="3">3. 禁止覆盖输出文件夹内文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-参数速查-视频分辨率">
+          <a class="post-toc-link" href="#五-参数速查-视频分辨率" data-level="2">五、参数速查（视频分辨率）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-常见分辨率对照">
+          <a class="post-toc-link" href="#六-常见分辨率对照" data-level="2">六、常见分辨率对照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-功能说明">
+          <a class="post-toc-link" href="#七-功能说明" data-level="2">七、功能说明</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

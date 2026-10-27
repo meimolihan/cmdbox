@@ -2175,9 +2175,704 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基本配置">
+              <a class="post-toc-link" href="#基本配置" data-level="3">基本配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="caddyfile-基础语法">
+              <a class="post-toc-link" href="#caddyfile-基础语法" data-level="1">Caddyfile 基础语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="简单配置">
+              <a class="post-toc-link" href="#简单配置" data-level="1">简单配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静态网站">
+              <a class="post-toc-link" href="#静态网站" data-level="1">静态网站</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="反向代理">
+              <a class="post-toc-link" href="#反向代理" data-level="1">反向代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="caddyfile-配置">
+              <a class="post-toc-link" href="#caddyfile-配置" data-level="3">Caddyfile 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="全局配置块">
+              <a class="post-toc-link" href="#全局配置块" data-level="1">全局配置块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基础配置">
+              <a class="post-toc-link" href="#基础配置" data-level="1">基础配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="多个站点">
+              <a class="post-toc-link" href="#多个站点" data-level="1">多个站点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="自动-https">
+              <a class="post-toc-link" href="#自动-https" data-level="3">自动 HTTPS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="自动-https-默认">
+              <a class="post-toc-link" href="#自动-https-默认" data-level="1">自动 HTTPS（默认）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="自动申请-tls-证书-自动重定向-http-到-https">
+              <a class="post-toc-link" href="#自动申请-tls-证书-自动重定向-http-到-https" data-level="1">自动申请 TLS 证书，自动重定向 HTTP 到 HTTPS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="跳过证书申请">
+              <a class="post-toc-link" href="#跳过证书申请" data-level="1">跳过证书申请</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="手动指定证书">
+              <a class="post-toc-link" href="#手动指定证书" data-level="1">手动指定证书</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="let-s-encrypt-证书">
+              <a class="post-toc-link" href="#let-s-encrypt-证书" data-level="1">Let&#39;s Encrypt 证书</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="自签名证书">
+              <a class="post-toc-link" href="#自签名证书" data-level="1">自签名证书</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="let-s-encrypt-staging">
+              <a class="post-toc-link" href="#let-s-encrypt-staging" data-level="1">Let&#39;s Encrypt staging</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="反向代理">
+              <a class="post-toc-link" href="#反向代理" data-level="3">反向代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基础代理">
+              <a class="post-toc-link" href="#基础代理" data-level="1">基础代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="多后端负载均衡">
+              <a class="post-toc-link" href="#多后端负载均衡" data-level="1">多后端负载均衡</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定后端">
+              <a class="post-toc-link" href="#指定后端" data-level="1">指定后端</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="路径路由">
+              <a class="post-toc-link" href="#路径路由" data-level="1">路径路由</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="websocket-支持">
+              <a class="post-toc-link" href="#websocket-支持" data-level="1">WebSocket 支持</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="负载均衡策略">
+              <a class="post-toc-link" href="#负载均衡策略" data-level="1">负载均衡策略</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="健康检查">
+              <a class="post-toc-link" href="#健康检查" data-level="1">健康检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="重写规则">
+              <a class="post-toc-link" href="#重写规则" data-level="3">重写规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基础重写">
+              <a class="post-toc-link" href="#基础重写" data-level="1">基础重写</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="条件重写">
+              <a class="post-toc-link" href="#条件重写" data-level="1">条件重写</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="正则重写">
+              <a class="post-toc-link" href="#正则重写" data-level="1">正则重写</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="路径重写">
+              <a class="post-toc-link" href="#路径重写" data-level="1">路径重写</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="路由规则">
+              <a class="post-toc-link" href="#路由规则" data-level="3">路由规则</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="handle-块">
+              <a class="post-toc-link" href="#handle-块" data-level="1">handle 块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="match-块">
+              <a class="post-toc-link" href="#match-块" data-level="1">match 块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="try_files">
+              <a class="post-toc-link" href="#try_files" data-level="1">try_files</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="php-fastcgi">
+              <a class="post-toc-link" href="#php-fastcgi" data-level="3">PHP FastCGI</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="php-fpm-配置">
+              <a class="post-toc-link" href="#php-fpm-配置" data-level="1">PHP-FPM 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="多-php-版本">
+              <a class="post-toc-link" href="#多-php-版本" data-level="1">多 PHP 版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="unix-socket-php-fpm">
+              <a class="post-toc-link" href="#unix-socket-php-fpm" data-level="1">Unix Socket PHP-FPM</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="访问控制">
+              <a class="post-toc-link" href="#访问控制" data-level="3">访问控制</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ip-白名单">
+              <a class="post-toc-link" href="#ip-白名单" data-level="1">IP 白名单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ip-黑名单">
+              <a class="post-toc-link" href="#ip-黑名单" data-level="1">IP 黑名单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="http-basic-auth">
+              <a class="post-toc-link" href="#http-basic-auth" data-level="1">HTTP Basic Auth</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="日志配置">
+              <a class="post-toc-link" href="#日志配置" data-level="3">日志配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="访问日志">
+              <a class="post-toc-link" href="#访问日志" data-level="1">访问日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="差异化日志">
+              <a class="post-toc-link" href="#差异化日志" data-level="1">差异化日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="全局日志">
+              <a class="post-toc-link" href="#全局日志" data-level="1">全局日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="压缩">
+              <a class="post-toc-link" href="#压缩" data-level="3">压缩</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="自动压缩">
+              <a class="post-toc-link" href="#自动压缩" data-level="1">自动压缩</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定压缩类型">
+              <a class="post-toc-link" href="#指定压缩类型" data-level="1">指定压缩类型</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="brotli-支持-需要编译">
+              <a class="post-toc-link" href="#brotli-支持-需要编译" data-level="1">Brotli 支持（需要编译）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="websocket">
+              <a class="post-toc-link" href="#websocket" data-level="3">WebSocket</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="websocket-代理">
+              <a class="post-toc-link" href="#websocket-代理" data-level="1">WebSocket 代理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="运行命令">
+              <a class="post-toc-link" href="#运行命令" data-level="3">运行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-caddy">
+              <a class="post-toc-link" href="#启动-caddy" data-level="1">启动 Caddy</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用配置文件">
+              <a class="post-toc-link" href="#使用配置文件" data-level="1">使用配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="停止-caddy">
+              <a class="post-toc-link" href="#停止-caddy" data-level="1">停止 Caddy</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置">
+              <a class="post-toc-link" href="#重载配置" data-level="1">重载配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证配置">
+              <a class="post-toc-link" href="#验证配置" data-level="1">验证配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="适配配置-转换为-json">
+              <a class="post-toc-link" href="#适配配置-转换为-json" data-level="1">适配配置（转换为 JSON）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
+              <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="适配器">
+              <a class="post-toc-link" href="#适配器" data-level="3">适配器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-caddyfile">
+              <a class="post-toc-link" href="#使用-caddyfile" data-level="1">使用 Caddyfile</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-json-配置">
+              <a class="post-toc-link" href="#使用-json-配置" data-level="1">使用 JSON 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从-stdin-读取">
+              <a class="post-toc-link" href="#从-stdin-读取" data-level="1">从 stdin 读取</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导出-json">
+              <a class="post-toc-link" href="#导出-json" data-level="1">导出 JSON</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="环境变量">
+              <a class="post-toc-link" href="#环境变量" data-level="3">环境变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置配置目录">
+              <a class="post-toc-link" href="#设置配置目录" data-level="1">设置配置目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置数据目录">
+              <a class="post-toc-link" href="#设置数据目录" data-level="1">设置数据目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置日志目录">
+              <a class="post-toc-link" href="#设置日志目录" data-level="1">设置日志目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="tls-配置">
+              <a class="post-toc-link" href="#tls-配置" data-level="1">TLS 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="docker-部署">
+              <a class="post-toc-link" href="#docker-部署" data-level="3">Docker 部署</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行-caddy">
+              <a class="post-toc-link" href="#运行-caddy" data-level="1">运行 Caddy</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose">
+              <a class="post-toc-link" href="#docker-compose" data-level="1">Docker Compose</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="模块">
+              <a class="post-toc-link" href="#模块" data-level="3">模块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用插件">
+              <a class="post-toc-link" href="#使用插件" data-level="1">使用插件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用配置示例">
+              <a class="post-toc-link" href="#常用配置示例" data-level="3">常用配置示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="wordpress">
+              <a class="post-toc-link" href="#wordpress" data-level="1">WordPress</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-应用">
+              <a class="post-toc-link" href="#node-js-应用" data-level="1">Node.js 应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静态博客">
+              <a class="post-toc-link" href="#静态博客" data-level="1">静态博客</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静态-api">
+              <a class="post-toc-link" href="#静态-api" data-level="1">静态 + API</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基本配置">
+          <a class="post-toc-link" href="#基本配置" data-level="3">基本配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="caddyfile-基础语法">
+          <a class="post-toc-link" href="#caddyfile-基础语法" data-level="1">Caddyfile 基础语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="简单配置">
+          <a class="post-toc-link" href="#简单配置" data-level="1">简单配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静态网站">
+          <a class="post-toc-link" href="#静态网站" data-level="1">静态网站</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="反向代理">
+          <a class="post-toc-link" href="#反向代理" data-level="1">反向代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="caddyfile-配置">
+          <a class="post-toc-link" href="#caddyfile-配置" data-level="3">Caddyfile 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="全局配置块">
+          <a class="post-toc-link" href="#全局配置块" data-level="1">全局配置块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基础配置">
+          <a class="post-toc-link" href="#基础配置" data-level="1">基础配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="多个站点">
+          <a class="post-toc-link" href="#多个站点" data-level="1">多个站点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="自动-https">
+          <a class="post-toc-link" href="#自动-https" data-level="3">自动 HTTPS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="自动-https-默认">
+          <a class="post-toc-link" href="#自动-https-默认" data-level="1">自动 HTTPS（默认）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="自动申请-tls-证书-自动重定向-http-到-https">
+          <a class="post-toc-link" href="#自动申请-tls-证书-自动重定向-http-到-https" data-level="1">自动申请 TLS 证书，自动重定向 HTTP 到 HTTPS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="跳过证书申请">
+          <a class="post-toc-link" href="#跳过证书申请" data-level="1">跳过证书申请</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="手动指定证书">
+          <a class="post-toc-link" href="#手动指定证书" data-level="1">手动指定证书</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="let-s-encrypt-证书">
+          <a class="post-toc-link" href="#let-s-encrypt-证书" data-level="1">Let&#39;s Encrypt 证书</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="自签名证书">
+          <a class="post-toc-link" href="#自签名证书" data-level="1">自签名证书</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="let-s-encrypt-staging">
+          <a class="post-toc-link" href="#let-s-encrypt-staging" data-level="1">Let&#39;s Encrypt staging</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="反向代理">
+          <a class="post-toc-link" href="#反向代理" data-level="3">反向代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基础代理">
+          <a class="post-toc-link" href="#基础代理" data-level="1">基础代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="多后端负载均衡">
+          <a class="post-toc-link" href="#多后端负载均衡" data-level="1">多后端负载均衡</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定后端">
+          <a class="post-toc-link" href="#指定后端" data-level="1">指定后端</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="路径路由">
+          <a class="post-toc-link" href="#路径路由" data-level="1">路径路由</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="websocket-支持">
+          <a class="post-toc-link" href="#websocket-支持" data-level="1">WebSocket 支持</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="负载均衡策略">
+          <a class="post-toc-link" href="#负载均衡策略" data-level="1">负载均衡策略</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="健康检查">
+          <a class="post-toc-link" href="#健康检查" data-level="1">健康检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="重写规则">
+          <a class="post-toc-link" href="#重写规则" data-level="3">重写规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基础重写">
+          <a class="post-toc-link" href="#基础重写" data-level="1">基础重写</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="条件重写">
+          <a class="post-toc-link" href="#条件重写" data-level="1">条件重写</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="正则重写">
+          <a class="post-toc-link" href="#正则重写" data-level="1">正则重写</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="路径重写">
+          <a class="post-toc-link" href="#路径重写" data-level="1">路径重写</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="路由规则">
+          <a class="post-toc-link" href="#路由规则" data-level="3">路由规则</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="handle-块">
+          <a class="post-toc-link" href="#handle-块" data-level="1">handle 块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="match-块">
+          <a class="post-toc-link" href="#match-块" data-level="1">match 块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="try_files">
+          <a class="post-toc-link" href="#try_files" data-level="1">try_files</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="php-fastcgi">
+          <a class="post-toc-link" href="#php-fastcgi" data-level="3">PHP FastCGI</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="php-fpm-配置">
+          <a class="post-toc-link" href="#php-fpm-配置" data-level="1">PHP-FPM 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="多-php-版本">
+          <a class="post-toc-link" href="#多-php-版本" data-level="1">多 PHP 版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="unix-socket-php-fpm">
+          <a class="post-toc-link" href="#unix-socket-php-fpm" data-level="1">Unix Socket PHP-FPM</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="访问控制">
+          <a class="post-toc-link" href="#访问控制" data-level="3">访问控制</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ip-白名单">
+          <a class="post-toc-link" href="#ip-白名单" data-level="1">IP 白名单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ip-黑名单">
+          <a class="post-toc-link" href="#ip-黑名单" data-level="1">IP 黑名单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="http-basic-auth">
+          <a class="post-toc-link" href="#http-basic-auth" data-level="1">HTTP Basic Auth</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="日志配置">
+          <a class="post-toc-link" href="#日志配置" data-level="3">日志配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="访问日志">
+          <a class="post-toc-link" href="#访问日志" data-level="1">访问日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="差异化日志">
+          <a class="post-toc-link" href="#差异化日志" data-level="1">差异化日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="全局日志">
+          <a class="post-toc-link" href="#全局日志" data-level="1">全局日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="压缩">
+          <a class="post-toc-link" href="#压缩" data-level="3">压缩</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="自动压缩">
+          <a class="post-toc-link" href="#自动压缩" data-level="1">自动压缩</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定压缩类型">
+          <a class="post-toc-link" href="#指定压缩类型" data-level="1">指定压缩类型</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="brotli-支持-需要编译">
+          <a class="post-toc-link" href="#brotli-支持-需要编译" data-level="1">Brotli 支持（需要编译）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="websocket">
+          <a class="post-toc-link" href="#websocket" data-level="3">WebSocket</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="websocket-代理">
+          <a class="post-toc-link" href="#websocket-代理" data-level="1">WebSocket 代理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="运行命令">
+          <a class="post-toc-link" href="#运行命令" data-level="3">运行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-caddy">
+          <a class="post-toc-link" href="#启动-caddy" data-level="1">启动 Caddy</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用配置文件">
+          <a class="post-toc-link" href="#使用配置文件" data-level="1">使用配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="停止-caddy">
+          <a class="post-toc-link" href="#停止-caddy" data-level="1">停止 Caddy</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置">
+          <a class="post-toc-link" href="#重载配置" data-level="1">重载配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证配置">
+          <a class="post-toc-link" href="#验证配置" data-level="1">验证配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="适配配置-转换为-json">
+          <a class="post-toc-link" href="#适配配置-转换为-json" data-level="1">适配配置（转换为 JSON）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
+          <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="适配器">
+          <a class="post-toc-link" href="#适配器" data-level="3">适配器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-caddyfile">
+          <a class="post-toc-link" href="#使用-caddyfile" data-level="1">使用 Caddyfile</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-json-配置">
+          <a class="post-toc-link" href="#使用-json-配置" data-level="1">使用 JSON 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从-stdin-读取">
+          <a class="post-toc-link" href="#从-stdin-读取" data-level="1">从 stdin 读取</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导出-json">
+          <a class="post-toc-link" href="#导出-json" data-level="1">导出 JSON</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="环境变量">
+          <a class="post-toc-link" href="#环境变量" data-level="3">环境变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置配置目录">
+          <a class="post-toc-link" href="#设置配置目录" data-level="1">设置配置目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置数据目录">
+          <a class="post-toc-link" href="#设置数据目录" data-level="1">设置数据目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置日志目录">
+          <a class="post-toc-link" href="#设置日志目录" data-level="1">设置日志目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="tls-配置">
+          <a class="post-toc-link" href="#tls-配置" data-level="1">TLS 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="docker-部署">
+          <a class="post-toc-link" href="#docker-部署" data-level="3">Docker 部署</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行-caddy">
+          <a class="post-toc-link" href="#运行-caddy" data-level="1">运行 Caddy</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose">
+          <a class="post-toc-link" href="#docker-compose" data-level="1">Docker Compose</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="模块">
+          <a class="post-toc-link" href="#模块" data-level="3">模块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用插件">
+          <a class="post-toc-link" href="#使用插件" data-level="1">使用插件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用配置示例">
+          <a class="post-toc-link" href="#常用配置示例" data-level="3">常用配置示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="wordpress">
+          <a class="post-toc-link" href="#wordpress" data-level="1">WordPress</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-应用">
+          <a class="post-toc-link" href="#node-js-应用" data-level="1">Node.js 应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静态博客">
+          <a class="post-toc-link" href="#静态博客" data-level="1">静态博客</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静态-api">
+          <a class="post-toc-link" href="#静态-api" data-level="1">静态 + API</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

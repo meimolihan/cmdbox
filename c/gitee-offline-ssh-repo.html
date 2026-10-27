@@ -1552,9 +1552,280 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="前言">
+              <a class="post-toc-link" href="#前言" data-level="2">前言</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-环境前置操作">
+              <a class="post-toc-link" href="#一-环境前置操作" data-level="2">一、环境前置操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-校验gitee-ssh连通状态">
+              <a class="post-toc-link" href="#1-校验gitee-ssh连通状态" data-level="3">1. 校验Gitee SSH连通状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-前期准备-账号信息">
+              <a class="post-toc-link" href="#二-前期准备-账号信息" data-level="2">二、前期准备：账号信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-curl-api创建远程仓库-重要修正-gitee新版api废弃private字段-使用visibility控制公私">
+              <a class="post-toc-link" href="#三-curl-api创建远程仓库-重要修正-gitee新版api废弃private字段-使用visibility控制公私" data-level="2">三、Curl API创建远程仓库【重要修正：Gitee新版API废弃private字段，使用visibility控制公私】</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-1-创建-公开仓库-cmdbox">
+              <a class="post-toc-link" href="#3-1-创建-公开仓库-cmdbox" data-level="3">3.1 创建【公开仓库】cmdbox</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-2-创建-私有仓库-cmdbox">
+              <a class="post-toc-link" href="#3-2-创建-私有仓库-cmdbox" data-level="3">3.2 创建【私有仓库】cmdbox</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-3-示例-创建公开仓库-cmdbox-main">
+              <a class="post-toc-link" href="#3-3-示例-创建公开仓库-cmdbox-main" data-level="3">3.3 示例：创建公开仓库 cmdbox-main</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-执行结果判断">
+              <a class="post-toc-link" href="#四-执行结果判断" data-level="2">四、执行结果判断</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-已存在私有仓库一键转为公开-实操修正项">
+              <a class="post-toc-link" href="#五-已存在私有仓库一键转为公开-实操修正项" data-level="2">五、已存在私有仓库一键转为公开（实操修正项）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="meimolihan-cmdbox-私有转公开">
+              <a class="post-toc-link" href="#meimolihan-cmdbox-私有转公开" data-level="1">meimolihan/cmdbox 私有转公开</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-ssh克隆仓库到本地">
+              <a class="post-toc-link" href="#六-ssh克隆仓库到本地" data-level="2">六、SSH克隆仓库到本地</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="克隆cmdbox仓库">
+              <a class="post-toc-link" href="#克隆cmdbox仓库" data-level="1">克隆cmdbox仓库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="进入项目目录">
+              <a class="post-toc-link" href="#进入项目目录" data-level="1">进入项目目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-本地代码提交推送测试">
+              <a class="post-toc-link" href="#七-本地代码提交推送测试" data-level="2">七、本地代码提交推送测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="新建测试文件">
+              <a class="post-toc-link" href="#新建测试文件" data-level="1">新建测试文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="加入暂存区">
+              <a class="post-toc-link" href="#加入暂存区" data-level="1">加入暂存区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交本地记录">
+              <a class="post-toc-link" href="#提交本地记录" data-level="1">提交本地记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="推送至远程master分支-gitee默认master-github默认main">
+              <a class="post-toc-link" href="#推送至远程master分支-gitee默认master-github默认main" data-level="1">推送至远程master分支（Gitee默认master，GitHub默认main）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八-仓库重命名操作-云端改名-本地配置同步">
+              <a class="post-toc-link" href="#八-仓库重命名操作-云端改名-本地配置同步" data-level="2">八、仓库重命名操作（云端改名+本地配置同步）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-1-api修改云端仓库名称-例-cmdbox-cmdbox">
+              <a class="post-toc-link" href="#8-1-api修改云端仓库名称-例-cmdbox-cmdbox" data-level="3">8.1 API修改云端仓库名称（例：CmdBox → cmdbox）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-2-修改本地git远程地址">
+              <a class="post-toc-link" href="#8-2-修改本地git远程地址" data-level="3">8.2 修改本地git远程地址</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="校验远程配置">
+              <a class="post-toc-link" href="#校验远程配置" data-level="1">校验远程配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-3-可选-本地文件夹同步重命名">
+              <a class="post-toc-link" href="#8-3-可选-本地文件夹同步重命名" data-level="3">8.3 （可选）本地文件夹同步重命名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="8-4-查看当前仓库名称">
+              <a class="post-toc-link" href="#8-4-查看当前仓库名称" data-level="3">8.4 查看当前仓库名称</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-本地查看已绑定远程仓库名">
+              <a class="post-toc-link" href="#1-本地查看已绑定远程仓库名" data-level="1">1.本地查看已绑定远程仓库名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-api查询云端真实仓库名称">
+              <a class="post-toc-link" href="#2-api查询云端真实仓库名称" data-level="1">2.API查询云端真实仓库名称</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="九-通用新建仓库模板">
+              <a class="post-toc-link" href="#九-通用新建仓库模板" data-level="2">九、通用新建仓库模板</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十-总结">
+              <a class="post-toc-link" href="#十-总结" data-level="2">十、总结</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="前言">
+          <a class="post-toc-link" href="#前言" data-level="2">前言</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-环境前置操作">
+          <a class="post-toc-link" href="#一-环境前置操作" data-level="2">一、环境前置操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-校验gitee-ssh连通状态">
+          <a class="post-toc-link" href="#1-校验gitee-ssh连通状态" data-level="3">1. 校验Gitee SSH连通状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-前期准备-账号信息">
+          <a class="post-toc-link" href="#二-前期准备-账号信息" data-level="2">二、前期准备：账号信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-curl-api创建远程仓库-重要修正-gitee新版api废弃private字段-使用visibility控制公私">
+          <a class="post-toc-link" href="#三-curl-api创建远程仓库-重要修正-gitee新版api废弃private字段-使用visibility控制公私" data-level="2">三、Curl API创建远程仓库【重要修正：Gitee新版API废弃private字段，使用visibility控制公私】</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-1-创建-公开仓库-cmdbox">
+          <a class="post-toc-link" href="#3-1-创建-公开仓库-cmdbox" data-level="3">3.1 创建【公开仓库】cmdbox</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-2-创建-私有仓库-cmdbox">
+          <a class="post-toc-link" href="#3-2-创建-私有仓库-cmdbox" data-level="3">3.2 创建【私有仓库】cmdbox</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-3-示例-创建公开仓库-cmdbox-main">
+          <a class="post-toc-link" href="#3-3-示例-创建公开仓库-cmdbox-main" data-level="3">3.3 示例：创建公开仓库 cmdbox-main</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-执行结果判断">
+          <a class="post-toc-link" href="#四-执行结果判断" data-level="2">四、执行结果判断</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-已存在私有仓库一键转为公开-实操修正项">
+          <a class="post-toc-link" href="#五-已存在私有仓库一键转为公开-实操修正项" data-level="2">五、已存在私有仓库一键转为公开（实操修正项）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="meimolihan-cmdbox-私有转公开">
+          <a class="post-toc-link" href="#meimolihan-cmdbox-私有转公开" data-level="1">meimolihan/cmdbox 私有转公开</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-ssh克隆仓库到本地">
+          <a class="post-toc-link" href="#六-ssh克隆仓库到本地" data-level="2">六、SSH克隆仓库到本地</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="克隆cmdbox仓库">
+          <a class="post-toc-link" href="#克隆cmdbox仓库" data-level="1">克隆cmdbox仓库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="进入项目目录">
+          <a class="post-toc-link" href="#进入项目目录" data-level="1">进入项目目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-本地代码提交推送测试">
+          <a class="post-toc-link" href="#七-本地代码提交推送测试" data-level="2">七、本地代码提交推送测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="新建测试文件">
+          <a class="post-toc-link" href="#新建测试文件" data-level="1">新建测试文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="加入暂存区">
+          <a class="post-toc-link" href="#加入暂存区" data-level="1">加入暂存区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交本地记录">
+          <a class="post-toc-link" href="#提交本地记录" data-level="1">提交本地记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="推送至远程master分支-gitee默认master-github默认main">
+          <a class="post-toc-link" href="#推送至远程master分支-gitee默认master-github默认main" data-level="1">推送至远程master分支（Gitee默认master，GitHub默认main）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八-仓库重命名操作-云端改名-本地配置同步">
+          <a class="post-toc-link" href="#八-仓库重命名操作-云端改名-本地配置同步" data-level="2">八、仓库重命名操作（云端改名+本地配置同步）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-1-api修改云端仓库名称-例-cmdbox-cmdbox">
+          <a class="post-toc-link" href="#8-1-api修改云端仓库名称-例-cmdbox-cmdbox" data-level="3">8.1 API修改云端仓库名称（例：CmdBox → cmdbox）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-2-修改本地git远程地址">
+          <a class="post-toc-link" href="#8-2-修改本地git远程地址" data-level="3">8.2 修改本地git远程地址</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="校验远程配置">
+          <a class="post-toc-link" href="#校验远程配置" data-level="1">校验远程配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-3-可选-本地文件夹同步重命名">
+          <a class="post-toc-link" href="#8-3-可选-本地文件夹同步重命名" data-level="3">8.3 （可选）本地文件夹同步重命名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="8-4-查看当前仓库名称">
+          <a class="post-toc-link" href="#8-4-查看当前仓库名称" data-level="3">8.4 查看当前仓库名称</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-本地查看已绑定远程仓库名">
+          <a class="post-toc-link" href="#1-本地查看已绑定远程仓库名" data-level="1">1.本地查看已绑定远程仓库名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-api查询云端真实仓库名称">
+          <a class="post-toc-link" href="#2-api查询云端真实仓库名称" data-level="1">2.API查询云端真实仓库名称</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="九-通用新建仓库模板">
+          <a class="post-toc-link" href="#九-通用新建仓库模板" data-level="2">九、通用新建仓库模板</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十-总结">
+          <a class="post-toc-link" href="#十-总结" data-level="2">十、总结</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

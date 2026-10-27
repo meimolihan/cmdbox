@@ -1564,9 +1564,320 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="软链接基本概念">
+              <a class="post-toc-link" href="#软链接基本概念" data-level="3">软链接基本概念</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="创建软链接">
+              <a class="post-toc-link" href="#创建软链接" data-level="3">创建软链接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="1">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="示例-将脚本注册为系统命令-m">
+              <a class="post-toc-link" href="#示例-将脚本注册为系统命令-m" data-level="1">示例：将脚本注册为系统命令 m</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="软链接管理">
+              <a class="post-toc-link" href="#软链接管理" data-level="3">软链接管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看链接信息">
+              <a class="post-toc-link" href="#查看链接信息" data-level="1">查看链接信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-lrwxrwxrwx-1-root-root-23-usr-local-bin-m-etc-profile-d-mylook-sh">
+              <a class="post-toc-link" href="#输出-lrwxrwxrwx-1-root-root-23-usr-local-bin-m-etc-profile-d-mylook-sh" data-level="1">输出: lrwxrwxrwx 1 root root 23 ... /usr/local/bin/m -&gt; /etc/profile.d/mylook.sh</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解析链接真实路径">
+              <a class="post-toc-link" href="#解析链接真实路径" data-level="1">解析链接真实路径</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除链接-不影响源文件">
+              <a class="post-toc-link" href="#删除链接-不影响源文件" data-level="1">删除链接（不影响源文件）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="创建别名">
+              <a class="post-toc-link" href="#创建别名" data-level="3">创建别名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="临时别名-退出终端失效">
+              <a class="post-toc-link" href="#临时别名-退出终端失效" data-level="1">临时别名（退出终端失效）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="永久别名-写入配置文件">
+              <a class="post-toc-link" href="#永久别名-写入配置文件" data-level="1">永久别名（写入配置文件）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已有别名">
+              <a class="post-toc-link" href="#查看已有别名" data-level="1">查看已有别名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除别名">
+              <a class="post-toc-link" href="#删除别名" data-level="1">删除别名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
+              <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="软链接方式">
+              <a class="post-toc-link" href="#软链接方式" data-level="1">软链接方式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="别名方式">
+              <a class="post-toc-link" href="#别名方式" data-level="1">别名方式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="python-快捷方式">
+              <a class="post-toc-link" href="#python-快捷方式" data-level="1">Python 快捷方式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="git-常用操作">
+              <a class="post-toc-link" href="#git-常用操作" data-level="1">Git 常用操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="path-环境变量">
+              <a class="post-toc-link" href="#path-环境变量" data-level="3">PATH 环境变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前-path">
+              <a class="post-toc-link" href="#查看当前-path" data-level="1">查看当前 PATH</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加个人-bin-目录">
+              <a class="post-toc-link" href="#添加个人-bin-目录" data-level="1">添加个人 bin 目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="目录优先级说明">
+              <a class="post-toc-link" href="#目录优先级说明" data-level="1">目录优先级说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
+              <a class="post-toc-link" href="#故障排除" data-level="3">故障排除</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查链接是否有效">
+              <a class="post-toc-link" href="#检查链接是否有效" data-level="1">检查链接是否有效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="调试执行">
+              <a class="post-toc-link" href="#调试执行" data-level="1">调试执行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找所有损坏的链接">
+              <a class="post-toc-link" href="#查找所有损坏的链接" data-level="1">查找所有损坏的链接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理损坏链接">
+              <a class="post-toc-link" href="#清理损坏链接" data-level="1">清理损坏链接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="多版本管理">
+              <a class="post-toc-link" href="#多版本管理" data-level="3">多版本管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="python-版本切换">
+              <a class="post-toc-link" href="#python-版本切换" data-level="1">Python 版本切换</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-版本切换">
+              <a class="post-toc-link" href="#node-js-版本切换" data-level="1">Node.js 版本切换</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="3">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="软链接基本概念">
+          <a class="post-toc-link" href="#软链接基本概念" data-level="3">软链接基本概念</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="创建软链接">
+          <a class="post-toc-link" href="#创建软链接" data-level="3">创建软链接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="1">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="示例-将脚本注册为系统命令-m">
+          <a class="post-toc-link" href="#示例-将脚本注册为系统命令-m" data-level="1">示例：将脚本注册为系统命令 m</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="软链接管理">
+          <a class="post-toc-link" href="#软链接管理" data-level="3">软链接管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看链接信息">
+          <a class="post-toc-link" href="#查看链接信息" data-level="1">查看链接信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-lrwxrwxrwx-1-root-root-23-usr-local-bin-m-etc-profile-d-mylook-sh">
+          <a class="post-toc-link" href="#输出-lrwxrwxrwx-1-root-root-23-usr-local-bin-m-etc-profile-d-mylook-sh" data-level="1">输出: lrwxrwxrwx 1 root root 23 ... /usr/local/bin/m -&gt; /etc/profile.d/mylook.sh</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解析链接真实路径">
+          <a class="post-toc-link" href="#解析链接真实路径" data-level="1">解析链接真实路径</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除链接-不影响源文件">
+          <a class="post-toc-link" href="#删除链接-不影响源文件" data-level="1">删除链接（不影响源文件）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="创建别名">
+          <a class="post-toc-link" href="#创建别名" data-level="3">创建别名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="临时别名-退出终端失效">
+          <a class="post-toc-link" href="#临时别名-退出终端失效" data-level="1">临时别名（退出终端失效）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="永久别名-写入配置文件">
+          <a class="post-toc-link" href="#永久别名-写入配置文件" data-level="1">永久别名（写入配置文件）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已有别名">
+          <a class="post-toc-link" href="#查看已有别名" data-level="1">查看已有别名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除别名">
+          <a class="post-toc-link" href="#删除别名" data-level="1">删除别名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
+          <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="软链接方式">
+          <a class="post-toc-link" href="#软链接方式" data-level="1">软链接方式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="别名方式">
+          <a class="post-toc-link" href="#别名方式" data-level="1">别名方式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="python-快捷方式">
+          <a class="post-toc-link" href="#python-快捷方式" data-level="1">Python 快捷方式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="git-常用操作">
+          <a class="post-toc-link" href="#git-常用操作" data-level="1">Git 常用操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="path-环境变量">
+          <a class="post-toc-link" href="#path-环境变量" data-level="3">PATH 环境变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前-path">
+          <a class="post-toc-link" href="#查看当前-path" data-level="1">查看当前 PATH</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加个人-bin-目录">
+          <a class="post-toc-link" href="#添加个人-bin-目录" data-level="1">添加个人 bin 目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="目录优先级说明">
+          <a class="post-toc-link" href="#目录优先级说明" data-level="1">目录优先级说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
+          <a class="post-toc-link" href="#故障排除" data-level="3">故障排除</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查链接是否有效">
+          <a class="post-toc-link" href="#检查链接是否有效" data-level="1">检查链接是否有效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="调试执行">
+          <a class="post-toc-link" href="#调试执行" data-level="1">调试执行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找所有损坏的链接">
+          <a class="post-toc-link" href="#查找所有损坏的链接" data-level="1">查找所有损坏的链接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理损坏链接">
+          <a class="post-toc-link" href="#清理损坏链接" data-level="1">清理损坏链接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="多版本管理">
+          <a class="post-toc-link" href="#多版本管理" data-level="3">多版本管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="python-版本切换">
+          <a class="post-toc-link" href="#python-版本切换" data-level="1">Python 版本切换</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-版本切换">
+          <a class="post-toc-link" href="#node-js-版本切换" data-level="1">Node.js 版本切换</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="3">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

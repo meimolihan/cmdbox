@@ -1831,9 +1831,608 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+              <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="初始化项目">
+              <a class="post-toc-link" href="#初始化项目" data-level="1">========== 初始化项目 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式创建-package-json">
+              <a class="post-toc-link" href="#交互式创建-package-json" data-level="1">交互式创建 package.json</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装包">
+              <a class="post-toc-link" href="#安装包" data-level="1">========== 安装包 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装依赖">
+              <a class="post-toc-link" href="#安装依赖" data-level="1">安装依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装为生产依赖">
+              <a class="post-toc-link" href="#安装为生产依赖" data-level="1">安装为生产依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装为开发依赖">
+              <a class="post-toc-link" href="#安装为开发依赖" data-level="1">安装为开发依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装为可选依赖">
+              <a class="post-toc-link" href="#安装为可选依赖" data-level="1">安装为可选依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装全局包">
+              <a class="post-toc-link" href="#安装全局包" data-level="1">安装全局包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本">
+              <a class="post-toc-link" href="#安装指定版本" data-level="1">安装指定版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-github-仓库包">
+              <a class="post-toc-link" href="#安装-github-仓库包" data-level="1">安装 GitHub 仓库包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装本地包">
+              <a class="post-toc-link" href="#安装本地包" data-level="1">安装本地包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载包">
+              <a class="post-toc-link" href="#卸载包" data-level="1">========== 卸载包 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新包">
+              <a class="post-toc-link" href="#更新包" data-level="1">========== 更新包 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看可更新的包">
+              <a class="post-toc-link" href="#查看可更新的包" data-level="1">查看可更新的包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新包">
+              <a class="post-toc-link" href="#更新包" data-level="1">更新包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
+              <a class="post-toc-link" href="#查看包信息" data-level="1">========== 查看包信息 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
+              <a class="post-toc-link" href="#查看包信息" data-level="1">查看包信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装的包">
+              <a class="post-toc-link" href="#查看已安装的包" data-level="1">查看已安装的包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索包">
+              <a class="post-toc-link" href="#搜索包" data-level="1">========== 搜索包 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行脚本">
+              <a class="post-toc-link" href="#运行脚本" data-level="1">========== 运行脚本 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行-package-json-中的脚本">
+              <a class="post-toc-link" href="#运行-package-json-中的脚本" data-level="1">运行 package.json 中的脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="特殊简写">
+              <a class="post-toc-link" href="#特殊简写" data-level="1">特殊简写</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="配置镜像源">
+              <a class="post-toc-link" href="#配置镜像源" data-level="1">========== 配置镜像源 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置镜像源">
+              <a class="post-toc-link" href="#设置镜像源" data-level="1">设置镜像源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用淘宝镜像">
+              <a class="post-toc-link" href="#使用淘宝镜像" data-level="1">使用淘宝镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用官方源">
+              <a class="post-toc-link" href="#使用官方源" data-level="1">使用官方源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前镜像源">
+              <a class="post-toc-link" href="#查看当前镜像源" data-level="1">查看当前镜像源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有配置">
+              <a class="post-toc-link" href="#显示所有配置" data-level="1">显示所有配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
+              <a class="post-toc-link" href="#清理缓存" data-level="1">========== 清理缓存 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
+              <a class="post-toc-link" href="#清理缓存" data-level="1">清理缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证缓存">
+              <a class="post-toc-link" href="#验证缓存" data-level="1">验证缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布包">
+              <a class="post-toc-link" href="#发布包" data-level="1">========== 发布包 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="登录-npm">
+              <a class="post-toc-link" href="#登录-npm" data-level="1">登录 npm</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布包">
+              <a class="post-toc-link" href="#发布包" data-level="1">发布包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布指定-tag">
+              <a class="post-toc-link" href="#发布指定-tag" data-level="1">发布指定 tag</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="取消发布">
+              <a class="post-toc-link" href="#取消发布" data-level="1">取消发布</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="废弃包版本">
+              <a class="post-toc-link" href="#废弃包版本" data-level="1">废弃包版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="其他命令">
+              <a class="post-toc-link" href="#其他命令" data-level="1">========== 其他命令 ==========</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看版本">
+              <a class="post-toc-link" href="#查看版本" data-level="1">查看版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看帮助">
+              <a class="post-toc-link" href="#查看帮助" data-level="1">查看帮助</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看用户信息">
+              <a class="post-toc-link" href="#查看用户信息" data-level="1">查看用户信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建包">
+              <a class="post-toc-link" href="#创建包" data-level="1">创建包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行包命令">
+              <a class="post-toc-link" href="#执行包命令" data-level="1">执行包命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查安全漏洞">
+              <a class="post-toc-link" href="#检查安全漏洞" data-level="1">检查安全漏洞</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="package-json-结构">
+              <a class="post-toc-link" href="#package-json-结构" data-level="3">package.json 结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="版本号说明">
+              <a class="post-toc-link" href="#版本号说明" data-level="3">版本号说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="版本号格式-主版本-次版本-修订版">
+              <a class="post-toc-link" href="#版本号格式-主版本-次版本-修订版" data-level="1">版本号格式: 主版本.次版本.修订版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-0-0-1-0-1-1-1-0-2-0-0">
+              <a class="post-toc-link" href="#1-0-0-1-0-1-1-1-0-2-0-0" data-level="1">1.0.0 -&gt; 1.0.1 -&gt; 1.1.0 -&gt; 2.0.0</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="版本范围语法">
+              <a class="post-toc-link" href="#版本范围语法" data-level="1">版本范围语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="npm-version-命令">
+              <a class="post-toc-link" href="#npm-version-命令" data-level="1">npm version 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="npx-使用">
+              <a class="post-toc-link" href="#npx-使用" data-level="3">npx 使用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行包命令-无需全局安装">
+              <a class="post-toc-link" href="#执行包命令-无需全局安装" data-level="1">执行包命令（无需全局安装）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用指定版本的包">
+              <a class="post-toc-link" href="#使用指定版本的包" data-level="1">使用指定版本的包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行本地脚本">
+              <a class="post-toc-link" href="#运行本地脚本" data-level="1">运行本地脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从-url-运行">
+              <a class="post-toc-link" href="#从-url-运行" data-level="1">从 URL 运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用镜像源">
+              <a class="post-toc-link" href="#常用镜像源" data-level="3">常用镜像源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="淘宝镜像-推荐">
+              <a class="post-toc-link" href="#淘宝镜像-推荐" data-level="1">淘宝镜像（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="腾讯镜像">
+              <a class="post-toc-link" href="#腾讯镜像" data-level="1">腾讯镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="华为镜像">
+              <a class="post-toc-link" href="#华为镜像" data-level="1">华为镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="官方源">
+              <a class="post-toc-link" href="#官方源" data-level="1">官方源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="package-lock-json">
+              <a class="post-toc-link" href="#package-lock-json" data-level="3">package-lock.json</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-package-lock-json">
+              <a class="post-toc-link" href="#生成-package-lock-json" data-level="1">生成 package-lock.json</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-lock-安装精确版本">
+              <a class="post-toc-link" href="#使用-lock-安装精确版本" data-level="1">使用 lock 安装精确版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="package-lock-json-作用">
+              <a class="post-toc-link" href="#package-lock-json-作用" data-level="1">package-lock.json 作用：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-锁定依赖版本">
+              <a class="post-toc-link" href="#1-锁定依赖版本" data-level="1">1. 锁定依赖版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-加快-npm-install-速度">
+              <a class="post-toc-link" href="#2-加快-npm-install-速度" data-level="1">2. 加快 npm install 速度</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-确保团队依赖版本一致">
+              <a class="post-toc-link" href="#3-确保团队依赖版本一致" data-level="1">3. 确保团队依赖版本一致</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+          <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="初始化项目">
+          <a class="post-toc-link" href="#初始化项目" data-level="1">========== 初始化项目 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式创建-package-json">
+          <a class="post-toc-link" href="#交互式创建-package-json" data-level="1">交互式创建 package.json</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装包">
+          <a class="post-toc-link" href="#安装包" data-level="1">========== 安装包 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装依赖">
+          <a class="post-toc-link" href="#安装依赖" data-level="1">安装依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装为生产依赖">
+          <a class="post-toc-link" href="#安装为生产依赖" data-level="1">安装为生产依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装为开发依赖">
+          <a class="post-toc-link" href="#安装为开发依赖" data-level="1">安装为开发依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装为可选依赖">
+          <a class="post-toc-link" href="#安装为可选依赖" data-level="1">安装为可选依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装全局包">
+          <a class="post-toc-link" href="#安装全局包" data-level="1">安装全局包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本">
+          <a class="post-toc-link" href="#安装指定版本" data-level="1">安装指定版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-github-仓库包">
+          <a class="post-toc-link" href="#安装-github-仓库包" data-level="1">安装 GitHub 仓库包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装本地包">
+          <a class="post-toc-link" href="#安装本地包" data-level="1">安装本地包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载包">
+          <a class="post-toc-link" href="#卸载包" data-level="1">========== 卸载包 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新包">
+          <a class="post-toc-link" href="#更新包" data-level="1">========== 更新包 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看可更新的包">
+          <a class="post-toc-link" href="#查看可更新的包" data-level="1">查看可更新的包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新包">
+          <a class="post-toc-link" href="#更新包" data-level="1">更新包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
+          <a class="post-toc-link" href="#查看包信息" data-level="1">========== 查看包信息 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
+          <a class="post-toc-link" href="#查看包信息" data-level="1">查看包信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已安装的包">
+          <a class="post-toc-link" href="#查看已安装的包" data-level="1">查看已安装的包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索包">
+          <a class="post-toc-link" href="#搜索包" data-level="1">========== 搜索包 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行脚本">
+          <a class="post-toc-link" href="#运行脚本" data-level="1">========== 运行脚本 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行-package-json-中的脚本">
+          <a class="post-toc-link" href="#运行-package-json-中的脚本" data-level="1">运行 package.json 中的脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="特殊简写">
+          <a class="post-toc-link" href="#特殊简写" data-level="1">特殊简写</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="配置镜像源">
+          <a class="post-toc-link" href="#配置镜像源" data-level="1">========== 配置镜像源 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置镜像源">
+          <a class="post-toc-link" href="#设置镜像源" data-level="1">设置镜像源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用淘宝镜像">
+          <a class="post-toc-link" href="#使用淘宝镜像" data-level="1">使用淘宝镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用官方源">
+          <a class="post-toc-link" href="#使用官方源" data-level="1">使用官方源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前镜像源">
+          <a class="post-toc-link" href="#查看当前镜像源" data-level="1">查看当前镜像源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有配置">
+          <a class="post-toc-link" href="#显示所有配置" data-level="1">显示所有配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
+          <a class="post-toc-link" href="#清理缓存" data-level="1">========== 清理缓存 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
+          <a class="post-toc-link" href="#清理缓存" data-level="1">清理缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证缓存">
+          <a class="post-toc-link" href="#验证缓存" data-level="1">验证缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布包">
+          <a class="post-toc-link" href="#发布包" data-level="1">========== 发布包 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="登录-npm">
+          <a class="post-toc-link" href="#登录-npm" data-level="1">登录 npm</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布包">
+          <a class="post-toc-link" href="#发布包" data-level="1">发布包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布指定-tag">
+          <a class="post-toc-link" href="#发布指定-tag" data-level="1">发布指定 tag</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="取消发布">
+          <a class="post-toc-link" href="#取消发布" data-level="1">取消发布</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="废弃包版本">
+          <a class="post-toc-link" href="#废弃包版本" data-level="1">废弃包版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="其他命令">
+          <a class="post-toc-link" href="#其他命令" data-level="1">========== 其他命令 ==========</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看版本">
+          <a class="post-toc-link" href="#查看版本" data-level="1">查看版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看帮助">
+          <a class="post-toc-link" href="#查看帮助" data-level="1">查看帮助</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看用户信息">
+          <a class="post-toc-link" href="#查看用户信息" data-level="1">查看用户信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建包">
+          <a class="post-toc-link" href="#创建包" data-level="1">创建包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行包命令">
+          <a class="post-toc-link" href="#执行包命令" data-level="1">执行包命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查安全漏洞">
+          <a class="post-toc-link" href="#检查安全漏洞" data-level="1">检查安全漏洞</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="package-json-结构">
+          <a class="post-toc-link" href="#package-json-结构" data-level="3">package.json 结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="版本号说明">
+          <a class="post-toc-link" href="#版本号说明" data-level="3">版本号说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="版本号格式-主版本-次版本-修订版">
+          <a class="post-toc-link" href="#版本号格式-主版本-次版本-修订版" data-level="1">版本号格式: 主版本.次版本.修订版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-0-0-1-0-1-1-1-0-2-0-0">
+          <a class="post-toc-link" href="#1-0-0-1-0-1-1-1-0-2-0-0" data-level="1">1.0.0 -&gt; 1.0.1 -&gt; 1.1.0 -&gt; 2.0.0</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="版本范围语法">
+          <a class="post-toc-link" href="#版本范围语法" data-level="1">版本范围语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="npm-version-命令">
+          <a class="post-toc-link" href="#npm-version-命令" data-level="1">npm version 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="npx-使用">
+          <a class="post-toc-link" href="#npx-使用" data-level="3">npx 使用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行包命令-无需全局安装">
+          <a class="post-toc-link" href="#执行包命令-无需全局安装" data-level="1">执行包命令（无需全局安装）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用指定版本的包">
+          <a class="post-toc-link" href="#使用指定版本的包" data-level="1">使用指定版本的包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行本地脚本">
+          <a class="post-toc-link" href="#运行本地脚本" data-level="1">运行本地脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从-url-运行">
+          <a class="post-toc-link" href="#从-url-运行" data-level="1">从 URL 运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用镜像源">
+          <a class="post-toc-link" href="#常用镜像源" data-level="3">常用镜像源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="淘宝镜像-推荐">
+          <a class="post-toc-link" href="#淘宝镜像-推荐" data-level="1">淘宝镜像（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="腾讯镜像">
+          <a class="post-toc-link" href="#腾讯镜像" data-level="1">腾讯镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="华为镜像">
+          <a class="post-toc-link" href="#华为镜像" data-level="1">华为镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="官方源">
+          <a class="post-toc-link" href="#官方源" data-level="1">官方源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="package-lock-json">
+          <a class="post-toc-link" href="#package-lock-json" data-level="3">package-lock.json</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-package-lock-json">
+          <a class="post-toc-link" href="#生成-package-lock-json" data-level="1">生成 package-lock.json</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-lock-安装精确版本">
+          <a class="post-toc-link" href="#使用-lock-安装精确版本" data-level="1">使用 lock 安装精确版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="package-lock-json-作用">
+          <a class="post-toc-link" href="#package-lock-json-作用" data-level="1">package-lock.json 作用：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-锁定依赖版本">
+          <a class="post-toc-link" href="#1-锁定依赖版本" data-level="1">1. 锁定依赖版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-加快-npm-install-速度">
+          <a class="post-toc-link" href="#2-加快-npm-install-速度" data-level="1">2. 加快 npm install 速度</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-确保团队依赖版本一致">
+          <a class="post-toc-link" href="#3-确保团队依赖版本一致" data-level="1">3. 确保团队依赖版本一致</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

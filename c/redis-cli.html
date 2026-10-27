@@ -1921,9 +1921,768 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="连接选项">
+              <a class="post-toc-link" href="#连接选项" data-level="3">连接选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="连接实例">
+              <a class="post-toc-link" href="#连接实例" data-level="3">连接实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接本地-redis">
+              <a class="post-toc-link" href="#连接本地-redis" data-level="1">连接本地 Redis</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定主机和端口">
+              <a class="post-toc-link" href="#连接指定主机和端口" data-level="1">连接指定主机和端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="带密码连接">
+              <a class="post-toc-link" href="#带密码连接" data-level="1">带密码连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定数据库">
+              <a class="post-toc-link" href="#连接指定数据库" data-level="1">连接指定数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-url-连接">
+              <a class="post-toc-link" href="#使用-url-连接" data-level="1">使用 URL 连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="unix-socket-连接">
+              <a class="post-toc-link" href="#unix-socket-连接" data-level="1">Unix socket 连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="交互模式连接后测试">
+              <a class="post-toc-link" href="#交互模式连接后测试" data-level="1">交互模式连接后测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="pong">
+              <a class="post-toc-link" href="#pong" data-level="1">PONG</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="字符串操作">
+              <a class="post-toc-link" href="#字符串操作" data-level="3">字符串操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置值">
+              <a class="post-toc-link" href="#设置值" data-level="1">设置值</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取值">
+              <a class="post-toc-link" href="#获取值" data-level="1">获取值</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量操作">
+              <a class="post-toc-link" href="#批量操作" data-level="1">批量操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="数值操作">
+              <a class="post-toc-link" href="#数值操作" data-level="1">数值操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="追加操作">
+              <a class="post-toc-link" href="#追加操作" data-level="1">追加操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="哈希操作">
+              <a class="post-toc-link" href="#哈希操作" data-level="3">哈希操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置哈希字段">
+              <a class="post-toc-link" href="#设置哈希字段" data-level="1">设置哈希字段</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取哈希字段">
+              <a class="post-toc-link" href="#获取哈希字段" data-level="1">获取哈希字段</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查字段存在">
+              <a class="post-toc-link" href="#检查字段存在" data-level="1">检查字段存在</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除字段">
+              <a class="post-toc-link" href="#删除字段" data-level="1">删除字段</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="仅当字段不存在时设置">
+              <a class="post-toc-link" href="#仅当字段不存在时设置" data-level="1">仅当字段不存在时设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="数值递增">
+              <a class="post-toc-link" href="#数值递增" data-level="1">数值递增</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="列表操作">
+              <a class="post-toc-link" href="#列表操作" data-level="3">列表操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="左推入">
+              <a class="post-toc-link" href="#左推入" data-level="1">左推入</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="右推入">
+              <a class="post-toc-link" href="#右推入" data-level="1">右推入</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="左弹出">
+              <a class="post-toc-link" href="#左弹出" data-level="1">左弹出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="右弹出">
+              <a class="post-toc-link" href="#右弹出" data-level="1">右弹出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取列表元素">
+              <a class="post-toc-link" href="#获取列表元素" data-level="1">获取列表元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除元素">
+              <a class="post-toc-link" href="#删除元素" data-level="1">删除元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="移动元素">
+              <a class="post-toc-link" href="#移动元素" data-level="1">移动元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="集合操作">
+              <a class="post-toc-link" href="#集合操作" data-level="3">集合操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加元素">
+              <a class="post-toc-link" href="#添加元素" data-level="1">添加元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取集合所有元素">
+              <a class="post-toc-link" href="#获取集合所有元素" data-level="1">获取集合所有元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查元素是否存在">
+              <a class="post-toc-link" href="#检查元素是否存在" data-level="1">检查元素是否存在</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="移除元素">
+              <a class="post-toc-link" href="#移除元素" data-level="1">移除元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取集合大小">
+              <a class="post-toc-link" href="#获取集合大小" data-level="1">获取集合大小</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="随机弹出元素">
+              <a class="post-toc-link" href="#随机弹出元素" data-level="1">随机弹出元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="集合运算">
+              <a class="post-toc-link" href="#集合运算" data-level="1">集合运算</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="有序集合操作">
+              <a class="post-toc-link" href="#有序集合操作" data-level="3">有序集合操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加元素">
+              <a class="post-toc-link" href="#添加元素" data-level="1">添加元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取分数">
+              <a class="post-toc-link" href="#获取分数" data-level="1">获取分数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取排名">
+              <a class="post-toc-link" href="#获取排名" data-level="1">获取排名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取范围元素">
+              <a class="post-toc-link" href="#获取范围元素" data-level="1">获取范围元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除元素">
+              <a class="post-toc-link" href="#删除元素" data-level="1">删除元素</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="增加分数">
+              <a class="post-toc-link" href="#增加分数" data-level="1">增加分数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取集合大小">
+              <a class="post-toc-link" href="#获取集合大小" data-level="1">获取集合大小</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="键管理">
+              <a class="post-toc-link" href="#键管理" data-level="3">键管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有键">
+              <a class="post-toc-link" href="#查看所有键" data-level="1">查看所有键</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查键存在">
+              <a class="post-toc-link" href="#检查键存在" data-level="1">检查键存在</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除键">
+              <a class="post-toc-link" href="#删除键" data-level="1">删除键</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置过期">
+              <a class="post-toc-link" href="#设置过期" data-level="1">设置过期</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看剩余时间">
+              <a class="post-toc-link" href="#查看剩余时间" data-level="1">查看剩余时间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看键类型">
+              <a class="post-toc-link" href="#查看键类型" data-level="1">查看键类型</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重命名">
+              <a class="post-toc-link" href="#重命名" data-level="1">重命名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数据库管理">
+              <a class="post-toc-link" href="#数据库管理" data-level="3">数据库管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="切换数据库">
+              <a class="post-toc-link" href="#切换数据库" data-level="1">切换数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看键数量">
+              <a class="post-toc-link" href="#查看键数量" data-level="1">查看键数量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清空当前数据库">
+              <a class="post-toc-link" href="#清空当前数据库" data-level="1">清空当前数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清空所有数据库">
+              <a class="post-toc-link" href="#清空所有数据库" data-level="1">清空所有数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看数据库信息">
+              <a class="post-toc-link" href="#查看数据库信息" data-level="1">查看数据库信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="服务器信息">
+              <a class="post-toc-link" href="#服务器信息" data-level="3">服务器信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器信息">
+              <a class="post-toc-link" href="#查看服务器信息" data-level="1">查看服务器信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看统计">
+              <a class="post-toc-link" href="#查看统计" data-level="1">查看统计</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控命令">
+              <a class="post-toc-link" href="#实时监控命令" data-level="1">实时监控命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看慢查询日志">
+              <a class="post-toc-link" href="#查看慢查询日志" data-level="1">查看慢查询日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看客户端列表">
+              <a class="post-toc-link" href="#查看客户端列表" data-level="1">查看客户端列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看配置">
+              <a class="post-toc-link" href="#查看配置" data-level="1">查看配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="保存-rdb-快照">
+              <a class="post-toc-link" href="#保存-rdb-快照" data-level="1">保存 RDB 快照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="加载-rdb-文件">
+              <a class="post-toc-link" href="#加载-rdb-文件" data-level="1">加载 RDB 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在启动时指定-rdb-文件即可自动加载">
+              <a class="post-toc-link" href="#在启动时指定-rdb-文件即可自动加载" data-level="1">在启动时指定 RDB 文件即可自动加载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="复制与集群">
+              <a class="post-toc-link" href="#复制与集群" data-level="3">复制与集群</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="复制相关">
+              <a class="post-toc-link" href="#复制相关" data-level="1">复制相关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="集群相关">
+              <a class="post-toc-link" href="#集群相关" data-level="1">集群相关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="发布订阅">
+              <a class="post-toc-link" href="#发布订阅" data-level="3">发布订阅</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="订阅频道">
+              <a class="post-toc-link" href="#订阅频道" data-level="1">订阅频道</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="发布消息">
+              <a class="post-toc-link" href="#发布消息" data-level="1">发布消息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="事务">
+              <a class="post-toc-link" href="#事务" data-level="3">事务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="开启事务">
+              <a class="post-toc-link" href="#开启事务" data-level="1">开启事务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="监视键-乐观锁">
+              <a class="post-toc-link" href="#监视键-乐观锁" data-level="1">监视键（乐观锁）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实用技巧">
+              <a class="post-toc-link" href="#实用技巧" data-level="3">实用技巧</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找大键">
+              <a class="post-toc-link" href="#查找大键" data-level="1">查找大键</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="实时统计">
+              <a class="post-toc-link" href="#实时统计" data-level="1">实时统计</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="延迟检测">
+              <a class="post-toc-link" href="#延迟检测" data-level="1">延迟检测</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="管道批量导入">
+              <a class="post-toc-link" href="#管道批量导入" data-level="1">管道批量导入</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份数据库">
+              <a class="post-toc-link" href="#备份数据库" data-level="1">备份数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导出所有键">
+              <a class="post-toc-link" href="#导出所有键" data-level="1">导出所有键</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量删除键">
+              <a class="post-toc-link" href="#批量删除键" data-level="1">批量删除键</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="连接选项">
+          <a class="post-toc-link" href="#连接选项" data-level="3">连接选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="连接实例">
+          <a class="post-toc-link" href="#连接实例" data-level="3">连接实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接本地-redis">
+          <a class="post-toc-link" href="#连接本地-redis" data-level="1">连接本地 Redis</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定主机和端口">
+          <a class="post-toc-link" href="#连接指定主机和端口" data-level="1">连接指定主机和端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="带密码连接">
+          <a class="post-toc-link" href="#带密码连接" data-level="1">带密码连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定数据库">
+          <a class="post-toc-link" href="#连接指定数据库" data-level="1">连接指定数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-url-连接">
+          <a class="post-toc-link" href="#使用-url-连接" data-level="1">使用 URL 连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="unix-socket-连接">
+          <a class="post-toc-link" href="#unix-socket-连接" data-level="1">Unix socket 连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="交互模式连接后测试">
+          <a class="post-toc-link" href="#交互模式连接后测试" data-level="1">交互模式连接后测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="pong">
+          <a class="post-toc-link" href="#pong" data-level="1">PONG</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="字符串操作">
+          <a class="post-toc-link" href="#字符串操作" data-level="3">字符串操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置值">
+          <a class="post-toc-link" href="#设置值" data-level="1">设置值</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取值">
+          <a class="post-toc-link" href="#获取值" data-level="1">获取值</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量操作">
+          <a class="post-toc-link" href="#批量操作" data-level="1">批量操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="数值操作">
+          <a class="post-toc-link" href="#数值操作" data-level="1">数值操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="追加操作">
+          <a class="post-toc-link" href="#追加操作" data-level="1">追加操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="哈希操作">
+          <a class="post-toc-link" href="#哈希操作" data-level="3">哈希操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置哈希字段">
+          <a class="post-toc-link" href="#设置哈希字段" data-level="1">设置哈希字段</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取哈希字段">
+          <a class="post-toc-link" href="#获取哈希字段" data-level="1">获取哈希字段</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查字段存在">
+          <a class="post-toc-link" href="#检查字段存在" data-level="1">检查字段存在</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除字段">
+          <a class="post-toc-link" href="#删除字段" data-level="1">删除字段</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="仅当字段不存在时设置">
+          <a class="post-toc-link" href="#仅当字段不存在时设置" data-level="1">仅当字段不存在时设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="数值递增">
+          <a class="post-toc-link" href="#数值递增" data-level="1">数值递增</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="列表操作">
+          <a class="post-toc-link" href="#列表操作" data-level="3">列表操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="左推入">
+          <a class="post-toc-link" href="#左推入" data-level="1">左推入</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="右推入">
+          <a class="post-toc-link" href="#右推入" data-level="1">右推入</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="左弹出">
+          <a class="post-toc-link" href="#左弹出" data-level="1">左弹出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="右弹出">
+          <a class="post-toc-link" href="#右弹出" data-level="1">右弹出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取列表元素">
+          <a class="post-toc-link" href="#获取列表元素" data-level="1">获取列表元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除元素">
+          <a class="post-toc-link" href="#删除元素" data-level="1">删除元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="移动元素">
+          <a class="post-toc-link" href="#移动元素" data-level="1">移动元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="集合操作">
+          <a class="post-toc-link" href="#集合操作" data-level="3">集合操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加元素">
+          <a class="post-toc-link" href="#添加元素" data-level="1">添加元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取集合所有元素">
+          <a class="post-toc-link" href="#获取集合所有元素" data-level="1">获取集合所有元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查元素是否存在">
+          <a class="post-toc-link" href="#检查元素是否存在" data-level="1">检查元素是否存在</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="移除元素">
+          <a class="post-toc-link" href="#移除元素" data-level="1">移除元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取集合大小">
+          <a class="post-toc-link" href="#获取集合大小" data-level="1">获取集合大小</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="随机弹出元素">
+          <a class="post-toc-link" href="#随机弹出元素" data-level="1">随机弹出元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="集合运算">
+          <a class="post-toc-link" href="#集合运算" data-level="1">集合运算</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="有序集合操作">
+          <a class="post-toc-link" href="#有序集合操作" data-level="3">有序集合操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加元素">
+          <a class="post-toc-link" href="#添加元素" data-level="1">添加元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取分数">
+          <a class="post-toc-link" href="#获取分数" data-level="1">获取分数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取排名">
+          <a class="post-toc-link" href="#获取排名" data-level="1">获取排名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取范围元素">
+          <a class="post-toc-link" href="#获取范围元素" data-level="1">获取范围元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除元素">
+          <a class="post-toc-link" href="#删除元素" data-level="1">删除元素</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="增加分数">
+          <a class="post-toc-link" href="#增加分数" data-level="1">增加分数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取集合大小">
+          <a class="post-toc-link" href="#获取集合大小" data-level="1">获取集合大小</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="键管理">
+          <a class="post-toc-link" href="#键管理" data-level="3">键管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有键">
+          <a class="post-toc-link" href="#查看所有键" data-level="1">查看所有键</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查键存在">
+          <a class="post-toc-link" href="#检查键存在" data-level="1">检查键存在</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除键">
+          <a class="post-toc-link" href="#删除键" data-level="1">删除键</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置过期">
+          <a class="post-toc-link" href="#设置过期" data-level="1">设置过期</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看剩余时间">
+          <a class="post-toc-link" href="#查看剩余时间" data-level="1">查看剩余时间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看键类型">
+          <a class="post-toc-link" href="#查看键类型" data-level="1">查看键类型</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重命名">
+          <a class="post-toc-link" href="#重命名" data-level="1">重命名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数据库管理">
+          <a class="post-toc-link" href="#数据库管理" data-level="3">数据库管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="切换数据库">
+          <a class="post-toc-link" href="#切换数据库" data-level="1">切换数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看键数量">
+          <a class="post-toc-link" href="#查看键数量" data-level="1">查看键数量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清空当前数据库">
+          <a class="post-toc-link" href="#清空当前数据库" data-level="1">清空当前数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清空所有数据库">
+          <a class="post-toc-link" href="#清空所有数据库" data-level="1">清空所有数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看数据库信息">
+          <a class="post-toc-link" href="#查看数据库信息" data-level="1">查看数据库信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="服务器信息">
+          <a class="post-toc-link" href="#服务器信息" data-level="3">服务器信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器信息">
+          <a class="post-toc-link" href="#查看服务器信息" data-level="1">查看服务器信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看统计">
+          <a class="post-toc-link" href="#查看统计" data-level="1">查看统计</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控命令">
+          <a class="post-toc-link" href="#实时监控命令" data-level="1">实时监控命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看慢查询日志">
+          <a class="post-toc-link" href="#查看慢查询日志" data-level="1">查看慢查询日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看客户端列表">
+          <a class="post-toc-link" href="#查看客户端列表" data-level="1">查看客户端列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看配置">
+          <a class="post-toc-link" href="#查看配置" data-level="1">查看配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="保存-rdb-快照">
+          <a class="post-toc-link" href="#保存-rdb-快照" data-level="1">保存 RDB 快照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="加载-rdb-文件">
+          <a class="post-toc-link" href="#加载-rdb-文件" data-level="1">加载 RDB 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在启动时指定-rdb-文件即可自动加载">
+          <a class="post-toc-link" href="#在启动时指定-rdb-文件即可自动加载" data-level="1">在启动时指定 RDB 文件即可自动加载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="复制与集群">
+          <a class="post-toc-link" href="#复制与集群" data-level="3">复制与集群</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="复制相关">
+          <a class="post-toc-link" href="#复制相关" data-level="1">复制相关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="集群相关">
+          <a class="post-toc-link" href="#集群相关" data-level="1">集群相关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="发布订阅">
+          <a class="post-toc-link" href="#发布订阅" data-level="3">发布订阅</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="订阅频道">
+          <a class="post-toc-link" href="#订阅频道" data-level="1">订阅频道</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="发布消息">
+          <a class="post-toc-link" href="#发布消息" data-level="1">发布消息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="事务">
+          <a class="post-toc-link" href="#事务" data-level="3">事务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="开启事务">
+          <a class="post-toc-link" href="#开启事务" data-level="1">开启事务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="监视键-乐观锁">
+          <a class="post-toc-link" href="#监视键-乐观锁" data-level="1">监视键（乐观锁）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实用技巧">
+          <a class="post-toc-link" href="#实用技巧" data-level="3">实用技巧</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找大键">
+          <a class="post-toc-link" href="#查找大键" data-level="1">查找大键</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="实时统计">
+          <a class="post-toc-link" href="#实时统计" data-level="1">实时统计</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="延迟检测">
+          <a class="post-toc-link" href="#延迟检测" data-level="1">延迟检测</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="管道批量导入">
+          <a class="post-toc-link" href="#管道批量导入" data-level="1">管道批量导入</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份数据库">
+          <a class="post-toc-link" href="#备份数据库" data-level="1">备份数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导出所有键">
+          <a class="post-toc-link" href="#导出所有键" data-level="1">导出所有键</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量删除键">
+          <a class="post-toc-link" href="#批量删除键" data-level="1">批量删除键</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

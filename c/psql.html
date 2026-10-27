@@ -1869,9 +1869,336 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="连接选项">
+              <a class="post-toc-link" href="#连接选项" data-level="3">连接选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="连接实例">
+              <a class="post-toc-link" href="#连接实例" data-level="3">连接实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接本地-postgresql">
+              <a class="post-toc-link" href="#连接本地-postgresql" data-level="1">连接本地 PostgreSQL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定数据库">
+              <a class="post-toc-link" href="#连接指定数据库" data-level="1">连接指定数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接远程数据库">
+              <a class="post-toc-link" href="#连接远程数据库" data-level="1">连接远程数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用连接字符串">
+              <a class="post-toc-link" href="#使用连接字符串" data-level="1">使用连接字符串</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-uri-连接">
+              <a class="post-toc-link" href="#使用-uri-连接" data-level="1">使用 URI 连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只列出数据库">
+              <a class="post-toc-link" href="#只列出数据库" data-level="1">只列出数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行单条-sql">
+              <a class="post-toc-link" href="#执行单条-sql" data-level="1">执行单条 SQL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行-sql-文件">
+              <a class="post-toc-link" href="#执行-sql-文件" data-level="1">执行 SQL 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静默执行命令">
+              <a class="post-toc-link" href="#静默执行命令" data-level="1">静默执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数据库操作">
+              <a class="post-toc-link" href="#数据库操作" data-level="3">数据库操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="表操作">
+              <a class="post-toc-link" href="#表操作" data-level="3">表操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数据操作">
+              <a class="post-toc-link" href="#数据操作" data-level="3">数据操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="元命令">
+              <a class="post-toc-link" href="#元命令" data-level="3">元命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接相关">
+              <a class="post-toc-link" href="#连接相关" data-level="1">连接相关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查询相关">
+              <a class="post-toc-link" href="#查询相关" data-level="1">查询相关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="信息查询">
+              <a class="post-toc-link" href="#信息查询" data-level="1">信息查询</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="表结构">
+              <a class="post-toc-link" href="#表结构" data-level="1">表结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化">
+              <a class="post-toc-link" href="#格式化" data-level="1">格式化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="其他">
+              <a class="post-toc-link" href="#其他" data-level="1">其他</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="事务">
+              <a class="post-toc-link" href="#事务" data-level="3">事务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="用户管理">
+              <a class="post-toc-link" href="#用户管理" data-level="3">用户管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="备份恢复">
+              <a class="post-toc-link" href="#备份恢复" data-level="3">备份恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="逻辑备份-整个数据库">
+              <a class="post-toc-link" href="#逻辑备份-整个数据库" data-level="1">逻辑备份 - 整个数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只备份表结构">
+              <a class="post-toc-link" href="#只备份表结构" data-level="1">只备份表结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只备份数据">
+              <a class="post-toc-link" href="#只备份数据" data-level="1">只备份数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份指定表">
+              <a class="post-toc-link" href="#备份指定表" data-level="1">备份指定表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩备份">
+              <a class="post-toc-link" href="#压缩备份" data-level="1">压缩备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="备份所有数据库">
+              <a class="post-toc-link" href="#备份所有数据库" data-level="1">备份所有数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据库">
+              <a class="post-toc-link" href="#恢复数据库" data-level="1">恢复数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复所有数据库">
+              <a class="post-toc-link" href="#恢复所有数据库" data-level="1">恢复所有数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-pg_restore-自定义格式">
+              <a class="post-toc-link" href="#使用-pg_restore-自定义格式" data-level="1">使用 pg_restore（自定义格式）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实用命令">
+              <a class="post-toc-link" href="#实用命令" data-level="3">实用命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="连接选项">
+          <a class="post-toc-link" href="#连接选项" data-level="3">连接选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="连接实例">
+          <a class="post-toc-link" href="#连接实例" data-level="3">连接实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接本地-postgresql">
+          <a class="post-toc-link" href="#连接本地-postgresql" data-level="1">连接本地 PostgreSQL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定数据库">
+          <a class="post-toc-link" href="#连接指定数据库" data-level="1">连接指定数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接远程数据库">
+          <a class="post-toc-link" href="#连接远程数据库" data-level="1">连接远程数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用连接字符串">
+          <a class="post-toc-link" href="#使用连接字符串" data-level="1">使用连接字符串</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-uri-连接">
+          <a class="post-toc-link" href="#使用-uri-连接" data-level="1">使用 URI 连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只列出数据库">
+          <a class="post-toc-link" href="#只列出数据库" data-level="1">只列出数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行单条-sql">
+          <a class="post-toc-link" href="#执行单条-sql" data-level="1">执行单条 SQL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行-sql-文件">
+          <a class="post-toc-link" href="#执行-sql-文件" data-level="1">执行 SQL 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静默执行命令">
+          <a class="post-toc-link" href="#静默执行命令" data-level="1">静默执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数据库操作">
+          <a class="post-toc-link" href="#数据库操作" data-level="3">数据库操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="表操作">
+          <a class="post-toc-link" href="#表操作" data-level="3">表操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数据操作">
+          <a class="post-toc-link" href="#数据操作" data-level="3">数据操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="元命令">
+          <a class="post-toc-link" href="#元命令" data-level="3">元命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接相关">
+          <a class="post-toc-link" href="#连接相关" data-level="1">连接相关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查询相关">
+          <a class="post-toc-link" href="#查询相关" data-level="1">查询相关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="信息查询">
+          <a class="post-toc-link" href="#信息查询" data-level="1">信息查询</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="表结构">
+          <a class="post-toc-link" href="#表结构" data-level="1">表结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化">
+          <a class="post-toc-link" href="#格式化" data-level="1">格式化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="其他">
+          <a class="post-toc-link" href="#其他" data-level="1">其他</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="事务">
+          <a class="post-toc-link" href="#事务" data-level="3">事务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="用户管理">
+          <a class="post-toc-link" href="#用户管理" data-level="3">用户管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="备份恢复">
+          <a class="post-toc-link" href="#备份恢复" data-level="3">备份恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="逻辑备份-整个数据库">
+          <a class="post-toc-link" href="#逻辑备份-整个数据库" data-level="1">逻辑备份 - 整个数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只备份表结构">
+          <a class="post-toc-link" href="#只备份表结构" data-level="1">只备份表结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只备份数据">
+          <a class="post-toc-link" href="#只备份数据" data-level="1">只备份数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份指定表">
+          <a class="post-toc-link" href="#备份指定表" data-level="1">备份指定表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩备份">
+          <a class="post-toc-link" href="#压缩备份" data-level="1">压缩备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="备份所有数据库">
+          <a class="post-toc-link" href="#备份所有数据库" data-level="1">备份所有数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据库">
+          <a class="post-toc-link" href="#恢复数据库" data-level="1">恢复数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复所有数据库">
+          <a class="post-toc-link" href="#恢复所有数据库" data-level="1">恢复所有数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-pg_restore-自定义格式">
+          <a class="post-toc-link" href="#使用-pg_restore-自定义格式" data-level="1">使用 pg_restore（自定义格式）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实用命令">
+          <a class="post-toc-link" href="#实用命令" data-level="3">实用命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

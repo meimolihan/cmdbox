@@ -1701,9 +1701,616 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+              <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件源索引">
+              <a class="post-toc-link" href="#更新软件源索引" data-level="1">更新软件源索引</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装软件包">
+              <a class="post-toc-link" href="#安装软件包" data-level="1">安装软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载软件包">
+              <a class="post-toc-link" href="#卸载软件包" data-level="1">卸载软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有已安装的软件包">
+              <a class="post-toc-link" href="#列出所有已安装的软件包" data-level="1">列出所有已安装的软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索软件包">
+              <a class="post-toc-link" href="#搜索软件包" data-level="1">搜索软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示软件包信息">
+              <a class="post-toc-link" href="#显示软件包信息" data-level="1">显示软件包信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出可用的软件包">
+              <a class="post-toc-link" href="#列出可用的软件包" data-level="1">列出可用的软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级软件包">
+              <a class="post-toc-link" href="#升级软件包" data-level="1">升级软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有可升级的软件包">
+              <a class="post-toc-link" href="#升级所有可升级的软件包" data-level="1">升级所有可升级的软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包依赖">
+              <a class="post-toc-link" href="#查看软件包依赖" data-level="1">查看软件包依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包文件列表">
+              <a class="post-toc-link" href="#查看软件包文件列表" data-level="1">查看软件包文件列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找文件属于哪个包">
+              <a class="post-toc-link" href="#查找文件属于哪个包" data-level="1">查找文件属于哪个包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包状态">
+              <a class="post-toc-link" href="#查看软件包状态" data-level="1">查看软件包状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
+              <a class="post-toc-link" href="#清理缓存" data-level="1">清理缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载软件包-不安装">
+              <a class="post-toc-link" href="#下载软件包-不安装" data-level="1">下载软件包（不安装）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+              <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件源">
+              <a class="post-toc-link" href="#更新软件源" data-level="1">更新软件源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例">
+              <a class="post-toc-link" href="#输出示例" data-level="1">输出示例：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="downloading-http-downloads-openwrt-org-packages-gz">
+              <a class="post-toc-link" href="#downloading-http-downloads-openwrt-org-packages-gz" data-level="1">Downloading http://downloads.openwrt.org/.../Packages.gz</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="updated-list-of-available-packages-in-var-opkg-lists-openwrt_core">
+              <a class="post-toc-link" href="#updated-list-of-available-packages-in-var-opkg-lists-openwrt_core" data-level="1">Updated list of available packages in /var/opkg-lists/openwrt_core</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装软件包">
+              <a class="post-toc-link" href="#安装软件包" data-level="1">安装软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本的软件包">
+              <a class="post-toc-link" href="#安装指定版本的软件包" data-level="1">安装指定版本的软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装本地-ipk-文件">
+              <a class="post-toc-link" href="#安装本地-ipk-文件" data-level="1">安装本地 ipk 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="强制重新安装">
+              <a class="post-toc-link" href="#强制重新安装" data-level="1">强制重新安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载软件包">
+              <a class="post-toc-link" href="#卸载软件包" data-level="1">卸载软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载并删除配置文件">
+              <a class="post-toc-link" href="#卸载并删除配置文件" data-level="1">卸载并删除配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找已安装的软件">
+              <a class="post-toc-link" href="#查找已安装的软件" data-level="1">查找已安装的软件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索软件包">
+              <a class="post-toc-link" href="#搜索软件包" data-level="1">搜索软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包详细信息">
+              <a class="post-toc-link" href="#查看软件包详细信息" data-level="1">查看软件包详细信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包安装的文件">
+              <a class="post-toc-link" href="#查看软件包安装的文件" data-level="1">查看软件包安装的文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级指定软件包">
+              <a class="post-toc-link" href="#升级指定软件包" data-level="1">升级指定软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看可升级的软件包">
+              <a class="post-toc-link" href="#查看可升级的软件包" data-level="1">查看可升级的软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有软件包-谨慎使用">
+              <a class="post-toc-link" href="#升级所有软件包-谨慎使用" data-level="1">升级所有软件包（谨慎使用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包依赖">
+              <a class="post-toc-link" href="#查看软件包依赖" data-level="1">查看软件包依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找文件属于哪个包">
+              <a class="post-toc-link" href="#查找文件属于哪个包" data-level="1">查找文件属于哪个包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="istoreos-常用软件包">
+              <a class="post-toc-link" href="#istoreos-常用软件包" data-level="3">iStoreOS 常用软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="网络工具">
+              <a class="post-toc-link" href="#网络工具" data-level="1">网络工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="系统工具">
+              <a class="post-toc-link" href="#系统工具" data-level="1">系统工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="存储工具">
+              <a class="post-toc-link" href="#存储工具" data-level="1">存储工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="luci-界面插件">
+              <a class="post-toc-link" href="#luci-界面插件" data-level="1">LuCI 界面插件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="软件源配置">
+              <a class="post-toc-link" href="#软件源配置" data-level="3">软件源配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前软件源配置">
+              <a class="post-toc-link" href="#查看当前软件源配置" data-level="1">查看当前软件源配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑软件源">
+              <a class="post-toc-link" href="#编辑软件源" data-level="1">编辑软件源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="软件源配置示例">
+              <a class="post-toc-link" href="#软件源配置示例" data-level="1">软件源配置示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="src-gz-openwrt_core-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-base">
+              <a class="post-toc-link" href="#src-gz-openwrt_core-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-base" data-level="1">src/gz openwrt_core http://downloads.openwrt.org/releases/22.03.0/packages/x86_64/base</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="src-gz-openwrt_base-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-packages">
+              <a class="post-toc-link" href="#src-gz-openwrt_base-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-packages" data-level="1">src/gz openwrt_base http://downloads.openwrt.org/releases/22.03.0/packages/x86_64/packages</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="src-gz-openwrt_luci-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-luci">
+              <a class="post-toc-link" href="#src-gz-openwrt_luci-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-luci" data-level="1">src/gz openwrt_luci http://downloads.openwrt.org/releases/22.03.0/packages/x86_64/luci</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加第三方软件源">
+              <a class="post-toc-link" href="#添加第三方软件源" data-level="1">添加第三方软件源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="清理缓存">
+              <a class="post-toc-link" href="#清理缓存" data-level="3">清理缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理-opkg-缓存">
+              <a class="post-toc-link" href="#清理-opkg-缓存" data-level="1">清理 opkg 缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或使用-opkg-命令">
+              <a class="post-toc-link" href="#或使用-opkg-命令" data-level="1">或使用 opkg 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="释放缓存">
+              <a class="post-toc-link" href="#释放缓存" data-level="1">释放缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="离线安装">
+              <a class="post-toc-link" href="#离线安装" data-level="3">离线安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载软件包到指定目录">
+              <a class="post-toc-link" href="#下载软件包到指定目录" data-level="1">下载软件包到指定目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="文件保存到当前目录-curl_7-80-0-1_x86_64-ipk">
+              <a class="post-toc-link" href="#文件保存到当前目录-curl_7-80-0-1_x86_64-ipk" data-level="1">文件保存到当前目录：curl_7.80.0-1_x86_64.ipk</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量下载软件包及其依赖">
+              <a class="post-toc-link" href="#批量下载软件包及其依赖" data-level="1">批量下载软件包及其依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="离线安装">
+              <a class="post-toc-link" href="#离线安装" data-level="1">离线安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="问题1-软件包依赖错误">
+              <a class="post-toc-link" href="#问题1-软件包依赖错误" data-level="1">问题1：软件包依赖错误</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解决-强制忽略依赖或安装缺失的依赖">
+              <a class="post-toc-link" href="#解决-强制忽略依赖或安装缺失的依赖" data-level="1">解决：强制忽略依赖或安装缺失的依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="问题2-存储空间不足">
+              <a class="post-toc-link" href="#问题2-存储空间不足" data-level="1">问题2：存储空间不足</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解决-将软件安装到外部存储">
+              <a class="post-toc-link" href="#解决-将软件安装到外部存储" data-level="1">解决：将软件安装到外部存储</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="问题3-软件源无法访问">
+              <a class="post-toc-link" href="#问题3-软件源无法访问" data-level="1">问题3：软件源无法访问</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解决-更换国内镜像源">
+              <a class="post-toc-link" href="#解决-更换国内镜像源" data-level="1">解决：更换国内镜像源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="问题4-找不到软件包">
+              <a class="post-toc-link" href="#问题4-找不到软件包" data-level="1">问题4：找不到软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解决-更新软件源索引">
+              <a class="post-toc-link" href="#解决-更新软件源索引" data-level="1">解决：更新软件源索引</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+          <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件源索引">
+          <a class="post-toc-link" href="#更新软件源索引" data-level="1">更新软件源索引</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装软件包">
+          <a class="post-toc-link" href="#安装软件包" data-level="1">安装软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载软件包">
+          <a class="post-toc-link" href="#卸载软件包" data-level="1">卸载软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有已安装的软件包">
+          <a class="post-toc-link" href="#列出所有已安装的软件包" data-level="1">列出所有已安装的软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索软件包">
+          <a class="post-toc-link" href="#搜索软件包" data-level="1">搜索软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示软件包信息">
+          <a class="post-toc-link" href="#显示软件包信息" data-level="1">显示软件包信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出可用的软件包">
+          <a class="post-toc-link" href="#列出可用的软件包" data-level="1">列出可用的软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级软件包">
+          <a class="post-toc-link" href="#升级软件包" data-level="1">升级软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有可升级的软件包">
+          <a class="post-toc-link" href="#升级所有可升级的软件包" data-level="1">升级所有可升级的软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包依赖">
+          <a class="post-toc-link" href="#查看软件包依赖" data-level="1">查看软件包依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包文件列表">
+          <a class="post-toc-link" href="#查看软件包文件列表" data-level="1">查看软件包文件列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找文件属于哪个包">
+          <a class="post-toc-link" href="#查找文件属于哪个包" data-level="1">查找文件属于哪个包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包状态">
+          <a class="post-toc-link" href="#查看软件包状态" data-level="1">查看软件包状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
+          <a class="post-toc-link" href="#清理缓存" data-level="1">清理缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载软件包-不安装">
+          <a class="post-toc-link" href="#下载软件包-不安装" data-level="1">下载软件包（不安装）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+          <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件源">
+          <a class="post-toc-link" href="#更新软件源" data-level="1">更新软件源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例">
+          <a class="post-toc-link" href="#输出示例" data-level="1">输出示例：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="downloading-http-downloads-openwrt-org-packages-gz">
+          <a class="post-toc-link" href="#downloading-http-downloads-openwrt-org-packages-gz" data-level="1">Downloading http://downloads.openwrt.org/.../Packages.gz</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="updated-list-of-available-packages-in-var-opkg-lists-openwrt_core">
+          <a class="post-toc-link" href="#updated-list-of-available-packages-in-var-opkg-lists-openwrt_core" data-level="1">Updated list of available packages in /var/opkg-lists/openwrt_core</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装软件包">
+          <a class="post-toc-link" href="#安装软件包" data-level="1">安装软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本的软件包">
+          <a class="post-toc-link" href="#安装指定版本的软件包" data-level="1">安装指定版本的软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装本地-ipk-文件">
+          <a class="post-toc-link" href="#安装本地-ipk-文件" data-level="1">安装本地 ipk 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="强制重新安装">
+          <a class="post-toc-link" href="#强制重新安装" data-level="1">强制重新安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载软件包">
+          <a class="post-toc-link" href="#卸载软件包" data-level="1">卸载软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载并删除配置文件">
+          <a class="post-toc-link" href="#卸载并删除配置文件" data-level="1">卸载并删除配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找已安装的软件">
+          <a class="post-toc-link" href="#查找已安装的软件" data-level="1">查找已安装的软件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索软件包">
+          <a class="post-toc-link" href="#搜索软件包" data-level="1">搜索软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包详细信息">
+          <a class="post-toc-link" href="#查看软件包详细信息" data-level="1">查看软件包详细信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包安装的文件">
+          <a class="post-toc-link" href="#查看软件包安装的文件" data-level="1">查看软件包安装的文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级指定软件包">
+          <a class="post-toc-link" href="#升级指定软件包" data-level="1">升级指定软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看可升级的软件包">
+          <a class="post-toc-link" href="#查看可升级的软件包" data-level="1">查看可升级的软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有软件包-谨慎使用">
+          <a class="post-toc-link" href="#升级所有软件包-谨慎使用" data-level="1">升级所有软件包（谨慎使用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看软件包依赖">
+          <a class="post-toc-link" href="#查看软件包依赖" data-level="1">查看软件包依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找文件属于哪个包">
+          <a class="post-toc-link" href="#查找文件属于哪个包" data-level="1">查找文件属于哪个包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="istoreos-常用软件包">
+          <a class="post-toc-link" href="#istoreos-常用软件包" data-level="3">iStoreOS 常用软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="网络工具">
+          <a class="post-toc-link" href="#网络工具" data-level="1">网络工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="系统工具">
+          <a class="post-toc-link" href="#系统工具" data-level="1">系统工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="存储工具">
+          <a class="post-toc-link" href="#存储工具" data-level="1">存储工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="luci-界面插件">
+          <a class="post-toc-link" href="#luci-界面插件" data-level="1">LuCI 界面插件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="软件源配置">
+          <a class="post-toc-link" href="#软件源配置" data-level="3">软件源配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前软件源配置">
+          <a class="post-toc-link" href="#查看当前软件源配置" data-level="1">查看当前软件源配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑软件源">
+          <a class="post-toc-link" href="#编辑软件源" data-level="1">编辑软件源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="软件源配置示例">
+          <a class="post-toc-link" href="#软件源配置示例" data-level="1">软件源配置示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="src-gz-openwrt_core-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-base">
+          <a class="post-toc-link" href="#src-gz-openwrt_core-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-base" data-level="1">src/gz openwrt_core http://downloads.openwrt.org/releases/22.03.0/packages/x86_64/base</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="src-gz-openwrt_base-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-packages">
+          <a class="post-toc-link" href="#src-gz-openwrt_base-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-packages" data-level="1">src/gz openwrt_base http://downloads.openwrt.org/releases/22.03.0/packages/x86_64/packages</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="src-gz-openwrt_luci-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-luci">
+          <a class="post-toc-link" href="#src-gz-openwrt_luci-http-downloads-openwrt-org-releases-22-03-0-packages-x86_64-luci" data-level="1">src/gz openwrt_luci http://downloads.openwrt.org/releases/22.03.0/packages/x86_64/luci</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加第三方软件源">
+          <a class="post-toc-link" href="#添加第三方软件源" data-level="1">添加第三方软件源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="清理缓存">
+          <a class="post-toc-link" href="#清理缓存" data-level="3">清理缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理-opkg-缓存">
+          <a class="post-toc-link" href="#清理-opkg-缓存" data-level="1">清理 opkg 缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或使用-opkg-命令">
+          <a class="post-toc-link" href="#或使用-opkg-命令" data-level="1">或使用 opkg 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="释放缓存">
+          <a class="post-toc-link" href="#释放缓存" data-level="1">释放缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="离线安装">
+          <a class="post-toc-link" href="#离线安装" data-level="3">离线安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载软件包到指定目录">
+          <a class="post-toc-link" href="#下载软件包到指定目录" data-level="1">下载软件包到指定目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="文件保存到当前目录-curl_7-80-0-1_x86_64-ipk">
+          <a class="post-toc-link" href="#文件保存到当前目录-curl_7-80-0-1_x86_64-ipk" data-level="1">文件保存到当前目录：curl_7.80.0-1_x86_64.ipk</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量下载软件包及其依赖">
+          <a class="post-toc-link" href="#批量下载软件包及其依赖" data-level="1">批量下载软件包及其依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="离线安装">
+          <a class="post-toc-link" href="#离线安装" data-level="1">离线安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="问题1-软件包依赖错误">
+          <a class="post-toc-link" href="#问题1-软件包依赖错误" data-level="1">问题1：软件包依赖错误</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解决-强制忽略依赖或安装缺失的依赖">
+          <a class="post-toc-link" href="#解决-强制忽略依赖或安装缺失的依赖" data-level="1">解决：强制忽略依赖或安装缺失的依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="问题2-存储空间不足">
+          <a class="post-toc-link" href="#问题2-存储空间不足" data-level="1">问题2：存储空间不足</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解决-将软件安装到外部存储">
+          <a class="post-toc-link" href="#解决-将软件安装到外部存储" data-level="1">解决：将软件安装到外部存储</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="问题3-软件源无法访问">
+          <a class="post-toc-link" href="#问题3-软件源无法访问" data-level="1">问题3：软件源无法访问</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解决-更换国内镜像源">
+          <a class="post-toc-link" href="#解决-更换国内镜像源" data-level="1">解决：更换国内镜像源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="问题4-找不到软件包">
+          <a class="post-toc-link" href="#问题4-找不到软件包" data-level="1">问题4：找不到软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解决-更新软件源索引">
+          <a class="post-toc-link" href="#解决-更新软件源索引" data-level="1">解决：更新软件源索引</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

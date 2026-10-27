@@ -1577,9 +1577,352 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="问题诊断-找出端口占用元凶">
+              <a class="post-toc-link" href="#问题诊断-找出端口占用元凶" data-level="3">问题诊断：找出端口占用元凶</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="解决方案一-修改-nginx-监听端口">
+              <a class="post-toc-link" href="#解决方案一-修改-nginx-监听端口" data-level="3">解决方案一：修改 Nginx 监听端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-1-定位-nginx-配置文件">
+              <a class="post-toc-link" href="#步骤-1-定位-nginx-配置文件" data-level="4">步骤 1：定位 Nginx 配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-主配置包含的目录">
+              <a class="post-toc-link" href="#查看-nginx-主配置包含的目录" data-level="1">查看 Nginx 主配置包含的目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="快速搜索所有监听-80-端口的配置">
+              <a class="post-toc-link" href="#快速搜索所有监听-80-端口的配置" data-level="1">快速搜索所有监听 80 端口的配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-修改监听端口">
+              <a class="post-toc-link" href="#步骤-2-修改监听端口" data-level="4">步骤 2：修改监听端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="找到这一行">
+              <a class="post-toc-link" href="#找到这一行" data-level="1">找到这一行：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="修改为-例如-8080-端口">
+              <a class="post-toc-link" href="#修改为-例如-8080-端口" data-level="1">修改为（例如 8080 端口）：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-重启-nginx-服务">
+              <a class="post-toc-link" href="#步骤-3-重启-nginx-服务" data-level="4">步骤 3：重启 Nginx 服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="解决方案二-卸载冲突服务-apache2">
+              <a class="post-toc-link" href="#解决方案二-卸载冲突服务-apache2" data-level="3">解决方案二：卸载冲突服务 Apache2</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="完整卸载流程">
+              <a class="post-toc-link" href="#完整卸载流程" data-level="4">完整卸载流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="停止-apache2-服务">
+              <a class="post-toc-link" href="#停止-apache2-服务" data-level="1">停止 Apache2 服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底卸载-apache2-及相关包">
+              <a class="post-toc-link" href="#彻底卸载-apache2-及相关包" data-level="1">彻底卸载 Apache2 及相关包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理残留依赖包">
+              <a class="post-toc-link" href="#清理残留依赖包" data-level="1">清理残留依赖包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理配置文件缓存">
+              <a class="post-toc-link" href="#清理配置文件缓存" data-level="1">清理配置文件缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="验证与确认">
+              <a class="post-toc-link" href="#验证与确认" data-level="3">验证与确认</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="验证端口占用情况">
+              <a class="post-toc-link" href="#验证端口占用情况" data-level="4">验证端口占用情况</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-80-端口是否已释放">
+              <a class="post-toc-link" href="#检查-80-端口是否已释放" data-level="1">检查 80 端口是否已释放</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-nginx-是否在新端口运行">
+              <a class="post-toc-link" href="#检查-nginx-是否在新端口运行" data-level="1">检查 Nginx 是否在新端口运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="测试-nginx-服务状态">
+              <a class="post-toc-link" href="#测试-nginx-服务状态" data-level="4">测试 Nginx 服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+              <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置语法">
+              <a class="post-toc-link" href="#测试配置语法" data-level="1">测试配置语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置-如果只是修改配置">
+              <a class="post-toc-link" href="#重新加载配置-如果只是修改配置" data-level="1">重新加载配置（如果只是修改配置）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="浏览器访问测试">
+              <a class="post-toc-link" href="#浏览器访问测试" data-level="4">浏览器访问测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="进阶技巧与预防措施">
+              <a class="post-toc-link" href="#进阶技巧与预防措施" data-level="3">进阶技巧与预防措施</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="端口冲突预防方案">
+              <a class="post-toc-link" href="#端口冲突预防方案" data-level="4">端口冲突预防方案</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="性能优化建议">
+              <a class="post-toc-link" href="#性能优化建议" data-level="4">性能优化建议</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="监控与日志分析">
+              <a class="post-toc-link" href="#监控与日志分析" data-level="4">监控与日志分析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控-nginx-连接">
+              <a class="post-toc-link" href="#实时监控-nginx-连接" data-level="1">实时监控 Nginx 连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-访问日志">
+              <a class="post-toc-link" href="#查看-nginx-访问日志" data-level="1">查看 Nginx 访问日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="总结与最佳实践">
+              <a class="post-toc-link" href="#总结与最佳实践" data-level="3">总结与最佳实践</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="问题解决路径">
+              <a class="post-toc-link" href="#问题解决路径" data-level="4">问题解决路径</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="生产环境部署建议">
+              <a class="post-toc-link" href="#生产环境部署建议" data-level="4">生产环境部署建议</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="安全加固">
+              <a class="post-toc-link" href="#安全加固" data-level="4">安全加固</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="自动化运维脚本">
+              <a class="post-toc-link" href="#自动化运维脚本" data-level="4">自动化运维脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="自动检测并解决端口冲突">
+              <a class="post-toc-link" href="#自动检测并解决端口冲突" data-level="1">自动检测并解决端口冲突</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="核心要点回顾">
+              <a class="post-toc-link" href="#核心要点回顾" data-level="4">核心要点回顾</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="问题诊断-找出端口占用元凶">
+          <a class="post-toc-link" href="#问题诊断-找出端口占用元凶" data-level="3">问题诊断：找出端口占用元凶</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="解决方案一-修改-nginx-监听端口">
+          <a class="post-toc-link" href="#解决方案一-修改-nginx-监听端口" data-level="3">解决方案一：修改 Nginx 监听端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-1-定位-nginx-配置文件">
+          <a class="post-toc-link" href="#步骤-1-定位-nginx-配置文件" data-level="4">步骤 1：定位 Nginx 配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-主配置包含的目录">
+          <a class="post-toc-link" href="#查看-nginx-主配置包含的目录" data-level="1">查看 Nginx 主配置包含的目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="快速搜索所有监听-80-端口的配置">
+          <a class="post-toc-link" href="#快速搜索所有监听-80-端口的配置" data-level="1">快速搜索所有监听 80 端口的配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-修改监听端口">
+          <a class="post-toc-link" href="#步骤-2-修改监听端口" data-level="4">步骤 2：修改监听端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="找到这一行">
+          <a class="post-toc-link" href="#找到这一行" data-level="1">找到这一行：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="修改为-例如-8080-端口">
+          <a class="post-toc-link" href="#修改为-例如-8080-端口" data-level="1">修改为（例如 8080 端口）：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-重启-nginx-服务">
+          <a class="post-toc-link" href="#步骤-3-重启-nginx-服务" data-level="4">步骤 3：重启 Nginx 服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="解决方案二-卸载冲突服务-apache2">
+          <a class="post-toc-link" href="#解决方案二-卸载冲突服务-apache2" data-level="3">解决方案二：卸载冲突服务 Apache2</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="完整卸载流程">
+          <a class="post-toc-link" href="#完整卸载流程" data-level="4">完整卸载流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="停止-apache2-服务">
+          <a class="post-toc-link" href="#停止-apache2-服务" data-level="1">停止 Apache2 服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底卸载-apache2-及相关包">
+          <a class="post-toc-link" href="#彻底卸载-apache2-及相关包" data-level="1">彻底卸载 Apache2 及相关包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理残留依赖包">
+          <a class="post-toc-link" href="#清理残留依赖包" data-level="1">清理残留依赖包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理配置文件缓存">
+          <a class="post-toc-link" href="#清理配置文件缓存" data-level="1">清理配置文件缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="验证与确认">
+          <a class="post-toc-link" href="#验证与确认" data-level="3">验证与确认</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="验证端口占用情况">
+          <a class="post-toc-link" href="#验证端口占用情况" data-level="4">验证端口占用情况</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-80-端口是否已释放">
+          <a class="post-toc-link" href="#检查-80-端口是否已释放" data-level="1">检查 80 端口是否已释放</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-nginx-是否在新端口运行">
+          <a class="post-toc-link" href="#检查-nginx-是否在新端口运行" data-level="1">检查 Nginx 是否在新端口运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="测试-nginx-服务状态">
+          <a class="post-toc-link" href="#测试-nginx-服务状态" data-level="4">测试 Nginx 服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
+          <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置语法">
+          <a class="post-toc-link" href="#测试配置语法" data-level="1">测试配置语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置-如果只是修改配置">
+          <a class="post-toc-link" href="#重新加载配置-如果只是修改配置" data-level="1">重新加载配置（如果只是修改配置）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="浏览器访问测试">
+          <a class="post-toc-link" href="#浏览器访问测试" data-level="4">浏览器访问测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="进阶技巧与预防措施">
+          <a class="post-toc-link" href="#进阶技巧与预防措施" data-level="3">进阶技巧与预防措施</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="端口冲突预防方案">
+          <a class="post-toc-link" href="#端口冲突预防方案" data-level="4">端口冲突预防方案</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="性能优化建议">
+          <a class="post-toc-link" href="#性能优化建议" data-level="4">性能优化建议</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="监控与日志分析">
+          <a class="post-toc-link" href="#监控与日志分析" data-level="4">监控与日志分析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控-nginx-连接">
+          <a class="post-toc-link" href="#实时监控-nginx-连接" data-level="1">实时监控 Nginx 连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-访问日志">
+          <a class="post-toc-link" href="#查看-nginx-访问日志" data-level="1">查看 Nginx 访问日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="总结与最佳实践">
+          <a class="post-toc-link" href="#总结与最佳实践" data-level="3">总结与最佳实践</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="问题解决路径">
+          <a class="post-toc-link" href="#问题解决路径" data-level="4">问题解决路径</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="生产环境部署建议">
+          <a class="post-toc-link" href="#生产环境部署建议" data-level="4">生产环境部署建议</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="安全加固">
+          <a class="post-toc-link" href="#安全加固" data-level="4">安全加固</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="自动化运维脚本">
+          <a class="post-toc-link" href="#自动化运维脚本" data-level="4">自动化运维脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="自动检测并解决端口冲突">
+          <a class="post-toc-link" href="#自动检测并解决端口冲突" data-level="1">自动检测并解决端口冲突</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="核心要点回顾">
+          <a class="post-toc-link" href="#核心要点回顾" data-level="4">核心要点回顾</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

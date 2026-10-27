@@ -1547,9 +1547,440 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="启用-hyper-v">
+              <a class="post-toc-link" href="#启用-hyper-v" data-level="2">启用 Hyper-V</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法一-powershell-启用-推荐">
+              <a class="post-toc-link" href="#方法一-powershell-启用-推荐" data-level="3">方法一：PowerShell 启用（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用-hyper-v-功能">
+              <a class="post-toc-link" href="#启用-hyper-v-功能" data-level="1">启用 Hyper-V 功能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法二-cmd-启用">
+              <a class="post-toc-link" href="#方法二-cmd-启用" data-level="3">方法二：CMD 启用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用-hyper-v">
+              <a class="post-toc-link" href="#启用-hyper-v" data-level="1">启用 Hyper-V</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="手动重启">
+              <a class="post-toc-link" href="#手动重启" data-level="1">手动重启</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法三-图形界面启用">
+              <a class="post-toc-link" href="#方法三-图形界面启用" data-level="3">方法三：图形界面启用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法四-winget-安装-hyper-v-管理工具">
+              <a class="post-toc-link" href="#方法四-winget-安装-hyper-v-管理工具" data-level="3">方法四：winget 安装 Hyper-V 管理工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装">
+              <a class="post-toc-link" href="#验证安装" data-level="2">验证安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-hyper-v-状态">
+              <a class="post-toc-link" href="#查看-hyper-v-状态" data-level="1">查看 Hyper-V 状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-hyper-v-管理工具">
+              <a class="post-toc-link" href="#查看-hyper-v-管理工具" data-level="1">查看 Hyper-V 管理工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="系统要求">
+              <a class="post-toc-link" href="#系统要求" data-level="2">系统要求</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常用-hyper-v-命令">
+              <a class="post-toc-link" href="#常用-hyper-v-命令" data-level="2">常用 Hyper-V 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟机管理">
+              <a class="post-toc-link" href="#虚拟机管理" data-level="3">虚拟机管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建虚拟机">
+              <a class="post-toc-link" href="#创建虚拟机" data-level="1">创建虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动虚拟机">
+              <a class="post-toc-link" href="#启动虚拟机" data-level="1">启动虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="停止虚拟机">
+              <a class="post-toc-link" href="#停止虚拟机" data-level="1">停止虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="暂停虚拟机">
+              <a class="post-toc-link" href="#暂停虚拟机" data-level="1">暂停虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复虚拟机">
+              <a class="post-toc-link" href="#恢复虚拟机" data-level="1">恢复虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启虚拟机">
+              <a class="post-toc-link" href="#重启虚拟机" data-level="1">重启虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除虚拟机">
+              <a class="post-toc-link" href="#删除虚拟机" data-level="1">删除虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟机配置">
+              <a class="post-toc-link" href="#虚拟机配置" data-level="3">虚拟机配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置虚拟机内存">
+              <a class="post-toc-link" href="#设置虚拟机内存" data-level="1">设置虚拟机内存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置虚拟机-cpu-数量">
+              <a class="post-toc-link" href="#设置虚拟机-cpu-数量" data-level="1">设置虚拟机 CPU 数量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="挂载-iso">
+              <a class="post-toc-link" href="#挂载-iso" data-level="1">挂载 ISO</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接虚拟网络">
+              <a class="post-toc-link" href="#连接虚拟网络" data-level="1">连接虚拟网络</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用嵌套虚拟化-在虚拟机内运行-wsl2">
+              <a class="post-toc-link" href="#启用嵌套虚拟化-在虚拟机内运行-wsl2" data-level="1">启用嵌套虚拟化（在虚拟机内运行 WSL2）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟网络管理">
+              <a class="post-toc-link" href="#虚拟网络管理" data-level="3">虚拟网络管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟交换机">
+              <a class="post-toc-link" href="#查看虚拟交换机" data-level="1">查看虚拟交换机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建内部虚拟交换机">
+              <a class="post-toc-link" href="#创建内部虚拟交换机" data-level="1">创建内部虚拟交换机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建外部虚拟交换机-桥接">
+              <a class="post-toc-link" href="#创建外部虚拟交换机-桥接" data-level="1">创建外部虚拟交换机（桥接）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="快照管理">
+              <a class="post-toc-link" href="#快照管理" data-level="3">快照管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照">
+              <a class="post-toc-link" href="#创建快照" data-level="1">创建快照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看快照">
+              <a class="post-toc-link" href="#查看快照" data-level="1">查看快照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复到快照">
+              <a class="post-toc-link" href="#恢复到快照" data-level="1">恢复到快照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除快照">
+              <a class="post-toc-link" href="#删除快照" data-level="1">删除快照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="功能说明">
+              <a class="post-toc-link" href="#功能说明" data-level="2">功能说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="无法安装-hyper-v">
+              <a class="post-toc-link" href="#无法安装-hyper-v" data-level="3">无法安装 Hyper-V</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-windows-版本和版本号">
+              <a class="post-toc-link" href="#查看-windows-版本和版本号" data-level="1">查看 Windows 版本和版本号</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="hyper-v-仅支持-pro-enterprise-education-版本">
+              <a class="post-toc-link" href="#hyper-v-仅支持-pro-enterprise-education-版本" data-level="1">Hyper-V 仅支持 Pro/Enterprise/Education 版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟机无法启动">
+              <a class="post-toc-link" href="#虚拟机无法启动" data-level="3">虚拟机无法启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看错误详情">
+              <a class="post-toc-link" href="#查看错误详情" data-level="1">查看错误详情</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查是否启用虚拟化">
+              <a class="post-toc-link" href="#检查是否启用虚拟化" data-level="1">检查是否启用虚拟化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="网络连接问题">
+              <a class="post-toc-link" href="#网络连接问题" data-level="3">网络连接问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟交换机配置">
+              <a class="post-toc-link" href="#查看虚拟交换机配置" data-level="1">查看虚拟交换机配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="确保虚拟机网卡已连接">
+              <a class="post-toc-link" href="#确保虚拟机网卡已连接" data-level="1">确保虚拟机网卡已连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+              <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="启用-hyper-v">
+          <a class="post-toc-link" href="#启用-hyper-v" data-level="2">启用 Hyper-V</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法一-powershell-启用-推荐">
+          <a class="post-toc-link" href="#方法一-powershell-启用-推荐" data-level="3">方法一：PowerShell 启用（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用-hyper-v-功能">
+          <a class="post-toc-link" href="#启用-hyper-v-功能" data-level="1">启用 Hyper-V 功能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法二-cmd-启用">
+          <a class="post-toc-link" href="#方法二-cmd-启用" data-level="3">方法二：CMD 启用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用-hyper-v">
+          <a class="post-toc-link" href="#启用-hyper-v" data-level="1">启用 Hyper-V</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="手动重启">
+          <a class="post-toc-link" href="#手动重启" data-level="1">手动重启</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法三-图形界面启用">
+          <a class="post-toc-link" href="#方法三-图形界面启用" data-level="3">方法三：图形界面启用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法四-winget-安装-hyper-v-管理工具">
+          <a class="post-toc-link" href="#方法四-winget-安装-hyper-v-管理工具" data-level="3">方法四：winget 安装 Hyper-V 管理工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装">
+          <a class="post-toc-link" href="#验证安装" data-level="2">验证安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-hyper-v-状态">
+          <a class="post-toc-link" href="#查看-hyper-v-状态" data-level="1">查看 Hyper-V 状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-hyper-v-管理工具">
+          <a class="post-toc-link" href="#查看-hyper-v-管理工具" data-level="1">查看 Hyper-V 管理工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="系统要求">
+          <a class="post-toc-link" href="#系统要求" data-level="2">系统要求</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常用-hyper-v-命令">
+          <a class="post-toc-link" href="#常用-hyper-v-命令" data-level="2">常用 Hyper-V 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟机管理">
+          <a class="post-toc-link" href="#虚拟机管理" data-level="3">虚拟机管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建虚拟机">
+          <a class="post-toc-link" href="#创建虚拟机" data-level="1">创建虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动虚拟机">
+          <a class="post-toc-link" href="#启动虚拟机" data-level="1">启动虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="停止虚拟机">
+          <a class="post-toc-link" href="#停止虚拟机" data-level="1">停止虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="暂停虚拟机">
+          <a class="post-toc-link" href="#暂停虚拟机" data-level="1">暂停虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复虚拟机">
+          <a class="post-toc-link" href="#恢复虚拟机" data-level="1">恢复虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启虚拟机">
+          <a class="post-toc-link" href="#重启虚拟机" data-level="1">重启虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除虚拟机">
+          <a class="post-toc-link" href="#删除虚拟机" data-level="1">删除虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟机配置">
+          <a class="post-toc-link" href="#虚拟机配置" data-level="3">虚拟机配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置虚拟机内存">
+          <a class="post-toc-link" href="#设置虚拟机内存" data-level="1">设置虚拟机内存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置虚拟机-cpu-数量">
+          <a class="post-toc-link" href="#设置虚拟机-cpu-数量" data-level="1">设置虚拟机 CPU 数量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="挂载-iso">
+          <a class="post-toc-link" href="#挂载-iso" data-level="1">挂载 ISO</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接虚拟网络">
+          <a class="post-toc-link" href="#连接虚拟网络" data-level="1">连接虚拟网络</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用嵌套虚拟化-在虚拟机内运行-wsl2">
+          <a class="post-toc-link" href="#启用嵌套虚拟化-在虚拟机内运行-wsl2" data-level="1">启用嵌套虚拟化（在虚拟机内运行 WSL2）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟网络管理">
+          <a class="post-toc-link" href="#虚拟网络管理" data-level="3">虚拟网络管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟交换机">
+          <a class="post-toc-link" href="#查看虚拟交换机" data-level="1">查看虚拟交换机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建内部虚拟交换机">
+          <a class="post-toc-link" href="#创建内部虚拟交换机" data-level="1">创建内部虚拟交换机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建外部虚拟交换机-桥接">
+          <a class="post-toc-link" href="#创建外部虚拟交换机-桥接" data-level="1">创建外部虚拟交换机（桥接）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="快照管理">
+          <a class="post-toc-link" href="#快照管理" data-level="3">快照管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照">
+          <a class="post-toc-link" href="#创建快照" data-level="1">创建快照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看快照">
+          <a class="post-toc-link" href="#查看快照" data-level="1">查看快照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复到快照">
+          <a class="post-toc-link" href="#恢复到快照" data-level="1">恢复到快照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除快照">
+          <a class="post-toc-link" href="#删除快照" data-level="1">删除快照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="功能说明">
+          <a class="post-toc-link" href="#功能说明" data-level="2">功能说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="无法安装-hyper-v">
+          <a class="post-toc-link" href="#无法安装-hyper-v" data-level="3">无法安装 Hyper-V</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-windows-版本和版本号">
+          <a class="post-toc-link" href="#查看-windows-版本和版本号" data-level="1">查看 Windows 版本和版本号</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="hyper-v-仅支持-pro-enterprise-education-版本">
+          <a class="post-toc-link" href="#hyper-v-仅支持-pro-enterprise-education-版本" data-level="1">Hyper-V 仅支持 Pro/Enterprise/Education 版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟机无法启动">
+          <a class="post-toc-link" href="#虚拟机无法启动" data-level="3">虚拟机无法启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看错误详情">
+          <a class="post-toc-link" href="#查看错误详情" data-level="1">查看错误详情</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查是否启用虚拟化">
+          <a class="post-toc-link" href="#检查是否启用虚拟化" data-level="1">检查是否启用虚拟化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="网络连接问题">
+          <a class="post-toc-link" href="#网络连接问题" data-level="3">网络连接问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟交换机配置">
+          <a class="post-toc-link" href="#查看虚拟交换机配置" data-level="1">查看虚拟交换机配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="确保虚拟机网卡已连接">
+          <a class="post-toc-link" href="#确保虚拟机网卡已连接" data-level="1">确保虚拟机网卡已连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+          <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

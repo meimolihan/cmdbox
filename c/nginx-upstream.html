@@ -1561,9 +1561,240 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="负载均衡算法">
+              <a class="post-toc-link" href="#负载均衡算法" data-level="3">负载均衡算法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-轮询-默认">
+              <a class="post-toc-link" href="#1-轮询-默认" data-level="1">1. 轮询（默认）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-加权轮询">
+              <a class="post-toc-link" href="#2-加权轮询" data-level="1">2. 加权轮询</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-ip-哈希-同一-ip-访问同一后端">
+              <a class="post-toc-link" href="#3-ip-哈希-同一-ip-访问同一后端" data-level="1">3. IP 哈希（同一 IP 访问同一后端）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-最少连接">
+              <a class="post-toc-link" href="#4-最少连接" data-level="1">4. 最少连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="server-参数">
+              <a class="post-toc-link" href="#server-参数" data-level="3">server 参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
+              <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="定义上游服务器组">
+              <a class="post-toc-link" href="#定义上游服务器组" data-level="1">定义上游服务器组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="http-2-跳转服务器">
+              <a class="post-toc-link" href="#http-2-跳转服务器" data-level="3">HTTP/2 跳转服务器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="连接保持-keep-alive">
+              <a class="post-toc-link" href="#连接保持-keep-alive" data-level="3">连接保持（Keep-Alive）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查">
+              <a class="post-toc-link" href="#健康检查" data-level="3">健康检查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="zone-共享内存-商业版-plus">
+              <a class="post-toc-link" href="#zone-共享内存-商业版-plus" data-level="3">zone 共享内存（商业版 / Plus）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-所有后端都-down-了会怎样">
+              <a class="post-toc-link" href="#1-所有后端都-down-了会怎样" data-level="1">1. 所有后端都 down 了会怎样？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="nginx-会使用最后配置的-server-即使标记了-down">
+              <a class="post-toc-link" href="#nginx-会使用最后配置的-server-即使标记了-down" data-level="1">→ nginx 会使用最后配置的 server（即使标记了 down）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-backup-服务器什么时候启用">
+              <a class="post-toc-link" href="#2-backup-服务器什么时候启用" data-level="1">2. backup 服务器什么时候启用？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只有非-backup-服务器全部-down-时才启用">
+              <a class="post-toc-link" href="#只有非-backup-服务器全部-down-时才启用" data-level="1">→ 只有非 backup 服务器全部 down 时才启用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-max_fails-是怎么计算的">
+              <a class="post-toc-link" href="#3-max_fails-是怎么计算的" data-level="1">3. max_fails 是怎么计算的？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连续失败达到次数后-该-server-被标记为-down">
+              <a class="post-toc-link" href="#连续失败达到次数后-该-server-被标记为-down" data-level="1">→ 连续失败达到次数后，该 server 被标记为 down</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="fail_timeout-时间后重新尝试">
+              <a class="post-toc-link" href="#fail_timeout-时间后重新尝试" data-level="1">→ fail_timeout 时间后重新尝试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-如何查看后端状态">
+              <a class="post-toc-link" href="#4-如何查看后端状态" data-level="1">4. 如何查看后端状态？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="nginx_upstream_check_module-模块支持主动健康检查">
+              <a class="post-toc-link" href="#nginx_upstream_check_module-模块支持主动健康检查" data-level="1">→ nginx_upstream_check_module 模块支持主动健康检查</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="负载均衡算法">
+          <a class="post-toc-link" href="#负载均衡算法" data-level="3">负载均衡算法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-轮询-默认">
+          <a class="post-toc-link" href="#1-轮询-默认" data-level="1">1. 轮询（默认）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-加权轮询">
+          <a class="post-toc-link" href="#2-加权轮询" data-level="1">2. 加权轮询</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-ip-哈希-同一-ip-访问同一后端">
+          <a class="post-toc-link" href="#3-ip-哈希-同一-ip-访问同一后端" data-level="1">3. IP 哈希（同一 IP 访问同一后端）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-最少连接">
+          <a class="post-toc-link" href="#4-最少连接" data-level="1">4. 最少连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="server-参数">
+          <a class="post-toc-link" href="#server-参数" data-level="3">server 参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
+          <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="定义上游服务器组">
+          <a class="post-toc-link" href="#定义上游服务器组" data-level="1">定义上游服务器组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="http-2-跳转服务器">
+          <a class="post-toc-link" href="#http-2-跳转服务器" data-level="3">HTTP/2 跳转服务器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="连接保持-keep-alive">
+          <a class="post-toc-link" href="#连接保持-keep-alive" data-level="3">连接保持（Keep-Alive）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查">
+          <a class="post-toc-link" href="#健康检查" data-level="3">健康检查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="zone-共享内存-商业版-plus">
+          <a class="post-toc-link" href="#zone-共享内存-商业版-plus" data-level="3">zone 共享内存（商业版 / Plus）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-所有后端都-down-了会怎样">
+          <a class="post-toc-link" href="#1-所有后端都-down-了会怎样" data-level="1">1. 所有后端都 down 了会怎样？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="nginx-会使用最后配置的-server-即使标记了-down">
+          <a class="post-toc-link" href="#nginx-会使用最后配置的-server-即使标记了-down" data-level="1">→ nginx 会使用最后配置的 server（即使标记了 down）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-backup-服务器什么时候启用">
+          <a class="post-toc-link" href="#2-backup-服务器什么时候启用" data-level="1">2. backup 服务器什么时候启用？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只有非-backup-服务器全部-down-时才启用">
+          <a class="post-toc-link" href="#只有非-backup-服务器全部-down-时才启用" data-level="1">→ 只有非 backup 服务器全部 down 时才启用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-max_fails-是怎么计算的">
+          <a class="post-toc-link" href="#3-max_fails-是怎么计算的" data-level="1">3. max_fails 是怎么计算的？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连续失败达到次数后-该-server-被标记为-down">
+          <a class="post-toc-link" href="#连续失败达到次数后-该-server-被标记为-down" data-level="1">→ 连续失败达到次数后，该 server 被标记为 down</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="fail_timeout-时间后重新尝试">
+          <a class="post-toc-link" href="#fail_timeout-时间后重新尝试" data-level="1">→ fail_timeout 时间后重新尝试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-如何查看后端状态">
+          <a class="post-toc-link" href="#4-如何查看后端状态" data-level="1">4. 如何查看后端状态？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="nginx_upstream_check_module-模块支持主动健康检查">
+          <a class="post-toc-link" href="#nginx_upstream_check_module-模块支持主动健康检查" data-level="1">→ nginx_upstream_check_module 模块支持主动健康检查</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

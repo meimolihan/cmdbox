@@ -1451,9 +1451,264 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看磁盘使用">
+              <a class="post-toc-link" href="#查看磁盘使用" data-level="3">查看磁盘使用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在-wsl-中查看磁盘使用">
+              <a class="post-toc-link" href="#在-wsl-中查看磁盘使用" data-level="1">在 WSL 中查看磁盘使用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟磁盘文件路径和大小">
+              <a class="post-toc-link" href="#查看虚拟磁盘文件路径和大小" data-level="1">查看虚拟磁盘文件路径和大小</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找-vhdx-文件路径">
+              <a class="post-toc-link" href="#查找-vhdx-文件路径" data-level="1">查找 vhdx 文件路径</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="扩容磁盘">
+              <a class="post-toc-link" href="#扩容磁盘" data-level="3">扩容磁盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止所有-wsl-实例">
+              <a class="post-toc-link" href="#1-停止所有-wsl-实例" data-level="1">1. 停止所有 WSL 实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-找到-vhdx-文件路径">
+              <a class="post-toc-link" href="#2-找到-vhdx-文件路径" data-level="1">2. 找到 vhdx 文件路径</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-使用-diskpart-扩容">
+              <a class="post-toc-link" href="#3-使用-diskpart-扩容" data-level="1">3. 使用 diskpart 扩容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-重新启动-wsl">
+              <a class="post-toc-link" href="#4-重新启动-wsl" data-level="1">4. 重新启动 WSL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-在-wsl-中扩展文件系统">
+              <a class="post-toc-link" href="#5-在-wsl-中扩展文件系统" data-level="1">5. 在 WSL 中扩展文件系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看分区信息">
+              <a class="post-toc-link" href="#查看分区信息" data-level="1">查看分区信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="扩展分区-假设-dev-sdx-是虚拟磁盘">
+              <a class="post-toc-link" href="#扩展分区-假设-dev-sdx-是虚拟磁盘" data-level="1">扩展分区（假设 /dev/sdX 是虚拟磁盘）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="扩展文件系统">
+              <a class="post-toc-link" href="#扩展文件系统" data-level="1">扩展文件系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证扩容结果">
+              <a class="post-toc-link" href="#验证扩容结果" data-level="1">验证扩容结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="压缩磁盘">
+              <a class="post-toc-link" href="#压缩磁盘" data-level="3">压缩磁盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-在-wsl-中填充零以标记未使用空间">
+              <a class="post-toc-link" href="#1-在-wsl-中填充零以标记未使用空间" data-level="1">1. 在 WSL 中填充零以标记未使用空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-停止-wsl">
+              <a class="post-toc-link" href="#2-停止-wsl" data-level="1">2. 停止 WSL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-使用-diskpart-压缩">
+              <a class="post-toc-link" href="#3-使用-diskpart-压缩" data-level="1">3. 使用 diskpart 压缩</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="迁移磁盘到其他位置">
+              <a class="post-toc-link" href="#迁移磁盘到其他位置" data-level="3">迁移磁盘到其他位置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-导出-wsl-发行版">
+              <a class="post-toc-link" href="#1-导出-wsl-发行版" data-level="1">1. 导出 WSL 发行版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-注销原发行版">
+              <a class="post-toc-link" href="#2-注销原发行版" data-level="1">2. 注销原发行版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-导入到新位置">
+              <a class="post-toc-link" href="#3-导入到新位置" data-level="1">3. 导入到新位置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-设置默认用户-可选">
+              <a class="post-toc-link" href="#4-设置默认用户-可选" data-level="1">4. 设置默认用户（可选）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-验证">
+              <a class="post-toc-link" href="#5-验证" data-level="1">5. 验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看磁盘使用">
+          <a class="post-toc-link" href="#查看磁盘使用" data-level="3">查看磁盘使用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在-wsl-中查看磁盘使用">
+          <a class="post-toc-link" href="#在-wsl-中查看磁盘使用" data-level="1">在 WSL 中查看磁盘使用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟磁盘文件路径和大小">
+          <a class="post-toc-link" href="#查看虚拟磁盘文件路径和大小" data-level="1">查看虚拟磁盘文件路径和大小</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找-vhdx-文件路径">
+          <a class="post-toc-link" href="#查找-vhdx-文件路径" data-level="1">查找 vhdx 文件路径</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="扩容磁盘">
+          <a class="post-toc-link" href="#扩容磁盘" data-level="3">扩容磁盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止所有-wsl-实例">
+          <a class="post-toc-link" href="#1-停止所有-wsl-实例" data-level="1">1. 停止所有 WSL 实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-找到-vhdx-文件路径">
+          <a class="post-toc-link" href="#2-找到-vhdx-文件路径" data-level="1">2. 找到 vhdx 文件路径</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-使用-diskpart-扩容">
+          <a class="post-toc-link" href="#3-使用-diskpart-扩容" data-level="1">3. 使用 diskpart 扩容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-重新启动-wsl">
+          <a class="post-toc-link" href="#4-重新启动-wsl" data-level="1">4. 重新启动 WSL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-在-wsl-中扩展文件系统">
+          <a class="post-toc-link" href="#5-在-wsl-中扩展文件系统" data-level="1">5. 在 WSL 中扩展文件系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看分区信息">
+          <a class="post-toc-link" href="#查看分区信息" data-level="1">查看分区信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="扩展分区-假设-dev-sdx-是虚拟磁盘">
+          <a class="post-toc-link" href="#扩展分区-假设-dev-sdx-是虚拟磁盘" data-level="1">扩展分区（假设 /dev/sdX 是虚拟磁盘）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="扩展文件系统">
+          <a class="post-toc-link" href="#扩展文件系统" data-level="1">扩展文件系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证扩容结果">
+          <a class="post-toc-link" href="#验证扩容结果" data-level="1">验证扩容结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="压缩磁盘">
+          <a class="post-toc-link" href="#压缩磁盘" data-level="3">压缩磁盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-在-wsl-中填充零以标记未使用空间">
+          <a class="post-toc-link" href="#1-在-wsl-中填充零以标记未使用空间" data-level="1">1. 在 WSL 中填充零以标记未使用空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-停止-wsl">
+          <a class="post-toc-link" href="#2-停止-wsl" data-level="1">2. 停止 WSL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-使用-diskpart-压缩">
+          <a class="post-toc-link" href="#3-使用-diskpart-压缩" data-level="1">3. 使用 diskpart 压缩</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="迁移磁盘到其他位置">
+          <a class="post-toc-link" href="#迁移磁盘到其他位置" data-level="3">迁移磁盘到其他位置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-导出-wsl-发行版">
+          <a class="post-toc-link" href="#1-导出-wsl-发行版" data-level="1">1. 导出 WSL 发行版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-注销原发行版">
+          <a class="post-toc-link" href="#2-注销原发行版" data-level="1">2. 注销原发行版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-导入到新位置">
+          <a class="post-toc-link" href="#3-导入到新位置" data-level="1">3. 导入到新位置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-设置默认用户-可选">
+          <a class="post-toc-link" href="#4-设置默认用户-可选" data-level="1">4. 设置默认用户（可选）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-验证">
+          <a class="post-toc-link" href="#5-验证" data-level="1">5. 验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

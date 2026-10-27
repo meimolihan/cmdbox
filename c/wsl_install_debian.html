@@ -2025,9 +2025,1064 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
+              <a class="post-toc-link" href="#功能特点" data-level="3">功能特点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="主要章节">
+              <a class="post-toc-link" href="#主要章节" data-level="3">主要章节</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="环境准备">
+              <a class="post-toc-link" href="#环境准备" data-level="2">环境准备</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="检查-windows-版本">
+              <a class="post-toc-link" href="#检查-windows-版本" data-level="3">检查 Windows 版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="确认虚拟化已启用">
+              <a class="post-toc-link" href="#确认虚拟化已启用" data-level="3">确认虚拟化已启用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="启用-wsl-和虚拟机平台">
+              <a class="post-toc-link" href="#启用-wsl-和虚拟机平台" data-level="3">启用 WSL 和虚拟机平台</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="重启电脑">
+              <a class="post-toc-link" href="#重启电脑" data-level="3">重启电脑</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装-debian">
+              <a class="post-toc-link" href="#安装-debian" data-level="2">安装 Debian</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看可用的发行版">
+              <a class="post-toc-link" href="#查看可用的发行版" data-level="3">查看可用的发行版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-debian">
+              <a class="post-toc-link" href="#安装-debian" data-level="3">安装 Debian</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看安装结果">
+              <a class="post-toc-link" href="#查看安装结果" data-level="3">查看安装结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="启动-debian">
+              <a class="post-toc-link" href="#启动-debian" data-level="3">启动 Debian</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="基础配置">
+              <a class="post-toc-link" href="#基础配置" data-level="2">基础配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置-root-密码">
+              <a class="post-toc-link" href="#配置-root-密码" data-level="3">配置 root 密码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="更新系统软件包">
+              <a class="post-toc-link" href="#更新系统软件包" data-level="3">更新系统软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装基础工具">
+              <a class="post-toc-link" href="#安装基础工具" data-level="3">安装基础工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置中文-locale">
+              <a class="post-toc-link" href="#配置中文-locale" data-level="3">配置中文 locale</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前-locale-设置">
+              <a class="post-toc-link" href="#查看当前-locale-设置" data-level="1">查看当前 locale 设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装中文语言包">
+              <a class="post-toc-link" href="#安装中文语言包" data-level="1">安装中文语言包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-zh_cn-utf-8">
+              <a class="post-toc-link" href="#生成-zh_cn-utf-8" data-level="1">生成 zh_CN.UTF-8</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
+              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置时区">
+              <a class="post-toc-link" href="#配置时区" data-level="3">配置时区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置-dns">
+              <a class="post-toc-link" href="#配置-dns" data-level="3">配置 DNS</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="用户与权限配置">
+              <a class="post-toc-link" href="#用户与权限配置" data-level="2">用户与权限配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="添加用户到-sudo-组">
+              <a class="post-toc-link" href="#添加用户到-sudo-组" data-level="3">添加用户到 sudo 组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="切换到-root-用户">
+              <a class="post-toc-link" href="#切换到-root-用户" data-level="1">切换到 root 用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将用户添加到-sudo-组-将-demo-替换为实际用户名">
+              <a class="post-toc-link" href="#将用户添加到-sudo-组-将-demo-替换为实际用户名" data-level="1">将用户添加到 sudo 组（将 demo 替换为实际用户名）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证-sudo-权限">
+              <a class="post-toc-link" href="#验证-sudo-权限" data-level="1">验证 sudo 权限</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="设置默认用户为-root">
+              <a class="post-toc-link" href="#设置默认用户为-root" data-level="3">设置默认用户为 root</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="网络与文件访问">
+              <a class="post-toc-link" href="#网络与文件访问" data-level="2">网络与文件访问</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="从-windows-访问-wsl-文件">
+              <a class="post-toc-link" href="#从-windows-访问-wsl-文件" data-level="3">从 Windows 访问 WSL 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="进入-debian-主目录">
+              <a class="post-toc-link" href="#进入-debian-主目录" data-level="1">进入 Debian 主目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出文件">
+              <a class="post-toc-link" href="#列出文件" data-level="1">列出文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="从-wsl-访问-windows-文件">
+              <a class="post-toc-link" href="#从-wsl-访问-windows-文件" data-level="3">从 WSL 访问 Windows 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置静态-ip-可选">
+              <a class="post-toc-link" href="#配置静态-ip-可选" data-level="3">配置静态 IP（可选）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装-docker">
+              <a class="post-toc-link" href="#安装-docker" data-level="2">安装 Docker</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-docker-引擎">
+              <a class="post-toc-link" href="#安装-docker-引擎" data-level="3">安装 Docker 引擎</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包">
+              <a class="post-toc-link" href="#更新软件包" data-level="1">更新软件包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装依赖">
+              <a class="post-toc-link" href="#安装依赖" data-level="1">安装依赖</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-docker-gpg-密钥">
+              <a class="post-toc-link" href="#添加-docker-gpg-密钥" data-level="1">添加 Docker GPG 密钥</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-docker-仓库">
+              <a class="post-toc-link" href="#添加-docker-仓库" data-level="1">添加 Docker 仓库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-docker">
+              <a class="post-toc-link" href="#安装-docker" data-level="1">安装 Docker</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将当前用户添加到-docker-组-免-sudo">
+              <a class="post-toc-link" href="#将当前用户添加到-docker-组-免-sudo" data-level="1">将当前用户添加到 docker 组（免 sudo）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="启动-docker-服务">
+              <a class="post-toc-link" href="#启动-docker-服务" data-level="3">启动 Docker 服务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="手动启动">
+              <a class="post-toc-link" href="#手动启动" data-level="1">手动启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或设置开机自启">
+              <a class="post-toc-link" href="#或设置开机自启" data-level="1">或设置开机自启</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="验证-docker-安装">
+              <a class="post-toc-link" href="#验证-docker-安装" data-level="3">验证 Docker 安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配合-wsl-自启-docker">
+              <a class="post-toc-link" href="#配合-wsl-自启-docker" data-level="3">配合 WSL 自启 Docker</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安装其他常用软件">
+              <a class="post-toc-link" href="#安装其他常用软件" data-level="2">安装其他常用软件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="node-js-通过-nvm">
+              <a class="post-toc-link" href="#node-js-通过-nvm" data-level="3">Node.js（通过 nvm）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-nvm">
+              <a class="post-toc-link" href="#安装-nvm" data-level="1">安装 nvm</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载-shell">
+              <a class="post-toc-link" href="#重新加载-shell" data-level="1">重新加载 shell</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-node-js-lts-版本">
+              <a class="post-toc-link" href="#安装-node-js-lts-版本" data-level="1">安装 Node.js LTS 版本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="python">
+              <a class="post-toc-link" href="#python" data-level="3">Python</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-12-默认已安装-python3">
+              <a class="post-toc-link" href="#debian-12-默认已安装-python3" data-level="1">Debian 12 默认已安装 Python3</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-pip">
+              <a class="post-toc-link" href="#安装-pip" data-level="1">安装 pip</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="java-openjdk">
+              <a class="post-toc-link" href="#java-openjdk" data-level="3">Java（OpenJDK）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-jdk-17">
+              <a class="post-toc-link" href="#安装-jdk-17" data-level="1">安装 JDK 17</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="性能优化">
+              <a class="post-toc-link" href="#性能优化" data-level="2">性能优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="分配更多内存和-cpu">
+              <a class="post-toc-link" href="#分配更多内存和-cpu" data-level="3">分配更多内存和 CPU</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="禁用-wsl-休眠-可选">
+              <a class="post-toc-link" href="#禁用-wsl-休眠-可选" data-level="3">禁用 WSL 休眠（可选）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="清理磁盘空间">
+              <a class="post-toc-link" href="#清理磁盘空间" data-level="3">清理磁盘空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在-powershell-中执行">
+              <a class="post-toc-link" href="#在-powershell-中执行" data-level="1">在 PowerShell 中执行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="优化虚拟硬盘">
+              <a class="post-toc-link" href="#优化虚拟硬盘" data-level="1">优化虚拟硬盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="备份与迁移">
+              <a class="post-toc-link" href="#备份与迁移" data-level="2">备份与迁移</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="导出备份">
+              <a class="post-toc-link" href="#导出备份" data-level="3">导出备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="停止-wsl">
+              <a class="post-toc-link" href="#停止-wsl" data-level="1">停止 WSL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导出-debian-系统">
+              <a class="post-toc-link" href="#导出-debian-系统" data-level="1">导出 Debian 系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="导入恢复">
+              <a class="post-toc-link" href="#导入恢复" data-level="3">导入恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入为新实例">
+              <a class="post-toc-link" href="#导入为新实例" data-level="1">导入为新实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看结果">
+              <a class="post-toc-link" href="#查看结果" data-level="1">查看结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="设置默认用户">
+              <a class="post-toc-link" href="#设置默认用户" data-level="3">设置默认用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装卡在-installing">
+              <a class="post-toc-link" href="#安装卡在-installing" data-level="3">安装卡在 &#34;Installing&#34;</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="若失败-手动下载安装">
+              <a class="post-toc-link" href="#若失败-手动下载安装" data-level="1">若失败，手动下载安装</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="wsl2-无法启动">
+              <a class="post-toc-link" href="#wsl2-无法启动" data-level="3">WSL2 无法启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启电脑">
+              <a class="post-toc-link" href="#重启电脑" data-level="1">重启电脑</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="网络访问缓慢">
+              <a class="post-toc-link" href="#网络访问缓慢" data-level="3">网络访问缓慢</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="磁盘空间不足">
+              <a class="post-toc-link" href="#磁盘空间不足" data-level="3">磁盘空间不足</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装结果">
+              <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="系统信息">
+              <a class="post-toc-link" href="#系统信息" data-level="1">系统信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="网络连通性">
+              <a class="post-toc-link" href="#网络连通性" data-level="1">网络连通性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-测试">
+              <a class="post-toc-link" href="#docker-测试" data-level="1">Docker 测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-测试-如已安装">
+              <a class="post-toc-link" href="#node-js-测试-如已安装" data-level="1">Node.js 测试（如已安装）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘使用情况">
+              <a class="post-toc-link" href="#磁盘使用情况" data-level="1">磁盘使用情况</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="最常用-windows-目录-通用版">
+              <a class="post-toc-link" href="#最常用-windows-目录-通用版" data-level="2">最常用 Windows 目录（通用版）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="桌面">
+              <a class="post-toc-link" href="#桌面" data-level="1">桌面</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载">
+              <a class="post-toc-link" href="#下载" data-level="1">下载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="文档">
+              <a class="post-toc-link" href="#文档" data-level="1">文档</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="图片">
+              <a class="post-toc-link" href="#图片" data-level="1">图片</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="视频">
+              <a class="post-toc-link" href="#视频" data-level="1">视频</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="音乐">
+              <a class="post-toc-link" href="#音乐" data-level="1">音乐</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="桌面快捷访问-一键直达">
+              <a class="post-toc-link" href="#桌面快捷访问-一键直达" data-level="1">桌面快捷访问（一键直达）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="wsl-清理指南">
+              <a class="post-toc-link" href="#wsl-清理指南" data-level="2">WSL 清理指南</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一-仅卸载指定-debian-实例-保留-wsl-功能">
+              <a class="post-toc-link" href="#一-仅卸载指定-debian-实例-保留-wsl-功能" data-level="3">一、仅卸载指定 Debian 实例（保留 WSL 功能）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止所有-wsl-运行实例">
+              <a class="post-toc-link" href="#1-停止所有-wsl-运行实例" data-level="1">1. 停止所有 WSL 运行实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-查看已安装分发版">
+              <a class="post-toc-link" href="#2-查看已安装分发版" data-level="1">2. 查看已安装分发版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-注销-删除-debian-数据全部清空-不可恢复">
+              <a class="post-toc-link" href="#3-注销-删除-debian-数据全部清空-不可恢复" data-level="1">3. 注销/删除 Debian（数据全部清空，不可恢复）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="二-卸载所有-wsl-分发版-清理残留-常用彻底清理">
+              <a class="post-toc-link" href="#二-卸载所有-wsl-分发版-清理残留-常用彻底清理" data-level="3">二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止-wsl">
+              <a class="post-toc-link" href="#1-停止-wsl" data-level="1">1. 停止 WSL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-列出所有分发版并批量注销">
+              <a class="post-toc-link" href="#2-列出所有分发版并批量注销" data-level="1">2. 列出所有分发版并批量注销</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-清理-wsl-缓存与临时文件">
+              <a class="post-toc-link" href="#3-清理-wsl-缓存与临时文件" data-level="1">3. 清理 WSL 缓存与临时文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows">
+              <a class="post-toc-link" href="#三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows" data-level="3">三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-先删除所有分发版-执行上面的步骤">
+              <a class="post-toc-link" href="#1-先删除所有分发版-执行上面的步骤" data-level="1">1. 先删除所有分发版（执行上面的步骤）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-关闭-wsl-子系统">
+              <a class="post-toc-link" href="#2-关闭-wsl-子系统" data-level="1">2. 关闭 WSL 子系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-关闭虚拟机平台-wsl2-依赖">
+              <a class="post-toc-link" href="#3-关闭虚拟机平台-wsl2-依赖" data-level="1">3. 关闭虚拟机平台（WSL2 依赖）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-关闭-hyper-v-如果你也不用虚拟机">
+              <a class="post-toc-link" href="#4-关闭-hyper-v-如果你也不用虚拟机" data-level="1">4. 关闭 Hyper-V（如果你也不用虚拟机）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-重启生效">
+              <a class="post-toc-link" href="#5-重启生效" data-level="1">5. 重启生效</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="四-修复-wsl-异常-重置默认设置-出问题时用">
+              <a class="post-toc-link" href="#四-修复-wsl-异常-重置默认设置-出问题时用" data-level="3">四、修复 WSL 异常 + 重置默认设置（出问题时用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="终止所有-wsl-进程">
+              <a class="post-toc-link" href="#终止所有-wsl-进程" data-level="1">终止所有 WSL 进程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重置-wsl-相关网络-虚拟机监控程序启动项">
+              <a class="post-toc-link" href="#重置-wsl-相关网络-虚拟机监控程序启动项" data-level="1">重置 WSL 相关网络/虚拟机监控程序启动项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重启后如需再用-wsl-改回-auto">
+              <a class="post-toc-link" href="#重启后如需再用-wsl-改回-auto" data-level="1">重启后如需再用 WSL，改回 auto</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="五-针对-wslconfig-配置文件清理">
+              <a class="post-toc-link" href="#五-针对-wslconfig-配置文件清理" data-level="3">五、针对 .wslconfig 配置文件清理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除全局-wsl-配置文件">
+              <a class="post-toc-link" href="#删除全局-wsl-配置文件" data-level="1">删除全局 WSL 配置文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="六-一键终极清理脚本">
+              <a class="post-toc-link" href="#六-一键终极清理脚本" data-level="3">六、一键终极清理脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="停止-wsl">
+              <a class="post-toc-link" href="#停止-wsl" data-level="1">停止 WSL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有-wsl-分发版">
+              <a class="post-toc-link" href="#删除所有-wsl-分发版" data-level="1">删除所有 WSL 分发版</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除-wsl-虚拟磁盘与缓存">
+              <a class="post-toc-link" href="#删除-wsl-虚拟磁盘与缓存" data-level="1">删除 WSL 虚拟磁盘与缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-wsl-与虚拟机平台组件">
+              <a class="post-toc-link" href="#关闭-wsl-与虚拟机平台组件" data-level="1">关闭 WSL 与虚拟机平台组件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="3">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+              <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
+          <a class="post-toc-link" href="#功能特点" data-level="3">功能特点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="主要章节">
+          <a class="post-toc-link" href="#主要章节" data-level="3">主要章节</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="环境准备">
+          <a class="post-toc-link" href="#环境准备" data-level="2">环境准备</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="检查-windows-版本">
+          <a class="post-toc-link" href="#检查-windows-版本" data-level="3">检查 Windows 版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="确认虚拟化已启用">
+          <a class="post-toc-link" href="#确认虚拟化已启用" data-level="3">确认虚拟化已启用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="启用-wsl-和虚拟机平台">
+          <a class="post-toc-link" href="#启用-wsl-和虚拟机平台" data-level="3">启用 WSL 和虚拟机平台</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="重启电脑">
+          <a class="post-toc-link" href="#重启电脑" data-level="3">重启电脑</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装-debian">
+          <a class="post-toc-link" href="#安装-debian" data-level="2">安装 Debian</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看可用的发行版">
+          <a class="post-toc-link" href="#查看可用的发行版" data-level="3">查看可用的发行版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-debian">
+          <a class="post-toc-link" href="#安装-debian" data-level="3">安装 Debian</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看安装结果">
+          <a class="post-toc-link" href="#查看安装结果" data-level="3">查看安装结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="启动-debian">
+          <a class="post-toc-link" href="#启动-debian" data-level="3">启动 Debian</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="基础配置">
+          <a class="post-toc-link" href="#基础配置" data-level="2">基础配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置-root-密码">
+          <a class="post-toc-link" href="#配置-root-密码" data-level="3">配置 root 密码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="更新系统软件包">
+          <a class="post-toc-link" href="#更新系统软件包" data-level="3">更新系统软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装基础工具">
+          <a class="post-toc-link" href="#安装基础工具" data-level="3">安装基础工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置中文-locale">
+          <a class="post-toc-link" href="#配置中文-locale" data-level="3">配置中文 locale</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前-locale-设置">
+          <a class="post-toc-link" href="#查看当前-locale-设置" data-level="1">查看当前 locale 设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装中文语言包">
+          <a class="post-toc-link" href="#安装中文语言包" data-level="1">安装中文语言包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-zh_cn-utf-8">
+          <a class="post-toc-link" href="#生成-zh_cn-utf-8" data-level="1">生成 zh_CN.UTF-8</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
+          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置时区">
+          <a class="post-toc-link" href="#配置时区" data-level="3">配置时区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置-dns">
+          <a class="post-toc-link" href="#配置-dns" data-level="3">配置 DNS</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="用户与权限配置">
+          <a class="post-toc-link" href="#用户与权限配置" data-level="2">用户与权限配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="添加用户到-sudo-组">
+          <a class="post-toc-link" href="#添加用户到-sudo-组" data-level="3">添加用户到 sudo 组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="切换到-root-用户">
+          <a class="post-toc-link" href="#切换到-root-用户" data-level="1">切换到 root 用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将用户添加到-sudo-组-将-demo-替换为实际用户名">
+          <a class="post-toc-link" href="#将用户添加到-sudo-组-将-demo-替换为实际用户名" data-level="1">将用户添加到 sudo 组（将 demo 替换为实际用户名）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证-sudo-权限">
+          <a class="post-toc-link" href="#验证-sudo-权限" data-level="1">验证 sudo 权限</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="设置默认用户为-root">
+          <a class="post-toc-link" href="#设置默认用户为-root" data-level="3">设置默认用户为 root</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="网络与文件访问">
+          <a class="post-toc-link" href="#网络与文件访问" data-level="2">网络与文件访问</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="从-windows-访问-wsl-文件">
+          <a class="post-toc-link" href="#从-windows-访问-wsl-文件" data-level="3">从 Windows 访问 WSL 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="进入-debian-主目录">
+          <a class="post-toc-link" href="#进入-debian-主目录" data-level="1">进入 Debian 主目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出文件">
+          <a class="post-toc-link" href="#列出文件" data-level="1">列出文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="从-wsl-访问-windows-文件">
+          <a class="post-toc-link" href="#从-wsl-访问-windows-文件" data-level="3">从 WSL 访问 Windows 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置静态-ip-可选">
+          <a class="post-toc-link" href="#配置静态-ip-可选" data-level="3">配置静态 IP（可选）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装-docker">
+          <a class="post-toc-link" href="#安装-docker" data-level="2">安装 Docker</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-docker-引擎">
+          <a class="post-toc-link" href="#安装-docker-引擎" data-level="3">安装 Docker 引擎</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包">
+          <a class="post-toc-link" href="#更新软件包" data-level="1">更新软件包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装依赖">
+          <a class="post-toc-link" href="#安装依赖" data-level="1">安装依赖</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-docker-gpg-密钥">
+          <a class="post-toc-link" href="#添加-docker-gpg-密钥" data-level="1">添加 Docker GPG 密钥</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-docker-仓库">
+          <a class="post-toc-link" href="#添加-docker-仓库" data-level="1">添加 Docker 仓库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-docker">
+          <a class="post-toc-link" href="#安装-docker" data-level="1">安装 Docker</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将当前用户添加到-docker-组-免-sudo">
+          <a class="post-toc-link" href="#将当前用户添加到-docker-组-免-sudo" data-level="1">将当前用户添加到 docker 组（免 sudo）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="启动-docker-服务">
+          <a class="post-toc-link" href="#启动-docker-服务" data-level="3">启动 Docker 服务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="手动启动">
+          <a class="post-toc-link" href="#手动启动" data-level="1">手动启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或设置开机自启">
+          <a class="post-toc-link" href="#或设置开机自启" data-level="1">或设置开机自启</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="验证-docker-安装">
+          <a class="post-toc-link" href="#验证-docker-安装" data-level="3">验证 Docker 安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配合-wsl-自启-docker">
+          <a class="post-toc-link" href="#配合-wsl-自启-docker" data-level="3">配合 WSL 自启 Docker</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安装其他常用软件">
+          <a class="post-toc-link" href="#安装其他常用软件" data-level="2">安装其他常用软件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="node-js-通过-nvm">
+          <a class="post-toc-link" href="#node-js-通过-nvm" data-level="3">Node.js（通过 nvm）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-nvm">
+          <a class="post-toc-link" href="#安装-nvm" data-level="1">安装 nvm</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载-shell">
+          <a class="post-toc-link" href="#重新加载-shell" data-level="1">重新加载 shell</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-node-js-lts-版本">
+          <a class="post-toc-link" href="#安装-node-js-lts-版本" data-level="1">安装 Node.js LTS 版本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="python">
+          <a class="post-toc-link" href="#python" data-level="3">Python</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-12-默认已安装-python3">
+          <a class="post-toc-link" href="#debian-12-默认已安装-python3" data-level="1">Debian 12 默认已安装 Python3</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-pip">
+          <a class="post-toc-link" href="#安装-pip" data-level="1">安装 pip</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="java-openjdk">
+          <a class="post-toc-link" href="#java-openjdk" data-level="3">Java（OpenJDK）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-jdk-17">
+          <a class="post-toc-link" href="#安装-jdk-17" data-level="1">安装 JDK 17</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="性能优化">
+          <a class="post-toc-link" href="#性能优化" data-level="2">性能优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="分配更多内存和-cpu">
+          <a class="post-toc-link" href="#分配更多内存和-cpu" data-level="3">分配更多内存和 CPU</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="禁用-wsl-休眠-可选">
+          <a class="post-toc-link" href="#禁用-wsl-休眠-可选" data-level="3">禁用 WSL 休眠（可选）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="清理磁盘空间">
+          <a class="post-toc-link" href="#清理磁盘空间" data-level="3">清理磁盘空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在-powershell-中执行">
+          <a class="post-toc-link" href="#在-powershell-中执行" data-level="1">在 PowerShell 中执行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="优化虚拟硬盘">
+          <a class="post-toc-link" href="#优化虚拟硬盘" data-level="1">优化虚拟硬盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="备份与迁移">
+          <a class="post-toc-link" href="#备份与迁移" data-level="2">备份与迁移</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="导出备份">
+          <a class="post-toc-link" href="#导出备份" data-level="3">导出备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="停止-wsl">
+          <a class="post-toc-link" href="#停止-wsl" data-level="1">停止 WSL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导出-debian-系统">
+          <a class="post-toc-link" href="#导出-debian-系统" data-level="1">导出 Debian 系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="导入恢复">
+          <a class="post-toc-link" href="#导入恢复" data-level="3">导入恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入为新实例">
+          <a class="post-toc-link" href="#导入为新实例" data-level="1">导入为新实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看结果">
+          <a class="post-toc-link" href="#查看结果" data-level="1">查看结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="设置默认用户">
+          <a class="post-toc-link" href="#设置默认用户" data-level="3">设置默认用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装卡在-installing">
+          <a class="post-toc-link" href="#安装卡在-installing" data-level="3">安装卡在 &#34;Installing&#34;</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="若失败-手动下载安装">
+          <a class="post-toc-link" href="#若失败-手动下载安装" data-level="1">若失败，手动下载安装</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="wsl2-无法启动">
+          <a class="post-toc-link" href="#wsl2-无法启动" data-level="3">WSL2 无法启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启电脑">
+          <a class="post-toc-link" href="#重启电脑" data-level="1">重启电脑</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="网络访问缓慢">
+          <a class="post-toc-link" href="#网络访问缓慢" data-level="3">网络访问缓慢</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="磁盘空间不足">
+          <a class="post-toc-link" href="#磁盘空间不足" data-level="3">磁盘空间不足</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装结果">
+          <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="系统信息">
+          <a class="post-toc-link" href="#系统信息" data-level="1">系统信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="网络连通性">
+          <a class="post-toc-link" href="#网络连通性" data-level="1">网络连通性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-测试">
+          <a class="post-toc-link" href="#docker-测试" data-level="1">Docker 测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-测试-如已安装">
+          <a class="post-toc-link" href="#node-js-测试-如已安装" data-level="1">Node.js 测试（如已安装）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘使用情况">
+          <a class="post-toc-link" href="#磁盘使用情况" data-level="1">磁盘使用情况</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="最常用-windows-目录-通用版">
+          <a class="post-toc-link" href="#最常用-windows-目录-通用版" data-level="2">最常用 Windows 目录（通用版）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="桌面">
+          <a class="post-toc-link" href="#桌面" data-level="1">桌面</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载">
+          <a class="post-toc-link" href="#下载" data-level="1">下载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="文档">
+          <a class="post-toc-link" href="#文档" data-level="1">文档</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="图片">
+          <a class="post-toc-link" href="#图片" data-level="1">图片</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="视频">
+          <a class="post-toc-link" href="#视频" data-level="1">视频</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="音乐">
+          <a class="post-toc-link" href="#音乐" data-level="1">音乐</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="桌面快捷访问-一键直达">
+          <a class="post-toc-link" href="#桌面快捷访问-一键直达" data-level="1">桌面快捷访问（一键直达）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="wsl-清理指南">
+          <a class="post-toc-link" href="#wsl-清理指南" data-level="2">WSL 清理指南</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一-仅卸载指定-debian-实例-保留-wsl-功能">
+          <a class="post-toc-link" href="#一-仅卸载指定-debian-实例-保留-wsl-功能" data-level="3">一、仅卸载指定 Debian 实例（保留 WSL 功能）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止所有-wsl-运行实例">
+          <a class="post-toc-link" href="#1-停止所有-wsl-运行实例" data-level="1">1. 停止所有 WSL 运行实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-查看已安装分发版">
+          <a class="post-toc-link" href="#2-查看已安装分发版" data-level="1">2. 查看已安装分发版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-注销-删除-debian-数据全部清空-不可恢复">
+          <a class="post-toc-link" href="#3-注销-删除-debian-数据全部清空-不可恢复" data-level="1">3. 注销/删除 Debian（数据全部清空，不可恢复）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="二-卸载所有-wsl-分发版-清理残留-常用彻底清理">
+          <a class="post-toc-link" href="#二-卸载所有-wsl-分发版-清理残留-常用彻底清理" data-level="3">二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止-wsl">
+          <a class="post-toc-link" href="#1-停止-wsl" data-level="1">1. 停止 WSL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-列出所有分发版并批量注销">
+          <a class="post-toc-link" href="#2-列出所有分发版并批量注销" data-level="1">2. 列出所有分发版并批量注销</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-清理-wsl-缓存与临时文件">
+          <a class="post-toc-link" href="#3-清理-wsl-缓存与临时文件" data-level="1">3. 清理 WSL 缓存与临时文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows">
+          <a class="post-toc-link" href="#三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows" data-level="3">三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-先删除所有分发版-执行上面的步骤">
+          <a class="post-toc-link" href="#1-先删除所有分发版-执行上面的步骤" data-level="1">1. 先删除所有分发版（执行上面的步骤）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-关闭-wsl-子系统">
+          <a class="post-toc-link" href="#2-关闭-wsl-子系统" data-level="1">2. 关闭 WSL 子系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-关闭虚拟机平台-wsl2-依赖">
+          <a class="post-toc-link" href="#3-关闭虚拟机平台-wsl2-依赖" data-level="1">3. 关闭虚拟机平台（WSL2 依赖）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-关闭-hyper-v-如果你也不用虚拟机">
+          <a class="post-toc-link" href="#4-关闭-hyper-v-如果你也不用虚拟机" data-level="1">4. 关闭 Hyper-V（如果你也不用虚拟机）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-重启生效">
+          <a class="post-toc-link" href="#5-重启生效" data-level="1">5. 重启生效</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="四-修复-wsl-异常-重置默认设置-出问题时用">
+          <a class="post-toc-link" href="#四-修复-wsl-异常-重置默认设置-出问题时用" data-level="3">四、修复 WSL 异常 + 重置默认设置（出问题时用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="终止所有-wsl-进程">
+          <a class="post-toc-link" href="#终止所有-wsl-进程" data-level="1">终止所有 WSL 进程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重置-wsl-相关网络-虚拟机监控程序启动项">
+          <a class="post-toc-link" href="#重置-wsl-相关网络-虚拟机监控程序启动项" data-level="1">重置 WSL 相关网络/虚拟机监控程序启动项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重启后如需再用-wsl-改回-auto">
+          <a class="post-toc-link" href="#重启后如需再用-wsl-改回-auto" data-level="1">重启后如需再用 WSL，改回 auto</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="五-针对-wslconfig-配置文件清理">
+          <a class="post-toc-link" href="#五-针对-wslconfig-配置文件清理" data-level="3">五、针对 .wslconfig 配置文件清理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除全局-wsl-配置文件">
+          <a class="post-toc-link" href="#删除全局-wsl-配置文件" data-level="1">删除全局 WSL 配置文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="六-一键终极清理脚本">
+          <a class="post-toc-link" href="#六-一键终极清理脚本" data-level="3">六、一键终极清理脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="停止-wsl">
+          <a class="post-toc-link" href="#停止-wsl" data-level="1">停止 WSL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有-wsl-分发版">
+          <a class="post-toc-link" href="#删除所有-wsl-分发版" data-level="1">删除所有 WSL 分发版</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除-wsl-虚拟磁盘与缓存">
+          <a class="post-toc-link" href="#删除-wsl-虚拟磁盘与缓存" data-level="1">删除 WSL 虚拟磁盘与缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭-wsl-与虚拟机平台组件">
+          <a class="post-toc-link" href="#关闭-wsl-与虚拟机平台组件" data-level="1">关闭 WSL 与虚拟机平台组件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="3">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+          <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1449,9 +1449,376 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-镜像下载">
+              <a class="post-toc-link" href="#一-镜像下载" data-level="2">🌐 一、镜像下载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="官方下载地址">
+              <a class="post-toc-link" href="#官方下载地址" data-level="3">官方下载地址</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-下载镜像文件">
+              <a class="post-toc-link" href="#1-下载镜像文件" data-level="3">1. 下载镜像文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载镜像到指定目录并重命名为-op-img-gz">
+              <a class="post-toc-link" href="#下载镜像到指定目录并重命名为-op-img-gz" data-level="1">下载镜像到指定目录并重命名为 op.img.gz</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-重命名镜像文件-备用方法">
+              <a class="post-toc-link" href="#2-重命名镜像文件-备用方法" data-level="3">2. 重命名镜像文件（备用方法）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="如果已下载但名称不对-使用此命令重命名">
+              <a class="post-toc-link" href="#如果已下载但名称不对-使用此命令重命名" data-level="1">如果已下载但名称不对，使用此命令重命名</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-准备工作">
+              <a class="post-toc-link" href="#二-准备工作" data-level="2">🔧 二、准备工作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装必要的工具">
+              <a class="post-toc-link" href="#1-安装必要的工具" data-level="3">1. 安装必要的工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表并安装-dd-工具">
+              <a class="post-toc-link" href="#更新软件包列表并安装-dd-工具" data-level="1">更新软件包列表并安装 dd 工具</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-进入工作目录">
+              <a class="post-toc-link" href="#2-进入工作目录" data-level="3">2. 进入工作目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="切换到备份目录并查看内容">
+              <a class="post-toc-link" href="#切换到备份目录并查看内容" data-level="1">切换到备份目录并查看内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-镜像解压与扩容">
+              <a class="post-toc-link" href="#三-镜像解压与扩容" data-level="2">🗜️ 三、镜像解压与扩容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-解压-gz-压缩包">
+              <a class="post-toc-link" href="#1-解压-gz-压缩包" data-level="3">1. 解压 GZ 压缩包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解压镜像文件-保留原压缩包">
+              <a class="post-toc-link" href="#解压镜像文件-保留原压缩包" data-level="1">解压镜像文件，保留原压缩包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-扩展镜像大小">
+              <a class="post-toc-link" href="#2-扩展镜像大小" data-level="3">2. 扩展镜像大小</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="向镜像文件末尾追加-2gb-的空数据">
+              <a class="post-toc-link" href="#向镜像文件末尾追加-2gb-的空数据" data-level="1">向镜像文件末尾追加 2GB 的空数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-使用-parted-调整分区">
+              <a class="post-toc-link" href="#3-使用-parted-调整分区" data-level="3">3. 使用 parted 调整分区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-parted-分区工具处理镜像">
+              <a class="post-toc-link" href="#启动-parted-分区工具处理镜像" data-level="1">启动 parted 分区工具处理镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前分区信息">
+              <a class="post-toc-link" href="#查看当前分区信息" data-level="1">查看当前分区信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="可能需要先修复分区表-如果需要">
+              <a class="post-toc-link" href="#可能需要先修复分区表-如果需要" data-level="1">可能需要先修复分区表（如果需要）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将分区2扩展到100-可用空间">
+              <a class="post-toc-link" href="#将分区2扩展到100-可用空间" data-level="1">将分区2扩展到100%可用空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="再次查看分区信息确认更改">
+              <a class="post-toc-link" href="#再次查看分区信息确认更改" data-level="1">再次查看分区信息确认更改</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="退出-parted">
+              <a class="post-toc-link" href="#退出-parted" data-level="1">退出 parted</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-重新压缩镜像">
+              <a class="post-toc-link" href="#四-重新压缩镜像" data-level="2">📦 四、重新压缩镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-压缩扩容后的镜像">
+              <a class="post-toc-link" href="#1-压缩扩容后的镜像" data-level="3">1. 压缩扩容后的镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将扩容后的镜像重新压缩为-gz格式">
+              <a class="post-toc-link" href="#将扩容后的镜像重新压缩为-gz格式" data-level="1">将扩容后的镜像重新压缩为.gz格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五-后续操作建议">
+              <a class="post-toc-link" href="#五-后续操作建议" data-level="2">🛠️ 五、后续操作建议</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-验证镜像完整性">
+              <a class="post-toc-link" href="#1-验证镜像完整性" data-level="3">1. 验证镜像完整性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像文件大小">
+              <a class="post-toc-link" href="#检查镜像文件大小" data-level="1">检查镜像文件大小</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证压缩文件完整性">
+              <a class="post-toc-link" href="#验证压缩文件完整性" data-level="1">验证压缩文件完整性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-部署扩容后的镜像">
+              <a class="post-toc-link" href="#2-部署扩容后的镜像" data-level="3">2. 部署扩容后的镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将镜像写入u盘或硬盘-示例命令-谨慎使用">
+              <a class="post-toc-link" href="#将镜像写入u盘或硬盘-示例命令-谨慎使用" data-level="1">将镜像写入U盘或硬盘（示例命令，谨慎使用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="dd-if-op-img-of-dev-sdx-bs-4m-status-progress">
+              <a class="post-toc-link" href="#dd-if-op-img-of-dev-sdx-bs-4m-status-progress" data-level="1">dd if=op.img of=/dev/sdX bs=4M status=progress</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-清理临时文件">
+              <a class="post-toc-link" href="#3-清理临时文件" data-level="3">3. 清理临时文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="如需节省空间-可删除未压缩的镜像文件">
+              <a class="post-toc-link" href="#如需节省空间-可删除未压缩的镜像文件" data-level="1">如需节省空间，可删除未压缩的镜像文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六-重要注意事项">
+              <a class="post-toc-link" href="#六-重要注意事项" data-level="2">⚠️ 六、重要注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七-扩容原理说明">
+              <a class="post-toc-link" href="#七-扩容原理说明" data-level="2">💡 七、扩容原理说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="扩展功能">
+              <a class="post-toc-link" href="#扩展功能" data-level="3">扩展功能</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安全建议">
+              <a class="post-toc-link" href="#安全建议" data-level="3">安全建议</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="学习资源">
+              <a class="post-toc-link" href="#学习资源" data-level="3">学习资源</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-镜像下载">
+          <a class="post-toc-link" href="#一-镜像下载" data-level="2">🌐 一、镜像下载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="官方下载地址">
+          <a class="post-toc-link" href="#官方下载地址" data-level="3">官方下载地址</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-下载镜像文件">
+          <a class="post-toc-link" href="#1-下载镜像文件" data-level="3">1. 下载镜像文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载镜像到指定目录并重命名为-op-img-gz">
+          <a class="post-toc-link" href="#下载镜像到指定目录并重命名为-op-img-gz" data-level="1">下载镜像到指定目录并重命名为 op.img.gz</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-重命名镜像文件-备用方法">
+          <a class="post-toc-link" href="#2-重命名镜像文件-备用方法" data-level="3">2. 重命名镜像文件（备用方法）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="如果已下载但名称不对-使用此命令重命名">
+          <a class="post-toc-link" href="#如果已下载但名称不对-使用此命令重命名" data-level="1">如果已下载但名称不对，使用此命令重命名</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-准备工作">
+          <a class="post-toc-link" href="#二-准备工作" data-level="2">🔧 二、准备工作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装必要的工具">
+          <a class="post-toc-link" href="#1-安装必要的工具" data-level="3">1. 安装必要的工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表并安装-dd-工具">
+          <a class="post-toc-link" href="#更新软件包列表并安装-dd-工具" data-level="1">更新软件包列表并安装 dd 工具</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-进入工作目录">
+          <a class="post-toc-link" href="#2-进入工作目录" data-level="3">2. 进入工作目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="切换到备份目录并查看内容">
+          <a class="post-toc-link" href="#切换到备份目录并查看内容" data-level="1">切换到备份目录并查看内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-镜像解压与扩容">
+          <a class="post-toc-link" href="#三-镜像解压与扩容" data-level="2">🗜️ 三、镜像解压与扩容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-解压-gz-压缩包">
+          <a class="post-toc-link" href="#1-解压-gz-压缩包" data-level="3">1. 解压 GZ 压缩包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解压镜像文件-保留原压缩包">
+          <a class="post-toc-link" href="#解压镜像文件-保留原压缩包" data-level="1">解压镜像文件，保留原压缩包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-扩展镜像大小">
+          <a class="post-toc-link" href="#2-扩展镜像大小" data-level="3">2. 扩展镜像大小</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="向镜像文件末尾追加-2gb-的空数据">
+          <a class="post-toc-link" href="#向镜像文件末尾追加-2gb-的空数据" data-level="1">向镜像文件末尾追加 2GB 的空数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-使用-parted-调整分区">
+          <a class="post-toc-link" href="#3-使用-parted-调整分区" data-level="3">3. 使用 parted 调整分区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-parted-分区工具处理镜像">
+          <a class="post-toc-link" href="#启动-parted-分区工具处理镜像" data-level="1">启动 parted 分区工具处理镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前分区信息">
+          <a class="post-toc-link" href="#查看当前分区信息" data-level="1">查看当前分区信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="可能需要先修复分区表-如果需要">
+          <a class="post-toc-link" href="#可能需要先修复分区表-如果需要" data-level="1">可能需要先修复分区表（如果需要）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将分区2扩展到100-可用空间">
+          <a class="post-toc-link" href="#将分区2扩展到100-可用空间" data-level="1">将分区2扩展到100%可用空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="再次查看分区信息确认更改">
+          <a class="post-toc-link" href="#再次查看分区信息确认更改" data-level="1">再次查看分区信息确认更改</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="退出-parted">
+          <a class="post-toc-link" href="#退出-parted" data-level="1">退出 parted</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-重新压缩镜像">
+          <a class="post-toc-link" href="#四-重新压缩镜像" data-level="2">📦 四、重新压缩镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-压缩扩容后的镜像">
+          <a class="post-toc-link" href="#1-压缩扩容后的镜像" data-level="3">1. 压缩扩容后的镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将扩容后的镜像重新压缩为-gz格式">
+          <a class="post-toc-link" href="#将扩容后的镜像重新压缩为-gz格式" data-level="1">将扩容后的镜像重新压缩为.gz格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五-后续操作建议">
+          <a class="post-toc-link" href="#五-后续操作建议" data-level="2">🛠️ 五、后续操作建议</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-验证镜像完整性">
+          <a class="post-toc-link" href="#1-验证镜像完整性" data-level="3">1. 验证镜像完整性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像文件大小">
+          <a class="post-toc-link" href="#检查镜像文件大小" data-level="1">检查镜像文件大小</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证压缩文件完整性">
+          <a class="post-toc-link" href="#验证压缩文件完整性" data-level="1">验证压缩文件完整性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-部署扩容后的镜像">
+          <a class="post-toc-link" href="#2-部署扩容后的镜像" data-level="3">2. 部署扩容后的镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将镜像写入u盘或硬盘-示例命令-谨慎使用">
+          <a class="post-toc-link" href="#将镜像写入u盘或硬盘-示例命令-谨慎使用" data-level="1">将镜像写入U盘或硬盘（示例命令，谨慎使用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="dd-if-op-img-of-dev-sdx-bs-4m-status-progress">
+          <a class="post-toc-link" href="#dd-if-op-img-of-dev-sdx-bs-4m-status-progress" data-level="1">dd if=op.img of=/dev/sdX bs=4M status=progress</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-清理临时文件">
+          <a class="post-toc-link" href="#3-清理临时文件" data-level="3">3. 清理临时文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="如需节省空间-可删除未压缩的镜像文件">
+          <a class="post-toc-link" href="#如需节省空间-可删除未压缩的镜像文件" data-level="1">如需节省空间，可删除未压缩的镜像文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六-重要注意事项">
+          <a class="post-toc-link" href="#六-重要注意事项" data-level="2">⚠️ 六、重要注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七-扩容原理说明">
+          <a class="post-toc-link" href="#七-扩容原理说明" data-level="2">💡 七、扩容原理说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="扩展功能">
+          <a class="post-toc-link" href="#扩展功能" data-level="3">扩展功能</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安全建议">
+          <a class="post-toc-link" href="#安全建议" data-level="3">安全建议</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="学习资源">
+          <a class="post-toc-link" href="#学习资源" data-level="3">学习资源</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

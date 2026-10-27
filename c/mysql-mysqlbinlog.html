@@ -1689,9 +1689,512 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基本选项">
+              <a class="post-toc-link" href="#基本选项" data-level="1">基本选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
+              <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+              <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看二进制日志内容">
+              <a class="post-toc-link" href="#查看二进制日志内容" data-level="1">查看二进制日志内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看多个日志文件">
+              <a class="post-toc-link" href="#查看多个日志文件" data-level="1">查看多个日志文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定时间范围的日志">
+              <a class="post-toc-link" href="#查看指定时间范围的日志" data-level="1">查看指定时间范围的日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定位置范围的日志">
+              <a class="post-toc-link" href="#查看指定位置范围的日志" data-level="1">查看指定位置范围的日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只查看指定数据库的日志">
+              <a class="post-toc-link" href="#只查看指定数据库的日志" data-level="1">只查看指定数据库的日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重建sql语句-显示原始sql">
+              <a class="post-toc-link" href="#重建sql语句-显示原始sql" data-level="1">重建SQL语句（显示原始SQL）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="更详细的输出-显示列信息">
+              <a class="post-toc-link" href="#更详细的输出-显示列信息" data-level="1">更详细的输出（显示列信息）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将日志输出到文件">
+              <a class="post-toc-link" href="#将日志输出到文件" data-level="1">将日志输出到文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据">
+              <a class="post-toc-link" href="#恢复数据" data-level="1">恢复数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定时间范围的数据">
+              <a class="post-toc-link" href="#恢复指定时间范围的数据" data-level="1">恢复指定时间范围的数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从远程服务器读取日志">
+              <a class="post-toc-link" href="#从远程服务器读取日志" data-level="1">从远程服务器读取日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出原始二进制格式">
+              <a class="post-toc-link" href="#输出原始二进制格式" data-level="1">输出原始二进制格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看正在使用的日志文件">
+              <a class="post-toc-link" href="#查看正在使用的日志文件" data-level="1">查看正在使用的日志文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="以十六进制输出">
+              <a class="post-toc-link" href="#以十六进制输出" data-level="1">以十六进制输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="简短格式输出">
+              <a class="post-toc-link" href="#简短格式输出" data-level="1">简短格式输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用gtid定位">
+              <a class="post-toc-link" href="#使用gtid定位" data-level="1">使用GTID定位</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="处理到最后一个日志">
+              <a class="post-toc-link" href="#处理到最后一个日志" data-level="1">处理到最后一个日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用日志记录-恢复时避免循环记录">
+              <a class="post-toc-link" href="#禁用日志记录-恢复时避免循环记录" data-level="1">禁用日志记录（恢复时避免循环记录）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数据恢复场景">
+              <a class="post-toc-link" href="#数据恢复场景" data-level="3">数据恢复场景</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="场景-误删数据后恢复">
+              <a class="post-toc-link" href="#场景-误删数据后恢复" data-level="1">场景：误删数据后恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-查看当前二进制日志">
+              <a class="post-toc-link" href="#1-查看当前二进制日志" data-level="1">1. 查看当前二进制日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-找到误删操作的日志">
+              <a class="post-toc-link" href="#2-找到误删操作的日志" data-level="1">2. 找到误删操作的日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-恢复到删除操作之前">
+              <a class="post-toc-link" href="#3-恢复到删除操作之前" data-level="1">3. 恢复到删除操作之前</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-恢复指定数据库">
+              <a class="post-toc-link" href="#4-恢复指定数据库" data-level="1">4. 恢复指定数据库</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="完整恢复流程">
+              <a class="post-toc-link" href="#完整恢复流程" data-level="1">完整恢复流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="假设在2024-01-15-15-00-00误删了数据">
+              <a class="post-toc-link" href="#假设在2024-01-15-15-00-00误删了数据" data-level="1">假设在2024-01-15 15:00:00误删了数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-恢复备份">
+              <a class="post-toc-link" href="#1-恢复备份" data-level="1">1. 恢复备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-应用备份后的二进制日志-到误删前">
+              <a class="post-toc-link" href="#2-应用备份后的二进制日志-到误删前" data-level="1">2. 应用备份后的二进制日志（到误删前）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-跳过误删操作-继续应用后续日志">
+              <a class="post-toc-link" href="#3-跳过误删操作-继续应用后续日志" data-level="1">3. 跳过误删操作，继续应用后续日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="主从复制相关">
+              <a class="post-toc-link" href="#主从复制相关" data-level="3">主从复制相关</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看从服务器的relay-log">
+              <a class="post-toc-link" href="#查看从服务器的relay-log" data-level="1">查看从服务器的relay log</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查主从数据一致性">
+              <a class="post-toc-link" href="#检查主从数据一致性" data-level="1">检查主从数据一致性</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在主服务器上">
+              <a class="post-toc-link" href="#在主服务器上" data-level="1">在主服务器上</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在从服务器上">
+              <a class="post-toc-link" href="#在从服务器上" data-level="1">在从服务器上</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="对比">
+              <a class="post-toc-link" href="#对比" data-level="1">对比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="找出复制错误">
+              <a class="post-toc-link" href="#找出复制错误" data-level="1">找出复制错误</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="跳过错误的复制事件">
+              <a class="post-toc-link" href="#跳过错误的复制事件" data-level="1">跳过错误的复制事件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-查看错误位置">
+              <a class="post-toc-link" href="#1-查看错误位置" data-level="1">1. 查看错误位置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-跳过错误位置">
+              <a class="post-toc-link" href="#2-跳过错误位置" data-level="1">2. 跳过错误位置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式说明">
+              <a class="post-toc-link" href="#输出格式说明" data-level="3">输出格式说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="标准格式">
+              <a class="post-toc-link" href="#标准格式" data-level="1">标准格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="at-123">
+              <a class="post-toc-link" href="#at-123" data-level="1">at 123</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细格式-v">
+              <a class="post-toc-link" href="#详细格式-v" data-level="1">详细格式(-v)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="at-123">
+              <a class="post-toc-link" href="#at-123" data-level="1">at 123</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="insert-into-mydb-users">
+              <a class="post-toc-link" href="#insert-into-mydb-users" data-level="3">INSERT INTO mydb.users</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="set">
+              <a class="post-toc-link" href="#set" data-level="3">SET</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-1">
+              <a class="post-toc-link" href="#1-1" data-level="3">@1=1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-test">
+              <a class="post-toc-link" href="#2-test" data-level="3">@2=&#39;test&#39;</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-2024-01-15-10-30-45">
+              <a class="post-toc-link" href="#3-2024-01-15-10-30-45" data-level="3">@3=&#39;2024-01-15 10:30:45&#39;</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实用脚本">
+              <a class="post-toc-link" href="#实用脚本" data-level="3">实用脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="二进制日志分析脚本">
+              <a class="post-toc-link" href="#二进制日志分析脚本" data-level="1">二进制日志分析脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基本选项">
+          <a class="post-toc-link" href="#基本选项" data-level="1">基本选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
+          <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+          <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看二进制日志内容">
+          <a class="post-toc-link" href="#查看二进制日志内容" data-level="1">查看二进制日志内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看多个日志文件">
+          <a class="post-toc-link" href="#查看多个日志文件" data-level="1">查看多个日志文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定时间范围的日志">
+          <a class="post-toc-link" href="#查看指定时间范围的日志" data-level="1">查看指定时间范围的日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定位置范围的日志">
+          <a class="post-toc-link" href="#查看指定位置范围的日志" data-level="1">查看指定位置范围的日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只查看指定数据库的日志">
+          <a class="post-toc-link" href="#只查看指定数据库的日志" data-level="1">只查看指定数据库的日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重建sql语句-显示原始sql">
+          <a class="post-toc-link" href="#重建sql语句-显示原始sql" data-level="1">重建SQL语句（显示原始SQL）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="更详细的输出-显示列信息">
+          <a class="post-toc-link" href="#更详细的输出-显示列信息" data-level="1">更详细的输出（显示列信息）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将日志输出到文件">
+          <a class="post-toc-link" href="#将日志输出到文件" data-level="1">将日志输出到文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据">
+          <a class="post-toc-link" href="#恢复数据" data-level="1">恢复数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定时间范围的数据">
+          <a class="post-toc-link" href="#恢复指定时间范围的数据" data-level="1">恢复指定时间范围的数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从远程服务器读取日志">
+          <a class="post-toc-link" href="#从远程服务器读取日志" data-level="1">从远程服务器读取日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出原始二进制格式">
+          <a class="post-toc-link" href="#输出原始二进制格式" data-level="1">输出原始二进制格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看正在使用的日志文件">
+          <a class="post-toc-link" href="#查看正在使用的日志文件" data-level="1">查看正在使用的日志文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="以十六进制输出">
+          <a class="post-toc-link" href="#以十六进制输出" data-level="1">以十六进制输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="简短格式输出">
+          <a class="post-toc-link" href="#简短格式输出" data-level="1">简短格式输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用gtid定位">
+          <a class="post-toc-link" href="#使用gtid定位" data-level="1">使用GTID定位</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="处理到最后一个日志">
+          <a class="post-toc-link" href="#处理到最后一个日志" data-level="1">处理到最后一个日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用日志记录-恢复时避免循环记录">
+          <a class="post-toc-link" href="#禁用日志记录-恢复时避免循环记录" data-level="1">禁用日志记录（恢复时避免循环记录）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数据恢复场景">
+          <a class="post-toc-link" href="#数据恢复场景" data-level="3">数据恢复场景</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="场景-误删数据后恢复">
+          <a class="post-toc-link" href="#场景-误删数据后恢复" data-level="1">场景：误删数据后恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-查看当前二进制日志">
+          <a class="post-toc-link" href="#1-查看当前二进制日志" data-level="1">1. 查看当前二进制日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-找到误删操作的日志">
+          <a class="post-toc-link" href="#2-找到误删操作的日志" data-level="1">2. 找到误删操作的日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-恢复到删除操作之前">
+          <a class="post-toc-link" href="#3-恢复到删除操作之前" data-level="1">3. 恢复到删除操作之前</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-恢复指定数据库">
+          <a class="post-toc-link" href="#4-恢复指定数据库" data-level="1">4. 恢复指定数据库</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="完整恢复流程">
+          <a class="post-toc-link" href="#完整恢复流程" data-level="1">完整恢复流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="假设在2024-01-15-15-00-00误删了数据">
+          <a class="post-toc-link" href="#假设在2024-01-15-15-00-00误删了数据" data-level="1">假设在2024-01-15 15:00:00误删了数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-恢复备份">
+          <a class="post-toc-link" href="#1-恢复备份" data-level="1">1. 恢复备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-应用备份后的二进制日志-到误删前">
+          <a class="post-toc-link" href="#2-应用备份后的二进制日志-到误删前" data-level="1">2. 应用备份后的二进制日志（到误删前）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-跳过误删操作-继续应用后续日志">
+          <a class="post-toc-link" href="#3-跳过误删操作-继续应用后续日志" data-level="1">3. 跳过误删操作，继续应用后续日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="主从复制相关">
+          <a class="post-toc-link" href="#主从复制相关" data-level="3">主从复制相关</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看从服务器的relay-log">
+          <a class="post-toc-link" href="#查看从服务器的relay-log" data-level="1">查看从服务器的relay log</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查主从数据一致性">
+          <a class="post-toc-link" href="#检查主从数据一致性" data-level="1">检查主从数据一致性</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在主服务器上">
+          <a class="post-toc-link" href="#在主服务器上" data-level="1">在主服务器上</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在从服务器上">
+          <a class="post-toc-link" href="#在从服务器上" data-level="1">在从服务器上</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="对比">
+          <a class="post-toc-link" href="#对比" data-level="1">对比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="找出复制错误">
+          <a class="post-toc-link" href="#找出复制错误" data-level="1">找出复制错误</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="跳过错误的复制事件">
+          <a class="post-toc-link" href="#跳过错误的复制事件" data-level="1">跳过错误的复制事件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-查看错误位置">
+          <a class="post-toc-link" href="#1-查看错误位置" data-level="1">1. 查看错误位置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-跳过错误位置">
+          <a class="post-toc-link" href="#2-跳过错误位置" data-level="1">2. 跳过错误位置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式说明">
+          <a class="post-toc-link" href="#输出格式说明" data-level="3">输出格式说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="标准格式">
+          <a class="post-toc-link" href="#标准格式" data-level="1">标准格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="at-123">
+          <a class="post-toc-link" href="#at-123" data-level="1">at 123</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细格式-v">
+          <a class="post-toc-link" href="#详细格式-v" data-level="1">详细格式(-v)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="at-123">
+          <a class="post-toc-link" href="#at-123" data-level="1">at 123</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="insert-into-mydb-users">
+          <a class="post-toc-link" href="#insert-into-mydb-users" data-level="3">INSERT INTO mydb.users</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="set">
+          <a class="post-toc-link" href="#set" data-level="3">SET</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-1">
+          <a class="post-toc-link" href="#1-1" data-level="3">@1=1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-test">
+          <a class="post-toc-link" href="#2-test" data-level="3">@2=&#39;test&#39;</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-2024-01-15-10-30-45">
+          <a class="post-toc-link" href="#3-2024-01-15-10-30-45" data-level="3">@3=&#39;2024-01-15 10:30:45&#39;</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实用脚本">
+          <a class="post-toc-link" href="#实用脚本" data-level="3">实用脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="二进制日志分析脚本">
+          <a class="post-toc-link" href="#二进制日志分析脚本" data-level="1">二进制日志分析脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

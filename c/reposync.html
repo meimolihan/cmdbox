@@ -1449,9 +1449,280 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="概要">
+              <a class="post-toc-link" href="#概要" data-level="2">概要</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="主要用途">
+              <a class="post-toc-link" href="#主要用途" data-level="2">主要用途</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="2">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示帮助信息">
+              <a class="post-toc-link" href="#显示帮助信息" data-level="1">显示帮助信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定配置文件-默认为-etc-yum-conf">
+              <a class="post-toc-link" href="#指定配置文件-默认为-etc-yum-conf" data-level="1">指定配置文件(默认为/etc/yum.conf)</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定arch">
+              <a class="post-toc-link" href="#指定arch" data-level="1">指定arch</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="同时下载src和rpm文件">
+              <a class="post-toc-link" href="#同时下载src和rpm文件" data-level="1">同时下载src和rpm文件.</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定要查询的repo-id-可以指定多次-默认为全部启用">
+              <a class="post-toc-link" href="#指定要查询的repo-id-可以指定多次-默认为全部启用" data-level="1">指定要查询的repo id，可以指定多次(默认为全部启用)。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="存储元数据的目录">
+              <a class="post-toc-link" href="#存储元数据的目录" data-level="1">存储元数据的目录。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用临时目录存储-访问yum-cache">
+              <a class="post-toc-link" href="#使用临时目录存储-访问yum-cache" data-level="1">使用临时目录存储/访问yum-cache。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除存储库中不再存在的本地包">
+              <a class="post-toc-link" href="#删除存储库中不再存在的本地包" data-level="1">删除存储库中不再存在的本地包。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定下载路径-默认为当前目录">
+              <a class="post-toc-link" href="#指定下载路径-默认为当前目录" data-level="1">指定下载路径:默认为当前目录。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不要将重命名添加到下载路径中-只能在同步单个存储库时使用-默认是添加重命名">
+              <a class="post-toc-link" href="#不要将重命名添加到下载路径中-只能在同步单个存储库时使用-默认是添加重命名" data-level="1">不要将重命名添加到下载路径中。只能在同步单个存储库时使用(默认是添加重命名)。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载后删除gpg签名检查失败的包-如果至少有一个包被删除-退出状态为-1">
+              <a class="post-toc-link" href="#下载后删除gpg签名检查失败的包-如果至少有一个包被删除-退出状态为-1" data-level="1">下载后删除GPG签名检查失败的包。如果至少有一个包被删除，退出状态为“1”。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只列出要下载的内容的url-不要下载">
+              <a class="post-toc-link" href="#只列出要下载的内容的url-不要下载" data-level="1">只列出要下载的内容的url，不要下载。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用yum插件支持">
+              <a class="post-toc-link" href="#启用yum插件支持" data-level="1">启用yum插件支持。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="同时下载comps-xml">
+              <a class="post-toc-link" href="#同时下载comps-xml" data-level="1">同时下载comps.xml。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="下载所有非默认元数据">
+              <a class="post-toc-link" href="#下载所有非默认元数据" data-level="1">下载所有非默认元数据。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="每个repo只下载最新的包">
+              <a class="post-toc-link" href="#每个repo只下载最新的包" data-level="1">每个repo只下载最新的包。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出尽可能少的信息">
+              <a class="post-toc-link" href="#输出尽可能少的信息" data-level="1">输出尽可能少的信息。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="允许同步存储在repo目录之外的包-这些包是在元数据中通过使用绝对路径或上一级-系统引用的并且出于安全原因通常会在reposync中跳过">
+              <a class="post-toc-link" href="#允许同步存储在repo目录之外的包-这些包是在元数据中通过使用绝对路径或上一级-系统引用的并且出于安全原因通常会在reposync中跳过" data-level="1">允许同步存储在repo目录之外的包。这些包是在元数据中通过使用绝对路径或上一级“..”系统引用的并且出于安全原因通常会在reposync中跳过。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="注意-使用此选项有潜在的安全隐患-因为通过提供恶意repodata-攻击者可以使reposync写入任意位置运行该文件系统的用户可以访问的文件系统">
+              <a class="post-toc-link" href="#注意-使用此选项有潜在的安全隐患-因为通过提供恶意repodata-攻击者可以使reposync写入任意位置运行该文件系统的用户可以访问的文件系统" data-level="1">注意:使用此选项有潜在的安全隐患，因为通过提供恶意repodata，攻击者可以使reposync写入任意位置运行该文件系统的用户可以访问的文件系统。</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="例子">
+              <a class="post-toc-link" href="#例子" data-level="2">例子</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-仓库中的所有包同步到当前目录">
+              <a class="post-toc-link" href="#将-updates-仓库中的所有包同步到当前目录" data-level="1">将&#39;updates&#39;仓库中的所有包同步到当前目录:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="只同步最新的包从-updates-仓库到当前目录">
+              <a class="post-toc-link" href="#只同步最新的包从-updates-仓库到当前目录" data-level="1">只同步最新的包从&#39;updates&#39;仓库到当前目录:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-和-extras-仓库中的包同步到当前目录">
+              <a class="post-toc-link" href="#将-updates-和-extras-仓库中的包同步到当前目录" data-level="1">将&#39;updates&#39;和&#39;extras&#39;仓库中的包同步到当前目录:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-仓库中的所有包同步到repos目录">
+              <a class="post-toc-link" href="#将-updates-仓库中的所有包同步到repos目录" data-level="1">将&#39;updates&#39;仓库中的所有包同步到repos目录:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-仓库中的所有包同步到repos目录-排除x86_64架构文件-编辑-etc-yum-conf-添加选项exclude-x86_64-再执行">
+              <a class="post-toc-link" href="#将-updates-仓库中的所有包同步到repos目录-排除x86_64架构文件-编辑-etc-yum-conf-添加选项exclude-x86_64-再执行" data-level="1">将&#39;updates&#39;仓库中的所有包同步到repos目录，排除x86_64架构文件。编辑/etc/yum.conf，添加选项exclude=*.x86_64。再执行:</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="文件">
+              <a class="post-toc-link" href="#文件" data-level="2">文件</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="概要">
+          <a class="post-toc-link" href="#概要" data-level="2">概要</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="主要用途">
+          <a class="post-toc-link" href="#主要用途" data-level="2">主要用途</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="2">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示帮助信息">
+          <a class="post-toc-link" href="#显示帮助信息" data-level="1">显示帮助信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定配置文件-默认为-etc-yum-conf">
+          <a class="post-toc-link" href="#指定配置文件-默认为-etc-yum-conf" data-level="1">指定配置文件(默认为/etc/yum.conf)</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定arch">
+          <a class="post-toc-link" href="#指定arch" data-level="1">指定arch</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="同时下载src和rpm文件">
+          <a class="post-toc-link" href="#同时下载src和rpm文件" data-level="1">同时下载src和rpm文件.</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定要查询的repo-id-可以指定多次-默认为全部启用">
+          <a class="post-toc-link" href="#指定要查询的repo-id-可以指定多次-默认为全部启用" data-level="1">指定要查询的repo id，可以指定多次(默认为全部启用)。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="存储元数据的目录">
+          <a class="post-toc-link" href="#存储元数据的目录" data-level="1">存储元数据的目录。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用临时目录存储-访问yum-cache">
+          <a class="post-toc-link" href="#使用临时目录存储-访问yum-cache" data-level="1">使用临时目录存储/访问yum-cache。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除存储库中不再存在的本地包">
+          <a class="post-toc-link" href="#删除存储库中不再存在的本地包" data-level="1">删除存储库中不再存在的本地包。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定下载路径-默认为当前目录">
+          <a class="post-toc-link" href="#指定下载路径-默认为当前目录" data-level="1">指定下载路径:默认为当前目录。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不要将重命名添加到下载路径中-只能在同步单个存储库时使用-默认是添加重命名">
+          <a class="post-toc-link" href="#不要将重命名添加到下载路径中-只能在同步单个存储库时使用-默认是添加重命名" data-level="1">不要将重命名添加到下载路径中。只能在同步单个存储库时使用(默认是添加重命名)。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载后删除gpg签名检查失败的包-如果至少有一个包被删除-退出状态为-1">
+          <a class="post-toc-link" href="#下载后删除gpg签名检查失败的包-如果至少有一个包被删除-退出状态为-1" data-level="1">下载后删除GPG签名检查失败的包。如果至少有一个包被删除，退出状态为“1”。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只列出要下载的内容的url-不要下载">
+          <a class="post-toc-link" href="#只列出要下载的内容的url-不要下载" data-level="1">只列出要下载的内容的url，不要下载。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用yum插件支持">
+          <a class="post-toc-link" href="#启用yum插件支持" data-level="1">启用yum插件支持。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="同时下载comps-xml">
+          <a class="post-toc-link" href="#同时下载comps-xml" data-level="1">同时下载comps.xml。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="下载所有非默认元数据">
+          <a class="post-toc-link" href="#下载所有非默认元数据" data-level="1">下载所有非默认元数据。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="每个repo只下载最新的包">
+          <a class="post-toc-link" href="#每个repo只下载最新的包" data-level="1">每个repo只下载最新的包。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出尽可能少的信息">
+          <a class="post-toc-link" href="#输出尽可能少的信息" data-level="1">输出尽可能少的信息。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="允许同步存储在repo目录之外的包-这些包是在元数据中通过使用绝对路径或上一级-系统引用的并且出于安全原因通常会在reposync中跳过">
+          <a class="post-toc-link" href="#允许同步存储在repo目录之外的包-这些包是在元数据中通过使用绝对路径或上一级-系统引用的并且出于安全原因通常会在reposync中跳过" data-level="1">允许同步存储在repo目录之外的包。这些包是在元数据中通过使用绝对路径或上一级“..”系统引用的并且出于安全原因通常会在reposync中跳过。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="注意-使用此选项有潜在的安全隐患-因为通过提供恶意repodata-攻击者可以使reposync写入任意位置运行该文件系统的用户可以访问的文件系统">
+          <a class="post-toc-link" href="#注意-使用此选项有潜在的安全隐患-因为通过提供恶意repodata-攻击者可以使reposync写入任意位置运行该文件系统的用户可以访问的文件系统" data-level="1">注意:使用此选项有潜在的安全隐患，因为通过提供恶意repodata，攻击者可以使reposync写入任意位置运行该文件系统的用户可以访问的文件系统。</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="例子">
+          <a class="post-toc-link" href="#例子" data-level="2">例子</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-仓库中的所有包同步到当前目录">
+          <a class="post-toc-link" href="#将-updates-仓库中的所有包同步到当前目录" data-level="1">将&#39;updates&#39;仓库中的所有包同步到当前目录:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="只同步最新的包从-updates-仓库到当前目录">
+          <a class="post-toc-link" href="#只同步最新的包从-updates-仓库到当前目录" data-level="1">只同步最新的包从&#39;updates&#39;仓库到当前目录:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-和-extras-仓库中的包同步到当前目录">
+          <a class="post-toc-link" href="#将-updates-和-extras-仓库中的包同步到当前目录" data-level="1">将&#39;updates&#39;和&#39;extras&#39;仓库中的包同步到当前目录:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-仓库中的所有包同步到repos目录">
+          <a class="post-toc-link" href="#将-updates-仓库中的所有包同步到repos目录" data-level="1">将&#39;updates&#39;仓库中的所有包同步到repos目录:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="将-updates-仓库中的所有包同步到repos目录-排除x86_64架构文件-编辑-etc-yum-conf-添加选项exclude-x86_64-再执行">
+          <a class="post-toc-link" href="#将-updates-仓库中的所有包同步到repos目录-排除x86_64架构文件-编辑-etc-yum-conf-添加选项exclude-x86_64-再执行" data-level="1">将&#39;updates&#39;仓库中的所有包同步到repos目录，排除x86_64架构文件。编辑/etc/yum.conf，添加选项exclude=*.x86_64。再执行:</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="文件">
+          <a class="post-toc-link" href="#文件" data-level="2">文件</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

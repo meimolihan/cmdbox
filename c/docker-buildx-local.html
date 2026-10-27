@@ -1647,9 +1647,376 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="工作原理">
+              <a class="post-toc-link" href="#工作原理" data-level="3">工作原理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="本地构建-vs-远程推送">
+              <a class="post-toc-link" href="#本地构建-vs-远程推送" data-level="3">本地构建 vs 远程推送</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="克隆项目">
+              <a class="post-toc-link" href="#克隆项目" data-level="2">克隆项目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="开启-docker-多架构支持">
+              <a class="post-toc-link" href="#开启-docker-多架构支持" data-level="2">开启 Docker 多架构支持</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启用-experimental-模式-docker-旧版本需要-新版本可省略">
+              <a class="post-toc-link" href="#启用-experimental-模式-docker-旧版本需要-新版本可省略" data-level="1">启用 experimental 模式（Docker 旧版本需要，新版本可省略）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建新的-buildx-builder">
+              <a class="post-toc-link" href="#创建新的-buildx-builder" data-level="1">创建新的 buildx builder</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动并检查-builder">
+              <a class="post-toc-link" href="#启动并检查-builder" data-level="1">启动并检查 builder</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="构建并推送多架构镜像">
+              <a class="post-toc-link" href="#构建并推送多架构镜像" data-level="2">构建并推送多架构镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="完整构建命令">
+              <a class="post-toc-link" href="#完整构建命令" data-level="3">完整构建命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="首先进入项目源码目录">
+              <a class="post-toc-link" href="#首先进入项目源码目录" data-level="1">首先进入项目源码目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="先登录-docker-hub">
+              <a class="post-toc-link" href="#先登录-docker-hub" data-level="1">先登录 Docker Hub</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建-amd64-arm64-双架构镜像-并推送到-docker-hub">
+              <a class="post-toc-link" href="#构建-amd64-arm64-双架构镜像-并推送到-docker-hub" data-level="1">构建 amd64 + arm64 双架构镜像,并推送到 Docker Hub</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="参数说明">
+              <a class="post-toc-link" href="#参数说明" data-level="3">参数说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="单独构建某一架构">
+              <a class="post-toc-link" href="#单独构建某一架构" data-level="2">单独构建某一架构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="构建-amd64-到本地并推送">
+              <a class="post-toc-link" href="#构建-amd64-到本地并推送" data-level="3">构建 amd64 到本地并推送</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="首先进入项目源码目录">
+              <a class="post-toc-link" href="#首先进入项目源码目录" data-level="1">首先进入项目源码目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="先登录-docker-hub">
+              <a class="post-toc-link" href="#先登录-docker-hub" data-level="1">先登录 Docker Hub</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建单架构-amd64-到本地">
+              <a class="post-toc-link" href="#构建单架构-amd64-到本地" data-level="1">构建单架构 amd64 到本地</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="amd64-架构镜像-推送到-docker-hub">
+              <a class="post-toc-link" href="#amd64-架构镜像-推送到-docker-hub" data-level="1">amd64 架构镜像，推送到 Docker Hub</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="构建-arm64-到本地并推送">
+              <a class="post-toc-link" href="#构建-arm64-到本地并推送" data-level="3">构建 arm64 到本地并推送</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="首先进入项目源码目录">
+              <a class="post-toc-link" href="#首先进入项目源码目录" data-level="1">首先进入项目源码目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="先登录-docker-hub">
+              <a class="post-toc-link" href="#先登录-docker-hub" data-level="1">先登录 Docker Hub</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建单架构-arm64-到本地">
+              <a class="post-toc-link" href="#构建单架构-arm64-到本地" data-level="1">构建单架构 arm64 到本地</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="arm64-架构镜像-推送到-docker-hub">
+              <a class="post-toc-link" href="#arm64-架构镜像-推送到-docker-hub" data-level="1">arm64 架构镜像，推送到 Docker Hub</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="架构与镜像标签对照">
+              <a class="post-toc-link" href="#架构与镜像标签对照" data-level="2">架构与镜像标签对照</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="运行容器">
+              <a class="post-toc-link" href="#运行容器" data-level="2">运行容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="运行参数说明">
+              <a class="post-toc-link" href="#运行参数说明" data-level="3">运行参数说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="q-构建失败怎么办">
+              <a class="post-toc-link" href="#q-构建失败怎么办" data-level="3">Q: 构建失败怎么办？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-builder-状态">
+              <a class="post-toc-link" href="#检查-builder-状态" data-level="1">检查 builder 状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="重新创建-builder">
+              <a class="post-toc-link" href="#重新创建-builder" data-level="1">重新创建 builder</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="q-推送失败怎么办">
+              <a class="post-toc-link" href="#q-推送失败怎么办" data-level="3">Q: 推送失败怎么办？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="确认登录状态">
+              <a class="post-toc-link" href="#确认登录状态" data-level="1">确认登录状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像标签">
+              <a class="post-toc-link" href="#检查镜像标签" data-level="1">检查镜像标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="q-如何查看构建日志">
+              <a class="post-toc-link" href="#q-如何查看构建日志" data-level="3">Q: 如何查看构建日志？</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令速查">
+              <a class="post-toc-link" href="#相关命令速查" data-level="2">相关命令速查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-builder-首次">
+              <a class="post-toc-link" href="#创建-builder-首次" data-level="1">创建 builder（首次）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建-amd64-arm64-并推送">
+              <a class="post-toc-link" href="#构建-amd64-arm64-并推送" data-level="1">构建 amd64 + arm64 并推送</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="本地构建测试">
+              <a class="post-toc-link" href="#本地构建测试" data-level="1">本地构建测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="运行">
+              <a class="post-toc-link" href="#运行" data-level="1">运行</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="工作原理">
+          <a class="post-toc-link" href="#工作原理" data-level="3">工作原理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="本地构建-vs-远程推送">
+          <a class="post-toc-link" href="#本地构建-vs-远程推送" data-level="3">本地构建 vs 远程推送</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="克隆项目">
+          <a class="post-toc-link" href="#克隆项目" data-level="2">克隆项目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="开启-docker-多架构支持">
+          <a class="post-toc-link" href="#开启-docker-多架构支持" data-level="2">开启 Docker 多架构支持</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启用-experimental-模式-docker-旧版本需要-新版本可省略">
+          <a class="post-toc-link" href="#启用-experimental-模式-docker-旧版本需要-新版本可省略" data-level="1">启用 experimental 模式（Docker 旧版本需要，新版本可省略）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建新的-buildx-builder">
+          <a class="post-toc-link" href="#创建新的-buildx-builder" data-level="1">创建新的 buildx builder</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动并检查-builder">
+          <a class="post-toc-link" href="#启动并检查-builder" data-level="1">启动并检查 builder</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="构建并推送多架构镜像">
+          <a class="post-toc-link" href="#构建并推送多架构镜像" data-level="2">构建并推送多架构镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="完整构建命令">
+          <a class="post-toc-link" href="#完整构建命令" data-level="3">完整构建命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="首先进入项目源码目录">
+          <a class="post-toc-link" href="#首先进入项目源码目录" data-level="1">首先进入项目源码目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="先登录-docker-hub">
+          <a class="post-toc-link" href="#先登录-docker-hub" data-level="1">先登录 Docker Hub</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建-amd64-arm64-双架构镜像-并推送到-docker-hub">
+          <a class="post-toc-link" href="#构建-amd64-arm64-双架构镜像-并推送到-docker-hub" data-level="1">构建 amd64 + arm64 双架构镜像,并推送到 Docker Hub</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="参数说明">
+          <a class="post-toc-link" href="#参数说明" data-level="3">参数说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="单独构建某一架构">
+          <a class="post-toc-link" href="#单独构建某一架构" data-level="2">单独构建某一架构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="构建-amd64-到本地并推送">
+          <a class="post-toc-link" href="#构建-amd64-到本地并推送" data-level="3">构建 amd64 到本地并推送</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="首先进入项目源码目录">
+          <a class="post-toc-link" href="#首先进入项目源码目录" data-level="1">首先进入项目源码目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="先登录-docker-hub">
+          <a class="post-toc-link" href="#先登录-docker-hub" data-level="1">先登录 Docker Hub</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建单架构-amd64-到本地">
+          <a class="post-toc-link" href="#构建单架构-amd64-到本地" data-level="1">构建单架构 amd64 到本地</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="amd64-架构镜像-推送到-docker-hub">
+          <a class="post-toc-link" href="#amd64-架构镜像-推送到-docker-hub" data-level="1">amd64 架构镜像，推送到 Docker Hub</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="构建-arm64-到本地并推送">
+          <a class="post-toc-link" href="#构建-arm64-到本地并推送" data-level="3">构建 arm64 到本地并推送</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="首先进入项目源码目录">
+          <a class="post-toc-link" href="#首先进入项目源码目录" data-level="1">首先进入项目源码目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="先登录-docker-hub">
+          <a class="post-toc-link" href="#先登录-docker-hub" data-level="1">先登录 Docker Hub</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建单架构-arm64-到本地">
+          <a class="post-toc-link" href="#构建单架构-arm64-到本地" data-level="1">构建单架构 arm64 到本地</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="arm64-架构镜像-推送到-docker-hub">
+          <a class="post-toc-link" href="#arm64-架构镜像-推送到-docker-hub" data-level="1">arm64 架构镜像，推送到 Docker Hub</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="架构与镜像标签对照">
+          <a class="post-toc-link" href="#架构与镜像标签对照" data-level="2">架构与镜像标签对照</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="运行容器">
+          <a class="post-toc-link" href="#运行容器" data-level="2">运行容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="运行参数说明">
+          <a class="post-toc-link" href="#运行参数说明" data-level="3">运行参数说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="q-构建失败怎么办">
+          <a class="post-toc-link" href="#q-构建失败怎么办" data-level="3">Q: 构建失败怎么办？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-builder-状态">
+          <a class="post-toc-link" href="#检查-builder-状态" data-level="1">检查 builder 状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="重新创建-builder">
+          <a class="post-toc-link" href="#重新创建-builder" data-level="1">重新创建 builder</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="q-推送失败怎么办">
+          <a class="post-toc-link" href="#q-推送失败怎么办" data-level="3">Q: 推送失败怎么办？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="确认登录状态">
+          <a class="post-toc-link" href="#确认登录状态" data-level="1">确认登录状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像标签">
+          <a class="post-toc-link" href="#检查镜像标签" data-level="1">检查镜像标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="q-如何查看构建日志">
+          <a class="post-toc-link" href="#q-如何查看构建日志" data-level="3">Q: 如何查看构建日志？</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令速查">
+          <a class="post-toc-link" href="#相关命令速查" data-level="2">相关命令速查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-builder-首次">
+          <a class="post-toc-link" href="#创建-builder-首次" data-level="1">创建 builder（首次）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建-amd64-arm64-并推送">
+          <a class="post-toc-link" href="#构建-amd64-arm64-并推送" data-level="1">构建 amd64 + arm64 并推送</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="本地构建测试">
+          <a class="post-toc-link" href="#本地构建测试" data-level="1">本地构建测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="运行">
+          <a class="post-toc-link" href="#运行" data-level="1">运行</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

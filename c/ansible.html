@@ -1865,9 +1865,464 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="主机清单">
+              <a class="post-toc-link" href="#主机清单" data-level="3">主机清单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-ansible-hosts-或-inventory-文件">
+              <a class="post-toc-link" href="#etc-ansible-hosts-或-inventory-文件" data-level="1">/etc/ansible/hosts 或 inventory 文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="直接写主机">
+              <a class="post-toc-link" href="#直接写主机" data-level="1">直接写主机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="主机组">
+              <a class="post-toc-link" href="#主机组" data-level="1">主机组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="定义变量">
+              <a class="post-toc-link" href="#定义变量" data-level="1">定义变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="组的组">
+              <a class="post-toc-link" href="#组的组" data-level="1">组的组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用变量">
+              <a class="post-toc-link" href="#使用变量" data-level="1">使用变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="定义变量文件">
+              <a class="post-toc-link" href="#定义变量文件" data-level="1">定义变量文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="group_vars-webservers-yml">
+              <a class="post-toc-link" href="#group_vars-webservers-yml" data-level="1">group_vars/webservers.yml</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="host_vars-server1-yml">
+              <a class="post-toc-link" href="#host_vars-server1-yml" data-level="1">host_vars/server1.yml</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="ad-hoc-命令">
+              <a class="post-toc-link" href="#ad-hoc-命令" data-level="3">Ad-hoc 命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基本格式">
+              <a class="post-toc-link" href="#基本格式" data-level="1">基本格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ping-所有主机">
+              <a class="post-toc-link" href="#ping-所有主机" data-level="1">Ping 所有主机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ping-指定组">
+              <a class="post-toc-link" href="#ping-指定组" data-level="1">Ping 指定组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定主机清单">
+              <a class="post-toc-link" href="#指定主机清单" data-level="1">指定主机清单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定用户">
+              <a class="post-toc-link" href="#指定用户" data-level="1">指定用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定密码-不推荐-建议-ssh-密钥">
+              <a class="post-toc-link" href="#指定密码-不推荐-建议-ssh-密钥" data-level="1">指定密码（不推荐，建议 SSH 密钥）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="测试连接">
+              <a class="post-toc-link" href="#测试连接" data-level="1">测试连接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行命令">
+              <a class="post-toc-link" href="#执行命令" data-level="1">执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
+              <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装包-yum">
+              <a class="post-toc-link" href="#安装包-yum" data-level="1">安装包（yum）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装包-apt">
+              <a class="post-toc-link" href="#安装包-apt" data-level="1">安装包（apt）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="服务管理">
+              <a class="post-toc-link" href="#服务管理" data-level="1">服务管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建目录">
+              <a class="post-toc-link" href="#创建目录" data-level="1">创建目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建文件">
+              <a class="post-toc-link" href="#创建文件" data-level="1">创建文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除文件">
+              <a class="post-toc-link" href="#删除文件" data-level="1">删除文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取事实">
+              <a class="post-toc-link" href="#获取事实" data-level="1">获取事实</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="收集并输出主机信息">
+              <a class="post-toc-link" href="#收集并输出主机信息" data-level="1">收集并输出主机信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-pip-包">
+              <a class="post-toc-link" href="#安装-pip-包" data-level="1">安装 pip 包</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="git-操作">
+              <a class="post-toc-link" href="#git-操作" data-level="1">Git 操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="等待端口">
+              <a class="post-toc-link" href="#等待端口" data-level="1">等待端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加用户">
+              <a class="post-toc-link" href="#添加用户" data-level="1">添加用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="调试输出">
+              <a class="post-toc-link" href="#调试输出" data-level="1">调试输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="同步文件-rsync">
+              <a class="post-toc-link" href="#同步文件-rsync" data-level="1">同步文件（rsync）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-url">
+              <a class="post-toc-link" href="#获取-url" data-level="1">获取 URL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="解压文件">
+              <a class="post-toc-link" href="#解压文件" data-level="1">解压文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="playbook-示例">
+              <a class="post-toc-link" href="#playbook-示例" data-level="3">Playbook 示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="playbook-yml-基本结构">
+              <a class="post-toc-link" href="#playbook-yml-基本结构" data-level="1">playbook.yml 基本结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="复杂-playbook-示例">
+              <a class="post-toc-link" href="#复杂-playbook-示例" data-level="1">复杂 Playbook 示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行-playbook">
+              <a class="post-toc-link" href="#执行-playbook" data-level="1">执行 playbook</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+              <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看群组">
+              <a class="post-toc-link" href="#查看群组" data-level="1">查看群组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-playbook-语法">
+              <a class="post-toc-link" href="#查看-playbook-语法" data-level="1">查看 playbook 语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-host-清单">
+              <a class="post-toc-link" href="#查看-host-清单" data-level="1">查看 host 清单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="加密文件">
+              <a class="post-toc-link" href="#加密文件" data-level="1">加密文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="执行加密-playbook">
+              <a class="post-toc-link" href="#执行加密-playbook" data-level="1">执行加密 playbook</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="生成密码">
+              <a class="post-toc-link" href="#生成密码" data-level="1">生成密码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="检查运行">
+              <a class="post-toc-link" href="#检查运行" data-level="1">检查运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-roles">
+              <a class="post-toc-link" href="#使用-roles" data-level="1">使用 roles</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="动态清单脚本">
+              <a class="post-toc-link" href="#动态清单脚本" data-level="1">动态清单脚本</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="主机清单">
+          <a class="post-toc-link" href="#主机清单" data-level="3">主机清单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-ansible-hosts-或-inventory-文件">
+          <a class="post-toc-link" href="#etc-ansible-hosts-或-inventory-文件" data-level="1">/etc/ansible/hosts 或 inventory 文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="直接写主机">
+          <a class="post-toc-link" href="#直接写主机" data-level="1">直接写主机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="主机组">
+          <a class="post-toc-link" href="#主机组" data-level="1">主机组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="定义变量">
+          <a class="post-toc-link" href="#定义变量" data-level="1">定义变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="组的组">
+          <a class="post-toc-link" href="#组的组" data-level="1">组的组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用变量">
+          <a class="post-toc-link" href="#使用变量" data-level="1">使用变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="定义变量文件">
+          <a class="post-toc-link" href="#定义变量文件" data-level="1">定义变量文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="group_vars-webservers-yml">
+          <a class="post-toc-link" href="#group_vars-webservers-yml" data-level="1">group_vars/webservers.yml</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="host_vars-server1-yml">
+          <a class="post-toc-link" href="#host_vars-server1-yml" data-level="1">host_vars/server1.yml</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="ad-hoc-命令">
+          <a class="post-toc-link" href="#ad-hoc-命令" data-level="3">Ad-hoc 命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基本格式">
+          <a class="post-toc-link" href="#基本格式" data-level="1">基本格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ping-所有主机">
+          <a class="post-toc-link" href="#ping-所有主机" data-level="1">Ping 所有主机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ping-指定组">
+          <a class="post-toc-link" href="#ping-指定组" data-level="1">Ping 指定组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定主机清单">
+          <a class="post-toc-link" href="#指定主机清单" data-level="1">指定主机清单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定用户">
+          <a class="post-toc-link" href="#指定用户" data-level="1">指定用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定密码-不推荐-建议-ssh-密钥">
+          <a class="post-toc-link" href="#指定密码-不推荐-建议-ssh-密钥" data-level="1">指定密码（不推荐，建议 SSH 密钥）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="测试连接">
+          <a class="post-toc-link" href="#测试连接" data-level="1">测试连接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行命令">
+          <a class="post-toc-link" href="#执行命令" data-level="1">执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
+          <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装包-yum">
+          <a class="post-toc-link" href="#安装包-yum" data-level="1">安装包（yum）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装包-apt">
+          <a class="post-toc-link" href="#安装包-apt" data-level="1">安装包（apt）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="服务管理">
+          <a class="post-toc-link" href="#服务管理" data-level="1">服务管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建目录">
+          <a class="post-toc-link" href="#创建目录" data-level="1">创建目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建文件">
+          <a class="post-toc-link" href="#创建文件" data-level="1">创建文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除文件">
+          <a class="post-toc-link" href="#删除文件" data-level="1">删除文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取事实">
+          <a class="post-toc-link" href="#获取事实" data-level="1">获取事实</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="收集并输出主机信息">
+          <a class="post-toc-link" href="#收集并输出主机信息" data-level="1">收集并输出主机信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-pip-包">
+          <a class="post-toc-link" href="#安装-pip-包" data-level="1">安装 pip 包</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="git-操作">
+          <a class="post-toc-link" href="#git-操作" data-level="1">Git 操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="等待端口">
+          <a class="post-toc-link" href="#等待端口" data-level="1">等待端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加用户">
+          <a class="post-toc-link" href="#添加用户" data-level="1">添加用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="调试输出">
+          <a class="post-toc-link" href="#调试输出" data-level="1">调试输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="同步文件-rsync">
+          <a class="post-toc-link" href="#同步文件-rsync" data-level="1">同步文件（rsync）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-url">
+          <a class="post-toc-link" href="#获取-url" data-level="1">获取 URL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="解压文件">
+          <a class="post-toc-link" href="#解压文件" data-level="1">解压文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="playbook-示例">
+          <a class="post-toc-link" href="#playbook-示例" data-level="3">Playbook 示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="playbook-yml-基本结构">
+          <a class="post-toc-link" href="#playbook-yml-基本结构" data-level="1">playbook.yml 基本结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="复杂-playbook-示例">
+          <a class="post-toc-link" href="#复杂-playbook-示例" data-level="1">复杂 Playbook 示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行-playbook">
+          <a class="post-toc-link" href="#执行-playbook" data-level="1">执行 playbook</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
+          <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看群组">
+          <a class="post-toc-link" href="#查看群组" data-level="1">查看群组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-playbook-语法">
+          <a class="post-toc-link" href="#查看-playbook-语法" data-level="1">查看 playbook 语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-host-清单">
+          <a class="post-toc-link" href="#查看-host-清单" data-level="1">查看 host 清单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="加密文件">
+          <a class="post-toc-link" href="#加密文件" data-level="1">加密文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="执行加密-playbook">
+          <a class="post-toc-link" href="#执行加密-playbook" data-level="1">执行加密 playbook</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="生成密码">
+          <a class="post-toc-link" href="#生成密码" data-level="1">生成密码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="检查运行">
+          <a class="post-toc-link" href="#检查运行" data-level="1">检查运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-roles">
+          <a class="post-toc-link" href="#使用-roles" data-level="1">使用 roles</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="动态清单脚本">
+          <a class="post-toc-link" href="#动态清单脚本" data-level="1">动态清单脚本</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

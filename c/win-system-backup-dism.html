@@ -1536,9 +1536,232 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="前置说明">
+              <a class="post-toc-link" href="#前置说明" data-level="3">前置说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一-完整系统备份-捕获系统为-wim-映像">
+              <a class="post-toc-link" href="#一-完整系统备份-捕获系统为-wim-映像" data-level="2">一、完整系统备份（捕获系统为 WIM 映像）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方式-1-在-windows-pe-中操作-推荐-无报错">
+              <a class="post-toc-link" href="#方式-1-在-windows-pe-中操作-推荐-无报错" data-level="3">方式 1：在 Windows PE 中操作（推荐，无报错）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-1-从-pe-u-盘启动电脑">
+              <a class="post-toc-link" href="#步骤-1-从-pe-u-盘启动电脑" data-level="4">步骤 1：从 PE U 盘启动电脑</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-确认磁盘盘符-关键-pe-下盘符可能错乱">
+              <a class="post-toc-link" href="#步骤-2-确认磁盘盘符-关键-pe-下盘符可能错乱" data-level="4">步骤 2：确认磁盘盘符（关键！PE 下盘符可能错乱）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-执行-dism-捕获备份">
+              <a class="post-toc-link" href="#步骤-3-执行-dism-捕获备份" data-level="4">步骤 3：执行 DISM 捕获备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-4-等待完成">
+              <a class="post-toc-link" href="#步骤-4-等待完成" data-level="4">步骤 4：等待完成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="查看-wim-映像信息">
+              <a class="post-toc-link" href="#查看-wim-映像信息" data-level="3">查看 WIM 映像信息</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="镜像哈希值">
+              <a class="post-toc-link" href="#镜像哈希值" data-level="3">镜像哈希值</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="用记事本打开">
+              <a class="post-toc-link" href="#用记事本打开" data-level="1">用记事本打开</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二-系统恢复-将-wim-映像还原到系统盘">
+              <a class="post-toc-link" href="#二-系统恢复-将-wim-映像还原到系统盘" data-level="2">二、系统恢复（将 WIM 映像还原到系统盘）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-1-再次从-windows-pe-u-盘启动电脑">
+              <a class="post-toc-link" href="#步骤-1-再次从-windows-pe-u-盘启动电脑" data-level="4">步骤 1：再次从 Windows PE U 盘启动电脑</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-再次核对盘符-必做">
+              <a class="post-toc-link" href="#步骤-2-再次核对盘符-必做" data-level="4">步骤 2：再次核对盘符（必做）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-可选-格式化系统盘">
+              <a class="post-toc-link" href="#步骤-3-可选-格式化系统盘" data-level="4">步骤 3（可选）：格式化系统盘</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-4-执行映像还原命令">
+              <a class="post-toc-link" href="#步骤-4-执行映像还原命令" data-level="4">步骤 4：执行映像还原命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三-修复系统引导-还原后必做-否则无法开机">
+              <a class="post-toc-link" href="#三-修复系统引导-还原后必做-否则无法开机" data-level="2">三、修复系统引导（还原后必做，否则无法开机）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="uefi-启动-主流新电脑">
+              <a class="post-toc-link" href="#uefi-启动-主流新电脑" data-level="3">UEFI 启动（主流新电脑）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="legacy-传统启动-老主板">
+              <a class="post-toc-link" href="#legacy-传统启动-老主板" data-level="3">Legacy 传统启动（老主板）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="重启电脑">
+              <a class="post-toc-link" href="#重启电脑" data-level="3">重启电脑</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四-常见问题">
+              <a class="post-toc-link" href="#四-常见问题" data-level="2">四、常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="极简流程总结">
+              <a class="post-toc-link" href="#极简流程总结" data-level="2">极简流程总结</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="前置说明">
+          <a class="post-toc-link" href="#前置说明" data-level="3">前置说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一-完整系统备份-捕获系统为-wim-映像">
+          <a class="post-toc-link" href="#一-完整系统备份-捕获系统为-wim-映像" data-level="2">一、完整系统备份（捕获系统为 WIM 映像）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方式-1-在-windows-pe-中操作-推荐-无报错">
+          <a class="post-toc-link" href="#方式-1-在-windows-pe-中操作-推荐-无报错" data-level="3">方式 1：在 Windows PE 中操作（推荐，无报错）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-1-从-pe-u-盘启动电脑">
+          <a class="post-toc-link" href="#步骤-1-从-pe-u-盘启动电脑" data-level="4">步骤 1：从 PE U 盘启动电脑</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-确认磁盘盘符-关键-pe-下盘符可能错乱">
+          <a class="post-toc-link" href="#步骤-2-确认磁盘盘符-关键-pe-下盘符可能错乱" data-level="4">步骤 2：确认磁盘盘符（关键！PE 下盘符可能错乱）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-执行-dism-捕获备份">
+          <a class="post-toc-link" href="#步骤-3-执行-dism-捕获备份" data-level="4">步骤 3：执行 DISM 捕获备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-4-等待完成">
+          <a class="post-toc-link" href="#步骤-4-等待完成" data-level="4">步骤 4：等待完成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="查看-wim-映像信息">
+          <a class="post-toc-link" href="#查看-wim-映像信息" data-level="3">查看 WIM 映像信息</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="镜像哈希值">
+          <a class="post-toc-link" href="#镜像哈希值" data-level="3">镜像哈希值</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="用记事本打开">
+          <a class="post-toc-link" href="#用记事本打开" data-level="1">用记事本打开</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二-系统恢复-将-wim-映像还原到系统盘">
+          <a class="post-toc-link" href="#二-系统恢复-将-wim-映像还原到系统盘" data-level="2">二、系统恢复（将 WIM 映像还原到系统盘）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-1-再次从-windows-pe-u-盘启动电脑">
+          <a class="post-toc-link" href="#步骤-1-再次从-windows-pe-u-盘启动电脑" data-level="4">步骤 1：再次从 Windows PE U 盘启动电脑</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-再次核对盘符-必做">
+          <a class="post-toc-link" href="#步骤-2-再次核对盘符-必做" data-level="4">步骤 2：再次核对盘符（必做）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-可选-格式化系统盘">
+          <a class="post-toc-link" href="#步骤-3-可选-格式化系统盘" data-level="4">步骤 3（可选）：格式化系统盘</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-4-执行映像还原命令">
+          <a class="post-toc-link" href="#步骤-4-执行映像还原命令" data-level="4">步骤 4：执行映像还原命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三-修复系统引导-还原后必做-否则无法开机">
+          <a class="post-toc-link" href="#三-修复系统引导-还原后必做-否则无法开机" data-level="2">三、修复系统引导（还原后必做，否则无法开机）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="uefi-启动-主流新电脑">
+          <a class="post-toc-link" href="#uefi-启动-主流新电脑" data-level="3">UEFI 启动（主流新电脑）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="legacy-传统启动-老主板">
+          <a class="post-toc-link" href="#legacy-传统启动-老主板" data-level="3">Legacy 传统启动（老主板）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="重启电脑">
+          <a class="post-toc-link" href="#重启电脑" data-level="3">重启电脑</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四-常见问题">
+          <a class="post-toc-link" href="#四-常见问题" data-level="2">四、常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="极简流程总结">
+          <a class="post-toc-link" href="#极简流程总结" data-level="2">极简流程总结</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

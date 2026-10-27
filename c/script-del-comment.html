@@ -1400,9 +1400,176 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本">
+              <a class="post-toc-link" href="#1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本" data-level="1">1. 使用awk过滤：删除行首空白+#的独立注释行，输出到新文件（不改动原脚本）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-bash语法校验新脚本-无输出代表语法正常">
+              <a class="post-toc-link" href="#2-bash语法校验新脚本-无输出代表语法正常" data-level="1">2. Bash语法校验新脚本，无输出代表语法正常</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-清除windows-crlf换行符-m-避免运行异常">
+              <a class="post-toc-link" href="#3-清除windows-crlf换行符-m-避免运行异常" data-level="1">3. 清除Windows CRLF换行符^M，避免运行异常</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="4-备份原有脚本-命名为损坏旧文件">
+              <a class="post-toc-link" href="#4-备份原有脚本-命名为损坏旧文件" data-level="1">4. 备份原有脚本（命名为损坏旧文件）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="5-将处理完成的新脚本替换原脚本">
+              <a class="post-toc-link" href="#5-将处理完成的新脚本替换原脚本" data-level="1">5. 将处理完成的新脚本替换原脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="6-添加执行权限">
+              <a class="post-toc-link" href="#6-添加执行权限" data-level="1">6. 添加执行权限</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="7-运行脚本测试">
+              <a class="post-toc-link" href="#7-运行脚本测试" data-level="1">7. 运行脚本测试</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="规则说明">
+              <a class="post-toc-link" href="#规则说明" data-level="2">规则说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="风险提醒">
+              <a class="post-toc-link" href="#风险提醒" data-level="2">⚠️ 风险提醒</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="示例高危代码-处理后会合并两行">
+              <a class="post-toc-link" href="#示例高危代码-处理后会合并两行" data-level="1">示例高危代码，处理后会合并两行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="回滚命令-如需恢复旧脚本">
+              <a class="post-toc-link" href="#回滚命令-如需恢复旧脚本" data-level="2">回滚命令（如需恢复旧脚本）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="可选附加-清理多余空白行-按需执行">
+              <a class="post-toc-link" href="#可选附加-清理多余空白行-按需执行" data-level="2">可选附加：清理多余空白行（按需执行）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="预览效果">
+              <a class="post-toc-link" href="#预览效果" data-level="1">预览效果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="原地删除空行">
+              <a class="post-toc-link" href="#原地删除空行" data-level="1">原地删除空行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本">
+          <a class="post-toc-link" href="#1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本" data-level="1">1. 使用awk过滤：删除行首空白+#的独立注释行，输出到新文件（不改动原脚本）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-bash语法校验新脚本-无输出代表语法正常">
+          <a class="post-toc-link" href="#2-bash语法校验新脚本-无输出代表语法正常" data-level="1">2. Bash语法校验新脚本，无输出代表语法正常</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-清除windows-crlf换行符-m-避免运行异常">
+          <a class="post-toc-link" href="#3-清除windows-crlf换行符-m-避免运行异常" data-level="1">3. 清除Windows CRLF换行符^M，避免运行异常</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="4-备份原有脚本-命名为损坏旧文件">
+          <a class="post-toc-link" href="#4-备份原有脚本-命名为损坏旧文件" data-level="1">4. 备份原有脚本（命名为损坏旧文件）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="5-将处理完成的新脚本替换原脚本">
+          <a class="post-toc-link" href="#5-将处理完成的新脚本替换原脚本" data-level="1">5. 将处理完成的新脚本替换原脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="6-添加执行权限">
+          <a class="post-toc-link" href="#6-添加执行权限" data-level="1">6. 添加执行权限</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="7-运行脚本测试">
+          <a class="post-toc-link" href="#7-运行脚本测试" data-level="1">7. 运行脚本测试</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="规则说明">
+          <a class="post-toc-link" href="#规则说明" data-level="2">规则说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="风险提醒">
+          <a class="post-toc-link" href="#风险提醒" data-level="2">⚠️ 风险提醒</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="示例高危代码-处理后会合并两行">
+          <a class="post-toc-link" href="#示例高危代码-处理后会合并两行" data-level="1">示例高危代码，处理后会合并两行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="回滚命令-如需恢复旧脚本">
+          <a class="post-toc-link" href="#回滚命令-如需恢复旧脚本" data-level="2">回滚命令（如需恢复旧脚本）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="可选附加-清理多余空白行-按需执行">
+          <a class="post-toc-link" href="#可选附加-清理多余空白行-按需执行" data-level="2">可选附加：清理多余空白行（按需执行）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="预览效果">
+          <a class="post-toc-link" href="#预览效果" data-level="1">预览效果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="原地删除空行">
+          <a class="post-toc-link" href="#原地删除空行" data-level="1">原地删除空行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

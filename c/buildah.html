@@ -1802,9 +1802,784 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="与-podman-的关系">
+              <a class="post-toc-link" href="#与-podman-的关系" data-level="3">与 Podman 的关系</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="buildah-构建镜像">
+              <a class="post-toc-link" href="#buildah-构建镜像" data-level="1">buildah 构建镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="podman-运行">
+              <a class="post-toc-link" href="#podman-运行" data-level="1">podman 运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="可以互相替代">
+              <a class="post-toc-link" href="#可以互相替代" data-level="1">可以互相替代</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="buildah-是底层工具-功能更底层">
+              <a class="post-toc-link" href="#buildah-是底层工具-功能更底层" data-level="1">buildah 是底层工具，功能更底层</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="podman-是上层工具-api-更友好">
+              <a class="post-toc-link" href="#podman-是上层工具-api-更友好" data-level="1">podman 是上层工具，API 更友好</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="无-dockerfile-构建">
+              <a class="post-toc-link" href="#无-dockerfile-构建" data-level="3">无 Dockerfile 构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从基础镜像创建容器">
+              <a class="post-toc-link" href="#从基础镜像创建容器" data-level="1">从基础镜像创建容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看正在使用的容器">
+              <a class="post-toc-link" href="#查看正在使用的容器" data-level="1">查看正在使用的容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="挂载容器文件系统">
+              <a class="post-toc-link" href="#挂载容器文件系统" data-level="1">挂载容器文件系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在容器中执行命令">
+              <a class="post-toc-link" href="#在容器中执行命令" data-level="1">在容器中执行命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
+              <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置工作目录">
+              <a class="post-toc-link" href="#设置工作目录" data-level="1">设置工作目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
+              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置端口">
+              <a class="post-toc-link" href="#设置端口" data-level="1">设置端口</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置入口点">
+              <a class="post-toc-link" href="#设置入口点" data-level="1">设置入口点</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交镜像">
+              <a class="post-toc-link" href="#提交镜像" data-level="1">提交镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除正在使用的容器">
+              <a class="post-toc-link" href="#删除正在使用的容器" data-level="1">删除正在使用的容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="使用-containerfiles">
+              <a class="post-toc-link" href="#使用-containerfiles" data-level="3">使用 Containerfiles</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建镜像-bud-build-using-dockerfile">
+              <a class="post-toc-link" href="#构建镜像-bud-build-using-dockerfile" data-level="1">构建镜像（bud = build using dockerfile）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-dockerfile">
+              <a class="post-toc-link" href="#指定-dockerfile" data-level="1">指定 Dockerfile</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定构建上下文">
+              <a class="post-toc-link" href="#指定构建上下文" data-level="1">指定构建上下文</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="dockerignore-支持">
+              <a class="post-toc-link" href="#dockerignore-支持" data-level="1">.dockerignore 支持</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="多阶段构建">
+              <a class="post-toc-link" href="#多阶段构建" data-level="1">多阶段构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="构建选项">
+              <a class="post-toc-link" href="#构建选项" data-level="3">构建选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="标签">
+              <a class="post-toc-link" href="#标签" data-level="1">标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加注解">
+              <a class="post-toc-link" href="#添加注解" data-level="1">添加注解</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="标签">
+              <a class="post-toc-link" href="#标签" data-level="1">标签</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="移除构建过程中的中间容器">
+              <a class="post-toc-link" href="#移除构建过程中的中间容器" data-level="1">移除构建过程中的中间容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="不使用缓存">
+              <a class="post-toc-link" href="#不使用缓存" data-level="1">不使用缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用特定缓存镜像">
+              <a class="post-toc-link" href="#使用特定缓存镜像" data-level="1">使用特定缓存镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建参数">
+              <a class="post-toc-link" href="#构建参数" data-level="1">构建参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定平台">
+              <a class="post-toc-link" href="#指定平台" data-level="1">指定平台</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定架构">
+              <a class="post-toc-link" href="#指定架构" data-level="1">指定架构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="用户命名空间">
+              <a class="post-toc-link" href="#用户命名空间" data-level="1">用户命名空间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="镜像层管理">
+              <a class="post-toc-link" href="#镜像层管理" data-level="3">镜像层管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看镜像层">
+              <a class="post-toc-link" href="#查看镜像层" data-level="1">查看镜像层</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录">
+              <a class="post-toc-link" href="#历史记录" data-level="1">历史记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加说明">
+              <a class="post-toc-link" href="#添加说明" data-level="1">添加说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置启动命令">
+              <a class="post-toc-link" href="#设置启动命令" data-level="1">设置启动命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置用户">
+              <a class="post-toc-link" href="#设置用户" data-level="1">设置用户</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="高级配置">
+              <a class="post-toc-link" href="#高级配置" data-level="3">高级配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置工作目录">
+              <a class="post-toc-link" href="#设置工作目录" data-level="1">设置工作目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-shell">
+              <a class="post-toc-link" href="#设置-shell" data-level="1">设置 shell</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="复制多个文件">
+              <a class="post-toc-link" href="#复制多个文件" data-level="1">复制多个文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="添加本地文件">
+              <a class="post-toc-link" href="#添加本地文件" data-level="1">添加本地文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
+              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="取消设置">
+              <a class="post-toc-link" href="#取消设置" data-level="1">取消设置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="多架构构建">
+              <a class="post-toc-link" href="#多架构构建" data-level="3">多架构构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建多平台镜像">
+              <a class="post-toc-link" href="#构建多平台镜像" data-level="1">构建多平台镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-qemu">
+              <a class="post-toc-link" href="#使用-qemu" data-level="1">使用 QEMU</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清单列表">
+              <a class="post-toc-link" href="#清单列表" data-level="1">清单列表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="与-podman-集成">
+              <a class="post-toc-link" href="#与-podman-集成" data-level="3">与 Podman 集成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="buildah-构建镜像到-podman">
+              <a class="post-toc-link" href="#buildah-构建镜像到-podman" data-level="1">buildah 构建镜像到 Podman</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="podman-验证">
+              <a class="post-toc-link" href="#podman-验证" data-level="1">Podman 验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从-podman-拉取镜像到-buildah">
+              <a class="post-toc-link" href="#从-podman-拉取镜像到-buildah" data-level="1">从 Podman 拉取镜像到 buildah</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="在-podman-中运行">
+              <a class="post-toc-link" href="#在-podman-中运行" data-level="1">在 Podman 中运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="无-dockerfile-示例">
+              <a class="post-toc-link" href="#无-dockerfile-示例" data-level="3">无 Dockerfile 示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建工作容器">
+              <a class="post-toc-link" href="#创建工作容器" data-level="1">创建工作容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="挂载文件系统">
+              <a class="post-toc-link" href="#挂载文件系统" data-level="1">挂载文件系统</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安装软件">
+              <a class="post-toc-link" href="#安装软件" data-level="1">安装软件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="配置">
+              <a class="post-toc-link" href="#配置" data-level="1">配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="设置启动">
+              <a class="post-toc-link" href="#设置启动" data-level="1">设置启动</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="提交镜像">
+              <a class="post-toc-link" href="#提交镜像" data-level="1">提交镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理">
+              <a class="post-toc-link" href="#清理" data-level="1">清理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="dockerfile-构建示例">
+              <a class="post-toc-link" href="#dockerfile-构建示例" data-level="3">Dockerfile 构建示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="dockerfile">
+              <a class="post-toc-link" href="#dockerfile" data-level="1">Dockerfile</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建">
+              <a class="post-toc-link" href="#构建" data-level="1">构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看">
+              <a class="post-toc-link" href="#查看" data-level="1">查看</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="清理">
+              <a class="post-toc-link" href="#清理" data-level="3">清理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除未使用的构建容器">
+              <a class="post-toc-link" href="#删除未使用的构建容器" data-level="1">删除未使用的构建容器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地缓存">
+              <a class="post-toc-link" href="#删除本地缓存" data-level="1">删除本地缓存</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的镜像">
+              <a class="post-toc-link" href="#删除所有未使用的镜像" data-level="1">删除所有未使用的镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="强制清理">
+              <a class="post-toc-link" href="#强制清理" data-level="1">强制清理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="签名和安全">
+              <a class="post-toc-link" href="#签名和安全" data-level="3">签名和安全</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="信任镜像">
+              <a class="post-toc-link" href="#信任镜像" data-level="1">信任镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="签名镜像">
+              <a class="post-toc-link" href="#签名镜像" data-level="1">签名镜像</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="tls-验证">
+              <a class="post-toc-link" href="#tls-验证" data-level="1">TLS 验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
+              <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="简单构建">
+              <a class="post-toc-link" href="#简单构建" data-level="1">简单构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="带缓存构建">
+              <a class="post-toc-link" href="#带缓存构建" data-level="1">带缓存构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
+              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="无缓存重新构建">
+              <a class="post-toc-link" href="#无缓存重新构建" data-level="1">无缓存重新构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定构建参数">
+              <a class="post-toc-link" href="#指定构建参数" data-level="1">指定构建参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建并直接运行">
+              <a class="post-toc-link" href="#构建并直接运行" data-level="1">构建并直接运行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="与-ci-cd-集成">
+              <a class="post-toc-link" href="#与-ci-cd-集成" data-level="3">与 CI/CD 集成</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建脚本">
+              <a class="post-toc-link" href="#构建脚本" data-level="1">构建脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="构建">
+              <a class="post-toc-link" href="#构建" data-level="1">构建</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="推送">
+              <a class="post-toc-link" href="#推送" data-level="1">推送</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理">
+              <a class="post-toc-link" href="#清理" data-level="1">清理</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="与-podman-的关系">
+          <a class="post-toc-link" href="#与-podman-的关系" data-level="3">与 Podman 的关系</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="buildah-构建镜像">
+          <a class="post-toc-link" href="#buildah-构建镜像" data-level="1">buildah 构建镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="podman-运行">
+          <a class="post-toc-link" href="#podman-运行" data-level="1">podman 运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="可以互相替代">
+          <a class="post-toc-link" href="#可以互相替代" data-level="1">可以互相替代</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="buildah-是底层工具-功能更底层">
+          <a class="post-toc-link" href="#buildah-是底层工具-功能更底层" data-level="1">buildah 是底层工具，功能更底层</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="podman-是上层工具-api-更友好">
+          <a class="post-toc-link" href="#podman-是上层工具-api-更友好" data-level="1">podman 是上层工具，API 更友好</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="无-dockerfile-构建">
+          <a class="post-toc-link" href="#无-dockerfile-构建" data-level="3">无 Dockerfile 构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从基础镜像创建容器">
+          <a class="post-toc-link" href="#从基础镜像创建容器" data-level="1">从基础镜像创建容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看正在使用的容器">
+          <a class="post-toc-link" href="#查看正在使用的容器" data-level="1">查看正在使用的容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="挂载容器文件系统">
+          <a class="post-toc-link" href="#挂载容器文件系统" data-level="1">挂载容器文件系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在容器中执行命令">
+          <a class="post-toc-link" href="#在容器中执行命令" data-level="1">在容器中执行命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
+          <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置工作目录">
+          <a class="post-toc-link" href="#设置工作目录" data-level="1">设置工作目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
+          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置端口">
+          <a class="post-toc-link" href="#设置端口" data-level="1">设置端口</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置入口点">
+          <a class="post-toc-link" href="#设置入口点" data-level="1">设置入口点</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交镜像">
+          <a class="post-toc-link" href="#提交镜像" data-level="1">提交镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除正在使用的容器">
+          <a class="post-toc-link" href="#删除正在使用的容器" data-level="1">删除正在使用的容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="使用-containerfiles">
+          <a class="post-toc-link" href="#使用-containerfiles" data-level="3">使用 Containerfiles</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建镜像-bud-build-using-dockerfile">
+          <a class="post-toc-link" href="#构建镜像-bud-build-using-dockerfile" data-level="1">构建镜像（bud = build using dockerfile）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-dockerfile">
+          <a class="post-toc-link" href="#指定-dockerfile" data-level="1">指定 Dockerfile</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定构建上下文">
+          <a class="post-toc-link" href="#指定构建上下文" data-level="1">指定构建上下文</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="dockerignore-支持">
+          <a class="post-toc-link" href="#dockerignore-支持" data-level="1">.dockerignore 支持</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="多阶段构建">
+          <a class="post-toc-link" href="#多阶段构建" data-level="1">多阶段构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="构建选项">
+          <a class="post-toc-link" href="#构建选项" data-level="3">构建选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="标签">
+          <a class="post-toc-link" href="#标签" data-level="1">标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加注解">
+          <a class="post-toc-link" href="#添加注解" data-level="1">添加注解</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="标签">
+          <a class="post-toc-link" href="#标签" data-level="1">标签</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="移除构建过程中的中间容器">
+          <a class="post-toc-link" href="#移除构建过程中的中间容器" data-level="1">移除构建过程中的中间容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="不使用缓存">
+          <a class="post-toc-link" href="#不使用缓存" data-level="1">不使用缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用特定缓存镜像">
+          <a class="post-toc-link" href="#使用特定缓存镜像" data-level="1">使用特定缓存镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建参数">
+          <a class="post-toc-link" href="#构建参数" data-level="1">构建参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定平台">
+          <a class="post-toc-link" href="#指定平台" data-level="1">指定平台</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定架构">
+          <a class="post-toc-link" href="#指定架构" data-level="1">指定架构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="用户命名空间">
+          <a class="post-toc-link" href="#用户命名空间" data-level="1">用户命名空间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="镜像层管理">
+          <a class="post-toc-link" href="#镜像层管理" data-level="3">镜像层管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看镜像层">
+          <a class="post-toc-link" href="#查看镜像层" data-level="1">查看镜像层</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录">
+          <a class="post-toc-link" href="#历史记录" data-level="1">历史记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加说明">
+          <a class="post-toc-link" href="#添加说明" data-level="1">添加说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置启动命令">
+          <a class="post-toc-link" href="#设置启动命令" data-level="1">设置启动命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置用户">
+          <a class="post-toc-link" href="#设置用户" data-level="1">设置用户</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="高级配置">
+          <a class="post-toc-link" href="#高级配置" data-level="3">高级配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置工作目录">
+          <a class="post-toc-link" href="#设置工作目录" data-level="1">设置工作目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-shell">
+          <a class="post-toc-link" href="#设置-shell" data-level="1">设置 shell</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="复制多个文件">
+          <a class="post-toc-link" href="#复制多个文件" data-level="1">复制多个文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="添加本地文件">
+          <a class="post-toc-link" href="#添加本地文件" data-level="1">添加本地文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
+          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="取消设置">
+          <a class="post-toc-link" href="#取消设置" data-level="1">取消设置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="多架构构建">
+          <a class="post-toc-link" href="#多架构构建" data-level="3">多架构构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建多平台镜像">
+          <a class="post-toc-link" href="#构建多平台镜像" data-level="1">构建多平台镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-qemu">
+          <a class="post-toc-link" href="#使用-qemu" data-level="1">使用 QEMU</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清单列表">
+          <a class="post-toc-link" href="#清单列表" data-level="1">清单列表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="与-podman-集成">
+          <a class="post-toc-link" href="#与-podman-集成" data-level="3">与 Podman 集成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="buildah-构建镜像到-podman">
+          <a class="post-toc-link" href="#buildah-构建镜像到-podman" data-level="1">buildah 构建镜像到 Podman</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="podman-验证">
+          <a class="post-toc-link" href="#podman-验证" data-level="1">Podman 验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从-podman-拉取镜像到-buildah">
+          <a class="post-toc-link" href="#从-podman-拉取镜像到-buildah" data-level="1">从 Podman 拉取镜像到 buildah</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="在-podman-中运行">
+          <a class="post-toc-link" href="#在-podman-中运行" data-level="1">在 Podman 中运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="无-dockerfile-示例">
+          <a class="post-toc-link" href="#无-dockerfile-示例" data-level="3">无 Dockerfile 示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建工作容器">
+          <a class="post-toc-link" href="#创建工作容器" data-level="1">创建工作容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="挂载文件系统">
+          <a class="post-toc-link" href="#挂载文件系统" data-level="1">挂载文件系统</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安装软件">
+          <a class="post-toc-link" href="#安装软件" data-level="1">安装软件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="配置">
+          <a class="post-toc-link" href="#配置" data-level="1">配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="设置启动">
+          <a class="post-toc-link" href="#设置启动" data-level="1">设置启动</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="提交镜像">
+          <a class="post-toc-link" href="#提交镜像" data-level="1">提交镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理">
+          <a class="post-toc-link" href="#清理" data-level="1">清理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="dockerfile-构建示例">
+          <a class="post-toc-link" href="#dockerfile-构建示例" data-level="3">Dockerfile 构建示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="dockerfile">
+          <a class="post-toc-link" href="#dockerfile" data-level="1">Dockerfile</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建">
+          <a class="post-toc-link" href="#构建" data-level="1">构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看">
+          <a class="post-toc-link" href="#查看" data-level="1">查看</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="清理">
+          <a class="post-toc-link" href="#清理" data-level="3">清理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除未使用的构建容器">
+          <a class="post-toc-link" href="#删除未使用的构建容器" data-level="1">删除未使用的构建容器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除本地缓存">
+          <a class="post-toc-link" href="#删除本地缓存" data-level="1">删除本地缓存</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的镜像">
+          <a class="post-toc-link" href="#删除所有未使用的镜像" data-level="1">删除所有未使用的镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="强制清理">
+          <a class="post-toc-link" href="#强制清理" data-level="1">强制清理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="签名和安全">
+          <a class="post-toc-link" href="#签名和安全" data-level="3">签名和安全</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="信任镜像">
+          <a class="post-toc-link" href="#信任镜像" data-level="1">信任镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="签名镜像">
+          <a class="post-toc-link" href="#签名镜像" data-level="1">签名镜像</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="tls-验证">
+          <a class="post-toc-link" href="#tls-验证" data-level="1">TLS 验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
+          <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="简单构建">
+          <a class="post-toc-link" href="#简单构建" data-level="1">简单构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="带缓存构建">
+          <a class="post-toc-link" href="#带缓存构建" data-level="1">带缓存构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
+          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="无缓存重新构建">
+          <a class="post-toc-link" href="#无缓存重新构建" data-level="1">无缓存重新构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定构建参数">
+          <a class="post-toc-link" href="#指定构建参数" data-level="1">指定构建参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建并直接运行">
+          <a class="post-toc-link" href="#构建并直接运行" data-level="1">构建并直接运行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="与-ci-cd-集成">
+          <a class="post-toc-link" href="#与-ci-cd-集成" data-level="3">与 CI/CD 集成</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建脚本">
+          <a class="post-toc-link" href="#构建脚本" data-level="1">构建脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="构建">
+          <a class="post-toc-link" href="#构建" data-level="1">构建</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="推送">
+          <a class="post-toc-link" href="#推送" data-level="1">推送</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理">
+          <a class="post-toc-link" href="#清理" data-level="1">清理</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -1747,9 +1747,536 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+              <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+              <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
+              <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="数据格式选项">
+              <a class="post-toc-link" href="#数据格式选项" data-level="1">数据格式选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入选项">
+              <a class="post-toc-link" href="#导入选项" data-level="1">导入选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
+              <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+              <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="基本导入-文件名必须与表名对应">
+              <a class="post-toc-link" href="#基本导入-文件名必须与表名对应" data-level="1">基本导入（文件名必须与表名对应）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="users-txt-导入到-users-表">
+              <a class="post-toc-link" href="#users-txt-导入到-users-表" data-level="1">users.txt 导入到 users 表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="从本地导入文件">
+              <a class="post-toc-link" href="#从本地导入文件" data-level="1">从本地导入文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入多个文件">
+              <a class="post-toc-link" href="#导入多个文件" data-level="1">导入多个文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定字段分隔符-逗号分隔-csv格式">
+              <a class="post-toc-link" href="#指定字段分隔符-逗号分隔-csv格式" data-level="1">指定字段分隔符（逗号分隔，CSV格式）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="csv格式-带引号包围">
+              <a class="post-toc-link" href="#csv格式-带引号包围" data-level="1">CSV格式，带引号包围</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="忽略第一行-表头">
+              <a class="post-toc-link" href="#忽略第一行-表头" data-level="1">忽略第一行（表头）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入前清空表">
+              <a class="post-toc-link" href="#导入前清空表" data-level="1">导入前清空表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="替换重复记录">
+              <a class="post-toc-link" href="#替换重复记录" data-level="1">替换重复记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="忽略重复记录">
+              <a class="post-toc-link" href="#忽略重复记录" data-level="1">忽略重复记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入并锁定表">
+              <a class="post-toc-link" href="#导入并锁定表" data-level="1">导入并锁定表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="低优先级导入">
+              <a class="post-toc-link" href="#低优先级导入" data-level="1">低优先级导入</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
+              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="静默模式">
+              <a class="post-toc-link" href="#静默模式" data-level="1">静默模式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="强制继续-忽略错误">
+              <a class="post-toc-link" href="#强制继续-忽略错误" data-level="1">强制继续（忽略错误）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用制表符分隔-默认">
+              <a class="post-toc-link" href="#使用制表符分隔-默认" data-level="1">使用制表符分隔（默认）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="处理特殊字符">
+              <a class="post-toc-link" href="#处理特殊字符" data-level="1">处理特殊字符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入到远程服务器">
+              <a class="post-toc-link" href="#导入到远程服务器" data-level="1">导入到远程服务器</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数据文件格式">
+              <a class="post-toc-link" href="#数据文件格式" data-level="3">数据文件格式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="默认格式-制表符分隔">
+              <a class="post-toc-link" href="#默认格式-制表符分隔" data-level="1">默认格式（制表符分隔）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="users-txt">
+              <a class="post-toc-link" href="#users-txt" data-level="1">users.txt</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="csv格式-逗号分隔-引号包围">
+              <a class="post-toc-link" href="#csv格式-逗号分隔-引号包围" data-level="1">CSV格式（逗号分隔，引号包围）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="users-csv">
+              <a class="post-toc-link" href="#users-csv" data-level="1">users.csv</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入命令">
+              <a class="post-toc-link" href="#导入命令" data-level="1">导入命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="与load-data对比">
+              <a class="post-toc-link" href="#与load-data对比" data-level="3">与LOAD DATA对比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="mysqlimport命令">
+              <a class="post-toc-link" href="#mysqlimport命令" data-level="1">mysqlimport命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="等效的sql语句">
+              <a class="post-toc-link" href="#等效的sql语句" data-level="1">等效的SQL语句</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="mysqlimport的高级用法">
+              <a class="post-toc-link" href="#mysqlimport的高级用法" data-level="1">mysqlimport的高级用法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="等效sql">
+              <a class="post-toc-link" href="#等效sql" data-level="1">等效SQL</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="批量导入脚本">
+              <a class="post-toc-link" href="#批量导入脚本" data-level="3">批量导入脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="批量csv导入脚本">
+              <a class="post-toc-link" href="#批量csv导入脚本" data-level="1">批量CSV导入脚本</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="从mysqldump导入数据">
+              <a class="post-toc-link" href="#从mysqldump导入数据" data-level="3">从mysqldump导入数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="mysqldump导出数据-不包含结构">
+              <a class="post-toc-link" href="#mysqldump导出数据-不包含结构" data-level="1">mysqldump导出数据（不包含结构）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="这会生成每个表的-txt和-sql文件">
+              <a class="post-toc-link" href="#这会生成每个表的-txt和-sql文件" data-level="1">这会生成每个表的.txt和.sql文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="tmp-users-txt-数据文件">
+              <a class="post-toc-link" href="#tmp-users-txt-数据文件" data-level="1">/tmp/users.txt - 数据文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="tmp-users-sql-表结构">
+              <a class="post-toc-link" href="#tmp-users-sql-表结构" data-level="1">/tmp/users.sql - 表结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用mysqlimport导入数据">
+              <a class="post-toc-link" href="#使用mysqlimport导入数据" data-level="1">使用mysqlimport导入数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化">
+              <a class="post-toc-link" href="#性能优化" data-level="3">性能优化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-禁用索引-大批量导入前">
+              <a class="post-toc-link" href="#1-禁用索引-大批量导入前" data-level="1">1. 禁用索引（大批量导入前）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-使用事务">
+              <a class="post-toc-link" href="#2-使用事务" data-level="1">2. 使用事务</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-调整mysql参数">
+              <a class="post-toc-link" href="#3-调整mysql参数" data-level="1">3. 调整MySQL参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="my-cnf">
+              <a class="post-toc-link" href="#my-cnf" data-level="1">my.cnf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="innodb_buffer_pool_size-1g">
+              <a class="post-toc-link" href="#innodb_buffer_pool_size-1g" data-level="1">innodb_buffer_pool_size = 1G</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="innodb_log_file_size-256m">
+              <a class="post-toc-link" href="#innodb_log_file_size-256m" data-level="1">innodb_log_file_size = 256M</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="innodb_flush_log_at_trx_commit-2">
+              <a class="post-toc-link" href="#innodb_flush_log_at_trx_commit-2" data-level="1">innodb_flush_log_at_trx_commit = 2</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题处理">
+              <a class="post-toc-link" href="#常见问题处理" data-level="3">常见问题处理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="文件名与表名不匹配">
+              <a class="post-toc-link" href="#文件名与表名不匹配" data-level="1">文件名与表名不匹配</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="方法1-重命名文件">
+              <a class="post-toc-link" href="#方法1-重命名文件" data-level="1">方法1：重命名文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="方法2-使用符号链接">
+              <a class="post-toc-link" href="#方法2-使用符号链接" data-level="1">方法2：使用符号链接</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="处理编码问题">
+              <a class="post-toc-link" href="#处理编码问题" data-level="1">处理编码问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="确保文件编码与数据库字符集一致">
+              <a class="post-toc-link" href="#确保文件编码与数据库字符集一致" data-level="1">确保文件编码与数据库字符集一致</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看导入进度">
+              <a class="post-toc-link" href="#查看导入进度" data-level="1">查看导入进度</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+              <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
+          <a class="post-toc-link" href="#语法" data-level="3">语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
+          <a class="post-toc-link" href="#选项" data-level="3">选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
+          <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="数据格式选项">
+          <a class="post-toc-link" href="#数据格式选项" data-level="1">数据格式选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入选项">
+          <a class="post-toc-link" href="#导入选项" data-level="1">导入选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
+          <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
+          <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="基本导入-文件名必须与表名对应">
+          <a class="post-toc-link" href="#基本导入-文件名必须与表名对应" data-level="1">基本导入（文件名必须与表名对应）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="users-txt-导入到-users-表">
+          <a class="post-toc-link" href="#users-txt-导入到-users-表" data-level="1">users.txt 导入到 users 表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="从本地导入文件">
+          <a class="post-toc-link" href="#从本地导入文件" data-level="1">从本地导入文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入多个文件">
+          <a class="post-toc-link" href="#导入多个文件" data-level="1">导入多个文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定字段分隔符-逗号分隔-csv格式">
+          <a class="post-toc-link" href="#指定字段分隔符-逗号分隔-csv格式" data-level="1">指定字段分隔符（逗号分隔，CSV格式）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="csv格式-带引号包围">
+          <a class="post-toc-link" href="#csv格式-带引号包围" data-level="1">CSV格式，带引号包围</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="忽略第一行-表头">
+          <a class="post-toc-link" href="#忽略第一行-表头" data-level="1">忽略第一行（表头）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入前清空表">
+          <a class="post-toc-link" href="#导入前清空表" data-level="1">导入前清空表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="替换重复记录">
+          <a class="post-toc-link" href="#替换重复记录" data-level="1">替换重复记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="忽略重复记录">
+          <a class="post-toc-link" href="#忽略重复记录" data-level="1">忽略重复记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入并锁定表">
+          <a class="post-toc-link" href="#导入并锁定表" data-level="1">导入并锁定表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="低优先级导入">
+          <a class="post-toc-link" href="#低优先级导入" data-level="1">低优先级导入</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
+          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="静默模式">
+          <a class="post-toc-link" href="#静默模式" data-level="1">静默模式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="强制继续-忽略错误">
+          <a class="post-toc-link" href="#强制继续-忽略错误" data-level="1">强制继续（忽略错误）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用制表符分隔-默认">
+          <a class="post-toc-link" href="#使用制表符分隔-默认" data-level="1">使用制表符分隔（默认）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="处理特殊字符">
+          <a class="post-toc-link" href="#处理特殊字符" data-level="1">处理特殊字符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入到远程服务器">
+          <a class="post-toc-link" href="#导入到远程服务器" data-level="1">导入到远程服务器</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数据文件格式">
+          <a class="post-toc-link" href="#数据文件格式" data-level="3">数据文件格式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="默认格式-制表符分隔">
+          <a class="post-toc-link" href="#默认格式-制表符分隔" data-level="1">默认格式（制表符分隔）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="users-txt">
+          <a class="post-toc-link" href="#users-txt" data-level="1">users.txt</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="csv格式-逗号分隔-引号包围">
+          <a class="post-toc-link" href="#csv格式-逗号分隔-引号包围" data-level="1">CSV格式（逗号分隔，引号包围）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="users-csv">
+          <a class="post-toc-link" href="#users-csv" data-level="1">users.csv</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入命令">
+          <a class="post-toc-link" href="#导入命令" data-level="1">导入命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="与load-data对比">
+          <a class="post-toc-link" href="#与load-data对比" data-level="3">与LOAD DATA对比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="mysqlimport命令">
+          <a class="post-toc-link" href="#mysqlimport命令" data-level="1">mysqlimport命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="等效的sql语句">
+          <a class="post-toc-link" href="#等效的sql语句" data-level="1">等效的SQL语句</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="mysqlimport的高级用法">
+          <a class="post-toc-link" href="#mysqlimport的高级用法" data-level="1">mysqlimport的高级用法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="等效sql">
+          <a class="post-toc-link" href="#等效sql" data-level="1">等效SQL</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="批量导入脚本">
+          <a class="post-toc-link" href="#批量导入脚本" data-level="3">批量导入脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="批量csv导入脚本">
+          <a class="post-toc-link" href="#批量csv导入脚本" data-level="1">批量CSV导入脚本</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="从mysqldump导入数据">
+          <a class="post-toc-link" href="#从mysqldump导入数据" data-level="3">从mysqldump导入数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="mysqldump导出数据-不包含结构">
+          <a class="post-toc-link" href="#mysqldump导出数据-不包含结构" data-level="1">mysqldump导出数据（不包含结构）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="这会生成每个表的-txt和-sql文件">
+          <a class="post-toc-link" href="#这会生成每个表的-txt和-sql文件" data-level="1">这会生成每个表的.txt和.sql文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="tmp-users-txt-数据文件">
+          <a class="post-toc-link" href="#tmp-users-txt-数据文件" data-level="1">/tmp/users.txt - 数据文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="tmp-users-sql-表结构">
+          <a class="post-toc-link" href="#tmp-users-sql-表结构" data-level="1">/tmp/users.sql - 表结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用mysqlimport导入数据">
+          <a class="post-toc-link" href="#使用mysqlimport导入数据" data-level="1">使用mysqlimport导入数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化">
+          <a class="post-toc-link" href="#性能优化" data-level="3">性能优化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-禁用索引-大批量导入前">
+          <a class="post-toc-link" href="#1-禁用索引-大批量导入前" data-level="1">1. 禁用索引（大批量导入前）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-使用事务">
+          <a class="post-toc-link" href="#2-使用事务" data-level="1">2. 使用事务</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-调整mysql参数">
+          <a class="post-toc-link" href="#3-调整mysql参数" data-level="1">3. 调整MySQL参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="my-cnf">
+          <a class="post-toc-link" href="#my-cnf" data-level="1">my.cnf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="innodb_buffer_pool_size-1g">
+          <a class="post-toc-link" href="#innodb_buffer_pool_size-1g" data-level="1">innodb_buffer_pool_size = 1G</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="innodb_log_file_size-256m">
+          <a class="post-toc-link" href="#innodb_log_file_size-256m" data-level="1">innodb_log_file_size = 256M</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="innodb_flush_log_at_trx_commit-2">
+          <a class="post-toc-link" href="#innodb_flush_log_at_trx_commit-2" data-level="1">innodb_flush_log_at_trx_commit = 2</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题处理">
+          <a class="post-toc-link" href="#常见问题处理" data-level="3">常见问题处理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="文件名与表名不匹配">
+          <a class="post-toc-link" href="#文件名与表名不匹配" data-level="1">文件名与表名不匹配</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="方法1-重命名文件">
+          <a class="post-toc-link" href="#方法1-重命名文件" data-level="1">方法1：重命名文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="方法2-使用符号链接">
+          <a class="post-toc-link" href="#方法2-使用符号链接" data-level="1">方法2：使用符号链接</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="处理编码问题">
+          <a class="post-toc-link" href="#处理编码问题" data-level="1">处理编码问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="确保文件编码与数据库字符集一致">
+          <a class="post-toc-link" href="#确保文件编码与数据库字符集一致" data-level="1">确保文件编码与数据库字符集一致</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看导入进度">
+          <a class="post-toc-link" href="#查看导入进度" data-level="1">查看导入进度</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
+          <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

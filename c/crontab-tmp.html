@@ -1808,9 +1808,600 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="参数解析">
+              <a class="post-toc-link" href="#参数解析" data-level="2">参数解析</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="mindepth-1">
+              <a class="post-toc-link" href="#mindepth-1" data-level="3">-mindepth 1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="atime-0-5">
+              <a class="post-toc-link" href="#atime-0-5" data-level="3">-atime +0.5</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="12-小时以上没访问过-匹配-会被删">
+              <a class="post-toc-link" href="#12-小时以上没访问过-匹配-会被删" data-level="1">12 小时以上没访问过 → 匹配（会被删）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="24-小时以上没访问过-匹配">
+              <a class="post-toc-link" href="#24-小时以上没访问过-匹配" data-level="1">24 小时以上没访问过 → 匹配</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="60-分钟以上没访问过">
+              <a class="post-toc-link" href="#60-分钟以上没访问过" data-level="1">60 分钟以上没访问过</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="delete">
+              <a class="post-toc-link" href="#delete" data-level="3">-delete</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="行为实测">
+              <a class="post-toc-link" href="#行为实测" data-level="2">行为实测</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测一-delete-不会-递归清空目录">
+              <a class="post-toc-link" href="#实测一-delete-不会-递归清空目录" data-level="3">实测一：-delete 不会「递归清空目录」</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="准备-d1-内含一个-不匹配-的近期文件-keep-txt-d1-本身-atime-设为-3-天前">
+              <a class="post-toc-link" href="#准备-d1-内含一个-不匹配-的近期文件-keep-txt-d1-本身-atime-设为-3-天前" data-level="1">准备：d1 内含一个「不匹配」的近期文件 keep.txt，d1 本身 atime 设为 3 天前</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-find-cannot-delete-tmp-t-d1-directory-not-empty">
+              <a class="post-toc-link" href="#输出-find-cannot-delete-tmp-t-d1-directory-not-empty" data-level="1">输出：find: cannot delete &#39;/tmp/t/d1&#39;: Directory not empty</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="退出码-1">
+              <a class="post-toc-link" href="#退出码-1" data-level="1">退出码：1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="结果-d1-及其内容原样保留">
+              <a class="post-toc-link" href="#结果-d1-及其内容原样保留" data-level="1">结果：d1 及其内容原样保留</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="准备-d1-old-txt-atime-3-天前-d1-sub-deep-txt-atime-3-天前-new-txt-近期">
+              <a class="post-toc-link" href="#准备-d1-old-txt-atime-3-天前-d1-sub-deep-txt-atime-3-天前-new-txt-近期" data-level="1">准备：d1/old.txt（atime 3 天前）、d1/sub/deep.txt（atime 3 天前）、new.txt（近期）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="结果-old-txt-d1-sub-deep-txt-d1-d1-sub-全部删除-new-txt-保留">
+              <a class="post-toc-link" href="#结果-old-txt-d1-sub-deep-txt-d1-d1-sub-全部删除-new-txt-保留" data-level="1">结果：old.txt、d1/sub/deep.txt、d1、d1/sub 全部删除，new.txt 保留</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测二-目录-atime-会被-find-自己刷新-空目录长期残留">
+              <a class="post-toc-link" href="#实测二-目录-atime-会被-find-自己刷新-空目录长期残留" data-level="3">实测二：目录 atime 会被 find 自己刷新 → 空目录长期残留</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="第一次执行-d-的-atime-为-3-天前-内部有近期文件-匹配-atime-但目录非空">
+              <a class="post-toc-link" href="#第一次执行-d-的-atime-为-3-天前-内部有近期文件-匹配-atime-但目录非空" data-level="1">第一次执行：d 的 atime 为 3 天前，内部有近期文件 → 匹配 atime，但目录非空</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="find-cannot-delete-tmp-t-d-directory-not-empty-退出码-1">
+              <a class="post-toc-link" href="#find-cannot-delete-tmp-t-d-directory-not-empty-退出码-1" data-level="1">find: cannot delete &#39;/tmp/t/d&#39;: Directory not empty   退出码 1</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="此时-d-的-atime-已被本次-readdir-刷新为-当前时间">
+              <a class="post-toc-link" href="#此时-d-的-atime-已被本次-readdir-刷新为-当前时间" data-level="1">此时 d 的 atime 已被本次 readdir 刷新为「当前时间」</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="第二次执行-d-的-atime-已是刚才-不再匹配-直接跳过-目录永久残留">
+              <a class="post-toc-link" href="#第二次执行-d-的-atime-已是刚才-不再匹配-直接跳过-目录永久残留" data-level="1">第二次执行：d 的 atime 已是刚才，不再匹配 → 直接跳过，目录永久残留</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="无输出-退出码-0-d-依旧存在-空壳目录">
+              <a class="post-toc-link" href="#无输出-退出码-0-d-依旧存在-空壳目录" data-level="1">无输出，退出码 0，d 依旧存在（空壳目录）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测三-relatime-的-24-小时粒度会让-atime-判定偏激进">
+              <a class="post-toc-link" href="#实测三-relatime-的-24-小时粒度会让-atime-判定偏激进" data-level="3">实测三：relatime 的 24 小时粒度会让 atime 判定偏激进</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="连续两次读取同一个文件">
+              <a class="post-toc-link" href="#连续两次读取同一个文件" data-level="1">连续两次读取同一个文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测四-noatime-挂载下-atime-不可用">
+              <a class="post-toc-link" href="#实测四-noatime-挂载下-atime-不可用" data-level="3">实测四：noatime 挂载下 atime 不可用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="风险提示">
+              <a class="post-toc-link" href="#风险提示" data-level="2">风险提示</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="配置步骤">
+              <a class="post-toc-link" href="#配置步骤" data-level="2">配置步骤</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-先干跑-dry-run-确认删除范围">
+              <a class="post-toc-link" href="#1-先干跑-dry-run-确认删除范围" data-level="3">1. 先干跑（dry-run）确认删除范围</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-编辑-crontab">
+              <a class="post-toc-link" href="#2-编辑-crontab" data-level="3">2. 编辑 crontab</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="每-10-分钟清理-vol2-1000-tmp-中-12-小时以上未访问的内容">
+              <a class="post-toc-link" href="#每-10-分钟清理-vol2-1000-tmp-中-12-小时以上未访问的内容" data-level="1">每 10 分钟清理 /vol2/1000/tmp 中 12 小时以上未访问的内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="清理残留的空目录">
+              <a class="post-toc-link" href="#清理残留的空目录" data-level="1">清理残留的空目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-验证任务已写入">
+              <a class="post-toc-link" href="#3-验证任务已写入" data-level="3">3. 验证任务已写入</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-手动执行一次验证效果">
+              <a class="post-toc-link" href="#4-手动执行一次验证效果" data-level="3">4. 手动执行一次验证效果</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="直接跑一次-观察会不会报错">
+              <a class="post-toc-link" href="#直接跑一次-观察会不会报错" data-level="1">直接跑一次，观察会不会报错</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="统计当前会删除多少条目">
+              <a class="post-toc-link" href="#统计当前会删除多少条目" data-level="1">统计当前会删除多少条目</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-查看执行日志">
+              <a class="post-toc-link" href="#5-查看执行日志" data-level="3">5. 查看执行日志</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="journalctl-方式">
+              <a class="post-toc-link" href="#journalctl-方式" data-level="1">journalctl 方式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或者直接写入日志文件">
+              <a class="post-toc-link" href="#或者直接写入日志文件" data-level="1">或者直接写入日志文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="6-配置日志轮转-logrotate">
+              <a class="post-toc-link" href="#6-配置日志轮转-logrotate" data-level="3">6. 配置日志轮转（logrotate）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="校验配置-d-为模拟运行-不会实际轮转">
+              <a class="post-toc-link" href="#校验配置-d-为模拟运行-不会实际轮转" data-level="1">校验配置（-d 为模拟运行，不会实际轮转）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键安装-推荐">
+              <a class="post-toc-link" href="#一键安装-推荐" data-level="2">一键安装（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装后的常用命令">
+              <a class="post-toc-link" href="#安装后的常用命令" data-level="3">安装后的常用命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="清理脚本做了什么">
+              <a class="post-toc-link" href="#清理脚本做了什么" data-level="3">清理脚本做了什么</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-删除过期文件-先记录清单再删除">
+              <a class="post-toc-link" href="#1-删除过期文件-先记录清单再删除" data-level="1">1) 删除过期文件（先记录清单再删除）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-删除空目录">
+              <a class="post-toc-link" href="#2-删除空目录" data-level="1">2) 删除空目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="卸载">
+              <a class="post-toc-link" href="#卸载" data-level="3">卸载</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="推荐写法对比">
+              <a class="post-toc-link" href="#推荐写法对比" data-level="2">推荐写法对比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
+              <a class="post-toc-link" href="#故障排查" data-level="2">故障排查</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="任务没有执行">
+              <a class="post-toc-link" href="#任务没有执行" data-level="3">任务没有执行</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-cron-服务状态">
+              <a class="post-toc-link" href="#查看-cron-服务状态" data-level="1">查看 cron 服务状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="启动并设置开机自启">
+              <a class="post-toc-link" href="#启动并设置开机自启" data-level="1">启动并设置开机自启</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="目录没有被清空-只剩空壳">
+              <a class="post-toc-link" href="#目录没有被清空-只剩空壳" data-level="3">目录没有被清空（只剩空壳）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="报-directory-not-empty">
+              <a class="post-toc-link" href="#报-directory-not-empty" data-level="3">报 Directory not empty</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="明明刚访问过的文件还是被删了">
+              <a class="post-toc-link" href="#明明刚访问过的文件还是被删了" data-level="3">明明刚访问过的文件还是被删了</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="noatime-atime-不可用-必须改用-mtime">
+              <a class="post-toc-link" href="#noatime-atime-不可用-必须改用-mtime" data-level="1">noatime  → atime 不可用，必须改用 mtime</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="relatime-atime-24-小时粒度-阈值建议改为-atime-1-24-小时">
+              <a class="post-toc-link" href="#relatime-atime-24-小时粒度-阈值建议改为-atime-1-24-小时" data-level="1">relatime → atime 24 小时粒度，阈值建议改为 -atime +1（24 小时）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="收到大量-cron-告警邮件">
+              <a class="post-toc-link" href="#收到大量-cron-告警邮件" data-level="3">收到大量 cron 告警邮件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="1-重定向到日志文件">
+              <a class="post-toc-link" href="#1-重定向到日志文件" data-level="1">1) 重定向到日志文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="2-交给-syslog">
+              <a class="post-toc-link" href="#2-交给-syslog" data-level="1">2) 交给 syslog</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="3-直接关闭邮件-etc-crontab-中设置">
+              <a class="post-toc-link" href="#3-直接关闭邮件-etc-crontab-中设置" data-level="1">3) 直接关闭邮件（/etc/crontab 中设置）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="mailto">
+              <a class="post-toc-link" href="#mailto" data-level="1">MAILTO=&#34;&#34;</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="确认当前已删除-待删除的内容">
+              <a class="post-toc-link" href="#确认当前已删除-待删除的内容" data-level="3">确认当前已删除 / 待删除的内容</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="待删除清单">
+              <a class="post-toc-link" href="#待删除清单" data-level="1">待删除清单</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="目录占用情况">
+              <a class="post-toc-link" href="#目录占用情况" data-level="1">目录占用情况</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="常用配套命令">
+              <a class="post-toc-link" href="#常用配套命令" data-level="2">常用配套命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="临时查看目录内容与访问时间">
+              <a class="post-toc-link" href="#临时查看目录内容与访问时间" data-level="1">临时查看目录内容与访问时间</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="统计各子目录占用">
+              <a class="post-toc-link" href="#统计各子目录占用" data-level="1">统计各子目录占用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="一次性清空-不考虑时间-慎用">
+              <a class="post-toc-link" href="#一次性清空-不考虑时间-慎用" data-level="1">一次性清空（不考虑时间，慎用）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+              <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="参数解析">
+          <a class="post-toc-link" href="#参数解析" data-level="2">参数解析</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="mindepth-1">
+          <a class="post-toc-link" href="#mindepth-1" data-level="3">-mindepth 1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="atime-0-5">
+          <a class="post-toc-link" href="#atime-0-5" data-level="3">-atime +0.5</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="12-小时以上没访问过-匹配-会被删">
+          <a class="post-toc-link" href="#12-小时以上没访问过-匹配-会被删" data-level="1">12 小时以上没访问过 → 匹配（会被删）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="24-小时以上没访问过-匹配">
+          <a class="post-toc-link" href="#24-小时以上没访问过-匹配" data-level="1">24 小时以上没访问过 → 匹配</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="60-分钟以上没访问过">
+          <a class="post-toc-link" href="#60-分钟以上没访问过" data-level="1">60 分钟以上没访问过</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="delete">
+          <a class="post-toc-link" href="#delete" data-level="3">-delete</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="行为实测">
+          <a class="post-toc-link" href="#行为实测" data-level="2">行为实测</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测一-delete-不会-递归清空目录">
+          <a class="post-toc-link" href="#实测一-delete-不会-递归清空目录" data-level="3">实测一：-delete 不会「递归清空目录」</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="准备-d1-内含一个-不匹配-的近期文件-keep-txt-d1-本身-atime-设为-3-天前">
+          <a class="post-toc-link" href="#准备-d1-内含一个-不匹配-的近期文件-keep-txt-d1-本身-atime-设为-3-天前" data-level="1">准备：d1 内含一个「不匹配」的近期文件 keep.txt，d1 本身 atime 设为 3 天前</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-find-cannot-delete-tmp-t-d1-directory-not-empty">
+          <a class="post-toc-link" href="#输出-find-cannot-delete-tmp-t-d1-directory-not-empty" data-level="1">输出：find: cannot delete &#39;/tmp/t/d1&#39;: Directory not empty</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="退出码-1">
+          <a class="post-toc-link" href="#退出码-1" data-level="1">退出码：1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="结果-d1-及其内容原样保留">
+          <a class="post-toc-link" href="#结果-d1-及其内容原样保留" data-level="1">结果：d1 及其内容原样保留</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="准备-d1-old-txt-atime-3-天前-d1-sub-deep-txt-atime-3-天前-new-txt-近期">
+          <a class="post-toc-link" href="#准备-d1-old-txt-atime-3-天前-d1-sub-deep-txt-atime-3-天前-new-txt-近期" data-level="1">准备：d1/old.txt（atime 3 天前）、d1/sub/deep.txt（atime 3 天前）、new.txt（近期）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="结果-old-txt-d1-sub-deep-txt-d1-d1-sub-全部删除-new-txt-保留">
+          <a class="post-toc-link" href="#结果-old-txt-d1-sub-deep-txt-d1-d1-sub-全部删除-new-txt-保留" data-level="1">结果：old.txt、d1/sub/deep.txt、d1、d1/sub 全部删除，new.txt 保留</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测二-目录-atime-会被-find-自己刷新-空目录长期残留">
+          <a class="post-toc-link" href="#实测二-目录-atime-会被-find-自己刷新-空目录长期残留" data-level="3">实测二：目录 atime 会被 find 自己刷新 → 空目录长期残留</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="第一次执行-d-的-atime-为-3-天前-内部有近期文件-匹配-atime-但目录非空">
+          <a class="post-toc-link" href="#第一次执行-d-的-atime-为-3-天前-内部有近期文件-匹配-atime-但目录非空" data-level="1">第一次执行：d 的 atime 为 3 天前，内部有近期文件 → 匹配 atime，但目录非空</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="find-cannot-delete-tmp-t-d-directory-not-empty-退出码-1">
+          <a class="post-toc-link" href="#find-cannot-delete-tmp-t-d-directory-not-empty-退出码-1" data-level="1">find: cannot delete &#39;/tmp/t/d&#39;: Directory not empty   退出码 1</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="此时-d-的-atime-已被本次-readdir-刷新为-当前时间">
+          <a class="post-toc-link" href="#此时-d-的-atime-已被本次-readdir-刷新为-当前时间" data-level="1">此时 d 的 atime 已被本次 readdir 刷新为「当前时间」</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="第二次执行-d-的-atime-已是刚才-不再匹配-直接跳过-目录永久残留">
+          <a class="post-toc-link" href="#第二次执行-d-的-atime-已是刚才-不再匹配-直接跳过-目录永久残留" data-level="1">第二次执行：d 的 atime 已是刚才，不再匹配 → 直接跳过，目录永久残留</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="无输出-退出码-0-d-依旧存在-空壳目录">
+          <a class="post-toc-link" href="#无输出-退出码-0-d-依旧存在-空壳目录" data-level="1">无输出，退出码 0，d 依旧存在（空壳目录）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测三-relatime-的-24-小时粒度会让-atime-判定偏激进">
+          <a class="post-toc-link" href="#实测三-relatime-的-24-小时粒度会让-atime-判定偏激进" data-level="3">实测三：relatime 的 24 小时粒度会让 atime 判定偏激进</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="连续两次读取同一个文件">
+          <a class="post-toc-link" href="#连续两次读取同一个文件" data-level="1">连续两次读取同一个文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测四-noatime-挂载下-atime-不可用">
+          <a class="post-toc-link" href="#实测四-noatime-挂载下-atime-不可用" data-level="3">实测四：noatime 挂载下 atime 不可用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="风险提示">
+          <a class="post-toc-link" href="#风险提示" data-level="2">风险提示</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="配置步骤">
+          <a class="post-toc-link" href="#配置步骤" data-level="2">配置步骤</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-先干跑-dry-run-确认删除范围">
+          <a class="post-toc-link" href="#1-先干跑-dry-run-确认删除范围" data-level="3">1. 先干跑（dry-run）确认删除范围</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-编辑-crontab">
+          <a class="post-toc-link" href="#2-编辑-crontab" data-level="3">2. 编辑 crontab</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="每-10-分钟清理-vol2-1000-tmp-中-12-小时以上未访问的内容">
+          <a class="post-toc-link" href="#每-10-分钟清理-vol2-1000-tmp-中-12-小时以上未访问的内容" data-level="1">每 10 分钟清理 /vol2/1000/tmp 中 12 小时以上未访问的内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="清理残留的空目录">
+          <a class="post-toc-link" href="#清理残留的空目录" data-level="1">清理残留的空目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-验证任务已写入">
+          <a class="post-toc-link" href="#3-验证任务已写入" data-level="3">3. 验证任务已写入</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-手动执行一次验证效果">
+          <a class="post-toc-link" href="#4-手动执行一次验证效果" data-level="3">4. 手动执行一次验证效果</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="直接跑一次-观察会不会报错">
+          <a class="post-toc-link" href="#直接跑一次-观察会不会报错" data-level="1">直接跑一次，观察会不会报错</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="统计当前会删除多少条目">
+          <a class="post-toc-link" href="#统计当前会删除多少条目" data-level="1">统计当前会删除多少条目</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-查看执行日志">
+          <a class="post-toc-link" href="#5-查看执行日志" data-level="3">5. 查看执行日志</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="journalctl-方式">
+          <a class="post-toc-link" href="#journalctl-方式" data-level="1">journalctl 方式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或者直接写入日志文件">
+          <a class="post-toc-link" href="#或者直接写入日志文件" data-level="1">或者直接写入日志文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="6-配置日志轮转-logrotate">
+          <a class="post-toc-link" href="#6-配置日志轮转-logrotate" data-level="3">6. 配置日志轮转（logrotate）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="校验配置-d-为模拟运行-不会实际轮转">
+          <a class="post-toc-link" href="#校验配置-d-为模拟运行-不会实际轮转" data-level="1">校验配置（-d 为模拟运行，不会实际轮转）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键安装-推荐">
+          <a class="post-toc-link" href="#一键安装-推荐" data-level="2">一键安装（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装后的常用命令">
+          <a class="post-toc-link" href="#安装后的常用命令" data-level="3">安装后的常用命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="清理脚本做了什么">
+          <a class="post-toc-link" href="#清理脚本做了什么" data-level="3">清理脚本做了什么</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-删除过期文件-先记录清单再删除">
+          <a class="post-toc-link" href="#1-删除过期文件-先记录清单再删除" data-level="1">1) 删除过期文件（先记录清单再删除）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-删除空目录">
+          <a class="post-toc-link" href="#2-删除空目录" data-level="1">2) 删除空目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="卸载">
+          <a class="post-toc-link" href="#卸载" data-level="3">卸载</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="推荐写法对比">
+          <a class="post-toc-link" href="#推荐写法对比" data-level="2">推荐写法对比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
+          <a class="post-toc-link" href="#故障排查" data-level="2">故障排查</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="任务没有执行">
+          <a class="post-toc-link" href="#任务没有执行" data-level="3">任务没有执行</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-cron-服务状态">
+          <a class="post-toc-link" href="#查看-cron-服务状态" data-level="1">查看 cron 服务状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="启动并设置开机自启">
+          <a class="post-toc-link" href="#启动并设置开机自启" data-level="1">启动并设置开机自启</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="目录没有被清空-只剩空壳">
+          <a class="post-toc-link" href="#目录没有被清空-只剩空壳" data-level="3">目录没有被清空（只剩空壳）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="报-directory-not-empty">
+          <a class="post-toc-link" href="#报-directory-not-empty" data-level="3">报 Directory not empty</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="明明刚访问过的文件还是被删了">
+          <a class="post-toc-link" href="#明明刚访问过的文件还是被删了" data-level="3">明明刚访问过的文件还是被删了</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="noatime-atime-不可用-必须改用-mtime">
+          <a class="post-toc-link" href="#noatime-atime-不可用-必须改用-mtime" data-level="1">noatime  → atime 不可用，必须改用 mtime</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="relatime-atime-24-小时粒度-阈值建议改为-atime-1-24-小时">
+          <a class="post-toc-link" href="#relatime-atime-24-小时粒度-阈值建议改为-atime-1-24-小时" data-level="1">relatime → atime 24 小时粒度，阈值建议改为 -atime +1（24 小时）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="收到大量-cron-告警邮件">
+          <a class="post-toc-link" href="#收到大量-cron-告警邮件" data-level="3">收到大量 cron 告警邮件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="1-重定向到日志文件">
+          <a class="post-toc-link" href="#1-重定向到日志文件" data-level="1">1) 重定向到日志文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="2-交给-syslog">
+          <a class="post-toc-link" href="#2-交给-syslog" data-level="1">2) 交给 syslog</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="3-直接关闭邮件-etc-crontab-中设置">
+          <a class="post-toc-link" href="#3-直接关闭邮件-etc-crontab-中设置" data-level="1">3) 直接关闭邮件（/etc/crontab 中设置）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="mailto">
+          <a class="post-toc-link" href="#mailto" data-level="1">MAILTO=&#34;&#34;</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="确认当前已删除-待删除的内容">
+          <a class="post-toc-link" href="#确认当前已删除-待删除的内容" data-level="3">确认当前已删除 / 待删除的内容</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="待删除清单">
+          <a class="post-toc-link" href="#待删除清单" data-level="1">待删除清单</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="目录占用情况">
+          <a class="post-toc-link" href="#目录占用情况" data-level="1">目录占用情况</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="常用配套命令">
+          <a class="post-toc-link" href="#常用配套命令" data-level="2">常用配套命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="临时查看目录内容与访问时间">
+          <a class="post-toc-link" href="#临时查看目录内容与访问时间" data-level="1">临时查看目录内容与访问时间</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="统计各子目录占用">
+          <a class="post-toc-link" href="#统计各子目录占用" data-level="1">统计各子目录占用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="一次性清空-不考虑时间-慎用">
+          <a class="post-toc-link" href="#一次性清空-不考虑时间-慎用" data-level="1">一次性清空（不考虑时间，慎用）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
+          <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

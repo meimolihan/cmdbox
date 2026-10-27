@@ -2611,9 +2611,400 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="awk命令格式和选项">
+              <a class="post-toc-link" href="#awk命令格式和选项" data-level="2">awk命令格式和选项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="awk模式和操作">
+              <a class="post-toc-link" href="#awk模式和操作" data-level="2">awk模式和操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="模式">
+              <a class="post-toc-link" href="#模式" data-level="3">模式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="操作">
+              <a class="post-toc-link" href="#操作" data-level="3">操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="awk脚本基本结构">
+              <a class="post-toc-link" href="#awk脚本基本结构" data-level="2">awk脚本基本结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="awk的工作原理">
+              <a class="post-toc-link" href="#awk的工作原理" data-level="3">awk的工作原理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="awk内置变量-预定义变量">
+              <a class="post-toc-link" href="#awk内置变量-预定义变量" data-level="2">awk内置变量（预定义变量）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="将外部变量值传递给awk">
+              <a class="post-toc-link" href="#将外部变量值传递给awk" data-level="2">将外部变量值传递给awk</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="查找进程pid">
+              <a class="post-toc-link" href="#查找进程pid" data-level="2">查找进程pid</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="awk运算与判断">
+              <a class="post-toc-link" href="#awk运算与判断" data-level="2">awk运算与判断</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="算术运算符">
+              <a class="post-toc-link" href="#算术运算符" data-level="3">算术运算符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="赋值运算符">
+              <a class="post-toc-link" href="#赋值运算符" data-level="3">赋值运算符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="逻辑运算符">
+              <a class="post-toc-link" href="#逻辑运算符" data-level="3">逻辑运算符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="正则运算符">
+              <a class="post-toc-link" href="#正则运算符" data-level="3">正则运算符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="关系运算符">
+              <a class="post-toc-link" href="#关系运算符" data-level="3">关系运算符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="其它运算符">
+              <a class="post-toc-link" href="#其它运算符" data-level="3">其它运算符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="运算级优先级表">
+              <a class="post-toc-link" href="#运算级优先级表" data-level="3">运算级优先级表</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="awk高级输入输出">
+              <a class="post-toc-link" href="#awk高级输入输出" data-level="2">awk高级输入输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="读取下一条记录">
+              <a class="post-toc-link" href="#读取下一条记录" data-level="3">读取下一条记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="简单地读取一条记录">
+              <a class="post-toc-link" href="#简单地读取一条记录" data-level="3">简单地读取一条记录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="关闭文件">
+              <a class="post-toc-link" href="#关闭文件" data-level="3">关闭文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="输出到一个文件">
+              <a class="post-toc-link" href="#输出到一个文件" data-level="3">输出到一个文件</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或">
+              <a class="post-toc-link" href="#或" data-level="1">或</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="设置字段定界符">
+              <a class="post-toc-link" href="#设置字段定界符" data-level="2">设置字段定界符</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="或">
+              <a class="post-toc-link" href="#或" data-level="1">或</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="流程控制语句">
+              <a class="post-toc-link" href="#流程控制语句" data-level="2">流程控制语句</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="条件判断语句">
+              <a class="post-toc-link" href="#条件判断语句" data-level="3">条件判断语句</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="循环语句">
+              <a class="post-toc-link" href="#循环语句" data-level="3">循环语句</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="while语句">
+              <a class="post-toc-link" href="#while语句" data-level="3"># while语句</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="for循环">
+              <a class="post-toc-link" href="#for循环" data-level="3"># for循环</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="do循环">
+              <a class="post-toc-link" href="#do循环" data-level="3"># do循环</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="其他语句">
+              <a class="post-toc-link" href="#其他语句" data-level="3">其他语句</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="数组应用">
+              <a class="post-toc-link" href="#数组应用" data-level="2">数组应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数组的定义">
+              <a class="post-toc-link" href="#数组的定义" data-level="3">数组的定义</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数组相关函数">
+              <a class="post-toc-link" href="#数组相关函数" data-level="3">数组相关函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="错误的判断方法">
+              <a class="post-toc-link" href="#错误的判断方法" data-level="1">错误的判断方法：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="正确判断方法">
+              <a class="post-toc-link" href="#正确判断方法" data-level="1">正确判断方法：</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="二维-多维数组使用">
+              <a class="post-toc-link" href="#二维-多维数组使用" data-level="3">二维、多维数组使用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="内置函数">
+              <a class="post-toc-link" href="#内置函数" data-level="2">内置函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="算术函数">
+              <a class="post-toc-link" href="#算术函数" data-level="3">算术函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="字符串函数">
+              <a class="post-toc-link" href="#字符串函数" data-level="3">字符串函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一般函数">
+              <a class="post-toc-link" href="#一般函数" data-level="3">一般函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="时间函数">
+              <a class="post-toc-link" href="#时间函数" data-level="3">时间函数</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="awk命令格式和选项">
+          <a class="post-toc-link" href="#awk命令格式和选项" data-level="2">awk命令格式和选项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="awk模式和操作">
+          <a class="post-toc-link" href="#awk模式和操作" data-level="2">awk模式和操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="模式">
+          <a class="post-toc-link" href="#模式" data-level="3">模式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="操作">
+          <a class="post-toc-link" href="#操作" data-level="3">操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="awk脚本基本结构">
+          <a class="post-toc-link" href="#awk脚本基本结构" data-level="2">awk脚本基本结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="awk的工作原理">
+          <a class="post-toc-link" href="#awk的工作原理" data-level="3">awk的工作原理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="awk内置变量-预定义变量">
+          <a class="post-toc-link" href="#awk内置变量-预定义变量" data-level="2">awk内置变量（预定义变量）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="将外部变量值传递给awk">
+          <a class="post-toc-link" href="#将外部变量值传递给awk" data-level="2">将外部变量值传递给awk</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="查找进程pid">
+          <a class="post-toc-link" href="#查找进程pid" data-level="2">查找进程pid</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="awk运算与判断">
+          <a class="post-toc-link" href="#awk运算与判断" data-level="2">awk运算与判断</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="算术运算符">
+          <a class="post-toc-link" href="#算术运算符" data-level="3">算术运算符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="赋值运算符">
+          <a class="post-toc-link" href="#赋值运算符" data-level="3">赋值运算符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="逻辑运算符">
+          <a class="post-toc-link" href="#逻辑运算符" data-level="3">逻辑运算符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="正则运算符">
+          <a class="post-toc-link" href="#正则运算符" data-level="3">正则运算符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="关系运算符">
+          <a class="post-toc-link" href="#关系运算符" data-level="3">关系运算符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="其它运算符">
+          <a class="post-toc-link" href="#其它运算符" data-level="3">其它运算符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="运算级优先级表">
+          <a class="post-toc-link" href="#运算级优先级表" data-level="3">运算级优先级表</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="awk高级输入输出">
+          <a class="post-toc-link" href="#awk高级输入输出" data-level="2">awk高级输入输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="读取下一条记录">
+          <a class="post-toc-link" href="#读取下一条记录" data-level="3">读取下一条记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="简单地读取一条记录">
+          <a class="post-toc-link" href="#简单地读取一条记录" data-level="3">简单地读取一条记录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="关闭文件">
+          <a class="post-toc-link" href="#关闭文件" data-level="3">关闭文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="输出到一个文件">
+          <a class="post-toc-link" href="#输出到一个文件" data-level="3">输出到一个文件</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或">
+          <a class="post-toc-link" href="#或" data-level="1">或</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="设置字段定界符">
+          <a class="post-toc-link" href="#设置字段定界符" data-level="2">设置字段定界符</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="或">
+          <a class="post-toc-link" href="#或" data-level="1">或</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="流程控制语句">
+          <a class="post-toc-link" href="#流程控制语句" data-level="2">流程控制语句</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="条件判断语句">
+          <a class="post-toc-link" href="#条件判断语句" data-level="3">条件判断语句</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="循环语句">
+          <a class="post-toc-link" href="#循环语句" data-level="3">循环语句</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="while语句">
+          <a class="post-toc-link" href="#while语句" data-level="3"># while语句</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="for循环">
+          <a class="post-toc-link" href="#for循环" data-level="3"># for循环</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="do循环">
+          <a class="post-toc-link" href="#do循环" data-level="3"># do循环</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="其他语句">
+          <a class="post-toc-link" href="#其他语句" data-level="3">其他语句</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="数组应用">
+          <a class="post-toc-link" href="#数组应用" data-level="2">数组应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数组的定义">
+          <a class="post-toc-link" href="#数组的定义" data-level="3">数组的定义</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数组相关函数">
+          <a class="post-toc-link" href="#数组相关函数" data-level="3">数组相关函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="错误的判断方法">
+          <a class="post-toc-link" href="#错误的判断方法" data-level="1">错误的判断方法：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="正确判断方法">
+          <a class="post-toc-link" href="#正确判断方法" data-level="1">正确判断方法：</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="二维-多维数组使用">
+          <a class="post-toc-link" href="#二维-多维数组使用" data-level="3">二维、多维数组使用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="内置函数">
+          <a class="post-toc-link" href="#内置函数" data-level="2">内置函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="算术函数">
+          <a class="post-toc-link" href="#算术函数" data-level="3">算术函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="字符串函数">
+          <a class="post-toc-link" href="#字符串函数" data-level="3">字符串函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一般函数">
+          <a class="post-toc-link" href="#一般函数" data-level="3">一般函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="时间函数">
+          <a class="post-toc-link" href="#时间函数" data-level="3">时间函数</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>

@@ -2191,9 +2191,680 @@ function copied(target, str) {
   </main>
 
   
+  <aside id="post-toc-aside" class="post-toc-aside">
+    <div id="post-toc-widget" class="post-toc-widget">
+      <div class="post-toc-header">
+        <svg class="post-toc-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+        <span class="post-toc-title">目录</span>
+        <button id="post-toc-toggle" class="post-toc-toggle" aria-label="收起目录">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+      </div>
+      <div class="post-toc-body">
+        <nav class="post-toc-nav">
+          <ul class="post-toc-list">
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基本语法">
+              <a class="post-toc-link" href="#基本语法" data-level="3">基本语法</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="main-tf-示例">
+              <a class="post-toc-link" href="#main-tf-示例" data-level="1">main.tf 示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-provider">
+              <a class="post-toc-link" href="#指定-provider" data-level="1">指定 provider</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-terraform-版本要求">
+              <a class="post-toc-link" href="#指定-terraform-版本要求" data-level="1">指定 terraform 版本要求</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="远程状态配置">
+              <a class="post-toc-link" href="#远程状态配置" data-level="1">远程状态配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建资源">
+              <a class="post-toc-link" href="#创建资源" data-level="1">创建资源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="变量定义">
+              <a class="post-toc-link" href="#变量定义" data-level="1">变量定义</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="输出值">
+              <a class="post-toc-link" href="#输出值" data-level="1">输出值</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="变量">
+              <a class="post-toc-link" href="#变量" data-level="3">变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="字符串变量">
+              <a class="post-toc-link" href="#字符串变量" data-level="1">字符串变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="数字变量">
+              <a class="post-toc-link" href="#数字变量" data-level="1">数字变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="布尔变量">
+              <a class="post-toc-link" href="#布尔变量" data-level="1">布尔变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列表变量">
+              <a class="post-toc-link" href="#列表变量" data-level="1">列表变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="map-变量">
+              <a class="post-toc-link" href="#map-变量" data-level="1">Map 变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="对象变量">
+              <a class="post-toc-link" href="#对象变量" data-level="1">对象变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用变量">
+              <a class="post-toc-link" href="#使用变量" data-level="1">使用变量</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="资源">
+              <a class="post-toc-link" href="#资源" data-level="3">资源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ec2-实例">
+              <a class="post-toc-link" href="#ec2-实例" data-level="1">EC2 实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="安全组">
+              <a class="post-toc-link" href="#安全组" data-level="1">安全组</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="s3-桶">
+              <a class="post-toc-link" href="#s3-桶" data-level="1">S3 桶</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="rds-实例">
+              <a class="post-toc-link" href="#rds-实例" data-level="1">RDS 实例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="数据源">
+              <a class="post-toc-link" href="#数据源" data-level="3">数据源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-ami">
+              <a class="post-toc-link" href="#获取-ami" data-level="1">获取 AMI</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-vpc">
+              <a class="post-toc-link" href="#获取-vpc" data-level="1">获取 VPC</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取可用区">
+              <a class="post-toc-link" href="#获取可用区" data-level="1">获取可用区</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="使用数据源">
+              <a class="post-toc-link" href="#使用数据源" data-level="1">使用数据源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="获取-ssm-参数">
+              <a class="post-toc-link" href="#获取-ssm-参数" data-level="1">获取 SSM 参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="模块">
+              <a class="post-toc-link" href="#模块" data-level="3">模块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="模块目录结构">
+              <a class="post-toc-link" href="#模块目录结构" data-level="1">模块目录结构</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="modules">
+              <a class="post-toc-link" href="#modules" data-level="1">modules/</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="ec2-instance">
+              <a class="post-toc-link" href="#ec2-instance" data-level="1">└── ec2-instance/</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="main-tf">
+              <a class="post-toc-link" href="#main-tf" data-level="1">├── main.tf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="variables-tf">
+              <a class="post-toc-link" href="#variables-tf" data-level="1">├── variables.tf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="outputs-tf">
+              <a class="post-toc-link" href="#outputs-tf" data-level="1">└── outputs.tf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="main-tf">
+              <a class="post-toc-link" href="#main-tf" data-level="1">main.tf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="variables-tf">
+              <a class="post-toc-link" href="#variables-tf" data-level="1">variables.tf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="outputs-tf">
+              <a class="post-toc-link" href="#outputs-tf" data-level="1">outputs.tf</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="调用模块">
+              <a class="post-toc-link" href="#调用模块" data-level="1">调用模块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="远程模块">
+              <a class="post-toc-link" href="#远程模块" data-level="1">远程模块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="状态管理">
+              <a class="post-toc-link" href="#状态管理" data-level="3">状态管理</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="本地状态">
+              <a class="post-toc-link" href="#本地状态" data-level="1">本地状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="s3-后端">
+              <a class="post-toc-link" href="#s3-后端" data-level="1">S3 后端</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="azure-blob-存储后端">
+              <a class="post-toc-link" href="#azure-blob-存储后端" data-level="1">Azure Blob 存储后端</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="gcs-后端">
+              <a class="post-toc-link" href="#gcs-后端" data-level="1">GCS 后端</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="工作流命令">
+              <a class="post-toc-link" href="#工作流命令" data-level="3">工作流命令</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="初始化">
+              <a class="post-toc-link" href="#初始化" data-level="1">初始化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化">
+              <a class="post-toc-link" href="#格式化" data-level="1">格式化</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="规划">
+              <a class="post-toc-link" href="#规划" data-level="1">规划</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="应用">
+              <a class="post-toc-link" href="#应用" data-level="1">应用</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="销毁">
+              <a class="post-toc-link" href="#销毁" data-level="1">销毁</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="显示状态">
+              <a class="post-toc-link" href="#显示状态" data-level="1">显示状态</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="状态操作">
+              <a class="post-toc-link" href="#状态操作" data-level="1">状态操作</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="条件与循环">
+              <a class="post-toc-link" href="#条件与循环" data-level="3">条件与循环</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="条件表达式">
+              <a class="post-toc-link" href="#条件表达式" data-level="1">条件表达式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="count-循环">
+              <a class="post-toc-link" href="#count-循环" data-level="1">count 循环</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="for_each-循环">
+              <a class="post-toc-link" href="#for_each-循环" data-level="1">for_each 循环</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="for-表达式">
+              <a class="post-toc-link" href="#for-表达式" data-level="1">for 表达式</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="动态块">
+              <a class="post-toc-link" href="#动态块" data-level="1">动态块</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="函数">
+              <a class="post-toc-link" href="#函数" data-level="3">函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="字符串函数">
+              <a class="post-toc-link" href="#字符串函数" data-level="1">字符串函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="集合函数">
+              <a class="post-toc-link" href="#集合函数" data-level="1">集合函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="文件函数">
+              <a class="post-toc-link" href="#文件函数" data-level="1">文件函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="查找函数">
+              <a class="post-toc-link" href="#查找函数" data-level="1">查找函数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="输出与敏感数据">
+              <a class="post-toc-link" href="#输出与敏感数据" data-level="3">输出与敏感数据</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="普通输出">
+              <a class="post-toc-link" href="#普通输出" data-level="1">普通输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="敏感输出-会隐藏值但仍显示">
+              <a class="post-toc-link" href="#敏感输出-会隐藏值但仍显示" data-level="1">敏感输出（会隐藏值但仍显示）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="条件输出">
+              <a class="post-toc-link" href="#条件输出" data-level="1">条件输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="多值输出">
+              <a class="post-toc-link" href="#多值输出" data-level="1">多值输出</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="workspace">
+              <a class="post-toc-link" href="#workspace" data-level="3">workspace</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="列出-workspace">
+              <a class="post-toc-link" href="#列出-workspace" data-level="1">列出 workspace</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-workspace">
+              <a class="post-toc-link" href="#创建-workspace" data-level="1">创建 workspace</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="选择-workspace">
+              <a class="post-toc-link" href="#选择-workspace" data-level="1">选择 workspace</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="当前-workspace">
+              <a class="post-toc-link" href="#当前-workspace" data-level="1">当前 workspace</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="删除-workspace-需要先切换走">
+              <a class="post-toc-link" href="#删除-workspace-需要先切换走" data-level="1">删除 workspace（需要先切换走）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="import">
+              <a class="post-toc-link" href="#import" data-level="3">Import</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入已有资源">
+              <a class="post-toc-link" href="#导入已有资源" data-level="1">导入已有资源</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-1" data-toc-id="导入到模块">
+              <a class="post-toc-link" href="#导入到模块" data-level="1">导入到模块</a>
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </aside>
+  
 </div>
 
 <!-- 移动端目录按钮 -->
+
+<button id="mobile-toc-btn" class="mobile-toc-btn" aria-label="目录">
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 9h14V7H3v2zm0 4h14v-2H3v2zm0 4h14v-2H3v2zm16 0h2v-2h-2v2zm0-10v2h2V7h-2zm0 6h2v-2h-2v2z"/></svg>
+</button>
+<div id="mobile-toc-mask" class="mobile-toc-mask"></div>
+<div id="mobile-toc-panel" class="mobile-toc-panel">
+  <div class="mobile-toc-panel-header">
+    <span class="mobile-toc-panel-title">目录</span>
+    <button id="mobile-toc-close" class="mobile-toc-close" aria-label="关闭">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </button>
+  </div>
+  <div class="mobile-toc-panel-body">
+    <nav class="post-toc-nav">
+      <ul class="post-toc-list">
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基本语法">
+          <a class="post-toc-link" href="#基本语法" data-level="3">基本语法</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="main-tf-示例">
+          <a class="post-toc-link" href="#main-tf-示例" data-level="1">main.tf 示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-provider">
+          <a class="post-toc-link" href="#指定-provider" data-level="1">指定 provider</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-terraform-版本要求">
+          <a class="post-toc-link" href="#指定-terraform-版本要求" data-level="1">指定 terraform 版本要求</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="远程状态配置">
+          <a class="post-toc-link" href="#远程状态配置" data-level="1">远程状态配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建资源">
+          <a class="post-toc-link" href="#创建资源" data-level="1">创建资源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="变量定义">
+          <a class="post-toc-link" href="#变量定义" data-level="1">变量定义</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="输出值">
+          <a class="post-toc-link" href="#输出值" data-level="1">输出值</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="变量">
+          <a class="post-toc-link" href="#变量" data-level="3">变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="字符串变量">
+          <a class="post-toc-link" href="#字符串变量" data-level="1">字符串变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="数字变量">
+          <a class="post-toc-link" href="#数字变量" data-level="1">数字变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="布尔变量">
+          <a class="post-toc-link" href="#布尔变量" data-level="1">布尔变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列表变量">
+          <a class="post-toc-link" href="#列表变量" data-level="1">列表变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="map-变量">
+          <a class="post-toc-link" href="#map-变量" data-level="1">Map 变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="对象变量">
+          <a class="post-toc-link" href="#对象变量" data-level="1">对象变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用变量">
+          <a class="post-toc-link" href="#使用变量" data-level="1">使用变量</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="资源">
+          <a class="post-toc-link" href="#资源" data-level="3">资源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ec2-实例">
+          <a class="post-toc-link" href="#ec2-实例" data-level="1">EC2 实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="安全组">
+          <a class="post-toc-link" href="#安全组" data-level="1">安全组</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="s3-桶">
+          <a class="post-toc-link" href="#s3-桶" data-level="1">S3 桶</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="rds-实例">
+          <a class="post-toc-link" href="#rds-实例" data-level="1">RDS 实例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="数据源">
+          <a class="post-toc-link" href="#数据源" data-level="3">数据源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-ami">
+          <a class="post-toc-link" href="#获取-ami" data-level="1">获取 AMI</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-vpc">
+          <a class="post-toc-link" href="#获取-vpc" data-level="1">获取 VPC</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取可用区">
+          <a class="post-toc-link" href="#获取可用区" data-level="1">获取可用区</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="使用数据源">
+          <a class="post-toc-link" href="#使用数据源" data-level="1">使用数据源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="获取-ssm-参数">
+          <a class="post-toc-link" href="#获取-ssm-参数" data-level="1">获取 SSM 参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="模块">
+          <a class="post-toc-link" href="#模块" data-level="3">模块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="模块目录结构">
+          <a class="post-toc-link" href="#模块目录结构" data-level="1">模块目录结构</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="modules">
+          <a class="post-toc-link" href="#modules" data-level="1">modules/</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="ec2-instance">
+          <a class="post-toc-link" href="#ec2-instance" data-level="1">└── ec2-instance/</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="main-tf">
+          <a class="post-toc-link" href="#main-tf" data-level="1">├── main.tf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="variables-tf">
+          <a class="post-toc-link" href="#variables-tf" data-level="1">├── variables.tf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="outputs-tf">
+          <a class="post-toc-link" href="#outputs-tf" data-level="1">└── outputs.tf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="main-tf">
+          <a class="post-toc-link" href="#main-tf" data-level="1">main.tf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="variables-tf">
+          <a class="post-toc-link" href="#variables-tf" data-level="1">variables.tf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="outputs-tf">
+          <a class="post-toc-link" href="#outputs-tf" data-level="1">outputs.tf</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="调用模块">
+          <a class="post-toc-link" href="#调用模块" data-level="1">调用模块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="远程模块">
+          <a class="post-toc-link" href="#远程模块" data-level="1">远程模块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="状态管理">
+          <a class="post-toc-link" href="#状态管理" data-level="3">状态管理</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="本地状态">
+          <a class="post-toc-link" href="#本地状态" data-level="1">本地状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="s3-后端">
+          <a class="post-toc-link" href="#s3-后端" data-level="1">S3 后端</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="azure-blob-存储后端">
+          <a class="post-toc-link" href="#azure-blob-存储后端" data-level="1">Azure Blob 存储后端</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="gcs-后端">
+          <a class="post-toc-link" href="#gcs-后端" data-level="1">GCS 后端</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="工作流命令">
+          <a class="post-toc-link" href="#工作流命令" data-level="3">工作流命令</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="初始化">
+          <a class="post-toc-link" href="#初始化" data-level="1">初始化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化">
+          <a class="post-toc-link" href="#格式化" data-level="1">格式化</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
+          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="规划">
+          <a class="post-toc-link" href="#规划" data-level="1">规划</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="应用">
+          <a class="post-toc-link" href="#应用" data-level="1">应用</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="销毁">
+          <a class="post-toc-link" href="#销毁" data-level="1">销毁</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="显示状态">
+          <a class="post-toc-link" href="#显示状态" data-level="1">显示状态</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="状态操作">
+          <a class="post-toc-link" href="#状态操作" data-level="1">状态操作</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="条件与循环">
+          <a class="post-toc-link" href="#条件与循环" data-level="3">条件与循环</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="条件表达式">
+          <a class="post-toc-link" href="#条件表达式" data-level="1">条件表达式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="count-循环">
+          <a class="post-toc-link" href="#count-循环" data-level="1">count 循环</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="for_each-循环">
+          <a class="post-toc-link" href="#for_each-循环" data-level="1">for_each 循环</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="for-表达式">
+          <a class="post-toc-link" href="#for-表达式" data-level="1">for 表达式</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="动态块">
+          <a class="post-toc-link" href="#动态块" data-level="1">动态块</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="函数">
+          <a class="post-toc-link" href="#函数" data-level="3">函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="字符串函数">
+          <a class="post-toc-link" href="#字符串函数" data-level="1">字符串函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="集合函数">
+          <a class="post-toc-link" href="#集合函数" data-level="1">集合函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="文件函数">
+          <a class="post-toc-link" href="#文件函数" data-level="1">文件函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="查找函数">
+          <a class="post-toc-link" href="#查找函数" data-level="1">查找函数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="输出与敏感数据">
+          <a class="post-toc-link" href="#输出与敏感数据" data-level="3">输出与敏感数据</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="普通输出">
+          <a class="post-toc-link" href="#普通输出" data-level="1">普通输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="敏感输出-会隐藏值但仍显示">
+          <a class="post-toc-link" href="#敏感输出-会隐藏值但仍显示" data-level="1">敏感输出（会隐藏值但仍显示）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="条件输出">
+          <a class="post-toc-link" href="#条件输出" data-level="1">条件输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="多值输出">
+          <a class="post-toc-link" href="#多值输出" data-level="1">多值输出</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="workspace">
+          <a class="post-toc-link" href="#workspace" data-level="3">workspace</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="列出-workspace">
+          <a class="post-toc-link" href="#列出-workspace" data-level="1">列出 workspace</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-workspace">
+          <a class="post-toc-link" href="#创建-workspace" data-level="1">创建 workspace</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="选择-workspace">
+          <a class="post-toc-link" href="#选择-workspace" data-level="1">选择 workspace</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="当前-workspace">
+          <a class="post-toc-link" href="#当前-workspace" data-level="1">当前 workspace</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="删除-workspace-需要先切换走">
+          <a class="post-toc-link" href="#删除-workspace-需要先切换走" data-level="1">删除 workspace（需要先切换走）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="import">
+          <a class="post-toc-link" href="#import" data-level="3">Import</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入已有资源">
+          <a class="post-toc-link" href="#导入已有资源" data-level="1">导入已有资源</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-1" data-toc-id="导入到模块">
+          <a class="post-toc-link" href="#导入到模块" data-level="1">导入到模块</a>
+        </li>
+        
+      </ul>
+    </nav>
+  </div>
+</div>
 
 
 <script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
