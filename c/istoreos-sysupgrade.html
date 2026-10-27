@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="istoreos-sysupgrade 命令">
     <meta name="twitter:description" content="iStoreOS 系统升级与备份工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1693,192 +1693,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#系统备份" data-level="3">系统备份</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建系统配置备份">
-              <a class="post-toc-link" href="#创建系统配置备份" data-level="1">创建系统配置备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建备份到默认位置">
-              <a class="post-toc-link" href="#创建备份到默认位置" data-level="1">创建备份到默认位置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份到-u-盘">
-              <a class="post-toc-link" href="#备份到-u-盘" data-level="1">备份到 U 盘</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份到-tftp-服务器-需先挂载">
-              <a class="post-toc-link" href="#备份到-tftp-服务器-需先挂载" data-level="1">备份到 TFTP 服务器（需先挂载）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份包含的文件">
-              <a class="post-toc-link" href="#查看备份包含的文件" data-level="1">查看备份包含的文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份文件内容">
-              <a class="post-toc-link" href="#查看备份文件内容" data-level="1">查看备份文件内容</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="系统恢复">
               <a class="post-toc-link" href="#系统恢复" data-level="3">系统恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从备份文件恢复配置">
-              <a class="post-toc-link" href="#从备份文件恢复配置" data-level="1">从备份文件恢复配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从-u-盘恢复">
-              <a class="post-toc-link" href="#从-u-盘恢复" data-level="1">从 U 盘恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复后系统会自动重启">
-              <a class="post-toc-link" href="#恢复后系统会自动重启" data-level="1">恢复后系统会自动重启</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="固件升级">
               <a class="post-toc-link" href="#固件升级" data-level="3">固件升级</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证固件文件是否合法">
-              <a class="post-toc-link" href="#验证固件文件是否合法" data-level="1">验证固件文件是否合法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级固件-保留配置">
-              <a class="post-toc-link" href="#升级固件-保留配置" data-level="1">升级固件（保留配置）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级固件-不保留配置-全新安装">
-              <a class="post-toc-link" href="#升级固件-不保留配置-全新安装" data-level="1">升级固件（不保留配置，全新安装）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制升级-忽略版本检查">
-              <a class="post-toc-link" href="#强制升级-忽略版本检查" data-level="1">强制升级（忽略版本检查）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级时尝试保存所有修改过的文件">
-              <a class="post-toc-link" href="#升级时尝试保存所有修改过的文件" data-level="1">升级时尝试保存所有修改过的文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="完整升级流程">
               <a class="post-toc-link" href="#完整升级流程" data-level="3">完整升级流程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-备份当前配置">
-              <a class="post-toc-link" href="#1-备份当前配置" data-level="1">1. 备份当前配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-下载新固件">
-              <a class="post-toc-link" href="#2-下载新固件" data-level="1">2. 下载新固件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-验证固件">
-              <a class="post-toc-link" href="#3-验证固件" data-level="1">3. 验证固件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-执行升级">
-              <a class="post-toc-link" href="#4-执行升级" data-level="1">4. 执行升级</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="系统会自动重启完成升级">
-              <a class="post-toc-link" href="#系统会自动重启完成升级" data-level="1">系统会自动重启完成升级</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="备份目录说明">
               <a class="post-toc-link" href="#备份目录说明" data-level="3">备份目录说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="sysupgrade-备份包含以下目录和文件">
-              <a class="post-toc-link" href="#sysupgrade-备份包含以下目录和文件" data-level="1">sysupgrade 备份包含以下目录和文件：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看完整备份列表">
-              <a class="post-toc-link" href="#查看完整备份列表" data-level="1">查看完整备份列表</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="自定义备份内容">
               <a class="post-toc-link" href="#自定义备份内容" data-level="3">自定义备份内容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑备份文件列表">
-              <a class="post-toc-link" href="#编辑备份文件列表" data-level="1">编辑备份文件列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加自定义文件到备份">
-              <a class="post-toc-link" href="#添加自定义文件到备份" data-level="1">添加自定义文件到备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确保下次备份包含自定义文件">
-              <a class="post-toc-link" href="#确保下次备份包含自定义文件" data-level="1">确保下次备份包含自定义文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="脚本示例">
               <a class="post-toc-link" href="#脚本示例" data-level="3">脚本示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-自动备份脚本">
-              <a class="post-toc-link" href="#istoreos-自动备份脚本" data-level="1">iStoreOS 自动备份脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建备份目录">
-              <a class="post-toc-link" href="#创建备份目录" data-level="1">创建备份目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行备份">
-              <a class="post-toc-link" href="#执行备份" data-level="1">执行备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保留最近-7-个备份">
-              <a class="post-toc-link" href="#保留最近-7-个备份" data-level="1">保留最近 7 个备份</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="恢复出厂设置">
               <a class="post-toc-link" href="#恢复出厂设置" data-level="3">恢复出厂设置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法1-使用-firstboot-命令">
-              <a class="post-toc-link" href="#方法1-使用-firstboot-命令" data-level="1">方法1：使用 firstboot 命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法2-清除-overlay-分区">
-              <a class="post-toc-link" href="#方法2-清除-overlay-分区" data-level="1">方法2：清除 overlay 分区</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法3-通过-luci-web-界面">
-              <a class="post-toc-link" href="#方法3-通过-luci-web-界面" data-level="1">方法3：通过 LuCI Web 界面</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="系统-备份-升级-重置路由器">
-              <a class="post-toc-link" href="#系统-备份-升级-重置路由器" data-level="1">系统 -&gt; 备份/升级 -&gt; 重置路由器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="固件类型说明">
               <a class="post-toc-link" href="#固件类型说明" data-level="3">固件类型说明</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-openwrt-固件类型">
-              <a class="post-toc-link" href="#istoreos-openwrt-固件类型" data-level="1">iStoreOS/OpenWrt 固件类型：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-combined-img-gz-磁盘镜像-完整安装">
-              <a class="post-toc-link" href="#1-combined-img-gz-磁盘镜像-完整安装" data-level="1">1. combined.img.gz - 磁盘镜像（完整安装）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-全新安装-物理机-虚拟机">
-              <a class="post-toc-link" href="#适用于-全新安装-物理机-虚拟机" data-level="1">适用于：全新安装、物理机、虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-rootfs-tar-gz-根文件系统-升级用">
-              <a class="post-toc-link" href="#2-rootfs-tar-gz-根文件系统-升级用" data-level="1">2. rootfs.tar.gz - 根文件系统（升级用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-已有系统升级">
-              <a class="post-toc-link" href="#适用于-已有系统升级" data-level="1">适用于：已有系统升级</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-ipk-包格式">
-              <a class="post-toc-link" href="#3-ipk-包格式" data-level="1">3. .ipk 包格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-opkg-安装">
-              <a class="post-toc-link" href="#使用-opkg-安装" data-level="1">使用 opkg 安装</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="升级注意事项">
@@ -1889,48 +1733,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#故障恢复" data-level="3">故障恢复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如果升级后无法启动-尝试以下方法">
-              <a class="post-toc-link" href="#如果升级后无法启动-尝试以下方法" data-level="1">如果升级后无法启动，尝试以下方法：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-进入-failsafe-模式">
-              <a class="post-toc-link" href="#1-进入-failsafe-模式" data-level="1">1. 进入 failsafe 模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动时按住-reset-键或按-f-键">
-              <a class="post-toc-link" href="#启动时按住-reset-键或按-f-键" data-level="1">启动时按住 Reset 键或按 &#34;f&#34; 键</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-挂载-overlay">
-              <a class="post-toc-link" href="#2-挂载-overlay" data-level="1">2. 挂载 overlay</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-恢复备份">
-              <a class="post-toc-link" href="#3-恢复备份" data-level="1">3. 恢复备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-重置系统">
-              <a class="post-toc-link" href="#4-重置系统" data-level="1">4. 重置系统</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="相关命令">
               <a class="post-toc-link" href="#相关命令" data-level="3">相关命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统版本">
-              <a class="post-toc-link" href="#查看系统版本" data-level="1">查看系统版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看固件信息">
-              <a class="post-toc-link" href="#查看固件信息" data-level="1">查看固件信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看分区信息">
-              <a class="post-toc-link" href="#查看分区信息" data-level="1">查看分区信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前运行固件">
-              <a class="post-toc-link" href="#查看当前运行固件" data-level="1">查看当前运行固件</a>
             </li>
             
           </ul>
@@ -1974,192 +1778,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#系统备份" data-level="3">系统备份</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建系统配置备份">
-          <a class="post-toc-link" href="#创建系统配置备份" data-level="1">创建系统配置备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建备份到默认位置">
-          <a class="post-toc-link" href="#创建备份到默认位置" data-level="1">创建备份到默认位置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份到-u-盘">
-          <a class="post-toc-link" href="#备份到-u-盘" data-level="1">备份到 U 盘</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份到-tftp-服务器-需先挂载">
-          <a class="post-toc-link" href="#备份到-tftp-服务器-需先挂载" data-level="1">备份到 TFTP 服务器（需先挂载）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份包含的文件">
-          <a class="post-toc-link" href="#查看备份包含的文件" data-level="1">查看备份包含的文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份文件内容">
-          <a class="post-toc-link" href="#查看备份文件内容" data-level="1">查看备份文件内容</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="系统恢复">
           <a class="post-toc-link" href="#系统恢复" data-level="3">系统恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从备份文件恢复配置">
-          <a class="post-toc-link" href="#从备份文件恢复配置" data-level="1">从备份文件恢复配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从-u-盘恢复">
-          <a class="post-toc-link" href="#从-u-盘恢复" data-level="1">从 U 盘恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复后系统会自动重启">
-          <a class="post-toc-link" href="#恢复后系统会自动重启" data-level="1">恢复后系统会自动重启</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="固件升级">
           <a class="post-toc-link" href="#固件升级" data-level="3">固件升级</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证固件文件是否合法">
-          <a class="post-toc-link" href="#验证固件文件是否合法" data-level="1">验证固件文件是否合法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级固件-保留配置">
-          <a class="post-toc-link" href="#升级固件-保留配置" data-level="1">升级固件（保留配置）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级固件-不保留配置-全新安装">
-          <a class="post-toc-link" href="#升级固件-不保留配置-全新安装" data-level="1">升级固件（不保留配置，全新安装）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制升级-忽略版本检查">
-          <a class="post-toc-link" href="#强制升级-忽略版本检查" data-level="1">强制升级（忽略版本检查）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级时尝试保存所有修改过的文件">
-          <a class="post-toc-link" href="#升级时尝试保存所有修改过的文件" data-level="1">升级时尝试保存所有修改过的文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="完整升级流程">
           <a class="post-toc-link" href="#完整升级流程" data-level="3">完整升级流程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-备份当前配置">
-          <a class="post-toc-link" href="#1-备份当前配置" data-level="1">1. 备份当前配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-下载新固件">
-          <a class="post-toc-link" href="#2-下载新固件" data-level="1">2. 下载新固件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-验证固件">
-          <a class="post-toc-link" href="#3-验证固件" data-level="1">3. 验证固件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-执行升级">
-          <a class="post-toc-link" href="#4-执行升级" data-level="1">4. 执行升级</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="系统会自动重启完成升级">
-          <a class="post-toc-link" href="#系统会自动重启完成升级" data-level="1">系统会自动重启完成升级</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="备份目录说明">
           <a class="post-toc-link" href="#备份目录说明" data-level="3">备份目录说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="sysupgrade-备份包含以下目录和文件">
-          <a class="post-toc-link" href="#sysupgrade-备份包含以下目录和文件" data-level="1">sysupgrade 备份包含以下目录和文件：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看完整备份列表">
-          <a class="post-toc-link" href="#查看完整备份列表" data-level="1">查看完整备份列表</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="自定义备份内容">
           <a class="post-toc-link" href="#自定义备份内容" data-level="3">自定义备份内容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑备份文件列表">
-          <a class="post-toc-link" href="#编辑备份文件列表" data-level="1">编辑备份文件列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加自定义文件到备份">
-          <a class="post-toc-link" href="#添加自定义文件到备份" data-level="1">添加自定义文件到备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确保下次备份包含自定义文件">
-          <a class="post-toc-link" href="#确保下次备份包含自定义文件" data-level="1">确保下次备份包含自定义文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="脚本示例">
           <a class="post-toc-link" href="#脚本示例" data-level="3">脚本示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-自动备份脚本">
-          <a class="post-toc-link" href="#istoreos-自动备份脚本" data-level="1">iStoreOS 自动备份脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建备份目录">
-          <a class="post-toc-link" href="#创建备份目录" data-level="1">创建备份目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行备份">
-          <a class="post-toc-link" href="#执行备份" data-level="1">执行备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保留最近-7-个备份">
-          <a class="post-toc-link" href="#保留最近-7-个备份" data-level="1">保留最近 7 个备份</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="恢复出厂设置">
           <a class="post-toc-link" href="#恢复出厂设置" data-level="3">恢复出厂设置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法1-使用-firstboot-命令">
-          <a class="post-toc-link" href="#方法1-使用-firstboot-命令" data-level="1">方法1：使用 firstboot 命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法2-清除-overlay-分区">
-          <a class="post-toc-link" href="#方法2-清除-overlay-分区" data-level="1">方法2：清除 overlay 分区</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法3-通过-luci-web-界面">
-          <a class="post-toc-link" href="#方法3-通过-luci-web-界面" data-level="1">方法3：通过 LuCI Web 界面</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="系统-备份-升级-重置路由器">
-          <a class="post-toc-link" href="#系统-备份-升级-重置路由器" data-level="1">系统 -&gt; 备份/升级 -&gt; 重置路由器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="固件类型说明">
           <a class="post-toc-link" href="#固件类型说明" data-level="3">固件类型说明</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-openwrt-固件类型">
-          <a class="post-toc-link" href="#istoreos-openwrt-固件类型" data-level="1">iStoreOS/OpenWrt 固件类型：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-combined-img-gz-磁盘镜像-完整安装">
-          <a class="post-toc-link" href="#1-combined-img-gz-磁盘镜像-完整安装" data-level="1">1. combined.img.gz - 磁盘镜像（完整安装）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-全新安装-物理机-虚拟机">
-          <a class="post-toc-link" href="#适用于-全新安装-物理机-虚拟机" data-level="1">适用于：全新安装、物理机、虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-rootfs-tar-gz-根文件系统-升级用">
-          <a class="post-toc-link" href="#2-rootfs-tar-gz-根文件系统-升级用" data-level="1">2. rootfs.tar.gz - 根文件系统（升级用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-已有系统升级">
-          <a class="post-toc-link" href="#适用于-已有系统升级" data-level="1">适用于：已有系统升级</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-ipk-包格式">
-          <a class="post-toc-link" href="#3-ipk-包格式" data-level="1">3. .ipk 包格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-opkg-安装">
-          <a class="post-toc-link" href="#使用-opkg-安装" data-level="1">使用 opkg 安装</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="升级注意事项">
@@ -2170,48 +1818,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#故障恢复" data-level="3">故障恢复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如果升级后无法启动-尝试以下方法">
-          <a class="post-toc-link" href="#如果升级后无法启动-尝试以下方法" data-level="1">如果升级后无法启动，尝试以下方法：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-进入-failsafe-模式">
-          <a class="post-toc-link" href="#1-进入-failsafe-模式" data-level="1">1. 进入 failsafe 模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动时按住-reset-键或按-f-键">
-          <a class="post-toc-link" href="#启动时按住-reset-键或按-f-键" data-level="1">启动时按住 Reset 键或按 &#34;f&#34; 键</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-挂载-overlay">
-          <a class="post-toc-link" href="#2-挂载-overlay" data-level="1">2. 挂载 overlay</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-恢复备份">
-          <a class="post-toc-link" href="#3-恢复备份" data-level="1">3. 恢复备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-重置系统">
-          <a class="post-toc-link" href="#4-重置系统" data-level="1">4. 重置系统</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="相关命令">
           <a class="post-toc-link" href="#相关命令" data-level="3">相关命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统版本">
-          <a class="post-toc-link" href="#查看系统版本" data-level="1">查看系统版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看固件信息">
-          <a class="post-toc-link" href="#查看固件信息" data-level="1">查看固件信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看分区信息">
-          <a class="post-toc-link" href="#查看分区信息" data-level="1">查看分区信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前运行固件">
-          <a class="post-toc-link" href="#查看当前运行固件" data-level="1">查看当前运行固件</a>
         </li>
         
       </ul>
@@ -2220,7 +1828,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2403,8 +2011,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

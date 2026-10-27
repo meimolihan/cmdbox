@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="nginx.conf 命令">
     <meta name="twitter:description" content="Nginx 配置文件详解 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2117,32 +2117,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#配置文件结构" data-level="3">配置文件结构</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="全局块">
-              <a class="post-toc-link" href="#全局块" data-level="1">全局块</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="全局块">
               <a class="post-toc-link" href="#全局块" data-level="3">全局块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行用户">
-              <a class="post-toc-link" href="#运行用户" data-level="1">运行用户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="工作进程数-auto-表示自动检测-cpu-核心数">
-              <a class="post-toc-link" href="#工作进程数-auto-表示自动检测-cpu-核心数" data-level="1">工作进程数，auto 表示自动检测 CPU 核心数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定错误日志路径和级别">
-              <a class="post-toc-link" href="#指定错误日志路径和级别" data-level="1">指定错误日志路径和级别</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-pid-文件路径">
-              <a class="post-toc-link" href="#指定-pid-文件路径" data-level="1">指定 PID 文件路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加载动态模块">
-              <a class="post-toc-link" href="#加载动态模块" data-level="1">加载动态模块</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="events-块">
@@ -2159,38 +2135,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="location-块">
               <a class="post-toc-link" href="#location-块" data-level="3">location 块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="根路径">
-              <a class="post-toc-link" href="#根路径" data-level="1">根路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="精确匹配">
-              <a class="post-toc-link" href="#精确匹配" data-level="1">精确匹配</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正则匹配-区分大小写">
-              <a class="post-toc-link" href="#正则匹配-区分大小写" data-level="1">正则匹配（区分大小写）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正则匹配-不区分大小写">
-              <a class="post-toc-link" href="#正则匹配-不区分大小写" data-level="1">正则匹配（不区分大小写）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="反向代理">
-              <a class="post-toc-link" href="#反向代理" data-level="1">反向代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="负载均衡">
-              <a class="post-toc-link" href="#负载均衡" data-level="1">负载均衡</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="路径重写">
-              <a class="post-toc-link" href="#路径重写" data-level="1">路径重写</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="限制-ip-访问">
-              <a class="post-toc-link" href="#限制-ip-访问" data-level="1">限制 IP 访问</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用配置示例">
@@ -2213,80 +2157,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#ssl-https-配置" data-level="4">SSL/HTTPS 配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-重定向到-https">
-              <a class="post-toc-link" href="#http-重定向到-https" data-level="1">HTTP 重定向到 HTTPS</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化配置">
               <a class="post-toc-link" href="#性能优化配置" data-level="3">性能优化配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="工作进程优化">
-              <a class="post-toc-link" href="#工作进程优化" data-level="1">工作进程优化</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="安全配置">
               <a class="post-toc-link" href="#安全配置" data-level="3">安全配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏版本号">
-              <a class="post-toc-link" href="#隐藏版本号" data-level="1">隐藏版本号</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="防止点击劫持">
-              <a class="post-toc-link" href="#防止点击劫持" data-level="1">防止点击劫持</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="xss-防护">
-              <a class="post-toc-link" href="#xss-防护" data-level="1">XSS 防护</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="防止-mime-类型嗅探">
-              <a class="post-toc-link" href="#防止-mime-类型嗅探" data-level="1">防止 MIME 类型嗅探</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="引用来源策略">
-              <a class="post-toc-link" href="#引用来源策略" data-level="1">引用来源策略</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全策略">
-              <a class="post-toc-link" href="#安全策略" data-level="1">安全策略</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁止访问敏感文件">
-              <a class="post-toc-link" href="#禁止访问敏感文件" data-level="1">禁止访问敏感文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
               <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置文件">
-              <a class="post-toc-link" href="#测试配置文件" data-level="1">测试配置文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定配置文件测试">
-              <a class="post-toc-link" href="#指定配置文件测试" data-level="1">指定配置文件测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置">
-              <a class="post-toc-link" href="#重新加载配置" data-level="1">重新加载配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="优雅停止">
-              <a class="post-toc-link" href="#优雅停止" data-level="1">优雅停止</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速停止">
-              <a class="post-toc-link" href="#快速停止" data-level="1">快速停止</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新打开日志">
-              <a class="post-toc-link" href="#重新打开日志" data-level="1">重新打开日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级-nginx-不停服务">
-              <a class="post-toc-link" href="#升级-nginx-不停服务" data-level="1">升级 Nginx（不停服务）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
@@ -2326,32 +2206,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#配置文件结构" data-level="3">配置文件结构</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="全局块">
-          <a class="post-toc-link" href="#全局块" data-level="1">全局块</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="全局块">
           <a class="post-toc-link" href="#全局块" data-level="3">全局块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行用户">
-          <a class="post-toc-link" href="#运行用户" data-level="1">运行用户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="工作进程数-auto-表示自动检测-cpu-核心数">
-          <a class="post-toc-link" href="#工作进程数-auto-表示自动检测-cpu-核心数" data-level="1">工作进程数，auto 表示自动检测 CPU 核心数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定错误日志路径和级别">
-          <a class="post-toc-link" href="#指定错误日志路径和级别" data-level="1">指定错误日志路径和级别</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-pid-文件路径">
-          <a class="post-toc-link" href="#指定-pid-文件路径" data-level="1">指定 PID 文件路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加载动态模块">
-          <a class="post-toc-link" href="#加载动态模块" data-level="1">加载动态模块</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="events-块">
@@ -2368,38 +2224,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="location-块">
           <a class="post-toc-link" href="#location-块" data-level="3">location 块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="根路径">
-          <a class="post-toc-link" href="#根路径" data-level="1">根路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="精确匹配">
-          <a class="post-toc-link" href="#精确匹配" data-level="1">精确匹配</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正则匹配-区分大小写">
-          <a class="post-toc-link" href="#正则匹配-区分大小写" data-level="1">正则匹配（区分大小写）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正则匹配-不区分大小写">
-          <a class="post-toc-link" href="#正则匹配-不区分大小写" data-level="1">正则匹配（不区分大小写）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="反向代理">
-          <a class="post-toc-link" href="#反向代理" data-level="1">反向代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="负载均衡">
-          <a class="post-toc-link" href="#负载均衡" data-level="1">负载均衡</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="路径重写">
-          <a class="post-toc-link" href="#路径重写" data-level="1">路径重写</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="限制-ip-访问">
-          <a class="post-toc-link" href="#限制-ip-访问" data-level="1">限制 IP 访问</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用配置示例">
@@ -2422,80 +2246,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#ssl-https-配置" data-level="4">SSL/HTTPS 配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-重定向到-https">
-          <a class="post-toc-link" href="#http-重定向到-https" data-level="1">HTTP 重定向到 HTTPS</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化配置">
           <a class="post-toc-link" href="#性能优化配置" data-level="3">性能优化配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="工作进程优化">
-          <a class="post-toc-link" href="#工作进程优化" data-level="1">工作进程优化</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="安全配置">
           <a class="post-toc-link" href="#安全配置" data-level="3">安全配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏版本号">
-          <a class="post-toc-link" href="#隐藏版本号" data-level="1">隐藏版本号</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="防止点击劫持">
-          <a class="post-toc-link" href="#防止点击劫持" data-level="1">防止点击劫持</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="xss-防护">
-          <a class="post-toc-link" href="#xss-防护" data-level="1">XSS 防护</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="防止-mime-类型嗅探">
-          <a class="post-toc-link" href="#防止-mime-类型嗅探" data-level="1">防止 MIME 类型嗅探</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="引用来源策略">
-          <a class="post-toc-link" href="#引用来源策略" data-level="1">引用来源策略</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全策略">
-          <a class="post-toc-link" href="#安全策略" data-level="1">安全策略</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁止访问敏感文件">
-          <a class="post-toc-link" href="#禁止访问敏感文件" data-level="1">禁止访问敏感文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
           <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置文件">
-          <a class="post-toc-link" href="#测试配置文件" data-level="1">测试配置文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定配置文件测试">
-          <a class="post-toc-link" href="#指定配置文件测试" data-level="1">指定配置文件测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置">
-          <a class="post-toc-link" href="#重新加载配置" data-level="1">重新加载配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="优雅停止">
-          <a class="post-toc-link" href="#优雅停止" data-level="1">优雅停止</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速停止">
-          <a class="post-toc-link" href="#快速停止" data-level="1">快速停止</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新打开日志">
-          <a class="post-toc-link" href="#重新打开日志" data-level="1">重新打开日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级-nginx-不停服务">
-          <a class="post-toc-link" href="#升级-nginx-不停服务" data-level="1">升级 Nginx（不停服务）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
@@ -2508,7 +2268,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2691,8 +2451,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

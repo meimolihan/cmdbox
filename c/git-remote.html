@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="git-remote 命令">
     <meta name="twitter:description" content="管理远程仓库 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1418,56 +1418,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看远程仓库">
-              <a class="post-toc-link" href="#查看远程仓库" data-level="1">查看远程仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加远程仓库">
-              <a class="post-toc-link" href="#添加远程仓库" data-level="1">添加远程仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除远程仓库">
-              <a class="post-toc-link" href="#删除远程仓库" data-level="1">删除远程仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重命名远程仓库">
-              <a class="post-toc-link" href="#重命名远程仓库" data-level="1">重命名远程仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改远程仓库url">
-              <a class="post-toc-link" href="#修改远程仓库url" data-level="1">修改远程仓库URL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换-https-和-ssh">
-              <a class="post-toc-link" href="#切换-https-和-ssh" data-level="1">切换 HTTPS 和 SSH</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看远程仓库详情">
-              <a class="post-toc-link" href="#查看远程仓库详情" data-level="1">查看远程仓库详情</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理无效的远程引用">
-              <a class="post-toc-link" href="#清理无效的远程引用" data-level="1">清理无效的远程引用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新远程仓库信息">
-              <a class="post-toc-link" href="#更新远程仓库信息" data-level="1">更新远程仓库信息</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="多远程仓库场景">
               <a class="post-toc-link" href="#多远程仓库场景" data-level="3">多远程仓库场景</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fork-项目的标准配置">
-              <a class="post-toc-link" href="#fork-项目的标准配置" data-level="1">fork 项目的标准配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从上游获取更新">
-              <a class="post-toc-link" href="#从上游获取更新" data-level="1">从上游获取更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="推送到自己的-fork">
-              <a class="post-toc-link" href="#推送到自己的-fork" data-level="1">推送到自己的 fork</a>
             </li>
             
           </ul>
@@ -1507,56 +1459,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看远程仓库">
-          <a class="post-toc-link" href="#查看远程仓库" data-level="1">查看远程仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加远程仓库">
-          <a class="post-toc-link" href="#添加远程仓库" data-level="1">添加远程仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除远程仓库">
-          <a class="post-toc-link" href="#删除远程仓库" data-level="1">删除远程仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重命名远程仓库">
-          <a class="post-toc-link" href="#重命名远程仓库" data-level="1">重命名远程仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改远程仓库url">
-          <a class="post-toc-link" href="#修改远程仓库url" data-level="1">修改远程仓库URL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换-https-和-ssh">
-          <a class="post-toc-link" href="#切换-https-和-ssh" data-level="1">切换 HTTPS 和 SSH</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看远程仓库详情">
-          <a class="post-toc-link" href="#查看远程仓库详情" data-level="1">查看远程仓库详情</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理无效的远程引用">
-          <a class="post-toc-link" href="#清理无效的远程引用" data-level="1">清理无效的远程引用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新远程仓库信息">
-          <a class="post-toc-link" href="#更新远程仓库信息" data-level="1">更新远程仓库信息</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="多远程仓库场景">
           <a class="post-toc-link" href="#多远程仓库场景" data-level="3">多远程仓库场景</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fork-项目的标准配置">
-          <a class="post-toc-link" href="#fork-项目的标准配置" data-level="1">fork 项目的标准配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从上游获取更新">
-          <a class="post-toc-link" href="#从上游获取更新" data-level="1">从上游获取更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="推送到自己的-fork">
-          <a class="post-toc-link" href="#推送到自己的-fork" data-level="1">推送到自己的 fork</a>
         </li>
         
       </ul>
@@ -1565,7 +1469,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1748,8 +1652,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

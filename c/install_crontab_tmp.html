@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="install_crontab_tmp 命令">
     <meta name="twitter:description" content="一键安装临时目录过期清理计划任务 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1864,152 +1864,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装器-install_crontab_tmp-sh" data-level="3">安装器 install_crontab_tmp.sh</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="一键安装-临时目录过期清理计划任务-logrotate-日志轮转">
-              <a class="post-toc-link" href="#一键安装-临时目录过期清理计划任务-logrotate-日志轮转" data-level="1">一键安装：临时目录过期清理计划任务 + logrotate 日志轮转</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用法-sudo-bash-install_crontab_tmp-sh">
-              <a class="post-toc-link" href="#用法-sudo-bash-install_crontab_tmp-sh" data-level="1">用法: sudo bash install_crontab_tmp.sh</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="说明-幂等-可重复执行-已存在则自动去重更新">
-              <a class="post-toc-link" href="#说明-幂等-可重复执行-已存在则自动去重更新" data-level="1">说明: 幂等，可重复执行；已存在则自动去重更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="可配置区-按需修改-也可用同名环境变量覆盖">
-              <a class="post-toc-link" href="#可配置区-按需修改-也可用同名环境变量覆盖" data-level="1">---------- 可配置区（按需修改，也可用同名环境变量覆盖） ----------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="配置结束">
-              <a class="post-toc-link" href="#配置结束" data-level="1">---------- 配置结束 ----------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="校验-root-权限">
-              <a class="post-toc-link" href="#校验-root-权限" data-level="1">校验 root 权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="校验目标目录">
-              <a class="post-toc-link" href="#校验目标目录" data-level="1">校验目标目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-创建清理脚本">
-              <a class="post-toc-link" href="#1-创建清理脚本" data-level="1">================= 1. 创建清理脚本 =================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="脚本目录不存在则创建">
-              <a class="post-toc-link" href="#脚本目录不存在则创建" data-level="1">脚本目录不存在则创建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="临时目录过期清理-atime-判断-超过-expire_atime-天无访问即删除">
-              <a class="post-toc-link" href="#临时目录过期清理-atime-判断-超过-expire_atime-天无访问即删除" data-level="1">临时目录过期清理（atime 判断，超过 ${EXPIRE_ATIME} 天无访问即删除）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除过期文件-print-记录删除清单-不需要明细可去掉-print">
-              <a class="post-toc-link" href="#删除过期文件-print-记录删除清单-不需要明细可去掉-print" data-level="1">删除过期文件（-print 记录删除清单；不需要明细可去掉 -print）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉">
-              <a class="post-toc-link" href="#删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉" data-level="1">删除空目录（-mindepth 1 必须加，否则 TMP_DIR 变空时会被一起删掉）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-写入-crontab-自动去重">
-              <a class="post-toc-link" href="#2-写入-crontab-自动去重" data-level="1">================= 2. 写入 crontab（自动去重） =================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份现有-crontab">
-              <a class="post-toc-link" href="#备份现有-crontab" data-level="1">备份现有 crontab</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="移除旧条目后追加新条目">
-              <a class="post-toc-link" href="#移除旧条目后追加新条目" data-level="1">移除旧条目后追加新条目</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="注意-grep-vf-在-无匹配行-时返回-1-必须加-true">
-              <a class="post-toc-link" href="#注意-grep-vf-在-无匹配行-时返回-1-必须加-true" data-level="1">注意：grep -vF 在「无匹配行」时返回 1，必须加 || true，</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="否则-set-e-会中止子-shell-导致-echo-不执行-crontab-被写成空文件">
-              <a class="post-toc-link" href="#否则-set-e-会中止子-shell-导致-echo-不执行-crontab-被写成空文件" data-level="1">否则 set -e 会中止子 shell，导致 echo 不执行、crontab 被写成空文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="校验写入结果">
-              <a class="post-toc-link" href="#校验写入结果" data-level="1">校验写入结果</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-配置-logrotate">
-              <a class="post-toc-link" href="#3-配置-logrotate" data-level="1">================= 3. 配置 logrotate =================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="校验-logrotate-配置-模拟运行-不实际执行">
-              <a class="post-toc-link" href="#校验-logrotate-配置-模拟运行-不实际执行" data-level="1">校验 logrotate 配置（模拟运行，不实际执行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-可选-首次立即执行一次清理">
-              <a class="post-toc-link" href="#4-可选-首次立即执行一次清理" data-level="1">================= 4. 可选：首次立即执行一次清理 =================</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="清理脚本-crontab_tmp-sh">
               <a class="post-toc-link" href="#清理脚本-crontab_tmp-sh" data-level="3">清理脚本 crontab_tmp.sh</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="临时目录过期清理脚本-atime-判断-超过阈值无访问即删除">
-              <a class="post-toc-link" href="#临时目录过期清理脚本-atime-判断-超过阈值无访问即删除" data-level="1">临时目录过期清理脚本（atime 判断，超过阈值无访问即删除）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="由-install_crontab_tmp-sh-安装到-usr-local-bin-crontab_tmp-sh">
-              <a class="post-toc-link" href="#由-install_crontab_tmp-sh-安装到-usr-local-bin-crontab_tmp-sh" data-level="1">由 install_crontab_tmp.sh 安装到 /usr/local/bin/crontab_tmp.sh</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动执行-bash-usr-local-bin-crontab_tmp-sh">
-              <a class="post-toc-link" href="#手动执行-bash-usr-local-bin-crontab_tmp-sh" data-level="1">手动执行: bash /usr/local/bin/crontab_tmp.sh</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="可配置区-安装时由安装器写入">
-              <a class="post-toc-link" href="#可配置区-安装时由安装器写入" data-level="1">---------- 可配置区（安装时由安装器写入） ----------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="配置结束">
-              <a class="post-toc-link" href="#配置结束" data-level="1">---------- 配置结束 ----------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="目标目录不存在-记录并退出">
-              <a class="post-toc-link" href="#目标目录不存在-记录并退出" data-level="1">目标目录不存在 → 记录并退出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志目录不存在则创建">
-              <a class="post-toc-link" href="#日志目录不存在则创建" data-level="1">日志目录不存在则创建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-删除过期文件-print-先记录清单再删除-不需要明细可去掉-print">
-              <a class="post-toc-link" href="#1-删除过期文件-print-先记录清单再删除-不需要明细可去掉-print" data-level="1">1) 删除过期文件（-print 先记录清单再删除；不需要明细可去掉 -print）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mindepth-1-保证不处理扫描根目录本身">
-              <a class="post-toc-link" href="#mindepth-1-保证不处理扫描根目录本身" data-level="1">-mindepth 1 保证不处理扫描根目录本身</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉">
-              <a class="post-toc-link" href="#2-删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉" data-level="1">2) 删除空目录（-mindepth 1 必须加：否则 TMP_DIR 变空时会被一起删掉）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-统计剩余内容">
-              <a class="post-toc-link" href="#3-统计剩余内容" data-level="1">3) 统计剩余内容</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2081,152 +1937,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装器-install_crontab_tmp-sh" data-level="3">安装器 install_crontab_tmp.sh</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="一键安装-临时目录过期清理计划任务-logrotate-日志轮转">
-          <a class="post-toc-link" href="#一键安装-临时目录过期清理计划任务-logrotate-日志轮转" data-level="1">一键安装：临时目录过期清理计划任务 + logrotate 日志轮转</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用法-sudo-bash-install_crontab_tmp-sh">
-          <a class="post-toc-link" href="#用法-sudo-bash-install_crontab_tmp-sh" data-level="1">用法: sudo bash install_crontab_tmp.sh</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="说明-幂等-可重复执行-已存在则自动去重更新">
-          <a class="post-toc-link" href="#说明-幂等-可重复执行-已存在则自动去重更新" data-level="1">说明: 幂等，可重复执行；已存在则自动去重更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="可配置区-按需修改-也可用同名环境变量覆盖">
-          <a class="post-toc-link" href="#可配置区-按需修改-也可用同名环境变量覆盖" data-level="1">---------- 可配置区（按需修改，也可用同名环境变量覆盖） ----------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="配置结束">
-          <a class="post-toc-link" href="#配置结束" data-level="1">---------- 配置结束 ----------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="校验-root-权限">
-          <a class="post-toc-link" href="#校验-root-权限" data-level="1">校验 root 权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="校验目标目录">
-          <a class="post-toc-link" href="#校验目标目录" data-level="1">校验目标目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-创建清理脚本">
-          <a class="post-toc-link" href="#1-创建清理脚本" data-level="1">================= 1. 创建清理脚本 =================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="脚本目录不存在则创建">
-          <a class="post-toc-link" href="#脚本目录不存在则创建" data-level="1">脚本目录不存在则创建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="临时目录过期清理-atime-判断-超过-expire_atime-天无访问即删除">
-          <a class="post-toc-link" href="#临时目录过期清理-atime-判断-超过-expire_atime-天无访问即删除" data-level="1">临时目录过期清理（atime 判断，超过 ${EXPIRE_ATIME} 天无访问即删除）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除过期文件-print-记录删除清单-不需要明细可去掉-print">
-          <a class="post-toc-link" href="#删除过期文件-print-记录删除清单-不需要明细可去掉-print" data-level="1">删除过期文件（-print 记录删除清单；不需要明细可去掉 -print）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉">
-          <a class="post-toc-link" href="#删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉" data-level="1">删除空目录（-mindepth 1 必须加，否则 TMP_DIR 变空时会被一起删掉）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-写入-crontab-自动去重">
-          <a class="post-toc-link" href="#2-写入-crontab-自动去重" data-level="1">================= 2. 写入 crontab（自动去重） =================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份现有-crontab">
-          <a class="post-toc-link" href="#备份现有-crontab" data-level="1">备份现有 crontab</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="移除旧条目后追加新条目">
-          <a class="post-toc-link" href="#移除旧条目后追加新条目" data-level="1">移除旧条目后追加新条目</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="注意-grep-vf-在-无匹配行-时返回-1-必须加-true">
-          <a class="post-toc-link" href="#注意-grep-vf-在-无匹配行-时返回-1-必须加-true" data-level="1">注意：grep -vF 在「无匹配行」时返回 1，必须加 || true，</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="否则-set-e-会中止子-shell-导致-echo-不执行-crontab-被写成空文件">
-          <a class="post-toc-link" href="#否则-set-e-会中止子-shell-导致-echo-不执行-crontab-被写成空文件" data-level="1">否则 set -e 会中止子 shell，导致 echo 不执行、crontab 被写成空文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="校验写入结果">
-          <a class="post-toc-link" href="#校验写入结果" data-level="1">校验写入结果</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-配置-logrotate">
-          <a class="post-toc-link" href="#3-配置-logrotate" data-level="1">================= 3. 配置 logrotate =================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="校验-logrotate-配置-模拟运行-不实际执行">
-          <a class="post-toc-link" href="#校验-logrotate-配置-模拟运行-不实际执行" data-level="1">校验 logrotate 配置（模拟运行，不实际执行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-可选-首次立即执行一次清理">
-          <a class="post-toc-link" href="#4-可选-首次立即执行一次清理" data-level="1">================= 4. 可选：首次立即执行一次清理 =================</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="清理脚本-crontab_tmp-sh">
           <a class="post-toc-link" href="#清理脚本-crontab_tmp-sh" data-level="3">清理脚本 crontab_tmp.sh</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="临时目录过期清理脚本-atime-判断-超过阈值无访问即删除">
-          <a class="post-toc-link" href="#临时目录过期清理脚本-atime-判断-超过阈值无访问即删除" data-level="1">临时目录过期清理脚本（atime 判断，超过阈值无访问即删除）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="由-install_crontab_tmp-sh-安装到-usr-local-bin-crontab_tmp-sh">
-          <a class="post-toc-link" href="#由-install_crontab_tmp-sh-安装到-usr-local-bin-crontab_tmp-sh" data-level="1">由 install_crontab_tmp.sh 安装到 /usr/local/bin/crontab_tmp.sh</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动执行-bash-usr-local-bin-crontab_tmp-sh">
-          <a class="post-toc-link" href="#手动执行-bash-usr-local-bin-crontab_tmp-sh" data-level="1">手动执行: bash /usr/local/bin/crontab_tmp.sh</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">=============================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="可配置区-安装时由安装器写入">
-          <a class="post-toc-link" href="#可配置区-安装时由安装器写入" data-level="1">---------- 可配置区（安装时由安装器写入） ----------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="配置结束">
-          <a class="post-toc-link" href="#配置结束" data-level="1">---------- 配置结束 ----------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="目标目录不存在-记录并退出">
-          <a class="post-toc-link" href="#目标目录不存在-记录并退出" data-level="1">目标目录不存在 → 记录并退出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志目录不存在则创建">
-          <a class="post-toc-link" href="#日志目录不存在则创建" data-level="1">日志目录不存在则创建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-删除过期文件-print-先记录清单再删除-不需要明细可去掉-print">
-          <a class="post-toc-link" href="#1-删除过期文件-print-先记录清单再删除-不需要明细可去掉-print" data-level="1">1) 删除过期文件（-print 先记录清单再删除；不需要明细可去掉 -print）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mindepth-1-保证不处理扫描根目录本身">
-          <a class="post-toc-link" href="#mindepth-1-保证不处理扫描根目录本身" data-level="1">-mindepth 1 保证不处理扫描根目录本身</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉">
-          <a class="post-toc-link" href="#2-删除空目录-mindepth-1-必须加-否则-tmp_dir-变空时会被一起删掉" data-level="1">2) 删除空目录（-mindepth 1 必须加：否则 TMP_DIR 变空时会被一起删掉）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-统计剩余内容">
-          <a class="post-toc-link" href="#3-统计剩余内容" data-level="1">3) 统计剩余内容</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2239,7 +1951,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2422,8 +2134,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

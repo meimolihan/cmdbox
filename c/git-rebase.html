@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="git-rebase 命令">
     <meta name="twitter:description" content="变基：将提交重新应用到另一个基准之上 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1435,80 +1435,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将当前分支变基到-main">
-              <a class="post-toc-link" href="#将当前分支变基到-main" data-level="1">将当前分支变基到 main</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式变基-修改最近3次提交">
-              <a class="post-toc-link" href="#交互式变基-修改最近3次提交" data-level="1">交互式变基（修改最近3次提交）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="变基到指定基准">
-              <a class="post-toc-link" href="#变基到指定基准" data-level="1">变基到指定基准</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解决冲突后继续">
-              <a class="post-toc-link" href="#解决冲突后继续" data-level="1">解决冲突后继续</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跳过当前提交">
-              <a class="post-toc-link" href="#跳过当前提交" data-level="1">跳过当前提交</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="中止变基">
-              <a class="post-toc-link" href="#中止变基" data-level="1">中止变基</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="变基远程分支">
-              <a class="post-toc-link" href="#变基远程分支" data-level="1">变基远程分支</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动压缩提交">
-              <a class="post-toc-link" href="#自动压缩提交" data-level="1">自动压缩提交</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="交互式变基操作">
               <a class="post-toc-link" href="#交互式变基操作" data-level="3">交互式变基操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑器打开后-可对每个提交选择操作">
-              <a class="post-toc-link" href="#编辑器打开后-可对每个提交选择操作" data-level="1">编辑器打开后，可对每个提交选择操作：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="pick-使用提交">
-              <a class="post-toc-link" href="#pick-使用提交" data-level="1">pick   = 使用提交</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="reword-使用提交-但修改提交信息">
-              <a class="post-toc-link" href="#reword-使用提交-但修改提交信息" data-level="1">reword = 使用提交，但修改提交信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="edit-使用提交-但暂停以修改提交内容">
-              <a class="post-toc-link" href="#edit-使用提交-但暂停以修改提交内容" data-level="1">edit   = 使用提交，但暂停以修改提交内容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="squash-使用提交-合并到前一个提交">
-              <a class="post-toc-link" href="#squash-使用提交-合并到前一个提交" data-level="1">squash = 使用提交，合并到前一个提交</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fixup-类似-squash-但丢弃提交信息">
-              <a class="post-toc-link" href="#fixup-类似-squash-但丢弃提交信息" data-level="1">fixup  = 类似 squash，但丢弃提交信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="drop-丢弃提交">
-              <a class="post-toc-link" href="#drop-丢弃提交" data-level="1">drop   = 丢弃提交</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="黄金法则">
               <a class="post-toc-link" href="#黄金法则" data-level="3">⚠️ 黄金法则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="危险操作-对公共分支-rebase">
-              <a class="post-toc-link" href="#危险操作-对公共分支-rebase" data-level="1">❌ 危险操作：对公共分支 rebase</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全操作-对私有分支-rebase">
-              <a class="post-toc-link" href="#安全操作-对私有分支-rebase" data-level="1">✅ 安全操作：对私有分支 rebase</a>
             </li>
             
           </ul>
@@ -1552,80 +1484,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将当前分支变基到-main">
-          <a class="post-toc-link" href="#将当前分支变基到-main" data-level="1">将当前分支变基到 main</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式变基-修改最近3次提交">
-          <a class="post-toc-link" href="#交互式变基-修改最近3次提交" data-level="1">交互式变基（修改最近3次提交）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="变基到指定基准">
-          <a class="post-toc-link" href="#变基到指定基准" data-level="1">变基到指定基准</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解决冲突后继续">
-          <a class="post-toc-link" href="#解决冲突后继续" data-level="1">解决冲突后继续</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跳过当前提交">
-          <a class="post-toc-link" href="#跳过当前提交" data-level="1">跳过当前提交</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="中止变基">
-          <a class="post-toc-link" href="#中止变基" data-level="1">中止变基</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="变基远程分支">
-          <a class="post-toc-link" href="#变基远程分支" data-level="1">变基远程分支</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动压缩提交">
-          <a class="post-toc-link" href="#自动压缩提交" data-level="1">自动压缩提交</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="交互式变基操作">
           <a class="post-toc-link" href="#交互式变基操作" data-level="3">交互式变基操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑器打开后-可对每个提交选择操作">
-          <a class="post-toc-link" href="#编辑器打开后-可对每个提交选择操作" data-level="1">编辑器打开后，可对每个提交选择操作：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="pick-使用提交">
-          <a class="post-toc-link" href="#pick-使用提交" data-level="1">pick   = 使用提交</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="reword-使用提交-但修改提交信息">
-          <a class="post-toc-link" href="#reword-使用提交-但修改提交信息" data-level="1">reword = 使用提交，但修改提交信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="edit-使用提交-但暂停以修改提交内容">
-          <a class="post-toc-link" href="#edit-使用提交-但暂停以修改提交内容" data-level="1">edit   = 使用提交，但暂停以修改提交内容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="squash-使用提交-合并到前一个提交">
-          <a class="post-toc-link" href="#squash-使用提交-合并到前一个提交" data-level="1">squash = 使用提交，合并到前一个提交</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fixup-类似-squash-但丢弃提交信息">
-          <a class="post-toc-link" href="#fixup-类似-squash-但丢弃提交信息" data-level="1">fixup  = 类似 squash，但丢弃提交信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="drop-丢弃提交">
-          <a class="post-toc-link" href="#drop-丢弃提交" data-level="1">drop   = 丢弃提交</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="黄金法则">
           <a class="post-toc-link" href="#黄金法则" data-level="3">⚠️ 黄金法则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="危险操作-对公共分支-rebase">
-          <a class="post-toc-link" href="#危险操作-对公共分支-rebase" data-level="1">❌ 危险操作：对公共分支 rebase</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全操作-对私有分支-rebase">
-          <a class="post-toc-link" href="#安全操作-对私有分支-rebase" data-level="1">✅ 安全操作：对私有分支 rebase</a>
         </li>
         
       </ul>
@@ -1634,7 +1498,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1817,8 +1681,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="github_fix_log 命令">
     <meta name="twitter:description" content="修复 GitHub 解析优化脚本 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1731,30 +1731,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ping-测试函数-美化延迟展示">
-              <a class="post-toc-link" href="#ping-测试函数-美化延迟展示" data-level="1">Ping 测试函数，美化延迟展示</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志配置">
-              <a class="post-toc-link" href="#日志配置" data-level="1">==================== 日志配置 ====================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动创建日志目录">
-              <a class="post-toc-link" href="#自动创建日志目录" data-level="1">自动创建日志目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="主程序入口">
-              <a class="post-toc-link" href="#主程序入口" data-level="1">主程序入口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标准输出-错误输出-写入日志">
-              <a class="post-toc-link" href="#标准输出-错误输出-写入日志" data-level="1">标准输出 &amp; 错误输出 写入日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志自动清理-保留最新-21-份日志-7天-每日3次">
-              <a class="post-toc-link" href="#日志自动清理-保留最新-21-份日志-7天-每日3次" data-level="1">日志自动清理：保留最新 21 份日志（7天 × 每日3次）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="添加脚本执行权限">
               <a class="post-toc-link" href="#添加脚本执行权限" data-level="3">添加脚本执行权限</a>
             </li>
@@ -1799,10 +1775,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#手动清理日志" data-level="3">手动清理日志</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保留最新21份日志">
-              <a class="post-toc-link" href="#保留最新21份日志" data-level="1">保留最新21份日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="规则校验说明">
               <a class="post-toc-link" href="#规则校验说明" data-level="2">规则校验说明</a>
             </li>
@@ -1813,26 +1785,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="定时任务未执行">
               <a class="post-toc-link" href="#定时任务未执行" data-level="3">定时任务未执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动">
-              <a class="post-toc-link" href="#启动" data-level="1">启动</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开机自启">
-              <a class="post-toc-link" href="#开机自启" data-level="1">开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启">
-              <a class="post-toc-link" href="#重启" data-level="1">重启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止">
-              <a class="post-toc-link" href="#停止" data-level="1">停止</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="无日志生成">
@@ -1892,30 +1844,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ping-测试函数-美化延迟展示">
-          <a class="post-toc-link" href="#ping-测试函数-美化延迟展示" data-level="1">Ping 测试函数，美化延迟展示</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志配置">
-          <a class="post-toc-link" href="#日志配置" data-level="1">==================== 日志配置 ====================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动创建日志目录">
-          <a class="post-toc-link" href="#自动创建日志目录" data-level="1">自动创建日志目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="主程序入口">
-          <a class="post-toc-link" href="#主程序入口" data-level="1">主程序入口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标准输出-错误输出-写入日志">
-          <a class="post-toc-link" href="#标准输出-错误输出-写入日志" data-level="1">标准输出 &amp; 错误输出 写入日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志自动清理-保留最新-21-份日志-7天-每日3次">
-          <a class="post-toc-link" href="#日志自动清理-保留最新-21-份日志-7天-每日3次" data-level="1">日志自动清理：保留最新 21 份日志（7天 × 每日3次）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="添加脚本执行权限">
           <a class="post-toc-link" href="#添加脚本执行权限" data-level="3">添加脚本执行权限</a>
         </li>
@@ -1960,10 +1888,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#手动清理日志" data-level="3">手动清理日志</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保留最新21份日志">
-          <a class="post-toc-link" href="#保留最新21份日志" data-level="1">保留最新21份日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="规则校验说明">
           <a class="post-toc-link" href="#规则校验说明" data-level="2">规则校验说明</a>
         </li>
@@ -1974,26 +1898,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="定时任务未执行">
           <a class="post-toc-link" href="#定时任务未执行" data-level="3">定时任务未执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动">
-          <a class="post-toc-link" href="#启动" data-level="1">启动</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开机自启">
-          <a class="post-toc-link" href="#开机自启" data-level="1">开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启">
-          <a class="post-toc-link" href="#重启" data-level="1">重启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止">
-          <a class="post-toc-link" href="#停止" data-level="1">停止</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="无日志生成">
@@ -2014,7 +1918,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2197,8 +2101,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

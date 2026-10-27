@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="nfs-mount 命令">
     <meta name="twitter:description" content="挂载 NFS 共享目录到本地 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1582,26 +1582,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装-nfs-客户端" data-level="3">安装 NFS 客户端</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="rhel-centos-rocky-almalinux">
-              <a class="post-toc-link" href="#rhel-centos-rocky-almalinux" data-level="1">RHEL / CentOS / Rocky / AlmaLinux</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
-              <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse">
-              <a class="post-toc-link" href="#opensuse" data-level="1">openSUSE</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-              <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="查看远程共享">
               <a class="post-toc-link" href="#查看远程共享" data-level="3">查看远程共享</a>
             </li>
@@ -1626,14 +1606,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#方法一-通过-etc-fstab-挂载" data-level="3">方法一：通过 /etc/fstab 挂载</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份-fstab">
-              <a class="post-toc-link" href="#备份-fstab" data-level="1">备份 fstab</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="追加挂载条目">
-              <a class="post-toc-link" href="#追加挂载条目" data-level="1">追加挂载条目</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="方法二-使用-systemd-服务自启">
               <a class="post-toc-link" href="#方法二-使用-systemd-服务自启" data-level="3">方法二：使用 systemd 服务自启</a>
             </li>
@@ -1646,28 +1618,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#挂载超时" data-level="3">挂载超时</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认-nfs-服务器可达">
-              <a class="post-toc-link" href="#确认-nfs-服务器可达" data-level="1">确认 NFS 服务器可达</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认共享列表可查看">
-              <a class="post-toc-link" href="#确认共享列表可查看" data-level="1">确认共享列表可查看</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动指定版本重试">
-              <a class="post-toc-link" href="#手动指定版本重试" data-level="1">手动指定版本重试</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="权限拒绝">
               <a class="post-toc-link" href="#权限拒绝" data-level="3">权限拒绝</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确保服务端-exports-中使用了-no_root_squash-或正确映射了用户">
-              <a class="post-toc-link" href="#确保服务端-exports-中使用了-no_root_squash-或正确映射了用户" data-level="1">确保服务端 exports 中使用了 no_root_squash 或正确映射了用户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务端配置">
-              <a class="post-toc-link" href="#查看服务端配置" data-level="1">查看服务端配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙阻挡">
@@ -1711,26 +1663,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装-nfs-客户端" data-level="3">安装 NFS 客户端</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="rhel-centos-rocky-almalinux">
-          <a class="post-toc-link" href="#rhel-centos-rocky-almalinux" data-level="1">RHEL / CentOS / Rocky / AlmaLinux</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
-          <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="opensuse">
-          <a class="post-toc-link" href="#opensuse" data-level="1">openSUSE</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-          <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="查看远程共享">
           <a class="post-toc-link" href="#查看远程共享" data-level="3">查看远程共享</a>
         </li>
@@ -1755,14 +1687,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#方法一-通过-etc-fstab-挂载" data-level="3">方法一：通过 /etc/fstab 挂载</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份-fstab">
-          <a class="post-toc-link" href="#备份-fstab" data-level="1">备份 fstab</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="追加挂载条目">
-          <a class="post-toc-link" href="#追加挂载条目" data-level="1">追加挂载条目</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="方法二-使用-systemd-服务自启">
           <a class="post-toc-link" href="#方法二-使用-systemd-服务自启" data-level="3">方法二：使用 systemd 服务自启</a>
         </li>
@@ -1775,28 +1699,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#挂载超时" data-level="3">挂载超时</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认-nfs-服务器可达">
-          <a class="post-toc-link" href="#确认-nfs-服务器可达" data-level="1">确认 NFS 服务器可达</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认共享列表可查看">
-          <a class="post-toc-link" href="#确认共享列表可查看" data-level="1">确认共享列表可查看</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动指定版本重试">
-          <a class="post-toc-link" href="#手动指定版本重试" data-level="1">手动指定版本重试</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="权限拒绝">
           <a class="post-toc-link" href="#权限拒绝" data-level="3">权限拒绝</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确保服务端-exports-中使用了-no_root_squash-或正确映射了用户">
-          <a class="post-toc-link" href="#确保服务端-exports-中使用了-no_root_squash-或正确映射了用户" data-level="1">确保服务端 exports 中使用了 no_root_squash 或正确映射了用户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务端配置">
-          <a class="post-toc-link" href="#查看服务端配置" data-level="1">查看服务端配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙阻挡">
@@ -1809,7 +1713,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1992,8 +1896,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

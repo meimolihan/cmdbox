@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fan-webssh_backup 命令">
     <meta name="twitter:description" content="fan-webssh 备份数据 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1705,84 +1705,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#定时任务示例" data-level="3">定时任务示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载脚本到系统目录">
-              <a class="post-toc-link" href="#下载脚本到系统目录" data-level="1">下载脚本到系统目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="增加执行权限">
-              <a class="post-toc-link" href="#增加执行权限" data-level="1">增加执行权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="追加定时任务-防重复追加">
-              <a class="post-toc-link" href="#追加定时任务-防重复追加" data-level="1">追加定时任务（防重复追加）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
               <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="terminal-colors">
-              <a class="post-toc-link" href="#terminal-colors" data-level="1">================== terminal colors ==================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认值">
-              <a class="post-toc-link" href="#默认值" data-level="1">默认值</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从安装记录读取安装目录-数据目录-备份目录-不存在时使用默认值">
-              <a class="post-toc-link" href="#从安装记录读取安装目录-数据目录-备份目录-不存在时使用默认值" data-level="1">从安装记录读取安装目录/数据目录/备份目录（不存在时使用默认值）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="参数解析-支持两种传参顺序可互换">
-              <a class="post-toc-link" href="#参数解析-支持两种传参顺序可互换" data-level="1">参数解析，支持两种传参顺序可互换</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用法示例">
-              <a class="post-toc-link" href="#用法示例" data-level="1">用法示例：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-使用默认">
-              <a class="post-toc-link" href="#fan-webssh_backup-sh-使用默认" data-level="1">./fan-webssh_backup.sh                     # 使用默认</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-10-只传保留份数">
-              <a class="post-toc-link" href="#fan-webssh_backup-sh-10-只传保留份数" data-level="1">./fan-webssh_backup.sh 10                  # 只传保留份数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-data-bak-只传备份目录">
-              <a class="post-toc-link" href="#fan-webssh_backup-sh-data-bak-只传备份目录" data-level="1">./fan-webssh_backup.sh /data/bak           # 只传备份目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-data-bak-8-目录-保留数">
-              <a class="post-toc-link" href="#fan-webssh_backup-sh-data-bak-8-目录-保留数" data-level="1">./fan-webssh_backup.sh /data/bak 8         # 目录 保留数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-8-data-bak-保留数-目录-顺序互换兼容">
-              <a class="post-toc-link" href="#fan-webssh_backup-sh-8-data-bak-保留数-目录-顺序互换兼容" data-level="1">./fan-webssh_backup.sh 8 /data/bak         # 保留数 目录，顺序互换兼容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="文件名精确到秒-yyyy-mm-dd_hh-mm-ss">
-              <a class="post-toc-link" href="#文件名精确到秒-yyyy-mm-dd_hh-mm-ss" data-level="1">文件名精确到秒 YYYY-MM-DD_HH-MM-SS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在线备份-不停止服务-避免面板自身被-systemctl-stop-连带终止-面板与脚本同属系统服务">
-              <a class="post-toc-link" href="#在线备份-不停止服务-避免面板自身被-systemctl-stop-连带终止-面板与脚本同属系统服务" data-level="1">在线备份：不停止服务，避免面板自身被 systemctl stop 连带终止（面板与脚本同属系统服务）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正则适配新格式-fanwebssh-yyyy-mm-dd_hh-mm-ss-tar-gz">
-              <a class="post-toc-link" href="#正则适配新格式-fanwebssh-yyyy-mm-dd_hh-mm-ss-tar-gz" data-level="1">正则适配新格式：FanWebSSH-YYYY-MM-DD_HH-MM-SS.tar.gz</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
               <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
-              <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -1838,84 +1766,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#定时任务示例" data-level="3">定时任务示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载脚本到系统目录">
-          <a class="post-toc-link" href="#下载脚本到系统目录" data-level="1">下载脚本到系统目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="增加执行权限">
-          <a class="post-toc-link" href="#增加执行权限" data-level="1">增加执行权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="追加定时任务-防重复追加">
-          <a class="post-toc-link" href="#追加定时任务-防重复追加" data-level="1">追加定时任务（防重复追加）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
           <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="terminal-colors">
-          <a class="post-toc-link" href="#terminal-colors" data-level="1">================== terminal colors ==================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认值">
-          <a class="post-toc-link" href="#默认值" data-level="1">默认值</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从安装记录读取安装目录-数据目录-备份目录-不存在时使用默认值">
-          <a class="post-toc-link" href="#从安装记录读取安装目录-数据目录-备份目录-不存在时使用默认值" data-level="1">从安装记录读取安装目录/数据目录/备份目录（不存在时使用默认值）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="参数解析-支持两种传参顺序可互换">
-          <a class="post-toc-link" href="#参数解析-支持两种传参顺序可互换" data-level="1">参数解析，支持两种传参顺序可互换</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用法示例">
-          <a class="post-toc-link" href="#用法示例" data-level="1">用法示例：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-使用默认">
-          <a class="post-toc-link" href="#fan-webssh_backup-sh-使用默认" data-level="1">./fan-webssh_backup.sh                     # 使用默认</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-10-只传保留份数">
-          <a class="post-toc-link" href="#fan-webssh_backup-sh-10-只传保留份数" data-level="1">./fan-webssh_backup.sh 10                  # 只传保留份数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-data-bak-只传备份目录">
-          <a class="post-toc-link" href="#fan-webssh_backup-sh-data-bak-只传备份目录" data-level="1">./fan-webssh_backup.sh /data/bak           # 只传备份目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-data-bak-8-目录-保留数">
-          <a class="post-toc-link" href="#fan-webssh_backup-sh-data-bak-8-目录-保留数" data-level="1">./fan-webssh_backup.sh /data/bak 8         # 目录 保留数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fan-webssh_backup-sh-8-data-bak-保留数-目录-顺序互换兼容">
-          <a class="post-toc-link" href="#fan-webssh_backup-sh-8-data-bak-保留数-目录-顺序互换兼容" data-level="1">./fan-webssh_backup.sh 8 /data/bak         # 保留数 目录，顺序互换兼容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="文件名精确到秒-yyyy-mm-dd_hh-mm-ss">
-          <a class="post-toc-link" href="#文件名精确到秒-yyyy-mm-dd_hh-mm-ss" data-level="1">文件名精确到秒 YYYY-MM-DD_HH-MM-SS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在线备份-不停止服务-避免面板自身被-systemctl-stop-连带终止-面板与脚本同属系统服务">
-          <a class="post-toc-link" href="#在线备份-不停止服务-避免面板自身被-systemctl-stop-连带终止-面板与脚本同属系统服务" data-level="1">在线备份：不停止服务，避免面板自身被 systemctl stop 连带终止（面板与脚本同属系统服务）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正则适配新格式-fanwebssh-yyyy-mm-dd_hh-mm-ss-tar-gz">
-          <a class="post-toc-link" href="#正则适配新格式-fanwebssh-yyyy-mm-dd_hh-mm-ss-tar-gz" data-level="1">正则适配新格式：FanWebSSH-YYYY-MM-DD_HH-MM-SS.tar.gz</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
           <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
-          <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -1928,7 +1784,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2111,8 +1967,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

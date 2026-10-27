@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ffmpeg_video_hvc1 命令">
     <meta name="twitter:description" content="HEVC(hvc1) QSV 转码 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2562,56 +2562,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="单个视频转码-默认输出到源文件同目录-添加后缀-后台运行">
-              <a class="post-toc-link" href="#单个视频转码-默认输出到源文件同目录-添加后缀-后台运行" data-level="1">单个视频转码（默认输出到源文件同目录、添加后缀、后台运行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="单个视频-指定输出目录-使用原文件名-不加后缀-前台运行">
-              <a class="post-toc-link" href="#单个视频-指定输出目录-使用原文件名-不加后缀-前台运行" data-level="1">单个视频：指定输出目录、使用原文件名（不加后缀）、前台运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="目录批量-源目录-输出目录-添加后缀-后台运行">
-              <a class="post-toc-link" href="#目录批量-源目录-输出目录-添加后缀-后台运行" data-level="1">目录批量：源目录 → 输出目录，添加后缀、后台运行</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="强制停止转码">
               <a class="post-toc-link" href="#强制停止转码" data-level="2">强制停止转码</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="杀掉所有-ffmpeg-进程">
-              <a class="post-toc-link" href="#杀掉所有-ffmpeg-进程" data-level="1">杀掉所有 ffmpeg 进程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="终止全部hevc_qsv转码进程">
-              <a class="post-toc-link" href="#终止全部hevc_qsv转码进程" data-level="1">终止全部hevc_qsv转码进程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="释放任务锁文件-异常强杀后使用">
-              <a class="post-toc-link" href="#释放任务锁文件-异常强杀后使用" data-level="1">释放任务锁文件（异常强杀后使用）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="手动安装-ffmpeg">
               <a class="post-toc-link" href="#手动安装-ffmpeg" data-level="2">手动安装 ffmpeg</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel">
-              <a class="post-toc-link" href="#centos-rhel" data-level="1">CentOS/RHEL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-              <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
-              <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="macos">
-              <a class="post-toc-link" href="#macos" data-level="1">macOS</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
@@ -2626,14 +2582,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#转码命令详解" data-level="3">转码命令详解</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认系统已识别-intel-显卡">
-              <a class="post-toc-link" href="#确认系统已识别-intel-显卡" data-level="1">确认系统已识别 Intel 显卡</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认-ffmpeg-包含-hevc_qsv-编码器">
-              <a class="post-toc-link" href="#确认-ffmpeg-包含-hevc_qsv-编码器" data-level="1">确认 ffmpeg 包含 hevc_qsv 编码器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
               <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
             </li>
@@ -2642,60 +2590,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">==============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="hevc-hvc1-qsv批量转码脚本-setsid后台静默执行">
-              <a class="post-toc-link" href="#hevc-hvc1-qsv批量转码脚本-setsid后台静默执行" data-level="1">HEVC hvc1 QSV批量转码脚本｜setsid后台静默执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="适配sr-iov-vf虚拟gpu-cpu解码-hevc_qsv硬件编码-vbr模式">
-              <a class="post-toc-link" href="#适配sr-iov-vf虚拟gpu-cpu解码-hevc_qsv硬件编码-vbr模式" data-level="1">适配SR‑IOV VF虚拟GPU｜CPU解码 + hevc_qsv硬件编码 VBR模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="模式-交互式-curl调用-目录批量-单文件">
-              <a class="post-toc-link" href="#模式-交互式-curl调用-目录批量-单文件" data-level="1">模式：交互式 / curl调用 / 目录批量 / 单文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">==============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="qsv编码参数-已对齐目标ffmpeg命令">
-              <a class="post-toc-link" href="#qsv编码参数-已对齐目标ffmpeg命令" data-level="1">QSV编码参数【已对齐目标ffmpeg命令】</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mp4-faststart-已禁用-匹配参考命令无-movflags-faststart">
-              <a class="post-toc-link" href="#mp4-faststart-已禁用-匹配参考命令无-movflags-faststart" data-level="1">mp4 faststart：已禁用，匹配参考命令无‑movflags +faststart</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ffmpeg输入参数">
-              <a class="post-toc-link" href="#ffmpeg输入参数" data-level="1">ffmpeg输入参数</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="视频截图对比-清晰度">
               <a class="post-toc-link" href="#视频截图对比-清晰度" data-level="2">视频截图对比(清晰度)</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="全局变量定义">
-              <a class="post-toc-link" href="#全局变量定义" data-level="1">====================== 全局变量定义 ======================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成左右并排对比截图">
-              <a class="post-toc-link" href="#生成左右并排对比截图" data-level="1">====================== 生成左右并排对比截图 ======================</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
               <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴上方脚本源码">
-              <a class="post-toc-link" href="#粘贴上方脚本源码" data-level="1">粘贴上方脚本源码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
-              <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2735,56 +2635,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="单个视频转码-默认输出到源文件同目录-添加后缀-后台运行">
-          <a class="post-toc-link" href="#单个视频转码-默认输出到源文件同目录-添加后缀-后台运行" data-level="1">单个视频转码（默认输出到源文件同目录、添加后缀、后台运行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="单个视频-指定输出目录-使用原文件名-不加后缀-前台运行">
-          <a class="post-toc-link" href="#单个视频-指定输出目录-使用原文件名-不加后缀-前台运行" data-level="1">单个视频：指定输出目录、使用原文件名（不加后缀）、前台运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="目录批量-源目录-输出目录-添加后缀-后台运行">
-          <a class="post-toc-link" href="#目录批量-源目录-输出目录-添加后缀-后台运行" data-level="1">目录批量：源目录 → 输出目录，添加后缀、后台运行</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="强制停止转码">
           <a class="post-toc-link" href="#强制停止转码" data-level="2">强制停止转码</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="杀掉所有-ffmpeg-进程">
-          <a class="post-toc-link" href="#杀掉所有-ffmpeg-进程" data-level="1">杀掉所有 ffmpeg 进程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="终止全部hevc_qsv转码进程">
-          <a class="post-toc-link" href="#终止全部hevc_qsv转码进程" data-level="1">终止全部hevc_qsv转码进程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="释放任务锁文件-异常强杀后使用">
-          <a class="post-toc-link" href="#释放任务锁文件-异常强杀后使用" data-level="1">释放任务锁文件（异常强杀后使用）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="手动安装-ffmpeg">
           <a class="post-toc-link" href="#手动安装-ffmpeg" data-level="2">手动安装 ffmpeg</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel">
-          <a class="post-toc-link" href="#centos-rhel" data-level="1">CentOS/RHEL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-          <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
-          <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="macos">
-          <a class="post-toc-link" href="#macos" data-level="1">macOS</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
@@ -2799,14 +2655,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#转码命令详解" data-level="3">转码命令详解</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认系统已识别-intel-显卡">
-          <a class="post-toc-link" href="#确认系统已识别-intel-显卡" data-level="1">确认系统已识别 Intel 显卡</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认-ffmpeg-包含-hevc_qsv-编码器">
-          <a class="post-toc-link" href="#确认-ffmpeg-包含-hevc_qsv-编码器" data-level="1">确认 ffmpeg 包含 hevc_qsv 编码器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
           <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
         </li>
@@ -2815,60 +2663,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">==============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="hevc-hvc1-qsv批量转码脚本-setsid后台静默执行">
-          <a class="post-toc-link" href="#hevc-hvc1-qsv批量转码脚本-setsid后台静默执行" data-level="1">HEVC hvc1 QSV批量转码脚本｜setsid后台静默执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="适配sr-iov-vf虚拟gpu-cpu解码-hevc_qsv硬件编码-vbr模式">
-          <a class="post-toc-link" href="#适配sr-iov-vf虚拟gpu-cpu解码-hevc_qsv硬件编码-vbr模式" data-level="1">适配SR‑IOV VF虚拟GPU｜CPU解码 + hevc_qsv硬件编码 VBR模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="模式-交互式-curl调用-目录批量-单文件">
-          <a class="post-toc-link" href="#模式-交互式-curl调用-目录批量-单文件" data-level="1">模式：交互式 / curl调用 / 目录批量 / 单文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">==============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="qsv编码参数-已对齐目标ffmpeg命令">
-          <a class="post-toc-link" href="#qsv编码参数-已对齐目标ffmpeg命令" data-level="1">QSV编码参数【已对齐目标ffmpeg命令】</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mp4-faststart-已禁用-匹配参考命令无-movflags-faststart">
-          <a class="post-toc-link" href="#mp4-faststart-已禁用-匹配参考命令无-movflags-faststart" data-level="1">mp4 faststart：已禁用，匹配参考命令无‑movflags +faststart</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ffmpeg输入参数">
-          <a class="post-toc-link" href="#ffmpeg输入参数" data-level="1">ffmpeg输入参数</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="视频截图对比-清晰度">
           <a class="post-toc-link" href="#视频截图对比-清晰度" data-level="2">视频截图对比(清晰度)</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="全局变量定义">
-          <a class="post-toc-link" href="#全局变量定义" data-level="1">====================== 全局变量定义 ======================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成左右并排对比截图">
-          <a class="post-toc-link" href="#生成左右并排对比截图" data-level="1">====================== 生成左右并排对比截图 ======================</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
           <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴上方脚本源码">
-          <a class="post-toc-link" href="#粘贴上方脚本源码" data-level="1">粘贴上方脚本源码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
-          <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2881,7 +2681,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -3064,8 +2864,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

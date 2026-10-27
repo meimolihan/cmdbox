@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="ssh-keyscan 命令">
     <meta name="twitter:description" content="收集主机 SSH 公钥的工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1668,96 +1668,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#密钥类型" data-level="3">密钥类型</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="支持的密钥类型">
-              <a class="post-toc-link" href="#支持的密钥类型" data-level="1">支持的密钥类型</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取所有类型-默认行为-不加-t">
-              <a class="post-toc-link" href="#获取所有类型-默认行为-不加-t" data-level="1">获取所有类型（默认行为，不加 -t）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定多种类型">
-              <a class="post-toc-link" href="#指定多种类型" data-level="1">指定多种类型</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="基础用法">
               <a class="post-toc-link" href="#基础用法" data-level="3">基础用法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取主机的所有公钥">
-              <a class="post-toc-link" href="#获取主机的所有公钥" data-level="1">获取主机的所有公钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取指定类型的公钥-推荐">
-              <a class="post-toc-link" href="#获取指定类型的公钥-推荐" data-level="1">获取指定类型的公钥（推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口">
-              <a class="post-toc-link" href="#指定端口" data-level="1">指定端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定超时时间">
-              <a class="post-toc-link" href="#指定超时时间" data-level="1">指定超时时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="调试模式">
-              <a class="post-toc-link" href="#调试模式" data-level="1">调试模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="哈希主机名-保护隐私">
-              <a class="post-toc-link" href="#哈希主机名-保护隐私" data-level="1">哈希主机名（保护隐私）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="批量收集">
               <a class="post-toc-link" href="#批量收集" data-level="3">批量收集</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从文件读取主机列表">
-              <a class="post-toc-link" href="#从文件读取主机列表" data-level="1">从文件读取主机列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="192-168-1-1">
-              <a class="post-toc-link" href="#192-168-1-1" data-level="1">192.168.1.1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="192-168-1-2">
-              <a class="post-toc-link" href="#192-168-1-2" data-level="1">192.168.1.2</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="server-example-com">
-              <a class="post-toc-link" href="#server-example-com" data-level="1">server.example.com</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定多个主机">
-              <a class="post-toc-link" href="#指定多个主机" data-level="1">指定多个主机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扫描子网-使用循环">
-              <a class="post-toc-link" href="#扫描子网-使用循环" data-level="1">扫描子网（使用循环）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扫描-ip-段并合并结果">
-              <a class="post-toc-link" href="#扫描-ip-段并合并结果" data-level="1">扫描 IP 段并合并结果</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="更新-known_hosts">
               <a class="post-toc-link" href="#更新-known_hosts" data-level="3">更新 known_hosts</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将公钥追加到-known_hosts-追加模式">
-              <a class="post-toc-link" href="#将公钥追加到-known_hosts-追加模式" data-level="1">将公钥追加到 known_hosts（追加模式）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="哈希主机名后追加">
-              <a class="post-toc-link" href="#哈希主机名后追加" data-level="1">哈希主机名后追加</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="覆盖写入-先备份再写入">
-              <a class="post-toc-link" href="#覆盖写入-先备份再写入" data-level="1">覆盖写入（先备份再写入）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="追加到系统级-known_hosts">
-              <a class="post-toc-link" href="#追加到系统级-known_hosts" data-level="1">追加到系统级 known_hosts</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="实际应用场景">
@@ -1768,180 +1688,32 @@ function copied(target, str) {
               <a class="post-toc-link" href="#1-自动化部署-预先建立信任" data-level="4">1. 自动化部署 - 预先建立信任</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在部署脚本中预先添加主机密钥">
-              <a class="post-toc-link" href="#在部署脚本中预先添加主机密钥" data-level="1">在部署脚本中预先添加主机密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="这样后续-ssh-scp-rsync-等操作就不会弹出确认提示">
-              <a class="post-toc-link" href="#这样后续-ssh-scp-rsync-等操作就不会弹出确认提示" data-level="1">这样后续 ssh/scp/rsync 等操作就不会弹出确认提示</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="2-批量添加集群节点">
               <a class="post-toc-link" href="#2-批量添加集群节点" data-level="4">2. 批量添加集群节点</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="集群初始化时批量添加所有节点">
-              <a class="post-toc-link" href="#集群初始化时批量添加所有节点" data-level="1">集群初始化时批量添加所有节点</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="3-清理并重建-known_hosts">
               <a class="post-toc-link" href="#3-清理并重建-known_hosts" data-level="4">3. 清理并重建 known_hosts</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份旧的-known_hosts">
-              <a class="post-toc-link" href="#备份旧的-known_hosts" data-level="1">备份旧的 known_hosts</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清空文件">
-              <a class="post-toc-link" href="#清空文件" data-level="1">清空文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新收集所有常用主机的公钥">
-              <a class="post-toc-link" href="#重新收集所有常用主机的公钥" data-level="1">重新收集所有常用主机的公钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="4-配合-ansible-批量管理">
               <a class="post-toc-link" href="#4-配合-ansible-批量管理" data-level="4">4. 配合 Ansible 批量管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在-ansible-部署前置任务中使用">
-              <a class="post-toc-link" href="#在-ansible-部署前置任务中使用" data-level="1">在 Ansible 部署前置任务中使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="playbook-yml-中的-pre_tasks">
-              <a class="post-toc-link" href="#playbook-yml-中的-pre_tasks" data-level="1">playbook.yml 中的 pre_tasks:</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="name-收集主机公钥">
-              <a class="post-toc-link" href="#name-收集主机公钥" data-level="1">- name: 收集主机公钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="shell">
-              <a class="post-toc-link" href="#shell" data-level="1">shell: |</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ssh-keyscan-h-t-ed25519-inventory_hostname-ssh-known_hosts">
-              <a class="post-toc-link" href="#ssh-keyscan-h-t-ed25519-inventory_hostname-ssh-known_hosts" data-level="1">ssh-keyscan -H -t ed25519 {{ inventory_hostname }} &gt;&gt; ~/.ssh/known_hosts</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="delegate_to-localhost">
-              <a class="post-toc-link" href="#delegate_to-localhost" data-level="1">delegate_to: localhost</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="changed_when-false">
-              <a class="post-toc-link" href="#changed_when-false" data-level="1">changed_when: false</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="与相关命令配合">
               <a class="post-toc-link" href="#与相关命令配合" data-level="3">与相关命令配合</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-known_hosts-内容">
-              <a class="post-toc-link" href="#检查-known_hosts-内容" data-level="1">检查 known_hosts 内容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除特定主机的旧密钥">
-              <a class="post-toc-link" href="#删除特定主机的旧密钥" data-level="1">删除特定主机的旧密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新收集并添加">
-              <a class="post-toc-link" href="#重新收集并添加" data-level="1">重新收集并添加</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="一键刷新-删除旧密钥-收集新密钥">
-              <a class="post-toc-link" href="#一键刷新-删除旧密钥-收集新密钥" data-level="1">一键刷新：删除旧密钥 + 收集新密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证连接是否正常">
-              <a class="post-toc-link" href="#验证连接是否正常" data-level="1">验证连接是否正常</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
               <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全风险-ssh-keyscan-不验证密钥真实性">
-              <a class="post-toc-link" href="#安全风险-ssh-keyscan-不验证密钥真实性" data-level="1">安全风险：ssh-keyscan 不验证密钥真实性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="可能受到中间人攻击-mitm-建议配合以下方式使用">
-              <a class="post-toc-link" href="#可能受到中间人攻击-mitm-建议配合以下方式使用" data-level="1">可能受到中间人攻击（MITM），建议配合以下方式使用：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-首次连接后手动验证指纹">
-              <a class="post-toc-link" href="#1-首次连接后手动验证指纹" data-level="1">1. 首次连接后手动验证指纹</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-对比已知指纹-从安全渠道获取">
-              <a class="post-toc-link" href="#2-对比已知指纹-从安全渠道获取" data-level="1">2. 对比已知指纹（从安全渠道获取）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务器提供的指纹-sha256-xxxxxx">
-              <a class="post-toc-link" href="#服务器提供的指纹-sha256-xxxxxx" data-level="1">服务器提供的指纹：SHA256:xxxxxx...</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-仅用于内部信任网络">
-              <a class="post-toc-link" href="#3-仅用于内部信任网络" data-level="1">3. 仅用于内部信任网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-结合-dnssec-使用-sshfp-记录">
-              <a class="post-toc-link" href="#4-结合-dnssec-使用-sshfp-记录" data-level="1">4. 结合 DNSSEC 使用（SSHFP 记录）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
               <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接超时">
-              <a class="post-toc-link" href="#连接超时" data-level="1">连接超时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="增加超时时间">
-              <a class="post-toc-link" href="#增加超时时间" data-level="1">增加超时时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="端口不通">
-              <a class="post-toc-link" href="#端口不通" data-level="1">端口不通</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认服务器-ssh-端口并指定">
-              <a class="post-toc-link" href="#确认服务器-ssh-端口并指定" data-level="1">确认服务器 SSH 端口并指定</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取不到特定类型的密钥">
-              <a class="post-toc-link" href="#获取不到特定类型的密钥" data-level="1">获取不到特定类型的密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认服务器支持该类型-不加-t-获取所有类型">
-              <a class="post-toc-link" href="#确认服务器支持该类型-不加-t-获取所有类型" data-level="1">确认服务器支持该类型，不加 -t 获取所有类型</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出格式不对">
-              <a class="post-toc-link" href="#输出格式不对" data-level="1">输出格式不对</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正常输出格式-hostname-algorithm-base64key">
-              <a class="post-toc-link" href="#正常输出格式-hostname-algorithm-base64key" data-level="1">正常输出格式：hostname algorithm base64key</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="若服务端返回异常-尝试调试模式查看">
-              <a class="post-toc-link" href="#若服务端返回异常-尝试调试模式查看" data-level="1">若服务端返回异常，尝试调试模式查看</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
               <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标准输出格式">
-              <a class="post-toc-link" href="#标准输出格式" data-level="1">标准输出格式：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="示例">
-              <a class="post-toc-link" href="#示例" data-level="1">示例：</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="参数">
@@ -1989,96 +1761,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#密钥类型" data-level="3">密钥类型</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="支持的密钥类型">
-          <a class="post-toc-link" href="#支持的密钥类型" data-level="1">支持的密钥类型</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取所有类型-默认行为-不加-t">
-          <a class="post-toc-link" href="#获取所有类型-默认行为-不加-t" data-level="1">获取所有类型（默认行为，不加 -t）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定多种类型">
-          <a class="post-toc-link" href="#指定多种类型" data-level="1">指定多种类型</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="基础用法">
           <a class="post-toc-link" href="#基础用法" data-level="3">基础用法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取主机的所有公钥">
-          <a class="post-toc-link" href="#获取主机的所有公钥" data-level="1">获取主机的所有公钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取指定类型的公钥-推荐">
-          <a class="post-toc-link" href="#获取指定类型的公钥-推荐" data-level="1">获取指定类型的公钥（推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口">
-          <a class="post-toc-link" href="#指定端口" data-level="1">指定端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定超时时间">
-          <a class="post-toc-link" href="#指定超时时间" data-level="1">指定超时时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="调试模式">
-          <a class="post-toc-link" href="#调试模式" data-level="1">调试模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="哈希主机名-保护隐私">
-          <a class="post-toc-link" href="#哈希主机名-保护隐私" data-level="1">哈希主机名（保护隐私）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="批量收集">
           <a class="post-toc-link" href="#批量收集" data-level="3">批量收集</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从文件读取主机列表">
-          <a class="post-toc-link" href="#从文件读取主机列表" data-level="1">从文件读取主机列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="192-168-1-1">
-          <a class="post-toc-link" href="#192-168-1-1" data-level="1">192.168.1.1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="192-168-1-2">
-          <a class="post-toc-link" href="#192-168-1-2" data-level="1">192.168.1.2</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="server-example-com">
-          <a class="post-toc-link" href="#server-example-com" data-level="1">server.example.com</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定多个主机">
-          <a class="post-toc-link" href="#指定多个主机" data-level="1">指定多个主机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扫描子网-使用循环">
-          <a class="post-toc-link" href="#扫描子网-使用循环" data-level="1">扫描子网（使用循环）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扫描-ip-段并合并结果">
-          <a class="post-toc-link" href="#扫描-ip-段并合并结果" data-level="1">扫描 IP 段并合并结果</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="更新-known_hosts">
           <a class="post-toc-link" href="#更新-known_hosts" data-level="3">更新 known_hosts</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将公钥追加到-known_hosts-追加模式">
-          <a class="post-toc-link" href="#将公钥追加到-known_hosts-追加模式" data-level="1">将公钥追加到 known_hosts（追加模式）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="哈希主机名后追加">
-          <a class="post-toc-link" href="#哈希主机名后追加" data-level="1">哈希主机名后追加</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="覆盖写入-先备份再写入">
-          <a class="post-toc-link" href="#覆盖写入-先备份再写入" data-level="1">覆盖写入（先备份再写入）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="追加到系统级-known_hosts">
-          <a class="post-toc-link" href="#追加到系统级-known_hosts" data-level="1">追加到系统级 known_hosts</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="实际应用场景">
@@ -2089,180 +1781,32 @@ function copied(target, str) {
           <a class="post-toc-link" href="#1-自动化部署-预先建立信任" data-level="4">1. 自动化部署 - 预先建立信任</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在部署脚本中预先添加主机密钥">
-          <a class="post-toc-link" href="#在部署脚本中预先添加主机密钥" data-level="1">在部署脚本中预先添加主机密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="这样后续-ssh-scp-rsync-等操作就不会弹出确认提示">
-          <a class="post-toc-link" href="#这样后续-ssh-scp-rsync-等操作就不会弹出确认提示" data-level="1">这样后续 ssh/scp/rsync 等操作就不会弹出确认提示</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="2-批量添加集群节点">
           <a class="post-toc-link" href="#2-批量添加集群节点" data-level="4">2. 批量添加集群节点</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="集群初始化时批量添加所有节点">
-          <a class="post-toc-link" href="#集群初始化时批量添加所有节点" data-level="1">集群初始化时批量添加所有节点</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="3-清理并重建-known_hosts">
           <a class="post-toc-link" href="#3-清理并重建-known_hosts" data-level="4">3. 清理并重建 known_hosts</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份旧的-known_hosts">
-          <a class="post-toc-link" href="#备份旧的-known_hosts" data-level="1">备份旧的 known_hosts</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清空文件">
-          <a class="post-toc-link" href="#清空文件" data-level="1">清空文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新收集所有常用主机的公钥">
-          <a class="post-toc-link" href="#重新收集所有常用主机的公钥" data-level="1">重新收集所有常用主机的公钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="4-配合-ansible-批量管理">
           <a class="post-toc-link" href="#4-配合-ansible-批量管理" data-level="4">4. 配合 Ansible 批量管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在-ansible-部署前置任务中使用">
-          <a class="post-toc-link" href="#在-ansible-部署前置任务中使用" data-level="1">在 Ansible 部署前置任务中使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="playbook-yml-中的-pre_tasks">
-          <a class="post-toc-link" href="#playbook-yml-中的-pre_tasks" data-level="1">playbook.yml 中的 pre_tasks:</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="name-收集主机公钥">
-          <a class="post-toc-link" href="#name-收集主机公钥" data-level="1">- name: 收集主机公钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="shell">
-          <a class="post-toc-link" href="#shell" data-level="1">shell: |</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ssh-keyscan-h-t-ed25519-inventory_hostname-ssh-known_hosts">
-          <a class="post-toc-link" href="#ssh-keyscan-h-t-ed25519-inventory_hostname-ssh-known_hosts" data-level="1">ssh-keyscan -H -t ed25519 {{ inventory_hostname }} &gt;&gt; ~/.ssh/known_hosts</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="delegate_to-localhost">
-          <a class="post-toc-link" href="#delegate_to-localhost" data-level="1">delegate_to: localhost</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="changed_when-false">
-          <a class="post-toc-link" href="#changed_when-false" data-level="1">changed_when: false</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="与相关命令配合">
           <a class="post-toc-link" href="#与相关命令配合" data-level="3">与相关命令配合</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-known_hosts-内容">
-          <a class="post-toc-link" href="#检查-known_hosts-内容" data-level="1">检查 known_hosts 内容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除特定主机的旧密钥">
-          <a class="post-toc-link" href="#删除特定主机的旧密钥" data-level="1">删除特定主机的旧密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新收集并添加">
-          <a class="post-toc-link" href="#重新收集并添加" data-level="1">重新收集并添加</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="一键刷新-删除旧密钥-收集新密钥">
-          <a class="post-toc-link" href="#一键刷新-删除旧密钥-收集新密钥" data-level="1">一键刷新：删除旧密钥 + 收集新密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证连接是否正常">
-          <a class="post-toc-link" href="#验证连接是否正常" data-level="1">验证连接是否正常</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
           <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全风险-ssh-keyscan-不验证密钥真实性">
-          <a class="post-toc-link" href="#安全风险-ssh-keyscan-不验证密钥真实性" data-level="1">安全风险：ssh-keyscan 不验证密钥真实性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="可能受到中间人攻击-mitm-建议配合以下方式使用">
-          <a class="post-toc-link" href="#可能受到中间人攻击-mitm-建议配合以下方式使用" data-level="1">可能受到中间人攻击（MITM），建议配合以下方式使用：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-首次连接后手动验证指纹">
-          <a class="post-toc-link" href="#1-首次连接后手动验证指纹" data-level="1">1. 首次连接后手动验证指纹</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-对比已知指纹-从安全渠道获取">
-          <a class="post-toc-link" href="#2-对比已知指纹-从安全渠道获取" data-level="1">2. 对比已知指纹（从安全渠道获取）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务器提供的指纹-sha256-xxxxxx">
-          <a class="post-toc-link" href="#服务器提供的指纹-sha256-xxxxxx" data-level="1">服务器提供的指纹：SHA256:xxxxxx...</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-仅用于内部信任网络">
-          <a class="post-toc-link" href="#3-仅用于内部信任网络" data-level="1">3. 仅用于内部信任网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-结合-dnssec-使用-sshfp-记录">
-          <a class="post-toc-link" href="#4-结合-dnssec-使用-sshfp-记录" data-level="1">4. 结合 DNSSEC 使用（SSHFP 记录）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
           <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接超时">
-          <a class="post-toc-link" href="#连接超时" data-level="1">连接超时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="增加超时时间">
-          <a class="post-toc-link" href="#增加超时时间" data-level="1">增加超时时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="端口不通">
-          <a class="post-toc-link" href="#端口不通" data-level="1">端口不通</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认服务器-ssh-端口并指定">
-          <a class="post-toc-link" href="#确认服务器-ssh-端口并指定" data-level="1">确认服务器 SSH 端口并指定</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取不到特定类型的密钥">
-          <a class="post-toc-link" href="#获取不到特定类型的密钥" data-level="1">获取不到特定类型的密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认服务器支持该类型-不加-t-获取所有类型">
-          <a class="post-toc-link" href="#确认服务器支持该类型-不加-t-获取所有类型" data-level="1">确认服务器支持该类型，不加 -t 获取所有类型</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出格式不对">
-          <a class="post-toc-link" href="#输出格式不对" data-level="1">输出格式不对</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正常输出格式-hostname-algorithm-base64key">
-          <a class="post-toc-link" href="#正常输出格式-hostname-algorithm-base64key" data-level="1">正常输出格式：hostname algorithm base64key</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="若服务端返回异常-尝试调试模式查看">
-          <a class="post-toc-link" href="#若服务端返回异常-尝试调试模式查看" data-level="1">若服务端返回异常，尝试调试模式查看</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
           <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标准输出格式">
-          <a class="post-toc-link" href="#标准输出格式" data-level="1">标准输出格式：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="示例">
-          <a class="post-toc-link" href="#示例" data-level="1">示例：</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="参数">
@@ -2275,7 +1819,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2458,8 +2002,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

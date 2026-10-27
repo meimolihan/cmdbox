@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="go 命令">
     <meta name="twitter:description" content="Go 语言工具链 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1886,276 +1886,28 @@ function copied(target, str) {
               <a class="post-toc-link" href="#模块管理" data-level="3">模块管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="初始化模块">
-              <a class="post-toc-link" href="#初始化模块" data-level="1">初始化模块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块信息">
-              <a class="post-toc-link" href="#查看模块信息" data-level="1">查看模块信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="整理依赖">
-              <a class="post-toc-link" href="#整理依赖" data-level="1">整理依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载依赖">
-              <a class="post-toc-link" href="#下载依赖" data-level="1">下载依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证依赖">
-              <a class="post-toc-link" href="#验证依赖" data-level="1">验证依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块依赖图">
-              <a class="post-toc-link" href="#查看模块依赖图" data-level="1">查看模块依赖图</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块为什么需要某个依赖">
-              <a class="post-toc-link" href="#查看模块为什么需要某个依赖" data-level="1">查看模块为什么需要某个依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制依赖到-vendor-目录">
-              <a class="post-toc-link" href="#复制依赖到-vendor-目录" data-level="1">复制依赖到 vendor 目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看编辑模块依赖">
-              <a class="post-toc-link" href="#查看编辑模块依赖" data-level="1">查看编辑模块依赖</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="构建编译">
               <a class="post-toc-link" href="#构建编译" data-level="3">构建编译</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编译当前目录">
-              <a class="post-toc-link" href="#编译当前目录" data-level="1">编译当前目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编译指定包">
-              <a class="post-toc-link" href="#编译指定包" data-level="1">编译指定包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定输出文件">
-              <a class="post-toc-link" href="#指定输出文件" data-level="1">指定输出文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="减小二进制体积">
-              <a class="post-toc-link" href="#减小二进制体积" data-level="1">减小二进制体积</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编译指定系统架构">
-              <a class="post-toc-link" href="#编译指定系统架构" data-level="1">编译指定系统架构</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常见平台组合">
-              <a class="post-toc-link" href="#常见平台组合" data-level="1">常见平台组合</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="linux-linux-amd64-linux-arm64">
-              <a class="post-toc-link" href="#linux-linux-amd64-linux-arm64" data-level="1">Linux: linux/amd64, linux/arm64</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="windows-windows-amd64">
-              <a class="post-toc-link" href="#windows-windows-amd64" data-level="1">Windows: windows/amd64</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="macos-darwin-amd64-darwin-arm64">
-              <a class="post-toc-link" href="#macos-darwin-amd64-darwin-arm64" data-level="1">macOS: darwin/amd64, darwin/arm64</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静态编译">
-              <a class="post-toc-link" href="#静态编译" data-level="1">静态编译</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编译并安装到-gopath-bin">
-              <a class="post-toc-link" href="#编译并安装到-gopath-bin" data-level="1">编译并安装到 $GOPATH/bin</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取并编译包">
-              <a class="post-toc-link" href="#获取并编译包" data-level="1">获取并编译包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取依赖">
-              <a class="post-toc-link" href="#获取依赖" data-level="1">获取依赖</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="运行测试">
               <a class="post-toc-link" href="#运行测试" data-level="3">运行测试</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行所有测试">
-              <a class="post-toc-link" href="#运行所有测试" data-level="1">运行所有测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行指定包测试">
-              <a class="post-toc-link" href="#运行指定包测试" data-level="1">运行指定包测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行单个测试函数">
-              <a class="post-toc-link" href="#运行单个测试函数" data-level="1">运行单个测试函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试覆盖率">
-              <a class="post-toc-link" href="#测试覆盖率" data-level="1">测试覆盖率</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基准测试">
-              <a class="post-toc-link" href="#基准测试" data-level="1">基准测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="竞态检测">
-              <a class="post-toc-link" href="#竞态检测" data-level="1">竞态检测</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压力测试">
-              <a class="post-toc-link" href="#压力测试" data-level="1">压力测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="短测试-跳过长时间测试">
-              <a class="post-toc-link" href="#短测试-跳过长时间测试" data-level="1">短测试（跳过长时间测试）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试特定文件">
-              <a class="post-toc-link" href="#测试特定文件" data-level="1">测试特定文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成测试二进制">
-              <a class="post-toc-link" href="#生成测试二进制" data-level="1">生成测试二进制</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="代码质量">
               <a class="post-toc-link" href="#代码质量" data-level="3">代码质量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化代码">
-              <a class="post-toc-link" href="#格式化代码" data-level="1">格式化代码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="代码检查">
-              <a class="post-toc-link" href="#代码检查" data-level="1">代码检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静态检查-需要安装">
-              <a class="post-toc-link" href="#静态检查-需要安装" data-level="1">静态检查（需要安装）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="代码复杂度分析">
-              <a class="post-toc-link" href="#代码复杂度分析" data-level="1">代码复杂度分析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="代码重复检测">
-              <a class="post-toc-link" href="#代码重复检测" data-level="1">代码重复检测</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全检查">
-              <a class="post-toc-link" href="#安全检查" data-level="1">安全检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="地道-go-代码检查">
-              <a class="post-toc-link" href="#地道-go-代码检查" data-level="1">地道 Go 代码检查</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="代码生成">
               <a class="post-toc-link" href="#代码生成" data-level="3">代码生成</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成代码-由-source-中的指令">
-              <a class="post-toc-link" href="#生成代码-由-source-中的指令" data-level="1">生成代码（由 source 中的指令）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="字符串转换为常量">
-              <a class="post-toc-link" href="#字符串转换为常量" data-level="1">字符串转换为常量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mock-生成">
-              <a class="post-toc-link" href="#mock-生成" data-level="1">Mock 生成</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成文档">
-              <a class="post-toc-link" href="#生成文档" data-level="1">生成文档</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包文档">
-              <a class="post-toc-link" href="#查看包文档" data-level="1">查看包文档</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动文档服务器">
-              <a class="post-toc-link" href="#启动文档服务器" data-level="1">启动文档服务器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="版本管理">
               <a class="post-toc-link" href="#版本管理" data-level="3">版本管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-go-版本">
-              <a class="post-toc-link" href="#查看-go-版本" data-level="1">查看 Go 版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级依赖版本">
-              <a class="post-toc-link" href="#升级依赖版本" data-level="1">升级依赖版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有依赖">
-              <a class="post-toc-link" href="#升级所有依赖" data-level="1">升级所有依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看可用版本">
-              <a class="post-toc-link" href="#查看可用版本" data-level="1">查看可用版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块详细信息">
-              <a class="post-toc-link" href="#查看模块详细信息" data-level="1">查看模块详细信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="回退依赖版本">
-              <a class="post-toc-link" href="#回退依赖版本" data-level="1">回退依赖版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理模块缓存">
-              <a class="post-toc-link" href="#清理模块缓存" data-level="1">清理模块缓存</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="工具命令">
               <a class="post-toc-link" href="#工具命令" data-level="3">工具命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看环境信息">
-              <a class="post-toc-link" href="#查看环境信息" data-level="1">查看环境信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块下载路径">
-              <a class="post-toc-link" href="#查看模块下载路径" data-level="1">查看模块下载路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理构建缓存">
-              <a class="post-toc-link" href="#清理构建缓存" data-level="1">清理构建缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-gopath">
-              <a class="post-toc-link" href="#查看-gopath" data-level="1">查看 GOPATH</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块代理">
-              <a class="post-toc-link" href="#查看模块代理" data-level="1">查看模块代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置代理-国内推荐">
-              <a class="post-toc-link" href="#设置代理-国内推荐" data-level="1">设置代理（国内推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="打印构建信息">
-              <a class="post-toc-link" href="#打印构建信息" data-level="1">打印构建信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出包">
-              <a class="post-toc-link" href="#列出包" data-level="1">列出包</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="go-mod-文件">
@@ -2164,26 +1916,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用组合命令">
               <a class="post-toc-link" href="#常用组合命令" data-level="3">常用组合命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完整构建流程">
-              <a class="post-toc-link" href="#完整构建流程" data-level="1">完整构建流程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ci-流水线常用命令">
-              <a class="post-toc-link" href="#ci-流水线常用命令" data-level="1">CI 流水线常用命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交叉编译常用">
-              <a class="post-toc-link" href="#交叉编译常用" data-level="1">交叉编译常用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开发时热编译-需要安装-air">
-              <a class="post-toc-link" href="#开发时热编译-需要安装-air" data-level="1">开发时热编译（需要安装 air）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="依赖分析">
-              <a class="post-toc-link" href="#依赖分析" data-level="1">依赖分析</a>
             </li>
             
           </ul>
@@ -2223,276 +1955,28 @@ function copied(target, str) {
           <a class="post-toc-link" href="#模块管理" data-level="3">模块管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="初始化模块">
-          <a class="post-toc-link" href="#初始化模块" data-level="1">初始化模块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块信息">
-          <a class="post-toc-link" href="#查看模块信息" data-level="1">查看模块信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="整理依赖">
-          <a class="post-toc-link" href="#整理依赖" data-level="1">整理依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载依赖">
-          <a class="post-toc-link" href="#下载依赖" data-level="1">下载依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证依赖">
-          <a class="post-toc-link" href="#验证依赖" data-level="1">验证依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块依赖图">
-          <a class="post-toc-link" href="#查看模块依赖图" data-level="1">查看模块依赖图</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块为什么需要某个依赖">
-          <a class="post-toc-link" href="#查看模块为什么需要某个依赖" data-level="1">查看模块为什么需要某个依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制依赖到-vendor-目录">
-          <a class="post-toc-link" href="#复制依赖到-vendor-目录" data-level="1">复制依赖到 vendor 目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看编辑模块依赖">
-          <a class="post-toc-link" href="#查看编辑模块依赖" data-level="1">查看编辑模块依赖</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="构建编译">
           <a class="post-toc-link" href="#构建编译" data-level="3">构建编译</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编译当前目录">
-          <a class="post-toc-link" href="#编译当前目录" data-level="1">编译当前目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编译指定包">
-          <a class="post-toc-link" href="#编译指定包" data-level="1">编译指定包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定输出文件">
-          <a class="post-toc-link" href="#指定输出文件" data-level="1">指定输出文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="减小二进制体积">
-          <a class="post-toc-link" href="#减小二进制体积" data-level="1">减小二进制体积</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编译指定系统架构">
-          <a class="post-toc-link" href="#编译指定系统架构" data-level="1">编译指定系统架构</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常见平台组合">
-          <a class="post-toc-link" href="#常见平台组合" data-level="1">常见平台组合</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="linux-linux-amd64-linux-arm64">
-          <a class="post-toc-link" href="#linux-linux-amd64-linux-arm64" data-level="1">Linux: linux/amd64, linux/arm64</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="windows-windows-amd64">
-          <a class="post-toc-link" href="#windows-windows-amd64" data-level="1">Windows: windows/amd64</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="macos-darwin-amd64-darwin-arm64">
-          <a class="post-toc-link" href="#macos-darwin-amd64-darwin-arm64" data-level="1">macOS: darwin/amd64, darwin/arm64</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静态编译">
-          <a class="post-toc-link" href="#静态编译" data-level="1">静态编译</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编译并安装到-gopath-bin">
-          <a class="post-toc-link" href="#编译并安装到-gopath-bin" data-level="1">编译并安装到 $GOPATH/bin</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取并编译包">
-          <a class="post-toc-link" href="#获取并编译包" data-level="1">获取并编译包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取依赖">
-          <a class="post-toc-link" href="#获取依赖" data-level="1">获取依赖</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="运行测试">
           <a class="post-toc-link" href="#运行测试" data-level="3">运行测试</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行所有测试">
-          <a class="post-toc-link" href="#运行所有测试" data-level="1">运行所有测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行指定包测试">
-          <a class="post-toc-link" href="#运行指定包测试" data-level="1">运行指定包测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行单个测试函数">
-          <a class="post-toc-link" href="#运行单个测试函数" data-level="1">运行单个测试函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试覆盖率">
-          <a class="post-toc-link" href="#测试覆盖率" data-level="1">测试覆盖率</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基准测试">
-          <a class="post-toc-link" href="#基准测试" data-level="1">基准测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="竞态检测">
-          <a class="post-toc-link" href="#竞态检测" data-level="1">竞态检测</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压力测试">
-          <a class="post-toc-link" href="#压力测试" data-level="1">压力测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="短测试-跳过长时间测试">
-          <a class="post-toc-link" href="#短测试-跳过长时间测试" data-level="1">短测试（跳过长时间测试）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试特定文件">
-          <a class="post-toc-link" href="#测试特定文件" data-level="1">测试特定文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成测试二进制">
-          <a class="post-toc-link" href="#生成测试二进制" data-level="1">生成测试二进制</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="代码质量">
           <a class="post-toc-link" href="#代码质量" data-level="3">代码质量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化代码">
-          <a class="post-toc-link" href="#格式化代码" data-level="1">格式化代码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="代码检查">
-          <a class="post-toc-link" href="#代码检查" data-level="1">代码检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静态检查-需要安装">
-          <a class="post-toc-link" href="#静态检查-需要安装" data-level="1">静态检查（需要安装）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="代码复杂度分析">
-          <a class="post-toc-link" href="#代码复杂度分析" data-level="1">代码复杂度分析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="代码重复检测">
-          <a class="post-toc-link" href="#代码重复检测" data-level="1">代码重复检测</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全检查">
-          <a class="post-toc-link" href="#安全检查" data-level="1">安全检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="地道-go-代码检查">
-          <a class="post-toc-link" href="#地道-go-代码检查" data-level="1">地道 Go 代码检查</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="代码生成">
           <a class="post-toc-link" href="#代码生成" data-level="3">代码生成</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成代码-由-source-中的指令">
-          <a class="post-toc-link" href="#生成代码-由-source-中的指令" data-level="1">生成代码（由 source 中的指令）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="字符串转换为常量">
-          <a class="post-toc-link" href="#字符串转换为常量" data-level="1">字符串转换为常量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mock-生成">
-          <a class="post-toc-link" href="#mock-生成" data-level="1">Mock 生成</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成文档">
-          <a class="post-toc-link" href="#生成文档" data-level="1">生成文档</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包文档">
-          <a class="post-toc-link" href="#查看包文档" data-level="1">查看包文档</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动文档服务器">
-          <a class="post-toc-link" href="#启动文档服务器" data-level="1">启动文档服务器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="版本管理">
           <a class="post-toc-link" href="#版本管理" data-level="3">版本管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-go-版本">
-          <a class="post-toc-link" href="#查看-go-版本" data-level="1">查看 Go 版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级依赖版本">
-          <a class="post-toc-link" href="#升级依赖版本" data-level="1">升级依赖版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有依赖">
-          <a class="post-toc-link" href="#升级所有依赖" data-level="1">升级所有依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看可用版本">
-          <a class="post-toc-link" href="#查看可用版本" data-level="1">查看可用版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块详细信息">
-          <a class="post-toc-link" href="#查看模块详细信息" data-level="1">查看模块详细信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="回退依赖版本">
-          <a class="post-toc-link" href="#回退依赖版本" data-level="1">回退依赖版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理模块缓存">
-          <a class="post-toc-link" href="#清理模块缓存" data-level="1">清理模块缓存</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="工具命令">
           <a class="post-toc-link" href="#工具命令" data-level="3">工具命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看环境信息">
-          <a class="post-toc-link" href="#查看环境信息" data-level="1">查看环境信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块下载路径">
-          <a class="post-toc-link" href="#查看模块下载路径" data-level="1">查看模块下载路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理构建缓存">
-          <a class="post-toc-link" href="#清理构建缓存" data-level="1">清理构建缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-gopath">
-          <a class="post-toc-link" href="#查看-gopath" data-level="1">查看 GOPATH</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看模块代理">
-          <a class="post-toc-link" href="#查看模块代理" data-level="1">查看模块代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置代理-国内推荐">
-          <a class="post-toc-link" href="#设置代理-国内推荐" data-level="1">设置代理（国内推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="打印构建信息">
-          <a class="post-toc-link" href="#打印构建信息" data-level="1">打印构建信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出包">
-          <a class="post-toc-link" href="#列出包" data-level="1">列出包</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="go-mod-文件">
@@ -2503,33 +1987,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用组合命令" data-level="3">常用组合命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完整构建流程">
-          <a class="post-toc-link" href="#完整构建流程" data-level="1">完整构建流程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ci-流水线常用命令">
-          <a class="post-toc-link" href="#ci-流水线常用命令" data-level="1">CI 流水线常用命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交叉编译常用">
-          <a class="post-toc-link" href="#交叉编译常用" data-level="1">交叉编译常用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开发时热编译-需要安装-air">
-          <a class="post-toc-link" href="#开发时热编译-需要安装-air" data-level="1">开发时热编译（需要安装 air）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="依赖分析">
-          <a class="post-toc-link" href="#依赖分析" data-level="1">依赖分析</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2712,8 +2176,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

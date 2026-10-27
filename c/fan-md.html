@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fan-md 命令">
     <meta name="twitter:description" content="fan-md 云文档服务器 部署运维 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1570,48 +1570,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#备份数据脚本" data-level="3">备份数据脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认-备份到-数据目录-backup-自动清理过期备份-保留最近-6-份">
-              <a class="post-toc-link" href="#默认-备份到-数据目录-backup-自动清理过期备份-保留最近-6-份" data-level="1">默认：备份到 &lt;数据目录&gt;/backup/，自动清理过期备份，保留最近 6 份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定备份目录-保留份数">
-              <a class="post-toc-link" href="#指定备份目录-保留份数" data-level="1">指定备份目录 + 保留份数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定数据目录-docker-挂载的宿主路径">
-              <a class="post-toc-link" href="#指定数据目录-docker-挂载的宿主路径" data-level="1">指定数据目录（Docker 挂载的宿主路径）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-下载脚本到-usr-local-bin-fan-md_backup">
-              <a class="post-toc-link" href="#1-下载脚本到-usr-local-bin-fan-md_backup" data-level="1">1.下载脚本到 /usr/local/bin/fan-md_backup</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-增加执行权限">
-              <a class="post-toc-link" href="#2-增加执行权限" data-level="1">2.增加执行权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-测试运行一次">
-              <a class="post-toc-link" href="#3-测试运行一次" data-level="1">3.测试运行一次</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-追加-crontab-root-每日凌晨2点30分执行-防重复追加">
-              <a class="post-toc-link" href="#4-追加-crontab-root-每日凌晨2点30分执行-防重复追加" data-level="1">4.追加 crontab(root)：每日凌晨2点30分执行，防重复追加</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-验证定时任务是否写入成功">
-              <a class="post-toc-link" href="#5-验证定时任务是否写入成功" data-level="1">5.验证定时任务是否写入成功</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="恢复数据脚本">
               <a class="post-toc-link" href="#恢复数据脚本" data-level="3">恢复数据脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认-取备份目录下最新一份恢复">
-              <a class="post-toc-link" href="#默认-取备份目录下最新一份恢复" data-level="1">默认：取备份目录下最新一份恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定备份目录-或指定具体文件">
-              <a class="post-toc-link" href="#指定备份目录-或指定具体文件" data-level="1">指定备份目录，或指定具体文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="脚本命令">
@@ -1691,48 +1651,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#备份数据脚本" data-level="3">备份数据脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认-备份到-数据目录-backup-自动清理过期备份-保留最近-6-份">
-          <a class="post-toc-link" href="#默认-备份到-数据目录-backup-自动清理过期备份-保留最近-6-份" data-level="1">默认：备份到 &lt;数据目录&gt;/backup/，自动清理过期备份，保留最近 6 份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定备份目录-保留份数">
-          <a class="post-toc-link" href="#指定备份目录-保留份数" data-level="1">指定备份目录 + 保留份数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定数据目录-docker-挂载的宿主路径">
-          <a class="post-toc-link" href="#指定数据目录-docker-挂载的宿主路径" data-level="1">指定数据目录（Docker 挂载的宿主路径）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-下载脚本到-usr-local-bin-fan-md_backup">
-          <a class="post-toc-link" href="#1-下载脚本到-usr-local-bin-fan-md_backup" data-level="1">1.下载脚本到 /usr/local/bin/fan-md_backup</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-增加执行权限">
-          <a class="post-toc-link" href="#2-增加执行权限" data-level="1">2.增加执行权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-测试运行一次">
-          <a class="post-toc-link" href="#3-测试运行一次" data-level="1">3.测试运行一次</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-追加-crontab-root-每日凌晨2点30分执行-防重复追加">
-          <a class="post-toc-link" href="#4-追加-crontab-root-每日凌晨2点30分执行-防重复追加" data-level="1">4.追加 crontab(root)：每日凌晨2点30分执行，防重复追加</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-验证定时任务是否写入成功">
-          <a class="post-toc-link" href="#5-验证定时任务是否写入成功" data-level="1">5.验证定时任务是否写入成功</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="恢复数据脚本">
           <a class="post-toc-link" href="#恢复数据脚本" data-level="3">恢复数据脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认-取备份目录下最新一份恢复">
-          <a class="post-toc-link" href="#默认-取备份目录下最新一份恢复" data-level="1">默认：取备份目录下最新一份恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定备份目录-或指定具体文件">
-          <a class="post-toc-link" href="#指定备份目录-或指定具体文件" data-level="1">指定备份目录，或指定具体文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="脚本命令">
@@ -1757,7 +1677,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1940,8 +1860,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

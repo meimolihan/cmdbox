@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="psql 命令">
     <meta name="twitter:description" content="PostgreSQL 命令行客户端 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1898,42 +1898,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#连接实例" data-level="3">连接实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接本地-postgresql">
-              <a class="post-toc-link" href="#连接本地-postgresql" data-level="1">连接本地 PostgreSQL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定数据库">
-              <a class="post-toc-link" href="#连接指定数据库" data-level="1">连接指定数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接远程数据库">
-              <a class="post-toc-link" href="#连接远程数据库" data-level="1">连接远程数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用连接字符串">
-              <a class="post-toc-link" href="#使用连接字符串" data-level="1">使用连接字符串</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-uri-连接">
-              <a class="post-toc-link" href="#使用-uri-连接" data-level="1">使用 URI 连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只列出数据库">
-              <a class="post-toc-link" href="#只列出数据库" data-level="1">只列出数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行单条-sql">
-              <a class="post-toc-link" href="#执行单条-sql" data-level="1">执行单条 SQL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行-sql-文件">
-              <a class="post-toc-link" href="#执行-sql-文件" data-level="1">执行 SQL 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静默执行命令">
-              <a class="post-toc-link" href="#静默执行命令" data-level="1">静默执行命令</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="数据库操作">
               <a class="post-toc-link" href="#数据库操作" data-level="3">数据库操作</a>
             </li>
@@ -1950,30 +1914,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#元命令" data-level="3">元命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接相关">
-              <a class="post-toc-link" href="#连接相关" data-level="1">连接相关</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查询相关">
-              <a class="post-toc-link" href="#查询相关" data-level="1">查询相关</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="信息查询">
-              <a class="post-toc-link" href="#信息查询" data-level="1">信息查询</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="表结构">
-              <a class="post-toc-link" href="#表结构" data-level="1">表结构</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化">
-              <a class="post-toc-link" href="#格式化" data-level="1">格式化</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="其他">
-              <a class="post-toc-link" href="#其他" data-level="1">其他</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="事务">
               <a class="post-toc-link" href="#事务" data-level="3">事务</a>
             </li>
@@ -1984,42 +1924,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="备份恢复">
               <a class="post-toc-link" href="#备份恢复" data-level="3">备份恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="逻辑备份-整个数据库">
-              <a class="post-toc-link" href="#逻辑备份-整个数据库" data-level="1">逻辑备份 - 整个数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只备份表结构">
-              <a class="post-toc-link" href="#只备份表结构" data-level="1">只备份表结构</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只备份数据">
-              <a class="post-toc-link" href="#只备份数据" data-level="1">只备份数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份指定表">
-              <a class="post-toc-link" href="#备份指定表" data-level="1">备份指定表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩备份">
-              <a class="post-toc-link" href="#压缩备份" data-level="1">压缩备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份所有数据库">
-              <a class="post-toc-link" href="#备份所有数据库" data-level="1">备份所有数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据库">
-              <a class="post-toc-link" href="#恢复数据库" data-level="1">恢复数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复所有数据库">
-              <a class="post-toc-link" href="#恢复所有数据库" data-level="1">恢复所有数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-pg_restore-自定义格式">
-              <a class="post-toc-link" href="#使用-pg_restore-自定义格式" data-level="1">使用 pg_restore（自定义格式）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="实用命令">
@@ -2067,42 +1971,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#连接实例" data-level="3">连接实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接本地-postgresql">
-          <a class="post-toc-link" href="#连接本地-postgresql" data-level="1">连接本地 PostgreSQL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接指定数据库">
-          <a class="post-toc-link" href="#连接指定数据库" data-level="1">连接指定数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接远程数据库">
-          <a class="post-toc-link" href="#连接远程数据库" data-level="1">连接远程数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用连接字符串">
-          <a class="post-toc-link" href="#使用连接字符串" data-level="1">使用连接字符串</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-uri-连接">
-          <a class="post-toc-link" href="#使用-uri-连接" data-level="1">使用 URI 连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只列出数据库">
-          <a class="post-toc-link" href="#只列出数据库" data-level="1">只列出数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行单条-sql">
-          <a class="post-toc-link" href="#执行单条-sql" data-level="1">执行单条 SQL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行-sql-文件">
-          <a class="post-toc-link" href="#执行-sql-文件" data-level="1">执行 SQL 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静默执行命令">
-          <a class="post-toc-link" href="#静默执行命令" data-level="1">静默执行命令</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="数据库操作">
           <a class="post-toc-link" href="#数据库操作" data-level="3">数据库操作</a>
         </li>
@@ -2119,30 +1987,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#元命令" data-level="3">元命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接相关">
-          <a class="post-toc-link" href="#连接相关" data-level="1">连接相关</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查询相关">
-          <a class="post-toc-link" href="#查询相关" data-level="1">查询相关</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="信息查询">
-          <a class="post-toc-link" href="#信息查询" data-level="1">信息查询</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="表结构">
-          <a class="post-toc-link" href="#表结构" data-level="1">表结构</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化">
-          <a class="post-toc-link" href="#格式化" data-level="1">格式化</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="其他">
-          <a class="post-toc-link" href="#其他" data-level="1">其他</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="事务">
           <a class="post-toc-link" href="#事务" data-level="3">事务</a>
         </li>
@@ -2155,42 +1999,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#备份恢复" data-level="3">备份恢复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="逻辑备份-整个数据库">
-          <a class="post-toc-link" href="#逻辑备份-整个数据库" data-level="1">逻辑备份 - 整个数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只备份表结构">
-          <a class="post-toc-link" href="#只备份表结构" data-level="1">只备份表结构</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只备份数据">
-          <a class="post-toc-link" href="#只备份数据" data-level="1">只备份数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份指定表">
-          <a class="post-toc-link" href="#备份指定表" data-level="1">备份指定表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩备份">
-          <a class="post-toc-link" href="#压缩备份" data-level="1">压缩备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份所有数据库">
-          <a class="post-toc-link" href="#备份所有数据库" data-level="1">备份所有数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据库">
-          <a class="post-toc-link" href="#恢复数据库" data-level="1">恢复数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复所有数据库">
-          <a class="post-toc-link" href="#恢复所有数据库" data-level="1">恢复所有数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-pg_restore-自定义格式">
-          <a class="post-toc-link" href="#使用-pg_restore-自定义格式" data-level="1">使用 pg_restore（自定义格式）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="实用命令">
           <a class="post-toc-link" href="#实用命令" data-level="3">实用命令</a>
         </li>
@@ -2201,7 +2009,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2384,8 +2192,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

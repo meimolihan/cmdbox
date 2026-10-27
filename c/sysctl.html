@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="sysctl 命令">
     <meta name="twitter:description" content="时动态地修改内核的运行参数 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1606,186 +1606,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#配置sysctl" data-level="3">配置sysctl</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="controls-source-route-verification">
-              <a class="post-toc-link" href="#controls-source-route-verification" data-level="1">Controls source route verification</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-              <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-rp_filter-1">
-              <a class="post-toc-link" href="#net-ipv4-conf-all-rp_filter-1" data-level="1">net.ipv4.conf.all.rp_filter = 1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-rp_filter-1">
-              <a class="post-toc-link" href="#net-ipv4-conf-lo-rp_filter-1" data-level="1">net.ipv4.conf.lo.rp_filter = 1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-rp_filter-1">
-              <a class="post-toc-link" href="#net-ipv4-conf-eth0-rp_filter-1" data-level="1">net.ipv4.conf.eth0.rp_filter = 1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="disables-ip-source-routing">
-              <a class="post-toc-link" href="#disables-ip-source-routing" data-level="1">Disables IP source routing</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-              <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-accept_source_route-0">
-              <a class="post-toc-link" href="#net-ipv4-conf-all-accept_source_route-0" data-level="1">net.ipv4.conf.all.accept_source_route = 0</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-accept_source_route-0">
-              <a class="post-toc-link" href="#net-ipv4-conf-lo-accept_source_route-0" data-level="1">net.ipv4.conf.lo.accept_source_route = 0</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-accept_source_route-0">
-              <a class="post-toc-link" href="#net-ipv4-conf-eth0-accept_source_route-0" data-level="1">net.ipv4.conf.eth0.accept_source_route = 0</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="controls-the-system-request-debugging-functionality-of-the-kernel">
-              <a class="post-toc-link" href="#controls-the-system-request-debugging-functionality-of-the-kernel" data-level="1">Controls the System Request debugging functionality of the kernel</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="controls-whether-core-dumps-will-append-the-pid-to-the-core-filename">
-              <a class="post-toc-link" href="#controls-whether-core-dumps-will-append-the-pid-to-the-core-filename" data-level="1">Controls whether core dumps will append the PID to the core filename.</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="useful-for-debugging-multi-threaded-applications">
-              <a class="post-toc-link" href="#useful-for-debugging-multi-threaded-applications" data-level="1">Useful for debugging multi-threaded applications.</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="increase-maximum-amount-of-memory-allocated-to-shm">
-              <a class="post-toc-link" href="#increase-maximum-amount-of-memory-allocated-to-shm" data-level="1">Increase maximum amount of memory allocated to shm</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="only-uncomment-if-needed">
-              <a class="post-toc-link" href="#only-uncomment-if-needed" data-level="1">Only uncomment if needed!</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="kernel-shmmax-67108864">
-              <a class="post-toc-link" href="#kernel-shmmax-67108864" data-level="1">kernel.shmmax = 67108864</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="disable-icmp-redirect-acceptance">
-              <a class="post-toc-link" href="#disable-icmp-redirect-acceptance" data-level="1">Disable ICMP Redirect Acceptance</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-              <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-accept_redirects-0">
-              <a class="post-toc-link" href="#net-ipv4-conf-all-accept_redirects-0" data-level="1">net.ipv4.conf.all.accept_redirects = 0</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-accept_redirects-0">
-              <a class="post-toc-link" href="#net-ipv4-conf-lo-accept_redirects-0" data-level="1">net.ipv4.conf.lo.accept_redirects = 0</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-accept_redirects-0">
-              <a class="post-toc-link" href="#net-ipv4-conf-eth0-accept_redirects-0" data-level="1">net.ipv4.conf.eth0.accept_redirects = 0</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="enable-log-spoofed-packets-source-routed-packets-redirect-packets">
-              <a class="post-toc-link" href="#enable-log-spoofed-packets-source-routed-packets-redirect-packets" data-level="1">enable Log Spoofed Packets, Source Routed Packets, Redirect Packets</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-              <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-log_martians-1">
-              <a class="post-toc-link" href="#net-ipv4-conf-all-log_martians-1" data-level="1">net.ipv4.conf.all.log_martians = 1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-log_martians-1">
-              <a class="post-toc-link" href="#net-ipv4-conf-lo-log_martians-1" data-level="1">net.ipv4.conf.lo.log_martians = 1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-log_martians-1">
-              <a class="post-toc-link" href="#net-ipv4-conf-eth0-log_martians-1" data-level="1">net.ipv4.conf.eth0.log_martians = 1</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="decrease-the-time-default-value-for-tcp_fin_timeout-connection">
-              <a class="post-toc-link" href="#decrease-the-time-default-value-for-tcp_fin_timeout-connection" data-level="1">Decrease the time default value for tcp_fin_timeout connection</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="decrease-the-time-default-value-for-tcp_keepalive_time-connection">
-              <a class="post-toc-link" href="#decrease-the-time-default-value-for-tcp_keepalive_time-connection" data-level="1">Decrease the time default value for tcp_keepalive_time connection</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="turn-on-the-tcp_window_scaling">
-              <a class="post-toc-link" href="#turn-on-the-tcp_window_scaling" data-level="1">Turn on the tcp_window_scaling</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="turn-on-the-tcp_sack">
-              <a class="post-toc-link" href="#turn-on-the-tcp_sack" data-level="1">Turn on the tcp_sack</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tcp_fack-should-be-on-because-of-sack">
-              <a class="post-toc-link" href="#tcp_fack-should-be-on-because-of-sack" data-level="1">tcp_fack should be on because of sack</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="turn-on-the-tcp_timestamps">
-              <a class="post-toc-link" href="#turn-on-the-tcp_timestamps" data-level="1">Turn on the tcp_timestamps</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="enable-tcp-syn-cookie-protection">
-              <a class="post-toc-link" href="#enable-tcp-syn-cookie-protection" data-level="1">Enable TCP SYN Cookie Protection</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="enable-ignoring-broadcasts-request">
-              <a class="post-toc-link" href="#enable-ignoring-broadcasts-request" data-level="1">Enable ignoring broadcasts request</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="enable-bad-error-message-protection">
-              <a class="post-toc-link" href="#enable-bad-error-message-protection" data-level="1">Enable bad error message Protection</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="make-more-local-ports-available">
-              <a class="post-toc-link" href="#make-more-local-ports-available" data-level="1">make more local ports available</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-ip_local_port_range-1024-65000">
-              <a class="post-toc-link" href="#net-ipv4-ip_local_port_range-1024-65000" data-level="1">net.ipv4.ip_local_port_range = 1024 65000</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="set-tcp-re-ordering-value-in-kernel-to-5">
-              <a class="post-toc-link" href="#set-tcp-re-ordering-value-in-kernel-to-5" data-level="1">set TCP Re-Ordering value in kernel to ‘5′</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="lower-syn-retry-rates">
-              <a class="post-toc-link" href="#lower-syn-retry-rates" data-level="1">Lower syn retry rates</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="set-max-syn-backlog-to-2048">
-              <a class="post-toc-link" href="#set-max-syn-backlog-to-2048" data-level="1">Set Max SYN Backlog to ‘2048′</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="various-settings">
-              <a class="post-toc-link" href="#various-settings" data-level="1">Various Settings</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="increase-the-maximum-number-of-skb-heads-to-be-cached">
-              <a class="post-toc-link" href="#increase-the-maximum-number-of-skb-heads-to-be-cached" data-level="1">Increase the maximum number of skb-heads to be cached</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="increase-the-tcp-time-wait-buckets-pool-size">
-              <a class="post-toc-link" href="#increase-the-tcp-time-wait-buckets-pool-size" data-level="1">Increase the tcp-time-wait buckets pool size</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="this-will-increase-the-amount-of-memory-available-for-socket-input-output-queues">
-              <a class="post-toc-link" href="#this-will-increase-the-amount-of-memory-available-for-socket-input-output-queues" data-level="1">This will increase the amount of memory available for socket input/output queues</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="disable-ping-requests">
-              <a class="post-toc-link" href="#disable-ping-requests" data-level="1">Disable ping requests</a>
-            </li>
-            
           </ul>
         </nav>
       </div>
@@ -1835,193 +1655,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#配置sysctl" data-level="3">配置sysctl</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="controls-source-route-verification">
-          <a class="post-toc-link" href="#controls-source-route-verification" data-level="1">Controls source route verification</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-          <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-rp_filter-1">
-          <a class="post-toc-link" href="#net-ipv4-conf-all-rp_filter-1" data-level="1">net.ipv4.conf.all.rp_filter = 1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-rp_filter-1">
-          <a class="post-toc-link" href="#net-ipv4-conf-lo-rp_filter-1" data-level="1">net.ipv4.conf.lo.rp_filter = 1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-rp_filter-1">
-          <a class="post-toc-link" href="#net-ipv4-conf-eth0-rp_filter-1" data-level="1">net.ipv4.conf.eth0.rp_filter = 1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="disables-ip-source-routing">
-          <a class="post-toc-link" href="#disables-ip-source-routing" data-level="1">Disables IP source routing</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-          <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-accept_source_route-0">
-          <a class="post-toc-link" href="#net-ipv4-conf-all-accept_source_route-0" data-level="1">net.ipv4.conf.all.accept_source_route = 0</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-accept_source_route-0">
-          <a class="post-toc-link" href="#net-ipv4-conf-lo-accept_source_route-0" data-level="1">net.ipv4.conf.lo.accept_source_route = 0</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-accept_source_route-0">
-          <a class="post-toc-link" href="#net-ipv4-conf-eth0-accept_source_route-0" data-level="1">net.ipv4.conf.eth0.accept_source_route = 0</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="controls-the-system-request-debugging-functionality-of-the-kernel">
-          <a class="post-toc-link" href="#controls-the-system-request-debugging-functionality-of-the-kernel" data-level="1">Controls the System Request debugging functionality of the kernel</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="controls-whether-core-dumps-will-append-the-pid-to-the-core-filename">
-          <a class="post-toc-link" href="#controls-whether-core-dumps-will-append-the-pid-to-the-core-filename" data-level="1">Controls whether core dumps will append the PID to the core filename.</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="useful-for-debugging-multi-threaded-applications">
-          <a class="post-toc-link" href="#useful-for-debugging-multi-threaded-applications" data-level="1">Useful for debugging multi-threaded applications.</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="increase-maximum-amount-of-memory-allocated-to-shm">
-          <a class="post-toc-link" href="#increase-maximum-amount-of-memory-allocated-to-shm" data-level="1">Increase maximum amount of memory allocated to shm</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="only-uncomment-if-needed">
-          <a class="post-toc-link" href="#only-uncomment-if-needed" data-level="1">Only uncomment if needed!</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="kernel-shmmax-67108864">
-          <a class="post-toc-link" href="#kernel-shmmax-67108864" data-level="1">kernel.shmmax = 67108864</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="disable-icmp-redirect-acceptance">
-          <a class="post-toc-link" href="#disable-icmp-redirect-acceptance" data-level="1">Disable ICMP Redirect Acceptance</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-          <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-accept_redirects-0">
-          <a class="post-toc-link" href="#net-ipv4-conf-all-accept_redirects-0" data-level="1">net.ipv4.conf.all.accept_redirects = 0</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-accept_redirects-0">
-          <a class="post-toc-link" href="#net-ipv4-conf-lo-accept_redirects-0" data-level="1">net.ipv4.conf.lo.accept_redirects = 0</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-accept_redirects-0">
-          <a class="post-toc-link" href="#net-ipv4-conf-eth0-accept_redirects-0" data-level="1">net.ipv4.conf.eth0.accept_redirects = 0</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="enable-log-spoofed-packets-source-routed-packets-redirect-packets">
-          <a class="post-toc-link" href="#enable-log-spoofed-packets-source-routed-packets-redirect-packets" data-level="1">enable Log Spoofed Packets, Source Routed Packets, Redirect Packets</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="default-should-work-for-all-interfaces">
-          <a class="post-toc-link" href="#default-should-work-for-all-interfaces" data-level="1">Default should work for all interfaces</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-all-log_martians-1">
-          <a class="post-toc-link" href="#net-ipv4-conf-all-log_martians-1" data-level="1">net.ipv4.conf.all.log_martians = 1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-lo-log_martians-1">
-          <a class="post-toc-link" href="#net-ipv4-conf-lo-log_martians-1" data-level="1">net.ipv4.conf.lo.log_martians = 1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-conf-eth0-log_martians-1">
-          <a class="post-toc-link" href="#net-ipv4-conf-eth0-log_martians-1" data-level="1">net.ipv4.conf.eth0.log_martians = 1</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="decrease-the-time-default-value-for-tcp_fin_timeout-connection">
-          <a class="post-toc-link" href="#decrease-the-time-default-value-for-tcp_fin_timeout-connection" data-level="1">Decrease the time default value for tcp_fin_timeout connection</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="decrease-the-time-default-value-for-tcp_keepalive_time-connection">
-          <a class="post-toc-link" href="#decrease-the-time-default-value-for-tcp_keepalive_time-connection" data-level="1">Decrease the time default value for tcp_keepalive_time connection</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="turn-on-the-tcp_window_scaling">
-          <a class="post-toc-link" href="#turn-on-the-tcp_window_scaling" data-level="1">Turn on the tcp_window_scaling</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="turn-on-the-tcp_sack">
-          <a class="post-toc-link" href="#turn-on-the-tcp_sack" data-level="1">Turn on the tcp_sack</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tcp_fack-should-be-on-because-of-sack">
-          <a class="post-toc-link" href="#tcp_fack-should-be-on-because-of-sack" data-level="1">tcp_fack should be on because of sack</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="turn-on-the-tcp_timestamps">
-          <a class="post-toc-link" href="#turn-on-the-tcp_timestamps" data-level="1">Turn on the tcp_timestamps</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="enable-tcp-syn-cookie-protection">
-          <a class="post-toc-link" href="#enable-tcp-syn-cookie-protection" data-level="1">Enable TCP SYN Cookie Protection</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="enable-ignoring-broadcasts-request">
-          <a class="post-toc-link" href="#enable-ignoring-broadcasts-request" data-level="1">Enable ignoring broadcasts request</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="enable-bad-error-message-protection">
-          <a class="post-toc-link" href="#enable-bad-error-message-protection" data-level="1">Enable bad error message Protection</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="make-more-local-ports-available">
-          <a class="post-toc-link" href="#make-more-local-ports-available" data-level="1">make more local ports available</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="net-ipv4-ip_local_port_range-1024-65000">
-          <a class="post-toc-link" href="#net-ipv4-ip_local_port_range-1024-65000" data-level="1">net.ipv4.ip_local_port_range = 1024 65000</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="set-tcp-re-ordering-value-in-kernel-to-5">
-          <a class="post-toc-link" href="#set-tcp-re-ordering-value-in-kernel-to-5" data-level="1">set TCP Re-Ordering value in kernel to ‘5′</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="lower-syn-retry-rates">
-          <a class="post-toc-link" href="#lower-syn-retry-rates" data-level="1">Lower syn retry rates</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="set-max-syn-backlog-to-2048">
-          <a class="post-toc-link" href="#set-max-syn-backlog-to-2048" data-level="1">Set Max SYN Backlog to ‘2048′</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="various-settings">
-          <a class="post-toc-link" href="#various-settings" data-level="1">Various Settings</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="increase-the-maximum-number-of-skb-heads-to-be-cached">
-          <a class="post-toc-link" href="#increase-the-maximum-number-of-skb-heads-to-be-cached" data-level="1">Increase the maximum number of skb-heads to be cached</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="increase-the-tcp-time-wait-buckets-pool-size">
-          <a class="post-toc-link" href="#increase-the-tcp-time-wait-buckets-pool-size" data-level="1">Increase the tcp-time-wait buckets pool size</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="this-will-increase-the-amount-of-memory-available-for-socket-input-output-queues">
-          <a class="post-toc-link" href="#this-will-increase-the-amount-of-memory-available-for-socket-input-output-queues" data-level="1">This will increase the amount of memory available for socket input/output queues</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="disable-ping-requests">
-          <a class="post-toc-link" href="#disable-ping-requests" data-level="1">Disable ping requests</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2204,8 +1844,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

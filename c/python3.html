@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="python3 命令">
     <meta name="twitter:description" content="Python 解释器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1622,24 +1622,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装python3" data-level="3">安装Python3</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用homebrew">
-              <a class="post-toc-link" href="#使用homebrew" data-level="1">使用Homebrew</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或使用pyenv管理多版本">
-              <a class="post-toc-link" href="#或使用pyenv管理多版本" data-level="1">或使用pyenv管理多版本</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
               <a class="post-toc-link" href="#语法" data-level="3">语法</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常用选项">
-              <a class="post-toc-link" href="#常用选项" data-level="1">常用选项</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
@@ -1650,120 +1638,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#交互式运行" data-level="4">交互式运行</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入python交互式解释器">
-              <a class="post-toc-link" href="#进入python交互式解释器" data-level="1">进入Python交互式解释器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="退出解释器">
-              <a class="post-toc-link" href="#退出解释器" data-level="1">退出解释器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或按-ctrl-d-linux-macos">
-              <a class="post-toc-link" href="#或按-ctrl-d-linux-macos" data-level="1">或按 Ctrl+D（Linux/macOS）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或按-ctrl-z-然后回车-windows">
-              <a class="post-toc-link" href="#或按-ctrl-z-然后回车-windows" data-level="1">或按 Ctrl+Z 然后回车（Windows）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="执行脚本">
               <a class="post-toc-link" href="#执行脚本" data-level="4">执行脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行python脚本">
-              <a class="post-toc-link" href="#运行python脚本" data-level="1">运行Python脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="带参数运行">
-              <a class="post-toc-link" href="#带参数运行" data-level="1">带参数运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行单行代码">
-              <a class="post-toc-link" href="#执行单行代码" data-level="1">执行单行代码</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="模块运行">
               <a class="post-toc-link" href="#模块运行" data-level="4">模块运行</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="作为模块运行-等价于执行__main__-py">
-              <a class="post-toc-link" href="#作为模块运行-等价于执行__main__-py" data-level="1">作为模块运行（等价于执行__main__.py）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动http服务器-当前目录">
-              <a class="post-toc-link" href="#启动http服务器-当前目录" data-level="1">启动HTTP服务器（当前目录）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动简单smtp服务器">
-              <a class="post-toc-link" href="#启动简单smtp服务器" data-level="1">启动简单SMTP服务器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用pdb调试器">
-              <a class="post-toc-link" href="#使用pdb调试器" data-level="1">使用pdb调试器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="pip-包管理器">
               <a class="post-toc-link" href="#pip-包管理器" data-level="4">pip 包管理器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装包">
-              <a class="post-toc-link" href="#安装包" data-level="1">安装包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级包">
-              <a class="post-toc-link" href="#升级包" data-level="1">升级包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载包">
-              <a class="post-toc-link" href="#卸载包" data-level="1">卸载包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出已安装的包">
-              <a class="post-toc-link" href="#列出已安装的包" data-level="1">列出已安装的包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
-              <a class="post-toc-link" href="#查看包信息" data-level="1">查看包信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装requirements-txt中的依赖">
-              <a class="post-toc-link" href="#安装requirements-txt中的依赖" data-level="1">安装requirements.txt中的依赖</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="虚拟环境">
               <a class="post-toc-link" href="#虚拟环境" data-level="4">虚拟环境</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建虚拟环境">
-              <a class="post-toc-link" href="#创建虚拟环境" data-level="1">创建虚拟环境</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="激活虚拟环境-linux-macos">
-              <a class="post-toc-link" href="#激活虚拟环境-linux-macos" data-level="1">激活虚拟环境（Linux/macOS）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="激活虚拟环境-windows">
-              <a class="post-toc-link" href="#激活虚拟环境-windows" data-level="1">激活虚拟环境（Windows）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="退出虚拟环境">
-              <a class="post-toc-link" href="#退出虚拟环境" data-level="1">退出虚拟环境</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="版本管理">
               <a class="post-toc-link" href="#版本管理" data-level="4">版本管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看python版本">
-              <a class="post-toc-link" href="#查看python版本" data-level="1">查看Python版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查python路径">
-              <a class="post-toc-link" href="#检查python路径" data-level="1">检查Python路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多版本切换-使用pyenv">
-              <a class="post-toc-link" href="#多版本切换-使用pyenv" data-level="1">多版本切换（使用pyenv）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用模块示例">
@@ -1774,48 +1666,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#http-server-简单http服务器" data-level="4">http.server - 简单HTTP服务器</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动http服务器-默认8000端口">
-              <a class="post-toc-link" href="#启动http服务器-默认8000端口" data-level="1">启动HTTP服务器（默认8000端口）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口">
-              <a class="post-toc-link" href="#指定端口" data-level="1">指定端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定ip和端口">
-              <a class="post-toc-link" href="#指定ip和端口" data-level="1">指定IP和端口</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="json-tool-json格式化">
               <a class="post-toc-link" href="#json-tool-json格式化" data-level="4">json.tool - JSON格式化</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化json文件">
-              <a class="post-toc-link" href="#格式化json文件" data-level="1">格式化JSON文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩json">
-              <a class="post-toc-link" href="#压缩json" data-level="1">压缩JSON</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="http-client-http客户端测试">
               <a class="post-toc-link" href="#http-client-http客户端测试" data-level="4">http.client - HTTP客户端测试</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试api">
-              <a class="post-toc-link" href="#测试api" data-level="1">测试API</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="venv-虚拟环境管理">
               <a class="post-toc-link" href="#venv-虚拟环境管理" data-level="4">venv - 虚拟环境管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建虚拟环境">
-              <a class="post-toc-link" href="#创建虚拟环境" data-level="1">创建虚拟环境</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用虚拟环境">
-              <a class="post-toc-link" href="#使用虚拟环境" data-level="1">使用虚拟环境</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="环境变量">
@@ -1859,24 +1719,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装python3" data-level="3">安装Python3</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用homebrew">
-          <a class="post-toc-link" href="#使用homebrew" data-level="1">使用Homebrew</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或使用pyenv管理多版本">
-          <a class="post-toc-link" href="#或使用pyenv管理多版本" data-level="1">或使用pyenv管理多版本</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="语法">
           <a class="post-toc-link" href="#语法" data-level="3">语法</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常用选项">
-          <a class="post-toc-link" href="#常用选项" data-level="1">常用选项</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
@@ -1887,120 +1735,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#交互式运行" data-level="4">交互式运行</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入python交互式解释器">
-          <a class="post-toc-link" href="#进入python交互式解释器" data-level="1">进入Python交互式解释器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="退出解释器">
-          <a class="post-toc-link" href="#退出解释器" data-level="1">退出解释器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或按-ctrl-d-linux-macos">
-          <a class="post-toc-link" href="#或按-ctrl-d-linux-macos" data-level="1">或按 Ctrl+D（Linux/macOS）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或按-ctrl-z-然后回车-windows">
-          <a class="post-toc-link" href="#或按-ctrl-z-然后回车-windows" data-level="1">或按 Ctrl+Z 然后回车（Windows）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="执行脚本">
           <a class="post-toc-link" href="#执行脚本" data-level="4">执行脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行python脚本">
-          <a class="post-toc-link" href="#运行python脚本" data-level="1">运行Python脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="带参数运行">
-          <a class="post-toc-link" href="#带参数运行" data-level="1">带参数运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行单行代码">
-          <a class="post-toc-link" href="#执行单行代码" data-level="1">执行单行代码</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="模块运行">
           <a class="post-toc-link" href="#模块运行" data-level="4">模块运行</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="作为模块运行-等价于执行__main__-py">
-          <a class="post-toc-link" href="#作为模块运行-等价于执行__main__-py" data-level="1">作为模块运行（等价于执行__main__.py）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动http服务器-当前目录">
-          <a class="post-toc-link" href="#启动http服务器-当前目录" data-level="1">启动HTTP服务器（当前目录）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动简单smtp服务器">
-          <a class="post-toc-link" href="#启动简单smtp服务器" data-level="1">启动简单SMTP服务器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用pdb调试器">
-          <a class="post-toc-link" href="#使用pdb调试器" data-level="1">使用pdb调试器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="pip-包管理器">
           <a class="post-toc-link" href="#pip-包管理器" data-level="4">pip 包管理器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装包">
-          <a class="post-toc-link" href="#安装包" data-level="1">安装包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级包">
-          <a class="post-toc-link" href="#升级包" data-level="1">升级包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载包">
-          <a class="post-toc-link" href="#卸载包" data-level="1">卸载包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出已安装的包">
-          <a class="post-toc-link" href="#列出已安装的包" data-level="1">列出已安装的包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包信息">
-          <a class="post-toc-link" href="#查看包信息" data-level="1">查看包信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装requirements-txt中的依赖">
-          <a class="post-toc-link" href="#安装requirements-txt中的依赖" data-level="1">安装requirements.txt中的依赖</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="虚拟环境">
           <a class="post-toc-link" href="#虚拟环境" data-level="4">虚拟环境</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建虚拟环境">
-          <a class="post-toc-link" href="#创建虚拟环境" data-level="1">创建虚拟环境</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="激活虚拟环境-linux-macos">
-          <a class="post-toc-link" href="#激活虚拟环境-linux-macos" data-level="1">激活虚拟环境（Linux/macOS）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="激活虚拟环境-windows">
-          <a class="post-toc-link" href="#激活虚拟环境-windows" data-level="1">激活虚拟环境（Windows）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="退出虚拟环境">
-          <a class="post-toc-link" href="#退出虚拟环境" data-level="1">退出虚拟环境</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="版本管理">
           <a class="post-toc-link" href="#版本管理" data-level="4">版本管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看python版本">
-          <a class="post-toc-link" href="#查看python版本" data-level="1">查看Python版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查python路径">
-          <a class="post-toc-link" href="#检查python路径" data-level="1">检查Python路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多版本切换-使用pyenv">
-          <a class="post-toc-link" href="#多版本切换-使用pyenv" data-level="1">多版本切换（使用pyenv）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用模块示例">
@@ -2011,48 +1763,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#http-server-简单http服务器" data-level="4">http.server - 简单HTTP服务器</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动http服务器-默认8000端口">
-          <a class="post-toc-link" href="#启动http服务器-默认8000端口" data-level="1">启动HTTP服务器（默认8000端口）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口">
-          <a class="post-toc-link" href="#指定端口" data-level="1">指定端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定ip和端口">
-          <a class="post-toc-link" href="#指定ip和端口" data-level="1">指定IP和端口</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="json-tool-json格式化">
           <a class="post-toc-link" href="#json-tool-json格式化" data-level="4">json.tool - JSON格式化</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化json文件">
-          <a class="post-toc-link" href="#格式化json文件" data-level="1">格式化JSON文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩json">
-          <a class="post-toc-link" href="#压缩json" data-level="1">压缩JSON</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="http-client-http客户端测试">
           <a class="post-toc-link" href="#http-client-http客户端测试" data-level="4">http.client - HTTP客户端测试</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试api">
-          <a class="post-toc-link" href="#测试api" data-level="1">测试API</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="venv-虚拟环境管理">
           <a class="post-toc-link" href="#venv-虚拟环境管理" data-level="4">venv - 虚拟环境管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建虚拟环境">
-          <a class="post-toc-link" href="#创建虚拟环境" data-level="1">创建虚拟环境</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用虚拟环境">
-          <a class="post-toc-link" href="#使用虚拟环境" data-level="1">使用虚拟环境</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="环境变量">
@@ -2069,7 +1789,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2252,8 +1972,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

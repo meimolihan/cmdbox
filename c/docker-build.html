@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-build 命令">
     <meta name="twitter:description" content="使用 Dockerfile 构建镜像 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1446,52 +1446,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在当前目录构建镜像">
-              <a class="post-toc-link" href="#在当前目录构建镜像" data-level="1">在当前目录构建镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-dockerfile-路径">
-              <a class="post-toc-link" href="#指定-dockerfile-路径" data-level="1">指定 Dockerfile 路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="不使用缓存构建">
-              <a class="post-toc-link" href="#不使用缓存构建" data-level="1">不使用缓存构建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="传递构建参数">
-              <a class="post-toc-link" href="#传递构建参数" data-level="1">传递构建参数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多平台构建">
-              <a class="post-toc-link" href="#多平台构建" data-level="1">多平台构建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="构建指定阶段-多阶段构建">
-              <a class="post-toc-link" href="#构建指定阶段-多阶段构建" data-level="1">构建指定阶段（多阶段构建）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从-git-仓库构建">
-              <a class="post-toc-link" href="#从-git-仓库构建" data-level="1">从 Git 仓库构建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从标准输入读取-dockerfile">
-              <a class="post-toc-link" href="#从标准输入读取-dockerfile" data-level="1">从标准输入读取 Dockerfile</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静默构建">
-              <a class="post-toc-link" href="#静默构建" data-level="1">静默构建</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="dockerfile-多阶段构建示例">
               <a class="post-toc-link" href="#dockerfile-多阶段构建示例" data-level="3">Dockerfile 多阶段构建示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="构建阶段">
-              <a class="post-toc-link" href="#构建阶段" data-level="1">构建阶段</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行阶段">
-              <a class="post-toc-link" href="#运行阶段" data-level="1">运行阶段</a>
             </li>
             
           </ul>
@@ -1535,52 +1491,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在当前目录构建镜像">
-          <a class="post-toc-link" href="#在当前目录构建镜像" data-level="1">在当前目录构建镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-dockerfile-路径">
-          <a class="post-toc-link" href="#指定-dockerfile-路径" data-level="1">指定 Dockerfile 路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="不使用缓存构建">
-          <a class="post-toc-link" href="#不使用缓存构建" data-level="1">不使用缓存构建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="传递构建参数">
-          <a class="post-toc-link" href="#传递构建参数" data-level="1">传递构建参数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多平台构建">
-          <a class="post-toc-link" href="#多平台构建" data-level="1">多平台构建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="构建指定阶段-多阶段构建">
-          <a class="post-toc-link" href="#构建指定阶段-多阶段构建" data-level="1">构建指定阶段（多阶段构建）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从-git-仓库构建">
-          <a class="post-toc-link" href="#从-git-仓库构建" data-level="1">从 Git 仓库构建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从标准输入读取-dockerfile">
-          <a class="post-toc-link" href="#从标准输入读取-dockerfile" data-level="1">从标准输入读取 Dockerfile</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静默构建">
-          <a class="post-toc-link" href="#静默构建" data-level="1">静默构建</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="dockerfile-多阶段构建示例">
           <a class="post-toc-link" href="#dockerfile-多阶段构建示例" data-level="3">Dockerfile 多阶段构建示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="构建阶段">
-          <a class="post-toc-link" href="#构建阶段" data-level="1">构建阶段</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行阶段">
-          <a class="post-toc-link" href="#运行阶段" data-level="1">运行阶段</a>
         </li>
         
       </ul>
@@ -1589,7 +1501,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1772,8 +1684,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

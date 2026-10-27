@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_systemd 命令">
     <meta name="twitter:description" content="配置 WSL2 启用 systemd 支持 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1635,14 +1635,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#检查-wsl-版本" data-level="3">检查 WSL 版本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="通过-microsoft-store-更新或使用-winget">
-              <a class="post-toc-link" href="#通过-microsoft-store-更新或使用-winget" data-level="1">通过 Microsoft Store 更新或使用 winget</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或手动下载安装">
-              <a class="post-toc-link" href="#或手动下载安装" data-level="1">或手动下载安装</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="确认-wsl2-模式">
               <a class="post-toc-link" href="#确认-wsl2-模式" data-level="3">确认 WSL2 模式</a>
             </li>
@@ -1659,14 +1651,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#重启-wsl" data-level="3">重启 WSL</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭所有-wsl-实例">
-              <a class="post-toc-link" href="#关闭所有-wsl-实例" data-level="1">关闭所有 WSL 实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新启动">
-              <a class="post-toc-link" href="#重新启动" data-level="1">重新启动</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="验证-systemd-状态">
               <a class="post-toc-link" href="#验证-systemd-状态" data-level="2">验证 systemd 状态</a>
             </li>
@@ -1675,40 +1659,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#检查-systemd-进程" data-level="3">检查 systemd 进程</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-systemd-pid">
-              <a class="post-toc-link" href="#查看-systemd-pid" data-level="1">查看 systemd PID</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或使用-pidof">
-              <a class="post-toc-link" href="#或使用-pidof" data-level="1">或使用 pidof</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="检查-systemctl-是否可用">
               <a class="post-toc-link" href="#检查-systemctl-是否可用" data-level="3">检查 systemctl 是否可用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-systemctl-版本">
-              <a class="post-toc-link" href="#查看-systemctl-版本" data-level="1">查看 systemctl 版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-systemd-状态">
-              <a class="post-toc-link" href="#查看-systemd-状态" data-level="1">查看 systemd 状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有运行中的服务">
-              <a class="post-toc-link" href="#列出所有运行中的服务" data-level="1">列出所有运行中的服务</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="测试服务管理">
               <a class="post-toc-link" href="#测试服务管理" data-level="3">测试服务管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-docker-服务状态-如已安装">
-              <a class="post-toc-link" href="#查看-docker-服务状态-如已安装" data-level="1">查看 Docker 服务状态（如已安装）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-ssh-服务状态">
-              <a class="post-toc-link" href="#查看-ssh-服务状态" data-level="1">查看 SSH 服务状态</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理常用命令">
@@ -1717,22 +1673,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="使用-docker-示例">
               <a class="post-toc-link" href="#使用-docker-示例" data-level="2">使用 Docker 示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-docker">
-              <a class="post-toc-link" href="#启动-docker" data-level="1">启动 Docker</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-docker-开机自启">
-              <a class="post-toc-link" href="#设置-docker-开机自启" data-level="1">设置 Docker 开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-docker-状态">
-              <a class="post-toc-link" href="#查看-docker-状态" data-level="1">查看 Docker 状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证-docker-工作正常">
-              <a class="post-toc-link" href="#验证-docker-工作正常" data-level="1">验证 Docker 工作正常</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
@@ -1757,14 +1697,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="windows-10-wsl-版本过低">
               <a class="post-toc-link" href="#windows-10-wsl-版本过低" data-level="3">Windows 10 WSL 版本过低</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载最新-wsl-安装包">
-              <a class="post-toc-link" href="#下载最新-wsl-安装包" data-level="1">下载最新 WSL 安装包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-管理员权限">
-              <a class="post-toc-link" href="#安装-管理员权限" data-level="1">安装（管理员权限）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -1828,14 +1760,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#检查-wsl-版本" data-level="3">检查 WSL 版本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="通过-microsoft-store-更新或使用-winget">
-          <a class="post-toc-link" href="#通过-microsoft-store-更新或使用-winget" data-level="1">通过 Microsoft Store 更新或使用 winget</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或手动下载安装">
-          <a class="post-toc-link" href="#或手动下载安装" data-level="1">或手动下载安装</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="确认-wsl2-模式">
           <a class="post-toc-link" href="#确认-wsl2-模式" data-level="3">确认 WSL2 模式</a>
         </li>
@@ -1852,14 +1776,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#重启-wsl" data-level="3">重启 WSL</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭所有-wsl-实例">
-          <a class="post-toc-link" href="#关闭所有-wsl-实例" data-level="1">关闭所有 WSL 实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新启动">
-          <a class="post-toc-link" href="#重新启动" data-level="1">重新启动</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="验证-systemd-状态">
           <a class="post-toc-link" href="#验证-systemd-状态" data-level="2">验证 systemd 状态</a>
         </li>
@@ -1868,40 +1784,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#检查-systemd-进程" data-level="3">检查 systemd 进程</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-systemd-pid">
-          <a class="post-toc-link" href="#查看-systemd-pid" data-level="1">查看 systemd PID</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或使用-pidof">
-          <a class="post-toc-link" href="#或使用-pidof" data-level="1">或使用 pidof</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="检查-systemctl-是否可用">
           <a class="post-toc-link" href="#检查-systemctl-是否可用" data-level="3">检查 systemctl 是否可用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-systemctl-版本">
-          <a class="post-toc-link" href="#查看-systemctl-版本" data-level="1">查看 systemctl 版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-systemd-状态">
-          <a class="post-toc-link" href="#查看-systemd-状态" data-level="1">查看 systemd 状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有运行中的服务">
-          <a class="post-toc-link" href="#列出所有运行中的服务" data-level="1">列出所有运行中的服务</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="测试服务管理">
           <a class="post-toc-link" href="#测试服务管理" data-level="3">测试服务管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-docker-服务状态-如已安装">
-          <a class="post-toc-link" href="#查看-docker-服务状态-如已安装" data-level="1">查看 Docker 服务状态（如已安装）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-ssh-服务状态">
-          <a class="post-toc-link" href="#查看-ssh-服务状态" data-level="1">查看 SSH 服务状态</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理常用命令">
@@ -1910,22 +1798,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="使用-docker-示例">
           <a class="post-toc-link" href="#使用-docker-示例" data-level="2">使用 Docker 示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-docker">
-          <a class="post-toc-link" href="#启动-docker" data-level="1">启动 Docker</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-docker-开机自启">
-          <a class="post-toc-link" href="#设置-docker-开机自启" data-level="1">设置 Docker 开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-docker-状态">
-          <a class="post-toc-link" href="#查看-docker-状态" data-level="1">查看 Docker 状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证-docker-工作正常">
-          <a class="post-toc-link" href="#验证-docker-工作正常" data-level="1">验证 Docker 工作正常</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
@@ -1952,14 +1824,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#windows-10-wsl-版本过低" data-level="3">Windows 10 WSL 版本过低</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载最新-wsl-安装包">
-          <a class="post-toc-link" href="#下载最新-wsl-安装包" data-level="1">下载最新 WSL 安装包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-管理员权限">
-          <a class="post-toc-link" href="#安装-管理员权限" data-level="1">安装（管理员权限）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
           <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
         </li>
@@ -1974,7 +1838,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2157,8 +2021,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

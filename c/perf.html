@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="perf 命令">
     <meta name="twitter:description" content="Linux 性能分析工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1874,396 +1874,64 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基本统计" data-level="3">基本统计</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出可用事件">
-              <a class="post-toc-link" href="#列出可用事件" data-level="1">列出可用事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="统计程序性能">
-              <a class="post-toc-link" href="#统计程序性能" data-level="1">统计程序性能</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="统计并指定事件">
-              <a class="post-toc-link" href="#统计并指定事件" data-level="1">统计并指定事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重复统计">
-              <a class="post-toc-link" href="#重复统计" data-level="1">重复统计</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示详细信息">
-              <a class="post-toc-link" href="#显示详细信息" data-level="1">显示详细信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录到文件">
-              <a class="post-toc-link" href="#记录到文件" data-level="1">记录到文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="cpu-性能事件">
               <a class="post-toc-link" href="#cpu-性能事件" data-level="3">CPU 性能事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-周期">
-              <a class="post-toc-link" href="#cpu-周期" data-level="1">CPU 周期</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指令数">
-              <a class="post-toc-link" href="#指令数" data-level="1">指令数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分支预测">
-              <a class="post-toc-link" href="#分支预测" data-level="1">分支预测</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="缓存命中">
-              <a class="post-toc-link" href="#缓存命中" data-level="1">缓存命中</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="上下文切换">
-              <a class="post-toc-link" href="#上下文切换" data-level="1">上下文切换</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="页面错误">
-              <a class="post-toc-link" href="#页面错误" data-level="1">页面错误</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="函数剖析">
               <a class="post-toc-link" href="#函数剖析" data-level="3">函数剖析</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录函数调用">
-              <a class="post-toc-link" href="#记录函数调用" data-level="1">记录函数调用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定事件">
-              <a class="post-toc-link" href="#指定事件" data-level="1">指定事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定采样频率">
-              <a class="post-toc-link" href="#指定采样频率" data-level="1">指定采样频率</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录时长">
-              <a class="post-toc-link" href="#记录时长" data-level="1">记录时长</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录指定-pid">
-              <a class="post-toc-link" href="#记录指定-pid" data-level="1">记录指定 PID</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录到文件">
-              <a class="post-toc-link" href="#记录到文件" data-level="1">记录到文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="生成报告">
               <a class="post-toc-link" href="#生成报告" data-level="3">生成报告</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看记录的报告">
-              <a class="post-toc-link" href="#查看记录的报告" data-level="1">查看记录的报告</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定数据文件">
-              <a class="post-toc-link" href="#指定数据文件" data-level="1">指定数据文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示调用链">
-              <a class="post-toc-link" href="#显示调用链" data-level="1">显示调用链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示调用关系图">
-              <a class="post-toc-link" href="#显示调用关系图" data-level="1">显示调用关系图</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="过滤">
-              <a class="post-toc-link" href="#过滤" data-level="1">过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示前-n-项">
-              <a class="post-toc-link" href="#显示前-n-项" data-level="1">显示前 N 项</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="热点分析">
               <a class="post-toc-link" href="#热点分析" data-level="3">热点分析</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看热点函数">
-              <a class="post-toc-link" href="#查看热点函数" data-level="1">查看热点函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定事件">
-              <a class="post-toc-link" href="#指定事件" data-level="1">指定事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="按进程过滤">
-              <a class="post-toc-link" href="#按进程过滤" data-level="1">按进程过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="按-cpu-过滤">
-              <a class="post-toc-link" href="#按-cpu-过滤" data-level="1">按 CPU 过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示调用链">
-              <a class="post-toc-link" href="#显示调用链" data-level="1">显示调用链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定符号过滤">
-              <a class="post-toc-link" href="#指定符号过滤" data-level="1">指定符号过滤</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="annotate-源码分析">
               <a class="post-toc-link" href="#annotate-源码分析" data-level="3">annotate（源码分析）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看热点指令">
-              <a class="post-toc-link" href="#查看热点指令" data-level="1">查看热点指令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定数据">
-              <a class="post-toc-link" href="#指定数据" data-level="1">指定数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示源码">
-              <a class="post-toc-link" href="#显示源码" data-level="1">显示源码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示汇编">
-              <a class="post-toc-link" href="#显示汇编" data-level="1">显示汇编</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="调用链分析">
               <a class="post-toc-link" href="#调用链分析" data-level="3">调用链分析</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成调用链">
-              <a class="post-toc-link" href="#生成调用链" data-level="1">生成调用链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看调用树">
-              <a class="post-toc-link" href="#查看调用树" data-level="1">查看调用树</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看调用栈">
-              <a class="post-toc-link" href="#查看调用栈" data-level="1">查看调用栈</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示函数调用关系">
-              <a class="post-toc-link" href="#显示函数调用关系" data-level="1">显示函数调用关系</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="内存分析">
               <a class="post-toc-link" href="#内存分析" data-level="3">内存分析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="内存访问">
-              <a class="post-toc-link" href="#内存访问" data-level="1">内存访问</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看内存事件">
-              <a class="post-toc-link" href="#查看内存事件" data-level="1">查看内存事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="采样内存访问">
-              <a class="post-toc-link" href="#采样内存访问" data-level="1">采样内存访问</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="调度分析">
               <a class="post-toc-link" href="#调度分析" data-level="3">调度分析</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="调度器事件">
-              <a class="post-toc-link" href="#调度器事件" data-level="1">调度器事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看延迟">
-              <a class="post-toc-link" href="#查看延迟" data-level="1">查看延迟</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看调度统计">
-              <a class="post-toc-link" href="#查看调度统计" data-level="1">查看调度统计</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看调用轨迹">
-              <a class="post-toc-link" href="#查看调用轨迹" data-level="1">查看调用轨迹</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看上下文切换">
-              <a class="post-toc-link" href="#查看上下文切换" data-level="1">查看上下文切换</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="kvm-分析">
               <a class="post-toc-link" href="#kvm-分析" data-level="3">KVM 分析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录-kvm-事件">
-              <a class="post-toc-link" href="#记录-kvm-事件" data-level="1">记录 KVM 事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-kvm-报告">
-              <a class="post-toc-link" href="#查看-kvm-报告" data-level="1">查看 KVM 报告</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="统计-kvm">
-              <a class="post-toc-link" href="#统计-kvm" data-level="1">统计 KVM</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="trace-跟踪">
               <a class="post-toc-link" href="#trace-跟踪" data-level="3">trace（跟踪）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪系统调用">
-              <a class="post-toc-link" href="#跟踪系统调用" data-level="1">跟踪系统调用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪指定-pid">
-              <a class="post-toc-link" href="#跟踪指定-pid" data-level="1">跟踪指定 PID</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪指定系统调用">
-              <a class="post-toc-link" href="#跟踪指定系统调用" data-level="1">跟踪指定系统调用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪网络">
-              <a class="post-toc-link" href="#跟踪网络" data-level="1">跟踪网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪文件">
-              <a class="post-toc-link" href="#跟踪文件" data-level="1">跟踪文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="使用示例">
               <a class="post-toc-link" href="#使用示例" data-level="3">使用示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-性能基准测试">
-              <a class="post-toc-link" href="#1-性能基准测试" data-level="1">1. 性能基准测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-热点分析">
-              <a class="post-toc-link" href="#2-热点分析" data-level="1">2. 热点分析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-完整性能剖析">
-              <a class="post-toc-link" href="#3-完整性能剖析" data-level="1">3. 完整性能剖析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-跟踪特定事件">
-              <a class="post-toc-link" href="#4-跟踪特定事件" data-level="1">4. 跟踪特定事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-监控系统性能">
-              <a class="post-toc-link" href="#5-监控系统性能" data-level="1">5. 监控系统性能</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="6-分析-cpu-使用">
-              <a class="post-toc-link" href="#6-分析-cpu-使用" data-level="1">6. 分析 CPU 使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="7-延迟分析">
-              <a class="post-toc-link" href="#7-延迟分析" data-level="1">7. 延迟分析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="8-查看-cpu-迁移">
-              <a class="post-toc-link" href="#8-查看-cpu-迁移" data-level="1">8. 查看 CPU 迁移</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="9-内存带宽">
-              <a class="post-toc-link" href="#9-内存带宽" data-level="1">9. 内存带宽</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="10-分支预测">
-              <a class="post-toc-link" href="#10-分支预测" data-level="1">10. 分支预测</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="脚本">
               <a class="post-toc-link" href="#脚本" data-level="3">脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出可用脚本">
-              <a class="post-toc-link" href="#列出可用脚本" data-level="1">列出可用脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行脚本">
-              <a class="post-toc-link" href="#执行脚本" data-level="1">执行脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成火焰图数据">
-              <a class="post-toc-link" href="#生成火焰图数据" data-level="1">生成火焰图数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常用脚本">
-              <a class="post-toc-link" href="#常用脚本" data-level="1">常用脚本</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="火焰图">
               <a class="post-toc-link" href="#火焰图" data-level="3">火焰图</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装火焰图工具">
-              <a class="post-toc-link" href="#安装火焰图工具" data-level="1">安装火焰图工具</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="记录性能数据">
-              <a class="post-toc-link" href="#记录性能数据" data-level="1">记录性能数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成火焰图">
-              <a class="post-toc-link" href="#生成火焰图" data-level="1">生成火焰图</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-火焰图">
-              <a class="post-toc-link" href="#cpu-火焰图" data-level="1">CPU 火焰图</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="off-cpu-火焰图">
-              <a class="post-toc-link" href="#off-cpu-火焰图" data-level="1">Off-CPU 火焰图</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项">
               <a class="post-toc-link" href="#常用选项" data-level="3">常用选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="采样频率">
-              <a class="post-toc-link" href="#采样频率" data-level="1">采样频率</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="事件过滤">
-              <a class="post-toc-link" href="#事件过滤" data-level="1">事件过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-过滤">
-              <a class="post-toc-link" href="#cpu-过滤" data-level="1">CPU 过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进程过滤">
-              <a class="post-toc-link" href="#进程过滤" data-level="1">进程过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="内核-用户模式">
-              <a class="post-toc-link" href="#内核-用户模式" data-level="1">内核/用户模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="内核模块">
-              <a class="post-toc-link" href="#内核模块" data-level="1">内核模块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="数据大小">
-              <a class="post-toc-link" href="#数据大小" data-level="1">数据大小</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出文件">
-              <a class="post-toc-link" href="#输出文件" data-level="1">输出文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="权限">
               <a class="post-toc-link" href="#权限" data-level="3">权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="需要-root-权限">
-              <a class="post-toc-link" href="#需要-root-权限" data-level="1">需要 root 权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置内核权限">
-              <a class="post-toc-link" href="#设置内核权限" data-level="1">设置内核权限</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用-perf-子命令">
@@ -2307,396 +1975,64 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基本统计" data-level="3">基本统计</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出可用事件">
-          <a class="post-toc-link" href="#列出可用事件" data-level="1">列出可用事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="统计程序性能">
-          <a class="post-toc-link" href="#统计程序性能" data-level="1">统计程序性能</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="统计并指定事件">
-          <a class="post-toc-link" href="#统计并指定事件" data-level="1">统计并指定事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重复统计">
-          <a class="post-toc-link" href="#重复统计" data-level="1">重复统计</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示详细信息">
-          <a class="post-toc-link" href="#显示详细信息" data-level="1">显示详细信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录到文件">
-          <a class="post-toc-link" href="#记录到文件" data-level="1">记录到文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="cpu-性能事件">
           <a class="post-toc-link" href="#cpu-性能事件" data-level="3">CPU 性能事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-周期">
-          <a class="post-toc-link" href="#cpu-周期" data-level="1">CPU 周期</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指令数">
-          <a class="post-toc-link" href="#指令数" data-level="1">指令数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分支预测">
-          <a class="post-toc-link" href="#分支预测" data-level="1">分支预测</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="缓存命中">
-          <a class="post-toc-link" href="#缓存命中" data-level="1">缓存命中</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="上下文切换">
-          <a class="post-toc-link" href="#上下文切换" data-level="1">上下文切换</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="页面错误">
-          <a class="post-toc-link" href="#页面错误" data-level="1">页面错误</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="函数剖析">
           <a class="post-toc-link" href="#函数剖析" data-level="3">函数剖析</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录函数调用">
-          <a class="post-toc-link" href="#记录函数调用" data-level="1">记录函数调用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定事件">
-          <a class="post-toc-link" href="#指定事件" data-level="1">指定事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定采样频率">
-          <a class="post-toc-link" href="#指定采样频率" data-level="1">指定采样频率</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录时长">
-          <a class="post-toc-link" href="#记录时长" data-level="1">记录时长</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录指定-pid">
-          <a class="post-toc-link" href="#记录指定-pid" data-level="1">记录指定 PID</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录到文件">
-          <a class="post-toc-link" href="#记录到文件" data-level="1">记录到文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="生成报告">
           <a class="post-toc-link" href="#生成报告" data-level="3">生成报告</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看记录的报告">
-          <a class="post-toc-link" href="#查看记录的报告" data-level="1">查看记录的报告</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定数据文件">
-          <a class="post-toc-link" href="#指定数据文件" data-level="1">指定数据文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示调用链">
-          <a class="post-toc-link" href="#显示调用链" data-level="1">显示调用链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示调用关系图">
-          <a class="post-toc-link" href="#显示调用关系图" data-level="1">显示调用关系图</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="过滤">
-          <a class="post-toc-link" href="#过滤" data-level="1">过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示前-n-项">
-          <a class="post-toc-link" href="#显示前-n-项" data-level="1">显示前 N 项</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="热点分析">
           <a class="post-toc-link" href="#热点分析" data-level="3">热点分析</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看热点函数">
-          <a class="post-toc-link" href="#查看热点函数" data-level="1">查看热点函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定事件">
-          <a class="post-toc-link" href="#指定事件" data-level="1">指定事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="按进程过滤">
-          <a class="post-toc-link" href="#按进程过滤" data-level="1">按进程过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="按-cpu-过滤">
-          <a class="post-toc-link" href="#按-cpu-过滤" data-level="1">按 CPU 过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示调用链">
-          <a class="post-toc-link" href="#显示调用链" data-level="1">显示调用链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定符号过滤">
-          <a class="post-toc-link" href="#指定符号过滤" data-level="1">指定符号过滤</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="annotate-源码分析">
           <a class="post-toc-link" href="#annotate-源码分析" data-level="3">annotate（源码分析）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看热点指令">
-          <a class="post-toc-link" href="#查看热点指令" data-level="1">查看热点指令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定数据">
-          <a class="post-toc-link" href="#指定数据" data-level="1">指定数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示源码">
-          <a class="post-toc-link" href="#显示源码" data-level="1">显示源码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示汇编">
-          <a class="post-toc-link" href="#显示汇编" data-level="1">显示汇编</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="调用链分析">
           <a class="post-toc-link" href="#调用链分析" data-level="3">调用链分析</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成调用链">
-          <a class="post-toc-link" href="#生成调用链" data-level="1">生成调用链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看调用树">
-          <a class="post-toc-link" href="#查看调用树" data-level="1">查看调用树</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看调用栈">
-          <a class="post-toc-link" href="#查看调用栈" data-level="1">查看调用栈</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示函数调用关系">
-          <a class="post-toc-link" href="#显示函数调用关系" data-level="1">显示函数调用关系</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="内存分析">
           <a class="post-toc-link" href="#内存分析" data-level="3">内存分析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="内存访问">
-          <a class="post-toc-link" href="#内存访问" data-level="1">内存访问</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看内存事件">
-          <a class="post-toc-link" href="#查看内存事件" data-level="1">查看内存事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="采样内存访问">
-          <a class="post-toc-link" href="#采样内存访问" data-level="1">采样内存访问</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="调度分析">
           <a class="post-toc-link" href="#调度分析" data-level="3">调度分析</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="调度器事件">
-          <a class="post-toc-link" href="#调度器事件" data-level="1">调度器事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看延迟">
-          <a class="post-toc-link" href="#查看延迟" data-level="1">查看延迟</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看调度统计">
-          <a class="post-toc-link" href="#查看调度统计" data-level="1">查看调度统计</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看调用轨迹">
-          <a class="post-toc-link" href="#查看调用轨迹" data-level="1">查看调用轨迹</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看上下文切换">
-          <a class="post-toc-link" href="#查看上下文切换" data-level="1">查看上下文切换</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="kvm-分析">
           <a class="post-toc-link" href="#kvm-分析" data-level="3">KVM 分析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录-kvm-事件">
-          <a class="post-toc-link" href="#记录-kvm-事件" data-level="1">记录 KVM 事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-kvm-报告">
-          <a class="post-toc-link" href="#查看-kvm-报告" data-level="1">查看 KVM 报告</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="统计-kvm">
-          <a class="post-toc-link" href="#统计-kvm" data-level="1">统计 KVM</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="trace-跟踪">
           <a class="post-toc-link" href="#trace-跟踪" data-level="3">trace（跟踪）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪系统调用">
-          <a class="post-toc-link" href="#跟踪系统调用" data-level="1">跟踪系统调用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪指定-pid">
-          <a class="post-toc-link" href="#跟踪指定-pid" data-level="1">跟踪指定 PID</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪指定系统调用">
-          <a class="post-toc-link" href="#跟踪指定系统调用" data-level="1">跟踪指定系统调用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪网络">
-          <a class="post-toc-link" href="#跟踪网络" data-level="1">跟踪网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跟踪文件">
-          <a class="post-toc-link" href="#跟踪文件" data-level="1">跟踪文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="使用示例">
           <a class="post-toc-link" href="#使用示例" data-level="3">使用示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-性能基准测试">
-          <a class="post-toc-link" href="#1-性能基准测试" data-level="1">1. 性能基准测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-热点分析">
-          <a class="post-toc-link" href="#2-热点分析" data-level="1">2. 热点分析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-完整性能剖析">
-          <a class="post-toc-link" href="#3-完整性能剖析" data-level="1">3. 完整性能剖析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-跟踪特定事件">
-          <a class="post-toc-link" href="#4-跟踪特定事件" data-level="1">4. 跟踪特定事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-监控系统性能">
-          <a class="post-toc-link" href="#5-监控系统性能" data-level="1">5. 监控系统性能</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="6-分析-cpu-使用">
-          <a class="post-toc-link" href="#6-分析-cpu-使用" data-level="1">6. 分析 CPU 使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="7-延迟分析">
-          <a class="post-toc-link" href="#7-延迟分析" data-level="1">7. 延迟分析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="8-查看-cpu-迁移">
-          <a class="post-toc-link" href="#8-查看-cpu-迁移" data-level="1">8. 查看 CPU 迁移</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="9-内存带宽">
-          <a class="post-toc-link" href="#9-内存带宽" data-level="1">9. 内存带宽</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="10-分支预测">
-          <a class="post-toc-link" href="#10-分支预测" data-level="1">10. 分支预测</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="脚本">
           <a class="post-toc-link" href="#脚本" data-level="3">脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出可用脚本">
-          <a class="post-toc-link" href="#列出可用脚本" data-level="1">列出可用脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行脚本">
-          <a class="post-toc-link" href="#执行脚本" data-level="1">执行脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成火焰图数据">
-          <a class="post-toc-link" href="#生成火焰图数据" data-level="1">生成火焰图数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常用脚本">
-          <a class="post-toc-link" href="#常用脚本" data-level="1">常用脚本</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="火焰图">
           <a class="post-toc-link" href="#火焰图" data-level="3">火焰图</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装火焰图工具">
-          <a class="post-toc-link" href="#安装火焰图工具" data-level="1">安装火焰图工具</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="记录性能数据">
-          <a class="post-toc-link" href="#记录性能数据" data-level="1">记录性能数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成火焰图">
-          <a class="post-toc-link" href="#生成火焰图" data-level="1">生成火焰图</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-火焰图">
-          <a class="post-toc-link" href="#cpu-火焰图" data-level="1">CPU 火焰图</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="off-cpu-火焰图">
-          <a class="post-toc-link" href="#off-cpu-火焰图" data-level="1">Off-CPU 火焰图</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项">
           <a class="post-toc-link" href="#常用选项" data-level="3">常用选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="采样频率">
-          <a class="post-toc-link" href="#采样频率" data-level="1">采样频率</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="事件过滤">
-          <a class="post-toc-link" href="#事件过滤" data-level="1">事件过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-过滤">
-          <a class="post-toc-link" href="#cpu-过滤" data-level="1">CPU 过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进程过滤">
-          <a class="post-toc-link" href="#进程过滤" data-level="1">进程过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="内核-用户模式">
-          <a class="post-toc-link" href="#内核-用户模式" data-level="1">内核/用户模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="内核模块">
-          <a class="post-toc-link" href="#内核模块" data-level="1">内核模块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="数据大小">
-          <a class="post-toc-link" href="#数据大小" data-level="1">数据大小</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出文件">
-          <a class="post-toc-link" href="#输出文件" data-level="1">输出文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="权限">
           <a class="post-toc-link" href="#权限" data-level="3">权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="需要-root-权限">
-          <a class="post-toc-link" href="#需要-root-权限" data-level="1">需要 root 权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置内核权限">
-          <a class="post-toc-link" href="#设置内核权限" data-level="1">设置内核权限</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用-perf-子命令">
@@ -2709,7 +2045,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2892,8 +2228,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

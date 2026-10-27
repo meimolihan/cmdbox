@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fan-nginx 命令">
     <meta name="twitter:description" content="fan-nginx Nginx 图形化管理平台（nginxWebUI 延续精简版）部署运维 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1542,22 +1542,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#systemd-脚本安装-原生部署" data-level="2">systemd 脚本安装（原生部署）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式安装">
-              <a class="post-toc-link" href="#交互式安装" data-level="1">交互式安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员">
-              <a class="post-toc-link" href="#静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员" data-level="1">静默安装：端口 8080 + 数据目录 /var/lib/fan-nginx + 初始化管理员</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在线下载-github-releases-预编译-jar-默认方式-无需源码-maven">
-              <a class="post-toc-link" href="#在线下载-github-releases-预编译-jar-默认方式-无需源码-maven" data-level="1">在线下载 GitHub Releases 预编译 jar（默认方式，无需源码/maven）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键安装">
-              <a class="post-toc-link" href="#远程一键安装" data-level="1">远程一键安装</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="内置-cli-命令">
               <a class="post-toc-link" href="#内置-cli-命令" data-level="2">内置 CLI 命令</a>
             </li>
@@ -1566,32 +1550,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#备份与恢复" data-level="2">备份与恢复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份-在线打包-不停服-保留-6-份-自动排除-log-目录">
-              <a class="post-toc-link" href="#备份-在线打包-不停服-保留-6-份-自动排除-log-目录" data-level="1">备份（在线打包、不停服，保留 6 份，自动排除 log 目录）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-自动取最新备份-停服-清空-解压-启动">
-              <a class="post-toc-link" href="#恢复-自动取最新备份-停服-清空-解压-启动" data-level="1">恢复（自动取最新备份：停服→清空→解压→启动）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定备份文件">
-              <a class="post-toc-link" href="#恢复指定备份文件" data-level="1">恢复指定备份文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理">
               <a class="post-toc-link" href="#服务管理" data-level="2">服务管理</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="卸载">
               <a class="post-toc-link" href="#卸载" data-level="2">卸载</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="systemd-方式">
-              <a class="post-toc-link" href="#systemd-方式" data-level="1">systemd 方式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-方式">
-              <a class="post-toc-link" href="#docker-方式" data-level="1">Docker 方式</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="数据目录说明">
@@ -1647,22 +1611,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#systemd-脚本安装-原生部署" data-level="2">systemd 脚本安装（原生部署）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式安装">
-          <a class="post-toc-link" href="#交互式安装" data-level="1">交互式安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员">
-          <a class="post-toc-link" href="#静默安装-端口-8080-数据目录-var-lib-fan-nginx-初始化管理员" data-level="1">静默安装：端口 8080 + 数据目录 /var/lib/fan-nginx + 初始化管理员</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在线下载-github-releases-预编译-jar-默认方式-无需源码-maven">
-          <a class="post-toc-link" href="#在线下载-github-releases-预编译-jar-默认方式-无需源码-maven" data-level="1">在线下载 GitHub Releases 预编译 jar（默认方式，无需源码/maven）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="远程一键安装">
-          <a class="post-toc-link" href="#远程一键安装" data-level="1">远程一键安装</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="内置-cli-命令">
           <a class="post-toc-link" href="#内置-cli-命令" data-level="2">内置 CLI 命令</a>
         </li>
@@ -1671,32 +1619,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#备份与恢复" data-level="2">备份与恢复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份-在线打包-不停服-保留-6-份-自动排除-log-目录">
-          <a class="post-toc-link" href="#备份-在线打包-不停服-保留-6-份-自动排除-log-目录" data-level="1">备份（在线打包、不停服，保留 6 份，自动排除 log 目录）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-自动取最新备份-停服-清空-解压-启动">
-          <a class="post-toc-link" href="#恢复-自动取最新备份-停服-清空-解压-启动" data-level="1">恢复（自动取最新备份：停服→清空→解压→启动）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定备份文件">
-          <a class="post-toc-link" href="#恢复指定备份文件" data-level="1">恢复指定备份文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理">
           <a class="post-toc-link" href="#服务管理" data-level="2">服务管理</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="卸载">
           <a class="post-toc-link" href="#卸载" data-level="2">卸载</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="systemd-方式">
-          <a class="post-toc-link" href="#systemd-方式" data-level="1">systemd 方式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-方式">
-          <a class="post-toc-link" href="#docker-方式" data-level="1">Docker 方式</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="数据目录说明">
@@ -1721,7 +1649,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1904,8 +1832,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="istoreos-portfwd 命令">
     <meta name="twitter:description" content="iStoreOS 端口转发规则配置 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1758,80 +1758,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#启用-ip-转发" data-level="4">启用 IP 转发</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-sysctl-conf">
-              <a class="post-toc-link" href="#编辑-sysctl-conf" data-level="1">编辑 sysctl.conf</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确保以下行已启用">
-              <a class="post-toc-link" href="#确保以下行已启用" data-level="1">确保以下行已启用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="立即生效">
-              <a class="post-toc-link" href="#立即生效" data-level="1">立即生效</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="检查当前防火墙规则">
               <a class="post-toc-link" href="#检查当前防火墙规则" data-level="4">检查当前防火墙规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看现有-nat-规则">
-              <a class="post-toc-link" href="#查看现有-nat-规则" data-level="1">查看现有 NAT 规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-prerouting-链">
-              <a class="post-toc-link" href="#查看-prerouting-链" data-level="1">查看 PREROUTING 链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-postrouting-链">
-              <a class="post-toc-link" href="#查看-postrouting-链" data-level="1">查看 POSTROUTING 链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-forward-链-确保转发不被阻止">
-              <a class="post-toc-link" href="#查看-forward-链-确保转发不被阻止" data-level="1">查看 FORWARD 链（确保转发不被阻止）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="备份配置">
               <a class="post-toc-link" href="#备份配置" data-level="4">备份配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份防火墙配置">
-              <a class="post-toc-link" href="#备份防火墙配置" data-level="1">备份防火墙配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份网络配置">
-              <a class="post-toc-link" href="#备份网络配置" data-level="1">备份网络配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份当前-iptables-规则">
-              <a class="post-toc-link" href="#备份当前-iptables-规则" data-level="1">备份当前 iptables 规则</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="方案一-网关指向主路由">
               <a class="post-toc-link" href="#方案一-网关指向主路由" data-level="3">方案一：网关指向主路由</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建或覆盖防火墙配置">
-              <a class="post-toc-link" href="#创建或覆盖防火墙配置" data-level="1">创建或覆盖防火墙配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="istoreos-端口转发配置">
-              <a class="post-toc-link" href="#istoreos-端口转发配置" data-level="3">iStoreOS 端口转发配置 ###</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="pve-win11-桌面-主路由直接转发">
-              <a class="post-toc-link" href="#pve-win11-桌面-主路由直接转发" data-level="3">PVE-Win11 桌面 - 主路由直接转发 ###</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="外部-3366-端口-内部-3389-端口">
-              <a class="post-toc-link" href="#外部-3366-端口-内部-3389-端口" data-level="1">外部 3366 端口 -&gt; 内部 3389 端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确保-forward-链允许转发">
-              <a class="post-toc-link" href="#确保-forward-链允许转发" data-level="1">确保 FORWARD 链允许转发</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启防火墙">
-              <a class="post-toc-link" href="#重启防火墙" data-level="1">重启防火墙</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="方案二-网关指向旁路由">
@@ -1842,36 +1778,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#步骤-1-旁路由端口转发配置" data-level="4">步骤 1：旁路由端口转发配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="旁路由端口转发配置">
-              <a class="post-toc-link" href="#旁路由端口转发配置" data-level="3">旁路由端口转发配置 ###</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="pve-win11-桌面-旁路由转发">
-              <a class="post-toc-link" href="#pve-win11-桌面-旁路由转发" data-level="3">PVE-Win11 桌面 - 旁路由转发 ###</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-主路由端口转发配置">
               <a class="post-toc-link" href="#步骤-2-主路由端口转发配置" data-level="4">步骤 2：主路由端口转发配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="主路由端口转发配置">
-              <a class="post-toc-link" href="#主路由端口转发配置" data-level="3">主路由端口转发配置 ###</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="pve-win11-桌面-主路由二次转发">
-              <a class="post-toc-link" href="#pve-win11-桌面-主路由二次转发" data-level="3">PVE-Win11 桌面 - 主路由二次转发 ###</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="外部-3377-端口-旁路由-3389-端口">
-              <a class="post-toc-link" href="#外部-3377-端口-旁路由-3389-端口" data-level="1">外部 3377 端口 -&gt; 旁路由 3389 端口</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="方案三-追加配置-不覆盖原有规则">
               <a class="post-toc-link" href="#方案三-追加配置-不覆盖原有规则" data-level="3">方案三：追加配置（不覆盖原有规则）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="sun-panel-转发">
-              <a class="post-toc-link" href="#sun-panel-转发" data-level="1">Sun-panel 转发</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="高级配置">
@@ -1894,14 +1806,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#删除规则" data-level="4">删除规则</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看规则编号">
-              <a class="post-toc-link" href="#查看规则编号" data-level="1">查看规则编号</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="按编号删除">
-              <a class="post-toc-link" href="#按编号删除" data-level="1">按编号删除</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="验证与调试">
               <a class="post-toc-link" href="#验证与调试" data-level="3">验证与调试</a>
             </li>
@@ -1910,28 +1814,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#检查规则" data-level="4">检查规则</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nat-表所有规则">
-              <a class="post-toc-link" href="#查看-nat-表所有规则" data-level="1">查看 NAT 表所有规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-prerouting-规则">
-              <a class="post-toc-link" href="#查看-prerouting-规则" data-level="1">查看 PREROUTING 规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-forward-规则">
-              <a class="post-toc-link" href="#查看-forward-规则" data-level="1">查看 FORWARD 规则</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="测试连通性">
               <a class="post-toc-link" href="#测试连通性" data-level="4">测试连通性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="内网测试">
-              <a class="post-toc-link" href="#内网测试" data-level="1">内网测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查目标服务监听">
-              <a class="post-toc-link" href="#检查目标服务监听" data-level="1">检查目标服务监听</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="查看连接跟踪">
@@ -1946,56 +1830,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#规则不生效" data-level="4">规则不生效</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查防火墙状态">
-              <a class="post-toc-link" href="#检查防火墙状态" data-level="1">检查防火墙状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置">
-              <a class="post-toc-link" href="#重新加载配置" data-level="1">重新加载配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认-ip-转发已开启">
-              <a class="post-toc-link" href="#确认-ip-转发已开启" data-level="1">确认 IP 转发已开启</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="能连接但无法通信">
               <a class="post-toc-link" href="#能连接但无法通信" data-level="4">能连接但无法通信</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查目标服务是否运行">
-              <a class="post-toc-link" href="#检查目标服务是否运行" data-level="1">检查目标服务是否运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查目标主机防火墙">
-              <a class="post-toc-link" href="#检查目标主机防火墙" data-level="1">检查目标主机防火墙</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-forward-链规则">
-              <a class="post-toc-link" href="#检查-forward-链规则" data-level="1">检查 FORWARD 链规则</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="重启后规则丢失">
               <a class="post-toc-link" href="#重启后规则丢失" data-level="4">重启后规则丢失</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确保规则保存在-etc-firewall-user">
-              <a class="post-toc-link" href="#确保规则保存在-etc-firewall-user" data-level="1">确保规则保存在 /etc/firewall.user</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认防火墙启动脚本加载该文件">
-              <a class="post-toc-link" href="#确认防火墙启动脚本加载该文件" data-level="1">确认防火墙启动脚本加载该文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动保存规则">
-              <a class="post-toc-link" href="#手动保存规则" data-level="1">手动保存规则</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="端口冲突">
               <a class="post-toc-link" href="#端口冲突" data-level="4">端口冲突</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查端口占用">
-              <a class="post-toc-link" href="#检查端口占用" data-level="1">检查端口占用</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置管理建议">
@@ -2006,44 +1850,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#版本控制" data-level="4">版本控制</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="按时间备份">
-              <a class="post-toc-link" href="#按时间备份" data-level="1">按时间备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="git-管理">
-              <a class="post-toc-link" href="#git-管理" data-level="1">Git 管理</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="添加配置说明头">
               <a class="post-toc-link" href="#添加配置说明头" data-level="4">添加配置说明头</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-防火墙自定义规则">
-              <a class="post-toc-link" href="#istoreos-防火墙自定义规则" data-level="1">iStoreOS 防火墙自定义规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成时间-date">
-              <a class="post-toc-link" href="#生成时间-date" data-level="1">生成时间: $(date)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备注-自定义端口转发规则">
-              <a class="post-toc-link" href="#备注-自定义端口转发规则" data-level="1">备注: 自定义端口转发规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="规则说明">
-              <a class="post-toc-link" href="#规则说明" data-level="3">规则说明 ###</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="端口-3366-win-远程桌面-10-10-10-249-3389">
-              <a class="post-toc-link" href="#端口-3366-win-远程桌面-10-10-10-249-3389" data-level="1">端口 3366 -&gt; Win 远程桌面 (10.10.10.249:3389)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="端口-3002-sun-panel-面板-10-10-10-251-3002">
-              <a class="post-toc-link" href="#端口-3002-sun-panel-面板-10-10-10-251-3002" data-level="1">端口 3002 -&gt; Sun-panel 面板 (10.10.10.251:3002)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="实际规则">
-              <a class="post-toc-link" href="#实际规则" data-level="3">实际规则 ###</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="定期检查脚本">
@@ -2099,80 +1907,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#启用-ip-转发" data-level="4">启用 IP 转发</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-sysctl-conf">
-          <a class="post-toc-link" href="#编辑-sysctl-conf" data-level="1">编辑 sysctl.conf</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确保以下行已启用">
-          <a class="post-toc-link" href="#确保以下行已启用" data-level="1">确保以下行已启用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="立即生效">
-          <a class="post-toc-link" href="#立即生效" data-level="1">立即生效</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="检查当前防火墙规则">
           <a class="post-toc-link" href="#检查当前防火墙规则" data-level="4">检查当前防火墙规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看现有-nat-规则">
-          <a class="post-toc-link" href="#查看现有-nat-规则" data-level="1">查看现有 NAT 规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-prerouting-链">
-          <a class="post-toc-link" href="#查看-prerouting-链" data-level="1">查看 PREROUTING 链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-postrouting-链">
-          <a class="post-toc-link" href="#查看-postrouting-链" data-level="1">查看 POSTROUTING 链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-forward-链-确保转发不被阻止">
-          <a class="post-toc-link" href="#查看-forward-链-确保转发不被阻止" data-level="1">查看 FORWARD 链（确保转发不被阻止）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="备份配置">
           <a class="post-toc-link" href="#备份配置" data-level="4">备份配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份防火墙配置">
-          <a class="post-toc-link" href="#备份防火墙配置" data-level="1">备份防火墙配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份网络配置">
-          <a class="post-toc-link" href="#备份网络配置" data-level="1">备份网络配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份当前-iptables-规则">
-          <a class="post-toc-link" href="#备份当前-iptables-规则" data-level="1">备份当前 iptables 规则</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="方案一-网关指向主路由">
           <a class="post-toc-link" href="#方案一-网关指向主路由" data-level="3">方案一：网关指向主路由</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建或覆盖防火墙配置">
-          <a class="post-toc-link" href="#创建或覆盖防火墙配置" data-level="1">创建或覆盖防火墙配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="istoreos-端口转发配置">
-          <a class="post-toc-link" href="#istoreos-端口转发配置" data-level="3">iStoreOS 端口转发配置 ###</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="pve-win11-桌面-主路由直接转发">
-          <a class="post-toc-link" href="#pve-win11-桌面-主路由直接转发" data-level="3">PVE-Win11 桌面 - 主路由直接转发 ###</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="外部-3366-端口-内部-3389-端口">
-          <a class="post-toc-link" href="#外部-3366-端口-内部-3389-端口" data-level="1">外部 3366 端口 -&gt; 内部 3389 端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确保-forward-链允许转发">
-          <a class="post-toc-link" href="#确保-forward-链允许转发" data-level="1">确保 FORWARD 链允许转发</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启防火墙">
-          <a class="post-toc-link" href="#重启防火墙" data-level="1">重启防火墙</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="方案二-网关指向旁路由">
@@ -2183,36 +1927,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#步骤-1-旁路由端口转发配置" data-level="4">步骤 1：旁路由端口转发配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="旁路由端口转发配置">
-          <a class="post-toc-link" href="#旁路由端口转发配置" data-level="3">旁路由端口转发配置 ###</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="pve-win11-桌面-旁路由转发">
-          <a class="post-toc-link" href="#pve-win11-桌面-旁路由转发" data-level="3">PVE-Win11 桌面 - 旁路由转发 ###</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-主路由端口转发配置">
           <a class="post-toc-link" href="#步骤-2-主路由端口转发配置" data-level="4">步骤 2：主路由端口转发配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="主路由端口转发配置">
-          <a class="post-toc-link" href="#主路由端口转发配置" data-level="3">主路由端口转发配置 ###</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="pve-win11-桌面-主路由二次转发">
-          <a class="post-toc-link" href="#pve-win11-桌面-主路由二次转发" data-level="3">PVE-Win11 桌面 - 主路由二次转发 ###</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="外部-3377-端口-旁路由-3389-端口">
-          <a class="post-toc-link" href="#外部-3377-端口-旁路由-3389-端口" data-level="1">外部 3377 端口 -&gt; 旁路由 3389 端口</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="方案三-追加配置-不覆盖原有规则">
           <a class="post-toc-link" href="#方案三-追加配置-不覆盖原有规则" data-level="3">方案三：追加配置（不覆盖原有规则）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="sun-panel-转发">
-          <a class="post-toc-link" href="#sun-panel-转发" data-level="1">Sun-panel 转发</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="高级配置">
@@ -2235,14 +1955,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#删除规则" data-level="4">删除规则</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看规则编号">
-          <a class="post-toc-link" href="#查看规则编号" data-level="1">查看规则编号</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="按编号删除">
-          <a class="post-toc-link" href="#按编号删除" data-level="1">按编号删除</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="验证与调试">
           <a class="post-toc-link" href="#验证与调试" data-level="3">验证与调试</a>
         </li>
@@ -2251,28 +1963,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#检查规则" data-level="4">检查规则</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nat-表所有规则">
-          <a class="post-toc-link" href="#查看-nat-表所有规则" data-level="1">查看 NAT 表所有规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-prerouting-规则">
-          <a class="post-toc-link" href="#查看-prerouting-规则" data-level="1">查看 PREROUTING 规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-forward-规则">
-          <a class="post-toc-link" href="#查看-forward-规则" data-level="1">查看 FORWARD 规则</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="测试连通性">
           <a class="post-toc-link" href="#测试连通性" data-level="4">测试连通性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="内网测试">
-          <a class="post-toc-link" href="#内网测试" data-level="1">内网测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查目标服务监听">
-          <a class="post-toc-link" href="#检查目标服务监听" data-level="1">检查目标服务监听</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="查看连接跟踪">
@@ -2287,56 +1979,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#规则不生效" data-level="4">规则不生效</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查防火墙状态">
-          <a class="post-toc-link" href="#检查防火墙状态" data-level="1">检查防火墙状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置">
-          <a class="post-toc-link" href="#重新加载配置" data-level="1">重新加载配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认-ip-转发已开启">
-          <a class="post-toc-link" href="#确认-ip-转发已开启" data-level="1">确认 IP 转发已开启</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="能连接但无法通信">
           <a class="post-toc-link" href="#能连接但无法通信" data-level="4">能连接但无法通信</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查目标服务是否运行">
-          <a class="post-toc-link" href="#检查目标服务是否运行" data-level="1">检查目标服务是否运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查目标主机防火墙">
-          <a class="post-toc-link" href="#检查目标主机防火墙" data-level="1">检查目标主机防火墙</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-forward-链规则">
-          <a class="post-toc-link" href="#检查-forward-链规则" data-level="1">检查 FORWARD 链规则</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="重启后规则丢失">
           <a class="post-toc-link" href="#重启后规则丢失" data-level="4">重启后规则丢失</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确保规则保存在-etc-firewall-user">
-          <a class="post-toc-link" href="#确保规则保存在-etc-firewall-user" data-level="1">确保规则保存在 /etc/firewall.user</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认防火墙启动脚本加载该文件">
-          <a class="post-toc-link" href="#确认防火墙启动脚本加载该文件" data-level="1">确认防火墙启动脚本加载该文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动保存规则">
-          <a class="post-toc-link" href="#手动保存规则" data-level="1">手动保存规则</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="端口冲突">
           <a class="post-toc-link" href="#端口冲突" data-level="4">端口冲突</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查端口占用">
-          <a class="post-toc-link" href="#检查端口占用" data-level="1">检查端口占用</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置管理建议">
@@ -2347,44 +1999,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#版本控制" data-level="4">版本控制</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="按时间备份">
-          <a class="post-toc-link" href="#按时间备份" data-level="1">按时间备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="git-管理">
-          <a class="post-toc-link" href="#git-管理" data-level="1">Git 管理</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="添加配置说明头">
           <a class="post-toc-link" href="#添加配置说明头" data-level="4">添加配置说明头</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-防火墙自定义规则">
-          <a class="post-toc-link" href="#istoreos-防火墙自定义规则" data-level="1">iStoreOS 防火墙自定义规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成时间-date">
-          <a class="post-toc-link" href="#生成时间-date" data-level="1">生成时间: $(date)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备注-自定义端口转发规则">
-          <a class="post-toc-link" href="#备注-自定义端口转发规则" data-level="1">备注: 自定义端口转发规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="规则说明">
-          <a class="post-toc-link" href="#规则说明" data-level="3">规则说明 ###</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="端口-3366-win-远程桌面-10-10-10-249-3389">
-          <a class="post-toc-link" href="#端口-3366-win-远程桌面-10-10-10-249-3389" data-level="1">端口 3366 -&gt; Win 远程桌面 (10.10.10.249:3389)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="端口-3002-sun-panel-面板-10-10-10-251-3002">
-          <a class="post-toc-link" href="#端口-3002-sun-panel-面板-10-10-10-251-3002" data-level="1">端口 3002 -&gt; Sun-panel 面板 (10.10.10.251:3002)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="实际规则">
-          <a class="post-toc-link" href="#实际规则" data-level="3">实际规则 ###</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="定期检查脚本">
@@ -2405,7 +2021,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2588,8 +2204,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

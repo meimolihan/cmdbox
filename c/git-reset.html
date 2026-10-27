@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="git-reset 命令">
     <meta name="twitter:description" content="重置当前 HEAD 到指定状态 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1439,52 +1439,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近一次提交-保留更改在暂存区">
-              <a class="post-toc-link" href="#撤销最近一次提交-保留更改在暂存区" data-level="1">撤销最近一次提交（保留更改在暂存区）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近一次提交-保留更改在工作区">
-              <a class="post-toc-link" href="#撤销最近一次提交-保留更改在工作区" data-level="1">撤销最近一次提交（保留更改在工作区）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近一次提交-丢弃所有更改">
-              <a class="post-toc-link" href="#撤销最近一次提交-丢弃所有更改" data-level="1">撤销最近一次提交（丢弃所有更改 ⚠️）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近两次提交">
-              <a class="post-toc-link" href="#撤销最近两次提交" data-level="1">撤销最近两次提交</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置到指定提交">
-              <a class="post-toc-link" href="#重置到指定提交" data-level="1">重置到指定提交</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消暂存-unstage">
-              <a class="post-toc-link" href="#取消暂存-unstage" data-level="1">取消暂存（unstage）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消所有暂存">
-              <a class="post-toc-link" href="#取消所有暂存" data-level="1">取消所有暂存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销-merge">
-              <a class="post-toc-link" href="#撤销-merge" data-level="1">撤销 merge</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="三种模式对比">
               <a class="post-toc-link" href="#三种模式对比" data-level="3">三种模式对比</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="恢复误操作">
               <a class="post-toc-link" href="#恢复误操作" data-level="3">恢复误操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如果误用了-hard-可以通过-reflog-恢复">
-              <a class="post-toc-link" href="#如果误用了-hard-可以通过-reflog-恢复" data-level="1">如果误用了 --hard，可以通过 reflog 恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="找到误操作前的-head-如-abc123">
-              <a class="post-toc-link" href="#找到误操作前的-head-如-abc123" data-level="1">找到误操作前的 HEAD，如 abc123</a>
             </li>
             
           </ul>
@@ -1528,38 +1488,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近一次提交-保留更改在暂存区">
-          <a class="post-toc-link" href="#撤销最近一次提交-保留更改在暂存区" data-level="1">撤销最近一次提交（保留更改在暂存区）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近一次提交-保留更改在工作区">
-          <a class="post-toc-link" href="#撤销最近一次提交-保留更改在工作区" data-level="1">撤销最近一次提交（保留更改在工作区）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近一次提交-丢弃所有更改">
-          <a class="post-toc-link" href="#撤销最近一次提交-丢弃所有更改" data-level="1">撤销最近一次提交（丢弃所有更改 ⚠️）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销最近两次提交">
-          <a class="post-toc-link" href="#撤销最近两次提交" data-level="1">撤销最近两次提交</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置到指定提交">
-          <a class="post-toc-link" href="#重置到指定提交" data-level="1">重置到指定提交</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消暂存-unstage">
-          <a class="post-toc-link" href="#取消暂存-unstage" data-level="1">取消暂存（unstage）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消所有暂存">
-          <a class="post-toc-link" href="#取消所有暂存" data-level="1">取消所有暂存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销-merge">
-          <a class="post-toc-link" href="#撤销-merge" data-level="1">撤销 merge</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="三种模式对比">
           <a class="post-toc-link" href="#三种模式对比" data-level="3">三种模式对比</a>
         </li>
@@ -1568,21 +1496,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#恢复误操作" data-level="3">恢复误操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如果误用了-hard-可以通过-reflog-恢复">
-          <a class="post-toc-link" href="#如果误用了-hard-可以通过-reflog-恢复" data-level="1">如果误用了 --hard，可以通过 reflog 恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="找到误操作前的-head-如-abc123">
-          <a class="post-toc-link" href="#找到误操作前的-head-如-abc123" data-level="1">找到误操作前的 HEAD，如 abc123</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1765,8 +1685,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

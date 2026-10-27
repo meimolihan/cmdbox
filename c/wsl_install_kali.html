@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_install_kali 命令">
     <meta name="twitter:description" content="安装配置 WSL2 Kali Linux 系统 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1741,28 +1741,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#更新系统软件包" data-level="3">更新系统软件包</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包索引">
-              <a class="post-toc-link" href="#更新软件包索引" data-level="1">更新软件包索引</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有软件包">
-              <a class="post-toc-link" href="#升级所有软件包" data-level="1">升级所有软件包</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置镜像加速-可选">
               <a class="post-toc-link" href="#配置镜像加速-可选" data-level="3">配置镜像加速（可选）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份原源">
-              <a class="post-toc-link" href="#备份原源" data-level="1">备份原源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="替换为清华镜像源">
-              <a class="post-toc-link" href="#替换为清华镜像源" data-level="1">替换为清华镜像源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新索引">
-              <a class="post-toc-link" href="#更新索引" data-level="1">更新索引</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装基础工具">
@@ -1771,18 +1751,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置中文-locale">
               <a class="post-toc-link" href="#配置中文-locale" data-level="3">配置中文 locale</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装中文语言包">
-              <a class="post-toc-link" href="#安装中文语言包" data-level="1">安装中文语言包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-zh_cn-utf-8">
-              <a class="post-toc-link" href="#生成-zh_cn-utf-8" data-level="1">生成 zh_CN.UTF-8</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置时区">
@@ -1797,18 +1765,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#添加到-sudo-组" data-level="3">添加到 sudo 组</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换到-root">
-              <a class="post-toc-link" href="#切换到-root" data-level="1">切换到 root</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将用户添加到-sudo-组">
-              <a class="post-toc-link" href="#将用户添加到-sudo-组" data-level="1">将用户添加到 sudo 组</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证-sudo-权限">
-              <a class="post-toc-link" href="#验证-sudo-权限" data-level="1">验证 sudo 权限</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="安全工具">
               <a class="post-toc-link" href="#安全工具" data-level="2">安全工具</a>
             </li>
@@ -1821,44 +1777,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装常用渗透工具" data-level="3">安装常用渗透工具</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="网络扫描">
-              <a class="post-toc-link" href="#网络扫描" data-level="1">网络扫描</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="web-应用测试">
-              <a class="post-toc-link" href="#web-应用测试" data-level="1">Web 应用测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="无线安全">
-              <a class="post-toc-link" href="#无线安全" data-level="1">无线安全</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="密码破解">
-              <a class="post-toc-link" href="#密码破解" data-level="1">密码破解</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="逆向工程">
-              <a class="post-toc-link" href="#逆向工程" data-level="1">逆向工程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取证工具">
-              <a class="post-toc-link" href="#取证工具" data-level="1">取证工具</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装开发工具">
               <a class="post-toc-link" href="#安装开发工具" data-level="3">安装开发工具</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="python-及其工具">
-              <a class="post-toc-link" href="#python-及其工具" data-level="1">Python 及其工具</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="node-js">
-              <a class="post-toc-link" href="#node-js" data-level="1">Node.js</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker">
-              <a class="post-toc-link" href="#docker" data-level="1">Docker</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="网络与文件访问">
@@ -1889,32 +1809,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#磁盘空间不足" data-level="3">磁盘空间不足</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理-apt-缓存">
-              <a class="post-toc-link" href="#清理-apt-缓存" data-level="1">清理 apt 缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看磁盘使用">
-              <a class="post-toc-link" href="#查看磁盘使用" data-level="1">查看磁盘使用</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装结果">
               <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="系统信息">
-              <a class="post-toc-link" href="#系统信息" data-level="1">系统信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="网络连通性">
-              <a class="post-toc-link" href="#网络连通性" data-level="1">网络连通性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="工具验证">
-              <a class="post-toc-link" href="#工具验证" data-level="1">工具验证</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘使用情况">
-              <a class="post-toc-link" href="#磁盘使用情况" data-level="1">磁盘使用情况</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2022,28 +1918,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#更新系统软件包" data-level="3">更新系统软件包</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包索引">
-          <a class="post-toc-link" href="#更新软件包索引" data-level="1">更新软件包索引</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级所有软件包">
-          <a class="post-toc-link" href="#升级所有软件包" data-level="1">升级所有软件包</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置镜像加速-可选">
           <a class="post-toc-link" href="#配置镜像加速-可选" data-level="3">配置镜像加速（可选）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份原源">
-          <a class="post-toc-link" href="#备份原源" data-level="1">备份原源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="替换为清华镜像源">
-          <a class="post-toc-link" href="#替换为清华镜像源" data-level="1">替换为清华镜像源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新索引">
-          <a class="post-toc-link" href="#更新索引" data-level="1">更新索引</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装基础工具">
@@ -2052,18 +1928,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置中文-locale">
           <a class="post-toc-link" href="#配置中文-locale" data-level="3">配置中文 locale</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装中文语言包">
-          <a class="post-toc-link" href="#安装中文语言包" data-level="1">安装中文语言包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-zh_cn-utf-8">
-          <a class="post-toc-link" href="#生成-zh_cn-utf-8" data-level="1">生成 zh_CN.UTF-8</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置时区">
@@ -2078,18 +1942,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#添加到-sudo-组" data-level="3">添加到 sudo 组</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换到-root">
-          <a class="post-toc-link" href="#切换到-root" data-level="1">切换到 root</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将用户添加到-sudo-组">
-          <a class="post-toc-link" href="#将用户添加到-sudo-组" data-level="1">将用户添加到 sudo 组</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证-sudo-权限">
-          <a class="post-toc-link" href="#验证-sudo-权限" data-level="1">验证 sudo 权限</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="安全工具">
           <a class="post-toc-link" href="#安全工具" data-level="2">安全工具</a>
         </li>
@@ -2102,44 +1954,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装常用渗透工具" data-level="3">安装常用渗透工具</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="网络扫描">
-          <a class="post-toc-link" href="#网络扫描" data-level="1">网络扫描</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="web-应用测试">
-          <a class="post-toc-link" href="#web-应用测试" data-level="1">Web 应用测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="无线安全">
-          <a class="post-toc-link" href="#无线安全" data-level="1">无线安全</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="密码破解">
-          <a class="post-toc-link" href="#密码破解" data-level="1">密码破解</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="逆向工程">
-          <a class="post-toc-link" href="#逆向工程" data-level="1">逆向工程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取证工具">
-          <a class="post-toc-link" href="#取证工具" data-level="1">取证工具</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装开发工具">
           <a class="post-toc-link" href="#安装开发工具" data-level="3">安装开发工具</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="python-及其工具">
-          <a class="post-toc-link" href="#python-及其工具" data-level="1">Python 及其工具</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="node-js">
-          <a class="post-toc-link" href="#node-js" data-level="1">Node.js</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker">
-          <a class="post-toc-link" href="#docker" data-level="1">Docker</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="网络与文件访问">
@@ -2170,32 +1986,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#磁盘空间不足" data-level="3">磁盘空间不足</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理-apt-缓存">
-          <a class="post-toc-link" href="#清理-apt-缓存" data-level="1">清理 apt 缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看磁盘使用">
-          <a class="post-toc-link" href="#查看磁盘使用" data-level="1">查看磁盘使用</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装结果">
           <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="系统信息">
-          <a class="post-toc-link" href="#系统信息" data-level="1">系统信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="网络连通性">
-          <a class="post-toc-link" href="#网络连通性" data-level="1">网络连通性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="工具验证">
-          <a class="post-toc-link" href="#工具验证" data-level="1">工具验证</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘使用情况">
-          <a class="post-toc-link" href="#磁盘使用情况" data-level="1">磁盘使用情况</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2212,7 +2004,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2395,8 +2187,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

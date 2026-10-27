@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="restorecon 命令">
     <meta name="twitter:description" content="恢复文件的安全上下文 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1414,42 +1414,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#实例" data-level="3">实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="随便输入一段文字-保存退出">
-              <a class="post-toc-link" href="#随便输入一段文字-保存退出" data-level="1">随便输入一段文字，保存退出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将这个文件mv到网页默认目录下">
-              <a class="post-toc-link" href="#将这个文件mv到网页默认目录下" data-level="1">将这个文件mv到网页默认目录下</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开">
-              <a class="post-toc-link" href="#这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开" data-level="1"># 这个时候我们使用firefox浏览器输入127.0.0.1/index.html发现打不开，</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出">
-              <a class="post-toc-link" href="#查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出" data-level="1">查看一下SELinux的日志文件，发现了下面这一段报错信息，从这个报错信息不难看出，</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确">
-              <a class="post-toc-link" href="#进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确" data-level="1">进程httpd访问网页主目录中的index.html时被SELinux阻止，原因是因为，SELinux配置信息不正确,</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正确的selinux配置信息应该是scontext-后面的部分">
-              <a class="post-toc-link" href="#正确的selinux配置信息应该是scontext-后面的部分" data-level="1">正确的SELinux配置信息应该是scontext=后面的部分，</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="而index-html文件的selinux配置信息却是tcontext-后面的部分">
-              <a class="post-toc-link" href="#而index-html文件的selinux配置信息却是tcontext-后面的部分" data-level="1">而index.html文件的SELinux配置信息却是tcontext=后面的部分，</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的">
-              <a class="post-toc-link" href="#从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的" data-level="1">从tcontext=的第三段“admin_home_t”不难看出，这个文件的SELinux配置信息是root用户家目录的。</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file">
-              <a class="post-toc-link" href="#type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file" data-level="1">type=AVC msg=audit(1378974214.610:465): avc:  denied  { open } for  pid=2359 comm=&#34;httpd&#34; path=&#34;/var/www/html/index.html&#34; dev=&#34;sda1&#34; ino=1317685 scontext=system_u:system_r:httpd_t:s0 tcontext=unconfined_u:object_r:admin_home_t:s0 tclass=file</a>
-            </li>
-            
           </ul>
         </nav>
       </div>
@@ -1491,49 +1455,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#实例" data-level="3">实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="随便输入一段文字-保存退出">
-          <a class="post-toc-link" href="#随便输入一段文字-保存退出" data-level="1">随便输入一段文字，保存退出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将这个文件mv到网页默认目录下">
-          <a class="post-toc-link" href="#将这个文件mv到网页默认目录下" data-level="1">将这个文件mv到网页默认目录下</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开">
-          <a class="post-toc-link" href="#这个时候我们使用firefox浏览器输入127-0-0-1-index-html发现打不开" data-level="1"># 这个时候我们使用firefox浏览器输入127.0.0.1/index.html发现打不开，</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出">
-          <a class="post-toc-link" href="#查看一下selinux的日志文件-发现了下面这一段报错信息-从这个报错信息不难看出" data-level="1">查看一下SELinux的日志文件，发现了下面这一段报错信息，从这个报错信息不难看出，</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确">
-          <a class="post-toc-link" href="#进程httpd访问网页主目录中的index-html时被selinux阻止-原因是因为-selinux配置信息不正确" data-level="1">进程httpd访问网页主目录中的index.html时被SELinux阻止，原因是因为，SELinux配置信息不正确,</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正确的selinux配置信息应该是scontext-后面的部分">
-          <a class="post-toc-link" href="#正确的selinux配置信息应该是scontext-后面的部分" data-level="1">正确的SELinux配置信息应该是scontext=后面的部分，</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="而index-html文件的selinux配置信息却是tcontext-后面的部分">
-          <a class="post-toc-link" href="#而index-html文件的selinux配置信息却是tcontext-后面的部分" data-level="1">而index.html文件的SELinux配置信息却是tcontext=后面的部分，</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的">
-          <a class="post-toc-link" href="#从tcontext-的第三段-admin_home_t-不难看出-这个文件的selinux配置信息是root用户家目录的" data-level="1">从tcontext=的第三段“admin_home_t”不难看出，这个文件的SELinux配置信息是root用户家目录的。</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file">
-          <a class="post-toc-link" href="#type-avc-msg-audit-1378974214-610-465-avc-denied-open-for-pid-2359-comm-httpd-path-var-www-html-index-html-dev-sda1-ino-1317685-scontext-system_u-system_r-httpd_t-s0-tcontext-unconfined_u-object_r-admin_home_t-s0-tclass-file" data-level="1">type=AVC msg=audit(1378974214.610:465): avc:  denied  { open } for  pid=2359 comm=&#34;httpd&#34; path=&#34;/var/www/html/index.html&#34; dev=&#34;sda1&#34; ino=1317685 scontext=system_u:system_r:httpd_t:s0 tcontext=unconfined_u:object_r:admin_home_t:s0 tclass=file</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1716,8 +1644,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

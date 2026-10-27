@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="bbr3 命令">
     <meta name="twitter:description" content="TCP BBR 拥堵控制算法 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1517,96 +1517,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#语法" data-level="3">语法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前可用的拥堵控制算法">
-              <a class="post-toc-link" href="#查看当前可用的拥堵控制算法" data-level="1">查看当前可用的拥堵控制算法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前使用的拥堵控制算法">
-              <a class="post-toc-link" href="#查看当前使用的拥堵控制算法" data-level="1">查看当前使用的拥堵控制算法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用bbr">
-              <a class="post-toc-link" href="#启用bbr" data-level="1">启用BBR</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="持久化配置-写入sysctl-conf">
-              <a class="post-toc-link" href="#持久化配置-写入sysctl-conf" data-level="1">持久化配置（写入sysctl.conf）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看bbr相关参数">
-              <a class="post-toc-link" href="#查看bbr相关参数" data-level="1">查看BBR相关参数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="bbr参数-内核4-9">
-              <a class="post-toc-link" href="#bbr参数-内核4-9" data-level="1">BBR参数（内核4.9+）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="bbr-v2-参数-内核5-18">
-              <a class="post-toc-link" href="#bbr-v2-参数-内核5-18" data-level="1">BBR v2 参数（内核5.18+）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装bbr">
               <a class="post-toc-link" href="#安装bbr" data-level="3">安装BBR</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查bbr模块是否可用">
-              <a class="post-toc-link" href="#检查bbr模块是否可用" data-level="1">检查BBR模块是否可用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加载bbr模块-如果未自动加载">
-              <a class="post-toc-link" href="#加载bbr模块-如果未自动加载" data-level="1">加载BBR模块（如果未自动加载）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="启用bbr">
               <a class="post-toc-link" href="#启用bbr" data-level="3">启用BBR</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="临时启用bbr">
-              <a class="post-toc-link" href="#临时启用bbr" data-level="1">临时启用BBR</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="持久化配置">
-              <a class="post-toc-link" href="#持久化配置" data-level="1">持久化配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="应用配置">
-              <a class="post-toc-link" href="#应用配置" data-level="1">应用配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="启用bbr3-bbr-v2">
               <a class="post-toc-link" href="#启用bbr3-bbr-v2" data-level="3">启用BBR3 (BBR v2)</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用bbr-v2-bbr3">
-              <a class="post-toc-link" href="#启用bbr-v2-bbr3" data-level="1">启用BBR v2/BBR3</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看版本">
-              <a class="post-toc-link" href="#查看版本" data-level="1">查看版本</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="验证bbr是否生效">
               <a class="post-toc-link" href="#验证bbr是否生效" data-level="3">验证BBR是否生效</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查当前算法">
-              <a class="post-toc-link" href="#检查当前算法" data-level="1">检查当前算法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例-net-ipv4-tcp_congestion_control-bbr">
-              <a class="post-toc-link" href="#输出示例-net-ipv4-tcp_congestion_control-bbr" data-level="1">输出示例：net.ipv4.tcp_congestion_control = bbr</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查队列规则">
-              <a class="post-toc-link" href="#检查队列规则" data-level="1">检查队列规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例-net-core-default_qdisc-fq">
-              <a class="post-toc-link" href="#输出示例-net-core-default_qdisc-fq" data-level="1">输出示例：net.core.default_qdisc = fq</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="bbr与bbr2-bbr3对比">
@@ -1658,96 +1586,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#语法" data-level="3">语法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前可用的拥堵控制算法">
-          <a class="post-toc-link" href="#查看当前可用的拥堵控制算法" data-level="1">查看当前可用的拥堵控制算法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前使用的拥堵控制算法">
-          <a class="post-toc-link" href="#查看当前使用的拥堵控制算法" data-level="1">查看当前使用的拥堵控制算法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用bbr">
-          <a class="post-toc-link" href="#启用bbr" data-level="1">启用BBR</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="持久化配置-写入sysctl-conf">
-          <a class="post-toc-link" href="#持久化配置-写入sysctl-conf" data-level="1">持久化配置（写入sysctl.conf）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="选项">
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看bbr相关参数">
-          <a class="post-toc-link" href="#查看bbr相关参数" data-level="1">查看BBR相关参数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="bbr参数-内核4-9">
-          <a class="post-toc-link" href="#bbr参数-内核4-9" data-level="1">BBR参数（内核4.9+）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="bbr-v2-参数-内核5-18">
-          <a class="post-toc-link" href="#bbr-v2-参数-内核5-18" data-level="1">BBR v2 参数（内核5.18+）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装bbr">
           <a class="post-toc-link" href="#安装bbr" data-level="3">安装BBR</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查bbr模块是否可用">
-          <a class="post-toc-link" href="#检查bbr模块是否可用" data-level="1">检查BBR模块是否可用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加载bbr模块-如果未自动加载">
-          <a class="post-toc-link" href="#加载bbr模块-如果未自动加载" data-level="1">加载BBR模块（如果未自动加载）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="启用bbr">
           <a class="post-toc-link" href="#启用bbr" data-level="3">启用BBR</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="临时启用bbr">
-          <a class="post-toc-link" href="#临时启用bbr" data-level="1">临时启用BBR</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="持久化配置">
-          <a class="post-toc-link" href="#持久化配置" data-level="1">持久化配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="应用配置">
-          <a class="post-toc-link" href="#应用配置" data-level="1">应用配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="启用bbr3-bbr-v2">
           <a class="post-toc-link" href="#启用bbr3-bbr-v2" data-level="3">启用BBR3 (BBR v2)</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用bbr-v2-bbr3">
-          <a class="post-toc-link" href="#启用bbr-v2-bbr3" data-level="1">启用BBR v2/BBR3</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看版本">
-          <a class="post-toc-link" href="#查看版本" data-level="1">查看版本</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="验证bbr是否生效">
           <a class="post-toc-link" href="#验证bbr是否生效" data-level="3">验证BBR是否生效</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查当前算法">
-          <a class="post-toc-link" href="#检查当前算法" data-level="1">检查当前算法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例-net-ipv4-tcp_congestion_control-bbr">
-          <a class="post-toc-link" href="#输出示例-net-ipv4-tcp_congestion_control-bbr" data-level="1">输出示例：net.ipv4.tcp_congestion_control = bbr</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查队列规则">
-          <a class="post-toc-link" href="#检查队列规则" data-level="1">检查队列规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例-net-core-default_qdisc-fq">
-          <a class="post-toc-link" href="#输出示例-net-core-default_qdisc-fq" data-level="1">输出示例：net.core.default_qdisc = fq</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="bbr与bbr2-bbr3对比">
@@ -1772,7 +1628,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1955,8 +1811,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

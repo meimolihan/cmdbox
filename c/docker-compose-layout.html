@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-compose-layout 命令">
     <meta name="twitter:description" content="Docker Compose 编排说明 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1815,22 +1815,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#docker-compose-yml-完整基础结构" data-level="3">docker-compose.yml 完整基础结构</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="compose-文件版本-3-8-为通用稳定版本">
-              <a class="post-toc-link" href="#compose-文件版本-3-8-为通用稳定版本" data-level="1">Compose 文件版本，3.8 为通用稳定版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="核心-所有容器服务均定义在-services-下">
-              <a class="post-toc-link" href="#核心-所有容器服务均定义在-services-下" data-level="1">核心：所有容器服务均定义在 services 下</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="顶层-自定义命名数据卷">
-              <a class="post-toc-link" href="#顶层-自定义命名数据卷" data-level="1">顶层：自定义命名数据卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="顶层-自定义网络">
-              <a class="post-toc-link" href="#顶层-自定义网络" data-level="1">顶层：自定义网络</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="重启策略">
               <a class="post-toc-link" href="#重启策略" data-level="3">重启策略</a>
             </li>
@@ -1847,32 +1831,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#环境变量" data-level="3">环境变量</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列表格式-通用-兼容性好">
-              <a class="post-toc-link" href="#列表格式-通用-兼容性好" data-level="1">列表格式（通用、兼容性好）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="字典格式-简洁">
-              <a class="post-toc-link" href="#字典格式-简洁" data-level="1">字典格式（简洁）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="网络模式">
               <a class="post-toc-link" href="#网络模式" data-level="3">网络模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认桥接网络-推荐">
-              <a class="post-toc-link" href="#默认桥接网络-推荐" data-level="1">默认桥接网络（推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="主机网络-复用宿主机网卡">
-              <a class="post-toc-link" href="#主机网络-复用宿主机网卡" data-level="1">主机网络（复用宿主机网卡）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="共享其他容器网络">
-              <a class="post-toc-link" href="#共享其他容器网络" data-level="1">共享其他容器网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自定义独立网络">
-              <a class="post-toc-link" href="#自定义独立网络" data-level="1">自定义独立网络</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="主机映射">
@@ -1907,24 +1867,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#统一环境变量文件" data-level="4">统一环境变量文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="env">
-              <a class="post-toc-link" href="#env" data-level="1">.env</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml">
-              <a class="post-toc-link" href="#docker-compose-yml" data-level="1">docker-compose.yml</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="多环境配置">
               <a class="post-toc-link" href="#多环境配置" data-level="4">多环境配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开发环境">
-              <a class="post-toc-link" href="#开发环境" data-level="1">开发环境</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生产环境">
-              <a class="post-toc-link" href="#生产环境" data-level="1">生产环境</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="配置复用-yaml-锚点">
@@ -1943,76 +1887,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#启动服务" data-level="4">启动服务</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="后台启动所有服务">
-              <a class="post-toc-link" href="#后台启动所有服务" data-level="1">后台启动所有服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动指定服务">
-              <a class="post-toc-link" href="#启动指定服务" data-level="1">启动指定服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制重建容器">
-              <a class="post-toc-link" href="#强制重建容器" data-level="1">强制重建容器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="停止与销毁">
               <a class="post-toc-link" href="#停止与销毁" data-level="4">停止与销毁</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务-保留数据">
-              <a class="post-toc-link" href="#停止服务-保留数据" data-level="1">停止服务（保留数据）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除卷数据">
-              <a class="post-toc-link" href="#停止并删除卷数据" data-level="1">停止并删除卷数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底清空所有资源">
-              <a class="post-toc-link" href="#彻底清空所有资源" data-level="1">彻底清空所有资源</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="状态与日志">
               <a class="post-toc-link" href="#状态与日志" data-level="4">状态与日志</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-              <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看全部日志">
-              <a class="post-toc-link" href="#查看全部日志" data-level="1">查看全部日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时滚动查看日志">
-              <a class="post-toc-link" href="#实时滚动查看日志" data-level="1">实时滚动查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定服务日志">
-              <a class="post-toc-link" href="#查看指定服务日志" data-level="1">查看指定服务日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源占用">
-              <a class="post-toc-link" href="#查看资源占用" data-level="1">查看资源占用</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="运维管理">
               <a class="post-toc-link" href="#运维管理" data-level="4">运维管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启全部服务">
-              <a class="post-toc-link" href="#重启全部服务" data-level="1">重启全部服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启指定服务">
-              <a class="post-toc-link" href="#重启指定服务" data-level="1">重启指定服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扩展服务实例">
-              <a class="post-toc-link" href="#扩展服务实例" data-level="1">扩展服务实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器">
-              <a class="post-toc-link" href="#进入容器" data-level="1">进入容器</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
@@ -2027,28 +1911,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#启动失败排查" data-level="4">启动失败排查</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看最后-100-行日志">
-              <a class="post-toc-link" href="#查看最后-100-行日志" data-level="1">查看最后 100 行日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器调试">
-              <a class="post-toc-link" href="#进入容器调试" data-level="1">进入容器调试</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="冗余资源清理">
               <a class="post-toc-link" href="#冗余资源清理" data-level="4">冗余资源清理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理孤立资源">
-              <a class="post-toc-link" href="#清理孤立资源" data-level="1">清理孤立资源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理停止的容器">
-              <a class="post-toc-link" href="#清理停止的容器" data-level="1">清理停止的容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理未使用的镜像">
-              <a class="post-toc-link" href="#清理未使用的镜像" data-level="1">清理未使用的镜像</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="常见报错">
@@ -2092,22 +1956,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#docker-compose-yml-完整基础结构" data-level="3">docker-compose.yml 完整基础结构</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="compose-文件版本-3-8-为通用稳定版本">
-          <a class="post-toc-link" href="#compose-文件版本-3-8-为通用稳定版本" data-level="1">Compose 文件版本，3.8 为通用稳定版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="核心-所有容器服务均定义在-services-下">
-          <a class="post-toc-link" href="#核心-所有容器服务均定义在-services-下" data-level="1">核心：所有容器服务均定义在 services 下</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="顶层-自定义命名数据卷">
-          <a class="post-toc-link" href="#顶层-自定义命名数据卷" data-level="1">顶层：自定义命名数据卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="顶层-自定义网络">
-          <a class="post-toc-link" href="#顶层-自定义网络" data-level="1">顶层：自定义网络</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="重启策略">
           <a class="post-toc-link" href="#重启策略" data-level="3">重启策略</a>
         </li>
@@ -2124,32 +1972,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#环境变量" data-level="3">环境变量</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列表格式-通用-兼容性好">
-          <a class="post-toc-link" href="#列表格式-通用-兼容性好" data-level="1">列表格式（通用、兼容性好）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="字典格式-简洁">
-          <a class="post-toc-link" href="#字典格式-简洁" data-level="1">字典格式（简洁）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="网络模式">
           <a class="post-toc-link" href="#网络模式" data-level="3">网络模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认桥接网络-推荐">
-          <a class="post-toc-link" href="#默认桥接网络-推荐" data-level="1">默认桥接网络（推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="主机网络-复用宿主机网卡">
-          <a class="post-toc-link" href="#主机网络-复用宿主机网卡" data-level="1">主机网络（复用宿主机网卡）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="共享其他容器网络">
-          <a class="post-toc-link" href="#共享其他容器网络" data-level="1">共享其他容器网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自定义独立网络">
-          <a class="post-toc-link" href="#自定义独立网络" data-level="1">自定义独立网络</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="主机映射">
@@ -2184,24 +2008,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#统一环境变量文件" data-level="4">统一环境变量文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="env">
-          <a class="post-toc-link" href="#env" data-level="1">.env</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml">
-          <a class="post-toc-link" href="#docker-compose-yml" data-level="1">docker-compose.yml</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="多环境配置">
           <a class="post-toc-link" href="#多环境配置" data-level="4">多环境配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开发环境">
-          <a class="post-toc-link" href="#开发环境" data-level="1">开发环境</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生产环境">
-          <a class="post-toc-link" href="#生产环境" data-level="1">生产环境</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="配置复用-yaml-锚点">
@@ -2220,76 +2028,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#启动服务" data-level="4">启动服务</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="后台启动所有服务">
-          <a class="post-toc-link" href="#后台启动所有服务" data-level="1">后台启动所有服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动指定服务">
-          <a class="post-toc-link" href="#启动指定服务" data-level="1">启动指定服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制重建容器">
-          <a class="post-toc-link" href="#强制重建容器" data-level="1">强制重建容器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="停止与销毁">
           <a class="post-toc-link" href="#停止与销毁" data-level="4">停止与销毁</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务-保留数据">
-          <a class="post-toc-link" href="#停止服务-保留数据" data-level="1">停止服务（保留数据）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除卷数据">
-          <a class="post-toc-link" href="#停止并删除卷数据" data-level="1">停止并删除卷数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底清空所有资源">
-          <a class="post-toc-link" href="#彻底清空所有资源" data-level="1">彻底清空所有资源</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="状态与日志">
           <a class="post-toc-link" href="#状态与日志" data-level="4">状态与日志</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-          <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看全部日志">
-          <a class="post-toc-link" href="#查看全部日志" data-level="1">查看全部日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时滚动查看日志">
-          <a class="post-toc-link" href="#实时滚动查看日志" data-level="1">实时滚动查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定服务日志">
-          <a class="post-toc-link" href="#查看指定服务日志" data-level="1">查看指定服务日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源占用">
-          <a class="post-toc-link" href="#查看资源占用" data-level="1">查看资源占用</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="运维管理">
           <a class="post-toc-link" href="#运维管理" data-level="4">运维管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启全部服务">
-          <a class="post-toc-link" href="#重启全部服务" data-level="1">重启全部服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启指定服务">
-          <a class="post-toc-link" href="#重启指定服务" data-level="1">重启指定服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扩展服务实例">
-          <a class="post-toc-link" href="#扩展服务实例" data-level="1">扩展服务实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器">
-          <a class="post-toc-link" href="#进入容器" data-level="1">进入容器</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
@@ -2304,28 +2052,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#启动失败排查" data-level="4">启动失败排查</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看最后-100-行日志">
-          <a class="post-toc-link" href="#查看最后-100-行日志" data-level="1">查看最后 100 行日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器调试">
-          <a class="post-toc-link" href="#进入容器调试" data-level="1">进入容器调试</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="冗余资源清理">
           <a class="post-toc-link" href="#冗余资源清理" data-level="4">冗余资源清理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理孤立资源">
-          <a class="post-toc-link" href="#清理孤立资源" data-level="1">清理孤立资源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理停止的容器">
-          <a class="post-toc-link" href="#清理停止的容器" data-level="1">清理停止的容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理未使用的镜像">
-          <a class="post-toc-link" href="#清理未使用的镜像" data-level="1">清理未使用的镜像</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="常见报错">
@@ -2338,7 +2066,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2521,8 +2249,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

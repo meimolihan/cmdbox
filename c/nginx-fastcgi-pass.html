@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="nginx-fastcgi-pass 命令">
     <meta name="twitter:description" content="nginx FastCGI 代理配置指令 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1624,32 +1624,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#php-fpm-配置示例" data-level="3">PHP-FPM 配置示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-连接">
-              <a class="post-toc-link" href="#tcp-连接" data-level="1">TCP 连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="unix-socket-连接">
-              <a class="post-toc-link" href="#unix-socket-连接" data-level="1">Unix Socket 连接</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="fastcgi-参数详解">
               <a class="post-toc-link" href="#fastcgi-参数详解" data-level="3">FastCGI 参数详解</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常用-fastcgi_param">
-              <a class="post-toc-link" href="#常用-fastcgi_param" data-level="1">常用 fastcgi_param</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="fastcgi_split_path_info">
               <a class="post-toc-link" href="#fastcgi_split_path_info" data-level="3">fastcgi_split_path_info</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="路径拆分-用于-laravel-thinkphp-等框架">
-              <a class="post-toc-link" href="#路径拆分-用于-laravel-thinkphp-等框架" data-level="1">路径拆分（用于 Laravel、ThinkPHP 等框架）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="thinkphp-5-路由">
-              <a class="post-toc-link" href="#thinkphp-5-路由" data-level="1">ThinkPHP 5+ 路由</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="超时和缓冲配置">
@@ -1660,28 +1640,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安全配置" data-level="3">安全配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁止访问敏感文件">
-              <a class="post-toc-link" href="#禁止访问敏感文件" data-level="1">禁止访问敏感文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏-php-版本">
-              <a class="post-toc-link" href="#隐藏-php-版本" data-level="1">隐藏 PHP 版本</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用路径">
               <a class="post-toc-link" href="#常用路径" data-level="3">常用路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel">
-              <a class="post-toc-link" href="#centos-rhel" data-level="1">CentOS/RHEL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="macos-homebrew">
-              <a class="post-toc-link" href="#macos-homebrew" data-level="1">macOS (Homebrew)</a>
             </li>
             
           </ul>
@@ -1721,32 +1681,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#php-fpm-配置示例" data-level="3">PHP-FPM 配置示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-连接">
-          <a class="post-toc-link" href="#tcp-连接" data-level="1">TCP 连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="unix-socket-连接">
-          <a class="post-toc-link" href="#unix-socket-连接" data-level="1">Unix Socket 连接</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="fastcgi-参数详解">
           <a class="post-toc-link" href="#fastcgi-参数详解" data-level="3">FastCGI 参数详解</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常用-fastcgi_param">
-          <a class="post-toc-link" href="#常用-fastcgi_param" data-level="1">常用 fastcgi_param</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="fastcgi_split_path_info">
           <a class="post-toc-link" href="#fastcgi_split_path_info" data-level="3">fastcgi_split_path_info</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="路径拆分-用于-laravel-thinkphp-等框架">
-          <a class="post-toc-link" href="#路径拆分-用于-laravel-thinkphp-等框架" data-level="1">路径拆分（用于 Laravel、ThinkPHP 等框架）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="thinkphp-5-路由">
-          <a class="post-toc-link" href="#thinkphp-5-路由" data-level="1">ThinkPHP 5+ 路由</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="超时和缓冲配置">
@@ -1757,28 +1697,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安全配置" data-level="3">安全配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁止访问敏感文件">
-          <a class="post-toc-link" href="#禁止访问敏感文件" data-level="1">禁止访问敏感文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏-php-版本">
-          <a class="post-toc-link" href="#隐藏-php-版本" data-level="1">隐藏 PHP 版本</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用路径">
           <a class="post-toc-link" href="#常用路径" data-level="3">常用路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel">
-          <a class="post-toc-link" href="#centos-rhel" data-level="1">CentOS/RHEL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="macos-homebrew">
-          <a class="post-toc-link" href="#macos-homebrew" data-level="1">macOS (Homebrew)</a>
         </li>
         
       </ul>
@@ -1787,7 +1707,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1970,8 +1890,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

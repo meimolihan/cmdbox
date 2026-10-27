@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="systemd 命令">
     <meta name="twitter:description" content="systemd 服务单元与定时器配置指南 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2121,22 +2121,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#管理定时器" data-level="3">管理定时器</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有定时器">
-              <a class="post-toc-link" href="#查看所有定时器" data-level="1">查看所有定时器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细状态">
-              <a class="post-toc-link" href="#查看详细状态" data-level="1">查看详细状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动触发-不等待调度">
-              <a class="post-toc-link" href="#手动触发-不等待调度" data-level="1">手动触发（不等待调度）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看下次执行时间">
-              <a class="post-toc-link" href="#查看下次执行时间" data-level="1">查看下次执行时间</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="四-path-单元-文件监控">
               <a class="post-toc-link" href="#四-path-单元-文件监控" data-level="2">四、Path 单元（文件监控）</a>
             </li>
@@ -2149,108 +2133,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#1-cpu-内存限制" data-level="3">1. CPU / 内存限制</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-限制">
-              <a class="post-toc-link" href="#cpu-限制" data-level="1">CPU 限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="内存限制">
-              <a class="post-toc-link" href="#内存限制" data-level="1">内存限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="io-限制">
-              <a class="post-toc-link" href="#io-限制" data-level="1">IO 限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="任务数限制">
-              <a class="post-toc-link" href="#任务数限制" data-level="1">任务数限制</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-安全隔离">
               <a class="post-toc-link" href="#2-安全隔离" data-level="3">2. 安全隔离</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="文件系统">
-              <a class="post-toc-link" href="#文件系统" data-level="1">文件系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="网络">
-              <a class="post-toc-link" href="#网络" data-level="1">网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设备">
-              <a class="post-toc-link" href="#设备" data-level="1">设备</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="内核">
-              <a class="post-toc-link" href="#内核" data-level="1">内核</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="命名空间">
-              <a class="post-toc-link" href="#命名空间" data-level="1">命名空间</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="六-常用-systemctl-管理">
               <a class="post-toc-link" href="#六-常用-systemctl-管理" data-level="2">六、常用 systemctl 管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载单元文件">
-              <a class="post-toc-link" href="#重新加载单元文件" data-level="1">重新加载单元文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用-禁用开机自启">
-              <a class="post-toc-link" href="#启用-禁用开机自启" data-level="1">启用/禁用开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-停止-重启">
-              <a class="post-toc-link" href="#启动-停止-重启" data-level="1">启动/停止/重启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置-不中断">
-              <a class="post-toc-link" href="#重载配置-不中断" data-level="1">重载配置（不中断）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="屏蔽-禁止启动">
-              <a class="post-toc-link" href="#屏蔽-禁止启动" data-level="1">屏蔽（禁止启动）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消屏蔽">
-              <a class="post-toc-link" href="#取消屏蔽" data-level="1">取消屏蔽</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有单元">
-              <a class="post-toc-link" href="#列出所有单元" data-level="1">列出所有单元</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看依赖树">
-              <a class="post-toc-link" href="#查看依赖树" data-level="1">查看依赖树</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="七-用户级-systemd">
               <a class="post-toc-link" href="#七-用户级-systemd" data-level="2">七、用户级 systemd</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用户单元目录">
-              <a class="post-toc-link" href="#用户单元目录" data-level="1">用户单元目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用户级操作不加-sudo">
-              <a class="post-toc-link" href="#用户级操作不加-sudo" data-level="1">用户级操作不加 sudo</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看用户级服务">
-              <a class="post-toc-link" href="#查看用户级服务" data-level="1">查看用户级服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用用户服务开机自启-需启用-linger">
-              <a class="post-toc-link" href="#启用用户服务开机自启-需启用-linger" data-level="1">启用用户服务开机自启（需启用 linger）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="八-综合实战-部署-web-应用">
@@ -2281,36 +2173,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#服务启动失败" data-level="3">服务启动失败</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看完整错误日志">
-              <a class="post-toc-link" href="#查看完整错误日志" data-level="1">查看完整错误日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看内核日志">
-              <a class="post-toc-link" href="#查看内核日志" data-level="1">查看内核日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="权限不足">
               <a class="post-toc-link" href="#权限不足" data-level="3">权限不足</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查文件权限">
-              <a class="post-toc-link" href="#检查文件权限" data-level="1">检查文件权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-selinux">
-              <a class="post-toc-link" href="#检查-selinux" data-level="1">检查 SELinux</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="单元文件语法检查">
               <a class="post-toc-link" href="#单元文件语法检查" data-level="3">单元文件语法检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="systemd-自带检查">
-              <a class="post-toc-link" href="#systemd-自带检查" data-level="1">systemd 自带检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看完整的单元配置">
-              <a class="post-toc-link" href="#查看完整的单元配置" data-level="1">查看完整的单元配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="端口被占用">
@@ -2398,22 +2266,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#管理定时器" data-level="3">管理定时器</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有定时器">
-          <a class="post-toc-link" href="#查看所有定时器" data-level="1">查看所有定时器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细状态">
-          <a class="post-toc-link" href="#查看详细状态" data-level="1">查看详细状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动触发-不等待调度">
-          <a class="post-toc-link" href="#手动触发-不等待调度" data-level="1">手动触发（不等待调度）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看下次执行时间">
-          <a class="post-toc-link" href="#查看下次执行时间" data-level="1">查看下次执行时间</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="四-path-单元-文件监控">
           <a class="post-toc-link" href="#四-path-单元-文件监控" data-level="2">四、Path 单元（文件监控）</a>
         </li>
@@ -2426,108 +2278,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#1-cpu-内存限制" data-level="3">1. CPU / 内存限制</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="cpu-限制">
-          <a class="post-toc-link" href="#cpu-限制" data-level="1">CPU 限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="内存限制">
-          <a class="post-toc-link" href="#内存限制" data-level="1">内存限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="io-限制">
-          <a class="post-toc-link" href="#io-限制" data-level="1">IO 限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="任务数限制">
-          <a class="post-toc-link" href="#任务数限制" data-level="1">任务数限制</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-安全隔离">
           <a class="post-toc-link" href="#2-安全隔离" data-level="3">2. 安全隔离</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="文件系统">
-          <a class="post-toc-link" href="#文件系统" data-level="1">文件系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="网络">
-          <a class="post-toc-link" href="#网络" data-level="1">网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设备">
-          <a class="post-toc-link" href="#设备" data-level="1">设备</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="内核">
-          <a class="post-toc-link" href="#内核" data-level="1">内核</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="命名空间">
-          <a class="post-toc-link" href="#命名空间" data-level="1">命名空间</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="六-常用-systemctl-管理">
           <a class="post-toc-link" href="#六-常用-systemctl-管理" data-level="2">六、常用 systemctl 管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载单元文件">
-          <a class="post-toc-link" href="#重新加载单元文件" data-level="1">重新加载单元文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用-禁用开机自启">
-          <a class="post-toc-link" href="#启用-禁用开机自启" data-level="1">启用/禁用开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-停止-重启">
-          <a class="post-toc-link" href="#启动-停止-重启" data-level="1">启动/停止/重启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置-不中断">
-          <a class="post-toc-link" href="#重载配置-不中断" data-level="1">重载配置（不中断）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="屏蔽-禁止启动">
-          <a class="post-toc-link" href="#屏蔽-禁止启动" data-level="1">屏蔽（禁止启动）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消屏蔽">
-          <a class="post-toc-link" href="#取消屏蔽" data-level="1">取消屏蔽</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有单元">
-          <a class="post-toc-link" href="#列出所有单元" data-level="1">列出所有单元</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看依赖树">
-          <a class="post-toc-link" href="#查看依赖树" data-level="1">查看依赖树</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="七-用户级-systemd">
           <a class="post-toc-link" href="#七-用户级-systemd" data-level="2">七、用户级 systemd</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用户单元目录">
-          <a class="post-toc-link" href="#用户单元目录" data-level="1">用户单元目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用户级操作不加-sudo">
-          <a class="post-toc-link" href="#用户级操作不加-sudo" data-level="1">用户级操作不加 sudo</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看用户级服务">
-          <a class="post-toc-link" href="#查看用户级服务" data-level="1">查看用户级服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用用户服务开机自启-需启用-linger">
-          <a class="post-toc-link" href="#启用用户服务开机自启-需启用-linger" data-level="1">启用用户服务开机自启（需启用 linger）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="八-综合实战-部署-web-应用">
@@ -2558,36 +2318,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#服务启动失败" data-level="3">服务启动失败</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看完整错误日志">
-          <a class="post-toc-link" href="#查看完整错误日志" data-level="1">查看完整错误日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看内核日志">
-          <a class="post-toc-link" href="#查看内核日志" data-level="1">查看内核日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="权限不足">
           <a class="post-toc-link" href="#权限不足" data-level="3">权限不足</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查文件权限">
-          <a class="post-toc-link" href="#检查文件权限" data-level="1">检查文件权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-selinux">
-          <a class="post-toc-link" href="#检查-selinux" data-level="1">检查 SELinux</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="单元文件语法检查">
           <a class="post-toc-link" href="#单元文件语法检查" data-level="3">单元文件语法检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="systemd-自带检查">
-          <a class="post-toc-link" href="#systemd-自带检查" data-level="1">systemd 自带检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看完整的单元配置">
-          <a class="post-toc-link" href="#查看完整的单元配置" data-level="1">查看完整的单元配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="端口被占用">
@@ -2604,7 +2340,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2787,8 +2523,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

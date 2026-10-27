@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="podman-play 命令">
     <meta name="twitter:description" content="Podman Kubernetes YAML 运行工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2057,260 +2057,56 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从-yaml-运行">
-              <a class="post-toc-link" href="#从-yaml-运行" data-level="1">从 YAML 运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用标准输入">
-              <a class="post-toc-link" href="#使用标准输入" data-level="1">使用标准输入</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
-              <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除">
-              <a class="post-toc-link" href="#停止并删除" data-level="1">停止并删除</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="资源管理">
               <a class="post-toc-link" href="#资源管理" data-level="3">资源管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看运行中的-pod">
-              <a class="post-toc-link" href="#查看运行中的-pod" data-level="1">查看运行中的 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有容器">
-              <a class="post-toc-link" href="#查看所有容器" data-level="1">查看所有容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止">
-              <a class="post-toc-link" href="#停止" data-level="1">停止</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动">
-              <a class="post-toc-link" href="#启动" data-level="1">启动</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除">
-              <a class="post-toc-link" href="#删除" data-level="1">删除</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="网络配置">
               <a class="post-toc-link" href="#网络配置" data-level="3">网络配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建自定义网络">
-              <a class="post-toc-link" href="#创建自定义网络" data-level="1">创建自定义网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用自定义网络">
-              <a class="post-toc-link" href="#使用自定义网络" data-level="1">使用自定义网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多个网络">
-              <a class="post-toc-link" href="#多个网络" data-level="1">多个网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="无网络">
-              <a class="post-toc-link" href="#无网络" data-level="1">无网络</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="签名和认证">
               <a class="post-toc-link" href="#签名和认证" data-level="3">签名和认证</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用认证拉取镜像">
-              <a class="post-toc-link" href="#使用认证拉取镜像" data-level="1">使用认证拉取镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定签名策略">
-              <a class="post-toc-link" href="#指定签名策略" data-level="1">指定签名策略</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tls-验证">
-              <a class="post-toc-link" href="#tls-验证" data-level="1">TLS 验证</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="卷配置">
               <a class="post-toc-link" href="#卷配置" data-level="3">卷配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用命名卷">
-              <a class="post-toc-link" href="#使用命名卷" data-level="1">使用命名卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定卷源">
-              <a class="post-toc-link" href="#指定卷源" data-level="1">指定卷源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卷会从-yaml-自动创建">
-              <a class="post-toc-link" href="#卷会从-yaml-自动创建" data-level="1">卷会从 YAML 自动创建</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
               <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="web-app-yaml">
-              <a class="post-toc-link" href="#web-app-yaml" data-level="1">web-app.yaml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行">
-              <a class="post-toc-link" href="#运行" data-level="1">运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="deployment-模式">
               <a class="post-toc-link" href="#deployment-模式" data-level="3">Deployment 模式</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="deployment-yaml">
-              <a class="post-toc-link" href="#deployment-yaml" data-level="1">deployment.yaml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="podman-会自动创建-pod">
-              <a class="post-toc-link" href="#podman-会自动创建-pod" data-level="1">Podman 会自动创建 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看">
-              <a class="post-toc-link" href="#查看" data-level="1">查看</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="多容器-pod">
               <a class="post-toc-link" href="#多容器-pod" data-level="3">多容器 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="multi-container-yaml">
-              <a class="post-toc-link" href="#multi-container-yaml" data-level="1">multi-container.yaml</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="service">
               <a class="post-toc-link" href="#service" data-level="3">Service</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="service-yaml">
-              <a class="post-toc-link" href="#service-yaml" data-level="1">service.yaml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="service-需要与-pod-一起使用">
-              <a class="post-toc-link" href="#service-需要与-pod-一起使用" data-level="1">Service 需要与 Pod 一起使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="通常在同一个文件中定义">
-              <a class="post-toc-link" href="#通常在同一个文件中定义" data-level="1">通常在同一个文件中定义</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="configmap-和-secret">
               <a class="post-toc-link" href="#configmap-和-secret" data-level="3">ConfigMap 和 Secret</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="configmap-yaml">
-              <a class="post-toc-link" href="#configmap-yaml" data-level="1">configmap.yaml</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="完整微服务示例">
               <a class="post-toc-link" href="#完整微服务示例" data-level="3">完整微服务示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="microservices-yaml">
-              <a class="post-toc-link" href="#microservices-yaml" data-level="1">microservices.yaml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行所有服务">
-              <a class="post-toc-link" href="#运行所有服务" data-level="1">运行所有服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看">
-              <a class="post-toc-link" href="#查看" data-level="1">查看</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="选项详解">
               <a class="post-toc-link" href="#选项详解" data-level="3">选项详解</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="network-指定网络">
-              <a class="post-toc-link" href="#network-指定网络" data-level="1">--network: 指定网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="no-hostname-不使用-pod-名称作为主机名">
-              <a class="post-toc-link" href="#no-hostname-不使用-pod-名称作为主机名" data-level="1">--no-hostname: 不使用 Pod 名称作为主机名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="seccomp-profile-root-指定-seccomp-配置目录">
-              <a class="post-toc-link" href="#seccomp-profile-root-指定-seccomp-配置目录" data-level="1">--seccomp-profile-root: 指定 Seccomp 配置目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="userns-用户命名空间模式">
-              <a class="post-toc-link" href="#userns-用户命名空间模式" data-level="1">--userns: 用户命名空间模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="label-添加标签">
-              <a class="post-toc-link" href="#label-添加标签" data-level="1">--label: 添加标签</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tls-verify-tls-验证">
-              <a class="post-toc-link" href="#tls-verify-tls-验证" data-level="1">--tls-verify: TLS 验证</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="从-docker-compose-迁移">
               <a class="post-toc-link" href="#从-docker-compose-迁移" data-level="3">从 Docker Compose 迁移</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml-转换为-kubernetes-yaml">
-              <a class="post-toc-link" href="#docker-compose-yml-转换为-kubernetes-yaml" data-level="1">docker-compose.yml 转换为 Kubernetes YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用工具转换">
-              <a class="post-toc-link" href="#使用工具转换" data-level="1">使用工具转换</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-to-kubernetes">
-              <a class="post-toc-link" href="#docker-compose-to-kubernetes" data-level="1">docker-compose to kubernetes</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="podman-compose-generate-kube-app-yaml">
-              <a class="post-toc-link" href="#podman-compose-generate-kube-app-yaml" data-level="1">podman-compose generate kube &gt; app.yaml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="然后用-podman-play-运行">
-              <a class="post-toc-link" href="#然后用-podman-play-运行" data-level="1">然后用 podman play 运行</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="工作流">
               <a class="post-toc-link" href="#工作流" data-level="3">工作流</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-在本地开发">
-              <a class="post-toc-link" href="#1-在本地开发" data-level="1">1. 在本地开发</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-生成-kubernetes-yaml">
-              <a class="post-toc-link" href="#2-生成-kubernetes-yaml" data-level="1">2. 生成 Kubernetes YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-在本地用-podman-测试">
-              <a class="post-toc-link" href="#3-在本地用-podman-测试" data-level="1">3. 在本地用 Podman 测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-如果测试通过-可以部署到-k8s">
-              <a class="post-toc-link" href="#4-如果测试通过-可以部署到-k8s" data-level="1">4. 如果测试通过，可以部署到 K8s</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-或者保存-yaml-用于其他环境">
-              <a class="post-toc-link" href="#5-或者保存-yaml-用于其他环境" data-level="1">5. 或者保存 YAML 用于其他环境</a>
             </li>
             
           </ul>
@@ -2350,260 +2146,56 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从-yaml-运行">
-          <a class="post-toc-link" href="#从-yaml-运行" data-level="1">从 YAML 运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用标准输入">
-          <a class="post-toc-link" href="#使用标准输入" data-level="1">使用标准输入</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
-          <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除">
-          <a class="post-toc-link" href="#停止并删除" data-level="1">停止并删除</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="资源管理">
           <a class="post-toc-link" href="#资源管理" data-level="3">资源管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看运行中的-pod">
-          <a class="post-toc-link" href="#查看运行中的-pod" data-level="1">查看运行中的 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有容器">
-          <a class="post-toc-link" href="#查看所有容器" data-level="1">查看所有容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止">
-          <a class="post-toc-link" href="#停止" data-level="1">停止</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动">
-          <a class="post-toc-link" href="#启动" data-level="1">启动</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除">
-          <a class="post-toc-link" href="#删除" data-level="1">删除</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="网络配置">
           <a class="post-toc-link" href="#网络配置" data-level="3">网络配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建自定义网络">
-          <a class="post-toc-link" href="#创建自定义网络" data-level="1">创建自定义网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用自定义网络">
-          <a class="post-toc-link" href="#使用自定义网络" data-level="1">使用自定义网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多个网络">
-          <a class="post-toc-link" href="#多个网络" data-level="1">多个网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="无网络">
-          <a class="post-toc-link" href="#无网络" data-level="1">无网络</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="签名和认证">
           <a class="post-toc-link" href="#签名和认证" data-level="3">签名和认证</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用认证拉取镜像">
-          <a class="post-toc-link" href="#使用认证拉取镜像" data-level="1">使用认证拉取镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定签名策略">
-          <a class="post-toc-link" href="#指定签名策略" data-level="1">指定签名策略</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tls-验证">
-          <a class="post-toc-link" href="#tls-验证" data-level="1">TLS 验证</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="卷配置">
           <a class="post-toc-link" href="#卷配置" data-level="3">卷配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用命名卷">
-          <a class="post-toc-link" href="#使用命名卷" data-level="1">使用命名卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定卷源">
-          <a class="post-toc-link" href="#指定卷源" data-level="1">指定卷源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卷会从-yaml-自动创建">
-          <a class="post-toc-link" href="#卷会从-yaml-自动创建" data-level="1">卷会从 YAML 自动创建</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
           <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="web-app-yaml">
-          <a class="post-toc-link" href="#web-app-yaml" data-level="1">web-app.yaml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行">
-          <a class="post-toc-link" href="#运行" data-level="1">运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="deployment-模式">
           <a class="post-toc-link" href="#deployment-模式" data-level="3">Deployment 模式</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="deployment-yaml">
-          <a class="post-toc-link" href="#deployment-yaml" data-level="1">deployment.yaml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="podman-会自动创建-pod">
-          <a class="post-toc-link" href="#podman-会自动创建-pod" data-level="1">Podman 会自动创建 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看">
-          <a class="post-toc-link" href="#查看" data-level="1">查看</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="多容器-pod">
           <a class="post-toc-link" href="#多容器-pod" data-level="3">多容器 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="multi-container-yaml">
-          <a class="post-toc-link" href="#multi-container-yaml" data-level="1">multi-container.yaml</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="service">
           <a class="post-toc-link" href="#service" data-level="3">Service</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="service-yaml">
-          <a class="post-toc-link" href="#service-yaml" data-level="1">service.yaml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="service-需要与-pod-一起使用">
-          <a class="post-toc-link" href="#service-需要与-pod-一起使用" data-level="1">Service 需要与 Pod 一起使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="通常在同一个文件中定义">
-          <a class="post-toc-link" href="#通常在同一个文件中定义" data-level="1">通常在同一个文件中定义</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="configmap-和-secret">
           <a class="post-toc-link" href="#configmap-和-secret" data-level="3">ConfigMap 和 Secret</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="configmap-yaml">
-          <a class="post-toc-link" href="#configmap-yaml" data-level="1">configmap.yaml</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="完整微服务示例">
           <a class="post-toc-link" href="#完整微服务示例" data-level="3">完整微服务示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="microservices-yaml">
-          <a class="post-toc-link" href="#microservices-yaml" data-level="1">microservices.yaml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行所有服务">
-          <a class="post-toc-link" href="#运行所有服务" data-level="1">运行所有服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看">
-          <a class="post-toc-link" href="#查看" data-level="1">查看</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="选项详解">
           <a class="post-toc-link" href="#选项详解" data-level="3">选项详解</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="network-指定网络">
-          <a class="post-toc-link" href="#network-指定网络" data-level="1">--network: 指定网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="no-hostname-不使用-pod-名称作为主机名">
-          <a class="post-toc-link" href="#no-hostname-不使用-pod-名称作为主机名" data-level="1">--no-hostname: 不使用 Pod 名称作为主机名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="seccomp-profile-root-指定-seccomp-配置目录">
-          <a class="post-toc-link" href="#seccomp-profile-root-指定-seccomp-配置目录" data-level="1">--seccomp-profile-root: 指定 Seccomp 配置目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="userns-用户命名空间模式">
-          <a class="post-toc-link" href="#userns-用户命名空间模式" data-level="1">--userns: 用户命名空间模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="label-添加标签">
-          <a class="post-toc-link" href="#label-添加标签" data-level="1">--label: 添加标签</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tls-verify-tls-验证">
-          <a class="post-toc-link" href="#tls-verify-tls-验证" data-level="1">--tls-verify: TLS 验证</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="从-docker-compose-迁移">
           <a class="post-toc-link" href="#从-docker-compose-迁移" data-level="3">从 Docker Compose 迁移</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml-转换为-kubernetes-yaml">
-          <a class="post-toc-link" href="#docker-compose-yml-转换为-kubernetes-yaml" data-level="1">docker-compose.yml 转换为 Kubernetes YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用工具转换">
-          <a class="post-toc-link" href="#使用工具转换" data-level="1">使用工具转换</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-to-kubernetes">
-          <a class="post-toc-link" href="#docker-compose-to-kubernetes" data-level="1">docker-compose to kubernetes</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="podman-compose-generate-kube-app-yaml">
-          <a class="post-toc-link" href="#podman-compose-generate-kube-app-yaml" data-level="1">podman-compose generate kube &gt; app.yaml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="然后用-podman-play-运行">
-          <a class="post-toc-link" href="#然后用-podman-play-运行" data-level="1">然后用 podman play 运行</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="工作流">
           <a class="post-toc-link" href="#工作流" data-level="3">工作流</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-在本地开发">
-          <a class="post-toc-link" href="#1-在本地开发" data-level="1">1. 在本地开发</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-生成-kubernetes-yaml">
-          <a class="post-toc-link" href="#2-生成-kubernetes-yaml" data-level="1">2. 生成 Kubernetes YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-在本地用-podman-测试">
-          <a class="post-toc-link" href="#3-在本地用-podman-测试" data-level="1">3. 在本地用 Podman 测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-如果测试通过-可以部署到-k8s">
-          <a class="post-toc-link" href="#4-如果测试通过-可以部署到-k8s" data-level="1">4. 如果测试通过，可以部署到 K8s</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-或者保存-yaml-用于其他环境">
-          <a class="post-toc-link" href="#5-或者保存-yaml-用于其他环境" data-level="1">5. 或者保存 YAML 用于其他环境</a>
         </li>
         
       </ul>
@@ -2612,7 +2204,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2795,8 +2387,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

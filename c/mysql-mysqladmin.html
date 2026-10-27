@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="mysql-mysqladmin 命令">
     <meta name="twitter:description" content="MySQL服务器管理工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1669,18 +1669,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
-              <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行选项">
-              <a class="post-toc-link" href="#执行选项" data-level="1">执行选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
-              <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="命令">
               <a class="post-toc-link" href="#命令" data-level="3">命令</a>
             </li>
@@ -1689,164 +1677,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务器是否运行">
-              <a class="post-toc-link" href="#检查服务器是否运行" data-level="1">检查服务器是否运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器状态">
-              <a class="post-toc-link" href="#查看服务器状态" data-level="1">查看服务器状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器版本">
-              <a class="post-toc-link" href="#查看服务器版本" data-level="1">查看服务器版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器扩展状态">
-              <a class="post-toc-link" href="#查看服务器扩展状态" data-level="1">查看服务器扩展状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器变量">
-              <a class="post-toc-link" href="#查看服务器变量" data-level="1">查看服务器变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有变量-搜索特定变量">
-              <a class="post-toc-link" href="#查看所有变量-搜索特定变量" data-level="1">查看所有变量（搜索特定变量）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建数据库">
-              <a class="post-toc-link" href="#创建数据库" data-level="1">创建数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除数据库-需要确认">
-              <a class="post-toc-link" href="#删除数据库-需要确认" data-level="1">删除数据库（需要确认）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除数据库-不确认">
-              <a class="post-toc-link" href="#删除数据库-不确认" data-level="1">删除数据库（不确认）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="刷新权限">
-              <a class="post-toc-link" href="#刷新权限" data-level="1">刷新权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="刷新日志">
-              <a class="post-toc-link" href="#刷新日志" data-level="1">刷新日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="刷新表缓存">
-              <a class="post-toc-link" href="#刷新表缓存" data-level="1">刷新表缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前进程列表">
-              <a class="post-toc-link" href="#查看当前进程列表" data-level="1">查看当前进程列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示完整进程列表">
-              <a class="post-toc-link" href="#显示完整进程列表" data-level="1">显示完整进程列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="终止指定线程">
-              <a class="post-toc-link" href="#终止指定线程" data-level="1">终止指定线程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="终止多个线程">
-              <a class="post-toc-link" href="#终止多个线程" data-level="1">终止多个线程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭mysql服务器">
-              <a class="post-toc-link" href="#关闭mysql服务器" data-level="1">关闭MySQL服务器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改root密码">
-              <a class="post-toc-link" href="#修改root密码" data-level="1">修改root密码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="定时监控服务器状态-每5秒一次">
-              <a class="post-toc-link" href="#定时监控服务器状态-每5秒一次" data-level="1">定时监控服务器状态（每5秒一次）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="定时监控状态变化-显示差值">
-              <a class="post-toc-link" href="#定时监控状态变化-显示差值" data-level="1">定时监控状态变化（显示差值）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="监控特定状态变量">
-              <a class="post-toc-link" href="#监控特定状态变量" data-level="1">监控特定状态变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看从服务器复制状态">
-              <a class="post-toc-link" href="#查看从服务器复制状态" data-level="1">查看从服务器复制状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动从服务器复制">
-              <a class="post-toc-link" href="#启动从服务器复制" data-level="1">启动从服务器复制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止从服务器复制">
-              <a class="post-toc-link" href="#停止从服务器复制" data-level="1">停止从服务器复制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行多个命令">
-              <a class="post-toc-link" href="#执行多个命令" data-level="1">执行多个命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="远程服务器管理">
-              <a class="post-toc-link" href="#远程服务器管理" data-level="1">远程服务器管理</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="监控脚本示例">
               <a class="post-toc-link" href="#监控脚本示例" data-level="3">监控脚本示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mysql监控脚本">
-              <a class="post-toc-link" href="#mysql监控脚本" data-level="1">MySQL监控脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用法-mysql_monitor-sh-interval">
-              <a class="post-toc-link" href="#用法-mysql_monitor-sh-interval" data-level="1">用法: ./mysql_monitor.sh [interval]</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="状态输出说明">
               <a class="post-toc-link" href="#状态输出说明" data-level="3">状态输出说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="status-命令输出">
-              <a class="post-toc-link" href="#status-命令输出" data-level="1">status 命令输出</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用运维场景">
               <a class="post-toc-link" href="#常用运维场景" data-level="3">常用运维场景</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-检查mysql是否响应">
-              <a class="post-toc-link" href="#1-检查mysql是否响应" data-level="1">1. 检查MySQL是否响应</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正常输出-mysqld-is-alive">
-              <a class="post-toc-link" href="#正常输出-mysqld-is-alive" data-level="1">正常输出: mysqld is alive</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-监控连接数">
-              <a class="post-toc-link" href="#2-监控连接数" data-level="1">2. 监控连接数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-找出长时间运行的查询">
-              <a class="post-toc-link" href="#3-找出长时间运行的查询" data-level="1">3. 找出长时间运行的查询</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-监控qps">
-              <a class="post-toc-link" href="#4-监控qps" data-level="1">4. 监控QPS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-刷新所有缓存">
-              <a class="post-toc-link" href="#5-刷新所有缓存" data-level="1">5. 刷新所有缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="6-安全关闭mysql">
-              <a class="post-toc-link" href="#6-安全关闭mysql" data-level="1">6. 安全关闭MySQL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="等待所有连接关闭后再停止服务">
-              <a class="post-toc-link" href="#等待所有连接关闭后再停止服务" data-level="1">等待所有连接关闭后再停止服务</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1890,18 +1730,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
-          <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行选项">
-          <a class="post-toc-link" href="#执行选项" data-level="1">执行选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
-          <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="命令">
           <a class="post-toc-link" href="#命令" data-level="3">命令</a>
         </li>
@@ -1910,164 +1738,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务器是否运行">
-          <a class="post-toc-link" href="#检查服务器是否运行" data-level="1">检查服务器是否运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器状态">
-          <a class="post-toc-link" href="#查看服务器状态" data-level="1">查看服务器状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器版本">
-          <a class="post-toc-link" href="#查看服务器版本" data-level="1">查看服务器版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器扩展状态">
-          <a class="post-toc-link" href="#查看服务器扩展状态" data-level="1">查看服务器扩展状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务器变量">
-          <a class="post-toc-link" href="#查看服务器变量" data-level="1">查看服务器变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有变量-搜索特定变量">
-          <a class="post-toc-link" href="#查看所有变量-搜索特定变量" data-level="1">查看所有变量（搜索特定变量）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建数据库">
-          <a class="post-toc-link" href="#创建数据库" data-level="1">创建数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除数据库-需要确认">
-          <a class="post-toc-link" href="#删除数据库-需要确认" data-level="1">删除数据库（需要确认）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除数据库-不确认">
-          <a class="post-toc-link" href="#删除数据库-不确认" data-level="1">删除数据库（不确认）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="刷新权限">
-          <a class="post-toc-link" href="#刷新权限" data-level="1">刷新权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="刷新日志">
-          <a class="post-toc-link" href="#刷新日志" data-level="1">刷新日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="刷新表缓存">
-          <a class="post-toc-link" href="#刷新表缓存" data-level="1">刷新表缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前进程列表">
-          <a class="post-toc-link" href="#查看当前进程列表" data-level="1">查看当前进程列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示完整进程列表">
-          <a class="post-toc-link" href="#显示完整进程列表" data-level="1">显示完整进程列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="终止指定线程">
-          <a class="post-toc-link" href="#终止指定线程" data-level="1">终止指定线程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="终止多个线程">
-          <a class="post-toc-link" href="#终止多个线程" data-level="1">终止多个线程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭mysql服务器">
-          <a class="post-toc-link" href="#关闭mysql服务器" data-level="1">关闭MySQL服务器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改root密码">
-          <a class="post-toc-link" href="#修改root密码" data-level="1">修改root密码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="定时监控服务器状态-每5秒一次">
-          <a class="post-toc-link" href="#定时监控服务器状态-每5秒一次" data-level="1">定时监控服务器状态（每5秒一次）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="定时监控状态变化-显示差值">
-          <a class="post-toc-link" href="#定时监控状态变化-显示差值" data-level="1">定时监控状态变化（显示差值）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="监控特定状态变量">
-          <a class="post-toc-link" href="#监控特定状态变量" data-level="1">监控特定状态变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看从服务器复制状态">
-          <a class="post-toc-link" href="#查看从服务器复制状态" data-level="1">查看从服务器复制状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动从服务器复制">
-          <a class="post-toc-link" href="#启动从服务器复制" data-level="1">启动从服务器复制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止从服务器复制">
-          <a class="post-toc-link" href="#停止从服务器复制" data-level="1">停止从服务器复制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行多个命令">
-          <a class="post-toc-link" href="#执行多个命令" data-level="1">执行多个命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="远程服务器管理">
-          <a class="post-toc-link" href="#远程服务器管理" data-level="1">远程服务器管理</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="监控脚本示例">
           <a class="post-toc-link" href="#监控脚本示例" data-level="3">监控脚本示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mysql监控脚本">
-          <a class="post-toc-link" href="#mysql监控脚本" data-level="1">MySQL监控脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用法-mysql_monitor-sh-interval">
-          <a class="post-toc-link" href="#用法-mysql_monitor-sh-interval" data-level="1">用法: ./mysql_monitor.sh [interval]</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="状态输出说明">
           <a class="post-toc-link" href="#状态输出说明" data-level="3">状态输出说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="status-命令输出">
-          <a class="post-toc-link" href="#status-命令输出" data-level="1">status 命令输出</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用运维场景">
           <a class="post-toc-link" href="#常用运维场景" data-level="3">常用运维场景</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-检查mysql是否响应">
-          <a class="post-toc-link" href="#1-检查mysql是否响应" data-level="1">1. 检查MySQL是否响应</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正常输出-mysqld-is-alive">
-          <a class="post-toc-link" href="#正常输出-mysqld-is-alive" data-level="1">正常输出: mysqld is alive</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-监控连接数">
-          <a class="post-toc-link" href="#2-监控连接数" data-level="1">2. 监控连接数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-找出长时间运行的查询">
-          <a class="post-toc-link" href="#3-找出长时间运行的查询" data-level="1">3. 找出长时间运行的查询</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-监控qps">
-          <a class="post-toc-link" href="#4-监控qps" data-level="1">4. 监控QPS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-刷新所有缓存">
-          <a class="post-toc-link" href="#5-刷新所有缓存" data-level="1">5. 刷新所有缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="6-安全关闭mysql">
-          <a class="post-toc-link" href="#6-安全关闭mysql" data-level="1">6. 安全关闭MySQL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="等待所有连接关闭后再停止服务">
-          <a class="post-toc-link" href="#等待所有连接关闭后再停止服务" data-level="1">等待所有连接关闭后再停止服务</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -2080,7 +1760,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2263,8 +1943,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

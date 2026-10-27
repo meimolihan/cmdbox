@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve-qm 命令">
     <meta name="twitter:description" content="PVE 虚拟机 QM 管理命令大全 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1665,248 +1665,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一-基础信息查看" data-level="3">一、基础信息查看</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看全部虚拟机列表">
-              <a class="post-toc-link" href="#查看全部虚拟机列表" data-level="1">查看全部虚拟机列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定虚拟机运行状态">
-              <a class="post-toc-link" href="#查看指定虚拟机运行状态" data-level="1">查看指定虚拟机运行状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟机完整配置">
-              <a class="post-toc-link" href="#查看虚拟机完整配置" data-level="1">查看虚拟机完整配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟机资源使用概况">
-              <a class="post-toc-link" href="#查看虚拟机资源使用概况" data-level="1">查看虚拟机资源使用概况</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="二-生命周期启停管理">
               <a class="post-toc-link" href="#二-生命周期启停管理" data-level="3">二、生命周期启停管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动虚拟机">
-              <a class="post-toc-link" href="#启动虚拟机" data-level="1">启动虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正常关闭虚拟机-发送-acpi-关机信号">
-              <a class="post-toc-link" href="#正常关闭虚拟机-发送-acpi-关机信号" data-level="1">正常关闭虚拟机（发送 ACPI 关机信号）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启虚拟机">
-              <a class="post-toc-link" href="#重启虚拟机" data-level="1">重启虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="挂起虚拟机-保存状态到磁盘">
-              <a class="post-toc-link" href="#挂起虚拟机-保存状态到磁盘" data-level="1">挂起虚拟机（保存状态到磁盘）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复挂起虚拟机">
-              <a class="post-toc-link" href="#恢复挂起虚拟机" data-level="1">恢复挂起虚拟机</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="强制应急操作">
               <a class="post-toc-link" href="#强制应急操作" data-level="4">强制应急操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制关机-相当于断电">
-              <a class="post-toc-link" href="#强制关机-相当于断电" data-level="1">强制关机（相当于断电）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底删除虚拟机并清空数据">
-              <a class="post-toc-link" href="#彻底删除虚拟机并清空数据" data-level="1">彻底删除虚拟机并清空数据</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="三-硬件资源配置修改">
               <a class="post-toc-link" href="#三-硬件资源配置修改" data-level="3">三、硬件资源配置修改</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置内存大小-mb">
-              <a class="post-toc-link" href="#设置内存大小-mb" data-level="1">设置内存大小（MB）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-核心数">
-              <a class="post-toc-link" href="#设置-cpu-核心数" data-level="1">设置 CPU 核心数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-类型-默认-kvm64">
-              <a class="post-toc-link" href="#设置-cpu-类型-默认-kvm64" data-level="1">设置 CPU 类型（默认 kvm64）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="新增磁盘-指定存储与容量-gb">
-              <a class="post-toc-link" href="#新增磁盘-指定存储与容量-gb" data-level="1">新增磁盘，指定存储与容量（GB）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="附加现有磁盘">
-              <a class="post-toc-link" href="#附加现有磁盘" data-level="1">附加现有磁盘</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="配置桥接网卡">
-              <a class="post-toc-link" href="#配置桥接网卡" data-level="1">配置桥接网卡</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="移除网卡">
-              <a class="post-toc-link" href="#移除网卡" data-level="1">移除网卡</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开启开机自启">
-              <a class="post-toc-link" href="#开启开机自启" data-level="1">开启开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置启动顺序">
-              <a class="post-toc-link" href="#设置启动顺序" data-level="1">设置启动顺序</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用-kvm-硬件虚拟化">
-              <a class="post-toc-link" href="#启用-kvm-硬件虚拟化" data-level="1">启用 KVM 硬件虚拟化</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-vga-显示驱动">
-              <a class="post-toc-link" href="#设置-vga-显示驱动" data-level="1">设置 VGA 显示驱动</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="四-快照与备份管理">
               <a class="post-toc-link" href="#四-快照与备份管理" data-level="3">四、快照与备份管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照">
-              <a class="post-toc-link" href="#创建快照" data-level="1">创建快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照并包含内存状态">
-              <a class="post-toc-link" href="#创建快照并包含内存状态" data-level="1">创建快照并包含内存状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="回滚快照">
-              <a class="post-toc-link" href="#回滚快照" data-level="1">回滚快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除快照">
-              <a class="post-toc-link" href="#删除快照" data-level="1">删除快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有快照">
-              <a class="post-toc-link" href="#查看所有快照" data-level="1">查看所有快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份到指定存储">
-              <a class="post-toc-link" href="#整机备份到指定存储" data-level="1">整机备份到指定存储</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份并压缩">
-              <a class="post-toc-link" href="#整机备份并压缩" data-level="1">整机备份并压缩</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份并排除特定卷">
-              <a class="post-toc-link" href="#整机备份并排除特定卷" data-level="1">整机备份并排除特定卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份任务状态">
-              <a class="post-toc-link" href="#查看备份任务状态" data-level="1">查看备份任务状态</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="五-克隆与节点迁移">
               <a class="post-toc-link" href="#五-克隆与节点迁移" data-level="3">五、克隆与节点迁移</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完整克隆虚拟机">
-              <a class="post-toc-link" href="#完整克隆虚拟机" data-level="1">完整克隆虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="链接克隆-节省空间-依赖原磁盘">
-              <a class="post-toc-link" href="#链接克隆-节省空间-依赖原磁盘" data-level="1">链接克隆（节省空间，依赖原磁盘）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在线迁移至其他节点">
-              <a class="post-toc-link" href="#在线迁移至其他节点" data-level="1">在线迁移至其他节点</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="离线迁移">
-              <a class="post-toc-link" href="#离线迁移" data-level="1">离线迁移</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘迁移至其他存储">
-              <a class="post-toc-link" href="#磁盘迁移至其他存储" data-level="1">磁盘迁移至其他存储</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘迁移-保留原磁盘">
-              <a class="post-toc-link" href="#磁盘迁移-保留原磁盘" data-level="1">磁盘迁移（保留原磁盘）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="六-批量运维常用脚本">
               <a class="post-toc-link" href="#六-批量运维常用脚本" data-level="3">六、批量运维常用脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量启动所有已关闭的虚拟机">
-              <a class="post-toc-link" href="#批量启动所有已关闭的虚拟机" data-level="1">批量启动所有已关闭的虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量重启所有运行中的虚拟机">
-              <a class="post-toc-link" href="#批量重启所有运行中的虚拟机" data-level="1">批量重启所有运行中的虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量停止所有运行中的虚拟机">
-              <a class="post-toc-link" href="#批量停止所有运行中的虚拟机" data-level="1">批量停止所有运行中的虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量设置开机自启">
-              <a class="post-toc-link" href="#批量设置开机自启" data-level="1">批量设置开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量创建快照">
-              <a class="post-toc-link" href="#批量创建快照" data-level="1">批量创建快照</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="七-资源监控与日志排查">
               <a class="post-toc-link" href="#七-资源监控与日志排查" data-level="3">七、资源监控与日志排查</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入单台虚拟机监视器-类似-vnc-控制台">
-              <a class="post-toc-link" href="#进入单台虚拟机监视器-类似-vnc-控制台" data-level="1">进入单台虚拟机监视器（类似 VNC 控制台）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看集群资源总览">
-              <a class="post-toc-link" href="#查看集群资源总览" data-level="1">查看集群资源总览</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看节点资源使用">
-              <a class="post-toc-link" href="#查看节点资源使用" data-level="1">查看节点资源使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看任务日志">
-              <a class="post-toc-link" href="#查看任务日志" data-level="1">查看任务日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控-pve-守护进程日志">
-              <a class="post-toc-link" href="#实时监控-pve-守护进程日志" data-level="1">实时监控 PVE 守护进程日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-qm-相关日志">
-              <a class="post-toc-link" href="#查看-qm-相关日志" data-level="1">查看 qm 相关日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟机-qemu-进程日志">
-              <a class="post-toc-link" href="#查看虚拟机-qemu-进程日志" data-level="1">查看虚拟机 QEMU 进程日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="八-模板与-iso-管理">
               <a class="post-toc-link" href="#八-模板与-iso-管理" data-level="3">八、模板与 ISO 管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将虚拟机转换为模板-仅关机状态可用">
-              <a class="post-toc-link" href="#将虚拟机转换为模板-仅关机状态可用" data-level="1">将虚拟机转换为模板（仅关机状态可用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从模板创建虚拟机">
-              <a class="post-toc-link" href="#从模板创建虚拟机" data-level="1">从模板创建虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出存储上的-iso-镜像">
-              <a class="post-toc-link" href="#列出存储上的-iso-镜像" data-level="1">列出存储上的 ISO 镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载-iso-到本地存储">
-              <a class="post-toc-link" href="#下载-iso-到本地存储" data-level="1">下载 ISO 到本地存储</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="九-常用别名优化">
@@ -1950,248 +1738,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一-基础信息查看" data-level="3">一、基础信息查看</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看全部虚拟机列表">
-          <a class="post-toc-link" href="#查看全部虚拟机列表" data-level="1">查看全部虚拟机列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定虚拟机运行状态">
-          <a class="post-toc-link" href="#查看指定虚拟机运行状态" data-level="1">查看指定虚拟机运行状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟机完整配置">
-          <a class="post-toc-link" href="#查看虚拟机完整配置" data-level="1">查看虚拟机完整配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟机资源使用概况">
-          <a class="post-toc-link" href="#查看虚拟机资源使用概况" data-level="1">查看虚拟机资源使用概况</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="二-生命周期启停管理">
           <a class="post-toc-link" href="#二-生命周期启停管理" data-level="3">二、生命周期启停管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动虚拟机">
-          <a class="post-toc-link" href="#启动虚拟机" data-level="1">启动虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正常关闭虚拟机-发送-acpi-关机信号">
-          <a class="post-toc-link" href="#正常关闭虚拟机-发送-acpi-关机信号" data-level="1">正常关闭虚拟机（发送 ACPI 关机信号）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启虚拟机">
-          <a class="post-toc-link" href="#重启虚拟机" data-level="1">重启虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="挂起虚拟机-保存状态到磁盘">
-          <a class="post-toc-link" href="#挂起虚拟机-保存状态到磁盘" data-level="1">挂起虚拟机（保存状态到磁盘）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复挂起虚拟机">
-          <a class="post-toc-link" href="#恢复挂起虚拟机" data-level="1">恢复挂起虚拟机</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="强制应急操作">
           <a class="post-toc-link" href="#强制应急操作" data-level="4">强制应急操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制关机-相当于断电">
-          <a class="post-toc-link" href="#强制关机-相当于断电" data-level="1">强制关机（相当于断电）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底删除虚拟机并清空数据">
-          <a class="post-toc-link" href="#彻底删除虚拟机并清空数据" data-level="1">彻底删除虚拟机并清空数据</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="三-硬件资源配置修改">
           <a class="post-toc-link" href="#三-硬件资源配置修改" data-level="3">三、硬件资源配置修改</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置内存大小-mb">
-          <a class="post-toc-link" href="#设置内存大小-mb" data-level="1">设置内存大小（MB）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-核心数">
-          <a class="post-toc-link" href="#设置-cpu-核心数" data-level="1">设置 CPU 核心数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-类型-默认-kvm64">
-          <a class="post-toc-link" href="#设置-cpu-类型-默认-kvm64" data-level="1">设置 CPU 类型（默认 kvm64）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="新增磁盘-指定存储与容量-gb">
-          <a class="post-toc-link" href="#新增磁盘-指定存储与容量-gb" data-level="1">新增磁盘，指定存储与容量（GB）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="附加现有磁盘">
-          <a class="post-toc-link" href="#附加现有磁盘" data-level="1">附加现有磁盘</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="配置桥接网卡">
-          <a class="post-toc-link" href="#配置桥接网卡" data-level="1">配置桥接网卡</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="移除网卡">
-          <a class="post-toc-link" href="#移除网卡" data-level="1">移除网卡</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开启开机自启">
-          <a class="post-toc-link" href="#开启开机自启" data-level="1">开启开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置启动顺序">
-          <a class="post-toc-link" href="#设置启动顺序" data-level="1">设置启动顺序</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用-kvm-硬件虚拟化">
-          <a class="post-toc-link" href="#启用-kvm-硬件虚拟化" data-level="1">启用 KVM 硬件虚拟化</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-vga-显示驱动">
-          <a class="post-toc-link" href="#设置-vga-显示驱动" data-level="1">设置 VGA 显示驱动</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="四-快照与备份管理">
           <a class="post-toc-link" href="#四-快照与备份管理" data-level="3">四、快照与备份管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照">
-          <a class="post-toc-link" href="#创建快照" data-level="1">创建快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照并包含内存状态">
-          <a class="post-toc-link" href="#创建快照并包含内存状态" data-level="1">创建快照并包含内存状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="回滚快照">
-          <a class="post-toc-link" href="#回滚快照" data-level="1">回滚快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除快照">
-          <a class="post-toc-link" href="#删除快照" data-level="1">删除快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有快照">
-          <a class="post-toc-link" href="#查看所有快照" data-level="1">查看所有快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份到指定存储">
-          <a class="post-toc-link" href="#整机备份到指定存储" data-level="1">整机备份到指定存储</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份并压缩">
-          <a class="post-toc-link" href="#整机备份并压缩" data-level="1">整机备份并压缩</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份并排除特定卷">
-          <a class="post-toc-link" href="#整机备份并排除特定卷" data-level="1">整机备份并排除特定卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份任务状态">
-          <a class="post-toc-link" href="#查看备份任务状态" data-level="1">查看备份任务状态</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="五-克隆与节点迁移">
           <a class="post-toc-link" href="#五-克隆与节点迁移" data-level="3">五、克隆与节点迁移</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完整克隆虚拟机">
-          <a class="post-toc-link" href="#完整克隆虚拟机" data-level="1">完整克隆虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="链接克隆-节省空间-依赖原磁盘">
-          <a class="post-toc-link" href="#链接克隆-节省空间-依赖原磁盘" data-level="1">链接克隆（节省空间，依赖原磁盘）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在线迁移至其他节点">
-          <a class="post-toc-link" href="#在线迁移至其他节点" data-level="1">在线迁移至其他节点</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="离线迁移">
-          <a class="post-toc-link" href="#离线迁移" data-level="1">离线迁移</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘迁移至其他存储">
-          <a class="post-toc-link" href="#磁盘迁移至其他存储" data-level="1">磁盘迁移至其他存储</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘迁移-保留原磁盘">
-          <a class="post-toc-link" href="#磁盘迁移-保留原磁盘" data-level="1">磁盘迁移（保留原磁盘）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="六-批量运维常用脚本">
           <a class="post-toc-link" href="#六-批量运维常用脚本" data-level="3">六、批量运维常用脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量启动所有已关闭的虚拟机">
-          <a class="post-toc-link" href="#批量启动所有已关闭的虚拟机" data-level="1">批量启动所有已关闭的虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量重启所有运行中的虚拟机">
-          <a class="post-toc-link" href="#批量重启所有运行中的虚拟机" data-level="1">批量重启所有运行中的虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量停止所有运行中的虚拟机">
-          <a class="post-toc-link" href="#批量停止所有运行中的虚拟机" data-level="1">批量停止所有运行中的虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量设置开机自启">
-          <a class="post-toc-link" href="#批量设置开机自启" data-level="1">批量设置开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量创建快照">
-          <a class="post-toc-link" href="#批量创建快照" data-level="1">批量创建快照</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="七-资源监控与日志排查">
           <a class="post-toc-link" href="#七-资源监控与日志排查" data-level="3">七、资源监控与日志排查</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入单台虚拟机监视器-类似-vnc-控制台">
-          <a class="post-toc-link" href="#进入单台虚拟机监视器-类似-vnc-控制台" data-level="1">进入单台虚拟机监视器（类似 VNC 控制台）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看集群资源总览">
-          <a class="post-toc-link" href="#查看集群资源总览" data-level="1">查看集群资源总览</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看节点资源使用">
-          <a class="post-toc-link" href="#查看节点资源使用" data-level="1">查看节点资源使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看任务日志">
-          <a class="post-toc-link" href="#查看任务日志" data-level="1">查看任务日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控-pve-守护进程日志">
-          <a class="post-toc-link" href="#实时监控-pve-守护进程日志" data-level="1">实时监控 PVE 守护进程日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-qm-相关日志">
-          <a class="post-toc-link" href="#查看-qm-相关日志" data-level="1">查看 qm 相关日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟机-qemu-进程日志">
-          <a class="post-toc-link" href="#查看虚拟机-qemu-进程日志" data-level="1">查看虚拟机 QEMU 进程日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="八-模板与-iso-管理">
           <a class="post-toc-link" href="#八-模板与-iso-管理" data-level="3">八、模板与 ISO 管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将虚拟机转换为模板-仅关机状态可用">
-          <a class="post-toc-link" href="#将虚拟机转换为模板-仅关机状态可用" data-level="1">将虚拟机转换为模板（仅关机状态可用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从模板创建虚拟机">
-          <a class="post-toc-link" href="#从模板创建虚拟机" data-level="1">从模板创建虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出存储上的-iso-镜像">
-          <a class="post-toc-link" href="#列出存储上的-iso-镜像" data-level="1">列出存储上的 ISO 镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载-iso-到本地存储">
-          <a class="post-toc-link" href="#下载-iso-到本地存储" data-level="1">下载 ISO 到本地存储</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="九-常用别名优化">
@@ -2208,7 +1784,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2391,8 +1967,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

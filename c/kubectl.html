@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="kubectl 命令">
     <meta name="twitter:description" content="Kubernetes 命令行管理工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1800,268 +1800,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="资源查看">
-              <a class="post-toc-link" href="#资源查看" data-level="1">========== 资源查看 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看集群信息">
-              <a class="post-toc-link" href="#查看集群信息" data-level="1">查看集群信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看节点">
-              <a class="post-toc-link" href="#查看节点" data-level="1">查看节点</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有-pod">
-              <a class="post-toc-link" href="#查看所有-pod" data-level="1">查看所有 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务">
-              <a class="post-toc-link" href="#查看服务" data-level="1">查看服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看部署">
-              <a class="post-toc-link" href="#查看部署" data-level="1">查看部署</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有资源">
-              <a class="post-toc-link" href="#查看所有资源" data-level="1">查看所有资源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看命名空间">
-              <a class="post-toc-link" href="#查看命名空间" data-level="1">查看命名空间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看配置">
-              <a class="post-toc-link" href="#查看配置" data-level="1">查看配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="部署应用">
-              <a class="post-toc-link" href="#部署应用" data-level="1">========== 部署应用 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建部署">
-              <a class="post-toc-link" href="#创建部署" data-level="1">创建部署</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扩缩容">
-              <a class="post-toc-link" href="#扩缩容" data-level="1">扩缩容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动扩缩容">
-              <a class="post-toc-link" href="#自动扩缩容" data-level="1">自动扩缩容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="暴露端口">
-              <a class="post-toc-link" href="#暴露端口" data-level="1">暴露端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建资源">
-              <a class="post-toc-link" href="#创建资源" data-level="1">创建资源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除资源">
-              <a class="post-toc-link" href="#删除资源" data-level="1">删除资源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="pod-管理">
-              <a class="post-toc-link" href="#pod-管理" data-level="1">========== Pod 管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-pod-详情">
-              <a class="post-toc-link" href="#查看-pod-详情" data-level="1">查看 Pod 详情</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-pod-日志">
-              <a class="post-toc-link" href="#查看-pod-日志" data-level="1">查看 Pod 日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入-pod-执行命令">
-              <a class="post-toc-link" href="#进入-pod-执行命令" data-level="1">进入 Pod 执行命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器终端">
-              <a class="post-toc-link" href="#进入容器终端" data-level="1">进入容器终端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
-              <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除-pod">
-              <a class="post-toc-link" href="#删除-pod" data-level="1">删除 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务管理">
-              <a class="post-toc-link" href="#服务管理" data-level="1">========== 服务管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务">
-              <a class="post-toc-link" href="#创建服务" data-level="1">创建服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="端口转发-本地调试">
-              <a class="post-toc-link" href="#端口转发-本地调试" data-level="1">端口转发（本地调试）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-service-详情">
-              <a class="post-toc-link" href="#查看-service-详情" data-level="1">查看 Service 详情</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-endpoints">
-              <a class="post-toc-link" href="#查看-endpoints" data-level="1">查看 Endpoints</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="配置管理">
-              <a class="post-toc-link" href="#配置管理" data-level="1">========== 配置管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-configmap">
-              <a class="post-toc-link" href="#创建-configmap" data-level="1">创建 ConfigMap</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-secret">
-              <a class="post-toc-link" href="#创建-secret" data-level="1">创建 Secret</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-configmap">
-              <a class="post-toc-link" href="#编辑-configmap" data-level="1">编辑 ConfigMap</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="命名空间管理">
-              <a class="post-toc-link" href="#命名空间管理" data-level="1">========== 命名空间管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建命名空间">
-              <a class="post-toc-link" href="#创建命名空间" data-level="1">创建命名空间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认命名空间">
-              <a class="post-toc-link" href="#切换默认命名空间" data-level="1">切换默认命名空间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除命名空间">
-              <a class="post-toc-link" href="#删除命名空间" data-level="1">删除命名空间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="节点管理">
-              <a class="post-toc-link" href="#节点管理" data-level="1">========== 节点管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看节点详情">
-              <a class="post-toc-link" href="#查看节点详情" data-level="1">查看节点详情</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标记节点不可调度">
-              <a class="post-toc-link" href="#标记节点不可调度" data-level="1">标记节点不可调度</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标记节点可调度">
-              <a class="post-toc-link" href="#标记节点可调度" data-level="1">标记节点可调度</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="驱逐节点上的-pod">
-              <a class="post-toc-link" href="#驱逐节点上的-pod" data-level="1">驱逐节点上的 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="调试排错">
-              <a class="post-toc-link" href="#调试排错" data-level="1">========== 调试排错 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看事件">
-              <a class="post-toc-link" href="#查看事件" data-level="1">查看事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源使用">
-              <a class="post-toc-link" href="#查看资源使用" data-level="1">查看资源使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源配额">
-              <a class="post-toc-link" href="#查看资源配额" data-level="1">查看资源配额</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试-dns">
-              <a class="post-toc-link" href="#测试-dns" data-level="1">测试 DNS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="集群管理">
-              <a class="post-toc-link" href="#集群管理" data-level="1">========== 集群管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-api-资源">
-              <a class="post-toc-link" href="#查看-api-资源" data-level="1">查看 API 资源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-api-版本">
-              <a class="post-toc-link" href="#查看-api-版本" data-level="1">查看 API 版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看集群配置">
-              <a class="post-toc-link" href="#查看集群配置" data-level="1">查看集群配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换集群">
-              <a class="post-toc-link" href="#切换集群" data-level="1">切换集群</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出格式">
-              <a class="post-toc-link" href="#输出格式" data-level="1">========== 输出格式 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json-格式">
-              <a class="post-toc-link" href="#json-格式" data-level="1">JSON 格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-格式">
-              <a class="post-toc-link" href="#yaml-格式" data-level="1">YAML 格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自定义列">
-              <a class="post-toc-link" href="#自定义列" data-level="1">自定义列</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仅输出名称">
-              <a class="post-toc-link" href="#仅输出名称" data-level="1">仅输出名称</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标签选择器">
-              <a class="post-toc-link" href="#标签选择器" data-level="1">标签选择器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制删除资源">
-              <a class="post-toc-link" href="#强制删除资源" data-level="1">强制删除资源</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="deployment-yaml-示例">
               <a class="post-toc-link" href="#deployment-yaml-示例" data-level="3">deployment.yaml 示例</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令速查">
               <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速查看所有资源状态">
-              <a class="post-toc-link" href="#快速查看所有资源状态" data-level="1">快速查看所有资源状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源定义">
-              <a class="post-toc-link" href="#查看资源定义" data-level="1">查看资源定义</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速创建测试-pod">
-              <a class="post-toc-link" href="#快速创建测试-pod" data-level="1">快速创建测试 Pod</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看最近事件">
-              <a class="post-toc-link" href="#查看最近事件" data-level="1">查看最近事件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出资源定义">
-              <a class="post-toc-link" href="#导出资源定义" data-level="1">导出资源定义</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="滚动更新">
-              <a class="post-toc-link" href="#滚动更新" data-level="1">滚动更新</a>
             </li>
             
           </ul>
@@ -2101,238 +1845,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="资源查看">
-          <a class="post-toc-link" href="#资源查看" data-level="1">========== 资源查看 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看集群信息">
-          <a class="post-toc-link" href="#查看集群信息" data-level="1">查看集群信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看节点">
-          <a class="post-toc-link" href="#查看节点" data-level="1">查看节点</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有-pod">
-          <a class="post-toc-link" href="#查看所有-pod" data-level="1">查看所有 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务">
-          <a class="post-toc-link" href="#查看服务" data-level="1">查看服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看部署">
-          <a class="post-toc-link" href="#查看部署" data-level="1">查看部署</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有资源">
-          <a class="post-toc-link" href="#查看所有资源" data-level="1">查看所有资源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看命名空间">
-          <a class="post-toc-link" href="#查看命名空间" data-level="1">查看命名空间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看配置">
-          <a class="post-toc-link" href="#查看配置" data-level="1">查看配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="部署应用">
-          <a class="post-toc-link" href="#部署应用" data-level="1">========== 部署应用 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建部署">
-          <a class="post-toc-link" href="#创建部署" data-level="1">创建部署</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扩缩容">
-          <a class="post-toc-link" href="#扩缩容" data-level="1">扩缩容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动扩缩容">
-          <a class="post-toc-link" href="#自动扩缩容" data-level="1">自动扩缩容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="暴露端口">
-          <a class="post-toc-link" href="#暴露端口" data-level="1">暴露端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建资源">
-          <a class="post-toc-link" href="#创建资源" data-level="1">创建资源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除资源">
-          <a class="post-toc-link" href="#删除资源" data-level="1">删除资源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="pod-管理">
-          <a class="post-toc-link" href="#pod-管理" data-level="1">========== Pod 管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-pod-详情">
-          <a class="post-toc-link" href="#查看-pod-详情" data-level="1">查看 Pod 详情</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-pod-日志">
-          <a class="post-toc-link" href="#查看-pod-日志" data-level="1">查看 Pod 日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入-pod-执行命令">
-          <a class="post-toc-link" href="#进入-pod-执行命令" data-level="1">进入 Pod 执行命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器终端">
-          <a class="post-toc-link" href="#进入容器终端" data-level="1">进入容器终端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
-          <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除-pod">
-          <a class="post-toc-link" href="#删除-pod" data-level="1">删除 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务管理">
-          <a class="post-toc-link" href="#服务管理" data-level="1">========== 服务管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务">
-          <a class="post-toc-link" href="#创建服务" data-level="1">创建服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="端口转发-本地调试">
-          <a class="post-toc-link" href="#端口转发-本地调试" data-level="1">端口转发（本地调试）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-service-详情">
-          <a class="post-toc-link" href="#查看-service-详情" data-level="1">查看 Service 详情</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-endpoints">
-          <a class="post-toc-link" href="#查看-endpoints" data-level="1">查看 Endpoints</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="配置管理">
-          <a class="post-toc-link" href="#配置管理" data-level="1">========== 配置管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-configmap">
-          <a class="post-toc-link" href="#创建-configmap" data-level="1">创建 ConfigMap</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-secret">
-          <a class="post-toc-link" href="#创建-secret" data-level="1">创建 Secret</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-configmap">
-          <a class="post-toc-link" href="#编辑-configmap" data-level="1">编辑 ConfigMap</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="命名空间管理">
-          <a class="post-toc-link" href="#命名空间管理" data-level="1">========== 命名空间管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建命名空间">
-          <a class="post-toc-link" href="#创建命名空间" data-level="1">创建命名空间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认命名空间">
-          <a class="post-toc-link" href="#切换默认命名空间" data-level="1">切换默认命名空间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除命名空间">
-          <a class="post-toc-link" href="#删除命名空间" data-level="1">删除命名空间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="节点管理">
-          <a class="post-toc-link" href="#节点管理" data-level="1">========== 节点管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看节点详情">
-          <a class="post-toc-link" href="#查看节点详情" data-level="1">查看节点详情</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标记节点不可调度">
-          <a class="post-toc-link" href="#标记节点不可调度" data-level="1">标记节点不可调度</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标记节点可调度">
-          <a class="post-toc-link" href="#标记节点可调度" data-level="1">标记节点可调度</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="驱逐节点上的-pod">
-          <a class="post-toc-link" href="#驱逐节点上的-pod" data-level="1">驱逐节点上的 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="调试排错">
-          <a class="post-toc-link" href="#调试排错" data-level="1">========== 调试排错 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看事件">
-          <a class="post-toc-link" href="#查看事件" data-level="1">查看事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源使用">
-          <a class="post-toc-link" href="#查看资源使用" data-level="1">查看资源使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源配额">
-          <a class="post-toc-link" href="#查看资源配额" data-level="1">查看资源配额</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试-dns">
-          <a class="post-toc-link" href="#测试-dns" data-level="1">测试 DNS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="集群管理">
-          <a class="post-toc-link" href="#集群管理" data-level="1">========== 集群管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-api-资源">
-          <a class="post-toc-link" href="#查看-api-资源" data-level="1">查看 API 资源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-api-版本">
-          <a class="post-toc-link" href="#查看-api-版本" data-level="1">查看 API 版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看集群配置">
-          <a class="post-toc-link" href="#查看集群配置" data-level="1">查看集群配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换集群">
-          <a class="post-toc-link" href="#切换集群" data-level="1">切换集群</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出格式">
-          <a class="post-toc-link" href="#输出格式" data-level="1">========== 输出格式 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json-格式">
-          <a class="post-toc-link" href="#json-格式" data-level="1">JSON 格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-格式">
-          <a class="post-toc-link" href="#yaml-格式" data-level="1">YAML 格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自定义列">
-          <a class="post-toc-link" href="#自定义列" data-level="1">自定义列</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仅输出名称">
-          <a class="post-toc-link" href="#仅输出名称" data-level="1">仅输出名称</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标签选择器">
-          <a class="post-toc-link" href="#标签选择器" data-level="1">标签选择器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制删除资源">
-          <a class="post-toc-link" href="#强制删除资源" data-level="1">强制删除资源</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="deployment-yaml-示例">
           <a class="post-toc-link" href="#deployment-yaml-示例" data-level="3">deployment.yaml 示例</a>
         </li>
@@ -2341,37 +1853,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速查看所有资源状态">
-          <a class="post-toc-link" href="#快速查看所有资源状态" data-level="1">快速查看所有资源状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源定义">
-          <a class="post-toc-link" href="#查看资源定义" data-level="1">查看资源定义</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速创建测试-pod">
-          <a class="post-toc-link" href="#快速创建测试-pod" data-level="1">快速创建测试 Pod</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看最近事件">
-          <a class="post-toc-link" href="#查看最近事件" data-level="1">查看最近事件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出资源定义">
-          <a class="post-toc-link" href="#导出资源定义" data-level="1">导出资源定义</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="滚动更新">
-          <a class="post-toc-link" href="#滚动更新" data-level="1">滚动更新</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2554,8 +2042,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

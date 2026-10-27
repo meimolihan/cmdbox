@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fan-webssh 命令">
     <meta name="twitter:description" content="fan-webssh 多功能Linux终端面板(webSSH&amp;webSFTP) - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1456,32 +1456,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#systemd-脚本安装-原生大理部署" data-level="2">systemd 脚本安装（原生大理部署）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="源码运行方式">
-              <a class="post-toc-link" href="#源码运行方式" data-level="1">源码运行方式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="单文件二进制方式-下载产物为-v1-0-x-发布版本">
-              <a class="post-toc-link" href="#单文件二进制方式-下载产物为-v1-0-x-发布版本" data-level="1">单文件二进制方式（下载产物为 v1.0.x 发布版本）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认安装到-var-lib-fan-webssh-监听-9000-端口">
-              <a class="post-toc-link" href="#默认安装到-var-lib-fan-webssh-监听-9000-端口" data-level="1">默认安装到 /var/lib/fan-webssh，监听 9000 端口</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="备份与恢复">
               <a class="post-toc-link" href="#备份与恢复" data-level="2">备份与恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份-在线打包-不停服-保留-6-份">
-              <a class="post-toc-link" href="#备份-在线打包-不停服-保留-6-份" data-level="1">备份（在线打包、不停服，保留 6 份）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-自动取最新备份-停服-清理-解压-启动">
-              <a class="post-toc-link" href="#恢复-自动取最新备份-停服-清理-解压-启动" data-level="1">恢复（自动取最新备份：停服→清理→解压→启动）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定备份文件">
-              <a class="post-toc-link" href="#恢复指定备份文件" data-level="1">恢复指定备份文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理">
@@ -1490,10 +1466,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="卸载">
               <a class="post-toc-link" href="#卸载" data-level="2">卸载</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-方式-docker-rm-f-fan-webssh-guacd-docker-rmi-f-mobufan-fan-webssh-guacamole-guacd">
-              <a class="post-toc-link" href="#docker-方式-docker-rm-f-fan-webssh-guacd-docker-rmi-f-mobufan-fan-webssh-guacamole-guacd" data-level="1">Docker 方式：docker rm -f fan-webssh guacd &amp;&amp; docker rmi -f mobufan/fan-webssh guacamole/guacd</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
@@ -1545,32 +1517,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#systemd-脚本安装-原生大理部署" data-level="2">systemd 脚本安装（原生大理部署）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="源码运行方式">
-          <a class="post-toc-link" href="#源码运行方式" data-level="1">源码运行方式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="单文件二进制方式-下载产物为-v1-0-x-发布版本">
-          <a class="post-toc-link" href="#单文件二进制方式-下载产物为-v1-0-x-发布版本" data-level="1">单文件二进制方式（下载产物为 v1.0.x 发布版本）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认安装到-var-lib-fan-webssh-监听-9000-端口">
-          <a class="post-toc-link" href="#默认安装到-var-lib-fan-webssh-监听-9000-端口" data-level="1">默认安装到 /var/lib/fan-webssh，监听 9000 端口</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="备份与恢复">
           <a class="post-toc-link" href="#备份与恢复" data-level="2">备份与恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份-在线打包-不停服-保留-6-份">
-          <a class="post-toc-link" href="#备份-在线打包-不停服-保留-6-份" data-level="1">备份（在线打包、不停服，保留 6 份）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-自动取最新备份-停服-清理-解压-启动">
-          <a class="post-toc-link" href="#恢复-自动取最新备份-停服-清理-解压-启动" data-level="1">恢复（自动取最新备份：停服→清理→解压→启动）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复指定备份文件">
-          <a class="post-toc-link" href="#恢复指定备份文件" data-level="1">恢复指定备份文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="服务管理">
@@ -1579,10 +1527,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="卸载">
           <a class="post-toc-link" href="#卸载" data-level="2">卸载</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-方式-docker-rm-f-fan-webssh-guacd-docker-rmi-f-mobufan-fan-webssh-guacamole-guacd">
-          <a class="post-toc-link" href="#docker-方式-docker-rm-f-fan-webssh-guacd-docker-rmi-f-mobufan-fan-webssh-guacamole-guacd" data-level="1">Docker 方式：docker rm -f fan-webssh guacd &amp;&amp; docker rmi -f mobufan/fan-webssh guacamole/guacd</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
@@ -1603,7 +1547,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1786,8 +1730,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

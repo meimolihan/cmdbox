@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fcitx5 命令">
     <meta name="twitter:description" content="Linux 桌面版安装与配置 Fcitx5 中文输入法 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1582,10 +1582,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装前准备" data-level="3">安装前准备</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件源">
-              <a class="post-toc-link" href="#更新软件源" data-level="1">更新软件源</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装-fcitx5">
               <a class="post-toc-link" href="#安装-fcitx5" data-level="3">安装 Fcitx5</a>
             </li>
@@ -1594,132 +1590,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#debian-ubuntu-linux-mint" data-level="4">Debian / Ubuntu / Linux Mint</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-主程序和拼音输入引擎">
-              <a class="post-toc-link" href="#安装-fcitx5-主程序和拼音输入引擎" data-level="1">安装 fcitx5 主程序和拼音输入引擎</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装词库和配置工具">
-              <a class="post-toc-link" href="#安装词库和配置工具" data-level="1">安装词库和配置工具</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装五笔-可选">
-              <a class="post-toc-link" href="#安装五笔-可选" data-level="1">安装五笔（可选）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="arch-linux-manjaro">
               <a class="post-toc-link" href="#arch-linux-manjaro" data-level="4">Arch Linux / Manjaro</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-和中文输入引擎">
-              <a class="post-toc-link" href="#安装-fcitx5-和中文输入引擎" data-level="1">安装 fcitx5 和中文输入引擎</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装词库">
-              <a class="post-toc-link" href="#安装词库" data-level="1">安装词库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从-aur-安装云拼音-可选">
-              <a class="post-toc-link" href="#从-aur-安装云拼音-可选" data-level="1">从 AUR 安装云拼音（可选）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="fedora">
               <a class="post-toc-link" href="#fedora" data-level="4">Fedora</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-和中文输入引擎">
-              <a class="post-toc-link" href="#安装-fcitx5-和中文输入引擎" data-level="1">安装 fcitx5 和中文输入引擎</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装配置工具">
-              <a class="post-toc-link" href="#安装配置工具" data-level="1">安装配置工具</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="opensuse">
               <a class="post-toc-link" href="#opensuse" data-level="4">openSUSE</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-和中文输入引擎">
-              <a class="post-toc-link" href="#安装-fcitx5-和中文输入引擎" data-level="1">安装 fcitx5 和中文输入引擎</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装配置工具">
-              <a class="post-toc-link" href="#安装配置工具" data-level="1">安装配置工具</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="切换-fcitx5-输入法">
               <a class="post-toc-link" href="#切换-fcitx5-输入法" data-level="3">切换 Fcitx5 输入法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-指定使用-fcitx5-输入法">
-              <a class="post-toc-link" href="#1-指定使用-fcitx5-输入法" data-level="1">1. 指定使用 fcitx5 输入法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-写入兼容的环境变量">
-              <a class="post-toc-link" href="#2-写入兼容的环境变量" data-level="1">2. 写入兼容的环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-设置-fcitx5-软件开机自启">
-              <a class="post-toc-link" href="#3-设置-fcitx5-软件开机自启" data-level="1">3. 设置 Fcitx5 软件开机自启</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置-fcitx5">
               <a class="post-toc-link" href="#配置-fcitx5" data-level="3">配置 Fcitx5</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-fcitx5-配置界面">
-              <a class="post-toc-link" href="#启动-fcitx5-配置界面" data-level="1">启动 fcitx5 配置界面</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="使用-fcitx5">
               <a class="post-toc-link" href="#使用-fcitx5" data-level="3">使用 Fcitx5</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动启动-fcitx5-如果未设置自启">
-              <a class="post-toc-link" href="#手动启动-fcitx5-如果未设置自启" data-level="1">手动启动 fcitx5（如果未设置自启）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-fcitx5-是否运行">
-              <a class="post-toc-link" href="#查看-fcitx5-是否运行" data-level="1">查看 fcitx5 是否运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置">
-              <a class="post-toc-link" href="#重新加载配置" data-level="1">重新加载配置</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
               <a class="post-toc-link" href="#故障排除" data-level="3">故障排除</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-检查环境变量是否正确设置">
-              <a class="post-toc-link" href="#1-检查环境变量是否正确设置" data-level="1">1. 检查环境变量是否正确设置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-运行诊断工具">
-              <a class="post-toc-link" href="#2-运行诊断工具" data-level="1">2. 运行诊断工具</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-查看日志">
-              <a class="post-toc-link" href="#3-查看日志" data-level="1">3. 查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-重启-fcitx5">
-              <a class="post-toc-link" href="#4-重启-fcitx5" data-level="1">4. 重启 fcitx5</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="卸载-fcitx5">
               <a class="post-toc-link" href="#卸载-fcitx5" data-level="3">卸载 Fcitx5</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-              <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
-              <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="参考资料">
@@ -1759,10 +1659,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装前准备" data-level="3">安装前准备</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件源">
-          <a class="post-toc-link" href="#更新软件源" data-level="1">更新软件源</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装-fcitx5">
           <a class="post-toc-link" href="#安装-fcitx5" data-level="3">安装 Fcitx5</a>
         </li>
@@ -1771,132 +1667,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#debian-ubuntu-linux-mint" data-level="4">Debian / Ubuntu / Linux Mint</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-主程序和拼音输入引擎">
-          <a class="post-toc-link" href="#安装-fcitx5-主程序和拼音输入引擎" data-level="1">安装 fcitx5 主程序和拼音输入引擎</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装词库和配置工具">
-          <a class="post-toc-link" href="#安装词库和配置工具" data-level="1">安装词库和配置工具</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装五笔-可选">
-          <a class="post-toc-link" href="#安装五笔-可选" data-level="1">安装五笔（可选）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="arch-linux-manjaro">
           <a class="post-toc-link" href="#arch-linux-manjaro" data-level="4">Arch Linux / Manjaro</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-和中文输入引擎">
-          <a class="post-toc-link" href="#安装-fcitx5-和中文输入引擎" data-level="1">安装 fcitx5 和中文输入引擎</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装词库">
-          <a class="post-toc-link" href="#安装词库" data-level="1">安装词库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从-aur-安装云拼音-可选">
-          <a class="post-toc-link" href="#从-aur-安装云拼音-可选" data-level="1">从 AUR 安装云拼音（可选）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="fedora">
           <a class="post-toc-link" href="#fedora" data-level="4">Fedora</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-和中文输入引擎">
-          <a class="post-toc-link" href="#安装-fcitx5-和中文输入引擎" data-level="1">安装 fcitx5 和中文输入引擎</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装配置工具">
-          <a class="post-toc-link" href="#安装配置工具" data-level="1">安装配置工具</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="opensuse">
           <a class="post-toc-link" href="#opensuse" data-level="4">openSUSE</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-fcitx5-和中文输入引擎">
-          <a class="post-toc-link" href="#安装-fcitx5-和中文输入引擎" data-level="1">安装 fcitx5 和中文输入引擎</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装配置工具">
-          <a class="post-toc-link" href="#安装配置工具" data-level="1">安装配置工具</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="切换-fcitx5-输入法">
           <a class="post-toc-link" href="#切换-fcitx5-输入法" data-level="3">切换 Fcitx5 输入法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-指定使用-fcitx5-输入法">
-          <a class="post-toc-link" href="#1-指定使用-fcitx5-输入法" data-level="1">1. 指定使用 fcitx5 输入法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-写入兼容的环境变量">
-          <a class="post-toc-link" href="#2-写入兼容的环境变量" data-level="1">2. 写入兼容的环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-设置-fcitx5-软件开机自启">
-          <a class="post-toc-link" href="#3-设置-fcitx5-软件开机自启" data-level="1">3. 设置 Fcitx5 软件开机自启</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置-fcitx5">
           <a class="post-toc-link" href="#配置-fcitx5" data-level="3">配置 Fcitx5</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-fcitx5-配置界面">
-          <a class="post-toc-link" href="#启动-fcitx5-配置界面" data-level="1">启动 fcitx5 配置界面</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="使用-fcitx5">
           <a class="post-toc-link" href="#使用-fcitx5" data-level="3">使用 Fcitx5</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动启动-fcitx5-如果未设置自启">
-          <a class="post-toc-link" href="#手动启动-fcitx5-如果未设置自启" data-level="1">手动启动 fcitx5（如果未设置自启）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-fcitx5-是否运行">
-          <a class="post-toc-link" href="#查看-fcitx5-是否运行" data-level="1">查看 fcitx5 是否运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置">
-          <a class="post-toc-link" href="#重新加载配置" data-level="1">重新加载配置</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
           <a class="post-toc-link" href="#故障排除" data-level="3">故障排除</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-检查环境变量是否正确设置">
-          <a class="post-toc-link" href="#1-检查环境变量是否正确设置" data-level="1">1. 检查环境变量是否正确设置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-运行诊断工具">
-          <a class="post-toc-link" href="#2-运行诊断工具" data-level="1">2. 运行诊断工具</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-查看日志">
-          <a class="post-toc-link" href="#3-查看日志" data-level="1">3. 查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-重启-fcitx5">
-          <a class="post-toc-link" href="#4-重启-fcitx5" data-level="1">4. 重启 fcitx5</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="卸载-fcitx5">
           <a class="post-toc-link" href="#卸载-fcitx5" data-level="3">卸载 Fcitx5</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-          <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
-          <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="参考资料">
@@ -1909,7 +1709,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2092,8 +1892,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

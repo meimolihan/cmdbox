@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="mysql-myisamchk 命令">
     <meta name="twitter:description" content="MyISAM表检查和修复工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1805,264 +1805,28 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查选项">
-              <a class="post-toc-link" href="#检查选项" data-level="1">检查选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复选项">
-              <a class="post-toc-link" href="#修复选项" data-level="1">修复选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="优化选项">
-              <a class="post-toc-link" href="#优化选项" data-level="1">优化选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="其他选项">
-              <a class="post-toc-link" href="#其他选项" data-level="1">其他选项</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个表">
-              <a class="post-toc-link" href="#检查单个表" data-level="1">检查单个表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查多个表">
-              <a class="post-toc-link" href="#检查多个表" data-level="1">检查多个表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有myisam表">
-              <a class="post-toc-link" href="#检查所有myisam表" data-level="1">检查所有MyISAM表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扩展检查-更彻底">
-              <a class="post-toc-link" href="#扩展检查-更彻底" data-level="1">扩展检查（更彻底）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查-只检查未正确关闭的表">
-              <a class="post-toc-link" href="#快速检查-只检查未正确关闭的表" data-level="1">快速检查（只检查未正确关闭的表）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="中等检查-平衡速度和检查程度">
-              <a class="post-toc-link" href="#中等检查-平衡速度和检查程度" data-level="1">中等检查（平衡速度和检查程度）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只检查有变化的表">
-              <a class="post-toc-link" href="#只检查有变化的表" data-level="1">只检查有变化的表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示表统计信息">
-              <a class="post-toc-link" href="#显示表统计信息" data-level="1">显示表统计信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示详细表描述">
-              <a class="post-toc-link" href="#显示详细表描述" data-level="1">显示详细表描述</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复表">
-              <a class="post-toc-link" href="#修复表" data-level="1">修复表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全修复-更慢但更可靠">
-              <a class="post-toc-link" href="#安全修复-更慢但更可靠" data-level="1">安全修复（更慢但更可靠）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复前备份">
-              <a class="post-toc-link" href="#修复前备份" data-level="1">修复前备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查并自动修复">
-              <a class="post-toc-link" href="#检查并自动修复" data-level="1">检查并自动修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制修复-即使出错也继续">
-              <a class="post-toc-link" href="#强制修复-即使出错也继续" data-level="1">强制修复（即使出错也继续）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速修复-只修复索引-不检查数据">
-              <a class="post-toc-link" href="#快速修复-只修复索引-不检查数据" data-level="1">快速修复（只修复索引，不检查数据）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分析键分布">
-              <a class="post-toc-link" href="#分析键分布" data-level="1">分析键分布</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="排序索引">
-              <a class="post-toc-link" href="#排序索引" data-level="1">排序索引</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="按索引排序记录-优化查询性能">
-              <a class="post-toc-link" href="#按索引排序记录-优化查询性能" data-level="1">按索引排序记录（优化查询性能）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解压压缩的myisam表">
-              <a class="post-toc-link" href="#解压压缩的myisam表" data-level="1">解压压缩的MyISAM表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用指定临时目录">
-              <a class="post-toc-link" href="#使用指定临时目录" data-level="1">使用指定临时目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静默模式-只显示错误">
-              <a class="post-toc-link" href="#静默模式-只显示错误" data-level="1">静默模式（只显示错误）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="检查和修复流程">
               <a class="post-toc-link" href="#检查和修复流程" data-level="3">检查和修复流程</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标准维护流程">
-              <a class="post-toc-link" href="#标准维护流程" data-level="1">标准维护流程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止mysql服务-确保数据一致性">
-              <a class="post-toc-link" href="#1-停止mysql服务-确保数据一致性" data-level="1">1. 停止MySQL服务（确保数据一致性）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-检查所有myisam表">
-              <a class="post-toc-link" href="#2-检查所有myisam表" data-level="1">2. 检查所有MyISAM表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-如果发现问题-进行修复">
-              <a class="post-toc-link" href="#3-如果发现问题-进行修复" data-level="1">3. 如果发现问题，进行修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-如果标准修复失败-使用安全修复">
-              <a class="post-toc-link" href="#4-如果标准修复失败-使用安全修复" data-level="1">4. 如果标准修复失败，使用安全修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-启动mysql服务">
-              <a class="post-toc-link" href="#5-启动mysql服务" data-level="1">5. 启动MySQL服务</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="输出说明">
               <a class="post-toc-link" href="#输出说明" data-level="3">输出说明</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正常表检查输出">
-              <a class="post-toc-link" href="#正常表检查输出" data-level="1">正常表检查输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="发现错误的输出">
-              <a class="post-toc-link" href="#发现错误的输出" data-level="1">发现错误的输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复输出">
-              <a class="post-toc-link" href="#修复输出" data-level="1">修复输出</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="维护脚本">
               <a class="post-toc-link" href="#维护脚本" data-level="3">维护脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="myisam表检查和修复脚本">
-              <a class="post-toc-link" href="#myisam表检查和修复脚本" data-level="1">MyISAM表检查和修复脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止mysql">
-              <a class="post-toc-link" href="#停止mysql" data-level="1">停止MySQL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查所有表">
-              <a class="post-toc-link" href="#快速检查所有表" data-level="1">快速检查所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如果发现问题-尝试修复">
-              <a class="post-toc-link" href="#如果发现问题-尝试修复" data-level="1">如果发现问题，尝试修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动mysql">
-              <a class="post-toc-link" href="#启动mysql" data-level="1">启动MySQL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨2点执行">
-              <a class="post-toc-link" href="#每周日凌晨2点执行" data-level="1">每周日凌晨2点执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
-              <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="0-2-0-path-to-myisam_maintenance-sh">
-              <a class="post-toc-link" href="#0-2-0-path-to-myisam_maintenance-sh" data-level="1">0 2 * * 0 /path/to/myisam_maintenance.sh</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化">
               <a class="post-toc-link" href="#性能优化" data-level="3">性能优化</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="增加内存使用-加快检查速度">
-              <a class="post-toc-link" href="#增加内存使用-加快检查速度" data-level="1">增加内存使用（加快检查速度）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="排序索引块-提高读取性能">
-              <a class="post-toc-link" href="#排序索引块-提高读取性能" data-level="1">排序索引块（提高读取性能）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="按主键排序记录-优化范围查询">
-              <a class="post-toc-link" href="#按主键排序记录-优化范围查询" data-level="1">按主键排序记录（优化范围查询）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分析表更新统计信息">
-              <a class="post-toc-link" href="#分析表更新统计信息" data-level="1">分析表更新统计信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完整优化流程">
-              <a class="post-toc-link" href="#完整优化流程" data-level="1">完整优化流程</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="错误处理">
               <a class="post-toc-link" href="#错误处理" data-level="3">错误处理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常见错误和解决方案">
-              <a class="post-toc-link" href="#常见错误和解决方案" data-level="1">常见错误和解决方案</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="错误-can-t-open-file-table-myi">
-              <a class="post-toc-link" href="#错误-can-t-open-file-table-myi" data-level="1">错误: Can&#39;t open file: &#39;table.MYI&#39;</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="原因-文件不存在或权限问题">
-              <a class="post-toc-link" href="#原因-文件不存在或权限问题" data-level="1">原因: 文件不存在或权限问题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="错误-incorrect-key-file-for-table">
-              <a class="post-toc-link" href="#错误-incorrect-key-file-for-table" data-level="1">错误: Incorrect key file for table</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解决-重建索引">
-              <a class="post-toc-link" href="#解决-重建索引" data-level="1">解决: 重建索引</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="错误-table-is-marked-as-crashed">
-              <a class="post-toc-link" href="#错误-table-is-marked-as-crashed" data-level="1">错误: Table is marked as crashed</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解决-修复表">
-              <a class="post-toc-link" href="#解决-修复表" data-level="1">解决: 修复表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复失败时">
-              <a class="post-toc-link" href="#修复失败时" data-level="1">修复失败时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-使用安全修复">
-              <a class="post-toc-link" href="#1-使用安全修复" data-level="1">1. 使用安全修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-从备份恢复">
-              <a class="post-toc-link" href="#2-从备份恢复" data-level="1">2. 从备份恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-尝试提取数据">
-              <a class="post-toc-link" href="#3-尝试提取数据" data-level="1">3. 尝试提取数据</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="与mysqlcheck对比">
@@ -2110,264 +1874,28 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查选项">
-          <a class="post-toc-link" href="#检查选项" data-level="1">检查选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复选项">
-          <a class="post-toc-link" href="#修复选项" data-level="1">修复选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="优化选项">
-          <a class="post-toc-link" href="#优化选项" data-level="1">优化选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="其他选项">
-          <a class="post-toc-link" href="#其他选项" data-level="1">其他选项</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个表">
-          <a class="post-toc-link" href="#检查单个表" data-level="1">检查单个表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查多个表">
-          <a class="post-toc-link" href="#检查多个表" data-level="1">检查多个表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有myisam表">
-          <a class="post-toc-link" href="#检查所有myisam表" data-level="1">检查所有MyISAM表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扩展检查-更彻底">
-          <a class="post-toc-link" href="#扩展检查-更彻底" data-level="1">扩展检查（更彻底）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查-只检查未正确关闭的表">
-          <a class="post-toc-link" href="#快速检查-只检查未正确关闭的表" data-level="1">快速检查（只检查未正确关闭的表）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="中等检查-平衡速度和检查程度">
-          <a class="post-toc-link" href="#中等检查-平衡速度和检查程度" data-level="1">中等检查（平衡速度和检查程度）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只检查有变化的表">
-          <a class="post-toc-link" href="#只检查有变化的表" data-level="1">只检查有变化的表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示表统计信息">
-          <a class="post-toc-link" href="#显示表统计信息" data-level="1">显示表统计信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示详细表描述">
-          <a class="post-toc-link" href="#显示详细表描述" data-level="1">显示详细表描述</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复表">
-          <a class="post-toc-link" href="#修复表" data-level="1">修复表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全修复-更慢但更可靠">
-          <a class="post-toc-link" href="#安全修复-更慢但更可靠" data-level="1">安全修复（更慢但更可靠）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复前备份">
-          <a class="post-toc-link" href="#修复前备份" data-level="1">修复前备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查并自动修复">
-          <a class="post-toc-link" href="#检查并自动修复" data-level="1">检查并自动修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制修复-即使出错也继续">
-          <a class="post-toc-link" href="#强制修复-即使出错也继续" data-level="1">强制修复（即使出错也继续）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速修复-只修复索引-不检查数据">
-          <a class="post-toc-link" href="#快速修复-只修复索引-不检查数据" data-level="1">快速修复（只修复索引，不检查数据）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分析键分布">
-          <a class="post-toc-link" href="#分析键分布" data-level="1">分析键分布</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="排序索引">
-          <a class="post-toc-link" href="#排序索引" data-level="1">排序索引</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="按索引排序记录-优化查询性能">
-          <a class="post-toc-link" href="#按索引排序记录-优化查询性能" data-level="1">按索引排序记录（优化查询性能）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解压压缩的myisam表">
-          <a class="post-toc-link" href="#解压压缩的myisam表" data-level="1">解压压缩的MyISAM表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用指定临时目录">
-          <a class="post-toc-link" href="#使用指定临时目录" data-level="1">使用指定临时目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静默模式-只显示错误">
-          <a class="post-toc-link" href="#静默模式-只显示错误" data-level="1">静默模式（只显示错误）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="检查和修复流程">
           <a class="post-toc-link" href="#检查和修复流程" data-level="3">检查和修复流程</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标准维护流程">
-          <a class="post-toc-link" href="#标准维护流程" data-level="1">标准维护流程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-停止mysql服务-确保数据一致性">
-          <a class="post-toc-link" href="#1-停止mysql服务-确保数据一致性" data-level="1">1. 停止MySQL服务（确保数据一致性）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-检查所有myisam表">
-          <a class="post-toc-link" href="#2-检查所有myisam表" data-level="1">2. 检查所有MyISAM表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-如果发现问题-进行修复">
-          <a class="post-toc-link" href="#3-如果发现问题-进行修复" data-level="1">3. 如果发现问题，进行修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-如果标准修复失败-使用安全修复">
-          <a class="post-toc-link" href="#4-如果标准修复失败-使用安全修复" data-level="1">4. 如果标准修复失败，使用安全修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-启动mysql服务">
-          <a class="post-toc-link" href="#5-启动mysql服务" data-level="1">5. 启动MySQL服务</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="输出说明">
           <a class="post-toc-link" href="#输出说明" data-level="3">输出说明</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正常表检查输出">
-          <a class="post-toc-link" href="#正常表检查输出" data-level="1">正常表检查输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="发现错误的输出">
-          <a class="post-toc-link" href="#发现错误的输出" data-level="1">发现错误的输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复输出">
-          <a class="post-toc-link" href="#修复输出" data-level="1">修复输出</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="维护脚本">
           <a class="post-toc-link" href="#维护脚本" data-level="3">维护脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="myisam表检查和修复脚本">
-          <a class="post-toc-link" href="#myisam表检查和修复脚本" data-level="1">MyISAM表检查和修复脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止mysql">
-          <a class="post-toc-link" href="#停止mysql" data-level="1">停止MySQL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查所有表">
-          <a class="post-toc-link" href="#快速检查所有表" data-level="1">快速检查所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如果发现问题-尝试修复">
-          <a class="post-toc-link" href="#如果发现问题-尝试修复" data-level="1">如果发现问题，尝试修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动mysql">
-          <a class="post-toc-link" href="#启动mysql" data-level="1">启动MySQL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨2点执行">
-          <a class="post-toc-link" href="#每周日凌晨2点执行" data-level="1">每周日凌晨2点执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
-          <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="0-2-0-path-to-myisam_maintenance-sh">
-          <a class="post-toc-link" href="#0-2-0-path-to-myisam_maintenance-sh" data-level="1">0 2 * * 0 /path/to/myisam_maintenance.sh</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化">
           <a class="post-toc-link" href="#性能优化" data-level="3">性能优化</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="增加内存使用-加快检查速度">
-          <a class="post-toc-link" href="#增加内存使用-加快检查速度" data-level="1">增加内存使用（加快检查速度）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="排序索引块-提高读取性能">
-          <a class="post-toc-link" href="#排序索引块-提高读取性能" data-level="1">排序索引块（提高读取性能）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="按主键排序记录-优化范围查询">
-          <a class="post-toc-link" href="#按主键排序记录-优化范围查询" data-level="1">按主键排序记录（优化范围查询）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分析表更新统计信息">
-          <a class="post-toc-link" href="#分析表更新统计信息" data-level="1">分析表更新统计信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完整优化流程">
-          <a class="post-toc-link" href="#完整优化流程" data-level="1">完整优化流程</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="错误处理">
           <a class="post-toc-link" href="#错误处理" data-level="3">错误处理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常见错误和解决方案">
-          <a class="post-toc-link" href="#常见错误和解决方案" data-level="1">常见错误和解决方案</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="错误-can-t-open-file-table-myi">
-          <a class="post-toc-link" href="#错误-can-t-open-file-table-myi" data-level="1">错误: Can&#39;t open file: &#39;table.MYI&#39;</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="原因-文件不存在或权限问题">
-          <a class="post-toc-link" href="#原因-文件不存在或权限问题" data-level="1">原因: 文件不存在或权限问题</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="错误-incorrect-key-file-for-table">
-          <a class="post-toc-link" href="#错误-incorrect-key-file-for-table" data-level="1">错误: Incorrect key file for table</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解决-重建索引">
-          <a class="post-toc-link" href="#解决-重建索引" data-level="1">解决: 重建索引</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="错误-table-is-marked-as-crashed">
-          <a class="post-toc-link" href="#错误-table-is-marked-as-crashed" data-level="1">错误: Table is marked as crashed</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解决-修复表">
-          <a class="post-toc-link" href="#解决-修复表" data-level="1">解决: 修复表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复失败时">
-          <a class="post-toc-link" href="#修复失败时" data-level="1">修复失败时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-使用安全修复">
-          <a class="post-toc-link" href="#1-使用安全修复" data-level="1">1. 使用安全修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-从备份恢复">
-          <a class="post-toc-link" href="#2-从备份恢复" data-level="1">2. 从备份恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-尝试提取数据">
-          <a class="post-toc-link" href="#3-尝试提取数据" data-level="1">3. 尝试提取数据</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="与mysqlcheck对比">
@@ -2384,7 +1912,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2567,8 +2095,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

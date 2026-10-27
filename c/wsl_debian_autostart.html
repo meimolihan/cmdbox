@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_debian_autostart 命令">
     <meta name="twitter:description" content="开机唤醒 WSL Debian 并启动 Docker 服务 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1568,14 +1568,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#使用方法" data-level="3">使用方法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有已安装的-linux-发行版">
-              <a class="post-toc-link" href="#列出所有已安装的-linux-发行版" data-level="1">列出所有已安装的 Linux 发行版</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建自启动脚本-在-cmd-中执行">
-              <a class="post-toc-link" href="#创建自启动脚本-在-cmd-中执行" data-level="1">创建自启动脚本（在 CMD 中执行）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
               <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
             </li>
@@ -1592,72 +1584,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#最常用-windows-目录-通用版" data-level="2">最常用 Windows 目录（通用版）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="桌面">
-              <a class="post-toc-link" href="#桌面" data-level="1">桌面</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载">
-              <a class="post-toc-link" href="#下载" data-level="1">下载</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="文档">
-              <a class="post-toc-link" href="#文档" data-level="1">文档</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="图片">
-              <a class="post-toc-link" href="#图片" data-level="1">图片</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="视频">
-              <a class="post-toc-link" href="#视频" data-level="1">视频</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="音乐">
-              <a class="post-toc-link" href="#音乐" data-level="1">音乐</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="桌面快捷访问-一键直达">
-              <a class="post-toc-link" href="#桌面快捷访问-一键直达" data-level="1">桌面快捷访问（一键直达）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
               <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令-选用">
               <a class="post-toc-link" href="#相关命令-选用" data-level="2">相关命令（选用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="打开-windows-自启动文件夹">
-              <a class="post-toc-link" href="#打开-windows-自启动文件夹" data-level="1">打开 windows 自启动文件夹</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动打开日志文件-cmd-命令">
-              <a class="post-toc-link" href="#手动打开日志文件-cmd-命令" data-level="1">手动打开日志文件（CMD）命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速启动-wsl-debian-脚本">
-              <a class="post-toc-link" href="#快速启动-wsl-debian-脚本" data-level="1">快速启动 WSL debian 脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动指定发行版-如-debian">
-              <a class="post-toc-link" href="#启动指定发行版-如-debian" data-level="1">启动指定发行版（如 debian）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统版本">
-              <a class="post-toc-link" href="#查看系统版本" data-level="1">查看系统版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将-debian-设置为默认的-wsl-系统">
-              <a class="post-toc-link" href="#将-debian-设置为默认的-wsl-系统" data-level="1">将 Debian 设置为默认的 WSL 系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="立即关闭所有正在运行的-wsl-发行版-包括-debian-ubuntu-等-完全退出-wsl-虚拟机">
-              <a class="post-toc-link" href="#立即关闭所有正在运行的-wsl-发行版-包括-debian-ubuntu-等-完全退出-wsl-虚拟机" data-level="1">立即关闭所有正在运行的 WSL 发行版（包括 Debian、Ubuntu 等），完全退出 WSL 虚拟机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="直接在-cmd-powershell-执行">
-              <a class="post-toc-link" href="#直接在-cmd-powershell-执行" data-level="1">直接在 CMD / PowerShell 执行</a>
             </li>
             
           </ul>
@@ -1701,14 +1633,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#使用方法" data-level="3">使用方法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有已安装的-linux-发行版">
-          <a class="post-toc-link" href="#列出所有已安装的-linux-发行版" data-level="1">列出所有已安装的 Linux 发行版</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建自启动脚本-在-cmd-中执行">
-          <a class="post-toc-link" href="#创建自启动脚本-在-cmd-中执行" data-level="1">创建自启动脚本（在 CMD 中执行）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
           <a class="post-toc-link" href="#注意事项" data-level="3">注意事项</a>
         </li>
@@ -1725,34 +1649,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#最常用-windows-目录-通用版" data-level="2">最常用 Windows 目录（通用版）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="桌面">
-          <a class="post-toc-link" href="#桌面" data-level="1">桌面</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载">
-          <a class="post-toc-link" href="#下载" data-level="1">下载</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="文档">
-          <a class="post-toc-link" href="#文档" data-level="1">文档</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="图片">
-          <a class="post-toc-link" href="#图片" data-level="1">图片</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="视频">
-          <a class="post-toc-link" href="#视频" data-level="1">视频</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="音乐">
-          <a class="post-toc-link" href="#音乐" data-level="1">音乐</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="桌面快捷访问-一键直达">
-          <a class="post-toc-link" href="#桌面快捷访问-一键直达" data-level="1">桌面快捷访问（一键直达）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
           <a class="post-toc-link" href="#相关命令" data-level="2">相关命令</a>
         </li>
@@ -1761,45 +1657,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#相关命令-选用" data-level="2">相关命令（选用）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="打开-windows-自启动文件夹">
-          <a class="post-toc-link" href="#打开-windows-自启动文件夹" data-level="1">打开 windows 自启动文件夹</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动打开日志文件-cmd-命令">
-          <a class="post-toc-link" href="#手动打开日志文件-cmd-命令" data-level="1">手动打开日志文件（CMD）命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速启动-wsl-debian-脚本">
-          <a class="post-toc-link" href="#快速启动-wsl-debian-脚本" data-level="1">快速启动 WSL debian 脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动指定发行版-如-debian">
-          <a class="post-toc-link" href="#启动指定发行版-如-debian" data-level="1">启动指定发行版（如 debian）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统版本">
-          <a class="post-toc-link" href="#查看系统版本" data-level="1">查看系统版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将-debian-设置为默认的-wsl-系统">
-          <a class="post-toc-link" href="#将-debian-设置为默认的-wsl-系统" data-level="1">将 Debian 设置为默认的 WSL 系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="立即关闭所有正在运行的-wsl-发行版-包括-debian-ubuntu-等-完全退出-wsl-虚拟机">
-          <a class="post-toc-link" href="#立即关闭所有正在运行的-wsl-发行版-包括-debian-ubuntu-等-完全退出-wsl-虚拟机" data-level="1">立即关闭所有正在运行的 WSL 发行版（包括 Debian、Ubuntu 等），完全退出 WSL 虚拟机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="直接在-cmd-powershell-执行">
-          <a class="post-toc-link" href="#直接在-cmd-powershell-执行" data-level="1">直接在 CMD / PowerShell 执行</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1982,8 +1846,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

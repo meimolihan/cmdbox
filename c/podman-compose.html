@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="podman-compose 命令">
     <meta name="twitter:description" content="Podman 多容器编排工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1865,36 +1865,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装" data-level="3">安装</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="pip-安装">
-              <a class="post-toc-link" href="#pip-安装" data-level="1">pip 安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从源码安装">
-              <a class="post-toc-link" href="#从源码安装" data-level="1">从源码安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-pipx">
-              <a class="post-toc-link" href="#使用-pipx" data-level="1">使用 pipx</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="基本用法">
               <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
-              <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定文件">
-              <a class="post-toc-link" href="#指定文件" data-level="1">指定文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定项目名称">
-              <a class="post-toc-link" href="#指定项目名称" data-level="1">指定项目名称</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="docker-compose-yml-示例">
@@ -1905,160 +1877,32 @@ function copied(target, str) {
               <a class="post-toc-link" href="#服务管理" data-level="3">服务管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动所有服务">
-              <a class="post-toc-link" href="#启动所有服务" data-level="1">启动所有服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="带构建启动">
-              <a class="post-toc-link" href="#带构建启动" data-level="1">带构建启动</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只启动特定服务">
-              <a class="post-toc-link" href="#只启动特定服务" data-level="1">只启动特定服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-              <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除卷">
-              <a class="post-toc-link" href="#停止并删除卷" data-level="1">停止并删除卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除镜像">
-              <a class="post-toc-link" href="#停止并删除镜像" data-level="1">停止并删除镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-              <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="构建选项">
               <a class="post-toc-link" href="#构建选项" data-level="3">构建选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="构建镜像">
-              <a class="post-toc-link" href="#构建镜像" data-level="1">构建镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="构建特定服务">
-              <a class="post-toc-link" href="#构建特定服务" data-level="1">构建特定服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="不使用缓存构建">
-              <a class="post-toc-link" href="#不使用缓存构建" data-level="1">不使用缓存构建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="构建并启动">
-              <a class="post-toc-link" href="#构建并启动" data-level="1">构建并启动</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="日志和调试">
               <a class="post-toc-link" href="#日志和调试" data-level="3">日志和调试</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时日志">
-              <a class="post-toc-link" href="#实时日志" data-level="1">实时日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="特定服务日志">
-              <a class="post-toc-link" href="#特定服务日志" data-level="1">特定服务日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="最近日志">
-              <a class="post-toc-link" href="#最近日志" data-level="1">最近日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
-              <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="执行命令">
               <a class="post-toc-link" href="#执行命令" data-level="3">执行命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在服务中执行命令">
-              <a class="post-toc-link" href="#在服务中执行命令" data-level="1">在服务中执行命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式执行">
-              <a class="post-toc-link" href="#交互式执行" data-level="1">交互式执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定用户">
-              <a class="post-toc-link" href="#指定用户" data-level="1">指定用户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行一次性命令">
-              <a class="post-toc-link" href="#运行一次性命令" data-level="1">运行一次性命令</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="卷管理">
               <a class="post-toc-link" href="#卷管理" data-level="3">卷管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看卷">
-              <a class="post-toc-link" href="#查看卷" data-level="1">查看卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查卷">
-              <a class="post-toc-link" href="#检查卷" data-level="1">检查卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理未使用的卷">
-              <a class="post-toc-link" href="#清理未使用的卷" data-level="1">清理未使用的卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建卷">
-              <a class="post-toc-link" href="#创建卷" data-level="1">创建卷</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="网络管理">
               <a class="post-toc-link" href="#网络管理" data-level="3">网络管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看网络">
-              <a class="post-toc-link" href="#查看网络" data-level="1">查看网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查网络">
-              <a class="post-toc-link" href="#检查网络" data-level="1">检查网络</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="环境变量">
               <a class="post-toc-link" href="#环境变量" data-level="3">环境变量</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="env-文件">
-              <a class="post-toc-link" href="#env-文件" data-level="1">.env 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="postgres_password-secret">
-              <a class="post-toc-link" href="#postgres_password-secret" data-level="1">POSTGRES_PASSWORD=secret</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="redis_host-redis">
-              <a class="post-toc-link" href="#redis_host-redis" data-level="1">REDIS_HOST=redis</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml-引用">
-              <a class="post-toc-link" href="#docker-compose-yml-引用" data-level="1">docker-compose.yml 引用</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="扩展配置">
               <a class="post-toc-link" href="#扩展配置" data-level="3">扩展配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用扩展字段">
-              <a class="post-toc-link" href="#使用扩展字段" data-level="1">使用扩展字段</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查">
@@ -2071,14 +1915,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
               <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="lnmp-环境">
-              <a class="post-toc-link" href="#lnmp-环境" data-level="1">LNMP 环境</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-mongodb">
-              <a class="post-toc-link" href="#node-js-mongodb" data-level="1">Node.js + MongoDB</a>
             </li>
             
           </ul>
@@ -2118,36 +1954,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装" data-level="3">安装</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="pip-安装">
-          <a class="post-toc-link" href="#pip-安装" data-level="1">pip 安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从源码安装">
-          <a class="post-toc-link" href="#从源码安装" data-level="1">从源码安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-pipx">
-          <a class="post-toc-link" href="#使用-pipx" data-level="1">使用 pipx</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="基本用法">
           <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
-          <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定文件">
-          <a class="post-toc-link" href="#指定文件" data-level="1">指定文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定项目名称">
-          <a class="post-toc-link" href="#指定项目名称" data-level="1">指定项目名称</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="docker-compose-yml-示例">
@@ -2158,160 +1966,32 @@ function copied(target, str) {
           <a class="post-toc-link" href="#服务管理" data-level="3">服务管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动所有服务">
-          <a class="post-toc-link" href="#启动所有服务" data-level="1">启动所有服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="带构建启动">
-          <a class="post-toc-link" href="#带构建启动" data-level="1">带构建启动</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只启动特定服务">
-          <a class="post-toc-link" href="#只启动特定服务" data-level="1">只启动特定服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-          <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除卷">
-          <a class="post-toc-link" href="#停止并删除卷" data-level="1">停止并删除卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止并删除镜像">
-          <a class="post-toc-link" href="#停止并删除镜像" data-level="1">停止并删除镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-          <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="构建选项">
           <a class="post-toc-link" href="#构建选项" data-level="3">构建选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="构建镜像">
-          <a class="post-toc-link" href="#构建镜像" data-level="1">构建镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="构建特定服务">
-          <a class="post-toc-link" href="#构建特定服务" data-level="1">构建特定服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="不使用缓存构建">
-          <a class="post-toc-link" href="#不使用缓存构建" data-level="1">不使用缓存构建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="构建并启动">
-          <a class="post-toc-link" href="#构建并启动" data-level="1">构建并启动</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="日志和调试">
           <a class="post-toc-link" href="#日志和调试" data-level="3">日志和调试</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时日志">
-          <a class="post-toc-link" href="#实时日志" data-level="1">实时日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="特定服务日志">
-          <a class="post-toc-link" href="#特定服务日志" data-level="1">特定服务日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="最近日志">
-          <a class="post-toc-link" href="#最近日志" data-level="1">最近日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="后台运行">
-          <a class="post-toc-link" href="#后台运行" data-level="1">后台运行</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="执行命令">
           <a class="post-toc-link" href="#执行命令" data-level="3">执行命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在服务中执行命令">
-          <a class="post-toc-link" href="#在服务中执行命令" data-level="1">在服务中执行命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式执行">
-          <a class="post-toc-link" href="#交互式执行" data-level="1">交互式执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定用户">
-          <a class="post-toc-link" href="#指定用户" data-level="1">指定用户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行一次性命令">
-          <a class="post-toc-link" href="#运行一次性命令" data-level="1">运行一次性命令</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="卷管理">
           <a class="post-toc-link" href="#卷管理" data-level="3">卷管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看卷">
-          <a class="post-toc-link" href="#查看卷" data-level="1">查看卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查卷">
-          <a class="post-toc-link" href="#检查卷" data-level="1">检查卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理未使用的卷">
-          <a class="post-toc-link" href="#清理未使用的卷" data-level="1">清理未使用的卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建卷">
-          <a class="post-toc-link" href="#创建卷" data-level="1">创建卷</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="网络管理">
           <a class="post-toc-link" href="#网络管理" data-level="3">网络管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看网络">
-          <a class="post-toc-link" href="#查看网络" data-level="1">查看网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查网络">
-          <a class="post-toc-link" href="#检查网络" data-level="1">检查网络</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="环境变量">
           <a class="post-toc-link" href="#环境变量" data-level="3">环境变量</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="env-文件">
-          <a class="post-toc-link" href="#env-文件" data-level="1">.env 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="postgres_password-secret">
-          <a class="post-toc-link" href="#postgres_password-secret" data-level="1">POSTGRES_PASSWORD=secret</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="redis_host-redis">
-          <a class="post-toc-link" href="#redis_host-redis" data-level="1">REDIS_HOST=redis</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-compose-yml-引用">
-          <a class="post-toc-link" href="#docker-compose-yml-引用" data-level="1">docker-compose.yml 引用</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="扩展配置">
           <a class="post-toc-link" href="#扩展配置" data-level="3">扩展配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用扩展字段">
-          <a class="post-toc-link" href="#使用扩展字段" data-level="1">使用扩展字段</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查">
@@ -2326,21 +2006,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="lnmp-环境">
-          <a class="post-toc-link" href="#lnmp-环境" data-level="1">LNMP 环境</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="node-js-mongodb">
-          <a class="post-toc-link" href="#node-js-mongodb" data-level="1">Node.js + MongoDB</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2523,8 +2195,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

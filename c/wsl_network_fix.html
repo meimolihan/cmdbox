@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_network_fix 命令">
     <meta name="twitter:description" content="WSL 网络故障修复命令 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1473,104 +1473,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#诊断命令" data-level="3">诊断命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-wsl-网络状态">
-              <a class="post-toc-link" href="#检查-wsl-网络状态" data-level="1">检查 WSL 网络状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-wsl-网络配置">
-              <a class="post-toc-link" href="#查看-wsl-网络配置" data-level="1">查看 WSL 网络配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-dns-配置">
-              <a class="post-toc-link" href="#检查-dns-配置" data-level="1">检查 DNS 配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试网络连通性">
-              <a class="post-toc-link" href="#测试网络连通性" data-level="1">测试网络连通性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-windows-防火墙">
-              <a class="post-toc-link" href="#检查-windows-防火墙" data-level="1">检查 Windows 防火墙</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="dns-修复">
               <a class="post-toc-link" href="#dns-修复" data-level="3">DNS 修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法一-重启-wsl-重新生成-resolv-conf">
-              <a class="post-toc-link" href="#方法一-重启-wsl-重新生成-resolv-conf" data-level="1">方法一：重启 WSL 重新生成 resolv.conf</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法二-手动配置-dns">
-              <a class="post-toc-link" href="#方法二-手动配置-dns" data-level="1">方法二：手动配置 DNS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法三-固定-dns-配置-防止重启被重置">
-              <a class="post-toc-link" href="#方法三-固定-dns-配置-防止重启被重置" data-level="1">方法三：固定 DNS 配置（防止重启被重置）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="代理修复">
               <a class="post-toc-link" href="#代理修复" data-level="3">代理修复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看代理配置">
-              <a class="post-toc-link" href="#查看代理配置" data-level="1">查看代理配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清除代理">
-              <a class="post-toc-link" href="#清除代理" data-level="1">清除代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动获取宿主机-ip-并设置代理">
-              <a class="post-toc-link" href="#自动获取宿主机-ip-并设置代理" data-level="1">自动获取宿主机 IP 并设置代理</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="网络桥接修复">
               <a class="post-toc-link" href="#网络桥接修复" data-level="3">网络桥接修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置-winsock">
-              <a class="post-toc-link" href="#重置-winsock" data-level="1">重置 Winsock</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置-winhttp-代理">
-              <a class="post-toc-link" href="#重置-winhttp-代理" data-level="1">重置 WinHTTP 代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置-wsl-虚拟交换机">
-              <a class="post-toc-link" href="#重置-wsl-虚拟交换机" data-level="1">重置 WSL 虚拟交换机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新启动-wsl-后自动重建虚拟交换机">
-              <a class="post-toc-link" href="#重新启动-wsl-后自动重建虚拟交换机" data-level="1">重新启动 WSL 后自动重建虚拟交换机</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙配置">
               <a class="post-toc-link" href="#防火墙配置" data-level="3">防火墙配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加防火墙规则放行-wsl">
-              <a class="post-toc-link" href="#添加防火墙规则放行-wsl" data-level="1">添加防火墙规则放行 WSL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="临时关闭防火墙-测试用">
-              <a class="post-toc-link" href="#临时关闭防火墙-测试用" data-level="1">临时关闭防火墙（测试用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试后重新开启">
-              <a class="post-toc-link" href="#测试后重新开启" data-level="1">测试后重新开启</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="一键重置">
               <a class="post-toc-link" href="#一键重置" data-level="3">一键重置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完全重置-wsl-网络">
-              <a class="post-toc-link" href="#完全重置-wsl-网络" data-level="1">完全重置 WSL 网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启电脑后生效">
-              <a class="post-toc-link" href="#重启电脑后生效" data-level="1">重启电脑后生效</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1614,104 +1534,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#诊断命令" data-level="3">诊断命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-wsl-网络状态">
-          <a class="post-toc-link" href="#检查-wsl-网络状态" data-level="1">检查 WSL 网络状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-wsl-网络配置">
-          <a class="post-toc-link" href="#查看-wsl-网络配置" data-level="1">查看 WSL 网络配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-dns-配置">
-          <a class="post-toc-link" href="#检查-dns-配置" data-level="1">检查 DNS 配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试网络连通性">
-          <a class="post-toc-link" href="#测试网络连通性" data-level="1">测试网络连通性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-windows-防火墙">
-          <a class="post-toc-link" href="#检查-windows-防火墙" data-level="1">检查 Windows 防火墙</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="dns-修复">
           <a class="post-toc-link" href="#dns-修复" data-level="3">DNS 修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法一-重启-wsl-重新生成-resolv-conf">
-          <a class="post-toc-link" href="#方法一-重启-wsl-重新生成-resolv-conf" data-level="1">方法一：重启 WSL 重新生成 resolv.conf</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法二-手动配置-dns">
-          <a class="post-toc-link" href="#方法二-手动配置-dns" data-level="1">方法二：手动配置 DNS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法三-固定-dns-配置-防止重启被重置">
-          <a class="post-toc-link" href="#方法三-固定-dns-配置-防止重启被重置" data-level="1">方法三：固定 DNS 配置（防止重启被重置）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="代理修复">
           <a class="post-toc-link" href="#代理修复" data-level="3">代理修复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看代理配置">
-          <a class="post-toc-link" href="#查看代理配置" data-level="1">查看代理配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清除代理">
-          <a class="post-toc-link" href="#清除代理" data-level="1">清除代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动获取宿主机-ip-并设置代理">
-          <a class="post-toc-link" href="#自动获取宿主机-ip-并设置代理" data-level="1">自动获取宿主机 IP 并设置代理</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="网络桥接修复">
           <a class="post-toc-link" href="#网络桥接修复" data-level="3">网络桥接修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置-winsock">
-          <a class="post-toc-link" href="#重置-winsock" data-level="1">重置 Winsock</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置-winhttp-代理">
-          <a class="post-toc-link" href="#重置-winhttp-代理" data-level="1">重置 WinHTTP 代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置-wsl-虚拟交换机">
-          <a class="post-toc-link" href="#重置-wsl-虚拟交换机" data-level="1">重置 WSL 虚拟交换机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新启动-wsl-后自动重建虚拟交换机">
-          <a class="post-toc-link" href="#重新启动-wsl-后自动重建虚拟交换机" data-level="1">重新启动 WSL 后自动重建虚拟交换机</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙配置">
           <a class="post-toc-link" href="#防火墙配置" data-level="3">防火墙配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加防火墙规则放行-wsl">
-          <a class="post-toc-link" href="#添加防火墙规则放行-wsl" data-level="1">添加防火墙规则放行 WSL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="临时关闭防火墙-测试用">
-          <a class="post-toc-link" href="#临时关闭防火墙-测试用" data-level="1">临时关闭防火墙（测试用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试后重新开启">
-          <a class="post-toc-link" href="#测试后重新开启" data-level="1">测试后重新开启</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="一键重置">
           <a class="post-toc-link" href="#一键重置" data-level="3">一键重置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完全重置-wsl-网络">
-          <a class="post-toc-link" href="#完全重置-wsl-网络" data-level="1">完全重置 WSL 网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启电脑后生效">
-          <a class="post-toc-link" href="#重启电脑后生效" data-level="1">重启电脑后生效</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1728,7 +1568,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1911,8 +1751,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

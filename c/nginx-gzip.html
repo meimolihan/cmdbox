@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="nginx-gzip 命令">
     <meta name="twitter:description" content="nginx gzip 压缩配置指令 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1601,14 +1601,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静态资源压缩配置">
-              <a class="post-toc-link" href="#静态资源压缩配置" data-level="1">静态资源压缩配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="动态内容压缩">
-              <a class="post-toc-link" href="#动态内容压缩" data-level="1">动态内容压缩</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="压缩效果参考">
               <a class="post-toc-link" href="#压缩效果参考" data-level="3">压缩效果参考</a>
             </li>
@@ -1617,40 +1609,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#相关模块" data-level="3">相关模块</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="gzip_static-预压缩文件">
-              <a class="post-toc-link" href="#gzip_static-预压缩文件" data-level="1">gzip_static - 预压缩文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="需要编译时添加-with-http_gzip_static_module">
-              <a class="post-toc-link" href="#需要编译时添加-with-http_gzip_static_module" data-level="1">需要编译时添加 --with-http_gzip_static_module</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="gunzip-解压-gzip-文件">
-              <a class="post-toc-link" href="#gunzip-解压-gzip-文件" data-level="1">gunzip - 解压 gzip 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="适用于后端返回压缩内容但客户端不支持的情况">
-              <a class="post-toc-link" href="#适用于后端返回压缩内容但客户端不支持的情况" data-level="1">适用于后端返回压缩内容但客户端不支持的情况</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="测试压缩效果">
               <a class="post-toc-link" href="#测试压缩效果" data-level="3">测试压缩效果</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-curl-测试">
-              <a class="post-toc-link" href="#使用-curl-测试" data-level="1">使用 curl 测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看响应头">
-              <a class="post-toc-link" href="#查看响应头" data-level="1">查看响应头</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="content-encoding-gzip">
-              <a class="post-toc-link" href="#content-encoding-gzip" data-level="1">Content-Encoding: gzip</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="content-length-1234">
-              <a class="post-toc-link" href="#content-length-1234" data-level="1">Content-Length: 1234</a>
             </li>
             
           </ul>
@@ -1694,14 +1654,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静态资源压缩配置">
-          <a class="post-toc-link" href="#静态资源压缩配置" data-level="1">静态资源压缩配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="动态内容压缩">
-          <a class="post-toc-link" href="#动态内容压缩" data-level="1">动态内容压缩</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="压缩效果参考">
           <a class="post-toc-link" href="#压缩效果参考" data-level="3">压缩效果参考</a>
         </li>
@@ -1710,40 +1662,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#相关模块" data-level="3">相关模块</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="gzip_static-预压缩文件">
-          <a class="post-toc-link" href="#gzip_static-预压缩文件" data-level="1">gzip_static - 预压缩文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="需要编译时添加-with-http_gzip_static_module">
-          <a class="post-toc-link" href="#需要编译时添加-with-http_gzip_static_module" data-level="1">需要编译时添加 --with-http_gzip_static_module</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="gunzip-解压-gzip-文件">
-          <a class="post-toc-link" href="#gunzip-解压-gzip-文件" data-level="1">gunzip - 解压 gzip 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="适用于后端返回压缩内容但客户端不支持的情况">
-          <a class="post-toc-link" href="#适用于后端返回压缩内容但客户端不支持的情况" data-level="1">适用于后端返回压缩内容但客户端不支持的情况</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="测试压缩效果">
           <a class="post-toc-link" href="#测试压缩效果" data-level="3">测试压缩效果</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-curl-测试">
-          <a class="post-toc-link" href="#使用-curl-测试" data-level="1">使用 curl 测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看响应头">
-          <a class="post-toc-link" href="#查看响应头" data-level="1">查看响应头</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="content-encoding-gzip">
-          <a class="post-toc-link" href="#content-encoding-gzip" data-level="1">Content-Encoding: gzip</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="content-length-1234">
-          <a class="post-toc-link" href="#content-length-1234" data-level="1">Content-Length: 1234</a>
         </li>
         
       </ul>
@@ -1752,7 +1672,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1935,8 +1855,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

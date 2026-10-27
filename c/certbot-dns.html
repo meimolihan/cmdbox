@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="certbot-dns 命令">
     <meta name="twitter:description" content="DNS 验证方式申请 SSL 证书 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1673,26 +1673,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装" data-level="3">安装</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel">
-              <a class="post-toc-link" href="#centos-rhel" data-level="1">CentOS/RHEL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
-              <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
-              <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="目录结构">
               <a class="post-toc-link" href="#目录结构" data-level="3">目录结构</a>
             </li>
@@ -1709,16 +1689,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#部署证书" data-level="3">部署证书</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建续签钩子">
-              <a class="post-toc-link" href="#创建续签钩子" data-level="1">创建续签钩子</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="自动续签">
               <a class="post-toc-link" href="#自动续签" data-level="3">自动续签</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点检查续签-仅到期前-30-天内才实际续签">
-              <a class="post-toc-link" href="#每天凌晨-3-点检查续签-仅到期前-30-天内才实际续签" data-level="1">每天凌晨 3 点检查续签（仅到期前 30 天内才实际续签）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="管理命令">
@@ -1727,26 +1699,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
               <a class="post-toc-link" href="#故障排除" data-level="3">故障排除</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-dns-记录是否生效">
-              <a class="post-toc-link" href="#检查-dns-记录是否生效" data-level="1">检查 DNS 记录是否生效</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查证书有效期">
-              <a class="post-toc-link" href="#检查证书有效期" data-level="1">检查证书有效期</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证证书链">
-              <a class="post-toc-link" href="#验证证书链" data-level="1">验证证书链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看错误日志">
-              <a class="post-toc-link" href="#查看错误日志" data-level="1">查看错误日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复目录权限">
-              <a class="post-toc-link" href="#修复目录权限" data-level="1">修复目录权限</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查脚本">
@@ -1798,26 +1750,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装" data-level="3">安装</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian/Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rhel">
-          <a class="post-toc-link" href="#centos-rhel" data-level="1">CentOS/RHEL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="fedora">
-          <a class="post-toc-link" href="#fedora" data-level="1">Fedora</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
-          <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="目录结构">
           <a class="post-toc-link" href="#目录结构" data-level="3">目录结构</a>
         </li>
@@ -1834,16 +1766,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#部署证书" data-level="3">部署证书</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建续签钩子">
-          <a class="post-toc-link" href="#创建续签钩子" data-level="1">创建续签钩子</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="自动续签">
           <a class="post-toc-link" href="#自动续签" data-level="3">自动续签</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点检查续签-仅到期前-30-天内才实际续签">
-          <a class="post-toc-link" href="#每天凌晨-3-点检查续签-仅到期前-30-天内才实际续签" data-level="1">每天凌晨 3 点检查续签（仅到期前 30 天内才实际续签）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="管理命令">
@@ -1852,26 +1776,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="故障排除">
           <a class="post-toc-link" href="#故障排除" data-level="3">故障排除</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-dns-记录是否生效">
-          <a class="post-toc-link" href="#检查-dns-记录是否生效" data-level="1">检查 DNS 记录是否生效</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查证书有效期">
-          <a class="post-toc-link" href="#检查证书有效期" data-level="1">检查证书有效期</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证证书链">
-          <a class="post-toc-link" href="#验证证书链" data-level="1">验证证书链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看错误日志">
-          <a class="post-toc-link" href="#查看错误日志" data-level="1">查看错误日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复目录权限">
-          <a class="post-toc-link" href="#修复目录权限" data-level="1">修复目录权限</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查脚本">
@@ -1896,7 +1800,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2079,8 +1983,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="win-disable-defender 命令">
     <meta name="twitter:description" content="Windows Defender（Microsoft Defender）禁用指南 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1586,36 +1586,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一-关闭-defender-实时防护-powershell-已验证有效" data-level="2">一、关闭 Defender 实时防护（PowerShell，已验证有效）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-禁用实时保护">
-              <a class="post-toc-link" href="#1-禁用实时保护" data-level="1">1. 禁用实时保护</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-禁用行为监控">
-              <a class="post-toc-link" href="#2-禁用行为监控" data-level="1">2. 禁用行为监控</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-禁用脚本扫描">
-              <a class="post-toc-link" href="#3-禁用脚本扫描" data-level="1">3. 禁用脚本扫描</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-禁用-ioav-保护-可移动介质自动播放扫描">
-              <a class="post-toc-link" href="#4-禁用-ioav-保护-可移动介质自动播放扫描" data-level="1">4. 禁用 IOAV 保护（可移动介质自动播放扫描）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="二-用注册表策略锁死-已验证有效">
               <a class="post-toc-link" href="#二-用注册表策略锁死-已验证有效" data-level="2">二、用注册表策略锁死（已验证有效）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制禁用-defender-防病毒">
-              <a class="post-toc-link" href="#强制禁用-defender-防病毒" data-level="1">强制禁用 Defender 防病毒</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时保护相关-防止自恢复">
-              <a class="post-toc-link" href="#实时保护相关-防止自恢复" data-level="1">实时保护相关（防止自恢复）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏安全中心托盘通知-防弹窗恢复">
-              <a class="post-toc-link" href="#隐藏安全中心托盘通知-防弹窗恢复" data-level="1">隐藏安全中心托盘通知（防弹窗恢复）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="三-隐藏-windows-安全中心界面与弹窗-组策略">
@@ -1632,14 +1604,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="六-一键恢复脚本-需要时运行">
               <a class="post-toc-link" href="#六-一键恢复脚本-需要时运行" data-level="2">六、一键恢复脚本（需要时运行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新开启各项防护">
-              <a class="post-toc-link" href="#重新开启各项防护" data-level="1">重新开启各项防护</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除我们加的策略键-让系统恢复默认-defender-会自行重启">
-              <a class="post-toc-link" href="#删除我们加的策略键-让系统恢复默认-defender-会自行重启" data-level="1">删除我们加的策略键，让系统恢复默认（Defender 会自行重启）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="七-想让-defender-进程也-消失">
@@ -1664,14 +1628,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="验证">
               <a class="post-toc-link" href="#验证" data-level="3">验证</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="注册表确认-应为-0x0">
-              <a class="post-toc-link" href="#注册表确认-应为-0x0" data-level="1">注册表确认（应为 0x0）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="状态确认-应为-off">
-              <a class="post-toc-link" href="#状态确认-应为-off" data-level="1">状态确认（应为 Off）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="关键警告-务必先读">
@@ -1727,36 +1683,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一-关闭-defender-实时防护-powershell-已验证有效" data-level="2">一、关闭 Defender 实时防护（PowerShell，已验证有效）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-禁用实时保护">
-          <a class="post-toc-link" href="#1-禁用实时保护" data-level="1">1. 禁用实时保护</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-禁用行为监控">
-          <a class="post-toc-link" href="#2-禁用行为监控" data-level="1">2. 禁用行为监控</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-禁用脚本扫描">
-          <a class="post-toc-link" href="#3-禁用脚本扫描" data-level="1">3. 禁用脚本扫描</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-禁用-ioav-保护-可移动介质自动播放扫描">
-          <a class="post-toc-link" href="#4-禁用-ioav-保护-可移动介质自动播放扫描" data-level="1">4. 禁用 IOAV 保护（可移动介质自动播放扫描）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="二-用注册表策略锁死-已验证有效">
           <a class="post-toc-link" href="#二-用注册表策略锁死-已验证有效" data-level="2">二、用注册表策略锁死（已验证有效）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制禁用-defender-防病毒">
-          <a class="post-toc-link" href="#强制禁用-defender-防病毒" data-level="1">强制禁用 Defender 防病毒</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时保护相关-防止自恢复">
-          <a class="post-toc-link" href="#实时保护相关-防止自恢复" data-level="1">实时保护相关（防止自恢复）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏安全中心托盘通知-防弹窗恢复">
-          <a class="post-toc-link" href="#隐藏安全中心托盘通知-防弹窗恢复" data-level="1">隐藏安全中心托盘通知（防弹窗恢复）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="三-隐藏-windows-安全中心界面与弹窗-组策略">
@@ -1773,14 +1701,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="六-一键恢复脚本-需要时运行">
           <a class="post-toc-link" href="#六-一键恢复脚本-需要时运行" data-level="2">六、一键恢复脚本（需要时运行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新开启各项防护">
-          <a class="post-toc-link" href="#重新开启各项防护" data-level="1">重新开启各项防护</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除我们加的策略键-让系统恢复默认-defender-会自行重启">
-          <a class="post-toc-link" href="#删除我们加的策略键-让系统恢复默认-defender-会自行重启" data-level="1">删除我们加的策略键，让系统恢复默认（Defender 会自行重启）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="七-想让-defender-进程也-消失">
@@ -1807,14 +1727,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#验证" data-level="3">验证</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="注册表确认-应为-0x0">
-          <a class="post-toc-link" href="#注册表确认-应为-0x0" data-level="1">注册表确认（应为 0x0）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="状态确认-应为-off">
-          <a class="post-toc-link" href="#状态确认-应为-off" data-level="1">状态确认（应为 Off）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="关键警告-务必先读">
           <a class="post-toc-link" href="#关键警告-务必先读" data-level="3">⚠️ 关键警告（务必先读）</a>
         </li>
@@ -1833,7 +1745,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2016,8 +1928,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

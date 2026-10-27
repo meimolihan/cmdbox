@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="iperf3 命令">
     <meta name="twitter:description" content="网络带宽测速工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1533,14 +1533,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务端选项">
-              <a class="post-toc-link" href="#服务端选项" data-level="1">服务端选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="客户端选项">
-              <a class="post-toc-link" href="#客户端选项" data-level="1">客户端选项</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="工作原理">
               <a class="post-toc-link" href="#工作原理" data-level="3">工作原理</a>
             </li>
@@ -1553,68 +1545,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#服务端启动" data-level="4">服务端启动</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认前台运行-最常用">
-              <a class="post-toc-link" href="#默认前台运行-最常用" data-level="1">默认前台运行（最常用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="后台守护进程运行-服务器长期待命">
-              <a class="post-toc-link" href="#后台守护进程运行-服务器长期待命" data-level="1">后台守护进程运行（服务器长期待命）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定自定义端口-示例5202">
-              <a class="post-toc-link" href="#指定自定义端口-示例5202" data-level="1">指定自定义端口（示例5202）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="udp测速专用服务端">
-              <a class="post-toc-link" href="#udp测速专用服务端" data-level="1">UDP测速专用服务端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="单次测试完成自动退出">
-              <a class="post-toc-link" href="#单次测试完成自动退出" data-level="1">单次测试完成自动退出</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="tcp测速">
               <a class="post-toc-link" href="#tcp测速" data-level="4">TCP测速</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基础测速-默认10秒">
-              <a class="post-toc-link" href="#基础测速-默认10秒" data-level="1">基础测速（默认10秒）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测速30秒-每秒输出一次进度">
-              <a class="post-toc-link" href="#测速30秒-每秒输出一次进度" data-level="1">测速30秒，每秒输出一次进度</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="反向测试-测下载-服务端-客户端">
-              <a class="post-toc-link" href="#反向测试-测下载-服务端-客户端" data-level="1">反向测试（测下载：服务端→客户端）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多线程压满千兆-万兆网卡-推荐">
-              <a class="post-toc-link" href="#多线程压满千兆-万兆网卡-推荐" data-level="1">多线程压满千兆/万兆网卡（推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口测速">
-              <a class="post-toc-link" href="#指定端口测速" data-level="1">指定端口测速</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="结果以mbps单位显示">
-              <a class="post-toc-link" href="#结果以mbps单位显示" data-level="1">结果以Mbps单位显示</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="udp测速">
               <a class="post-toc-link" href="#udp测速" data-level="4">UDP测速</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务端">
-              <a class="post-toc-link" href="#服务端" data-level="1">服务端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="客户端限制500m带宽测试">
-              <a class="post-toc-link" href="#客户端限制500m带宽测试" data-level="1">客户端限制500M带宽测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="反向测速-下载方向">
-              <a class="post-toc-link" href="#反向测速-下载方向" data-level="1">反向测速（下载方向）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="实战场景">
@@ -1678,14 +1614,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务端选项">
-          <a class="post-toc-link" href="#服务端选项" data-level="1">服务端选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="客户端选项">
-          <a class="post-toc-link" href="#客户端选项" data-level="1">客户端选项</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="工作原理">
           <a class="post-toc-link" href="#工作原理" data-level="3">工作原理</a>
         </li>
@@ -1698,68 +1626,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#服务端启动" data-level="4">服务端启动</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认前台运行-最常用">
-          <a class="post-toc-link" href="#默认前台运行-最常用" data-level="1">默认前台运行（最常用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="后台守护进程运行-服务器长期待命">
-          <a class="post-toc-link" href="#后台守护进程运行-服务器长期待命" data-level="1">后台守护进程运行（服务器长期待命）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定自定义端口-示例5202">
-          <a class="post-toc-link" href="#指定自定义端口-示例5202" data-level="1">指定自定义端口（示例5202）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="udp测速专用服务端">
-          <a class="post-toc-link" href="#udp测速专用服务端" data-level="1">UDP测速专用服务端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="单次测试完成自动退出">
-          <a class="post-toc-link" href="#单次测试完成自动退出" data-level="1">单次测试完成自动退出</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="tcp测速">
           <a class="post-toc-link" href="#tcp测速" data-level="4">TCP测速</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基础测速-默认10秒">
-          <a class="post-toc-link" href="#基础测速-默认10秒" data-level="1">基础测速（默认10秒）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测速30秒-每秒输出一次进度">
-          <a class="post-toc-link" href="#测速30秒-每秒输出一次进度" data-level="1">测速30秒，每秒输出一次进度</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="反向测试-测下载-服务端-客户端">
-          <a class="post-toc-link" href="#反向测试-测下载-服务端-客户端" data-level="1">反向测试（测下载：服务端→客户端）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多线程压满千兆-万兆网卡-推荐">
-          <a class="post-toc-link" href="#多线程压满千兆-万兆网卡-推荐" data-level="1">多线程压满千兆/万兆网卡（推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口测速">
-          <a class="post-toc-link" href="#指定端口测速" data-level="1">指定端口测速</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="结果以mbps单位显示">
-          <a class="post-toc-link" href="#结果以mbps单位显示" data-level="1">结果以Mbps单位显示</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="udp测速">
           <a class="post-toc-link" href="#udp测速" data-level="4">UDP测速</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务端">
-          <a class="post-toc-link" href="#服务端" data-level="1">服务端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="客户端限制500m带宽测试">
-          <a class="post-toc-link" href="#客户端限制500m带宽测试" data-level="1">客户端限制500M带宽测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="反向测速-下载方向">
-          <a class="post-toc-link" href="#反向测速-下载方向" data-level="1">反向测速（下载方向）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="实战场景">
@@ -1788,7 +1660,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1971,8 +1843,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

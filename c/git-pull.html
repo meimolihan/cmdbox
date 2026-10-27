@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="git-pull 命令">
     <meta name="twitter:description" content="从远程仓库拉取并合并代码 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1434,76 +1434,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取当前分支的最新代码并合并">
-              <a class="post-toc-link" href="#拉取当前分支的最新代码并合并" data-level="1">拉取当前分支的最新代码并合并</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取并使用-rebase-方式合并-保持提交历史线性">
-              <a class="post-toc-link" href="#拉取并使用-rebase-方式合并-保持提交历史线性" data-level="1">拉取并使用 rebase 方式合并（保持提交历史线性）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只允许快进合并-避免产生合并提交">
-              <a class="post-toc-link" href="#只允许快进合并-避免产生合并提交" data-level="1">只允许快进合并（避免产生合并提交）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取指定远程和分支">
-              <a class="post-toc-link" href="#拉取指定远程和分支" data-level="1">拉取指定远程和分支</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取所有远程的更新">
-              <a class="post-toc-link" href="#拉取所有远程的更新" data-level="1">拉取所有远程的更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取并清理已删除的远程分支引用">
-              <a class="post-toc-link" href="#拉取并清理已删除的远程分支引用" data-level="1">拉取并清理已删除的远程分支引用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置默认使用-rebase-拉取">
-              <a class="post-toc-link" href="#设置默认使用-rebase-拉取" data-level="1">设置默认使用 rebase 拉取</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="pull-rebase-vs-pull-merge-对比">
               <a class="post-toc-link" href="#pull-rebase-vs-pull-merge-对比" data-level="3">pull --rebase vs pull --merge 对比</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="merge-方式-默认-会产生合并提交">
-              <a class="post-toc-link" href="#merge-方式-默认-会产生合并提交" data-level="1">merge 方式（默认）：会产生合并提交</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录-a-b-c-m-合并提交">
-              <a class="post-toc-link" href="#历史记录-a-b-c-m-合并提交" data-level="1">历史记录: A - B - C - M (合并提交)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">\   /</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="d-e">
-              <a class="post-toc-link" href="#d-e" data-level="1">D - E</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="rebase-方式-保持线性历史">
-              <a class="post-toc-link" href="#rebase-方式-保持线性历史" data-level="1">rebase 方式：保持线性历史</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录-a-b-c-d-e-线性">
-              <a class="post-toc-link" href="#历史记录-a-b-c-d-e-线性" data-level="1">历史记录: A - B - C - D&#39; - E&#39; (线性)</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="推荐做法">
               <a class="post-toc-link" href="#推荐做法" data-level="3">推荐做法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取远程更新时优先使用-rebase">
-              <a class="post-toc-link" href="#拉取远程更新时优先使用-rebase" data-level="1">拉取远程更新时优先使用 rebase</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如果有冲突-解决后继续">
-              <a class="post-toc-link" href="#如果有冲突-解决后继续" data-level="1">如果有冲突，解决后继续</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如果想放弃-rebase">
-              <a class="post-toc-link" href="#如果想放弃-rebase" data-level="1">如果想放弃 rebase</a>
             </li>
             
           </ul>
@@ -1547,76 +1483,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取当前分支的最新代码并合并">
-          <a class="post-toc-link" href="#拉取当前分支的最新代码并合并" data-level="1">拉取当前分支的最新代码并合并</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取并使用-rebase-方式合并-保持提交历史线性">
-          <a class="post-toc-link" href="#拉取并使用-rebase-方式合并-保持提交历史线性" data-level="1">拉取并使用 rebase 方式合并（保持提交历史线性）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只允许快进合并-避免产生合并提交">
-          <a class="post-toc-link" href="#只允许快进合并-避免产生合并提交" data-level="1">只允许快进合并（避免产生合并提交）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取指定远程和分支">
-          <a class="post-toc-link" href="#拉取指定远程和分支" data-level="1">拉取指定远程和分支</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取所有远程的更新">
-          <a class="post-toc-link" href="#拉取所有远程的更新" data-level="1">拉取所有远程的更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取并清理已删除的远程分支引用">
-          <a class="post-toc-link" href="#拉取并清理已删除的远程分支引用" data-level="1">拉取并清理已删除的远程分支引用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置默认使用-rebase-拉取">
-          <a class="post-toc-link" href="#设置默认使用-rebase-拉取" data-level="1">设置默认使用 rebase 拉取</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="pull-rebase-vs-pull-merge-对比">
           <a class="post-toc-link" href="#pull-rebase-vs-pull-merge-对比" data-level="3">pull --rebase vs pull --merge 对比</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="merge-方式-默认-会产生合并提交">
-          <a class="post-toc-link" href="#merge-方式-默认-会产生合并提交" data-level="1">merge 方式（默认）：会产生合并提交</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录-a-b-c-m-合并提交">
-          <a class="post-toc-link" href="#历史记录-a-b-c-m-合并提交" data-level="1">历史记录: A - B - C - M (合并提交)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">\   /</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="d-e">
-          <a class="post-toc-link" href="#d-e" data-level="1">D - E</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="rebase-方式-保持线性历史">
-          <a class="post-toc-link" href="#rebase-方式-保持线性历史" data-level="1">rebase 方式：保持线性历史</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="历史记录-a-b-c-d-e-线性">
-          <a class="post-toc-link" href="#历史记录-a-b-c-d-e-线性" data-level="1">历史记录: A - B - C - D&#39; - E&#39; (线性)</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="推荐做法">
           <a class="post-toc-link" href="#推荐做法" data-level="3">推荐做法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取远程更新时优先使用-rebase">
-          <a class="post-toc-link" href="#拉取远程更新时优先使用-rebase" data-level="1">拉取远程更新时优先使用 rebase</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如果有冲突-解决后继续">
-          <a class="post-toc-link" href="#如果有冲突-解决后继续" data-level="1">如果有冲突，解决后继续</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如果想放弃-rebase">
-          <a class="post-toc-link" href="#如果想放弃-rebase" data-level="1">如果想放弃 rebase</a>
         </li>
         
       </ul>
@@ -1625,7 +1497,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1808,8 +1680,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

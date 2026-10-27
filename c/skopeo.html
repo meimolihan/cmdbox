@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="skopeo 命令">
     <meta name="twitter:description" content="容器镜像检查和复制工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1787,320 +1787,52 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基本功能" data-level="3">基本功能</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制镜像">
-              <a class="post-toc-link" href="#复制镜像" data-level="1">复制镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像">
-              <a class="post-toc-link" href="#检查镜像" data-level="1">检查镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步镜像">
-              <a class="post-toc-link" href="#同步镜像" data-level="1">同步镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="登录到仓库">
-              <a class="post-toc-link" href="#登录到仓库" data-level="1">登录到仓库</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="镜像检查">
               <a class="post-toc-link" href="#镜像检查" data-level="3">镜像检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看镜像信息-无需拉取">
-              <a class="post-toc-link" href="#查看镜像信息-无需拉取" data-level="1">查看镜像信息（无需拉取）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例">
-              <a class="post-toc-link" href="#输出示例" data-level="1">输出示例：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">{</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="name-docker-io-library-nginx-latest">
-              <a class="post-toc-link" href="#name-docker-io-library-nginx-latest" data-level="1">&#34;Name&#34;: &#34;docker.io/library/nginx:latest&#34;,</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tag-latest">
-              <a class="post-toc-link" href="#tag-latest" data-level="1">&#34;Tag&#34;: &#34;latest&#34;,</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="digest-sha256">
-              <a class="post-toc-link" href="#digest-sha256" data-level="1">&#34;Digest&#34;: &#34;sha256:...&#34;,</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="architecture-amd64">
-              <a class="post-toc-link" href="#architecture-amd64" data-level="1">&#34;Architecture&#34;: &#34;amd64&#34;,</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="os-linux">
-              <a class="post-toc-link" href="#os-linux" data-level="1">&#34;Os&#34;: &#34;linux&#34;,</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="config">
-              <a class="post-toc-link" href="#config" data-level="1">&#34;Config&#34;: {...},</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="created-2024">
-              <a class="post-toc-link" href="#created-2024" data-level="1">&#34;Created&#34;: &#34;2024-...&#34;</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">}</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看私有镜像">
-              <a class="post-toc-link" href="#查看私有镜像" data-level="1">查看私有镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看签名">
-              <a class="post-toc-link" href="#查看签名" data-level="1">查看签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="原始配置">
-              <a class="post-toc-link" href="#原始配置" data-level="1">原始配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="镜像复制">
               <a class="post-toc-link" href="#镜像复制" data-level="3">镜像复制</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制镜像">
-              <a class="post-toc-link" href="#复制镜像" data-level="1">复制镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制到本地目录">
-              <a class="post-toc-link" href="#复制到本地目录" data-level="1">复制到本地目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从本地目录复制">
-              <a class="post-toc-link" href="#从本地目录复制" data-level="1">从本地目录复制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="oci-格式">
-              <a class="post-toc-link" href="#oci-格式" data-level="1">OCI 格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-镜像归档">
-              <a class="post-toc-link" href="#docker-镜像归档" data-level="1">Docker 镜像归档</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加载归档">
-              <a class="post-toc-link" href="#加载归档" data-level="1">加载归档</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="多架构镜像">
               <a class="post-toc-link" href="#多架构镜像" data-level="3">多架构镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制所有架构">
-              <a class="post-toc-link" href="#复制所有架构" data-level="1">复制所有架构</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定架构">
-              <a class="post-toc-link" href="#指定架构" data-level="1">指定架构</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-os">
-              <a class="post-toc-link" href="#指定-os" data-level="1">指定 OS</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="认证">
               <a class="post-toc-link" href="#认证" data-level="3">认证</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式登录">
-              <a class="post-toc-link" href="#交互式登录" data-level="1">交互式登录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="命令行登录">
-              <a class="post-toc-link" href="#命令行登录" data-level="1">命令行登录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="读取密码文件">
-              <a class="post-toc-link" href="#读取密码文件" data-level="1">读取密码文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="登出">
-              <a class="post-toc-link" href="#登出" data-level="1">登出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已登录仓库">
-              <a class="post-toc-link" href="#查看已登录仓库" data-level="1">查看已登录仓库</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="tls-配置">
               <a class="post-toc-link" href="#tls-配置" data-level="3">TLS 配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跳过-tls-验证-不推荐">
-              <a class="post-toc-link" href="#跳过-tls-验证-不推荐" data-level="1">跳过 TLS 验证（不推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-ca-证书">
-              <a class="post-toc-link" href="#指定-ca-证书" data-level="1">指定 CA 证书</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-skopeo-conf">
-              <a class="post-toc-link" href="#使用-skopeo-conf" data-level="1">使用 skopeo.conf</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-containers-registries-conf">
-              <a class="post-toc-link" href="#etc-containers-registries-conf" data-level="1">/etc/containers/registries.conf</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="镜像同步">
               <a class="post-toc-link" href="#镜像同步" data-level="3">镜像同步</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步到目录">
-              <a class="post-toc-link" href="#同步到目录" data-level="1">同步到目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步到仓库">
-              <a class="post-toc-link" href="#同步到仓库" data-level="1">同步到仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从目录同步到仓库">
-              <a class="post-toc-link" href="#从目录同步到仓库" data-level="1">从目录同步到仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步多个标签">
-              <a class="post-toc-link" href="#同步多个标签" data-level="1">同步多个标签</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步多个镜像">
-              <a class="post-toc-link" href="#同步多个镜像" data-level="1">同步多个镜像</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="镜像签名">
               <a class="post-toc-link" href="#镜像签名" data-level="3">镜像签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查签名策略">
-              <a class="post-toc-link" href="#检查签名策略" data-level="1">检查签名策略</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制并验证签名">
-              <a class="post-toc-link" href="#复制并验证签名" data-level="1">复制并验证签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制并添加签名">
-              <a class="post-toc-link" href="#复制并添加签名" data-level="1">复制并添加签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仅复制签名">
-              <a class="post-toc-link" href="#仅复制签名" data-level="1">仅复制签名</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="清单操作">
               <a class="post-toc-link" href="#清单操作" data-level="3">清单操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看镜像清单">
-              <a class="post-toc-link" href="#查看镜像清单" data-level="1">查看镜像清单</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建清单列表">
-              <a class="post-toc-link" href="#创建清单列表" data-level="1">创建清单列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加清单">
-              <a class="post-toc-link" href="#添加清单" data-level="1">添加清单</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="推送清单列表">
-              <a class="post-toc-link" href="#推送清单列表" data-level="1">推送清单列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除镜像标签">
-              <a class="post-toc-link" href="#删除镜像标签" data-level="1">删除镜像标签</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="registries-配置">
               <a class="post-toc-link" href="#registries-配置" data-level="3">registries 配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-containers-registries-conf-示例">
-              <a class="post-toc-link" href="#etc-containers-registries-conf-示例" data-level="1">/etc/containers/registries.conf 示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="registries-search">
-              <a class="post-toc-link" href="#registries-search" data-level="1">[registries.search]</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="registries-docker-io-quay-io">
-              <a class="post-toc-link" href="#registries-docker-io-quay-io" data-level="1">registries = [&#39;docker.io&#39;, &#39;quay.io&#39;]</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="registries-block">
-              <a class="post-toc-link" href="#registries-block" data-level="1"># [registries.block]</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="registries-registry-untrusted-com">
-              <a class="post-toc-link" href="#registries-registry-untrusted-com" data-level="1">registries = [&#39;registry.untrusted.com&#39;]</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="registries-insecure">
-              <a class="post-toc-link" href="#registries-insecure" data-level="1"># [[registries.insecure]]</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="registries-myinsecure-local-5000">
-              <a class="post-toc-link" href="#registries-myinsecure-local-5000" data-level="1">registries = [&#39;myinsecure.local:5000&#39;]</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="策略文件">
               <a class="post-toc-link" href="#策略文件" data-level="3">策略文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-containers-policy-json-示例">
-              <a class="post-toc-link" href="#etc-containers-policy-json-示例" data-level="1">/etc/containers/policy.json 示例</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
               <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像层大小">
-              <a class="post-toc-link" href="#检查镜像层大小" data-level="1">检查镜像层大小</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出镜像到文件">
-              <a class="post-toc-link" href="#导出镜像到文件" data-level="1">导出镜像到文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导入镜像">
-              <a class="post-toc-link" href="#导入镜像" data-level="1">导入镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量导出">
-              <a class="post-toc-link" href="#批量导出" data-level="1">批量导出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="离线复制">
-              <a class="post-toc-link" href="#离线复制" data-level="1">离线复制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="传输到目标机器">
-              <a class="post-toc-link" href="#传输到目标机器" data-level="1">(传输到目标机器)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理未使用的镜像">
-              <a class="post-toc-link" href="#清理未使用的镜像" data-level="1">清理未使用的镜像</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="镜像清理">
               <a class="post-toc-link" href="#镜像清理" data-level="3">镜像清理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查未引用的层">
-              <a class="post-toc-link" href="#检查未引用的层" data-level="1">检查未引用的层</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-platform-过滤">
-              <a class="post-toc-link" href="#使用-platform-过滤" data-level="1">使用 --platform 过滤</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="与其他工具对比">
@@ -2109,26 +1841,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令速查">
               <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查">
-              <a class="post-toc-link" href="#检查" data-level="1">检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制">
-              <a class="post-toc-link" href="#复制" data-level="1">复制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步">
-              <a class="post-toc-link" href="#同步" data-level="1">同步</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="认证">
-              <a class="post-toc-link" href="#认证" data-level="1">认证</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清单">
-              <a class="post-toc-link" href="#清单" data-level="1">清单</a>
             </li>
             
           </ul>
@@ -2168,320 +1880,52 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基本功能" data-level="3">基本功能</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制镜像">
-          <a class="post-toc-link" href="#复制镜像" data-level="1">复制镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像">
-          <a class="post-toc-link" href="#检查镜像" data-level="1">检查镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步镜像">
-          <a class="post-toc-link" href="#同步镜像" data-level="1">同步镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="登录到仓库">
-          <a class="post-toc-link" href="#登录到仓库" data-level="1">登录到仓库</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="镜像检查">
           <a class="post-toc-link" href="#镜像检查" data-level="3">镜像检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看镜像信息-无需拉取">
-          <a class="post-toc-link" href="#查看镜像信息-无需拉取" data-level="1">查看镜像信息（无需拉取）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出示例">
-          <a class="post-toc-link" href="#输出示例" data-level="1">输出示例：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">{</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="name-docker-io-library-nginx-latest">
-          <a class="post-toc-link" href="#name-docker-io-library-nginx-latest" data-level="1">&#34;Name&#34;: &#34;docker.io/library/nginx:latest&#34;,</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tag-latest">
-          <a class="post-toc-link" href="#tag-latest" data-level="1">&#34;Tag&#34;: &#34;latest&#34;,</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="digest-sha256">
-          <a class="post-toc-link" href="#digest-sha256" data-level="1">&#34;Digest&#34;: &#34;sha256:...&#34;,</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="architecture-amd64">
-          <a class="post-toc-link" href="#architecture-amd64" data-level="1">&#34;Architecture&#34;: &#34;amd64&#34;,</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="os-linux">
-          <a class="post-toc-link" href="#os-linux" data-level="1">&#34;Os&#34;: &#34;linux&#34;,</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="config">
-          <a class="post-toc-link" href="#config" data-level="1">&#34;Config&#34;: {...},</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="created-2024">
-          <a class="post-toc-link" href="#created-2024" data-level="1">&#34;Created&#34;: &#34;2024-...&#34;</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">}</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看私有镜像">
-          <a class="post-toc-link" href="#查看私有镜像" data-level="1">查看私有镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看签名">
-          <a class="post-toc-link" href="#查看签名" data-level="1">查看签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="原始配置">
-          <a class="post-toc-link" href="#原始配置" data-level="1">原始配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="镜像复制">
           <a class="post-toc-link" href="#镜像复制" data-level="3">镜像复制</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制镜像">
-          <a class="post-toc-link" href="#复制镜像" data-level="1">复制镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制到本地目录">
-          <a class="post-toc-link" href="#复制到本地目录" data-level="1">复制到本地目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从本地目录复制">
-          <a class="post-toc-link" href="#从本地目录复制" data-level="1">从本地目录复制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="oci-格式">
-          <a class="post-toc-link" href="#oci-格式" data-level="1">OCI 格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-镜像归档">
-          <a class="post-toc-link" href="#docker-镜像归档" data-level="1">Docker 镜像归档</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加载归档">
-          <a class="post-toc-link" href="#加载归档" data-level="1">加载归档</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="多架构镜像">
           <a class="post-toc-link" href="#多架构镜像" data-level="3">多架构镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制所有架构">
-          <a class="post-toc-link" href="#复制所有架构" data-level="1">复制所有架构</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定架构">
-          <a class="post-toc-link" href="#指定架构" data-level="1">指定架构</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-os">
-          <a class="post-toc-link" href="#指定-os" data-level="1">指定 OS</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="认证">
           <a class="post-toc-link" href="#认证" data-level="3">认证</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式登录">
-          <a class="post-toc-link" href="#交互式登录" data-level="1">交互式登录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="命令行登录">
-          <a class="post-toc-link" href="#命令行登录" data-level="1">命令行登录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="读取密码文件">
-          <a class="post-toc-link" href="#读取密码文件" data-level="1">读取密码文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="登出">
-          <a class="post-toc-link" href="#登出" data-level="1">登出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已登录仓库">
-          <a class="post-toc-link" href="#查看已登录仓库" data-level="1">查看已登录仓库</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="tls-配置">
           <a class="post-toc-link" href="#tls-配置" data-level="3">TLS 配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跳过-tls-验证-不推荐">
-          <a class="post-toc-link" href="#跳过-tls-验证-不推荐" data-level="1">跳过 TLS 验证（不推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-ca-证书">
-          <a class="post-toc-link" href="#指定-ca-证书" data-level="1">指定 CA 证书</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-skopeo-conf">
-          <a class="post-toc-link" href="#使用-skopeo-conf" data-level="1">使用 skopeo.conf</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-containers-registries-conf">
-          <a class="post-toc-link" href="#etc-containers-registries-conf" data-level="1">/etc/containers/registries.conf</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="镜像同步">
           <a class="post-toc-link" href="#镜像同步" data-level="3">镜像同步</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步到目录">
-          <a class="post-toc-link" href="#同步到目录" data-level="1">同步到目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步到仓库">
-          <a class="post-toc-link" href="#同步到仓库" data-level="1">同步到仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从目录同步到仓库">
-          <a class="post-toc-link" href="#从目录同步到仓库" data-level="1">从目录同步到仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步多个标签">
-          <a class="post-toc-link" href="#同步多个标签" data-level="1">同步多个标签</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步多个镜像">
-          <a class="post-toc-link" href="#同步多个镜像" data-level="1">同步多个镜像</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="镜像签名">
           <a class="post-toc-link" href="#镜像签名" data-level="3">镜像签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查签名策略">
-          <a class="post-toc-link" href="#检查签名策略" data-level="1">检查签名策略</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制并验证签名">
-          <a class="post-toc-link" href="#复制并验证签名" data-level="1">复制并验证签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制并添加签名">
-          <a class="post-toc-link" href="#复制并添加签名" data-level="1">复制并添加签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仅复制签名">
-          <a class="post-toc-link" href="#仅复制签名" data-level="1">仅复制签名</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="清单操作">
           <a class="post-toc-link" href="#清单操作" data-level="3">清单操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看镜像清单">
-          <a class="post-toc-link" href="#查看镜像清单" data-level="1">查看镜像清单</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建清单列表">
-          <a class="post-toc-link" href="#创建清单列表" data-level="1">创建清单列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加清单">
-          <a class="post-toc-link" href="#添加清单" data-level="1">添加清单</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="推送清单列表">
-          <a class="post-toc-link" href="#推送清单列表" data-level="1">推送清单列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除镜像标签">
-          <a class="post-toc-link" href="#删除镜像标签" data-level="1">删除镜像标签</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="registries-配置">
           <a class="post-toc-link" href="#registries-配置" data-level="3">registries 配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-containers-registries-conf-示例">
-          <a class="post-toc-link" href="#etc-containers-registries-conf-示例" data-level="1">/etc/containers/registries.conf 示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="registries-search">
-          <a class="post-toc-link" href="#registries-search" data-level="1">[registries.search]</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="registries-docker-io-quay-io">
-          <a class="post-toc-link" href="#registries-docker-io-quay-io" data-level="1">registries = [&#39;docker.io&#39;, &#39;quay.io&#39;]</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="registries-block">
-          <a class="post-toc-link" href="#registries-block" data-level="1"># [registries.block]</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="registries-registry-untrusted-com">
-          <a class="post-toc-link" href="#registries-registry-untrusted-com" data-level="1">registries = [&#39;registry.untrusted.com&#39;]</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="registries-insecure">
-          <a class="post-toc-link" href="#registries-insecure" data-level="1"># [[registries.insecure]]</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="registries-myinsecure-local-5000">
-          <a class="post-toc-link" href="#registries-myinsecure-local-5000" data-level="1">registries = [&#39;myinsecure.local:5000&#39;]</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="策略文件">
           <a class="post-toc-link" href="#策略文件" data-level="3">策略文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-containers-policy-json-示例">
-          <a class="post-toc-link" href="#etc-containers-policy-json-示例" data-level="1">/etc/containers/policy.json 示例</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
           <a class="post-toc-link" href="#常用示例" data-level="3">常用示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查镜像层大小">
-          <a class="post-toc-link" href="#检查镜像层大小" data-level="1">检查镜像层大小</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出镜像到文件">
-          <a class="post-toc-link" href="#导出镜像到文件" data-level="1">导出镜像到文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导入镜像">
-          <a class="post-toc-link" href="#导入镜像" data-level="1">导入镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量导出">
-          <a class="post-toc-link" href="#批量导出" data-level="1">批量导出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="离线复制">
-          <a class="post-toc-link" href="#离线复制" data-level="1">离线复制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="传输到目标机器">
-          <a class="post-toc-link" href="#传输到目标机器" data-level="1">(传输到目标机器)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理未使用的镜像">
-          <a class="post-toc-link" href="#清理未使用的镜像" data-level="1">清理未使用的镜像</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="镜像清理">
           <a class="post-toc-link" href="#镜像清理" data-level="3">镜像清理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查未引用的层">
-          <a class="post-toc-link" href="#检查未引用的层" data-level="1">检查未引用的层</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-platform-过滤">
-          <a class="post-toc-link" href="#使用-platform-过滤" data-level="1">使用 --platform 过滤</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="与其他工具对比">
@@ -2492,33 +1936,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用命令速查" data-level="3">常用命令速查</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查">
-          <a class="post-toc-link" href="#检查" data-level="1">检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制">
-          <a class="post-toc-link" href="#复制" data-level="1">复制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步">
-          <a class="post-toc-link" href="#同步" data-level="1">同步</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="认证">
-          <a class="post-toc-link" href="#认证" data-level="1">认证</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清单">
-          <a class="post-toc-link" href="#清单" data-level="1">清单</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2701,8 +2125,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

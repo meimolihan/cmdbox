@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_proxy 命令">
     <meta name="twitter:description" content="配置 WSL2 代理上网 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1689,32 +1689,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#获取宿主机-ip" data-level="3">获取宿主机 IP</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法一-从-resolv-conf-获取">
-              <a class="post-toc-link" href="#方法一-从-resolv-conf-获取" data-level="1">方法一：从 resolv.conf 获取</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法二-使用-hostname">
-              <a class="post-toc-link" href="#方法二-使用-hostname" data-level="1">方法二：使用 hostname</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="临时设置代理">
               <a class="post-toc-link" href="#临时设置代理" data-level="3">临时设置代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="宿主机-ip-替换为实际值">
-              <a class="post-toc-link" href="#宿主机-ip-替换为实际值" data-level="1">宿主机 IP（替换为实际值）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-https-代理">
-              <a class="post-toc-link" href="#http-https-代理" data-level="1">HTTP/HTTPS 代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="socks5-代理">
-              <a class="post-toc-link" href="#socks5-代理" data-level="1">SOCKS5 代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试代理是否生效">
-              <a class="post-toc-link" href="#测试代理是否生效" data-level="1">测试代理是否生效</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="自动配置脚本">
@@ -1725,32 +1701,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一键配置脚本" data-level="3">一键配置脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="wsl2-代理配置">
-              <a class="post-toc-link" href="#wsl2-代理配置" data-level="1">WSL2 代理配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认启用代理-可选-取消注释以启用">
-              <a class="post-toc-link" href="#默认启用代理-可选-取消注释以启用" data-level="1">默认启用代理（可选，取消注释以启用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="set_proxy">
-              <a class="post-toc-link" href="#set_proxy" data-level="1">set_proxy</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="使配置生效">
               <a class="post-toc-link" href="#使配置生效" data-level="3">使配置生效</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用代理-默认端口-7890">
-              <a class="post-toc-link" href="#启用代理-默认端口-7890" data-level="1">启用代理（默认端口 7890）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口">
-              <a class="post-toc-link" href="#指定端口" data-level="1">指定端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试">
-              <a class="post-toc-link" href="#测试" data-level="1">测试</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="代理开关命令">
@@ -1773,48 +1725,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#windows-防火墙设置" data-level="3">Windows 防火墙设置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加防火墙规则放行端口">
-              <a class="post-toc-link" href="#添加防火墙规则放行端口" data-level="1">添加防火墙规则放行端口</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="配置-apt-使用代理">
               <a class="post-toc-link" href="#配置-apt-使用代理" data-level="2">配置 APT 使用代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="临时使用">
-              <a class="post-toc-link" href="#临时使用" data-level="1">临时使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="永久配置">
-              <a class="post-toc-link" href="#永久配置" data-level="1">永久配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="配置-git-使用代理">
               <a class="post-toc-link" href="#配置-git-使用代理" data-level="2">配置 Git 使用代理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-https">
-              <a class="post-toc-link" href="#http-https" data-level="1">HTTP/HTTPS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仅对-github-使用代理">
-              <a class="post-toc-link" href="#仅对-github-使用代理" data-level="1">仅对 GitHub 使用代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消代理">
-              <a class="post-toc-link" href="#取消代理" data-level="1">取消代理</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="配置-npm-yarn-使用代理">
               <a class="post-toc-link" href="#配置-npm-yarn-使用代理" data-level="2">配置 npm/yarn 使用代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="npm">
-              <a class="post-toc-link" href="#npm" data-level="1">npm</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yarn">
-              <a class="post-toc-link" href="#yarn" data-level="1">yarn</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
@@ -1825,32 +1745,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#连接被拒绝" data-level="3">连接被拒绝</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查宿主机-ip">
-              <a class="post-toc-link" href="#检查宿主机-ip" data-level="1">检查宿主机 IP</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试端口连通性">
-              <a class="post-toc-link" href="#测试端口连通性" data-level="1">测试端口连通性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认代理客户端允许局域网连接">
-              <a class="post-toc-link" href="#确认代理客户端允许局域网连接" data-level="1">确认代理客户端允许局域网连接</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="ip-获取失败">
               <a class="post-toc-link" href="#ip-获取失败" data-level="3">IP 获取失败</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-ip-route-替代">
-              <a class="post-toc-link" href="#使用-ip-route-替代" data-level="1">使用 ip route 替代</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="windows-防火墙阻止">
               <a class="post-toc-link" href="#windows-防火墙阻止" data-level="3">Windows 防火墙阻止</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭防火墙-测试用">
-              <a class="post-toc-link" href="#关闭防火墙-测试用" data-level="1">关闭防火墙（测试用）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="代理仅对当前-shell-生效">
@@ -1859,22 +1759,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="验证配置">
               <a class="post-toc-link" href="#验证配置" data-level="2">验证配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试-google-连通性">
-              <a class="post-toc-link" href="#测试-google-连通性" data-level="1">测试 Google 连通性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看公网-ip">
-              <a class="post-toc-link" href="#查看公网-ip" data-level="1">查看公网 IP</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试-pip-安装">
-              <a class="post-toc-link" href="#测试-pip-安装" data-level="1">测试 pip 安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试-git-克隆">
-              <a class="post-toc-link" href="#测试-git-克隆" data-level="1">测试 git 克隆</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -1938,32 +1822,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#获取宿主机-ip" data-level="3">获取宿主机 IP</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法一-从-resolv-conf-获取">
-          <a class="post-toc-link" href="#方法一-从-resolv-conf-获取" data-level="1">方法一：从 resolv.conf 获取</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法二-使用-hostname">
-          <a class="post-toc-link" href="#方法二-使用-hostname" data-level="1">方法二：使用 hostname</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="临时设置代理">
           <a class="post-toc-link" href="#临时设置代理" data-level="3">临时设置代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="宿主机-ip-替换为实际值">
-          <a class="post-toc-link" href="#宿主机-ip-替换为实际值" data-level="1">宿主机 IP（替换为实际值）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-https-代理">
-          <a class="post-toc-link" href="#http-https-代理" data-level="1">HTTP/HTTPS 代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="socks5-代理">
-          <a class="post-toc-link" href="#socks5-代理" data-level="1">SOCKS5 代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试代理是否生效">
-          <a class="post-toc-link" href="#测试代理是否生效" data-level="1">测试代理是否生效</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="自动配置脚本">
@@ -1974,32 +1834,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一键配置脚本" data-level="3">一键配置脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="wsl2-代理配置">
-          <a class="post-toc-link" href="#wsl2-代理配置" data-level="1">WSL2 代理配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认启用代理-可选-取消注释以启用">
-          <a class="post-toc-link" href="#默认启用代理-可选-取消注释以启用" data-level="1">默认启用代理（可选，取消注释以启用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="set_proxy">
-          <a class="post-toc-link" href="#set_proxy" data-level="1">set_proxy</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="使配置生效">
           <a class="post-toc-link" href="#使配置生效" data-level="3">使配置生效</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用代理-默认端口-7890">
-          <a class="post-toc-link" href="#启用代理-默认端口-7890" data-level="1">启用代理（默认端口 7890）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口">
-          <a class="post-toc-link" href="#指定端口" data-level="1">指定端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试">
-          <a class="post-toc-link" href="#测试" data-level="1">测试</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="代理开关命令">
@@ -2022,48 +1858,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#windows-防火墙设置" data-level="3">Windows 防火墙设置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加防火墙规则放行端口">
-          <a class="post-toc-link" href="#添加防火墙规则放行端口" data-level="1">添加防火墙规则放行端口</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="配置-apt-使用代理">
           <a class="post-toc-link" href="#配置-apt-使用代理" data-level="2">配置 APT 使用代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="临时使用">
-          <a class="post-toc-link" href="#临时使用" data-level="1">临时使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="永久配置">
-          <a class="post-toc-link" href="#永久配置" data-level="1">永久配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="配置-git-使用代理">
           <a class="post-toc-link" href="#配置-git-使用代理" data-level="2">配置 Git 使用代理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-https">
-          <a class="post-toc-link" href="#http-https" data-level="1">HTTP/HTTPS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仅对-github-使用代理">
-          <a class="post-toc-link" href="#仅对-github-使用代理" data-level="1">仅对 GitHub 使用代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消代理">
-          <a class="post-toc-link" href="#取消代理" data-level="1">取消代理</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="配置-npm-yarn-使用代理">
           <a class="post-toc-link" href="#配置-npm-yarn-使用代理" data-level="2">配置 npm/yarn 使用代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="npm">
-          <a class="post-toc-link" href="#npm" data-level="1">npm</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yarn">
-          <a class="post-toc-link" href="#yarn" data-level="1">yarn</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="常见问题">
@@ -2074,32 +1878,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#连接被拒绝" data-level="3">连接被拒绝</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查宿主机-ip">
-          <a class="post-toc-link" href="#检查宿主机-ip" data-level="1">检查宿主机 IP</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试端口连通性">
-          <a class="post-toc-link" href="#测试端口连通性" data-level="1">测试端口连通性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认代理客户端允许局域网连接">
-          <a class="post-toc-link" href="#确认代理客户端允许局域网连接" data-level="1">确认代理客户端允许局域网连接</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="ip-获取失败">
           <a class="post-toc-link" href="#ip-获取失败" data-level="3">IP 获取失败</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-ip-route-替代">
-          <a class="post-toc-link" href="#使用-ip-route-替代" data-level="1">使用 ip route 替代</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="windows-防火墙阻止">
           <a class="post-toc-link" href="#windows-防火墙阻止" data-level="3">Windows 防火墙阻止</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭防火墙-测试用">
-          <a class="post-toc-link" href="#关闭防火墙-测试用" data-level="1">关闭防火墙（测试用）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="代理仅对当前-shell-生效">
@@ -2108,22 +1892,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="验证配置">
           <a class="post-toc-link" href="#验证配置" data-level="2">验证配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试-google-连通性">
-          <a class="post-toc-link" href="#测试-google-连通性" data-level="1">测试 Google 连通性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看公网-ip">
-          <a class="post-toc-link" href="#查看公网-ip" data-level="1">查看公网 IP</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试-pip-安装">
-          <a class="post-toc-link" href="#测试-pip-安装" data-level="1">测试 pip 安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试-git-克隆">
-          <a class="post-toc-link" href="#测试-git-克隆" data-level="1">测试 git 克隆</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2140,7 +1908,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2323,8 +2091,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

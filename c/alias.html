@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="alias 命令">
     <meta name="twitter:description" content="定义或显示别名。 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1453,72 +1453,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#例子" data-level="2">例子</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示全部已定义的别名">
-              <a class="post-toc-link" href="#显示全部已定义的别名" data-level="1">显示全部已定义的别名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示已定义的别名-假设当前环境存在以下别名">
-              <a class="post-toc-link" href="#显示已定义的别名-假设当前环境存在以下别名" data-level="1">显示已定义的别名（假设当前环境存在以下别名）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="定义或修改别名的值">
-              <a class="post-toc-link" href="#定义或修改别名的值" data-level="1">定义或修改别名的值</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="知识点">
               <a class="post-toc-link" href="#知识点" data-level="2">知识点</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="错误用法">
               <a class="post-toc-link" href="#错误用法" data-level="2">错误用法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="为方便演示-删除全部别名">
-              <a class="post-toc-link" href="#为方便演示-删除全部别名" data-level="1">为方便演示，删除全部别名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="没有用单引号扩起">
-              <a class="post-toc-link" href="#没有用单引号扩起" data-level="1">没有用单引号扩起</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行命令后报错-bash-alias-rf-not-found">
-              <a class="post-toc-link" href="#执行命令后报错-bash-alias-rf-not-found" data-level="1">执行命令后报错 bash: alias: -rf: not found</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="这时使用alias查看rm的别名时返回-alias-rm-rm">
-              <a class="post-toc-link" href="#这时使用alias查看rm的别名时返回-alias-rm-rm" data-level="1">这时使用alias查看rm的别名时返回 alias rm=&#39;rm&#39;</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更具有迷惑性的例子">
-              <a class="post-toc-link" href="#更具有迷惑性的例子" data-level="1">更具有迷惑性的例子</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="为方便演示-删除全部别名">
-              <a class="post-toc-link" href="#为方便演示-删除全部别名" data-level="1">为方便演示，删除全部别名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仍然没有用单引号括起">
-              <a class="post-toc-link" href="#仍然没有用单引号括起" data-level="1">仍然没有用单引号括起</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行命令后看起来没有报错">
-              <a class="post-toc-link" href="#执行命令后看起来没有报错" data-level="1">执行命令后看起来没有报错</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用alias查看全部别名会发现运行结果如下">
-              <a class="post-toc-link" href="#使用alias查看全部别名会发现运行结果如下" data-level="1">使用alias查看全部别名会发现运行结果如下：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="alias-color-never">
-              <a class="post-toc-link" href="#alias-color-never" data-level="1">alias --color=never</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="alias-ls-ls">
-              <a class="post-toc-link" href="#alias-ls-ls" data-level="1">alias ls=&#39;ls&#39;</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="alias处理时将它们看成了两组">
-              <a class="post-toc-link" href="#alias处理时将它们看成了两组" data-level="1">alias处理时将它们看成了两组</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="q-a">
@@ -1578,72 +1518,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#例子" data-level="2">例子</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示全部已定义的别名">
-          <a class="post-toc-link" href="#显示全部已定义的别名" data-level="1">显示全部已定义的别名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示已定义的别名-假设当前环境存在以下别名">
-          <a class="post-toc-link" href="#显示已定义的别名-假设当前环境存在以下别名" data-level="1">显示已定义的别名（假设当前环境存在以下别名）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="定义或修改别名的值">
-          <a class="post-toc-link" href="#定义或修改别名的值" data-level="1">定义或修改别名的值</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="知识点">
           <a class="post-toc-link" href="#知识点" data-level="2">知识点</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="错误用法">
           <a class="post-toc-link" href="#错误用法" data-level="2">错误用法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="为方便演示-删除全部别名">
-          <a class="post-toc-link" href="#为方便演示-删除全部别名" data-level="1">为方便演示，删除全部别名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="没有用单引号扩起">
-          <a class="post-toc-link" href="#没有用单引号扩起" data-level="1">没有用单引号扩起</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行命令后报错-bash-alias-rf-not-found">
-          <a class="post-toc-link" href="#执行命令后报错-bash-alias-rf-not-found" data-level="1">执行命令后报错 bash: alias: -rf: not found</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="这时使用alias查看rm的别名时返回-alias-rm-rm">
-          <a class="post-toc-link" href="#这时使用alias查看rm的别名时返回-alias-rm-rm" data-level="1">这时使用alias查看rm的别名时返回 alias rm=&#39;rm&#39;</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更具有迷惑性的例子">
-          <a class="post-toc-link" href="#更具有迷惑性的例子" data-level="1">更具有迷惑性的例子</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="为方便演示-删除全部别名">
-          <a class="post-toc-link" href="#为方便演示-删除全部别名" data-level="1">为方便演示，删除全部别名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仍然没有用单引号括起">
-          <a class="post-toc-link" href="#仍然没有用单引号括起" data-level="1">仍然没有用单引号括起</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行命令后看起来没有报错">
-          <a class="post-toc-link" href="#执行命令后看起来没有报错" data-level="1">执行命令后看起来没有报错</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用alias查看全部别名会发现运行结果如下">
-          <a class="post-toc-link" href="#使用alias查看全部别名会发现运行结果如下" data-level="1">使用alias查看全部别名会发现运行结果如下：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="alias-color-never">
-          <a class="post-toc-link" href="#alias-color-never" data-level="1">alias --color=never</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="alias-ls-ls">
-          <a class="post-toc-link" href="#alias-ls-ls" data-level="1">alias ls=&#39;ls&#39;</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="alias处理时将它们看成了两组">
-          <a class="post-toc-link" href="#alias处理时将它们看成了两组" data-level="1">alias处理时将它们看成了两组</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="q-a">
@@ -1664,7 +1544,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1847,8 +1727,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

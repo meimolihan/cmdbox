@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="yq 命令">
     <meta name="twitter:description" content="YAML 数据处理工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1860,364 +1860,44 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基本使用" data-level="3">基本使用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="美化-yaml">
-              <a class="post-toc-link" href="#美化-yaml" data-level="1">美化 YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json-输出">
-              <a class="post-toc-link" href="#json-输出" data-level="1">JSON 输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取字段">
-              <a class="post-toc-link" href="#提取字段" data-level="1">提取字段</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取数组元素">
-              <a class="post-toc-link" href="#提取数组元素" data-level="1">提取数组元素</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
               <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-输出-默认">
-              <a class="post-toc-link" href="#yaml-输出-默认" data-level="1">YAML 输出（默认）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json-输出">
-              <a class="post-toc-link" href="#json-输出" data-level="1">JSON 输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json-单行输出">
-              <a class="post-toc-link" href="#json-单行输出" data-level="1">JSON 单行输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩输出">
-              <a class="post-toc-link" href="#压缩输出" data-level="1">压缩输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="原始输出-无引号">
-              <a class="post-toc-link" href="#原始输出-无引号" data-level="1">原始输出（无引号）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彩色输出">
-              <a class="post-toc-link" href="#彩色输出" data-level="1">彩色输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="不着色输出">
-              <a class="post-toc-link" href="#不着色输出" data-level="1">不着色输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保持注释">
-              <a class="post-toc-link" href="#保持注释" data-level="1">保持注释</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="查询过滤">
               <a class="post-toc-link" href="#查询过滤" data-level="3">查询过滤</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件过滤">
-              <a class="post-toc-link" href="#条件过滤" data-level="1">条件过滤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="存在性检查">
-              <a class="post-toc-link" href="#存在性检查" data-level="1">存在性检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="比较操作">
-              <a class="post-toc-link" href="#比较操作" data-level="1">比较操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正则匹配">
-              <a class="post-toc-link" href="#正则匹配" data-level="1">正则匹配</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="字符串包含">
-              <a class="post-toc-link" href="#字符串包含" data-level="1">字符串包含</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="数组操作">
               <a class="post-toc-link" href="#数组操作" data-level="3">数组操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="数组长度">
-              <a class="post-toc-link" href="#数组长度" data-level="1">数组长度</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="遍历数组">
-              <a class="post-toc-link" href="#遍历数组" data-level="1">遍历数组</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="数组切片">
-              <a class="post-toc-link" href="#数组切片" data-level="1">数组切片</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加元素">
-              <a class="post-toc-link" href="#添加元素" data-level="1">添加元素</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除元素">
-              <a class="post-toc-link" href="#删除元素" data-level="1">删除元素</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="过滤数组">
-              <a class="post-toc-link" href="#过滤数组" data-level="1">过滤数组</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="映射操作">
-              <a class="post-toc-link" href="#映射操作" data-level="1">映射操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="排序">
-              <a class="post-toc-link" href="#排序" data-level="1">排序</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="去重">
-              <a class="post-toc-link" href="#去重" data-level="1">去重</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分组">
-              <a class="post-toc-link" href="#分组" data-level="1">分组</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="修改操作">
               <a class="post-toc-link" href="#修改操作" data-level="3">修改操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新字段">
-              <a class="post-toc-link" href="#更新字段" data-level="1">更新字段</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加字段">
-              <a class="post-toc-link" href="#添加字段" data-level="1">添加字段</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除字段">
-              <a class="post-toc-link" href="#删除字段" data-level="1">删除字段</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件更新">
-              <a class="post-toc-link" href="#条件更新" data-level="1">条件更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="增量更新">
-              <a class="post-toc-link" href="#增量更新" data-level="1">增量更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="合并对象">
-              <a class="post-toc-link" href="#合并对象" data-level="1">合并对象</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重命名字段-删除旧字段-添加新字段">
-              <a class="post-toc-link" href="#重命名字段-删除旧字段-添加新字段" data-level="1">重命名字段（删除旧字段，添加新字段）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="格式转换">
               <a class="post-toc-link" href="#格式转换" data-level="3">格式转换</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-转-json">
-              <a class="post-toc-link" href="#yaml-转-json" data-level="1">YAML 转 JSON</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json-转-yaml">
-              <a class="post-toc-link" href="#json-转-yaml" data-level="1">JSON 转 YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-转-xml">
-              <a class="post-toc-link" href="#yaml-转-xml" data-level="1">YAML 转 XML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="xml-转-yaml">
-              <a class="post-toc-link" href="#xml-转-yaml" data-level="1">XML 转 YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-转-csv-需要扁平结构">
-              <a class="post-toc-link" href="#yaml-转-csv-需要扁平结构" data-level="1">YAML 转 CSV（需要扁平结构）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="csv-转-yaml">
-              <a class="post-toc-link" href="#csv-转-yaml" data-level="1">CSV 转 YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="properties-转-yaml">
-              <a class="post-toc-link" href="#properties-转-yaml" data-level="1">Properties 转 YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="支持-format">
-              <a class="post-toc-link" href="#支持-format" data-level="1">支持 format</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="支持的格式">
-              <a class="post-toc-link" href="#支持的格式" data-level="1">支持的格式:</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-yml">
-              <a class="post-toc-link" href="#yaml-yml" data-level="1">yaml, yml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json">
-              <a class="post-toc-link" href="#json" data-level="1">json</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="xml">
-              <a class="post-toc-link" href="#xml" data-level="1">xml</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="csv">
-              <a class="post-toc-link" href="#csv" data-level="1">csv</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tsv">
-              <a class="post-toc-link" href="#tsv" data-level="1">tsv</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="props-properties">
-              <a class="post-toc-link" href="#props-properties" data-level="1">props (properties)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ubuntu-ubuntu-config">
-              <a class="post-toc-link" href="#ubuntu-ubuntu-config" data-level="1">ubuntu (ubuntu config)</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="多文件操作">
               <a class="post-toc-link" href="#多文件操作" data-level="3">多文件操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="合并多个-yaml-文件">
-              <a class="post-toc-link" href="#合并多个-yaml-文件" data-level="1">合并多个 YAML 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="合并为数组">
-              <a class="post-toc-link" href="#合并为数组" data-level="1">合并为数组</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="合并对象">
-              <a class="post-toc-link" href="#合并对象" data-level="1">合并对象</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量处理">
-              <a class="post-toc-link" href="#批量处理" data-level="1">批量处理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从标准输入读取">
-              <a class="post-toc-link" href="#从标准输入读取" data-level="1">从标准输入读取</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多文档处理">
-              <a class="post-toc-link" href="#多文档处理" data-level="1">多文档处理</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="kubernetes-配置处理">
               <a class="post-toc-link" href="#kubernetes-配置处理" data-level="3">Kubernetes 配置处理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取-kubernetes-deployment-名称">
-              <a class="post-toc-link" href="#提取-kubernetes-deployment-名称" data-level="1">提取 Kubernetes Deployment 名称</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取所有镜像">
-              <a class="post-toc-link" href="#提取所有镜像" data-level="1">提取所有镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取服务端口">
-              <a class="post-toc-link" href="#获取服务端口" data-level="1">获取服务端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量修改镜像">
-              <a class="post-toc-link" href="#批量修改镜像" data-level="1">批量修改镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取所有-configmap-数据">
-              <a class="post-toc-link" href="#提取所有-configmap-数据" data-level="1">提取所有 ConfigMap 数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-secret-base64-解码">
-              <a class="post-toc-link" href="#查看-secret-base64-解码" data-level="1">查看 Secret（base64 解码）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取资源配额">
-              <a class="post-toc-link" href="#提取资源配额" data-level="1">提取资源配额</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改副本数">
-              <a class="post-toc-link" href="#修改副本数" data-level="1">修改副本数</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常量">
               <a class="post-toc-link" href="#常量" data-level="3">常量</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用变量">
-              <a class="post-toc-link" href="#使用变量" data-level="1">使用变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="环境变量">
-              <a class="post-toc-link" href="#环境变量" data-level="1">环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="时间函数">
-              <a class="post-toc-link" href="#时间函数" data-level="1">时间函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="文件信息">
-              <a class="post-toc-link" href="#文件信息" data-level="1">文件信息</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="实用示例">
               <a class="post-toc-link" href="#实用示例" data-level="3">实用示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改-docker-compose-服务镜像">
-              <a class="post-toc-link" href="#修改-docker-compose-服务镜像" data-level="1">修改 Docker Compose 服务镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取-github-actions-步骤">
-              <a class="post-toc-link" href="#提取-github-actions-步骤" data-level="1">提取 GitHub Actions 步骤</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="美化配置文件">
-              <a class="post-toc-link" href="#美化配置文件" data-level="1">美化配置文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证-yaml-语法">
-              <a class="post-toc-link" href="#验证-yaml-语法" data-level="1">验证 YAML 语法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="合并配置">
-              <a class="post-toc-link" href="#合并配置" data-level="1">合并配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量修改配置文件">
-              <a class="post-toc-link" href="#批量修改配置文件" data-level="1">批量修改配置文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出字段为-csv">
-              <a class="post-toc-link" href="#导出字段为-csv" data-level="1">导出字段为 CSV</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用组合">
               <a class="post-toc-link" href="#常用组合" data-level="3">常用组合</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化并验证-yaml">
-              <a class="post-toc-link" href="#格式化并验证-yaml" data-level="1">格式化并验证 YAML</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量修改项目配置">
-              <a class="post-toc-link" href="#批量修改项目配置" data-level="1">批量修改项目配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="统计-kubernetes-资源">
-              <a class="post-toc-link" href="#统计-kubernetes-资源" data-level="1">统计 Kubernetes 资源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速查看配置值">
-              <a class="post-toc-link" href="#快速查看配置值" data-level="1">快速查看配置值</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="提取并排序">
-              <a class="post-toc-link" href="#提取并排序" data-level="1">提取并排序</a>
             </li>
             
           </ul>
@@ -2257,364 +1937,44 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基本使用" data-level="3">基本使用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="美化-yaml">
-          <a class="post-toc-link" href="#美化-yaml" data-level="1">美化 YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json-输出">
-          <a class="post-toc-link" href="#json-输出" data-level="1">JSON 输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取字段">
-          <a class="post-toc-link" href="#提取字段" data-level="1">提取字段</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取数组元素">
-          <a class="post-toc-link" href="#提取数组元素" data-level="1">提取数组元素</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
           <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-输出-默认">
-          <a class="post-toc-link" href="#yaml-输出-默认" data-level="1">YAML 输出（默认）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json-输出">
-          <a class="post-toc-link" href="#json-输出" data-level="1">JSON 输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json-单行输出">
-          <a class="post-toc-link" href="#json-单行输出" data-level="1">JSON 单行输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩输出">
-          <a class="post-toc-link" href="#压缩输出" data-level="1">压缩输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="原始输出-无引号">
-          <a class="post-toc-link" href="#原始输出-无引号" data-level="1">原始输出（无引号）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彩色输出">
-          <a class="post-toc-link" href="#彩色输出" data-level="1">彩色输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="不着色输出">
-          <a class="post-toc-link" href="#不着色输出" data-level="1">不着色输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保持注释">
-          <a class="post-toc-link" href="#保持注释" data-level="1">保持注释</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="查询过滤">
           <a class="post-toc-link" href="#查询过滤" data-level="3">查询过滤</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件过滤">
-          <a class="post-toc-link" href="#条件过滤" data-level="1">条件过滤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="存在性检查">
-          <a class="post-toc-link" href="#存在性检查" data-level="1">存在性检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="比较操作">
-          <a class="post-toc-link" href="#比较操作" data-level="1">比较操作</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正则匹配">
-          <a class="post-toc-link" href="#正则匹配" data-level="1">正则匹配</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="字符串包含">
-          <a class="post-toc-link" href="#字符串包含" data-level="1">字符串包含</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="数组操作">
           <a class="post-toc-link" href="#数组操作" data-level="3">数组操作</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="数组长度">
-          <a class="post-toc-link" href="#数组长度" data-level="1">数组长度</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="遍历数组">
-          <a class="post-toc-link" href="#遍历数组" data-level="1">遍历数组</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="数组切片">
-          <a class="post-toc-link" href="#数组切片" data-level="1">数组切片</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加元素">
-          <a class="post-toc-link" href="#添加元素" data-level="1">添加元素</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除元素">
-          <a class="post-toc-link" href="#删除元素" data-level="1">删除元素</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="过滤数组">
-          <a class="post-toc-link" href="#过滤数组" data-level="1">过滤数组</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="映射操作">
-          <a class="post-toc-link" href="#映射操作" data-level="1">映射操作</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="排序">
-          <a class="post-toc-link" href="#排序" data-level="1">排序</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="去重">
-          <a class="post-toc-link" href="#去重" data-level="1">去重</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分组">
-          <a class="post-toc-link" href="#分组" data-level="1">分组</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="修改操作">
           <a class="post-toc-link" href="#修改操作" data-level="3">修改操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新字段">
-          <a class="post-toc-link" href="#更新字段" data-level="1">更新字段</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加字段">
-          <a class="post-toc-link" href="#添加字段" data-level="1">添加字段</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除字段">
-          <a class="post-toc-link" href="#删除字段" data-level="1">删除字段</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件更新">
-          <a class="post-toc-link" href="#条件更新" data-level="1">条件更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="增量更新">
-          <a class="post-toc-link" href="#增量更新" data-level="1">增量更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="合并对象">
-          <a class="post-toc-link" href="#合并对象" data-level="1">合并对象</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重命名字段-删除旧字段-添加新字段">
-          <a class="post-toc-link" href="#重命名字段-删除旧字段-添加新字段" data-level="1">重命名字段（删除旧字段，添加新字段）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="格式转换">
           <a class="post-toc-link" href="#格式转换" data-level="3">格式转换</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-转-json">
-          <a class="post-toc-link" href="#yaml-转-json" data-level="1">YAML 转 JSON</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json-转-yaml">
-          <a class="post-toc-link" href="#json-转-yaml" data-level="1">JSON 转 YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-转-xml">
-          <a class="post-toc-link" href="#yaml-转-xml" data-level="1">YAML 转 XML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="xml-转-yaml">
-          <a class="post-toc-link" href="#xml-转-yaml" data-level="1">XML 转 YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-转-csv-需要扁平结构">
-          <a class="post-toc-link" href="#yaml-转-csv-需要扁平结构" data-level="1">YAML 转 CSV（需要扁平结构）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="csv-转-yaml">
-          <a class="post-toc-link" href="#csv-转-yaml" data-level="1">CSV 转 YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="properties-转-yaml">
-          <a class="post-toc-link" href="#properties-转-yaml" data-level="1">Properties 转 YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="支持-format">
-          <a class="post-toc-link" href="#支持-format" data-level="1">支持 format</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="支持的格式">
-          <a class="post-toc-link" href="#支持的格式" data-level="1">支持的格式:</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="yaml-yml">
-          <a class="post-toc-link" href="#yaml-yml" data-level="1">yaml, yml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json">
-          <a class="post-toc-link" href="#json" data-level="1">json</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="xml">
-          <a class="post-toc-link" href="#xml" data-level="1">xml</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="csv">
-          <a class="post-toc-link" href="#csv" data-level="1">csv</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tsv">
-          <a class="post-toc-link" href="#tsv" data-level="1">tsv</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="props-properties">
-          <a class="post-toc-link" href="#props-properties" data-level="1">props (properties)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ubuntu-ubuntu-config">
-          <a class="post-toc-link" href="#ubuntu-ubuntu-config" data-level="1">ubuntu (ubuntu config)</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="多文件操作">
           <a class="post-toc-link" href="#多文件操作" data-level="3">多文件操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="合并多个-yaml-文件">
-          <a class="post-toc-link" href="#合并多个-yaml-文件" data-level="1">合并多个 YAML 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="合并为数组">
-          <a class="post-toc-link" href="#合并为数组" data-level="1">合并为数组</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="合并对象">
-          <a class="post-toc-link" href="#合并对象" data-level="1">合并对象</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量处理">
-          <a class="post-toc-link" href="#批量处理" data-level="1">批量处理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从标准输入读取">
-          <a class="post-toc-link" href="#从标准输入读取" data-level="1">从标准输入读取</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多文档处理">
-          <a class="post-toc-link" href="#多文档处理" data-level="1">多文档处理</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="kubernetes-配置处理">
           <a class="post-toc-link" href="#kubernetes-配置处理" data-level="3">Kubernetes 配置处理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取-kubernetes-deployment-名称">
-          <a class="post-toc-link" href="#提取-kubernetes-deployment-名称" data-level="1">提取 Kubernetes Deployment 名称</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取所有镜像">
-          <a class="post-toc-link" href="#提取所有镜像" data-level="1">提取所有镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取服务端口">
-          <a class="post-toc-link" href="#获取服务端口" data-level="1">获取服务端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量修改镜像">
-          <a class="post-toc-link" href="#批量修改镜像" data-level="1">批量修改镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取所有-configmap-数据">
-          <a class="post-toc-link" href="#提取所有-configmap-数据" data-level="1">提取所有 ConfigMap 数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-secret-base64-解码">
-          <a class="post-toc-link" href="#查看-secret-base64-解码" data-level="1">查看 Secret（base64 解码）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取资源配额">
-          <a class="post-toc-link" href="#提取资源配额" data-level="1">提取资源配额</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改副本数">
-          <a class="post-toc-link" href="#修改副本数" data-level="1">修改副本数</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常量">
           <a class="post-toc-link" href="#常量" data-level="3">常量</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用变量">
-          <a class="post-toc-link" href="#使用变量" data-level="1">使用变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="环境变量">
-          <a class="post-toc-link" href="#环境变量" data-level="1">环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="时间函数">
-          <a class="post-toc-link" href="#时间函数" data-level="1">时间函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="文件信息">
-          <a class="post-toc-link" href="#文件信息" data-level="1">文件信息</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="实用示例">
           <a class="post-toc-link" href="#实用示例" data-level="3">实用示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改-docker-compose-服务镜像">
-          <a class="post-toc-link" href="#修改-docker-compose-服务镜像" data-level="1">修改 Docker Compose 服务镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取-github-actions-步骤">
-          <a class="post-toc-link" href="#提取-github-actions-步骤" data-level="1">提取 GitHub Actions 步骤</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="美化配置文件">
-          <a class="post-toc-link" href="#美化配置文件" data-level="1">美化配置文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证-yaml-语法">
-          <a class="post-toc-link" href="#验证-yaml-语法" data-level="1">验证 YAML 语法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="合并配置">
-          <a class="post-toc-link" href="#合并配置" data-level="1">合并配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量修改配置文件">
-          <a class="post-toc-link" href="#批量修改配置文件" data-level="1">批量修改配置文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出字段为-csv">
-          <a class="post-toc-link" href="#导出字段为-csv" data-level="1">导出字段为 CSV</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用组合">
           <a class="post-toc-link" href="#常用组合" data-level="3">常用组合</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化并验证-yaml">
-          <a class="post-toc-link" href="#格式化并验证-yaml" data-level="1">格式化并验证 YAML</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量修改项目配置">
-          <a class="post-toc-link" href="#批量修改项目配置" data-level="1">批量修改项目配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="统计-kubernetes-资源">
-          <a class="post-toc-link" href="#统计-kubernetes-资源" data-level="1">统计 Kubernetes 资源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速查看配置值">
-          <a class="post-toc-link" href="#快速查看配置值" data-level="1">快速查看配置值</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="提取并排序">
-          <a class="post-toc-link" href="#提取并排序" data-level="1">提取并排序</a>
         </li>
         
       </ul>
@@ -2623,7 +1983,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2806,8 +2166,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

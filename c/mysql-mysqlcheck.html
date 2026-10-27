@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="mysql-mysqlcheck 命令">
     <meta name="twitter:description" content="MySQL表维护和修复工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1686,188 +1686,20 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
-              <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="操作选项">
-              <a class="post-toc-link" href="#操作选项" data-level="1">操作选项</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个数据库的所有表">
-              <a class="post-toc-link" href="#检查单个数据库的所有表" data-level="1">检查单个数据库的所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个数据库的指定表">
-              <a class="post-toc-link" href="#检查单个数据库的指定表" data-level="1">检查单个数据库的指定表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查多个数据库">
-              <a class="post-toc-link" href="#检查多个数据库" data-level="1">检查多个数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有数据库">
-              <a class="post-toc-link" href="#检查所有数据库" data-level="1">检查所有数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分析表-更新索引统计信息">
-              <a class="post-toc-link" href="#分析表-更新索引统计信息" data-level="1">分析表（更新索引统计信息）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="优化表-重建表-整理碎片">
-              <a class="post-toc-link" href="#优化表-重建表-整理碎片" data-level="1">优化表（重建表，整理碎片）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复表">
-              <a class="post-toc-link" href="#修复表" data-level="1">修复表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查并自动修复">
-              <a class="post-toc-link" href="#检查并自动修复" data-level="1">检查并自动修复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查-只检查未正确关闭的表">
-              <a class="post-toc-link" href="#快速检查-只检查未正确关闭的表" data-level="1">快速检查（只检查未正确关闭的表）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扩展检查-更详细">
-              <a class="post-toc-link" href="#扩展检查-更详细" data-level="1">扩展检查（更详细）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="中等速度检查">
-              <a class="post-toc-link" href="#中等速度检查" data-level="1">中等速度检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查时只显示错误">
-              <a class="post-toc-link" href="#检查时只显示错误" data-level="1">检查时只显示错误</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="优化所有数据库的所有表">
-              <a class="post-toc-link" href="#优化所有数据库的所有表" data-level="1">优化所有数据库的所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分析所有表">
-              <a class="post-toc-link" href="#分析所有表" data-level="1">分析所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复损坏的表">
-              <a class="post-toc-link" href="#修复损坏的表" data-level="1">修复损坏的表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查并修复-推荐维护流程">
-              <a class="post-toc-link" href="#检查并修复-推荐维护流程" data-level="1">检查并修复（推荐维护流程）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查远程数据库">
-              <a class="post-toc-link" href="#检查远程数据库" data-level="1">检查远程数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="跳过某些数据库">
-              <a class="post-toc-link" href="#跳过某些数据库" data-level="1">跳过某些数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制继续-忽略错误">
-              <a class="post-toc-link" href="#强制继续-忽略错误" data-level="1">强制继续（忽略错误）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="操作说明">
               <a class="post-toc-link" href="#操作说明" data-level="3">操作说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="check-table-检查表错误">
-              <a class="post-toc-link" href="#check-table-检查表错误" data-level="1">CHECK TABLE - 检查表错误</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-myisam-innodb-archive">
-              <a class="post-toc-link" href="#适用于-myisam-innodb-archive" data-level="1">适用于: MyISAM, InnoDB, ARCHIVE</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="analyze-table-分析表-更新索引统计信息">
-              <a class="post-toc-link" href="#analyze-table-分析表-更新索引统计信息" data-level="1">ANALYZE TABLE - 分析表，更新索引统计信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用于优化查询计划">
-              <a class="post-toc-link" href="#用于优化查询计划" data-level="1">用于优化查询计划</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="repair-table-修复损坏的表">
-              <a class="post-toc-link" href="#repair-table-修复损坏的表" data-level="1">REPAIR TABLE - 修复损坏的表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="主要用于myisam表-innodb通常能自动恢复">
-              <a class="post-toc-link" href="#主要用于myisam表-innodb通常能自动恢复" data-level="1">主要用于MyISAM表，InnoDB通常能自动恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="optimize-table-优化表-整理碎片">
-              <a class="post-toc-link" href="#optimize-table-优化表-整理碎片" data-level="1">OPTIMIZE TABLE - 优化表，整理碎片</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-myisam-innodb-archive">
-              <a class="post-toc-link" href="#适用于-myisam-innodb-archive" data-level="1">适用于: MyISAM, InnoDB, ARCHIVE</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="定期维护脚本">
               <a class="post-toc-link" href="#定期维护脚本" data-level="3">定期维护脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mysql表维护脚本">
-              <a class="post-toc-link" href="#mysql表维护脚本" data-level="1">MySQL表维护脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用法-mysql_maintenance-sh-database">
-              <a class="post-toc-link" href="#用法-mysql_maintenance-sh-database" data-level="1">用法: ./mysql_maintenance.sh [database]</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有表">
-              <a class="post-toc-link" href="#检查所有表" data-level="1">检查所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分析所有表">
-              <a class="post-toc-link" href="#分析所有表" data-level="1">分析所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="优化所有表">
-              <a class="post-toc-link" href="#优化所有表" data-level="1">优化所有表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨3点执行维护">
-              <a class="post-toc-link" href="#每周日凌晨3点执行维护" data-level="1">每周日凌晨3点执行维护</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
-              <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="0-3-0-path-to-mysql_maintenance-sh-var-log-mysql_maintenance-log-2-1">
-              <a class="post-toc-link" href="#0-3-0-path-to-mysql_maintenance-sh-var-log-mysql_maintenance-log-2-1" data-level="1">0 3 * * 0 /path/to/mysql_maintenance.sh &gt;&gt; /var/log/mysql_maintenance.log 2&gt;&amp;1</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="输出状态说明">
               <a class="post-toc-link" href="#输出状态说明" data-level="3">输出状态说明</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="正常状态">
-              <a class="post-toc-link" href="#正常状态" data-level="1">正常状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="表损坏">
-              <a class="post-toc-link" href="#表损坏" data-level="1">表损坏</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复成功">
-              <a class="post-toc-link" href="#修复成功" data-level="1">修复成功</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="需要优化">
-              <a class="post-toc-link" href="#需要优化" data-level="1">需要优化</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="存储引擎支持">
@@ -1915,188 +1747,20 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
-          <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="操作选项">
-          <a class="post-toc-link" href="#操作选项" data-level="1">操作选项</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个数据库的所有表">
-          <a class="post-toc-link" href="#检查单个数据库的所有表" data-level="1">检查单个数据库的所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个数据库的指定表">
-          <a class="post-toc-link" href="#检查单个数据库的指定表" data-level="1">检查单个数据库的指定表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查多个数据库">
-          <a class="post-toc-link" href="#检查多个数据库" data-level="1">检查多个数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有数据库">
-          <a class="post-toc-link" href="#检查所有数据库" data-level="1">检查所有数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分析表-更新索引统计信息">
-          <a class="post-toc-link" href="#分析表-更新索引统计信息" data-level="1">分析表（更新索引统计信息）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="优化表-重建表-整理碎片">
-          <a class="post-toc-link" href="#优化表-重建表-整理碎片" data-level="1">优化表（重建表，整理碎片）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复表">
-          <a class="post-toc-link" href="#修复表" data-level="1">修复表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查并自动修复">
-          <a class="post-toc-link" href="#检查并自动修复" data-level="1">检查并自动修复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速检查-只检查未正确关闭的表">
-          <a class="post-toc-link" href="#快速检查-只检查未正确关闭的表" data-level="1">快速检查（只检查未正确关闭的表）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扩展检查-更详细">
-          <a class="post-toc-link" href="#扩展检查-更详细" data-level="1">扩展检查（更详细）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="中等速度检查">
-          <a class="post-toc-link" href="#中等速度检查" data-level="1">中等速度检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查时只显示错误">
-          <a class="post-toc-link" href="#检查时只显示错误" data-level="1">检查时只显示错误</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="优化所有数据库的所有表">
-          <a class="post-toc-link" href="#优化所有数据库的所有表" data-level="1">优化所有数据库的所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分析所有表">
-          <a class="post-toc-link" href="#分析所有表" data-level="1">分析所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复损坏的表">
-          <a class="post-toc-link" href="#修复损坏的表" data-level="1">修复损坏的表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查并修复-推荐维护流程">
-          <a class="post-toc-link" href="#检查并修复-推荐维护流程" data-level="1">检查并修复（推荐维护流程）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查远程数据库">
-          <a class="post-toc-link" href="#检查远程数据库" data-level="1">检查远程数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="跳过某些数据库">
-          <a class="post-toc-link" href="#跳过某些数据库" data-level="1">跳过某些数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制继续-忽略错误">
-          <a class="post-toc-link" href="#强制继续-忽略错误" data-level="1">强制继续（忽略错误）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="操作说明">
           <a class="post-toc-link" href="#操作说明" data-level="3">操作说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="check-table-检查表错误">
-          <a class="post-toc-link" href="#check-table-检查表错误" data-level="1">CHECK TABLE - 检查表错误</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-myisam-innodb-archive">
-          <a class="post-toc-link" href="#适用于-myisam-innodb-archive" data-level="1">适用于: MyISAM, InnoDB, ARCHIVE</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="analyze-table-分析表-更新索引统计信息">
-          <a class="post-toc-link" href="#analyze-table-分析表-更新索引统计信息" data-level="1">ANALYZE TABLE - 分析表，更新索引统计信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用于优化查询计划">
-          <a class="post-toc-link" href="#用于优化查询计划" data-level="1">用于优化查询计划</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="repair-table-修复损坏的表">
-          <a class="post-toc-link" href="#repair-table-修复损坏的表" data-level="1">REPAIR TABLE - 修复损坏的表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="主要用于myisam表-innodb通常能自动恢复">
-          <a class="post-toc-link" href="#主要用于myisam表-innodb通常能自动恢复" data-level="1">主要用于MyISAM表，InnoDB通常能自动恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="optimize-table-优化表-整理碎片">
-          <a class="post-toc-link" href="#optimize-table-优化表-整理碎片" data-level="1">OPTIMIZE TABLE - 优化表，整理碎片</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="适用于-myisam-innodb-archive">
-          <a class="post-toc-link" href="#适用于-myisam-innodb-archive" data-level="1">适用于: MyISAM, InnoDB, ARCHIVE</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="定期维护脚本">
           <a class="post-toc-link" href="#定期维护脚本" data-level="3">定期维护脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mysql表维护脚本">
-          <a class="post-toc-link" href="#mysql表维护脚本" data-level="1">MySQL表维护脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用法-mysql_maintenance-sh-database">
-          <a class="post-toc-link" href="#用法-mysql_maintenance-sh-database" data-level="1">用法: ./mysql_maintenance.sh [database]</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有表">
-          <a class="post-toc-link" href="#检查所有表" data-level="1">检查所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分析所有表">
-          <a class="post-toc-link" href="#分析所有表" data-level="1">分析所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="优化所有表">
-          <a class="post-toc-link" href="#优化所有表" data-level="1">优化所有表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨3点执行维护">
-          <a class="post-toc-link" href="#每周日凌晨3点执行维护" data-level="1">每周日凌晨3点执行维护</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
-          <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="0-3-0-path-to-mysql_maintenance-sh-var-log-mysql_maintenance-log-2-1">
-          <a class="post-toc-link" href="#0-3-0-path-to-mysql_maintenance-sh-var-log-mysql_maintenance-log-2-1" data-level="1">0 3 * * 0 /path/to/mysql_maintenance.sh &gt;&gt; /var/log/mysql_maintenance.log 2&gt;&amp;1</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="输出状态说明">
           <a class="post-toc-link" href="#输出状态说明" data-level="3">输出状态说明</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="正常状态">
-          <a class="post-toc-link" href="#正常状态" data-level="1">正常状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="表损坏">
-          <a class="post-toc-link" href="#表损坏" data-level="1">表损坏</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复成功">
-          <a class="post-toc-link" href="#修复成功" data-level="1">修复成功</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="需要优化">
-          <a class="post-toc-link" href="#需要优化" data-level="1">需要优化</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="存储引擎支持">
@@ -2113,7 +1777,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2296,8 +1960,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

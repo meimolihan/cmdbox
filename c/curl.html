@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="curl 命令">
     <meta name="twitter:description" content="终端 http/https 请求下载工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1925,10 +1925,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#不输出错误和进度信息" data-level="4">**不输出错误和进度信息**</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令一旦发生错误-不会显示错误信息-不发生错误的话-会正常显示运行结果">
-              <a class="post-toc-link" href="#上面命令一旦发生错误-不会显示错误信息-不发生错误的话-会正常显示运行结果" data-level="1">上面命令一旦发生错误，不会显示错误信息。不发生错误的话，会正常显示运行结果。</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="断点续传">
               <a class="post-toc-link" href="#断点续传" data-level="4">**断点续传**</a>
             </li>
@@ -1943,10 +1939,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="curl的带宽控制和下载配额">
               <a class="post-toc-link" href="#curl的带宽控制和下载配额" data-level="4">**curl的带宽控制和下载配额**</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令将带宽限制在每秒-200k-字节">
-              <a class="post-toc-link" href="#上面命令将带宽限制在每秒-200k-字节" data-level="1">上面命令将带宽限制在每秒 200K 字节。</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="用curl进行认证">
@@ -1965,20 +1957,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#post-请求" data-level="4">**POST 请求**</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或者">
-              <a class="post-toc-link" href="#或者" data-level="1">或者</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="上面代码中-发送的数据hello-world之间有一个空格-需要进行-url-编码">
-              <a class="post-toc-link" href="#上面代码中-发送的数据hello-world之间有一个空格-需要进行-url-编码" data-level="1">上面代码中，发送的数据hello world之间有一个空格，需要进行 URL 编码。</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="发送本地文件中的文字">
               <a class="post-toc-link" href="#发送本地文件中的文字" data-level="4">**发送本地文件中的文字**</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="读取data-txt文件的内容-作为数据体向服务器发送">
-              <a class="post-toc-link" href="#读取data-txt文件的内容-作为数据体向服务器发送" data-level="1">读取data.txt文件的内容，作为数据体向服务器发送。</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="json-格式的-post-请求">
@@ -1989,36 +1969,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#向服务器发送-cookie" data-level="4">**向服务器发送 Cookie**</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令会生成一个标头cookie-foo-bar-向服务器发送一个名为foo-值为bar的-cookie">
-              <a class="post-toc-link" href="#上面命令会生成一个标头cookie-foo-bar-向服务器发送一个名为foo-值为bar的-cookie" data-level="1">上面命令会生成一个标头Cookie: foo=bar，向服务器发送一个名为foo、值为bar的 Cookie。</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令发送两个-cookie">
-              <a class="post-toc-link" href="#上面命令发送两个-cookie" data-level="1">上面命令发送两个 Cookie。</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令读取本地文件-cookies-txt-里面是服务器设置的-cookie-参见-c参数-将其发送到服务器">
               <a class="post-toc-link" href="#上面命令读取本地文件-cookies-txt-里面是服务器设置的-cookie-参见-c参数-将其发送到服务器" data-level="1">上面命令读取本地文件 cookies.txt，里面是服务器设置的 Cookie（参见-c参数），将其发送到服务器。</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-4" data-toc-id="cookie-写入一个文件">
-              <a class="post-toc-link" href="#cookie-写入一个文件" data-level="4">**Cookie 写入一个文件**</a>
             </li>
             
             <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令将服务器的-http-回应所设置-cookie-写入文本文件cookies-txt">
               <a class="post-toc-link" href="#上面命令将服务器的-http-回应所设置-cookie-写入文本文件cookies-txt" data-level="1">上面命令将服务器的 HTTP 回应所设置 Cookie 写入文本文件cookies.txt。</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="请求的来源">
-              <a class="post-toc-link" href="#请求的来源" data-level="4">**请求的来源**</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令将referer标头设为-https-example-com-q-example">
               <a class="post-toc-link" href="#上面命令将referer标头设为-https-example-com-q-example" data-level="1">上面命令将Referer标头设为 https://example.com?q=example。</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-4" data-toc-id="上传二进制文件">
-              <a class="post-toc-link" href="#上传二进制文件" data-level="4">**上传二进制文件**</a>
             </li>
             
             <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令会给-http-请求加上标头-content-type-multipart-form-data-然后将文件photo-png作为file字段上传">
@@ -2033,10 +1993,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#上面命令中-原始文件名为photo-png-但是服务器接收到的文件名为me-png" data-level="1">上面命令中，原始文件名为photo.png，但是服务器接收到的文件名为me.png。</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="设置请求头">
-              <a class="post-toc-link" href="#设置请求头" data-level="4">**设置请求头**</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令添加-http-标头-accept-language-en-us">
               <a class="post-toc-link" href="#上面命令添加-http-标头-accept-language-en-us" data-level="1">上面命令添加 HTTP 标头 Accept-Language: en-US。</a>
             </li>
@@ -2049,36 +2005,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#上面命令添加-http-请求的标头是-content-type-application-json-然后用-d-参数发送-json-数据" data-level="1">上面命令添加 HTTP 请求的标头是 Content-Type: application/json，然后用 -d 参数发送 JSON 数据。</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="跳过-ssl-检测">
-              <a class="post-toc-link" href="#跳过-ssl-检测" data-level="4">**跳过 SSL 检测**</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令不会检查服务器的-ssl-证书是否正确">
               <a class="post-toc-link" href="#上面命令不会检查服务器的-ssl-证书是否正确" data-level="1">上面命令不会检查服务器的 SSL 证书是否正确。</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="请求跟随服务器的重定向">
-              <a class="post-toc-link" href="#请求跟随服务器的重定向" data-level="4">**请求跟随服务器的重定向**</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-4" data-toc-id="调试参数">
-              <a class="post-toc-link" href="#调试参数" data-level="4">**调试参数**</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-1" data-toc-id="trace参数也可以用于调试-还会输出原始的二进制数据">
               <a class="post-toc-link" href="#trace参数也可以用于调试-还会输出原始的二进制数据" data-level="1">--trace参数也可以用于调试，还会输出原始的二进制数据。</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-4" data-toc-id="获取本机外网-ip">
-              <a class="post-toc-link" href="#获取本机外网-ip" data-level="4">**获取本机外网 IP**</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-4" data-toc-id="使用-curl-测试网站加载速度">
-              <a class="post-toc-link" href="#使用-curl-测试网站加载速度" data-level="4">**使用 curl 测试网站加载速度**</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-4" data-toc-id="要求返回是压缩的状态">
-              <a class="post-toc-link" href="#要求返回是压缩的状态" data-level="4">**要求返回是压缩的状态**</a>
             </li>
             
           </ul>
@@ -2130,10 +2062,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#不输出错误和进度信息" data-level="4">**不输出错误和进度信息**</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令一旦发生错误-不会显示错误信息-不发生错误的话-会正常显示运行结果">
-          <a class="post-toc-link" href="#上面命令一旦发生错误-不会显示错误信息-不发生错误的话-会正常显示运行结果" data-level="1">上面命令一旦发生错误，不会显示错误信息。不发生错误的话，会正常显示运行结果。</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="断点续传">
           <a class="post-toc-link" href="#断点续传" data-level="4">**断点续传**</a>
         </li>
@@ -2148,10 +2076,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="curl的带宽控制和下载配额">
           <a class="post-toc-link" href="#curl的带宽控制和下载配额" data-level="4">**curl的带宽控制和下载配额**</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令将带宽限制在每秒-200k-字节">
-          <a class="post-toc-link" href="#上面命令将带宽限制在每秒-200k-字节" data-level="1">上面命令将带宽限制在每秒 200K 字节。</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="用curl进行认证">
@@ -2170,20 +2094,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#post-请求" data-level="4">**POST 请求**</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或者">
-          <a class="post-toc-link" href="#或者" data-level="1">或者</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="上面代码中-发送的数据hello-world之间有一个空格-需要进行-url-编码">
-          <a class="post-toc-link" href="#上面代码中-发送的数据hello-world之间有一个空格-需要进行-url-编码" data-level="1">上面代码中，发送的数据hello world之间有一个空格，需要进行 URL 编码。</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="发送本地文件中的文字">
           <a class="post-toc-link" href="#发送本地文件中的文字" data-level="4">**发送本地文件中的文字**</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="读取data-txt文件的内容-作为数据体向服务器发送">
-          <a class="post-toc-link" href="#读取data-txt文件的内容-作为数据体向服务器发送" data-level="1">读取data.txt文件的内容，作为数据体向服务器发送。</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="json-格式的-post-请求">
@@ -2194,36 +2106,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#向服务器发送-cookie" data-level="4">**向服务器发送 Cookie**</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令会生成一个标头cookie-foo-bar-向服务器发送一个名为foo-值为bar的-cookie">
-          <a class="post-toc-link" href="#上面命令会生成一个标头cookie-foo-bar-向服务器发送一个名为foo-值为bar的-cookie" data-level="1">上面命令会生成一个标头Cookie: foo=bar，向服务器发送一个名为foo、值为bar的 Cookie。</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令发送两个-cookie">
-          <a class="post-toc-link" href="#上面命令发送两个-cookie" data-level="1">上面命令发送两个 Cookie。</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令读取本地文件-cookies-txt-里面是服务器设置的-cookie-参见-c参数-将其发送到服务器">
           <a class="post-toc-link" href="#上面命令读取本地文件-cookies-txt-里面是服务器设置的-cookie-参见-c参数-将其发送到服务器" data-level="1">上面命令读取本地文件 cookies.txt，里面是服务器设置的 Cookie（参见-c参数），将其发送到服务器。</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-4" data-toc-id="cookie-写入一个文件">
-          <a class="post-toc-link" href="#cookie-写入一个文件" data-level="4">**Cookie 写入一个文件**</a>
         </li>
         
         <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令将服务器的-http-回应所设置-cookie-写入文本文件cookies-txt">
           <a class="post-toc-link" href="#上面命令将服务器的-http-回应所设置-cookie-写入文本文件cookies-txt" data-level="1">上面命令将服务器的 HTTP 回应所设置 Cookie 写入文本文件cookies.txt。</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="请求的来源">
-          <a class="post-toc-link" href="#请求的来源" data-level="4">**请求的来源**</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令将referer标头设为-https-example-com-q-example">
           <a class="post-toc-link" href="#上面命令将referer标头设为-https-example-com-q-example" data-level="1">上面命令将Referer标头设为 https://example.com?q=example。</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-4" data-toc-id="上传二进制文件">
-          <a class="post-toc-link" href="#上传二进制文件" data-level="4">**上传二进制文件**</a>
         </li>
         
         <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令会给-http-请求加上标头-content-type-multipart-form-data-然后将文件photo-png作为file字段上传">
@@ -2238,10 +2130,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#上面命令中-原始文件名为photo-png-但是服务器接收到的文件名为me-png" data-level="1">上面命令中，原始文件名为photo.png，但是服务器接收到的文件名为me.png。</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="设置请求头">
-          <a class="post-toc-link" href="#设置请求头" data-level="4">**设置请求头**</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令添加-http-标头-accept-language-en-us">
           <a class="post-toc-link" href="#上面命令添加-http-标头-accept-language-en-us" data-level="1">上面命令添加 HTTP 标头 Accept-Language: en-US。</a>
         </li>
@@ -2254,36 +2142,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#上面命令添加-http-请求的标头是-content-type-application-json-然后用-d-参数发送-json-数据" data-level="1">上面命令添加 HTTP 请求的标头是 Content-Type: application/json，然后用 -d 参数发送 JSON 数据。</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="跳过-ssl-检测">
-          <a class="post-toc-link" href="#跳过-ssl-检测" data-level="4">**跳过 SSL 检测**</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-1" data-toc-id="上面命令不会检查服务器的-ssl-证书是否正确">
           <a class="post-toc-link" href="#上面命令不会检查服务器的-ssl-证书是否正确" data-level="1">上面命令不会检查服务器的 SSL 证书是否正确。</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="请求跟随服务器的重定向">
-          <a class="post-toc-link" href="#请求跟随服务器的重定向" data-level="4">**请求跟随服务器的重定向**</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-4" data-toc-id="调试参数">
-          <a class="post-toc-link" href="#调试参数" data-level="4">**调试参数**</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-1" data-toc-id="trace参数也可以用于调试-还会输出原始的二进制数据">
           <a class="post-toc-link" href="#trace参数也可以用于调试-还会输出原始的二进制数据" data-level="1">--trace参数也可以用于调试，还会输出原始的二进制数据。</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-4" data-toc-id="获取本机外网-ip">
-          <a class="post-toc-link" href="#获取本机外网-ip" data-level="4">**获取本机外网 IP**</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-4" data-toc-id="使用-curl-测试网站加载速度">
-          <a class="post-toc-link" href="#使用-curl-测试网站加载速度" data-level="4">**使用 curl 测试网站加载速度**</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-4" data-toc-id="要求返回是压缩的状态">
-          <a class="post-toc-link" href="#要求返回是压缩的状态" data-level="4">**要求返回是压缩的状态**</a>
         </li>
         
       </ul>
@@ -2292,7 +2156,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2475,8 +2339,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

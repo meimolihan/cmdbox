@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="gpg 命令">
     <meta name="twitter:description" content="GPG 加密签名工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1776,316 +1776,32 @@ function copied(target, str) {
               <a class="post-toc-link" href="#密钥生成" data-level="3">密钥生成</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成密钥对-交互式">
-              <a class="post-toc-link" href="#生成密钥对-交互式" data-level="1">生成密钥对（交互式）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速生成密钥对">
-              <a class="post-toc-link" href="#快速生成密钥对" data-level="1">快速生成密钥对</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成指定类型的密钥">
-              <a class="post-toc-link" href="#生成指定类型的密钥" data-level="1">生成指定类型的密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="选项">
-              <a class="post-toc-link" href="#选项" data-level="1">选项：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-rsa-and-rsa-rsa-加密和签名">
-              <a class="post-toc-link" href="#1-rsa-and-rsa-rsa-加密和签名" data-level="1">(1) RSA and RSA     - RSA 加密和签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-dsa-and-elgamal-dsa-签名-elgamal-加密">
-              <a class="post-toc-link" href="#2-dsa-and-elgamal-dsa-签名-elgamal-加密" data-level="1">(2) DSA and Elgamal - DSA 签名，Elgamal 加密</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-dsa-仅签名">
-              <a class="post-toc-link" href="#3-dsa-仅签名" data-level="1">(3) DSA             - 仅签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-rsa-仅签名">
-              <a class="post-toc-link" href="#4-rsa-仅签名" data-level="1">(4) RSA             - 仅签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-ecc-密钥-更现代">
-              <a class="post-toc-link" href="#生成-ecc-密钥-更现代" data-level="1">生成 ECC 密钥（更现代）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成仅用于签名的密钥">
-              <a class="post-toc-link" href="#生成仅用于签名的密钥" data-level="1">生成仅用于签名的密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成仅用于加密的密钥">
-              <a class="post-toc-link" href="#生成仅用于加密的密钥" data-level="1">生成仅用于加密的密钥</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="密钥管理">
               <a class="post-toc-link" href="#密钥管理" data-level="3">密钥管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看公钥列表">
-              <a class="post-toc-link" href="#查看公钥列表" data-level="1">查看公钥列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看私钥列表">
-              <a class="post-toc-link" href="#查看私钥列表" data-level="1">查看私钥列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看密钥指纹">
-              <a class="post-toc-link" href="#查看密钥指纹" data-level="1">查看密钥指纹</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细密钥信息">
-              <a class="post-toc-link" href="#查看详细密钥信息" data-level="1">查看详细密钥信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定密钥">
-              <a class="post-toc-link" href="#查看指定密钥" data-level="1">查看指定密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑密钥">
-              <a class="post-toc-link" href="#编辑密钥" data-level="1">编辑密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="密钥编辑器常用命令">
-              <a class="post-toc-link" href="#密钥编辑器常用命令" data-level="1">密钥编辑器常用命令</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="密钥导出导入">
               <a class="post-toc-link" href="#密钥导出导入" data-level="3">密钥导出导入</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出公钥">
-              <a class="post-toc-link" href="#导出公钥" data-level="1">导出公钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出私钥">
-              <a class="post-toc-link" href="#导出私钥" data-level="1">导出私钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出特定密钥">
-              <a class="post-toc-link" href="#导出特定密钥" data-level="1">导出特定密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导入公钥">
-              <a class="post-toc-link" href="#导入公钥" data-level="1">导入公钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导入私钥">
-              <a class="post-toc-link" href="#导入私钥" data-level="1">导入私钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出并包含所有子密钥">
-              <a class="post-toc-link" href="#导出并包含所有子密钥" data-level="1">导出并包含所有子密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从密钥服务器获取公钥">
-              <a class="post-toc-link" href="#从密钥服务器获取公钥" data-level="1">从密钥服务器获取公钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="发送公钥到密钥服务器">
-              <a class="post-toc-link" href="#发送公钥到密钥服务器" data-level="1">发送公钥到密钥服务器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="加密解密">
               <a class="post-toc-link" href="#加密解密" data-level="3">加密解密</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加密文件-使用公钥">
-              <a class="post-toc-link" href="#加密文件-使用公钥" data-level="1">加密文件（使用公钥）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-gpg">
-              <a class="post-toc-link" href="#输出-file-txt-gpg" data-level="1">输出: file.txt.gpg</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加密为-ascii-格式">
-              <a class="post-toc-link" href="#加密为-ascii-格式" data-level="1">加密为 ASCII 格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加密多个收件人">
-              <a class="post-toc-link" href="#加密多个收件人" data-level="1">加密多个收件人</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用密码加密-对称加密">
-              <a class="post-toc-link" href="#使用密码加密-对称加密" data-level="1">使用密码加密（对称加密）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-gpg">
-              <a class="post-toc-link" href="#输出-file-txt-gpg" data-level="1">输出: file.txt.gpg</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解密文件">
-              <a class="post-toc-link" href="#解密文件" data-level="1">解密文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解密并保留原文件名">
-              <a class="post-toc-link" href="#解密并保留原文件名" data-level="1">解密并保留原文件名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加密并签名">
-              <a class="post-toc-link" href="#加密并签名" data-level="1">加密并签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定输出文件">
-              <a class="post-toc-link" href="#指定输出文件" data-level="1">指定输出文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="签名验证">
               <a class="post-toc-link" href="#签名验证" data-level="3">签名验证</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建签名-默认">
-              <a class="post-toc-link" href="#创建签名-默认" data-level="1">创建签名（默认）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-gpg-二进制签名-原内容">
-              <a class="post-toc-link" href="#输出-file-txt-gpg-二进制签名-原内容" data-level="1">输出: file.txt.gpg（二进制签名+原内容）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建分离签名">
-              <a class="post-toc-link" href="#创建分离签名" data-level="1">创建分离签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-sig">
-              <a class="post-toc-link" href="#输出-file-txt-sig" data-level="1">输出: file.txt.sig</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-ascii-签名">
-              <a class="post-toc-link" href="#创建-ascii-签名" data-level="1">创建 ASCII 签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-asc">
-              <a class="post-toc-link" href="#输出-file-txt-asc" data-level="1">输出: file.txt.asc</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证签名">
-              <a class="post-toc-link" href="#验证签名" data-level="1">验证签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证并解密">
-              <a class="post-toc-link" href="#验证并解密" data-level="1">验证并解密</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证分离签名">
-              <a class="post-toc-link" href="#验证分离签名" data-level="1">验证分离签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="签名并加密">
-              <a class="post-toc-link" href="#签名并加密" data-level="1">签名并加密</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="信任管理">
               <a class="post-toc-link" href="#信任管理" data-level="3">信任管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑密钥信任级别">
-              <a class="post-toc-link" href="#编辑密钥信任级别" data-level="1">编辑密钥信任级别</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输入-trust">
-              <a class="post-toc-link" href="#输入-trust" data-level="1">输入: trust</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="选择">
-              <a class="post-toc-link" href="#选择" data-level="1">选择:</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-不知道">
-              <a class="post-toc-link" href="#1-不知道" data-level="1">1 = 不知道</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-我不信任">
-              <a class="post-toc-link" href="#2-我不信任" data-level="1">2 = 我不信任</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-信任有限">
-              <a class="post-toc-link" href="#3-信任有限" data-level="1">3 = 信任有限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-完全信任">
-              <a class="post-toc-link" href="#4-完全信任" data-level="1">4 = 完全信任</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-绝对信任-仅用于自己的密钥">
-              <a class="post-toc-link" href="#5-绝对信任-仅用于自己的密钥" data-level="1">5 = 绝对信任（仅用于自己的密钥）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除密钥">
-              <a class="post-toc-link" href="#删除密钥" data-level="1">删除密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="吊销密钥">
-              <a class="post-toc-link" href="#吊销密钥" data-level="1">吊销密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="然后导入吊销证书">
-              <a class="post-toc-link" href="#然后导入吊销证书" data-level="1">然后导入吊销证书</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="签名密钥-信任他人公钥">
-              <a class="post-toc-link" href="#签名密钥-信任他人公钥" data-level="1">签名密钥（信任他人公钥）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查签名">
-              <a class="post-toc-link" href="#检查签名" data-level="1">检查签名</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用组合">
               <a class="post-toc-link" href="#常用组合" data-level="3">常用组合</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完整工作流-生成密钥-导出-加密">
-              <a class="post-toc-link" href="#完整工作流-生成密钥-导出-加密" data-level="1">完整工作流：生成密钥、导出、加密</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份-gpg-密钥">
-              <a class="post-toc-link" href="#备份-gpg-密钥" data-level="1">备份 GPG 密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-gpg-密钥">
-              <a class="post-toc-link" href="#恢复-gpg-密钥" data-level="1">恢复 GPG 密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加密并邮件发送">
-              <a class="post-toc-link" href="#加密并邮件发送" data-level="1">加密并邮件发送</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证下载文件的签名">
-              <a class="post-toc-link" href="#验证下载文件的签名" data-level="1">验证下载文件的签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速加密-密码">
-              <a class="post-toc-link" href="#快速加密-密码" data-level="1">快速加密（密码）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="git-提交签名">
               <a class="post-toc-link" href="#git-提交签名" data-level="3">Git 提交签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="配置-git-使用-gpg-签名">
-              <a class="post-toc-link" href="#配置-git-使用-gpg-签名" data-level="1">配置 Git 使用 GPG 签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定-gpg-程序">
-              <a class="post-toc-link" href="#指定-gpg-程序" data-level="1">指定 GPG 程序</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="对单个提交签名">
-              <a class="post-toc-link" href="#对单个提交签名" data-level="1">对单个提交签名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="签名标签">
-              <a class="post-toc-link" href="#签名标签" data-level="1">签名标签</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证标签">
-              <a class="post-toc-link" href="#验证标签" data-level="1">验证标签</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证提交">
-              <a class="post-toc-link" href="#验证提交" data-level="1">验证提交</a>
             </li>
             
           </ul>
@@ -2125,316 +1841,32 @@ function copied(target, str) {
           <a class="post-toc-link" href="#密钥生成" data-level="3">密钥生成</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成密钥对-交互式">
-          <a class="post-toc-link" href="#生成密钥对-交互式" data-level="1">生成密钥对（交互式）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速生成密钥对">
-          <a class="post-toc-link" href="#快速生成密钥对" data-level="1">快速生成密钥对</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成指定类型的密钥">
-          <a class="post-toc-link" href="#生成指定类型的密钥" data-level="1">生成指定类型的密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="选项">
-          <a class="post-toc-link" href="#选项" data-level="1">选项：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-rsa-and-rsa-rsa-加密和签名">
-          <a class="post-toc-link" href="#1-rsa-and-rsa-rsa-加密和签名" data-level="1">(1) RSA and RSA     - RSA 加密和签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-dsa-and-elgamal-dsa-签名-elgamal-加密">
-          <a class="post-toc-link" href="#2-dsa-and-elgamal-dsa-签名-elgamal-加密" data-level="1">(2) DSA and Elgamal - DSA 签名，Elgamal 加密</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-dsa-仅签名">
-          <a class="post-toc-link" href="#3-dsa-仅签名" data-level="1">(3) DSA             - 仅签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-rsa-仅签名">
-          <a class="post-toc-link" href="#4-rsa-仅签名" data-level="1">(4) RSA             - 仅签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-ecc-密钥-更现代">
-          <a class="post-toc-link" href="#生成-ecc-密钥-更现代" data-level="1">生成 ECC 密钥（更现代）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成仅用于签名的密钥">
-          <a class="post-toc-link" href="#生成仅用于签名的密钥" data-level="1">生成仅用于签名的密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成仅用于加密的密钥">
-          <a class="post-toc-link" href="#生成仅用于加密的密钥" data-level="1">生成仅用于加密的密钥</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="密钥管理">
           <a class="post-toc-link" href="#密钥管理" data-level="3">密钥管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看公钥列表">
-          <a class="post-toc-link" href="#查看公钥列表" data-level="1">查看公钥列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看私钥列表">
-          <a class="post-toc-link" href="#查看私钥列表" data-level="1">查看私钥列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看密钥指纹">
-          <a class="post-toc-link" href="#查看密钥指纹" data-level="1">查看密钥指纹</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细密钥信息">
-          <a class="post-toc-link" href="#查看详细密钥信息" data-level="1">查看详细密钥信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看指定密钥">
-          <a class="post-toc-link" href="#查看指定密钥" data-level="1">查看指定密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑密钥">
-          <a class="post-toc-link" href="#编辑密钥" data-level="1">编辑密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="密钥编辑器常用命令">
-          <a class="post-toc-link" href="#密钥编辑器常用命令" data-level="1">密钥编辑器常用命令</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="密钥导出导入">
           <a class="post-toc-link" href="#密钥导出导入" data-level="3">密钥导出导入</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出公钥">
-          <a class="post-toc-link" href="#导出公钥" data-level="1">导出公钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出私钥">
-          <a class="post-toc-link" href="#导出私钥" data-level="1">导出私钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出特定密钥">
-          <a class="post-toc-link" href="#导出特定密钥" data-level="1">导出特定密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导入公钥">
-          <a class="post-toc-link" href="#导入公钥" data-level="1">导入公钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导入私钥">
-          <a class="post-toc-link" href="#导入私钥" data-level="1">导入私钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出并包含所有子密钥">
-          <a class="post-toc-link" href="#导出并包含所有子密钥" data-level="1">导出并包含所有子密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从密钥服务器获取公钥">
-          <a class="post-toc-link" href="#从密钥服务器获取公钥" data-level="1">从密钥服务器获取公钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="发送公钥到密钥服务器">
-          <a class="post-toc-link" href="#发送公钥到密钥服务器" data-level="1">发送公钥到密钥服务器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="加密解密">
           <a class="post-toc-link" href="#加密解密" data-level="3">加密解密</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加密文件-使用公钥">
-          <a class="post-toc-link" href="#加密文件-使用公钥" data-level="1">加密文件（使用公钥）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-gpg">
-          <a class="post-toc-link" href="#输出-file-txt-gpg" data-level="1">输出: file.txt.gpg</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加密为-ascii-格式">
-          <a class="post-toc-link" href="#加密为-ascii-格式" data-level="1">加密为 ASCII 格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加密多个收件人">
-          <a class="post-toc-link" href="#加密多个收件人" data-level="1">加密多个收件人</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用密码加密-对称加密">
-          <a class="post-toc-link" href="#使用密码加密-对称加密" data-level="1">使用密码加密（对称加密）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-gpg">
-          <a class="post-toc-link" href="#输出-file-txt-gpg" data-level="1">输出: file.txt.gpg</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解密文件">
-          <a class="post-toc-link" href="#解密文件" data-level="1">解密文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解密并保留原文件名">
-          <a class="post-toc-link" href="#解密并保留原文件名" data-level="1">解密并保留原文件名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加密并签名">
-          <a class="post-toc-link" href="#加密并签名" data-level="1">加密并签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定输出文件">
-          <a class="post-toc-link" href="#指定输出文件" data-level="1">指定输出文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="签名验证">
           <a class="post-toc-link" href="#签名验证" data-level="3">签名验证</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建签名-默认">
-          <a class="post-toc-link" href="#创建签名-默认" data-level="1">创建签名（默认）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-gpg-二进制签名-原内容">
-          <a class="post-toc-link" href="#输出-file-txt-gpg-二进制签名-原内容" data-level="1">输出: file.txt.gpg（二进制签名+原内容）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建分离签名">
-          <a class="post-toc-link" href="#创建分离签名" data-level="1">创建分离签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-sig">
-          <a class="post-toc-link" href="#输出-file-txt-sig" data-level="1">输出: file.txt.sig</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-ascii-签名">
-          <a class="post-toc-link" href="#创建-ascii-签名" data-level="1">创建 ASCII 签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出-file-txt-asc">
-          <a class="post-toc-link" href="#输出-file-txt-asc" data-level="1">输出: file.txt.asc</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证签名">
-          <a class="post-toc-link" href="#验证签名" data-level="1">验证签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证并解密">
-          <a class="post-toc-link" href="#验证并解密" data-level="1">验证并解密</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证分离签名">
-          <a class="post-toc-link" href="#验证分离签名" data-level="1">验证分离签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="签名并加密">
-          <a class="post-toc-link" href="#签名并加密" data-level="1">签名并加密</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="信任管理">
           <a class="post-toc-link" href="#信任管理" data-level="3">信任管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑密钥信任级别">
-          <a class="post-toc-link" href="#编辑密钥信任级别" data-level="1">编辑密钥信任级别</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输入-trust">
-          <a class="post-toc-link" href="#输入-trust" data-level="1">输入: trust</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="选择">
-          <a class="post-toc-link" href="#选择" data-level="1">选择:</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-不知道">
-          <a class="post-toc-link" href="#1-不知道" data-level="1">1 = 不知道</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-我不信任">
-          <a class="post-toc-link" href="#2-我不信任" data-level="1">2 = 我不信任</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-信任有限">
-          <a class="post-toc-link" href="#3-信任有限" data-level="1">3 = 信任有限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-完全信任">
-          <a class="post-toc-link" href="#4-完全信任" data-level="1">4 = 完全信任</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-绝对信任-仅用于自己的密钥">
-          <a class="post-toc-link" href="#5-绝对信任-仅用于自己的密钥" data-level="1">5 = 绝对信任（仅用于自己的密钥）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除密钥">
-          <a class="post-toc-link" href="#删除密钥" data-level="1">删除密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="吊销密钥">
-          <a class="post-toc-link" href="#吊销密钥" data-level="1">吊销密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="然后导入吊销证书">
-          <a class="post-toc-link" href="#然后导入吊销证书" data-level="1">然后导入吊销证书</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="签名密钥-信任他人公钥">
-          <a class="post-toc-link" href="#签名密钥-信任他人公钥" data-level="1">签名密钥（信任他人公钥）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查签名">
-          <a class="post-toc-link" href="#检查签名" data-level="1">检查签名</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用组合">
           <a class="post-toc-link" href="#常用组合" data-level="3">常用组合</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完整工作流-生成密钥-导出-加密">
-          <a class="post-toc-link" href="#完整工作流-生成密钥-导出-加密" data-level="1">完整工作流：生成密钥、导出、加密</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份-gpg-密钥">
-          <a class="post-toc-link" href="#备份-gpg-密钥" data-level="1">备份 GPG 密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复-gpg-密钥">
-          <a class="post-toc-link" href="#恢复-gpg-密钥" data-level="1">恢复 GPG 密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加密并邮件发送">
-          <a class="post-toc-link" href="#加密并邮件发送" data-level="1">加密并邮件发送</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证下载文件的签名">
-          <a class="post-toc-link" href="#验证下载文件的签名" data-level="1">验证下载文件的签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速加密-密码">
-          <a class="post-toc-link" href="#快速加密-密码" data-level="1">快速加密（密码）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="git-提交签名">
           <a class="post-toc-link" href="#git-提交签名" data-level="3">Git 提交签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="配置-git-使用-gpg-签名">
-          <a class="post-toc-link" href="#配置-git-使用-gpg-签名" data-level="1">配置 Git 使用 GPG 签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定-gpg-程序">
-          <a class="post-toc-link" href="#指定-gpg-程序" data-level="1">指定 GPG 程序</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="对单个提交签名">
-          <a class="post-toc-link" href="#对单个提交签名" data-level="1">对单个提交签名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="签名标签">
-          <a class="post-toc-link" href="#签名标签" data-level="1">签名标签</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证标签">
-          <a class="post-toc-link" href="#验证标签" data-level="1">验证标签</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证提交">
-          <a class="post-toc-link" href="#验证提交" data-level="1">验证提交</a>
         </li>
         
       </ul>
@@ -2443,7 +1875,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2626,8 +2058,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

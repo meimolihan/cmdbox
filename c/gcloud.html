@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="gcloud 命令">
     <meta name="twitter:description" content="Google Cloud CLI 命令行工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2092,488 +2092,60 @@ function copied(target, str) {
               <a class="post-toc-link" href="#初始配置" data-level="3">初始配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="登录">
-              <a class="post-toc-link" href="#登录" data-level="1">登录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出账户">
-              <a class="post-toc-link" href="#列出账户" data-level="1">列出账户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="激活服务账户">
-              <a class="post-toc-link" href="#激活服务账户" data-level="1">激活服务账户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="撤销登录">
-              <a class="post-toc-link" href="#撤销登录" data-level="1">撤销登录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置项目">
-              <a class="post-toc-link" href="#设置项目" data-level="1">设置项目</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置默认区域和区域">
-              <a class="post-toc-link" href="#设置默认区域和区域" data-level="1">设置默认区域和区域</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出配置">
-              <a class="post-toc-link" href="#列出配置" data-level="1">列出配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建配置">
-              <a class="post-toc-link" href="#创建配置" data-level="1">创建配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示当前配置">
-              <a class="post-toc-link" href="#显示当前配置" data-level="1">显示当前配置</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="计算引擎">
               <a class="post-toc-link" href="#计算引擎" data-level="3">计算引擎</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出实例">
-              <a class="post-toc-link" href="#列出实例" data-level="1">列出实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建实例">
-              <a class="post-toc-link" href="#创建实例" data-level="1">创建实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建带启动脚本的实例">
-              <a class="post-toc-link" href="#创建带启动脚本的实例" data-level="1">创建带启动脚本的实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-停止实例">
-              <a class="post-toc-link" href="#启动-停止实例" data-level="1">启动/停止实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除实例">
-              <a class="post-toc-link" href="#删除实例" data-level="1">删除实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接-ssh">
-              <a class="post-toc-link" href="#连接-ssh" data-level="1">连接 SSH</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出实例模板">
-              <a class="post-toc-link" href="#列出实例模板" data-level="1">列出实例模板</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从模板创建实例">
-              <a class="post-toc-link" href="#从模板创建实例" data-level="1">从模板创建实例</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙与网络">
               <a class="post-toc-link" href="#防火墙与网络" data-level="3">防火墙与网络</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出防火墙规则">
-              <a class="post-toc-link" href="#列出防火墙规则" data-level="1">列出防火墙规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建防火墙规则">
-              <a class="post-toc-link" href="#创建防火墙规则" data-level="1">创建防火墙规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="允许-ssh">
-              <a class="post-toc-link" href="#允许-ssh" data-level="1">允许 SSH</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除防火墙规则">
-              <a class="post-toc-link" href="#删除防火墙规则" data-level="1">删除防火墙规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建静态-ip">
-              <a class="post-toc-link" href="#创建静态-ip" data-level="1">创建静态 IP</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出-ip">
-              <a class="post-toc-link" href="#列出-ip" data-level="1">列出 IP</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出网络">
-              <a class="post-toc-link" href="#列出网络" data-level="1">列出网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建网络">
-              <a class="post-toc-link" href="#创建网络" data-level="1">创建网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建子网">
-              <a class="post-toc-link" href="#创建子网" data-level="1">创建子网</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="cloud-storage">
               <a class="post-toc-link" href="#cloud-storage" data-level="3">Cloud Storage</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出桶">
-              <a class="post-toc-link" href="#列出桶" data-level="1">列出桶</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建桶">
-              <a class="post-toc-link" href="#创建桶" data-level="1">创建桶</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
-              <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载文件">
-              <a class="post-toc-link" href="#下载文件" data-level="1">下载文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步目录">
-              <a class="post-toc-link" href="#同步目录" data-level="1">同步目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-acl">
-              <a class="post-toc-link" href="#设置-acl" data-level="1">设置 ACL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置存储类别">
-              <a class="post-toc-link" href="#设置存储类别" data-level="1">设置存储类别</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除">
-              <a class="post-toc-link" href="#删除" data-level="1">删除</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="签名-url">
-              <a class="post-toc-link" href="#签名-url" data-level="1">签名 URL</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-gcloud-命令-替代-gsutil">
-              <a class="post-toc-link" href="#使用-gcloud-命令-替代-gsutil" data-level="1">使用 gcloud 命令（替代 gsutil）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="kubernetes-gke">
               <a class="post-toc-link" href="#kubernetes-gke" data-level="3">Kubernetes (GKE)</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出集群">
-              <a class="post-toc-link" href="#列出集群" data-level="1">列出集群</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建集群">
-              <a class="post-toc-link" href="#创建集群" data-level="1">创建集群</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取凭证">
-              <a class="post-toc-link" href="#获取凭证" data-level="1">获取凭证</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="调整大小">
-              <a class="post-toc-link" href="#调整大小" data-level="1">调整大小</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级">
-              <a class="post-toc-link" href="#升级" data-level="1">升级</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除集群">
-              <a class="post-toc-link" href="#删除集群" data-level="1">删除集群</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出节点池">
-              <a class="post-toc-link" href="#列出节点池" data-level="1">列出节点池</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建节点池">
-              <a class="post-toc-link" href="#创建节点池" data-level="1">创建节点池</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="bigquery">
               <a class="post-toc-link" href="#bigquery" data-level="3">BigQuery</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出数据集">
-              <a class="post-toc-link" href="#列出数据集" data-level="1">列出数据集</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建数据集">
-              <a class="post-toc-link" href="#创建数据集" data-level="1">创建数据集</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查询">
-              <a class="post-toc-link" href="#查询" data-level="1">查询</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查询并保存结果">
-              <a class="post-toc-link" href="#查询并保存结果" data-level="1">查询并保存结果</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加载数据">
-              <a class="post-toc-link" href="#加载数据" data-level="1">加载数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出数据">
-              <a class="post-toc-link" href="#导出数据" data-level="1">导出数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出表">
-              <a class="post-toc-link" href="#列出表" data-level="1">列出表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建表">
-              <a class="post-toc-link" href="#创建表" data-level="1">创建表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除表">
-              <a class="post-toc-link" href="#删除表" data-level="1">删除表</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="cloud-functions">
               <a class="post-toc-link" href="#cloud-functions" data-level="3">Cloud Functions</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="部署函数">
-              <a class="post-toc-link" href="#部署函数" data-level="1">部署函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出函数">
-              <a class="post-toc-link" href="#列出函数" data-level="1">列出函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="调用函数">
-              <a class="post-toc-link" href="#调用函数" data-level="1">调用函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除函数">
-              <a class="post-toc-link" href="#删除函数" data-level="1">删除函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新函数">
-              <a class="post-toc-link" href="#更新函数" data-level="1">更新函数</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="app-engine">
               <a class="post-toc-link" href="#app-engine" data-level="3">App Engine</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出应用">
-              <a class="post-toc-link" href="#列出应用" data-level="1">列出应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="部署应用">
-              <a class="post-toc-link" href="#部署应用" data-level="1">部署应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="部署到特定服务">
-              <a class="post-toc-link" href="#部署到特定服务" data-level="1">部署到特定服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="流量迁移">
-              <a class="post-toc-link" href="#流量迁移" data-level="1">流量迁移</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="浏览应用">
-              <a class="post-toc-link" href="#浏览应用" data-level="1">浏览应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务">
-              <a class="post-toc-link" href="#创建服务" data-level="1">创建服务</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="cloud-run">
               <a class="post-toc-link" href="#cloud-run" data-level="3">Cloud Run</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="部署服务">
-              <a class="post-toc-link" href="#部署服务" data-level="1">部署服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出服务">
-              <a class="post-toc-link" href="#列出服务" data-level="1">列出服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务">
-              <a class="post-toc-link" href="#查看服务" data-level="1">查看服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="流量更新">
-              <a class="post-toc-link" href="#流量更新" data-level="1">流量更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除服务">
-              <a class="post-toc-link" href="#删除服务" data-level="1">删除服务</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="iam-与安全">
               <a class="post-toc-link" href="#iam-与安全" data-level="3">IAM 与安全</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出服务账户">
-              <a class="post-toc-link" href="#列出服务账户" data-level="1">列出服务账户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务账户">
-              <a class="post-toc-link" href="#创建服务账户" data-level="1">创建服务账户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建密钥">
-              <a class="post-toc-link" href="#创建密钥" data-level="1">创建密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-iam-策略绑定">
-              <a class="post-toc-link" href="#添加-iam-策略绑定" data-level="1">添加 IAM 策略绑定</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出角色">
-              <a class="post-toc-link" href="#列出角色" data-level="1">列出角色</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="描述角色">
-              <a class="post-toc-link" href="#描述角色" data-level="1">描述角色</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="sql">
               <a class="post-toc-link" href="#sql" data-level="3">SQL</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出实例">
-              <a class="post-toc-link" href="#列出实例" data-level="1">列出实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建实例">
-              <a class="post-toc-link" href="#创建实例" data-level="1">创建实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建数据库">
-              <a class="post-toc-link" href="#创建数据库" data-level="1">创建数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建用户">
-              <a class="post-toc-link" href="#创建用户" data-level="1">创建用户</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接">
-              <a class="post-toc-link" href="#连接" data-level="1">连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出">
-              <a class="post-toc-link" href="#导出" data-level="1">导出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导入">
-              <a class="post-toc-link" href="#导入" data-level="1">导入</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="部署管理器">
               <a class="post-toc-link" href="#部署管理器" data-level="3">部署管理器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出部署">
-              <a class="post-toc-link" href="#列出部署" data-level="1">列出部署</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建部署">
-              <a class="post-toc-link" href="#创建部署" data-level="1">创建部署</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="描述部署">
-              <a class="post-toc-link" href="#描述部署" data-level="1">描述部署</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新部署">
-              <a class="post-toc-link" href="#更新部署" data-level="1">更新部署</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除部署">
-              <a class="post-toc-link" href="#删除部署" data-level="1">删除部署</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="pub-sub">
               <a class="post-toc-link" href="#pub-sub" data-level="3">Pub/Sub</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出主题">
-              <a class="post-toc-link" href="#列出主题" data-level="1">列出主题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建主题">
-              <a class="post-toc-link" href="#创建主题" data-level="1">创建主题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="发布消息">
-              <a class="post-toc-link" href="#发布消息" data-level="1">发布消息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出订阅">
-              <a class="post-toc-link" href="#列出订阅" data-level="1">列出订阅</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建订阅">
-              <a class="post-toc-link" href="#创建订阅" data-level="1">创建订阅</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="拉取消息">
-              <a class="post-toc-link" href="#拉取消息" data-level="1">拉取消息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="模拟发布">
-              <a class="post-toc-link" href="#模拟发布" data-level="1">模拟发布</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="日志与监控">
               <a class="post-toc-link" href="#日志与监控" data-level="3">日志与监控</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="读取日志">
-              <a class="post-toc-link" href="#读取日志" data-level="1">读取日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="过滤器">
-              <a class="post-toc-link" href="#过滤器" data-level="1">过滤器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="写入日志">
-              <a class="post-toc-link" href="#写入日志" data-level="1">写入日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出日志到-cloud-storage">
-              <a class="post-toc-link" href="#导出日志到-cloud-storage" data-level="1">导出日志到 Cloud Storage</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看指标">
-              <a class="post-toc-link" href="#查看指标" data-level="1">查看指标</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项">
               <a class="post-toc-link" href="#常用选项" data-level="3">常用选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定项目">
-              <a class="post-toc-link" href="#指定项目" data-level="1">指定项目</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定区域-区域">
-              <a class="post-toc-link" href="#指定区域-区域" data-level="1">指定区域/区域</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出格式">
-              <a class="post-toc-link" href="#输出格式" data-level="1">输出格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="异步操作">
-              <a class="post-toc-link" href="#异步操作" data-level="1">异步操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-              <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="帮助">
-              <a class="post-toc-link" href="#帮助" data-level="1">帮助</a>
             </li>
             
           </ul>
@@ -2613,488 +2185,60 @@ function copied(target, str) {
           <a class="post-toc-link" href="#初始配置" data-level="3">初始配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="登录">
-          <a class="post-toc-link" href="#登录" data-level="1">登录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出账户">
-          <a class="post-toc-link" href="#列出账户" data-level="1">列出账户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="激活服务账户">
-          <a class="post-toc-link" href="#激活服务账户" data-level="1">激活服务账户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="撤销登录">
-          <a class="post-toc-link" href="#撤销登录" data-level="1">撤销登录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置项目">
-          <a class="post-toc-link" href="#设置项目" data-level="1">设置项目</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置默认区域和区域">
-          <a class="post-toc-link" href="#设置默认区域和区域" data-level="1">设置默认区域和区域</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出配置">
-          <a class="post-toc-link" href="#列出配置" data-level="1">列出配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建配置">
-          <a class="post-toc-link" href="#创建配置" data-level="1">创建配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示当前配置">
-          <a class="post-toc-link" href="#显示当前配置" data-level="1">显示当前配置</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="计算引擎">
           <a class="post-toc-link" href="#计算引擎" data-level="3">计算引擎</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出实例">
-          <a class="post-toc-link" href="#列出实例" data-level="1">列出实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建实例">
-          <a class="post-toc-link" href="#创建实例" data-level="1">创建实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建带启动脚本的实例">
-          <a class="post-toc-link" href="#创建带启动脚本的实例" data-level="1">创建带启动脚本的实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-停止实例">
-          <a class="post-toc-link" href="#启动-停止实例" data-level="1">启动/停止实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除实例">
-          <a class="post-toc-link" href="#删除实例" data-level="1">删除实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接-ssh">
-          <a class="post-toc-link" href="#连接-ssh" data-level="1">连接 SSH</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出实例模板">
-          <a class="post-toc-link" href="#列出实例模板" data-level="1">列出实例模板</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从模板创建实例">
-          <a class="post-toc-link" href="#从模板创建实例" data-level="1">从模板创建实例</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="防火墙与网络">
           <a class="post-toc-link" href="#防火墙与网络" data-level="3">防火墙与网络</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出防火墙规则">
-          <a class="post-toc-link" href="#列出防火墙规则" data-level="1">列出防火墙规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建防火墙规则">
-          <a class="post-toc-link" href="#创建防火墙规则" data-level="1">创建防火墙规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="允许-ssh">
-          <a class="post-toc-link" href="#允许-ssh" data-level="1">允许 SSH</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除防火墙规则">
-          <a class="post-toc-link" href="#删除防火墙规则" data-level="1">删除防火墙规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建静态-ip">
-          <a class="post-toc-link" href="#创建静态-ip" data-level="1">创建静态 IP</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出-ip">
-          <a class="post-toc-link" href="#列出-ip" data-level="1">列出 IP</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出网络">
-          <a class="post-toc-link" href="#列出网络" data-level="1">列出网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建网络">
-          <a class="post-toc-link" href="#创建网络" data-level="1">创建网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建子网">
-          <a class="post-toc-link" href="#创建子网" data-level="1">创建子网</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="cloud-storage">
           <a class="post-toc-link" href="#cloud-storage" data-level="3">Cloud Storage</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出桶">
-          <a class="post-toc-link" href="#列出桶" data-level="1">列出桶</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建桶">
-          <a class="post-toc-link" href="#创建桶" data-level="1">创建桶</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制文件">
-          <a class="post-toc-link" href="#复制文件" data-level="1">复制文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载文件">
-          <a class="post-toc-link" href="#下载文件" data-level="1">下载文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步目录">
-          <a class="post-toc-link" href="#同步目录" data-level="1">同步目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-acl">
-          <a class="post-toc-link" href="#设置-acl" data-level="1">设置 ACL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置存储类别">
-          <a class="post-toc-link" href="#设置存储类别" data-level="1">设置存储类别</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除">
-          <a class="post-toc-link" href="#删除" data-level="1">删除</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="签名-url">
-          <a class="post-toc-link" href="#签名-url" data-level="1">签名 URL</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-gcloud-命令-替代-gsutil">
-          <a class="post-toc-link" href="#使用-gcloud-命令-替代-gsutil" data-level="1">使用 gcloud 命令（替代 gsutil）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="kubernetes-gke">
           <a class="post-toc-link" href="#kubernetes-gke" data-level="3">Kubernetes (GKE)</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出集群">
-          <a class="post-toc-link" href="#列出集群" data-level="1">列出集群</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建集群">
-          <a class="post-toc-link" href="#创建集群" data-level="1">创建集群</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取凭证">
-          <a class="post-toc-link" href="#获取凭证" data-level="1">获取凭证</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="调整大小">
-          <a class="post-toc-link" href="#调整大小" data-level="1">调整大小</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级">
-          <a class="post-toc-link" href="#升级" data-level="1">升级</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除集群">
-          <a class="post-toc-link" href="#删除集群" data-level="1">删除集群</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出节点池">
-          <a class="post-toc-link" href="#列出节点池" data-level="1">列出节点池</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建节点池">
-          <a class="post-toc-link" href="#创建节点池" data-level="1">创建节点池</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="bigquery">
           <a class="post-toc-link" href="#bigquery" data-level="3">BigQuery</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出数据集">
-          <a class="post-toc-link" href="#列出数据集" data-level="1">列出数据集</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建数据集">
-          <a class="post-toc-link" href="#创建数据集" data-level="1">创建数据集</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查询">
-          <a class="post-toc-link" href="#查询" data-level="1">查询</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查询并保存结果">
-          <a class="post-toc-link" href="#查询并保存结果" data-level="1">查询并保存结果</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加载数据">
-          <a class="post-toc-link" href="#加载数据" data-level="1">加载数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出数据">
-          <a class="post-toc-link" href="#导出数据" data-level="1">导出数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出表">
-          <a class="post-toc-link" href="#列出表" data-level="1">列出表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建表">
-          <a class="post-toc-link" href="#创建表" data-level="1">创建表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除表">
-          <a class="post-toc-link" href="#删除表" data-level="1">删除表</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="cloud-functions">
           <a class="post-toc-link" href="#cloud-functions" data-level="3">Cloud Functions</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="部署函数">
-          <a class="post-toc-link" href="#部署函数" data-level="1">部署函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出函数">
-          <a class="post-toc-link" href="#列出函数" data-level="1">列出函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="调用函数">
-          <a class="post-toc-link" href="#调用函数" data-level="1">调用函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除函数">
-          <a class="post-toc-link" href="#删除函数" data-level="1">删除函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新函数">
-          <a class="post-toc-link" href="#更新函数" data-level="1">更新函数</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="app-engine">
           <a class="post-toc-link" href="#app-engine" data-level="3">App Engine</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出应用">
-          <a class="post-toc-link" href="#列出应用" data-level="1">列出应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="部署应用">
-          <a class="post-toc-link" href="#部署应用" data-level="1">部署应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="部署到特定服务">
-          <a class="post-toc-link" href="#部署到特定服务" data-level="1">部署到特定服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="流量迁移">
-          <a class="post-toc-link" href="#流量迁移" data-level="1">流量迁移</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="浏览应用">
-          <a class="post-toc-link" href="#浏览应用" data-level="1">浏览应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务">
-          <a class="post-toc-link" href="#创建服务" data-level="1">创建服务</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="cloud-run">
           <a class="post-toc-link" href="#cloud-run" data-level="3">Cloud Run</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="部署服务">
-          <a class="post-toc-link" href="#部署服务" data-level="1">部署服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出服务">
-          <a class="post-toc-link" href="#列出服务" data-level="1">列出服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务">
-          <a class="post-toc-link" href="#查看服务" data-level="1">查看服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="流量更新">
-          <a class="post-toc-link" href="#流量更新" data-level="1">流量更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除服务">
-          <a class="post-toc-link" href="#删除服务" data-level="1">删除服务</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="iam-与安全">
           <a class="post-toc-link" href="#iam-与安全" data-level="3">IAM 与安全</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出服务账户">
-          <a class="post-toc-link" href="#列出服务账户" data-level="1">列出服务账户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务账户">
-          <a class="post-toc-link" href="#创建服务账户" data-level="1">创建服务账户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建密钥">
-          <a class="post-toc-link" href="#创建密钥" data-level="1">创建密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-iam-策略绑定">
-          <a class="post-toc-link" href="#添加-iam-策略绑定" data-level="1">添加 IAM 策略绑定</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出角色">
-          <a class="post-toc-link" href="#列出角色" data-level="1">列出角色</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="描述角色">
-          <a class="post-toc-link" href="#描述角色" data-level="1">描述角色</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="sql">
           <a class="post-toc-link" href="#sql" data-level="3">SQL</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出实例">
-          <a class="post-toc-link" href="#列出实例" data-level="1">列出实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建实例">
-          <a class="post-toc-link" href="#创建实例" data-level="1">创建实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建数据库">
-          <a class="post-toc-link" href="#创建数据库" data-level="1">创建数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建用户">
-          <a class="post-toc-link" href="#创建用户" data-level="1">创建用户</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接">
-          <a class="post-toc-link" href="#连接" data-level="1">连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出">
-          <a class="post-toc-link" href="#导出" data-level="1">导出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导入">
-          <a class="post-toc-link" href="#导入" data-level="1">导入</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="部署管理器">
           <a class="post-toc-link" href="#部署管理器" data-level="3">部署管理器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出部署">
-          <a class="post-toc-link" href="#列出部署" data-level="1">列出部署</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建部署">
-          <a class="post-toc-link" href="#创建部署" data-level="1">创建部署</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="描述部署">
-          <a class="post-toc-link" href="#描述部署" data-level="1">描述部署</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新部署">
-          <a class="post-toc-link" href="#更新部署" data-level="1">更新部署</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除部署">
-          <a class="post-toc-link" href="#删除部署" data-level="1">删除部署</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="pub-sub">
           <a class="post-toc-link" href="#pub-sub" data-level="3">Pub/Sub</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出主题">
-          <a class="post-toc-link" href="#列出主题" data-level="1">列出主题</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建主题">
-          <a class="post-toc-link" href="#创建主题" data-level="1">创建主题</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="发布消息">
-          <a class="post-toc-link" href="#发布消息" data-level="1">发布消息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出订阅">
-          <a class="post-toc-link" href="#列出订阅" data-level="1">列出订阅</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建订阅">
-          <a class="post-toc-link" href="#创建订阅" data-level="1">创建订阅</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="拉取消息">
-          <a class="post-toc-link" href="#拉取消息" data-level="1">拉取消息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="模拟发布">
-          <a class="post-toc-link" href="#模拟发布" data-level="1">模拟发布</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="日志与监控">
           <a class="post-toc-link" href="#日志与监控" data-level="3">日志与监控</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="读取日志">
-          <a class="post-toc-link" href="#读取日志" data-level="1">读取日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="过滤器">
-          <a class="post-toc-link" href="#过滤器" data-level="1">过滤器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="写入日志">
-          <a class="post-toc-link" href="#写入日志" data-level="1">写入日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出日志到-cloud-storage">
-          <a class="post-toc-link" href="#导出日志到-cloud-storage" data-level="1">导出日志到 Cloud Storage</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看指标">
-          <a class="post-toc-link" href="#查看指标" data-level="1">查看指标</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项">
           <a class="post-toc-link" href="#常用选项" data-level="3">常用选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定项目">
-          <a class="post-toc-link" href="#指定项目" data-level="1">指定项目</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定区域-区域">
-          <a class="post-toc-link" href="#指定区域-区域" data-level="1">指定区域/区域</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出格式">
-          <a class="post-toc-link" href="#输出格式" data-level="1">输出格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="异步操作">
-          <a class="post-toc-link" href="#异步操作" data-level="1">异步操作</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细输出">
-          <a class="post-toc-link" href="#详细输出" data-level="1">详细输出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="帮助">
-          <a class="post-toc-link" href="#帮助" data-level="1">帮助</a>
         </li>
         
       </ul>
@@ -3103,7 +2247,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -3286,8 +2430,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

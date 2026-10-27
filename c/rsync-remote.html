@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="rsync-remote 命令">
     <meta name="twitter:description" content="Rsync 远程同步命令 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1646,22 +1646,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#本机安装依赖" data-level="3">本机安装依赖</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rocky-almalinux">
-              <a class="post-toc-link" href="#centos-rocky-almalinux" data-level="1">CentOS / Rocky / AlmaLinux</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
-              <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="openwrt-istoreos">
-              <a class="post-toc-link" href="#openwrt-istoreos" data-level="1">OpenWrt / iStoreOS</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="远端主机安装-rsync">
               <a class="post-toc-link" href="#远端主机安装-rsync" data-level="3">远端主机安装 Rsync</a>
             </li>
@@ -1678,20 +1662,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#源路径结尾斜杠的区别" data-level="3">源路径结尾斜杠的区别</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录本身-结果-mnt-compose-xunlei">
-              <a class="post-toc-link" href="#同步-目录本身-结果-mnt-compose-xunlei" data-level="1">同步「目录本身」：结果 → /mnt/compose/xunlei/</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录内容-结果-mnt-compose-下直接是文件">
-              <a class="post-toc-link" href="#同步-目录内容-结果-mnt-compose-下直接是文件" data-level="1">同步「目录内容」：结果 → /mnt/compose/ 下直接是文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败-远端找不到-rsync">
               <a class="post-toc-link" href="#常见失败-远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="usr-bin-rsync">
-              <a class="post-toc-link" href="#usr-bin-rsync" data-level="1">/usr/bin/rsync</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="更安全的密码传递">
@@ -1700,38 +1672,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接-tmux">
               <a class="post-toc-link" href="#保持长连接-tmux" data-level="2">保持长连接（tmux）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-tmux-会话">
-              <a class="post-toc-link" href="#创建-tmux-会话" data-level="1">创建 tmux 会话</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="脱离会话-后台继续跑-先按-ctrl-b-再按-d">
-              <a class="post-toc-link" href="#脱离会话-后台继续跑-先按-ctrl-b-再按-d" data-level="1">脱离会话（后台继续跑）：先按 Ctrl+b，再按 d</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新接入查看传输进度">
-              <a class="post-toc-link" href="#重新接入查看传输进度" data-level="1">重新接入查看传输进度</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有-tmux-会话">
-              <a class="post-toc-link" href="#列出所有-tmux-会话" data-level="1">列出所有 tmux 会话</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="传输完成后杀掉会话">
-              <a class="post-toc-link" href="#传输完成后杀掉会话" data-level="1">传输完成后杀掉会话</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="screen">
-              <a class="post-toc-link" href="#screen" data-level="1">screen</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="脱离-ctrl-a-再按-d-恢复-screen-r-work">
-              <a class="post-toc-link" href="#脱离-ctrl-a-再按-d-恢复-screen-r-work" data-level="1">脱离：Ctrl+a 再按 d；恢复：screen -r work</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="nohup">
-              <a class="post-toc-link" href="#nohup" data-level="1">nohup</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="常用增强参数">
@@ -1744,10 +1684,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步-cron">
               <a class="post-toc-link" href="#定时同步-cron" data-level="2">定时同步（cron）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
-              <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
@@ -1799,22 +1735,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#本机安装依赖" data-level="3">本机安装依赖</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="centos-rocky-almalinux">
-          <a class="post-toc-link" href="#centos-rocky-almalinux" data-level="1">CentOS / Rocky / AlmaLinux</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="alpine">
-          <a class="post-toc-link" href="#alpine" data-level="1">Alpine</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="openwrt-istoreos">
-          <a class="post-toc-link" href="#openwrt-istoreos" data-level="1">OpenWrt / iStoreOS</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="远端主机安装-rsync">
           <a class="post-toc-link" href="#远端主机安装-rsync" data-level="3">远端主机安装 Rsync</a>
         </li>
@@ -1831,20 +1751,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#源路径结尾斜杠的区别" data-level="3">源路径结尾斜杠的区别</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录本身-结果-mnt-compose-xunlei">
-          <a class="post-toc-link" href="#同步-目录本身-结果-mnt-compose-xunlei" data-level="1">同步「目录本身」：结果 → /mnt/compose/xunlei/</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步-目录内容-结果-mnt-compose-下直接是文件">
-          <a class="post-toc-link" href="#同步-目录内容-结果-mnt-compose-下直接是文件" data-level="1">同步「目录内容」：结果 → /mnt/compose/ 下直接是文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败-远端找不到-rsync">
           <a class="post-toc-link" href="#常见失败-远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="usr-bin-rsync">
-          <a class="post-toc-link" href="#usr-bin-rsync" data-level="1">/usr/bin/rsync</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="更安全的密码传递">
@@ -1853,38 +1761,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接-tmux">
           <a class="post-toc-link" href="#保持长连接-tmux" data-level="2">保持长连接（tmux）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-tmux-会话">
-          <a class="post-toc-link" href="#创建-tmux-会话" data-level="1">创建 tmux 会话</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="脱离会话-后台继续跑-先按-ctrl-b-再按-d">
-          <a class="post-toc-link" href="#脱离会话-后台继续跑-先按-ctrl-b-再按-d" data-level="1">脱离会话（后台继续跑）：先按 Ctrl+b，再按 d</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新接入查看传输进度">
-          <a class="post-toc-link" href="#重新接入查看传输进度" data-level="1">重新接入查看传输进度</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有-tmux-会话">
-          <a class="post-toc-link" href="#列出所有-tmux-会话" data-level="1">列出所有 tmux 会话</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="传输完成后杀掉会话">
-          <a class="post-toc-link" href="#传输完成后杀掉会话" data-level="1">传输完成后杀掉会话</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="screen">
-          <a class="post-toc-link" href="#screen" data-level="1">screen</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="脱离-ctrl-a-再按-d-恢复-screen-r-work">
-          <a class="post-toc-link" href="#脱离-ctrl-a-再按-d-恢复-screen-r-work" data-level="1">脱离：Ctrl+a 再按 d；恢复：screen -r work</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="nohup">
-          <a class="post-toc-link" href="#nohup" data-level="1">nohup</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="常用增强参数">
@@ -1897,10 +1773,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步-cron">
           <a class="post-toc-link" href="#定时同步-cron" data-level="2">定时同步（cron）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="crontab-e">
-          <a class="post-toc-link" href="#crontab-e" data-level="1">crontab -e</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
@@ -1921,7 +1793,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2104,8 +1976,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

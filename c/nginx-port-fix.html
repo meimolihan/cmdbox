@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="nginx-port-fix 命令">
     <meta name="twitter:description" content="Nginx 端口占用问题解决 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1606,24 +1606,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#步骤-1-定位-nginx-配置文件" data-level="4">步骤 1：定位 Nginx 配置文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-主配置包含的目录">
-              <a class="post-toc-link" href="#查看-nginx-主配置包含的目录" data-level="1">查看 Nginx 主配置包含的目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快速搜索所有监听-80-端口的配置">
-              <a class="post-toc-link" href="#快速搜索所有监听-80-端口的配置" data-level="1">快速搜索所有监听 80 端口的配置</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-修改监听端口">
               <a class="post-toc-link" href="#步骤-2-修改监听端口" data-level="4">步骤 2：修改监听端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="找到这一行">
-              <a class="post-toc-link" href="#找到这一行" data-level="1">找到这一行：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改为-例如-8080-端口">
-              <a class="post-toc-link" href="#修改为-例如-8080-端口" data-level="1">修改为（例如 8080 端口）：</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-重启-nginx-服务">
@@ -1638,22 +1622,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#完整卸载流程" data-level="4">完整卸载流程</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止-apache2-服务">
-              <a class="post-toc-link" href="#停止-apache2-服务" data-level="1">停止 Apache2 服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底卸载-apache2-及相关包">
-              <a class="post-toc-link" href="#彻底卸载-apache2-及相关包" data-level="1">彻底卸载 Apache2 及相关包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理残留依赖包">
-              <a class="post-toc-link" href="#清理残留依赖包" data-level="1">清理残留依赖包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理配置文件缓存">
-              <a class="post-toc-link" href="#清理配置文件缓存" data-level="1">清理配置文件缓存</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="验证与确认">
               <a class="post-toc-link" href="#验证与确认" data-level="3">验证与确认</a>
             </li>
@@ -1662,28 +1630,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#验证端口占用情况" data-level="4">验证端口占用情况</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-80-端口是否已释放">
-              <a class="post-toc-link" href="#检查-80-端口是否已释放" data-level="1">检查 80 端口是否已释放</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-nginx-是否在新端口运行">
-              <a class="post-toc-link" href="#检查-nginx-是否在新端口运行" data-level="1">检查 Nginx 是否在新端口运行</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="测试-nginx-服务状态">
               <a class="post-toc-link" href="#测试-nginx-服务状态" data-level="4">测试 Nginx 服务状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
-              <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置语法">
-              <a class="post-toc-link" href="#测试配置语法" data-level="1">测试配置语法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置-如果只是修改配置">
-              <a class="post-toc-link" href="#重新加载配置-如果只是修改配置" data-level="1">重新加载配置（如果只是修改配置）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="浏览器访问测试">
@@ -1706,14 +1654,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#监控与日志分析" data-level="4">监控与日志分析</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控-nginx-连接">
-              <a class="post-toc-link" href="#实时监控-nginx-连接" data-level="1">实时监控 Nginx 连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-访问日志">
-              <a class="post-toc-link" href="#查看-nginx-访问日志" data-level="1">查看 Nginx 访问日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="总结与最佳实践">
               <a class="post-toc-link" href="#总结与最佳实践" data-level="3">总结与最佳实践</a>
             </li>
@@ -1732,10 +1672,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="自动化运维脚本">
               <a class="post-toc-link" href="#自动化运维脚本" data-level="4">自动化运维脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动检测并解决端口冲突">
-              <a class="post-toc-link" href="#自动检测并解决端口冲突" data-level="1">自动检测并解决端口冲突</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="核心要点回顾">
@@ -1783,24 +1719,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#步骤-1-定位-nginx-配置文件" data-level="4">步骤 1：定位 Nginx 配置文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-主配置包含的目录">
-          <a class="post-toc-link" href="#查看-nginx-主配置包含的目录" data-level="1">查看 Nginx 主配置包含的目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快速搜索所有监听-80-端口的配置">
-          <a class="post-toc-link" href="#快速搜索所有监听-80-端口的配置" data-level="1">快速搜索所有监听 80 端口的配置</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-2-修改监听端口">
           <a class="post-toc-link" href="#步骤-2-修改监听端口" data-level="4">步骤 2：修改监听端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="找到这一行">
-          <a class="post-toc-link" href="#找到这一行" data-level="1">找到这一行：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改为-例如-8080-端口">
-          <a class="post-toc-link" href="#修改为-例如-8080-端口" data-level="1">修改为（例如 8080 端口）：</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="步骤-3-重启-nginx-服务">
@@ -1815,22 +1735,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#完整卸载流程" data-level="4">完整卸载流程</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止-apache2-服务">
-          <a class="post-toc-link" href="#停止-apache2-服务" data-level="1">停止 Apache2 服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底卸载-apache2-及相关包">
-          <a class="post-toc-link" href="#彻底卸载-apache2-及相关包" data-level="1">彻底卸载 Apache2 及相关包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理残留依赖包">
-          <a class="post-toc-link" href="#清理残留依赖包" data-level="1">清理残留依赖包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理配置文件缓存">
-          <a class="post-toc-link" href="#清理配置文件缓存" data-level="1">清理配置文件缓存</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="验证与确认">
           <a class="post-toc-link" href="#验证与确认" data-level="3">验证与确认</a>
         </li>
@@ -1839,28 +1743,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#验证端口占用情况" data-level="4">验证端口占用情况</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-80-端口是否已释放">
-          <a class="post-toc-link" href="#检查-80-端口是否已释放" data-level="1">检查 80 端口是否已释放</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-nginx-是否在新端口运行">
-          <a class="post-toc-link" href="#检查-nginx-是否在新端口运行" data-level="1">检查 Nginx 是否在新端口运行</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="测试-nginx-服务状态">
           <a class="post-toc-link" href="#测试-nginx-服务状态" data-level="4">测试 Nginx 服务状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务状态">
-          <a class="post-toc-link" href="#检查服务状态" data-level="1">检查服务状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置语法">
-          <a class="post-toc-link" href="#测试配置语法" data-level="1">测试配置语法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新加载配置-如果只是修改配置">
-          <a class="post-toc-link" href="#重新加载配置-如果只是修改配置" data-level="1">重新加载配置（如果只是修改配置）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="浏览器访问测试">
@@ -1883,14 +1767,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#监控与日志分析" data-level="4">监控与日志分析</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时监控-nginx-连接">
-          <a class="post-toc-link" href="#实时监控-nginx-连接" data-level="1">实时监控 Nginx 连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-nginx-访问日志">
-          <a class="post-toc-link" href="#查看-nginx-访问日志" data-level="1">查看 Nginx 访问日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="总结与最佳实践">
           <a class="post-toc-link" href="#总结与最佳实践" data-level="3">总结与最佳实践</a>
         </li>
@@ -1911,10 +1787,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#自动化运维脚本" data-level="4">自动化运维脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动检测并解决端口冲突">
-          <a class="post-toc-link" href="#自动检测并解决端口冲突" data-level="1">自动检测并解决端口冲突</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="核心要点回顾">
           <a class="post-toc-link" href="#核心要点回顾" data-level="4">核心要点回顾</a>
         </li>
@@ -1925,7 +1797,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2108,8 +1980,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

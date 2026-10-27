@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="flatpak 命令">
     <meta name="twitter:description" content="Linux Flatpak 包管理器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1828,340 +1828,40 @@ function copied(target, str) {
               <a class="post-toc-link" href="#仓库管理" data-level="3">仓库管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-flathub-仓库-官方推荐">
-              <a class="post-toc-link" href="#添加-flathub-仓库-官方推荐" data-level="1">添加 Flathub 仓库（官方推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加分类仓库">
-              <a class="post-toc-link" href="#添加分类仓库" data-level="1">添加分类仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已添加的仓库">
-              <a class="post-toc-link" href="#查看已添加的仓库" data-level="1">查看已添加的仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看仓库详细信息">
-              <a class="post-toc-link" href="#查看仓库详细信息" data-level="1">查看仓库详细信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除仓库">
-              <a class="post-toc-link" href="#删除仓库" data-level="1">删除仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改仓库名称">
-              <a class="post-toc-link" href="#修改仓库名称" data-level="1">修改仓库名称</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用仓库">
-              <a class="post-toc-link" href="#启用仓库" data-level="1">启用仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用仓库">
-              <a class="post-toc-link" href="#禁用仓库" data-level="1">禁用仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置仓库优先级">
-              <a class="post-toc-link" href="#设置仓库优先级" data-level="1">设置仓库优先级</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装应用">
               <a class="post-toc-link" href="#安装应用" data-level="3">安装应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-flatpak-应用-从仓库安装">
-              <a class="post-toc-link" href="#安装-flatpak-应用-从仓库安装" data-level="1">安装 Flatpak 应用（从仓库安装）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="简写形式-自动搜索仓库名和包名">
-              <a class="post-toc-link" href="#简写形式-自动搜索仓库名和包名" data-level="1">简写形式（自动搜索仓库名和包名）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本">
-              <a class="post-toc-link" href="#安装指定版本" data-level="1">安装指定版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装时选择分支">
-              <a class="post-toc-link" href="#安装时选择分支" data-level="1">安装时选择分支</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从文件安装-flatpak-文件">
-              <a class="post-toc-link" href="#从文件安装-flatpak-文件" data-level="1">从文件安装（.flatpak 文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从-ref-安装-flatpakref-文件">
-              <a class="post-toc-link" href="#从-ref-安装-flatpakref-文件" data-level="1">从 ref 安装（.flatpakref 文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装运行时">
-              <a class="post-toc-link" href="#安装运行时" data-level="1">安装运行时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-sdk">
-              <a class="post-toc-link" href="#安装-sdk" data-level="1">安装 SDK</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装系统级-默认用户级">
-              <a class="post-toc-link" href="#安装系统级-默认用户级" data-level="1">安装系统级（默认用户级）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定用户-多用户系统">
-              <a class="post-toc-link" href="#安装指定用户-多用户系统" data-level="1">安装指定用户（多用户系统）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装特定架构">
-              <a class="post-toc-link" href="#安装特定架构" data-level="1">安装特定架构</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装调试符号">
-              <a class="post-toc-link" href="#安装调试符号" data-level="1">安装调试符号</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="更新应用">
               <a class="post-toc-link" href="#更新应用" data-level="3">更新应用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新所有应用">
-              <a class="post-toc-link" href="#更新所有应用" data-level="1">更新所有应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新指定应用">
-              <a class="post-toc-link" href="#更新指定应用" data-level="1">更新指定应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新运行时">
-              <a class="post-toc-link" href="#更新运行时" data-level="1">更新运行时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看可更新的应用">
-              <a class="post-toc-link" href="#查看可更新的应用" data-level="1">查看可更新的应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仅下载更新-不安装">
-              <a class="post-toc-link" href="#仅下载更新-不安装" data-level="1">仅下载更新（不安装）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查更新但不执行">
-              <a class="post-toc-link" href="#检查更新但不执行" data-level="1">检查更新但不执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新到指定分支">
-              <a class="post-toc-link" href="#更新到指定分支" data-level="1">更新到指定分支</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="查看应用">
               <a class="post-toc-link" href="#查看应用" data-level="3">查看应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有已安装的应用">
-              <a class="post-toc-link" href="#列出所有已安装的应用" data-level="1">列出所有已安装的应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用详细信息-推荐">
-              <a class="post-toc-link" href="#查看应用详细信息-推荐" data-level="1">查看应用详细信息（推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细信息">
-              <a class="post-toc-link" href="#查看详细信息" data-level="1">查看详细信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用权限">
-              <a class="post-toc-link" href="#查看应用权限" data-level="1">查看应用权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用位置">
-              <a class="post-toc-link" href="#查看应用位置" data-level="1">查看应用位置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用文件系统访问">
-              <a class="post-toc-link" href="#查看应用文件系统访问" data-level="1">查看应用文件系统访问</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看使用的运行时">
-              <a class="post-toc-link" href="#查看使用的运行时" data-level="1">查看使用的运行时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看缓存大小">
-              <a class="post-toc-link" href="#查看缓存大小" data-level="1">查看缓存大小</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="搜索应用">
               <a class="post-toc-link" href="#搜索应用" data-level="3">搜索应用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索应用">
-              <a class="post-toc-link" href="#搜索应用" data-level="1">搜索应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索结果列指定">
-              <a class="post-toc-link" href="#搜索结果列指定" data-level="1">搜索结果列指定</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有列名">
-              <a class="post-toc-link" href="#列出所有列名" data-level="1">列出所有列名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在指定仓库搜索">
-              <a class="post-toc-link" href="#在指定仓库搜索" data-level="1">在指定仓库搜索</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="卸载应用">
               <a class="post-toc-link" href="#卸载应用" data-level="3">卸载应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载应用">
-              <a class="post-toc-link" href="#卸载应用" data-level="1">卸载应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载应用及其数据">
-              <a class="post-toc-link" href="#卸载应用及其数据" data-level="1">卸载应用及其数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载运行时">
-              <a class="post-toc-link" href="#卸载运行时" data-level="1">卸载运行时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制卸载-有依赖时">
-              <a class="post-toc-link" href="#强制卸载-有依赖时" data-level="1">强制卸载（有依赖时）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载所有未使用的运行时">
-              <a class="post-toc-link" href="#卸载所有未使用的运行时" data-level="1">卸载所有未使用的运行时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="卸载所有未使用的应用和运行时">
-              <a class="post-toc-link" href="#卸载所有未使用的应用和运行时" data-level="1">卸载所有未使用的应用和运行时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式卸载">
-              <a class="post-toc-link" href="#交互式卸载" data-level="1">交互式卸载</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="运行应用">
               <a class="post-toc-link" href="#运行应用" data-level="3">运行应用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行应用">
-              <a class="post-toc-link" href="#运行应用" data-level="1">运行应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行并传递参数">
-              <a class="post-toc-link" href="#运行并传递参数" data-level="1">运行并传递参数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定环境变量运行">
-              <a class="post-toc-link" href="#指定环境变量运行" data-level="1">指定环境变量运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="运行命令-不启动应用">
-              <a class="post-toc-link" href="#运行命令-不启动应用" data-level="1">运行命令（不启动应用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入沙盒环境调试">
-              <a class="post-toc-link" href="#进入沙盒环境调试" data-level="1">进入沙盒环境调试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="覆盖权限运行">
-              <a class="post-toc-link" href="#覆盖权限运行" data-level="1">覆盖权限运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制单实例">
-              <a class="post-toc-link" href="#强制单实例" data-level="1">强制单实例</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="权限管理">
               <a class="post-toc-link" href="#权限管理" data-level="3">权限管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看权限">
-              <a class="post-toc-link" href="#查看权限" data-level="1">查看权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="授权文件系统访问">
-              <a class="post-toc-link" href="#授权文件系统访问" data-level="1">授权文件系统访问</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="授权设备访问">
-              <a class="post-toc-link" href="#授权设备访问" data-level="1">授权设备访问</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="授权网络">
-              <a class="post-toc-link" href="#授权网络" data-level="1">授权网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="授权-socket">
-              <a class="post-toc-link" href="#授权-socket" data-level="1">授权 socket</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="授权-dbus">
-              <a class="post-toc-link" href="#授权-dbus" data-level="1">授权 DBus</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置权限">
-              <a class="post-toc-link" href="#重置权限" data-level="1">重置权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑权限配置文件">
-              <a class="post-toc-link" href="#编辑权限配置文件" data-level="1">编辑权限配置文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="故障修复">
               <a class="post-toc-link" href="#故障修复" data-level="3">故障修复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复安装">
-              <a class="post-toc-link" href="#修复安装" data-level="1">修复安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
-              <a class="post-toc-link" href="#清理缓存" data-level="1">清理缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置应用权限">
-              <a class="post-toc-link" href="#重置应用权限" data-level="1">重置应用权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看文档">
-              <a class="post-toc-link" href="#查看文档" data-level="1">查看文档</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用日志">
-              <a class="post-toc-link" href="#查看应用日志" data-level="1">查看应用日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看版本">
-              <a class="post-toc-link" href="#查看版本" data-level="1">查看版本</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用应用安装">
               <a class="post-toc-link" href="#常用应用安装" data-level="3">常用应用安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常用-flatpak-应用">
-              <a class="post-toc-link" href="#常用-flatpak-应用" data-level="1">常用 Flatpak 应用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="浏览器">
-              <a class="post-toc-link" href="#浏览器" data-level="1">浏览器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="媒体播放器">
-              <a class="post-toc-link" href="#媒体播放器" data-level="1">媒体播放器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开发工具">
-              <a class="post-toc-link" href="#开发工具" data-level="1">开发工具</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="办公软件">
-              <a class="post-toc-link" href="#办公软件" data-level="1">办公软件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="通讯工具">
-              <a class="post-toc-link" href="#通讯工具" data-level="1">通讯工具</a>
             </li>
             
           </ul>
@@ -2201,340 +1901,40 @@ function copied(target, str) {
           <a class="post-toc-link" href="#仓库管理" data-level="3">仓库管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-flathub-仓库-官方推荐">
-          <a class="post-toc-link" href="#添加-flathub-仓库-官方推荐" data-level="1">添加 Flathub 仓库（官方推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加分类仓库">
-          <a class="post-toc-link" href="#添加分类仓库" data-level="1">添加分类仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已添加的仓库">
-          <a class="post-toc-link" href="#查看已添加的仓库" data-level="1">查看已添加的仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看仓库详细信息">
-          <a class="post-toc-link" href="#查看仓库详细信息" data-level="1">查看仓库详细信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除仓库">
-          <a class="post-toc-link" href="#删除仓库" data-level="1">删除仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改仓库名称">
-          <a class="post-toc-link" href="#修改仓库名称" data-level="1">修改仓库名称</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用仓库">
-          <a class="post-toc-link" href="#启用仓库" data-level="1">启用仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用仓库">
-          <a class="post-toc-link" href="#禁用仓库" data-level="1">禁用仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置仓库优先级">
-          <a class="post-toc-link" href="#设置仓库优先级" data-level="1">设置仓库优先级</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装应用">
           <a class="post-toc-link" href="#安装应用" data-level="3">安装应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-flatpak-应用-从仓库安装">
-          <a class="post-toc-link" href="#安装-flatpak-应用-从仓库安装" data-level="1">安装 Flatpak 应用（从仓库安装）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="简写形式-自动搜索仓库名和包名">
-          <a class="post-toc-link" href="#简写形式-自动搜索仓库名和包名" data-level="1">简写形式（自动搜索仓库名和包名）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本">
-          <a class="post-toc-link" href="#安装指定版本" data-level="1">安装指定版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装时选择分支">
-          <a class="post-toc-link" href="#安装时选择分支" data-level="1">安装时选择分支</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从文件安装-flatpak-文件">
-          <a class="post-toc-link" href="#从文件安装-flatpak-文件" data-level="1">从文件安装（.flatpak 文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从-ref-安装-flatpakref-文件">
-          <a class="post-toc-link" href="#从-ref-安装-flatpakref-文件" data-level="1">从 ref 安装（.flatpakref 文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装运行时">
-          <a class="post-toc-link" href="#安装运行时" data-level="1">安装运行时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-sdk">
-          <a class="post-toc-link" href="#安装-sdk" data-level="1">安装 SDK</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装系统级-默认用户级">
-          <a class="post-toc-link" href="#安装系统级-默认用户级" data-level="1">安装系统级（默认用户级）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定用户-多用户系统">
-          <a class="post-toc-link" href="#安装指定用户-多用户系统" data-level="1">安装指定用户（多用户系统）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装特定架构">
-          <a class="post-toc-link" href="#安装特定架构" data-level="1">安装特定架构</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装调试符号">
-          <a class="post-toc-link" href="#安装调试符号" data-level="1">安装调试符号</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="更新应用">
           <a class="post-toc-link" href="#更新应用" data-level="3">更新应用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新所有应用">
-          <a class="post-toc-link" href="#更新所有应用" data-level="1">更新所有应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新指定应用">
-          <a class="post-toc-link" href="#更新指定应用" data-level="1">更新指定应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新运行时">
-          <a class="post-toc-link" href="#更新运行时" data-level="1">更新运行时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看可更新的应用">
-          <a class="post-toc-link" href="#查看可更新的应用" data-level="1">查看可更新的应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仅下载更新-不安装">
-          <a class="post-toc-link" href="#仅下载更新-不安装" data-level="1">仅下载更新（不安装）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查更新但不执行">
-          <a class="post-toc-link" href="#检查更新但不执行" data-level="1">检查更新但不执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新到指定分支">
-          <a class="post-toc-link" href="#更新到指定分支" data-level="1">更新到指定分支</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="查看应用">
           <a class="post-toc-link" href="#查看应用" data-level="3">查看应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有已安装的应用">
-          <a class="post-toc-link" href="#列出所有已安装的应用" data-level="1">列出所有已安装的应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用详细信息-推荐">
-          <a class="post-toc-link" href="#查看应用详细信息-推荐" data-level="1">查看应用详细信息（推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细信息">
-          <a class="post-toc-link" href="#查看详细信息" data-level="1">查看详细信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用权限">
-          <a class="post-toc-link" href="#查看应用权限" data-level="1">查看应用权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用位置">
-          <a class="post-toc-link" href="#查看应用位置" data-level="1">查看应用位置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用文件系统访问">
-          <a class="post-toc-link" href="#查看应用文件系统访问" data-level="1">查看应用文件系统访问</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看使用的运行时">
-          <a class="post-toc-link" href="#查看使用的运行时" data-level="1">查看使用的运行时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看缓存大小">
-          <a class="post-toc-link" href="#查看缓存大小" data-level="1">查看缓存大小</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="搜索应用">
           <a class="post-toc-link" href="#搜索应用" data-level="3">搜索应用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索应用">
-          <a class="post-toc-link" href="#搜索应用" data-level="1">搜索应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索结果列指定">
-          <a class="post-toc-link" href="#搜索结果列指定" data-level="1">搜索结果列指定</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有列名">
-          <a class="post-toc-link" href="#列出所有列名" data-level="1">列出所有列名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在指定仓库搜索">
-          <a class="post-toc-link" href="#在指定仓库搜索" data-level="1">在指定仓库搜索</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="卸载应用">
           <a class="post-toc-link" href="#卸载应用" data-level="3">卸载应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载应用">
-          <a class="post-toc-link" href="#卸载应用" data-level="1">卸载应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载应用及其数据">
-          <a class="post-toc-link" href="#卸载应用及其数据" data-level="1">卸载应用及其数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载运行时">
-          <a class="post-toc-link" href="#卸载运行时" data-level="1">卸载运行时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制卸载-有依赖时">
-          <a class="post-toc-link" href="#强制卸载-有依赖时" data-level="1">强制卸载（有依赖时）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载所有未使用的运行时">
-          <a class="post-toc-link" href="#卸载所有未使用的运行时" data-level="1">卸载所有未使用的运行时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="卸载所有未使用的应用和运行时">
-          <a class="post-toc-link" href="#卸载所有未使用的应用和运行时" data-level="1">卸载所有未使用的应用和运行时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式卸载">
-          <a class="post-toc-link" href="#交互式卸载" data-level="1">交互式卸载</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="运行应用">
           <a class="post-toc-link" href="#运行应用" data-level="3">运行应用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行应用">
-          <a class="post-toc-link" href="#运行应用" data-level="1">运行应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行并传递参数">
-          <a class="post-toc-link" href="#运行并传递参数" data-level="1">运行并传递参数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定环境变量运行">
-          <a class="post-toc-link" href="#指定环境变量运行" data-level="1">指定环境变量运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="运行命令-不启动应用">
-          <a class="post-toc-link" href="#运行命令-不启动应用" data-level="1">运行命令（不启动应用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入沙盒环境调试">
-          <a class="post-toc-link" href="#进入沙盒环境调试" data-level="1">进入沙盒环境调试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="覆盖权限运行">
-          <a class="post-toc-link" href="#覆盖权限运行" data-level="1">覆盖权限运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制单实例">
-          <a class="post-toc-link" href="#强制单实例" data-level="1">强制单实例</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="权限管理">
           <a class="post-toc-link" href="#权限管理" data-level="3">权限管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看权限">
-          <a class="post-toc-link" href="#查看权限" data-level="1">查看权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="授权文件系统访问">
-          <a class="post-toc-link" href="#授权文件系统访问" data-level="1">授权文件系统访问</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="授权设备访问">
-          <a class="post-toc-link" href="#授权设备访问" data-level="1">授权设备访问</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="授权网络">
-          <a class="post-toc-link" href="#授权网络" data-level="1">授权网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="授权-socket">
-          <a class="post-toc-link" href="#授权-socket" data-level="1">授权 socket</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="授权-dbus">
-          <a class="post-toc-link" href="#授权-dbus" data-level="1">授权 DBus</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置权限">
-          <a class="post-toc-link" href="#重置权限" data-level="1">重置权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑权限配置文件">
-          <a class="post-toc-link" href="#编辑权限配置文件" data-level="1">编辑权限配置文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="故障修复">
           <a class="post-toc-link" href="#故障修复" data-level="3">故障修复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复安装">
-          <a class="post-toc-link" href="#修复安装" data-level="1">修复安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理缓存">
-          <a class="post-toc-link" href="#清理缓存" data-level="1">清理缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置应用权限">
-          <a class="post-toc-link" href="#重置应用权限" data-level="1">重置应用权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看文档">
-          <a class="post-toc-link" href="#查看文档" data-level="1">查看文档</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看应用日志">
-          <a class="post-toc-link" href="#查看应用日志" data-level="1">查看应用日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看版本">
-          <a class="post-toc-link" href="#查看版本" data-level="1">查看版本</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用应用安装">
           <a class="post-toc-link" href="#常用应用安装" data-level="3">常用应用安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常用-flatpak-应用">
-          <a class="post-toc-link" href="#常用-flatpak-应用" data-level="1">常用 Flatpak 应用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="浏览器">
-          <a class="post-toc-link" href="#浏览器" data-level="1">浏览器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="媒体播放器">
-          <a class="post-toc-link" href="#媒体播放器" data-level="1">媒体播放器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开发工具">
-          <a class="post-toc-link" href="#开发工具" data-level="1">开发工具</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="办公软件">
-          <a class="post-toc-link" href="#办公软件" data-level="1">办公软件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="通讯工具">
-          <a class="post-toc-link" href="#通讯工具" data-level="1">通讯工具</a>
         </li>
         
       </ul>
@@ -2543,7 +1943,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2726,8 +2126,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

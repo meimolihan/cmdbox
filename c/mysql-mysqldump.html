@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="mysql-mysqldump 命令">
     <meta name="twitter:description" content="MySQL数据库逻辑备份工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1654,148 +1654,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
-              <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
-              <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="数据库选择">
-              <a class="post-toc-link" href="#数据库选择" data-level="1">数据库选择</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="性能选项">
-              <a class="post-toc-link" href="#性能选项" data-level="1">性能选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="其他选项">
-              <a class="post-toc-link" href="#其他选项" data-level="1">其他选项</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份单个数据库">
-              <a class="post-toc-link" href="#备份单个数据库" data-level="1">备份单个数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份单个数据库的某些表">
-              <a class="post-toc-link" href="#备份单个数据库的某些表" data-level="1">备份单个数据库的某些表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份多个数据库">
-              <a class="post-toc-link" href="#备份多个数据库" data-level="1">备份多个数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份所有数据库">
-              <a class="post-toc-link" href="#备份所有数据库" data-level="1">备份所有数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只备份表结构-不含数据">
-              <a class="post-toc-link" href="#只备份表结构-不含数据" data-level="1">只备份表结构（不含数据）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只备份数据-不含表结构">
-              <a class="post-toc-link" href="#只备份数据-不含表结构" data-level="1">只备份数据（不含表结构）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用事务保证一致性备份-推荐用于innodb">
-              <a class="post-toc-link" href="#使用事务保证一致性备份-推荐用于innodb" data-level="1">使用事务保证一致性备份（推荐用于InnoDB）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完整备份-包含存储过程-触发器-事件">
-              <a class="post-toc-link" href="#完整备份-包含存储过程-触发器-事件" data-level="1">完整备份（包含存储过程、触发器、事件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩备份">
-              <a class="post-toc-link" href="#压缩备份" data-level="1">压缩备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份远程数据库">
-              <a class="post-toc-link" href="#备份远程数据库" data-level="1">备份远程数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份时忽略某些表">
-              <a class="post-toc-link" href="#备份时忽略某些表" data-level="1">备份时忽略某些表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出为xml格式">
-              <a class="post-toc-link" href="#导出为xml格式" data-level="1">导出为XML格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份符合条件的数据">
-              <a class="post-toc-link" href="#备份符合条件的数据" data-level="1">备份符合条件的数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用完整insert语句-包含列名">
-              <a class="post-toc-link" href="#使用完整insert语句-包含列名" data-level="1">使用完整INSERT语句（包含列名）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="紧凑格式-减少注释">
-              <a class="post-toc-link" href="#紧凑格式-减少注释" data-level="1">紧凑格式（减少注释）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份时记录二进制日志位置-用于主从复制">
-              <a class="post-toc-link" href="#备份时记录二进制日志位置-用于主从复制" data-level="1">备份时记录二进制日志位置（用于主从复制）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="刷新日志后备份">
-              <a class="post-toc-link" href="#刷新日志后备份" data-level="1">刷新日志后备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份存储过程和函数">
-              <a class="post-toc-link" href="#备份存储过程和函数" data-level="1">备份存储过程和函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份到远程服务器">
-              <a class="post-toc-link" href="#备份到远程服务器" data-level="1">备份到远程服务器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从压缩备份恢复">
-              <a class="post-toc-link" href="#从压缩备份恢复" data-level="1">从压缩备份恢复</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="备份策略示例">
               <a class="post-toc-link" href="#备份策略示例" data-level="3">备份策略示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每日全量备份脚本">
-              <a class="post-toc-link" href="#每日全量备份脚本" data-level="1">每日全量备份脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保留最近7天的备份">
-              <a class="post-toc-link" href="#保留最近7天的备份" data-level="1">保留最近7天的备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="分库备份脚本">
-              <a class="post-toc-link" href="#分库备份脚本" data-level="1">分库备份脚本</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="恢复数据">
               <a class="post-toc-link" href="#恢复数据" data-level="3">恢复数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据库">
-              <a class="post-toc-link" href="#恢复数据库" data-level="1">恢复数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复压缩备份">
-              <a class="post-toc-link" href="#恢复压缩备份" data-level="1">恢复压缩备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复所有数据库">
-              <a class="post-toc-link" href="#恢复所有数据库" data-level="1">恢复所有数据库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从远程恢复到本地">
-              <a class="post-toc-link" href="#从远程恢复到本地" data-level="1">从远程恢复到本地</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复时忽略错误继续">
-              <a class="post-toc-link" href="#恢复时忽略错误继续" data-level="1">恢复时忽略错误继续</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1839,148 +1707,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接选项">
-          <a class="post-toc-link" href="#连接选项" data-level="1">连接选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出选项">
-          <a class="post-toc-link" href="#输出选项" data-level="1">输出选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="数据库选择">
-          <a class="post-toc-link" href="#数据库选择" data-level="1">数据库选择</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="性能选项">
-          <a class="post-toc-link" href="#性能选项" data-level="1">性能选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="其他选项">
-          <a class="post-toc-link" href="#其他选项" data-level="1">其他选项</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份单个数据库">
-          <a class="post-toc-link" href="#备份单个数据库" data-level="1">备份单个数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份单个数据库的某些表">
-          <a class="post-toc-link" href="#备份单个数据库的某些表" data-level="1">备份单个数据库的某些表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份多个数据库">
-          <a class="post-toc-link" href="#备份多个数据库" data-level="1">备份多个数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份所有数据库">
-          <a class="post-toc-link" href="#备份所有数据库" data-level="1">备份所有数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只备份表结构-不含数据">
-          <a class="post-toc-link" href="#只备份表结构-不含数据" data-level="1">只备份表结构（不含数据）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只备份数据-不含表结构">
-          <a class="post-toc-link" href="#只备份数据-不含表结构" data-level="1">只备份数据（不含表结构）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用事务保证一致性备份-推荐用于innodb">
-          <a class="post-toc-link" href="#使用事务保证一致性备份-推荐用于innodb" data-level="1">使用事务保证一致性备份（推荐用于InnoDB）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完整备份-包含存储过程-触发器-事件">
-          <a class="post-toc-link" href="#完整备份-包含存储过程-触发器-事件" data-level="1">完整备份（包含存储过程、触发器、事件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩备份">
-          <a class="post-toc-link" href="#压缩备份" data-level="1">压缩备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份远程数据库">
-          <a class="post-toc-link" href="#备份远程数据库" data-level="1">备份远程数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份时忽略某些表">
-          <a class="post-toc-link" href="#备份时忽略某些表" data-level="1">备份时忽略某些表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出为xml格式">
-          <a class="post-toc-link" href="#导出为xml格式" data-level="1">导出为XML格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份符合条件的数据">
-          <a class="post-toc-link" href="#备份符合条件的数据" data-level="1">备份符合条件的数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用完整insert语句-包含列名">
-          <a class="post-toc-link" href="#使用完整insert语句-包含列名" data-level="1">使用完整INSERT语句（包含列名）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="紧凑格式-减少注释">
-          <a class="post-toc-link" href="#紧凑格式-减少注释" data-level="1">紧凑格式（减少注释）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份时记录二进制日志位置-用于主从复制">
-          <a class="post-toc-link" href="#备份时记录二进制日志位置-用于主从复制" data-level="1">备份时记录二进制日志位置（用于主从复制）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="刷新日志后备份">
-          <a class="post-toc-link" href="#刷新日志后备份" data-level="1">刷新日志后备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份存储过程和函数">
-          <a class="post-toc-link" href="#备份存储过程和函数" data-level="1">备份存储过程和函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份到远程服务器">
-          <a class="post-toc-link" href="#备份到远程服务器" data-level="1">备份到远程服务器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从压缩备份恢复">
-          <a class="post-toc-link" href="#从压缩备份恢复" data-level="1">从压缩备份恢复</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="备份策略示例">
           <a class="post-toc-link" href="#备份策略示例" data-level="3">备份策略示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每日全量备份脚本">
-          <a class="post-toc-link" href="#每日全量备份脚本" data-level="1">每日全量备份脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保留最近7天的备份">
-          <a class="post-toc-link" href="#保留最近7天的备份" data-level="1">保留最近7天的备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="分库备份脚本">
-          <a class="post-toc-link" href="#分库备份脚本" data-level="1">分库备份脚本</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="恢复数据">
           <a class="post-toc-link" href="#恢复数据" data-level="3">恢复数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复数据库">
-          <a class="post-toc-link" href="#恢复数据库" data-level="1">恢复数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复压缩备份">
-          <a class="post-toc-link" href="#恢复压缩备份" data-level="1">恢复压缩备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复所有数据库">
-          <a class="post-toc-link" href="#恢复所有数据库" data-level="1">恢复所有数据库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从远程恢复到本地">
-          <a class="post-toc-link" href="#从远程恢复到本地" data-level="1">从远程恢复到本地</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复时忽略错误继续">
-          <a class="post-toc-link" href="#恢复时忽略错误继续" data-level="1">恢复时忽略错误继续</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1993,7 +1729,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2176,8 +1912,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

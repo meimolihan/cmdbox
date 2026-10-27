@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="shellcheck 命令">
     <meta name="twitter:description" content="Shell脚本语法和规范检查工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1625,60 +1625,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常用选项">
-              <a class="post-toc-link" href="#常用选项" data-level="1">常用选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查范围">
-              <a class="post-toc-link" href="#检查范围" data-level="1">检查范围</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
               <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认格式-人类可读">
-              <a class="post-toc-link" href="#默认格式-人类可读" data-level="1">默认格式（人类可读）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="json格式-适合程序处理">
-              <a class="post-toc-link" href="#json格式-适合程序处理" data-level="1">JSON格式（适合程序处理）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="gcc格式-适合ide集成">
-              <a class="post-toc-link" href="#gcc格式-适合ide集成" data-level="1">GCC格式（适合IDE集成）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="checkstyle格式-适合ci-cd">
-              <a class="post-toc-link" href="#checkstyle格式-适合ci-cd" data-level="1">Checkstyle格式（适合CI/CD）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个脚本">
-              <a class="post-toc-link" href="#检查单个脚本" data-level="1">检查单个脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查多个脚本">
-              <a class="post-toc-link" href="#检查多个脚本" data-level="1">检查多个脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="排除指定规则">
-              <a class="post-toc-link" href="#排除指定规则" data-level="1">排除指定规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定shell类型">
-              <a class="post-toc-link" href="#指定shell类型" data-level="1">指定Shell类型</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从stdin读取">
-              <a class="post-toc-link" href="#从stdin读取" data-level="1">从stdin读取</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="输出wiki链接-方便查看规则说明">
-              <a class="post-toc-link" href="#输出wiki链接-方便查看规则说明" data-level="1">输出Wiki链接（方便查看规则说明）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常见错误代码">
@@ -1697,24 +1649,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#忽略特定检查" data-level="3">忽略特定检查</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="shellcheck-disable-sc2086">
-              <a class="post-toc-link" href="#shellcheck-disable-sc2086" data-level="1">shellcheck disable=SC2086</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="忽略sc2086规则-引号问题">
-              <a class="post-toc-link" href="#忽略sc2086规则-引号问题" data-level="1">忽略SC2086规则（引号问题）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="检查shell脚本最佳实践">
               <a class="post-toc-link" href="#检查shell脚本最佳实践" data-level="3">检查Shell脚本最佳实践</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用严格模式检查">
-              <a class="post-toc-link" href="#启用严格模式检查" data-level="1">启用严格模式检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有shell类型">
-              <a class="post-toc-link" href="#检查所有shell类型" data-level="1">检查所有Shell类型</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="修复建议示例">
@@ -1766,60 +1702,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常用选项">
-          <a class="post-toc-link" href="#常用选项" data-level="1">常用选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查范围">
-          <a class="post-toc-link" href="#检查范围" data-level="1">检查范围</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="输出格式">
           <a class="post-toc-link" href="#输出格式" data-level="3">输出格式</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认格式-人类可读">
-          <a class="post-toc-link" href="#默认格式-人类可读" data-level="1">默认格式（人类可读）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="json格式-适合程序处理">
-          <a class="post-toc-link" href="#json格式-适合程序处理" data-level="1">JSON格式（适合程序处理）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="gcc格式-适合ide集成">
-          <a class="post-toc-link" href="#gcc格式-适合ide集成" data-level="1">GCC格式（适合IDE集成）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="checkstyle格式-适合ci-cd">
-          <a class="post-toc-link" href="#checkstyle格式-适合ci-cd" data-level="1">Checkstyle格式（适合CI/CD）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用实例">
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查单个脚本">
-          <a class="post-toc-link" href="#检查单个脚本" data-level="1">检查单个脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查多个脚本">
-          <a class="post-toc-link" href="#检查多个脚本" data-level="1">检查多个脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="排除指定规则">
-          <a class="post-toc-link" href="#排除指定规则" data-level="1">排除指定规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定shell类型">
-          <a class="post-toc-link" href="#指定shell类型" data-level="1">指定Shell类型</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从stdin读取">
-          <a class="post-toc-link" href="#从stdin读取" data-level="1">从stdin读取</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="输出wiki链接-方便查看规则说明">
-          <a class="post-toc-link" href="#输出wiki链接-方便查看规则说明" data-level="1">输出Wiki链接（方便查看规则说明）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常见错误代码">
@@ -1838,24 +1726,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#忽略特定检查" data-level="3">忽略特定检查</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="shellcheck-disable-sc2086">
-          <a class="post-toc-link" href="#shellcheck-disable-sc2086" data-level="1">shellcheck disable=SC2086</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="忽略sc2086规则-引号问题">
-          <a class="post-toc-link" href="#忽略sc2086规则-引号问题" data-level="1">忽略SC2086规则（引号问题）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="检查shell脚本最佳实践">
           <a class="post-toc-link" href="#检查shell脚本最佳实践" data-level="3">检查Shell脚本最佳实践</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用严格模式检查">
-          <a class="post-toc-link" href="#启用严格模式检查" data-level="1">启用严格模式检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查所有shell类型">
-          <a class="post-toc-link" href="#检查所有shell类型" data-level="1">检查所有Shell类型</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="修复建议示例">
@@ -1872,7 +1744,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2055,8 +1927,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

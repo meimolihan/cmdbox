@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="cmake 命令">
     <meta name="twitter:description" content="跨平台构建系统生成器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1906,248 +1906,40 @@ function copied(target, str) {
               <a class="post-toc-link" href="#最小-cmakelists-txt" data-level="3">最小 CMakeLists.txt</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="项目名称和版本">
-              <a class="post-toc-link" href="#项目名称和版本" data-level="1">项目名称和版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-c-标准">
-              <a class="post-toc-link" href="#设置-c-标准" data-level="1">设置 C++ 标准</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加可执行文件">
-              <a class="post-toc-link" href="#添加可执行文件" data-level="1">添加可执行文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="包含目录">
-              <a class="post-toc-link" href="#包含目录" data-level="1">包含目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="链接库">
-              <a class="post-toc-link" href="#链接库" data-level="1">链接库</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
               <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="项目信息">
-              <a class="post-toc-link" href="#项目信息" data-level="1">项目信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置变量">
-              <a class="post-toc-link" href="#设置变量" data-level="1">设置变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件设置">
-              <a class="post-toc-link" href="#条件设置" data-level="1">条件设置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列表操作">
-              <a class="post-toc-link" href="#列表操作" data-level="1">列表操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加子目录">
-              <a class="post-toc-link" href="#添加子目录" data-level="1">添加子目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="包含文件">
-              <a class="post-toc-link" href="#包含文件" data-level="1">包含文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="添加源文件">
               <a class="post-toc-link" href="#添加源文件" data-level="3">添加源文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加可执行文件">
-              <a class="post-toc-link" href="#添加可执行文件" data-level="1">添加可执行文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加静态库">
-              <a class="post-toc-link" href="#添加静态库" data-level="1">添加静态库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加共享库">
-              <a class="post-toc-link" href="#添加共享库" data-level="1">添加共享库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加头文件库-仅头文件">
-              <a class="post-toc-link" href="#添加头文件库-仅头文件" data-level="1">添加头文件库（仅头文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="从模式添加文件">
-              <a class="post-toc-link" href="#从模式添加文件" data-level="1">从模式添加文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="递归添加">
-              <a class="post-toc-link" href="#递归添加" data-level="1">递归添加</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="排除文件">
-              <a class="post-toc-link" href="#排除文件" data-level="1">排除文件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="包含目录和链接库">
               <a class="post-toc-link" href="#包含目录和链接库" data-level="3">包含目录和链接库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="包含目录">
-              <a class="post-toc-link" href="#包含目录" data-level="1">包含目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="目标包含目录">
-              <a class="post-toc-link" href="#目标包含目录" data-level="1">目标包含目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="链接库">
-              <a class="post-toc-link" href="#链接库" data-level="1">链接库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="链接多个库">
-              <a class="post-toc-link" href="#链接多个库" data-level="1">链接多个库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查找库">
-              <a class="post-toc-link" href="#查找库" data-level="1">查找库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查找包-使用-pkg-config">
-              <a class="post-toc-link" href="#查找包-使用-pkg-config" data-level="1">查找包（使用 pkg-config）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="条件编译">
               <a class="post-toc-link" href="#条件编译" data-level="3">条件编译</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="简单条件">
-              <a class="post-toc-link" href="#简单条件" data-level="1">简单条件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="变量判断">
-              <a class="post-toc-link" href="#变量判断" data-level="1">变量判断</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="变量比较">
-              <a class="post-toc-link" href="#变量比较" data-level="1">变量比较</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="选项">
-              <a class="post-toc-link" href="#选项" data-level="1">选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="平台检测">
-              <a class="post-toc-link" href="#平台检测" data-level="1">平台检测</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="生成器表达式">
               <a class="post-toc-link" href="#生成器表达式" data-level="3">生成器表达式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件包含目录">
-              <a class="post-toc-link" href="#条件包含目录" data-level="1">条件包含目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件定义">
-              <a class="post-toc-link" href="#条件定义" data-level="1">条件定义</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件链接">
-              <a class="post-toc-link" href="#条件链接" data-level="1">条件链接</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="测试">
               <a class="post-toc-link" href="#测试" data-level="3">测试</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用测试">
-              <a class="post-toc-link" href="#启用测试" data-level="1">启用测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加测试">
-              <a class="post-toc-link" href="#添加测试" data-level="1">添加测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试命令">
-              <a class="post-toc-link" href="#测试命令" data-level="1">测试命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自定义测试命令">
-              <a class="post-toc-link" href="#自定义测试命令" data-level="1">自定义测试命令</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装">
               <a class="post-toc-link" href="#安装" data-level="3">安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装目标">
-              <a class="post-toc-link" href="#安装目标" data-level="1">安装目标</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装文件">
-              <a class="post-toc-link" href="#安装文件" data-level="1">安装文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装目录">
-              <a class="post-toc-link" href="#安装目录" data-level="1">安装目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装-cmake-配置">
-              <a class="post-toc-link" href="#安装-cmake-配置" data-level="1">安装 CMake 配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="交叉编译">
               <a class="post-toc-link" href="#交叉编译" data-level="3">交叉编译</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="工具链文件-toolchain-cmake">
-              <a class="post-toc-link" href="#工具链文件-toolchain-cmake" data-level="1">工具链文件 toolchain.cmake</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用工具链">
-              <a class="post-toc-link" href="#使用工具链" data-level="1">使用工具链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="目标系统处理器">
-              <a class="post-toc-link" href="#目标系统处理器" data-level="1">目标系统处理器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查找程序-禁用系统路径">
-              <a class="post-toc-link" href="#查找程序-禁用系统路径" data-level="1">查找程序（禁用系统路径）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项">
               <a class="post-toc-link" href="#常用选项" data-level="3">常用选项</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="首次配置">
-              <a class="post-toc-link" href="#首次配置" data-level="1">首次配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="构建">
-              <a class="post-toc-link" href="#构建" data-level="1">构建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理构建">
-              <a class="post-toc-link" href="#清理构建" data-level="1">清理构建</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新配置">
-              <a class="post-toc-link" href="#重新配置" data-level="1">重新配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有变量">
-              <a class="post-toc-link" href="#显示所有变量" data-level="1">显示所有变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置变量">
-              <a class="post-toc-link" href="#设置变量" data-level="1">设置变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装">
-              <a class="post-toc-link" href="#安装" data-level="1">安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="预设">
-              <a class="post-toc-link" href="#预设" data-level="1">预设</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="presets">
@@ -2199,248 +1991,40 @@ function copied(target, str) {
           <a class="post-toc-link" href="#最小-cmakelists-txt" data-level="3">最小 CMakeLists.txt</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="项目名称和版本">
-          <a class="post-toc-link" href="#项目名称和版本" data-level="1">项目名称和版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-c-标准">
-          <a class="post-toc-link" href="#设置-c-标准" data-level="1">设置 C++ 标准</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加可执行文件">
-          <a class="post-toc-link" href="#添加可执行文件" data-level="1">添加可执行文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="包含目录">
-          <a class="post-toc-link" href="#包含目录" data-level="1">包含目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="链接库">
-          <a class="post-toc-link" href="#链接库" data-level="1">链接库</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
           <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="项目信息">
-          <a class="post-toc-link" href="#项目信息" data-level="1">项目信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置变量">
-          <a class="post-toc-link" href="#设置变量" data-level="1">设置变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件设置">
-          <a class="post-toc-link" href="#条件设置" data-level="1">条件设置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列表操作">
-          <a class="post-toc-link" href="#列表操作" data-level="1">列表操作</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加子目录">
-          <a class="post-toc-link" href="#添加子目录" data-level="1">添加子目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="包含文件">
-          <a class="post-toc-link" href="#包含文件" data-level="1">包含文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="添加源文件">
           <a class="post-toc-link" href="#添加源文件" data-level="3">添加源文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加可执行文件">
-          <a class="post-toc-link" href="#添加可执行文件" data-level="1">添加可执行文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加静态库">
-          <a class="post-toc-link" href="#添加静态库" data-level="1">添加静态库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加共享库">
-          <a class="post-toc-link" href="#添加共享库" data-level="1">添加共享库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加头文件库-仅头文件">
-          <a class="post-toc-link" href="#添加头文件库-仅头文件" data-level="1">添加头文件库（仅头文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="从模式添加文件">
-          <a class="post-toc-link" href="#从模式添加文件" data-level="1">从模式添加文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="递归添加">
-          <a class="post-toc-link" href="#递归添加" data-level="1">递归添加</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="排除文件">
-          <a class="post-toc-link" href="#排除文件" data-level="1">排除文件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="包含目录和链接库">
           <a class="post-toc-link" href="#包含目录和链接库" data-level="3">包含目录和链接库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="包含目录">
-          <a class="post-toc-link" href="#包含目录" data-level="1">包含目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="目标包含目录">
-          <a class="post-toc-link" href="#目标包含目录" data-level="1">目标包含目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="链接库">
-          <a class="post-toc-link" href="#链接库" data-level="1">链接库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="链接多个库">
-          <a class="post-toc-link" href="#链接多个库" data-level="1">链接多个库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查找库">
-          <a class="post-toc-link" href="#查找库" data-level="1">查找库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查找包-使用-pkg-config">
-          <a class="post-toc-link" href="#查找包-使用-pkg-config" data-level="1">查找包（使用 pkg-config）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="条件编译">
           <a class="post-toc-link" href="#条件编译" data-level="3">条件编译</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="简单条件">
-          <a class="post-toc-link" href="#简单条件" data-level="1">简单条件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="变量判断">
-          <a class="post-toc-link" href="#变量判断" data-level="1">变量判断</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="变量比较">
-          <a class="post-toc-link" href="#变量比较" data-level="1">变量比较</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="选项">
-          <a class="post-toc-link" href="#选项" data-level="1">选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="平台检测">
-          <a class="post-toc-link" href="#平台检测" data-level="1">平台检测</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="生成器表达式">
           <a class="post-toc-link" href="#生成器表达式" data-level="3">生成器表达式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件包含目录">
-          <a class="post-toc-link" href="#条件包含目录" data-level="1">条件包含目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件定义">
-          <a class="post-toc-link" href="#条件定义" data-level="1">条件定义</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件链接">
-          <a class="post-toc-link" href="#条件链接" data-level="1">条件链接</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="测试">
           <a class="post-toc-link" href="#测试" data-level="3">测试</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用测试">
-          <a class="post-toc-link" href="#启用测试" data-level="1">启用测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加测试">
-          <a class="post-toc-link" href="#添加测试" data-level="1">添加测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试命令">
-          <a class="post-toc-link" href="#测试命令" data-level="1">测试命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自定义测试命令">
-          <a class="post-toc-link" href="#自定义测试命令" data-level="1">自定义测试命令</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装">
           <a class="post-toc-link" href="#安装" data-level="3">安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装目标">
-          <a class="post-toc-link" href="#安装目标" data-level="1">安装目标</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装文件">
-          <a class="post-toc-link" href="#安装文件" data-level="1">安装文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装目录">
-          <a class="post-toc-link" href="#安装目录" data-level="1">安装目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装-cmake-配置">
-          <a class="post-toc-link" href="#安装-cmake-配置" data-level="1">安装 CMake 配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="交叉编译">
           <a class="post-toc-link" href="#交叉编译" data-level="3">交叉编译</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="工具链文件-toolchain-cmake">
-          <a class="post-toc-link" href="#工具链文件-toolchain-cmake" data-level="1">工具链文件 toolchain.cmake</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用工具链">
-          <a class="post-toc-link" href="#使用工具链" data-level="1">使用工具链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="目标系统处理器">
-          <a class="post-toc-link" href="#目标系统处理器" data-level="1">目标系统处理器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查找程序-禁用系统路径">
-          <a class="post-toc-link" href="#查找程序-禁用系统路径" data-level="1">查找程序（禁用系统路径）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用选项">
           <a class="post-toc-link" href="#常用选项" data-level="3">常用选项</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="首次配置">
-          <a class="post-toc-link" href="#首次配置" data-level="1">首次配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="构建">
-          <a class="post-toc-link" href="#构建" data-level="1">构建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理构建">
-          <a class="post-toc-link" href="#清理构建" data-level="1">清理构建</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新配置">
-          <a class="post-toc-link" href="#重新配置" data-level="1">重新配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示所有变量">
-          <a class="post-toc-link" href="#显示所有变量" data-level="1">显示所有变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置变量">
-          <a class="post-toc-link" href="#设置变量" data-level="1">设置变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装">
-          <a class="post-toc-link" href="#安装" data-level="1">安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="预设">
-          <a class="post-toc-link" href="#预设" data-level="1">预设</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="presets">
@@ -2457,7 +2041,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2640,8 +2224,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

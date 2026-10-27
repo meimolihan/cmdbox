@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="istoreos-crontab 命令">
     <meta name="twitter:description" content="iStoreOS 计划任务管理 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1725,232 +1725,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑计划任务">
-              <a class="post-toc-link" href="#编辑计划任务" data-level="1">编辑计划任务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前计划任务">
-              <a class="post-toc-link" href="#查看当前计划任务" data-level="1">查看当前计划任务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有计划任务">
-              <a class="post-toc-link" href="#删除所有计划任务" data-level="1">删除所有计划任务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启-cron-服务">
-              <a class="post-toc-link" href="#重启-cron-服务" data-level="1">重启 cron 服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-cron-日志">
-              <a class="post-toc-link" href="#查看-cron-日志" data-level="1">查看 cron 日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="实用定时任务示例">
               <a class="post-toc-link" href="#实用定时任务示例" data-level="3">实用定时任务示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="系统维护">
-              <a class="post-toc-link" href="#系统维护" data-level="1">========== 系统维护 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点重启系统">
-              <a class="post-toc-link" href="#每天凌晨-3-点重启系统" data-level="1">每天凌晨 3 点重启系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨-4-点重启">
-              <a class="post-toc-link" href="#每周日凌晨-4-点重启" data-level="1">每周日凌晨 4 点重启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-2-点清理缓存">
-              <a class="post-toc-link" href="#每天凌晨-2-点清理缓存" data-level="1">每天凌晨 2 点清理缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每小时同步时间">
-              <a class="post-toc-link" href="#每小时同步时间" data-level="1">每小时同步时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志管理">
-              <a class="post-toc-link" href="#日志管理" data-level="1">========== 日志管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-0-点清空日志">
-              <a class="post-toc-link" href="#每天凌晨-0-点清空日志" data-level="1">每天凌晨 0 点清空日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周清理日志">
-              <a class="post-toc-link" href="#每周清理日志" data-level="1">每周清理日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天备份日志到-u-盘">
-              <a class="post-toc-link" href="#每天备份日志到-u-盘" data-level="1">每天备份日志到 U 盘</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="系统备份">
-              <a class="post-toc-link" href="#系统备份" data-level="1">========== 系统备份 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-2-点备份配置">
-              <a class="post-toc-link" href="#每天凌晨-2-点备份配置" data-level="1">每天凌晨 2 点备份配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨备份">
-              <a class="post-toc-link" href="#每周日凌晨备份" data-level="1">每周日凌晨备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每月-1-号备份">
-              <a class="post-toc-link" href="#每月-1-号备份" data-level="1">每月 1 号备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="网络维护">
-              <a class="post-toc-link" href="#网络维护" data-level="1">========== 网络维护 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每小时检查网络并重启">
-              <a class="post-toc-link" href="#每小时检查网络并重启" data-level="1">每小时检查网络并重启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每-5-分钟检查网络">
-              <a class="post-toc-link" href="#每-5-分钟检查网络" data-level="1">每 5 分钟检查网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-5-点重启网络服务">
-              <a class="post-toc-link" href="#每天凌晨-5-点重启网络服务" data-level="1">每天凌晨 5 点重启网络服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天-6-点重启-dns">
-              <a class="post-toc-link" href="#每天-6-点重启-dns" data-level="1">每天 6 点重启 DNS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务管理">
-              <a class="post-toc-link" href="#服务管理" data-level="1">========== 服务管理 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点重启-openclash">
-              <a class="post-toc-link" href="#每天凌晨-3-点重启-openclash" data-level="1">每天凌晨 3 点重启 OpenClash</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每小时重启指定服务">
-              <a class="post-toc-link" href="#每小时重启指定服务" data-level="1">每小时重启指定服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理任务">
-              <a class="post-toc-link" href="#清理任务" data-level="1">========== 清理任务 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天清理临时文件">
-              <a class="post-toc-link" href="#每天清理临时文件" data-level="1">每天清理临时文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周清理-opkg-缓存">
-              <a class="post-toc-link" href="#每周清理-opkg-缓存" data-level="1">每周清理 opkg 缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每月清理旧备份">
-              <a class="post-toc-link" href="#每月清理旧备份" data-level="1">每月清理旧备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="监控任务">
-              <a class="post-toc-link" href="#监控任务" data-level="1">========== 监控任务 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每-10-分钟检查-cpu-温度">
-              <a class="post-toc-link" href="#每-10-分钟检查-cpu-温度" data-level="1">每 10 分钟检查 CPU 温度</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每小时记录系统状态">
-              <a class="post-toc-link" href="#每小时记录系统状态" data-level="1">每小时记录系统状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每-5-分钟检查内存使用">
-              <a class="post-toc-link" href="#每-5-分钟检查内存使用" data-level="1">每 5 分钟检查内存使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动更新">
-              <a class="post-toc-link" href="#自动更新" data-level="1">========== 自动更新 ==========</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周检查软件更新">
-              <a class="post-toc-link" href="#每周检查软件更新" data-level="1">每周检查软件更新</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每月检查固件更新-示例">
-              <a class="post-toc-link" href="#每月检查固件更新-示例" data-level="1">每月检查固件更新（示例）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="cron-服务管理">
               <a class="post-toc-link" href="#cron-服务管理" data-level="3">cron 服务管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动-cron-服务">
-              <a class="post-toc-link" href="#启动-cron-服务" data-level="1">启动 cron 服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止-cron-服务">
-              <a class="post-toc-link" href="#停止-cron-服务" data-level="1">停止 cron 服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启-cron-服务">
-              <a class="post-toc-link" href="#重启-cron-服务" data-level="1">重启 cron 服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用开机自启">
-              <a class="post-toc-link" href="#启用开机自启" data-level="1">启用开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用开机自启">
-              <a class="post-toc-link" href="#禁用开机自启" data-level="1">禁用开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-cron-服务状态">
-              <a class="post-toc-link" href="#查看-cron-服务状态" data-level="1">查看 cron 服务状态</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例脚本">
               <a class="post-toc-link" href="#完整示例脚本" data-level="3">完整示例脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-定时任务配置脚本">
-              <a class="post-toc-link" href="#istoreos-定时任务配置脚本" data-level="1">iStoreOS 定时任务配置脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备份当前-crontab">
-              <a class="post-toc-link" href="#备份当前-crontab" data-level="1">备份当前 crontab</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加新的定时任务">
-              <a class="post-toc-link" href="#添加新的定时任务" data-level="1">添加新的定时任务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-系统维护任务">
-              <a class="post-toc-link" href="#istoreos-系统维护任务" data-level="1">iStoreOS 系统维护任务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-2-点备份系统配置">
-              <a class="post-toc-link" href="#每天凌晨-2-点备份系统配置" data-level="1">每天凌晨 2 点备份系统配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点清理缓存">
-              <a class="post-toc-link" href="#每天凌晨-3-点清理缓存" data-level="1">每天凌晨 3 点清理缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每小时检查网络连接">
-              <a class="post-toc-link" href="#每小时检查网络连接" data-level="1">每小时检查网络连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨-4-点重启系统">
-              <a class="post-toc-link" href="#每周日凌晨-4-点重启系统" data-level="1">每周日凌晨 4 点重启系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="每月清理-30-天前的备份">
-              <a class="post-toc-link" href="#每月清理-30-天前的备份" data-level="1">每月清理 30 天前的备份</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="应用新的-crontab">
-              <a class="post-toc-link" href="#应用新的-crontab" data-level="1">应用新的 crontab</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启-cron-服务">
-              <a class="post-toc-link" href="#重启-cron-服务" data-level="1">重启 cron 服务</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1959,22 +1743,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="调试技巧">
               <a class="post-toc-link" href="#调试技巧" data-level="3">调试技巧</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看任务是否执行">
-              <a class="post-toc-link" href="#查看任务是否执行" data-level="1">查看任务是否执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动执行任务测试">
-              <a class="post-toc-link" href="#手动执行任务测试" data-level="1">手动执行任务测试</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看任务执行时间">
-              <a class="post-toc-link" href="#查看任务执行时间" data-level="1">查看任务执行时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将任务输出重定向到文件">
-              <a class="post-toc-link" href="#将任务输出重定向到文件" data-level="1">将任务输出重定向到文件</a>
             </li>
             
           </ul>
@@ -2026,232 +1794,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑计划任务">
-          <a class="post-toc-link" href="#编辑计划任务" data-level="1">编辑计划任务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前计划任务">
-          <a class="post-toc-link" href="#查看当前计划任务" data-level="1">查看当前计划任务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有计划任务">
-          <a class="post-toc-link" href="#删除所有计划任务" data-level="1">删除所有计划任务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启-cron-服务">
-          <a class="post-toc-link" href="#重启-cron-服务" data-level="1">重启 cron 服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-cron-日志">
-          <a class="post-toc-link" href="#查看-cron-日志" data-level="1">查看 cron 日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="实用定时任务示例">
           <a class="post-toc-link" href="#实用定时任务示例" data-level="3">实用定时任务示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="系统维护">
-          <a class="post-toc-link" href="#系统维护" data-level="1">========== 系统维护 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点重启系统">
-          <a class="post-toc-link" href="#每天凌晨-3-点重启系统" data-level="1">每天凌晨 3 点重启系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨-4-点重启">
-          <a class="post-toc-link" href="#每周日凌晨-4-点重启" data-level="1">每周日凌晨 4 点重启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-2-点清理缓存">
-          <a class="post-toc-link" href="#每天凌晨-2-点清理缓存" data-level="1">每天凌晨 2 点清理缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每小时同步时间">
-          <a class="post-toc-link" href="#每小时同步时间" data-level="1">每小时同步时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志管理">
-          <a class="post-toc-link" href="#日志管理" data-level="1">========== 日志管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-0-点清空日志">
-          <a class="post-toc-link" href="#每天凌晨-0-点清空日志" data-level="1">每天凌晨 0 点清空日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周清理日志">
-          <a class="post-toc-link" href="#每周清理日志" data-level="1">每周清理日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天备份日志到-u-盘">
-          <a class="post-toc-link" href="#每天备份日志到-u-盘" data-level="1">每天备份日志到 U 盘</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="系统备份">
-          <a class="post-toc-link" href="#系统备份" data-level="1">========== 系统备份 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-2-点备份配置">
-          <a class="post-toc-link" href="#每天凌晨-2-点备份配置" data-level="1">每天凌晨 2 点备份配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨备份">
-          <a class="post-toc-link" href="#每周日凌晨备份" data-level="1">每周日凌晨备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每月-1-号备份">
-          <a class="post-toc-link" href="#每月-1-号备份" data-level="1">每月 1 号备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="网络维护">
-          <a class="post-toc-link" href="#网络维护" data-level="1">========== 网络维护 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每小时检查网络并重启">
-          <a class="post-toc-link" href="#每小时检查网络并重启" data-level="1">每小时检查网络并重启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每-5-分钟检查网络">
-          <a class="post-toc-link" href="#每-5-分钟检查网络" data-level="1">每 5 分钟检查网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-5-点重启网络服务">
-          <a class="post-toc-link" href="#每天凌晨-5-点重启网络服务" data-level="1">每天凌晨 5 点重启网络服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天-6-点重启-dns">
-          <a class="post-toc-link" href="#每天-6-点重启-dns" data-level="1">每天 6 点重启 DNS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务管理">
-          <a class="post-toc-link" href="#服务管理" data-level="1">========== 服务管理 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点重启-openclash">
-          <a class="post-toc-link" href="#每天凌晨-3-点重启-openclash" data-level="1">每天凌晨 3 点重启 OpenClash</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每小时重启指定服务">
-          <a class="post-toc-link" href="#每小时重启指定服务" data-level="1">每小时重启指定服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理任务">
-          <a class="post-toc-link" href="#清理任务" data-level="1">========== 清理任务 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天清理临时文件">
-          <a class="post-toc-link" href="#每天清理临时文件" data-level="1">每天清理临时文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周清理-opkg-缓存">
-          <a class="post-toc-link" href="#每周清理-opkg-缓存" data-level="1">每周清理 opkg 缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每月清理旧备份">
-          <a class="post-toc-link" href="#每月清理旧备份" data-level="1">每月清理旧备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="监控任务">
-          <a class="post-toc-link" href="#监控任务" data-level="1">========== 监控任务 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每-10-分钟检查-cpu-温度">
-          <a class="post-toc-link" href="#每-10-分钟检查-cpu-温度" data-level="1">每 10 分钟检查 CPU 温度</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每小时记录系统状态">
-          <a class="post-toc-link" href="#每小时记录系统状态" data-level="1">每小时记录系统状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每-5-分钟检查内存使用">
-          <a class="post-toc-link" href="#每-5-分钟检查内存使用" data-level="1">每 5 分钟检查内存使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动更新">
-          <a class="post-toc-link" href="#自动更新" data-level="1">========== 自动更新 ==========</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周检查软件更新">
-          <a class="post-toc-link" href="#每周检查软件更新" data-level="1">每周检查软件更新</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每月检查固件更新-示例">
-          <a class="post-toc-link" href="#每月检查固件更新-示例" data-level="1">每月检查固件更新（示例）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="cron-服务管理">
           <a class="post-toc-link" href="#cron-服务管理" data-level="3">cron 服务管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动-cron-服务">
-          <a class="post-toc-link" href="#启动-cron-服务" data-level="1">启动 cron 服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止-cron-服务">
-          <a class="post-toc-link" href="#停止-cron-服务" data-level="1">停止 cron 服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启-cron-服务">
-          <a class="post-toc-link" href="#重启-cron-服务" data-level="1">重启 cron 服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用开机自启">
-          <a class="post-toc-link" href="#启用开机自启" data-level="1">启用开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用开机自启">
-          <a class="post-toc-link" href="#禁用开机自启" data-level="1">禁用开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-cron-服务状态">
-          <a class="post-toc-link" href="#查看-cron-服务状态" data-level="1">查看 cron 服务状态</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例脚本">
           <a class="post-toc-link" href="#完整示例脚本" data-level="3">完整示例脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-定时任务配置脚本">
-          <a class="post-toc-link" href="#istoreos-定时任务配置脚本" data-level="1">iStoreOS 定时任务配置脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备份当前-crontab">
-          <a class="post-toc-link" href="#备份当前-crontab" data-level="1">备份当前 crontab</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加新的定时任务">
-          <a class="post-toc-link" href="#添加新的定时任务" data-level="1">添加新的定时任务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="istoreos-系统维护任务">
-          <a class="post-toc-link" href="#istoreos-系统维护任务" data-level="1">iStoreOS 系统维护任务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-2-点备份系统配置">
-          <a class="post-toc-link" href="#每天凌晨-2-点备份系统配置" data-level="1">每天凌晨 2 点备份系统配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每天凌晨-3-点清理缓存">
-          <a class="post-toc-link" href="#每天凌晨-3-点清理缓存" data-level="1">每天凌晨 3 点清理缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每小时检查网络连接">
-          <a class="post-toc-link" href="#每小时检查网络连接" data-level="1">每小时检查网络连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每周日凌晨-4-点重启系统">
-          <a class="post-toc-link" href="#每周日凌晨-4-点重启系统" data-level="1">每周日凌晨 4 点重启系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="每月清理-30-天前的备份">
-          <a class="post-toc-link" href="#每月清理-30-天前的备份" data-level="1">每月清理 30 天前的备份</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="应用新的-crontab">
-          <a class="post-toc-link" href="#应用新的-crontab" data-level="1">应用新的 crontab</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启-cron-服务">
-          <a class="post-toc-link" href="#重启-cron-服务" data-level="1">重启 cron 服务</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -2262,29 +1814,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#调试技巧" data-level="3">调试技巧</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看任务是否执行">
-          <a class="post-toc-link" href="#查看任务是否执行" data-level="1">查看任务是否执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动执行任务测试">
-          <a class="post-toc-link" href="#手动执行任务测试" data-level="1">手动执行任务测试</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看任务执行时间">
-          <a class="post-toc-link" href="#查看任务执行时间" data-level="1">查看任务执行时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将任务输出重定向到文件">
-          <a class="post-toc-link" href="#将任务输出重定向到文件" data-level="1">将任务输出重定向到文件</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2467,8 +2003,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

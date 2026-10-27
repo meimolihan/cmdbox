@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl2 命令">
     <meta name="twitter:description" content="WSL2 高级配置与使用技巧 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1621,24 +1621,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一-wsl1-与-wsl2-切换" data-level="2">一、WSL1 与 WSL2 切换</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载并安装内核更新包">
-              <a class="post-toc-link" href="#下载并安装内核更新包" data-level="1">下载并安装内核更新包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="https-wslstorestorage-blob-core-windows-net-wslblob-wsl_update_x64-msi">
-              <a class="post-toc-link" href="#https-wslstorestorage-blob-core-windows-net-wslblob-wsl_update_x64-msi" data-level="1">https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="二-资源限制-内存-cpu-swap">
               <a class="post-toc-link" href="#二-资源限制-内存-cpu-swap" data-level="2">二、资源限制（内存 / CPU /  Swap）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件位置">
               <a class="post-toc-link" href="#配置文件位置" data-level="3">配置文件位置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="userprofile-wslconfig">
-              <a class="post-toc-link" href="#userprofile-wslconfig" data-level="1">%USERPROFILE%\.wslconfig</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="使配置生效">
@@ -1653,18 +1641,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#方案一-windows-代理转发到-wsl2" data-level="3">方案一：Windows 代理转发到 WSL2</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在-wsl2-中获取宿主机-ip">
-              <a class="post-toc-link" href="#在-wsl2-中获取宿主机-ip" data-level="1">在 WSL2 中获取宿主机 IP</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="临时设置代理">
-              <a class="post-toc-link" href="#临时设置代理" data-level="1">临时设置代理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="bashrc-或-zshrc">
-              <a class="post-toc-link" href="#bashrc-或-zshrc" data-level="1">~/.bashrc 或 ~/.zshrc</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="方案二-wsl2-镜像网络模式-win11-22h2">
               <a class="post-toc-link" href="#方案二-wsl2-镜像网络模式-win11-22h2" data-level="3">方案二：WSL2 镜像网络模式（Win11 22H2+）</a>
             </li>
@@ -1677,32 +1653,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#1-在-wsl2-中调用-windows-程序" data-level="3">1. 在 WSL2 中调用 Windows 程序</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="打开-windows-资源管理器">
-              <a class="post-toc-link" href="#打开-windows-资源管理器" data-level="1">打开 Windows 资源管理器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="使用-windows-记事本编辑-wsl2-文件">
-              <a class="post-toc-link" href="#使用-windows-记事本编辑-wsl2-文件" data-level="1">使用 Windows 记事本编辑 WSL2 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行-windows-命令">
-              <a class="post-toc-link" href="#执行-windows-命令" data-level="1">执行 Windows 命令</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-在-windows-中调用-wsl2-命令">
               <a class="post-toc-link" href="#2-在-windows-中调用-wsl2-命令" data-level="3">2. 在 Windows 中调用 WSL2 命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="执行单条命令">
-              <a class="post-toc-link" href="#执行单条命令" data-level="1">执行单条命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="传递管道数据">
-              <a class="post-toc-link" href="#传递管道数据" data-level="1">传递管道数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用-wsl2-的-python-执行脚本">
-              <a class="post-toc-link" href="#用-wsl2-的-python-执行脚本" data-level="1">用 WSL2 的 Python 执行脚本</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-访问-windows-文件">
@@ -1725,36 +1677,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#2-压缩虚拟硬盘" data-level="3">2. 压缩虚拟硬盘</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在-wsl2-内部-用零填充空闲空间">
-              <a class="post-toc-link" href="#在-wsl2-内部-用零填充空闲空间" data-level="1">在 WSL2 内部，用零填充空闲空间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在-windows-管理员-powershell-中执行">
-              <a class="post-toc-link" href="#在-windows-管理员-powershell-中执行" data-level="1">在 Windows 管理员 PowerShell 中执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="选择-wsl2-虚拟硬盘文件">
-              <a class="post-toc-link" href="#选择-wsl2-虚拟硬盘文件" data-level="1">选择 WSL2 虚拟硬盘文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩">
-              <a class="post-toc-link" href="#压缩" data-level="1">压缩</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-导出与导入-备份-迁移">
               <a class="post-toc-link" href="#3-导出与导入-备份-迁移" data-level="3">3. 导出与导入（备份 / 迁移）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导出发行版为-tar-文件">
-              <a class="post-toc-link" href="#导出发行版为-tar-文件" data-level="1">导出发行版为 tar 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导入到新位置">
-              <a class="post-toc-link" href="#导入到新位置" data-level="1">导入到新位置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除旧发行版">
-              <a class="post-toc-link" href="#删除旧发行版" data-level="1">删除旧发行版</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="六-自定义-wsl2-内核">
@@ -1777,16 +1701,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装-docker-engine" data-level="3">安装 Docker Engine</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="启动-docker">
               <a class="post-toc-link" href="#启动-docker" data-level="3">启动 Docker</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置开机自启">
-              <a class="post-toc-link" href="#设置开机自启" data-level="1">设置开机自启</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="八-常见问题">
@@ -1803,10 +1719,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="时间同步偏差">
               <a class="post-toc-link" href="#时间同步偏差" data-level="3">时间同步偏差</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="同步-wsl2-时间到宿主机">
-              <a class="post-toc-link" href="#同步-wsl2-时间到宿主机" data-level="1">同步 WSL2 时间到宿主机</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="跨机复制粘贴不工作">
@@ -1850,24 +1762,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一-wsl1-与-wsl2-切换" data-level="2">一、WSL1 与 WSL2 切换</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载并安装内核更新包">
-          <a class="post-toc-link" href="#下载并安装内核更新包" data-level="1">下载并安装内核更新包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="https-wslstorestorage-blob-core-windows-net-wslblob-wsl_update_x64-msi">
-          <a class="post-toc-link" href="#https-wslstorestorage-blob-core-windows-net-wslblob-wsl_update_x64-msi" data-level="1">https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="二-资源限制-内存-cpu-swap">
           <a class="post-toc-link" href="#二-资源限制-内存-cpu-swap" data-level="2">二、资源限制（内存 / CPU /  Swap）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件位置">
           <a class="post-toc-link" href="#配置文件位置" data-level="3">配置文件位置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="userprofile-wslconfig">
-          <a class="post-toc-link" href="#userprofile-wslconfig" data-level="1">%USERPROFILE%\.wslconfig</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="使配置生效">
@@ -1882,18 +1782,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#方案一-windows-代理转发到-wsl2" data-level="3">方案一：Windows 代理转发到 WSL2</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在-wsl2-中获取宿主机-ip">
-          <a class="post-toc-link" href="#在-wsl2-中获取宿主机-ip" data-level="1">在 WSL2 中获取宿主机 IP</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="临时设置代理">
-          <a class="post-toc-link" href="#临时设置代理" data-level="1">临时设置代理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="bashrc-或-zshrc">
-          <a class="post-toc-link" href="#bashrc-或-zshrc" data-level="1">~/.bashrc 或 ~/.zshrc</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="方案二-wsl2-镜像网络模式-win11-22h2">
           <a class="post-toc-link" href="#方案二-wsl2-镜像网络模式-win11-22h2" data-level="3">方案二：WSL2 镜像网络模式（Win11 22H2+）</a>
         </li>
@@ -1906,32 +1794,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#1-在-wsl2-中调用-windows-程序" data-level="3">1. 在 WSL2 中调用 Windows 程序</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="打开-windows-资源管理器">
-          <a class="post-toc-link" href="#打开-windows-资源管理器" data-level="1">打开 Windows 资源管理器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="使用-windows-记事本编辑-wsl2-文件">
-          <a class="post-toc-link" href="#使用-windows-记事本编辑-wsl2-文件" data-level="1">使用 Windows 记事本编辑 WSL2 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行-windows-命令">
-          <a class="post-toc-link" href="#执行-windows-命令" data-level="1">执行 Windows 命令</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-在-windows-中调用-wsl2-命令">
           <a class="post-toc-link" href="#2-在-windows-中调用-wsl2-命令" data-level="3">2. 在 Windows 中调用 WSL2 命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="执行单条命令">
-          <a class="post-toc-link" href="#执行单条命令" data-level="1">执行单条命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="传递管道数据">
-          <a class="post-toc-link" href="#传递管道数据" data-level="1">传递管道数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用-wsl2-的-python-执行脚本">
-          <a class="post-toc-link" href="#用-wsl2-的-python-执行脚本" data-level="1">用 WSL2 的 Python 执行脚本</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-访问-windows-文件">
@@ -1954,36 +1818,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#2-压缩虚拟硬盘" data-level="3">2. 压缩虚拟硬盘</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在-wsl2-内部-用零填充空闲空间">
-          <a class="post-toc-link" href="#在-wsl2-内部-用零填充空闲空间" data-level="1">在 WSL2 内部，用零填充空闲空间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在-windows-管理员-powershell-中执行">
-          <a class="post-toc-link" href="#在-windows-管理员-powershell-中执行" data-level="1">在 Windows 管理员 PowerShell 中执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="选择-wsl2-虚拟硬盘文件">
-          <a class="post-toc-link" href="#选择-wsl2-虚拟硬盘文件" data-level="1">选择 WSL2 虚拟硬盘文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩">
-          <a class="post-toc-link" href="#压缩" data-level="1">压缩</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-导出与导入-备份-迁移">
           <a class="post-toc-link" href="#3-导出与导入-备份-迁移" data-level="3">3. 导出与导入（备份 / 迁移）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导出发行版为-tar-文件">
-          <a class="post-toc-link" href="#导出发行版为-tar-文件" data-level="1">导出发行版为 tar 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导入到新位置">
-          <a class="post-toc-link" href="#导入到新位置" data-level="1">导入到新位置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除旧发行版">
-          <a class="post-toc-link" href="#删除旧发行版" data-level="1">删除旧发行版</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="六-自定义-wsl2-内核">
@@ -2006,16 +1842,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装-docker-engine" data-level="3">安装 Docker Engine</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="启动-docker">
           <a class="post-toc-link" href="#启动-docker" data-level="3">启动 Docker</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置开机自启">
-          <a class="post-toc-link" href="#设置开机自启" data-level="1">设置开机自启</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="八-常见问题">
@@ -2034,10 +1862,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#时间同步偏差" data-level="3">时间同步偏差</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="同步-wsl2-时间到宿主机">
-          <a class="post-toc-link" href="#同步-wsl2-时间到宿主机" data-level="1">同步 WSL2 时间到宿主机</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="跨机复制粘贴不工作">
           <a class="post-toc-link" href="#跨机复制粘贴不工作" data-level="3">跨机复制粘贴不工作</a>
         </li>
@@ -2052,7 +1876,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2235,8 +2059,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

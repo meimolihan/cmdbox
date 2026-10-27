@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fan-video-dl-build 命令">
     <meta name="twitter:description" content="fan-video-dl 完整开发-发布-部署教程 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1685,14 +1685,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#模式-2-删除重建同名-release-仅限内测-无线上用户" data-level="3">模式 2：删除重建同名 Release（仅限内测，无线上用户）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除github-release-并清理本地与远端tag">
-              <a class="post-toc-link" href="#删除github-release-并清理本地与远端tag" data-level="1">删除github release 并清理本地与远端tag</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新打-tag-触发流水线重建">
-              <a class="post-toc-link" href="#重新打-tag-触发流水线重建" data-level="1">重新打 tag 触发流水线重建</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="七-故障排查表">
               <a class="post-toc-link" href="#七-故障排查表" data-level="2">七、故障排查表</a>
             </li>
@@ -1707,22 +1699,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="发布新版本速记">
               <a class="post-toc-link" href="#发布新版本速记" data-level="3">发布新版本速记</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或分步">
-              <a class="post-toc-link" href="#或分步" data-level="1">或分步：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="echo-v1-1-9-version-txt">
-              <a class="post-toc-link" href="#echo-v1-1-9-version-txt" data-level="1">echo &#39;v1.1.9&#39; &gt; version.txt</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="git-add-git-commit-m-chore-bump-version-to-1-1-9">
-              <a class="post-toc-link" href="#git-add-git-commit-m-chore-bump-version-to-1-1-9" data-level="1">git add . &amp;&amp; git commit -m &#34;chore: bump version to 1.1.9&#34;</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="git-push-origin-main-git-tag-v1-1-9-git-push-origin-v1-1-9">
-              <a class="post-toc-link" href="#git-push-origin-main-git-tag-v1-1-9-git-push-origin-v1-1-9" data-level="1">git push origin main &amp;&amp; git tag v1.1.9 &amp;&amp; git push origin v1.1.9</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="docker-快速部署">
@@ -1834,14 +1810,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#模式-2-删除重建同名-release-仅限内测-无线上用户" data-level="3">模式 2：删除重建同名 Release（仅限内测，无线上用户）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除github-release-并清理本地与远端tag">
-          <a class="post-toc-link" href="#删除github-release-并清理本地与远端tag" data-level="1">删除github release 并清理本地与远端tag</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新打-tag-触发流水线重建">
-          <a class="post-toc-link" href="#重新打-tag-触发流水线重建" data-level="1">重新打 tag 触发流水线重建</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="七-故障排查表">
           <a class="post-toc-link" href="#七-故障排查表" data-level="2">七、故障排查表</a>
         </li>
@@ -1858,22 +1826,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#发布新版本速记" data-level="3">发布新版本速记</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或分步">
-          <a class="post-toc-link" href="#或分步" data-level="1">或分步：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="echo-v1-1-9-version-txt">
-          <a class="post-toc-link" href="#echo-v1-1-9-version-txt" data-level="1">echo &#39;v1.1.9&#39; &gt; version.txt</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="git-add-git-commit-m-chore-bump-version-to-1-1-9">
-          <a class="post-toc-link" href="#git-add-git-commit-m-chore-bump-version-to-1-1-9" data-level="1">git add . &amp;&amp; git commit -m &#34;chore: bump version to 1.1.9&#34;</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="git-push-origin-main-git-tag-v1-1-9-git-push-origin-v1-1-9">
-          <a class="post-toc-link" href="#git-push-origin-main-git-tag-v1-1-9-git-push-origin-v1-1-9" data-level="1">git push origin main &amp;&amp; git tag v1.1.9 &amp;&amp; git push origin v1.1.9</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="docker-快速部署">
           <a class="post-toc-link" href="#docker-快速部署" data-level="3">Docker 快速部署</a>
         </li>
@@ -1884,7 +1836,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2067,8 +2019,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

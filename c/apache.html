@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="apache 命令">
     <meta name="twitter:description" content="Apache HTTP 服务器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1960,292 +1960,44 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基本配置" data-level="3">基本配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="主配置文件">
-              <a class="post-toc-link" href="#主配置文件" data-level="1">主配置文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="包含目录">
-              <a class="post-toc-link" href="#包含目录" data-level="1">包含目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-              <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-              <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置">
-              <a class="post-toc-link" href="#重载配置" data-level="1">重载配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="核心配置指令">
               <a class="post-toc-link" href="#核心配置指令" data-level="3">核心配置指令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务器标识">
-              <a class="post-toc-link" href="#服务器标识" data-level="1">服务器标识</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="监听端口">
-              <a class="post-toc-link" href="#监听端口" data-level="1">监听端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用户-组-以谁运行">
-              <a class="post-toc-link" href="#用户-组-以谁运行" data-level="1">用户/组（以谁运行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="文档根目录">
-              <a class="post-toc-link" href="#文档根目录" data-level="1">文档根目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="目录权限">
-              <a class="post-toc-link" href="#目录权限" data-level="1">目录权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认字符集">
-              <a class="post-toc-link" href="#默认字符集" data-level="1">默认字符集</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="错误日志">
-              <a class="post-toc-link" href="#错误日志" data-level="1">错误日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="访问日志格式">
-              <a class="post-toc-link" href="#访问日志格式" data-level="1">访问日志格式</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟主机">
               <a class="post-toc-link" href="#虚拟主机" data-level="3">虚拟主机</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基于域名的虚拟主机">
-              <a class="post-toc-link" href="#基于域名的虚拟主机" data-level="1">基于域名的虚拟主机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多个虚拟主机">
-              <a class="post-toc-link" href="#多个虚拟主机" data-level="1">多个虚拟主机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基于端口的虚拟主机">
-              <a class="post-toc-link" href="#基于端口的虚拟主机" data-level="1">基于端口的虚拟主机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基于-ip-的虚拟主机">
-              <a class="post-toc-link" href="#基于-ip-的虚拟主机" data-level="1">基于 IP 的虚拟主机</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="目录权限">
               <a class="post-toc-link" href="#目录权限" data-level="3">目录权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基本权限">
-              <a class="post-toc-link" href="#基本权限" data-level="1">基本权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用目录列表">
-              <a class="post-toc-link" href="#禁用目录列表" data-level="1">禁用目录列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用-htaccess">
-              <a class="post-toc-link" href="#启用-htaccess" data-level="1">启用 .htaccess</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ip-限制">
-              <a class="post-toc-link" href="#ip-限制" data-level="1">IP 限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="密码保护">
-              <a class="post-toc-link" href="#密码保护" data-level="1">密码保护</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="ssl-tls-配置">
               <a class="post-toc-link" href="#ssl-tls-配置" data-level="3">SSL/TLS 配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加载-ssl-模块">
-              <a class="post-toc-link" href="#加载-ssl-模块" data-level="1">加载 SSL 模块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-虚拟主机">
-              <a class="post-toc-link" href="#ssl-虚拟主机" data-level="1">SSL 虚拟主机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制-https">
-              <a class="post-toc-link" href="#强制-https" data-level="1">强制 HTTPS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-协议和加密套件">
-              <a class="post-toc-link" href="#ssl-协议和加密套件" data-level="1">SSL 协议和加密套件</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="模块配置">
               <a class="post-toc-link" href="#模块配置" data-level="3">模块配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用模块-debian-ubuntu">
-              <a class="post-toc-link" href="#启用模块-debian-ubuntu" data-level="1">启用模块（Debian/Ubuntu）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用模块">
-              <a class="post-toc-link" href="#禁用模块" data-level="1">禁用模块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常用模块配置">
-              <a class="post-toc-link" href="#常用模块配置" data-level="1">常用模块配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mod_rewrite">
-              <a class="post-toc-link" href="#mod_rewrite" data-level="1">mod_rewrite</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mod_proxy">
-              <a class="post-toc-link" href="#mod_proxy" data-level="1">mod_proxy</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mod_headers">
-              <a class="post-toc-link" href="#mod_headers" data-level="1">mod_headers</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="url-重写">
               <a class="post-toc-link" href="#url-重写" data-level="3">URL 重写</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用重写">
-              <a class="post-toc-link" href="#启用重写" data-level="1">启用重写</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重定向">
-              <a class="post-toc-link" href="#重定向" data-level="1">重定向</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制-https">
-              <a class="post-toc-link" href="#强制-https" data-level="1">强制 HTTPS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制-www">
-              <a class="post-toc-link" href="#强制-www" data-level="1">强制 www</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="移除-www">
-              <a class="post-toc-link" href="#移除-www" data-level="1">移除 www</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="美化-url">
-              <a class="post-toc-link" href="#美化-url" data-level="1">美化 URL</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化">
               <a class="post-toc-link" href="#性能优化" data-level="3">性能优化</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mpm-配置-prefork">
-              <a class="post-toc-link" href="#mpm-配置-prefork" data-level="1">MPM 配置（Prefork）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="mpm-配置-worker">
-              <a class="post-toc-link" href="#mpm-配置-worker" data-level="1">MPM 配置（Worker）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用压缩">
-              <a class="post-toc-link" href="#启用压缩" data-level="1">启用压缩</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="浏览器缓存">
-              <a class="post-toc-link" href="#浏览器缓存" data-level="1">浏览器缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接超时">
-              <a class="post-toc-link" href="#连接超时" data-level="1">连接超时</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="日志配置">
               <a class="post-toc-link" href="#日志配置" data-level="3">日志配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="错误日志级别">
-              <a class="post-toc-link" href="#错误日志级别" data-level="1">错误日志级别</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自定义日志格式">
-              <a class="post-toc-link" href="#自定义日志格式" data-level="1">自定义日志格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="条件日志">
-              <a class="post-toc-link" href="#条件日志" data-level="1">条件日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志轮转-使用-rotatelogs">
-              <a class="post-toc-link" href="#日志轮转-使用-rotatelogs" data-level="1">日志轮转（使用 rotatelogs）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="安全配置">
               <a class="post-toc-link" href="#安全配置" data-level="3">安全配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏版本信">
-              <a class="post-toc-link" href="#隐藏版本信" data-level="1">隐藏版本信</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用目录遍历">
-              <a class="post-toc-link" href="#禁用目录遍历" data-level="1">禁用目录遍历</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="文件访问限制">
-              <a class="post-toc-link" href="#文件访问限制" data-level="1">文件访问限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="防止点击劫持">
-              <a class="post-toc-link" href="#防止点击劫持" data-level="1">防止点击劫持</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="xss-保护">
-              <a class="post-toc-link" href="#xss-保护" data-level="1">XSS 保护</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="csp">
-              <a class="post-toc-link" href="#csp" data-level="1">CSP</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
               <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置语法">
-              <a class="post-toc-link" href="#测试配置语法" data-level="1">测试配置语法</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="语法检查-详细">
-              <a class="post-toc-link" href="#语法检查-详细" data-level="1">语法检查（详细）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看已编译的模块">
-              <a class="post-toc-link" href="#查看已编译的模块" data-level="1">查看已编译的模块</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看编译参数">
-              <a class="post-toc-link" href="#查看编译参数" data-level="1">查看编译参数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置">
-              <a class="post-toc-link" href="#重载配置" data-level="1">重载配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看运行状态">
-              <a class="post-toc-link" href="#查看运行状态" data-level="1">查看运行状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志查看">
-              <a class="post-toc-link" href="#日志查看" data-level="1">日志查看</a>
             </li>
             
           </ul>
@@ -2285,292 +2037,44 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基本配置" data-level="3">基本配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="主配置文件">
-          <a class="post-toc-link" href="#主配置文件" data-level="1">主配置文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="包含目录">
-          <a class="post-toc-link" href="#包含目录" data-level="1">包含目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-          <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-          <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置">
-          <a class="post-toc-link" href="#重载配置" data-level="1">重载配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="核心配置指令">
           <a class="post-toc-link" href="#核心配置指令" data-level="3">核心配置指令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务器标识">
-          <a class="post-toc-link" href="#服务器标识" data-level="1">服务器标识</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="监听端口">
-          <a class="post-toc-link" href="#监听端口" data-level="1">监听端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用户-组-以谁运行">
-          <a class="post-toc-link" href="#用户-组-以谁运行" data-level="1">用户/组（以谁运行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="文档根目录">
-          <a class="post-toc-link" href="#文档根目录" data-level="1">文档根目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="目录权限">
-          <a class="post-toc-link" href="#目录权限" data-level="1">目录权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认字符集">
-          <a class="post-toc-link" href="#默认字符集" data-level="1">默认字符集</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="错误日志">
-          <a class="post-toc-link" href="#错误日志" data-level="1">错误日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="访问日志格式">
-          <a class="post-toc-link" href="#访问日志格式" data-level="1">访问日志格式</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="虚拟主机">
           <a class="post-toc-link" href="#虚拟主机" data-level="3">虚拟主机</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基于域名的虚拟主机">
-          <a class="post-toc-link" href="#基于域名的虚拟主机" data-level="1">基于域名的虚拟主机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多个虚拟主机">
-          <a class="post-toc-link" href="#多个虚拟主机" data-level="1">多个虚拟主机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基于端口的虚拟主机">
-          <a class="post-toc-link" href="#基于端口的虚拟主机" data-level="1">基于端口的虚拟主机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基于-ip-的虚拟主机">
-          <a class="post-toc-link" href="#基于-ip-的虚拟主机" data-level="1">基于 IP 的虚拟主机</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="目录权限">
           <a class="post-toc-link" href="#目录权限" data-level="3">目录权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基本权限">
-          <a class="post-toc-link" href="#基本权限" data-level="1">基本权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用目录列表">
-          <a class="post-toc-link" href="#禁用目录列表" data-level="1">禁用目录列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用-htaccess">
-          <a class="post-toc-link" href="#启用-htaccess" data-level="1">启用 .htaccess</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ip-限制">
-          <a class="post-toc-link" href="#ip-限制" data-level="1">IP 限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="密码保护">
-          <a class="post-toc-link" href="#密码保护" data-level="1">密码保护</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="ssl-tls-配置">
           <a class="post-toc-link" href="#ssl-tls-配置" data-level="3">SSL/TLS 配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加载-ssl-模块">
-          <a class="post-toc-link" href="#加载-ssl-模块" data-level="1">加载 SSL 模块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-虚拟主机">
-          <a class="post-toc-link" href="#ssl-虚拟主机" data-level="1">SSL 虚拟主机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制-https">
-          <a class="post-toc-link" href="#强制-https" data-level="1">强制 HTTPS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-协议和加密套件">
-          <a class="post-toc-link" href="#ssl-协议和加密套件" data-level="1">SSL 协议和加密套件</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="模块配置">
           <a class="post-toc-link" href="#模块配置" data-level="3">模块配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用模块-debian-ubuntu">
-          <a class="post-toc-link" href="#启用模块-debian-ubuntu" data-level="1">启用模块（Debian/Ubuntu）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用模块">
-          <a class="post-toc-link" href="#禁用模块" data-level="1">禁用模块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常用模块配置">
-          <a class="post-toc-link" href="#常用模块配置" data-level="1">常用模块配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mod_rewrite">
-          <a class="post-toc-link" href="#mod_rewrite" data-level="1">mod_rewrite</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mod_proxy">
-          <a class="post-toc-link" href="#mod_proxy" data-level="1">mod_proxy</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mod_headers">
-          <a class="post-toc-link" href="#mod_headers" data-level="1">mod_headers</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="url-重写">
           <a class="post-toc-link" href="#url-重写" data-level="3">URL 重写</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用重写">
-          <a class="post-toc-link" href="#启用重写" data-level="1">启用重写</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重定向">
-          <a class="post-toc-link" href="#重定向" data-level="1">重定向</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制-https">
-          <a class="post-toc-link" href="#强制-https" data-level="1">强制 HTTPS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制-www">
-          <a class="post-toc-link" href="#强制-www" data-level="1">强制 www</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="移除-www">
-          <a class="post-toc-link" href="#移除-www" data-level="1">移除 www</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="美化-url">
-          <a class="post-toc-link" href="#美化-url" data-level="1">美化 URL</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="性能优化">
           <a class="post-toc-link" href="#性能优化" data-level="3">性能优化</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mpm-配置-prefork">
-          <a class="post-toc-link" href="#mpm-配置-prefork" data-level="1">MPM 配置（Prefork）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="mpm-配置-worker">
-          <a class="post-toc-link" href="#mpm-配置-worker" data-level="1">MPM 配置（Worker）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用压缩">
-          <a class="post-toc-link" href="#启用压缩" data-level="1">启用压缩</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="浏览器缓存">
-          <a class="post-toc-link" href="#浏览器缓存" data-level="1">浏览器缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接超时">
-          <a class="post-toc-link" href="#连接超时" data-level="1">连接超时</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="日志配置">
           <a class="post-toc-link" href="#日志配置" data-level="3">日志配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="错误日志级别">
-          <a class="post-toc-link" href="#错误日志级别" data-level="1">错误日志级别</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自定义日志格式">
-          <a class="post-toc-link" href="#自定义日志格式" data-level="1">自定义日志格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="条件日志">
-          <a class="post-toc-link" href="#条件日志" data-level="1">条件日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志轮转-使用-rotatelogs">
-          <a class="post-toc-link" href="#日志轮转-使用-rotatelogs" data-level="1">日志轮转（使用 rotatelogs）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="安全配置">
           <a class="post-toc-link" href="#安全配置" data-level="3">安全配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="隐藏版本信">
-          <a class="post-toc-link" href="#隐藏版本信" data-level="1">隐藏版本信</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用目录遍历">
-          <a class="post-toc-link" href="#禁用目录遍历" data-level="1">禁用目录遍历</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="文件访问限制">
-          <a class="post-toc-link" href="#文件访问限制" data-level="1">文件访问限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="防止点击劫持">
-          <a class="post-toc-link" href="#防止点击劫持" data-level="1">防止点击劫持</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="xss-保护">
-          <a class="post-toc-link" href="#xss-保护" data-level="1">XSS 保护</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="csp">
-          <a class="post-toc-link" href="#csp" data-level="1">CSP</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
           <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置语法">
-          <a class="post-toc-link" href="#测试配置语法" data-level="1">测试配置语法</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="语法检查-详细">
-          <a class="post-toc-link" href="#语法检查-详细" data-level="1">语法检查（详细）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看已编译的模块">
-          <a class="post-toc-link" href="#查看已编译的模块" data-level="1">查看已编译的模块</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看编译参数">
-          <a class="post-toc-link" href="#查看编译参数" data-level="1">查看编译参数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置">
-          <a class="post-toc-link" href="#重载配置" data-level="1">重载配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看运行状态">
-          <a class="post-toc-link" href="#查看运行状态" data-level="1">查看运行状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志查看">
-          <a class="post-toc-link" href="#日志查看" data-level="1">日志查看</a>
         </li>
         
       </ul>
@@ -2579,7 +2083,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2762,8 +2266,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

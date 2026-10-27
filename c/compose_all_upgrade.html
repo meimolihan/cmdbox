@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="compose_all_upgrade 命令">
     <meta name="twitter:description" content="更新指定目录下所有 Docker Compose 项目 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2611,10 +2611,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="dry-run-模式预览操作-不实际执行">
-              <a class="post-toc-link" href="#dry-run-模式预览操作-不实际执行" data-level="1">DRY-RUN 模式预览操作（不实际执行）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
               <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
             </li>
@@ -2639,212 +2635,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="颜色定义">
-              <a class="post-toc-link" href="#颜色定义" data-level="1">颜色定义</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="全局变量">
-              <a class="post-toc-link" href="#全局变量" data-level="1">全局变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="统计变量">
-              <a class="post-toc-link" href="#统计变量" data-level="1">统计变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="辅助函数">
-              <a class="post-toc-link" href="#辅助函数" data-level="1">辅助函数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="参数解析-支持-dry-run-和-help">
-              <a class="post-toc-link" href="#参数解析-支持-dry-run-和-help" data-level="1">参数解析（支持 --dry-run 和 --help）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基础检查">
-              <a class="post-toc-link" href="#基础检查" data-level="1">基础检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="函数-判断项目是否被排除">
-              <a class="post-toc-link" href="#函数-判断项目是否被排除" data-level="1">函数：判断项目是否被排除</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="函数-获取-compose-项目名称-优先从-compose-文件或-env-读取">
-              <a class="post-toc-link" href="#函数-获取-compose-项目名称-优先从-compose-文件或-env-读取" data-level="1">函数：获取 Compose 项目名称（优先从 compose 文件或 .env 读取）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="函数-显示容器状态">
-              <a class="post-toc-link" href="#函数-显示容器状态" data-level="1">函数：显示容器状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="函数-更新单个项目-串行-并记录更新状态">
-              <a class="post-toc-link" href="#函数-更新单个项目-串行-并记录更新状态" data-level="1">函数：更新单个项目（串行），并记录更新状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="主流程">
-              <a class="post-toc-link" href="#主流程" data-level="1">主流程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="第一步-扫描所有项目-收集信息并生成状态报告">
-              <a class="post-toc-link" href="#第一步-扫描所有项目-收集信息并生成状态报告" data-level="1">第一步：扫描所有项目，收集信息并生成状态报告</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成状态报告文件">
-              <a class="post-toc-link" href="#生成状态报告文件" data-level="1">生成状态报告文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如果没有项目-退出">
-              <a class="post-toc-link" href="#如果没有项目-退出" data-level="1">如果没有项目，退出</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="第二步-过滤出需要更新的项目-排除已排除的">
-              <a class="post-toc-link" href="#第二步-过滤出需要更新的项目-排除已排除的" data-level="1">第二步：过滤出需要更新的项目（排除已排除的）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="第三步-清理无用镜像-只删除-dangling">
-              <a class="post-toc-link" href="#第三步-清理无用镜像-只删除-dangling" data-level="1">第三步：清理无用镜像（只删除 dangling）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="第四步-还原项目状态-根据状态文件">
-              <a class="post-toc-link" href="#第四步-还原项目状态-根据状态文件" data-level="1">第四步：还原项目状态（根据状态文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="最终统计与打印更新-无更新项目列表">
-              <a class="post-toc-link" href="#最终统计与打印更新-无更新项目列表" data-level="1">最终统计与打印更新/无更新项目列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-              <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="结束时间">
-              <a class="post-toc-link" href="#结束时间" data-level="1">结束时间</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
               <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
-              <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
-              <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2880,10 +2672,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="dry-run-模式预览操作-不实际执行">
-          <a class="post-toc-link" href="#dry-run-模式预览操作-不实际执行" data-level="1">DRY-RUN 模式预览操作（不实际执行）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
           <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
         </li>
@@ -2908,212 +2696,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="颜色定义">
-          <a class="post-toc-link" href="#颜色定义" data-level="1">颜色定义</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="全局变量">
-          <a class="post-toc-link" href="#全局变量" data-level="1">全局变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="统计变量">
-          <a class="post-toc-link" href="#统计变量" data-level="1">统计变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="辅助函数">
-          <a class="post-toc-link" href="#辅助函数" data-level="1">辅助函数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="参数解析-支持-dry-run-和-help">
-          <a class="post-toc-link" href="#参数解析-支持-dry-run-和-help" data-level="1">参数解析（支持 --dry-run 和 --help）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基础检查">
-          <a class="post-toc-link" href="#基础检查" data-level="1">基础检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="函数-判断项目是否被排除">
-          <a class="post-toc-link" href="#函数-判断项目是否被排除" data-level="1">函数：判断项目是否被排除</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="函数-获取-compose-项目名称-优先从-compose-文件或-env-读取">
-          <a class="post-toc-link" href="#函数-获取-compose-项目名称-优先从-compose-文件或-env-读取" data-level="1">函数：获取 Compose 项目名称（优先从 compose 文件或 .env 读取）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="函数-显示容器状态">
-          <a class="post-toc-link" href="#函数-显示容器状态" data-level="1">函数：显示容器状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="函数-更新单个项目-串行-并记录更新状态">
-          <a class="post-toc-link" href="#函数-更新单个项目-串行-并记录更新状态" data-level="1">函数：更新单个项目（串行），并记录更新状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="主流程">
-          <a class="post-toc-link" href="#主流程" data-level="1">主流程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="第一步-扫描所有项目-收集信息并生成状态报告">
-          <a class="post-toc-link" href="#第一步-扫描所有项目-收集信息并生成状态报告" data-level="1">第一步：扫描所有项目，收集信息并生成状态报告</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成状态报告文件">
-          <a class="post-toc-link" href="#生成状态报告文件" data-level="1">生成状态报告文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如果没有项目-退出">
-          <a class="post-toc-link" href="#如果没有项目-退出" data-level="1">如果没有项目，退出</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="第二步-过滤出需要更新的项目-排除已排除的">
-          <a class="post-toc-link" href="#第二步-过滤出需要更新的项目-排除已排除的" data-level="1">第二步：过滤出需要更新的项目（排除已排除的）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="第三步-清理无用镜像-只删除-dangling">
-          <a class="post-toc-link" href="#第三步-清理无用镜像-只删除-dangling" data-level="1">第三步：清理无用镜像（只删除 dangling）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="第四步-还原项目状态-根据状态文件">
-          <a class="post-toc-link" href="#第四步-还原项目状态-根据状态文件" data-level="1">第四步：还原项目状态（根据状态文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">----------------------------------------------------------------------------</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="最终统计与打印更新-无更新项目列表">
-          <a class="post-toc-link" href="#最终统计与打印更新-无更新项目列表" data-level="1">最终统计与打印更新/无更新项目列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="section">
-          <a class="post-toc-link" href="#section" data-level="1">============================================================================</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="结束时间">
-          <a class="post-toc-link" href="#结束时间" data-level="1">结束时间</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
           <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
-          <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
-          <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -3126,7 +2710,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -3309,8 +2893,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

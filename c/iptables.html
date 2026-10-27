@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="iptables 命令">
     <meta name="twitter:description" content="Linux上常用的防火墙软件 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2002,22 +2002,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#选项" data-level="3">选项</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="通用匹配-源地址目标地址的匹配">
-              <a class="post-toc-link" href="#通用匹配-源地址目标地址的匹配" data-level="1">通用匹配：源地址目标地址的匹配</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看管理命令">
-              <a class="post-toc-link" href="#查看管理命令" data-level="1">查看管理命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="规则管理命令">
-              <a class="post-toc-link" href="#规则管理命令" data-level="1">规则管理命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="链管理命令-这都是立即生效的">
-              <a class="post-toc-link" href="#链管理命令-这都是立即生效的" data-level="1">链管理命令（这都是立即生效的）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="基本参数">
               <a class="post-toc-link" href="#基本参数" data-level="2">基本参数</a>
             </li>
@@ -2046,10 +2030,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#配置允许ssh端口连接" data-level="4">配置允许ssh端口连接</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="22为你的ssh端口-s-192-168-1-0-24表示允许这个网段的机器来连接-其它网段的ip地址是登陆不了你的机器的-j-accept表示接受这样的请求">
-              <a class="post-toc-link" href="#22为你的ssh端口-s-192-168-1-0-24表示允许这个网段的机器来连接-其它网段的ip地址是登陆不了你的机器的-j-accept表示接受这样的请求" data-level="1">22为你的ssh端口， -s 192.168.1.0/24表示允许这个网段的机器来连接，其它网段的ip地址是登陆不了你的机器的。 -j ACCEPT表示接受这样的请求</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="允许本地回环地址可以正常使用">
               <a class="post-toc-link" href="#允许本地回环地址可以正常使用" data-level="4">允许本地回环地址可以正常使用</a>
             </li>
@@ -2074,20 +2054,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#列出已设置的规则" data-level="4">列出已设置的规则</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="t-参数指定-必须是-raw-nat-filter-mangle-中的一个">
-              <a class="post-toc-link" href="#t-参数指定-必须是-raw-nat-filter-mangle-中的一个" data-level="1">^ -t 参数指定，必须是 raw， nat，filter，mangle 中的一个</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="清除已有规则">
               <a class="post-toc-link" href="#清除已有规则" data-level="4">清除已有规则</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="删除已添加的规则">
               <a class="post-toc-link" href="#删除已添加的规则" data-level="4">删除已添加的规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加一条规则">
-              <a class="post-toc-link" href="#添加一条规则" data-level="1">添加一条规则</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="开放指定的端口">
@@ -2118,34 +2090,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#字符串匹配" data-level="4">字符串匹配</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="chain-input-policy-accept">
-              <a class="post-toc-link" href="#chain-input-policy-accept" data-level="1">Chain INPUT (policy ACCEPT)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="target-prot-opt-source-destination">
-              <a class="post-toc-link" href="#target-prot-opt-source-destination" data-level="1">target     prot opt source               destination</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="reject-tcp-anywhere-anywhere-string-match-test-algo-name-kmp-to-65535-reject-with-tcp-reset">
-              <a class="post-toc-link" href="#reject-tcp-anywhere-anywhere-string-match-test-algo-name-kmp-to-65535-reject-with-tcp-reset" data-level="1">REJECT     tcp  --  anywhere             anywhere            STRING match &#34;test&#34; ALGO name kmp TO 65535 reject-with tcp-reset</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="chain-forward-policy-accept">
-              <a class="post-toc-link" href="#chain-forward-policy-accept" data-level="1"># Chain FORWARD (policy ACCEPT)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="target-prot-opt-source-destination">
-              <a class="post-toc-link" href="#target-prot-opt-source-destination" data-level="1">target     prot opt source               destination</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="chain-output-policy-accept">
-              <a class="post-toc-link" href="#chain-output-policy-accept" data-level="1"># Chain OUTPUT (policy ACCEPT)</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="target-prot-opt-source-destination">
-              <a class="post-toc-link" href="#target-prot-opt-source-destination" data-level="1">target     prot opt source               destination</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="阻止windows蠕虫的攻击">
               <a class="post-toc-link" href="#阻止windows蠕虫的攻击" data-level="4">阻止Windows蠕虫的攻击</a>
             </li>
@@ -2158,40 +2102,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#添加secmark记录" data-level="4">添加SECMARK记录</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="向从-192-168-1-2-443-以tcp方式发出到本机的包添加mac安全上下文-system_u-object_r-myauth_packet_t">
-              <a class="post-toc-link" href="#向从-192-168-1-2-443-以tcp方式发出到本机的包添加mac安全上下文-system_u-object_r-myauth_packet_t" data-level="1">向从 192.168.1.2:443 以TCP方式发出到本机的包添加MAC安全上下文 system_u:object_r:myauth_packet_t</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="更多实例">
               <a class="post-toc-link" href="#更多实例" data-level="2">更多实例</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="使用场景实例">
               <a class="post-toc-link" href="#使用场景实例" data-level="2">使用场景实例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="场景一">
-              <a class="post-toc-link" href="#场景一" data-level="1">场景一</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="优化场景一">
-              <a class="post-toc-link" href="#优化场景一" data-level="1">优化场景一</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="场景二">
-              <a class="post-toc-link" href="#场景二" data-level="1">场景二</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="还可以使用-iptables-模块追踪来自动开发对应的端口">
-              <a class="post-toc-link" href="#还可以使用-iptables-模块追踪来自动开发对应的端口" data-level="1">还可以使用 iptables 模块追踪来自动开发对应的端口</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="场景三">
-              <a class="post-toc-link" href="#场景三" data-level="1">场景三</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="场景四">
-              <a class="post-toc-link" href="#场景四" data-level="1">场景四</a>
             </li>
             
           </ul>
@@ -2231,22 +2147,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#选项" data-level="3">选项</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="通用匹配-源地址目标地址的匹配">
-          <a class="post-toc-link" href="#通用匹配-源地址目标地址的匹配" data-level="1">通用匹配：源地址目标地址的匹配</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看管理命令">
-          <a class="post-toc-link" href="#查看管理命令" data-level="1">查看管理命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="规则管理命令">
-          <a class="post-toc-link" href="#规则管理命令" data-level="1">规则管理命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="链管理命令-这都是立即生效的">
-          <a class="post-toc-link" href="#链管理命令-这都是立即生效的" data-level="1">链管理命令（这都是立即生效的）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="基本参数">
           <a class="post-toc-link" href="#基本参数" data-level="2">基本参数</a>
         </li>
@@ -2275,10 +2175,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#配置允许ssh端口连接" data-level="4">配置允许ssh端口连接</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="22为你的ssh端口-s-192-168-1-0-24表示允许这个网段的机器来连接-其它网段的ip地址是登陆不了你的机器的-j-accept表示接受这样的请求">
-          <a class="post-toc-link" href="#22为你的ssh端口-s-192-168-1-0-24表示允许这个网段的机器来连接-其它网段的ip地址是登陆不了你的机器的-j-accept表示接受这样的请求" data-level="1">22为你的ssh端口， -s 192.168.1.0/24表示允许这个网段的机器来连接，其它网段的ip地址是登陆不了你的机器的。 -j ACCEPT表示接受这样的请求</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="允许本地回环地址可以正常使用">
           <a class="post-toc-link" href="#允许本地回环地址可以正常使用" data-level="4">允许本地回环地址可以正常使用</a>
         </li>
@@ -2303,20 +2199,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#列出已设置的规则" data-level="4">列出已设置的规则</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="t-参数指定-必须是-raw-nat-filter-mangle-中的一个">
-          <a class="post-toc-link" href="#t-参数指定-必须是-raw-nat-filter-mangle-中的一个" data-level="1">^ -t 参数指定，必须是 raw， nat，filter，mangle 中的一个</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="清除已有规则">
           <a class="post-toc-link" href="#清除已有规则" data-level="4">清除已有规则</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="删除已添加的规则">
           <a class="post-toc-link" href="#删除已添加的规则" data-level="4">删除已添加的规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加一条规则">
-          <a class="post-toc-link" href="#添加一条规则" data-level="1">添加一条规则</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="开放指定的端口">
@@ -2347,34 +2235,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#字符串匹配" data-level="4">字符串匹配</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="chain-input-policy-accept">
-          <a class="post-toc-link" href="#chain-input-policy-accept" data-level="1">Chain INPUT (policy ACCEPT)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="target-prot-opt-source-destination">
-          <a class="post-toc-link" href="#target-prot-opt-source-destination" data-level="1">target     prot opt source               destination</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="reject-tcp-anywhere-anywhere-string-match-test-algo-name-kmp-to-65535-reject-with-tcp-reset">
-          <a class="post-toc-link" href="#reject-tcp-anywhere-anywhere-string-match-test-algo-name-kmp-to-65535-reject-with-tcp-reset" data-level="1">REJECT     tcp  --  anywhere             anywhere            STRING match &#34;test&#34; ALGO name kmp TO 65535 reject-with tcp-reset</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="chain-forward-policy-accept">
-          <a class="post-toc-link" href="#chain-forward-policy-accept" data-level="1"># Chain FORWARD (policy ACCEPT)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="target-prot-opt-source-destination">
-          <a class="post-toc-link" href="#target-prot-opt-source-destination" data-level="1">target     prot opt source               destination</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="chain-output-policy-accept">
-          <a class="post-toc-link" href="#chain-output-policy-accept" data-level="1"># Chain OUTPUT (policy ACCEPT)</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="target-prot-opt-source-destination">
-          <a class="post-toc-link" href="#target-prot-opt-source-destination" data-level="1">target     prot opt source               destination</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="阻止windows蠕虫的攻击">
           <a class="post-toc-link" href="#阻止windows蠕虫的攻击" data-level="4">阻止Windows蠕虫的攻击</a>
         </li>
@@ -2387,10 +2247,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#添加secmark记录" data-level="4">添加SECMARK记录</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="向从-192-168-1-2-443-以tcp方式发出到本机的包添加mac安全上下文-system_u-object_r-myauth_packet_t">
-          <a class="post-toc-link" href="#向从-192-168-1-2-443-以tcp方式发出到本机的包添加mac安全上下文-system_u-object_r-myauth_packet_t" data-level="1">向从 192.168.1.2:443 以TCP方式发出到本机的包添加MAC安全上下文 system_u:object_r:myauth_packet_t</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="更多实例">
           <a class="post-toc-link" href="#更多实例" data-level="2">更多实例</a>
         </li>
@@ -2399,37 +2255,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#使用场景实例" data-level="2">使用场景实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="场景一">
-          <a class="post-toc-link" href="#场景一" data-level="1">场景一</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="优化场景一">
-          <a class="post-toc-link" href="#优化场景一" data-level="1">优化场景一</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="场景二">
-          <a class="post-toc-link" href="#场景二" data-level="1">场景二</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="还可以使用-iptables-模块追踪来自动开发对应的端口">
-          <a class="post-toc-link" href="#还可以使用-iptables-模块追踪来自动开发对应的端口" data-level="1">还可以使用 iptables 模块追踪来自动开发对应的端口</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="场景三">
-          <a class="post-toc-link" href="#场景三" data-level="1">场景三</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="场景四">
-          <a class="post-toc-link" href="#场景四" data-level="1">场景四</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2612,8 +2444,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

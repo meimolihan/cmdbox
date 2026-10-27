@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="haproxy 命令">
     <meta name="twitter:description" content="高性能负载均衡器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2262,26 +2262,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基础配置结构" data-level="3">基础配置结构</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-haproxy-haproxy-cfg">
-              <a class="post-toc-link" href="#etc-haproxy-haproxy-cfg" data-level="1">/etc/haproxy/haproxy.cfg</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="全局配置">
-              <a class="post-toc-link" href="#全局配置" data-level="1">全局配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认配置">
-              <a class="post-toc-link" href="#默认配置" data-level="1">默认配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="监听配置">
-              <a class="post-toc-link" href="#监听配置" data-level="1">监听配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="后端配置">
-              <a class="post-toc-link" href="#后端配置" data-level="1">后端配置</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="全局配置">
               <a class="post-toc-link" href="#全局配置" data-level="3">全局配置</a>
             </li>
@@ -2290,260 +2270,48 @@ function copied(target, str) {
               <a class="post-toc-link" href="#前端配置" data-level="3">前端配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-前端">
-              <a class="post-toc-link" href="#http-前端" data-level="1">HTTP 前端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="https-前端">
-              <a class="post-toc-link" href="#https-前端" data-level="1">HTTPS 前端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-前端-mysql">
-              <a class="post-toc-link" href="#tcp-前端-mysql" data-level="1">TCP 前端（MySQL）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="haproxy-管理界面">
-              <a class="post-toc-link" href="#haproxy-管理界面" data-level="1">HAProxy 管理界面</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="后端配置">
               <a class="post-toc-link" href="#后端配置" data-level="3">后端配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-后端">
-              <a class="post-toc-link" href="#http-后端" data-level="1">HTTP 后端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="备用服务器">
-              <a class="post-toc-link" href="#备用服务器" data-level="1">备用服务器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-后端-mysql">
-              <a class="post-toc-link" href="#tcp-后端-mysql" data-level="1">TCP 后端（MySQL）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-后端">
-              <a class="post-toc-link" href="#ssl-后端" data-level="1">SSL 后端</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="负载均衡算法">
               <a class="post-toc-link" href="#负载均衡算法" data-level="3">负载均衡算法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="roundrobin-轮询-默认">
-              <a class="post-toc-link" href="#roundrobin-轮询-默认" data-level="1">roundrobin - 轮询（默认）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="static-rr-静态轮询-基于权重">
-              <a class="post-toc-link" href="#static-rr-静态轮询-基于权重" data-level="1">static-rr - 静态轮询（基于权重）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="leastconn-最少连接">
-              <a class="post-toc-link" href="#leastconn-最少连接" data-level="1">leastconn - 最少连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="source-源-ip-哈希">
-              <a class="post-toc-link" href="#source-源-ip-哈希" data-level="1">source - 源 IP 哈希</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="uri-uri-哈希">
-              <a class="post-toc-link" href="#uri-uri-哈希" data-level="1">uri - URI 哈希</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="url_param-url-参数哈希">
-              <a class="post-toc-link" href="#url_param-url-参数哈希" data-level="1">url_param - URL 参数哈希</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="hdr-http-头哈希">
-              <a class="post-toc-link" href="#hdr-http-头哈希" data-level="1">hdr - HTTP 头哈希</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="rdp-cookie-rdp-cookie-哈希">
-              <a class="post-toc-link" href="#rdp-cookie-rdp-cookie-哈希" data-level="1">rdp-cookie - RDP cookie 哈希</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="acl-配置">
               <a class="post-toc-link" href="#acl-配置" data-level="3">ACL 配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="acl-定义">
-              <a class="post-toc-link" href="#acl-定义" data-level="1">ACL 定义</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查">
               <a class="post-toc-link" href="#健康检查" data-level="3">健康检查</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-健康检查">
-              <a class="post-toc-link" href="#http-健康检查" data-level="1">HTTP 健康检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-健康检查">
-              <a class="post-toc-link" href="#tcp-健康检查" data-level="1">TCP 健康检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-健康检查">
-              <a class="post-toc-link" href="#ssl-健康检查" data-level="1">SSL 健康检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自定义检查">
-              <a class="post-toc-link" href="#自定义检查" data-level="1">自定义检查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查间隔">
-              <a class="post-toc-link" href="#检查间隔" data-level="1">检查间隔</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="会话保持">
               <a class="post-toc-link" href="#会话保持" data-level="3">会话保持</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基于-cookie-的会话保持">
-              <a class="post-toc-link" href="#基于-cookie-的会话保持" data-level="1">基于 Cookie 的会话保持</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="基于源-ip-的会话保持">
-              <a class="post-toc-link" href="#基于源-ip-的会话保持" data-level="1">基于源 IP 的会话保持</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制连接关闭-禁用会话保持">
-              <a class="post-toc-link" href="#强制连接关闭-禁用会话保持" data-level="1">强制连接关闭（禁用会话保持）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="ssl-tls-配置">
               <a class="post-toc-link" href="#ssl-tls-配置" data-level="3">SSL/TLS 配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="https-监听">
-              <a class="post-toc-link" href="#https-监听" data-level="1">HTTPS 监听</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-卸载">
-              <a class="post-toc-link" href="#ssl-卸载" data-level="1">SSL 卸载</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="发送到后端时使用-ssl">
-              <a class="post-toc-link" href="#发送到后端时使用-ssl" data-level="1">发送到后端时使用 SSL</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="限流">
               <a class="post-toc-link" href="#限流" data-level="3">限流</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接限制">
-              <a class="post-toc-link" href="#连接限制" data-level="1">连接限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="速率限制">
-              <a class="post-toc-link" href="#速率限制" data-level="1">速率限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="带宽限制">
-              <a class="post-toc-link" href="#带宽限制" data-level="1">带宽限制</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="日志配置">
               <a class="post-toc-link" href="#日志配置" data-level="3">日志配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="rsyslog-配置">
-              <a class="post-toc-link" href="#rsyslog-配置" data-level="1">rsyslog 配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-rsyslog-d-99-haproxy-conf">
-              <a class="post-toc-link" href="#etc-rsyslog-d-99-haproxy-conf" data-level="1">/etc/rsyslog.d/99-haproxy.conf</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="haproxy-日志格式">
-              <a class="post-toc-link" href="#haproxy-日志格式" data-level="1">HAProxy 日志格式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="访问日志">
-              <a class="post-toc-link" href="#访问日志" data-level="1">访问日志</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
               <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置">
-              <a class="post-toc-link" href="#测试配置" data-level="1">测试配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示版本">
-              <a class="post-toc-link" href="#显示版本" data-level="1">显示版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细模式">
-              <a class="post-toc-link" href="#详细模式" data-level="1">详细模式</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="前端-后端信息">
-              <a class="post-toc-link" href="#前端-后端信息" data-level="1">前端/后端信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="平滑重载">
-              <a class="post-toc-link" href="#平滑重载" data-level="1">平滑重载</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启">
-              <a class="post-toc-link" href="#重启" data-level="1">重启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动">
-              <a class="post-toc-link" href="#启动" data-level="1">启动</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看统计数据">
-              <a class="post-toc-link" href="#查看统计数据" data-level="1">查看统计数据</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="统计页面">
               <a class="post-toc-link" href="#统计页面" data-level="3">统计页面</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启用统计页面">
-              <a class="post-toc-link" href="#启用统计页面" data-level="1">启用统计页面</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细统计">
-              <a class="post-toc-link" href="#详细统计" data-level="1">详细统计</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
               <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-haproxy-haproxy-cfg">
-              <a class="post-toc-link" href="#etc-haproxy-haproxy-cfg" data-level="1">/etc/haproxy/haproxy.cfg</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="http-to-https-重定向">
-              <a class="post-toc-link" href="#http-to-https-重定向" data-level="1">HTTP to HTTPS 重定向</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="https-前端">
-              <a class="post-toc-link" href="#https-前端" data-level="1">HTTPS 前端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="web-后端">
-              <a class="post-toc-link" href="#web-后端" data-level="1">Web 后端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="api-后端">
-              <a class="post-toc-link" href="#api-后端" data-level="1">API 后端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="静态文件后端">
-              <a class="post-toc-link" href="#静态文件后端" data-level="1">静态文件后端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="管理界面">
-              <a class="post-toc-link" href="#管理界面" data-level="1">管理界面</a>
             </li>
             
           </ul>
@@ -2583,26 +2351,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基础配置结构" data-level="3">基础配置结构</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-haproxy-haproxy-cfg">
-          <a class="post-toc-link" href="#etc-haproxy-haproxy-cfg" data-level="1">/etc/haproxy/haproxy.cfg</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="全局配置">
-          <a class="post-toc-link" href="#全局配置" data-level="1">全局配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认配置">
-          <a class="post-toc-link" href="#默认配置" data-level="1">默认配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="监听配置">
-          <a class="post-toc-link" href="#监听配置" data-level="1">监听配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="后端配置">
-          <a class="post-toc-link" href="#后端配置" data-level="1">后端配置</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="全局配置">
           <a class="post-toc-link" href="#全局配置" data-level="3">全局配置</a>
         </li>
@@ -2611,260 +2359,48 @@ function copied(target, str) {
           <a class="post-toc-link" href="#前端配置" data-level="3">前端配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-前端">
-          <a class="post-toc-link" href="#http-前端" data-level="1">HTTP 前端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="https-前端">
-          <a class="post-toc-link" href="#https-前端" data-level="1">HTTPS 前端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-前端-mysql">
-          <a class="post-toc-link" href="#tcp-前端-mysql" data-level="1">TCP 前端（MySQL）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="haproxy-管理界面">
-          <a class="post-toc-link" href="#haproxy-管理界面" data-level="1">HAProxy 管理界面</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="后端配置">
           <a class="post-toc-link" href="#后端配置" data-level="3">后端配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-后端">
-          <a class="post-toc-link" href="#http-后端" data-level="1">HTTP 后端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="备用服务器">
-          <a class="post-toc-link" href="#备用服务器" data-level="1">备用服务器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-后端-mysql">
-          <a class="post-toc-link" href="#tcp-后端-mysql" data-level="1">TCP 后端（MySQL）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-后端">
-          <a class="post-toc-link" href="#ssl-后端" data-level="1">SSL 后端</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="负载均衡算法">
           <a class="post-toc-link" href="#负载均衡算法" data-level="3">负载均衡算法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="roundrobin-轮询-默认">
-          <a class="post-toc-link" href="#roundrobin-轮询-默认" data-level="1">roundrobin - 轮询（默认）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="static-rr-静态轮询-基于权重">
-          <a class="post-toc-link" href="#static-rr-静态轮询-基于权重" data-level="1">static-rr - 静态轮询（基于权重）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="leastconn-最少连接">
-          <a class="post-toc-link" href="#leastconn-最少连接" data-level="1">leastconn - 最少连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="source-源-ip-哈希">
-          <a class="post-toc-link" href="#source-源-ip-哈希" data-level="1">source - 源 IP 哈希</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="uri-uri-哈希">
-          <a class="post-toc-link" href="#uri-uri-哈希" data-level="1">uri - URI 哈希</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="url_param-url-参数哈希">
-          <a class="post-toc-link" href="#url_param-url-参数哈希" data-level="1">url_param - URL 参数哈希</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="hdr-http-头哈希">
-          <a class="post-toc-link" href="#hdr-http-头哈希" data-level="1">hdr - HTTP 头哈希</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="rdp-cookie-rdp-cookie-哈希">
-          <a class="post-toc-link" href="#rdp-cookie-rdp-cookie-哈希" data-level="1">rdp-cookie - RDP cookie 哈希</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="acl-配置">
           <a class="post-toc-link" href="#acl-配置" data-level="3">ACL 配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="acl-定义">
-          <a class="post-toc-link" href="#acl-定义" data-level="1">ACL 定义</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="健康检查">
           <a class="post-toc-link" href="#健康检查" data-level="3">健康检查</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-健康检查">
-          <a class="post-toc-link" href="#http-健康检查" data-level="1">HTTP 健康检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="tcp-健康检查">
-          <a class="post-toc-link" href="#tcp-健康检查" data-level="1">TCP 健康检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-健康检查">
-          <a class="post-toc-link" href="#ssl-健康检查" data-level="1">SSL 健康检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自定义检查">
-          <a class="post-toc-link" href="#自定义检查" data-level="1">自定义检查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查间隔">
-          <a class="post-toc-link" href="#检查间隔" data-level="1">检查间隔</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="会话保持">
           <a class="post-toc-link" href="#会话保持" data-level="3">会话保持</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基于-cookie-的会话保持">
-          <a class="post-toc-link" href="#基于-cookie-的会话保持" data-level="1">基于 Cookie 的会话保持</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="基于源-ip-的会话保持">
-          <a class="post-toc-link" href="#基于源-ip-的会话保持" data-level="1">基于源 IP 的会话保持</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制连接关闭-禁用会话保持">
-          <a class="post-toc-link" href="#强制连接关闭-禁用会话保持" data-level="1">强制连接关闭（禁用会话保持）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="ssl-tls-配置">
           <a class="post-toc-link" href="#ssl-tls-配置" data-level="3">SSL/TLS 配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="https-监听">
-          <a class="post-toc-link" href="#https-监听" data-level="1">HTTPS 监听</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ssl-卸载">
-          <a class="post-toc-link" href="#ssl-卸载" data-level="1">SSL 卸载</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="发送到后端时使用-ssl">
-          <a class="post-toc-link" href="#发送到后端时使用-ssl" data-level="1">发送到后端时使用 SSL</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="限流">
           <a class="post-toc-link" href="#限流" data-level="3">限流</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接限制">
-          <a class="post-toc-link" href="#连接限制" data-level="1">连接限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="速率限制">
-          <a class="post-toc-link" href="#速率限制" data-level="1">速率限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="带宽限制">
-          <a class="post-toc-link" href="#带宽限制" data-level="1">带宽限制</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="日志配置">
           <a class="post-toc-link" href="#日志配置" data-level="3">日志配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="rsyslog-配置">
-          <a class="post-toc-link" href="#rsyslog-配置" data-level="1">rsyslog 配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-rsyslog-d-99-haproxy-conf">
-          <a class="post-toc-link" href="#etc-rsyslog-d-99-haproxy-conf" data-level="1">/etc/rsyslog.d/99-haproxy.conf</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="haproxy-日志格式">
-          <a class="post-toc-link" href="#haproxy-日志格式" data-level="1">HAProxy 日志格式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="访问日志">
-          <a class="post-toc-link" href="#访问日志" data-level="1">访问日志</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用命令">
           <a class="post-toc-link" href="#常用命令" data-level="3">常用命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="测试配置">
-          <a class="post-toc-link" href="#测试配置" data-level="1">测试配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示版本">
-          <a class="post-toc-link" href="#显示版本" data-level="1">显示版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细模式">
-          <a class="post-toc-link" href="#详细模式" data-level="1">详细模式</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="前端-后端信息">
-          <a class="post-toc-link" href="#前端-后端信息" data-level="1">前端/后端信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="平滑重载">
-          <a class="post-toc-link" href="#平滑重载" data-level="1">平滑重载</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启">
-          <a class="post-toc-link" href="#重启" data-level="1">重启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动">
-          <a class="post-toc-link" href="#启动" data-level="1">启动</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看统计数据">
-          <a class="post-toc-link" href="#查看统计数据" data-level="1">查看统计数据</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="统计页面">
           <a class="post-toc-link" href="#统计页面" data-level="3">统计页面</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启用统计页面">
-          <a class="post-toc-link" href="#启用统计页面" data-level="1">启用统计页面</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细统计">
-          <a class="post-toc-link" href="#详细统计" data-level="1">详细统计</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="完整示例">
           <a class="post-toc-link" href="#完整示例" data-level="3">完整示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-haproxy-haproxy-cfg">
-          <a class="post-toc-link" href="#etc-haproxy-haproxy-cfg" data-level="1">/etc/haproxy/haproxy.cfg</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="http-to-https-重定向">
-          <a class="post-toc-link" href="#http-to-https-重定向" data-level="1">HTTP to HTTPS 重定向</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="https-前端">
-          <a class="post-toc-link" href="#https-前端" data-level="1">HTTPS 前端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="web-后端">
-          <a class="post-toc-link" href="#web-后端" data-level="1">Web 后端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="api-后端">
-          <a class="post-toc-link" href="#api-后端" data-level="1">API 后端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="静态文件后端">
-          <a class="post-toc-link" href="#静态文件后端" data-level="1">静态文件后端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="管理界面">
-          <a class="post-toc-link" href="#管理界面" data-level="1">管理界面</a>
         </li>
         
       </ul>
@@ -2873,7 +2409,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -3056,8 +2592,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

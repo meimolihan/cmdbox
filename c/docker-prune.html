@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-prune 命令">
     <meta name="twitter:description" content="清理Docker未使用的资源 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1501,112 +1501,32 @@ function copied(target, str) {
               <a class="post-toc-link" href="#清理所有未使用的资源" data-level="4">清理所有未使用的资源</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理所有未使用的容器-网络-镜像和构建缓存">
-              <a class="post-toc-link" href="#清理所有未使用的容器-网络-镜像和构建缓存" data-level="1">清理所有未使用的容器、网络、镜像和构建缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理所有未使用的资源-包括-volumes">
-              <a class="post-toc-link" href="#清理所有未使用的资源-包括-volumes" data-level="1">清理所有未使用的资源（包括 volumes）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理24小时前创建的所有资源">
-              <a class="post-toc-link" href="#清理24小时前创建的所有资源" data-level="1">清理24小时前创建的所有资源</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的容器">
               <a class="post-toc-link" href="#清理未使用的容器" data-level="4">清理未使用的容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除已停止的容器">
-              <a class="post-toc-link" href="#删除已停止的容器" data-level="1">删除已停止的容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的容器-不仅仅是停止的">
-              <a class="post-toc-link" href="#删除所有未使用的容器-不仅仅是停止的" data-level="1">删除所有未使用的容器（不仅仅是停止的）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除超过24小时的已停止容器">
-              <a class="post-toc-link" href="#删除超过24小时的已停止容器" data-level="1">删除超过24小时的已停止容器</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的镜像">
               <a class="post-toc-link" href="#清理未使用的镜像" data-level="4">清理未使用的镜像</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除-dangling-镜像-未标签且不被任何容器使用">
-              <a class="post-toc-link" href="#删除-dangling-镜像-未标签且不被任何容器使用" data-level="1">删除 dangling 镜像（未标签且不被任何容器使用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的镜像">
-              <a class="post-toc-link" href="#删除所有未使用的镜像" data-level="1">删除所有未使用的镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除超过7天的未使用镜像">
-              <a class="post-toc-link" href="#删除超过7天的未使用镜像" data-level="1">删除超过7天的未使用镜像</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的网络">
               <a class="post-toc-link" href="#清理未使用的网络" data-level="4">清理未使用的网络</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除未被任何容器使用的网络">
-              <a class="post-toc-link" href="#删除未被任何容器使用的网络" data-level="1">删除未被任何容器使用的网络</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的卷">
               <a class="post-toc-link" href="#清理未使用的卷" data-level="4">清理未使用的卷</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除未被任何容器使用的卷">
-              <a class="post-toc-link" href="#删除未被任何容器使用的卷" data-level="1">删除未被任何容器使用的卷</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的卷-包括命名卷">
-              <a class="post-toc-link" href="#删除所有未使用的卷-包括命名卷" data-level="1">删除所有未使用的卷（包括命名卷）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="注意-a-参数在-volume-prune-中会删除所有未使用的卷">
-              <a class="post-toc-link" href="#注意-a-参数在-volume-prune-中会删除所有未使用的卷" data-level="1">注意：-a 参数在 volume prune 中会删除所有未使用的卷</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="清理构建缓存">
               <a class="post-toc-link" href="#清理构建缓存" data-level="4">清理构建缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除构建缓存">
-              <a class="post-toc-link" href="#删除构建缓存" data-level="1">删除构建缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有构建缓存">
-              <a class="post-toc-link" href="#删除所有构建缓存" data-level="1">删除所有构建缓存</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="清理特定资源组合">
               <a class="post-toc-link" href="#清理特定资源组合" data-level="4">清理特定资源组合</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只清理容器和镜像">
-              <a class="post-toc-link" href="#只清理容器和镜像" data-level="1">只清理容器和镜像</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理网络和卷-小心使用">
-              <a class="post-toc-link" href="#清理网络和卷-小心使用" data-level="1">清理网络和卷（小心使用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完整清理-包含-volumes">
-              <a class="post-toc-link" href="#完整清理-包含-volumes" data-level="1">完整清理（包含 volumes）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-4" data-toc-id="查看清理前的空间使用">
               <a class="post-toc-link" href="#查看清理前的空间使用" data-level="4">查看清理前的空间使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看磁盘使用情况">
-              <a class="post-toc-link" href="#查看磁盘使用情况" data-level="1">查看磁盘使用情况</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="详细查看各类资源">
-              <a class="post-toc-link" href="#详细查看各类资源" data-level="1">详细查看各类资源</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="输出示例">
@@ -1615,10 +1535,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
               <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-cron-d-docker-prune">
-              <a class="post-toc-link" href="#etc-cron-d-docker-prune" data-level="1">/etc/cron.d/docker-prune</a>
             </li>
             
           </ul>
@@ -1666,112 +1582,32 @@ function copied(target, str) {
           <a class="post-toc-link" href="#清理所有未使用的资源" data-level="4">清理所有未使用的资源</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理所有未使用的容器-网络-镜像和构建缓存">
-          <a class="post-toc-link" href="#清理所有未使用的容器-网络-镜像和构建缓存" data-level="1">清理所有未使用的容器、网络、镜像和构建缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理所有未使用的资源-包括-volumes">
-          <a class="post-toc-link" href="#清理所有未使用的资源-包括-volumes" data-level="1">清理所有未使用的资源（包括 volumes）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理24小时前创建的所有资源">
-          <a class="post-toc-link" href="#清理24小时前创建的所有资源" data-level="1">清理24小时前创建的所有资源</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的容器">
           <a class="post-toc-link" href="#清理未使用的容器" data-level="4">清理未使用的容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除已停止的容器">
-          <a class="post-toc-link" href="#删除已停止的容器" data-level="1">删除已停止的容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的容器-不仅仅是停止的">
-          <a class="post-toc-link" href="#删除所有未使用的容器-不仅仅是停止的" data-level="1">删除所有未使用的容器（不仅仅是停止的）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除超过24小时的已停止容器">
-          <a class="post-toc-link" href="#删除超过24小时的已停止容器" data-level="1">删除超过24小时的已停止容器</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的镜像">
           <a class="post-toc-link" href="#清理未使用的镜像" data-level="4">清理未使用的镜像</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除-dangling-镜像-未标签且不被任何容器使用">
-          <a class="post-toc-link" href="#删除-dangling-镜像-未标签且不被任何容器使用" data-level="1">删除 dangling 镜像（未标签且不被任何容器使用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的镜像">
-          <a class="post-toc-link" href="#删除所有未使用的镜像" data-level="1">删除所有未使用的镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除超过7天的未使用镜像">
-          <a class="post-toc-link" href="#删除超过7天的未使用镜像" data-level="1">删除超过7天的未使用镜像</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的网络">
           <a class="post-toc-link" href="#清理未使用的网络" data-level="4">清理未使用的网络</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除未被任何容器使用的网络">
-          <a class="post-toc-link" href="#删除未被任何容器使用的网络" data-level="1">删除未被任何容器使用的网络</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="清理未使用的卷">
           <a class="post-toc-link" href="#清理未使用的卷" data-level="4">清理未使用的卷</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除未被任何容器使用的卷">
-          <a class="post-toc-link" href="#删除未被任何容器使用的卷" data-level="1">删除未被任何容器使用的卷</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有未使用的卷-包括命名卷">
-          <a class="post-toc-link" href="#删除所有未使用的卷-包括命名卷" data-level="1">删除所有未使用的卷（包括命名卷）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="注意-a-参数在-volume-prune-中会删除所有未使用的卷">
-          <a class="post-toc-link" href="#注意-a-参数在-volume-prune-中会删除所有未使用的卷" data-level="1">注意：-a 参数在 volume prune 中会删除所有未使用的卷</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="清理构建缓存">
           <a class="post-toc-link" href="#清理构建缓存" data-level="4">清理构建缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除构建缓存">
-          <a class="post-toc-link" href="#删除构建缓存" data-level="1">删除构建缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除所有构建缓存">
-          <a class="post-toc-link" href="#删除所有构建缓存" data-level="1">删除所有构建缓存</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="清理特定资源组合">
           <a class="post-toc-link" href="#清理特定资源组合" data-level="4">清理特定资源组合</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只清理容器和镜像">
-          <a class="post-toc-link" href="#只清理容器和镜像" data-level="1">只清理容器和镜像</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理网络和卷-小心使用">
-          <a class="post-toc-link" href="#清理网络和卷-小心使用" data-level="1">清理网络和卷（小心使用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完整清理-包含-volumes">
-          <a class="post-toc-link" href="#完整清理-包含-volumes" data-level="1">完整清理（包含 volumes）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-4" data-toc-id="查看清理前的空间使用">
           <a class="post-toc-link" href="#查看清理前的空间使用" data-level="4">查看清理前的空间使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看磁盘使用情况">
-          <a class="post-toc-link" href="#查看磁盘使用情况" data-level="1">查看磁盘使用情况</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="详细查看各类资源">
-          <a class="post-toc-link" href="#详细查看各类资源" data-level="1">详细查看各类资源</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="输出示例">
@@ -1782,17 +1618,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-cron-d-docker-prune">
-          <a class="post-toc-link" href="#etc-cron-d-docker-prune" data-level="1">/etc/cron.d/docker-prune</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1975,8 +1807,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

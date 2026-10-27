@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-buildx-clean 命令">
     <meta name="twitter:description" content="清理 Docker Buildx 构建缓存 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1749,60 +1749,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#三-临时安全清理方案-日常使用-推荐" data-level="3">三、临时安全清理方案（日常使用 | 推荐）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-切换到系统默认内置构建器-无独立容器-无错乱bug">
-              <a class="post-toc-link" href="#1-切换到系统默认内置构建器-无独立容器-无错乱bug" data-level="1">1. 切换到系统默认内置构建器（无独立容器、无错乱bug）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-安全清理所有无引用构建缓存-不删除正在使用的层">
-              <a class="post-toc-link" href="#2-安全清理所有无引用构建缓存-不删除正在使用的层" data-level="1">2. 安全清理所有无引用构建缓存（不删除正在使用的层）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-切回你的多架构构建器-正常编译镜像">
-              <a class="post-toc-link" href="#3-切回你的多架构构建器-正常编译镜像" data-level="1">3. 切回你的多架构构建器，正常编译镜像</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="四-彻底根治修复方案-重置错乱索引">
               <a class="post-toc-link" href="#四-彻底根治修复方案-重置错乱索引" data-level="3">四、彻底根治修复方案（重置错乱索引）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-切换默认构建器">
-              <a class="post-toc-link" href="#1-切换默认构建器" data-level="1">1. 切换默认构建器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-删除损坏的自定义构建器">
-              <a class="post-toc-link" href="#2-删除损坏的自定义构建器" data-level="1">2. 删除损坏的自定义构建器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-强制清理所有残留-buildkit-容器">
-              <a class="post-toc-link" href="#3-强制清理所有残留-buildkit-容器" data-level="1">3. 强制清理所有残留 buildkit 容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-全新创建干净无错乱的-buildx-构建器">
-              <a class="post-toc-link" href="#4-全新创建干净无错乱的-buildx-构建器" data-level="1">4. 全新创建干净无错乱的 buildx 构建器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-初始化启动-buildkit">
-              <a class="post-toc-link" href="#5-初始化启动-buildkit" data-level="1">5. 初始化启动 BuildKit</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="6-正常清理缓存-彻底无报错">
-              <a class="post-toc-link" href="#6-正常清理缓存-彻底无报错" data-level="1">6. 正常清理缓存（彻底无报错）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="五-万能替代清理命令-绕开所有-buildx-bug">
               <a class="post-toc-link" href="#五-万能替代清理命令-绕开所有-buildx-bug" data-level="3">五、万能替代清理命令（绕开所有 Buildx Bug）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全清理-仅删除未使用的构建缓存-推荐日常使用">
-              <a class="post-toc-link" href="#安全清理-仅删除未使用的构建缓存-推荐日常使用" data-level="1">安全清理：仅删除未使用的构建缓存（推荐日常使用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="深度清理-清空所有悬空-未引用缓存-适合磁盘爆满">
-              <a class="post-toc-link" href="#深度清理-清空所有悬空-未引用缓存-适合磁盘爆满" data-level="1">深度清理：清空所有悬空/未引用缓存（适合磁盘爆满）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理当前-builder-全部缓存">
-              <a class="post-toc-link" href="#清理当前-builder-全部缓存" data-level="1">清理当前 builder 全部缓存</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="六-最佳使用规范-后续永久不报错">
@@ -1821,20 +1773,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#查看缓存大小" data-level="3">查看缓存大小</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有-buildx-缓存的磁盘使用情况-推荐第一步操作">
-              <a class="post-toc-link" href="#查看所有-buildx-缓存的磁盘使用情况-推荐第一步操作" data-level="1">查看所有 Buildx 缓存的磁盘使用情况（推荐第一步操作）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="详细查看缓存内容">
               <a class="post-toc-link" href="#详细查看缓存内容" data-level="3">详细查看缓存内容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看更详细的缓存信息-包含构建记录">
-              <a class="post-toc-link" href="#查看更详细的缓存信息-包含构建记录" data-level="1">查看更详细的缓存信息，包含构建记录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="过滤查看特定-builder-的缓存">
-              <a class="post-toc-link" href="#过滤查看特定-builder-的缓存" data-level="1">过滤查看特定 builder 的缓存</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="安全清理-推荐">
@@ -1845,24 +1785,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#删除无引用缓存" data-level="3">删除无引用缓存</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全清理-删除所有无引用的构建缓存-不删除正在使用的层">
-              <a class="post-toc-link" href="#安全清理-删除所有无引用的构建缓存-不删除正在使用的层" data-level="1">安全清理 — 删除所有无引用的构建缓存（不删除正在使用的层）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="带过滤条件的清理">
               <a class="post-toc-link" href="#带过滤条件的清理" data-level="3">带过滤条件的清理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="只清理-24-小时前的无引用缓存-更安全-保留近期缓存">
-              <a class="post-toc-link" href="#只清理-24-小时前的无引用缓存-更安全-保留近期缓存" data-level="1">只清理 24 小时前的无引用缓存（更安全，保留近期缓存）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理-7-天前的缓存">
-              <a class="post-toc-link" href="#清理-7-天前的缓存" data-level="1">清理 7 天前的缓存</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理超过-1gb-的缓存-阈值清理">
-              <a class="post-toc-link" href="#清理超过-1gb-的缓存-阈值清理" data-level="1">清理超过 1GB 的缓存（阈值清理）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="一次性全部清空">
@@ -1873,64 +1797,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#删除全部构建缓存" data-level="3">删除全部构建缓存</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清空所有-buildx-构建缓存-包含所有无引用和已引用缓存">
-              <a class="post-toc-link" href="#清空所有-buildx-构建缓存-包含所有无引用和已引用缓存" data-level="1">清空所有 Buildx 构建缓存（包含所有无引用和已引用缓存）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="清理-buildkit-共享状态">
               <a class="post-toc-link" href="#清理-buildkit-共享状态" data-level="3">清理 BuildKit 共享状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理-buildkit-的共享内存和元数据-辅助彻底清理">
-              <a class="post-toc-link" href="#清理-buildkit-的共享内存和元数据-辅助彻底清理" data-level="1">清理 BuildKit 的共享内存和元数据（辅助彻底清理）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理临时的构建输出文件">
-              <a class="post-toc-link" href="#清理临时的构建输出文件" data-level="1">清理临时的构建输出文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="windows-powershell-脚本示例">
               <a class="post-toc-link" href="#windows-powershell-脚本示例" data-level="2">Windows PowerShell 脚本示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前-buildx-缓存大小">
-              <a class="post-toc-link" href="#查看当前-buildx-缓存大小" data-level="1">=== 查看当前 Buildx 缓存大小 ===</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全清理-保留有效层">
-              <a class="post-toc-link" href="#安全清理-保留有效层" data-level="1">=== 安全清理（保留有效层）===</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认清理结果">
-              <a class="post-toc-link" href="#确认清理结果" data-level="1">=== 确认清理结果 ===</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="linux-macos-脚本示例">
               <a class="post-toc-link" href="#linux-macos-脚本示例" data-level="2">Linux/macOS 脚本示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-buildx-clean-sh">
-              <a class="post-toc-link" href="#docker-buildx-clean-sh" data-level="1">=== docker-buildx-clean.sh ===</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-buildx-构建缓存清理脚本">
-              <a class="post-toc-link" href="#docker-buildx-构建缓存清理脚本" data-level="1">Docker Buildx 构建缓存清理脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加执行权限">
-              <a class="post-toc-link" href="#添加执行权限" data-level="1">添加执行权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="手动执行">
-              <a class="post-toc-link" href="#手动执行" data-level="1">手动执行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或添加到-crontab-定时执行-每周日凌晨-3-点">
-              <a class="post-toc-link" href="#或添加到-crontab-定时执行-每周日凌晨-3-点" data-level="1">或添加到 crontab 定时执行（每周日凌晨 3 点）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="0-3-0-path-to-docker-buildx-clean-sh-var-log-docker-buildx-clean-log-2-1">
-              <a class="post-toc-link" href="#0-3-0-path-to-docker-buildx-clean-sh-var-log-docker-buildx-clean-log-2-1" data-level="1">0 3 * * 0 /path/to/docker-buildx-clean.sh &gt;&gt; /var/log/docker-buildx-clean.log 2&gt;&amp;1</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="ci-cd-中的使用">
@@ -1941,16 +1817,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#github-actions" data-level="3">GitHub Actions</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="github-workflows-cleanup-yml">
-              <a class="post-toc-link" href="#github-workflows-cleanup-yml" data-level="1">.github/workflows/cleanup.yml</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="gitlab-ci">
               <a class="post-toc-link" href="#gitlab-ci" data-level="3">GitLab CI</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="gitlab-ci-yml">
-              <a class="post-toc-link" href="#gitlab-ci-yml" data-level="1">.gitlab-ci.yml</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令对比">
@@ -2006,60 +1874,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#三-临时安全清理方案-日常使用-推荐" data-level="3">三、临时安全清理方案（日常使用 | 推荐）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-切换到系统默认内置构建器-无独立容器-无错乱bug">
-          <a class="post-toc-link" href="#1-切换到系统默认内置构建器-无独立容器-无错乱bug" data-level="1">1. 切换到系统默认内置构建器（无独立容器、无错乱bug）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-安全清理所有无引用构建缓存-不删除正在使用的层">
-          <a class="post-toc-link" href="#2-安全清理所有无引用构建缓存-不删除正在使用的层" data-level="1">2. 安全清理所有无引用构建缓存（不删除正在使用的层）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-切回你的多架构构建器-正常编译镜像">
-          <a class="post-toc-link" href="#3-切回你的多架构构建器-正常编译镜像" data-level="1">3. 切回你的多架构构建器，正常编译镜像</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="四-彻底根治修复方案-重置错乱索引">
           <a class="post-toc-link" href="#四-彻底根治修复方案-重置错乱索引" data-level="3">四、彻底根治修复方案（重置错乱索引）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-切换默认构建器">
-          <a class="post-toc-link" href="#1-切换默认构建器" data-level="1">1. 切换默认构建器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-删除损坏的自定义构建器">
-          <a class="post-toc-link" href="#2-删除损坏的自定义构建器" data-level="1">2. 删除损坏的自定义构建器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-强制清理所有残留-buildkit-容器">
-          <a class="post-toc-link" href="#3-强制清理所有残留-buildkit-容器" data-level="1">3. 强制清理所有残留 buildkit 容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-全新创建干净无错乱的-buildx-构建器">
-          <a class="post-toc-link" href="#4-全新创建干净无错乱的-buildx-构建器" data-level="1">4. 全新创建干净无错乱的 buildx 构建器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-初始化启动-buildkit">
-          <a class="post-toc-link" href="#5-初始化启动-buildkit" data-level="1">5. 初始化启动 BuildKit</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="6-正常清理缓存-彻底无报错">
-          <a class="post-toc-link" href="#6-正常清理缓存-彻底无报错" data-level="1">6. 正常清理缓存（彻底无报错）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="五-万能替代清理命令-绕开所有-buildx-bug">
           <a class="post-toc-link" href="#五-万能替代清理命令-绕开所有-buildx-bug" data-level="3">五、万能替代清理命令（绕开所有 Buildx Bug）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全清理-仅删除未使用的构建缓存-推荐日常使用">
-          <a class="post-toc-link" href="#安全清理-仅删除未使用的构建缓存-推荐日常使用" data-level="1">安全清理：仅删除未使用的构建缓存（推荐日常使用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="深度清理-清空所有悬空-未引用缓存-适合磁盘爆满">
-          <a class="post-toc-link" href="#深度清理-清空所有悬空-未引用缓存-适合磁盘爆满" data-level="1">深度清理：清空所有悬空/未引用缓存（适合磁盘爆满）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理当前-builder-全部缓存">
-          <a class="post-toc-link" href="#清理当前-builder-全部缓存" data-level="1">清理当前 builder 全部缓存</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="六-最佳使用规范-后续永久不报错">
@@ -2078,20 +1898,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#查看缓存大小" data-level="3">查看缓存大小</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有-buildx-缓存的磁盘使用情况-推荐第一步操作">
-          <a class="post-toc-link" href="#查看所有-buildx-缓存的磁盘使用情况-推荐第一步操作" data-level="1">查看所有 Buildx 缓存的磁盘使用情况（推荐第一步操作）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="详细查看缓存内容">
           <a class="post-toc-link" href="#详细查看缓存内容" data-level="3">详细查看缓存内容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看更详细的缓存信息-包含构建记录">
-          <a class="post-toc-link" href="#查看更详细的缓存信息-包含构建记录" data-level="1">查看更详细的缓存信息，包含构建记录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="过滤查看特定-builder-的缓存">
-          <a class="post-toc-link" href="#过滤查看特定-builder-的缓存" data-level="1">过滤查看特定 builder 的缓存</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="安全清理-推荐">
@@ -2102,24 +1910,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#删除无引用缓存" data-level="3">删除无引用缓存</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全清理-删除所有无引用的构建缓存-不删除正在使用的层">
-          <a class="post-toc-link" href="#安全清理-删除所有无引用的构建缓存-不删除正在使用的层" data-level="1">安全清理 — 删除所有无引用的构建缓存（不删除正在使用的层）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="带过滤条件的清理">
           <a class="post-toc-link" href="#带过滤条件的清理" data-level="3">带过滤条件的清理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="只清理-24-小时前的无引用缓存-更安全-保留近期缓存">
-          <a class="post-toc-link" href="#只清理-24-小时前的无引用缓存-更安全-保留近期缓存" data-level="1">只清理 24 小时前的无引用缓存（更安全，保留近期缓存）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理-7-天前的缓存">
-          <a class="post-toc-link" href="#清理-7-天前的缓存" data-level="1">清理 7 天前的缓存</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理超过-1gb-的缓存-阈值清理">
-          <a class="post-toc-link" href="#清理超过-1gb-的缓存-阈值清理" data-level="1">清理超过 1GB 的缓存（阈值清理）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="一次性全部清空">
@@ -2130,64 +1922,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#删除全部构建缓存" data-level="3">删除全部构建缓存</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清空所有-buildx-构建缓存-包含所有无引用和已引用缓存">
-          <a class="post-toc-link" href="#清空所有-buildx-构建缓存-包含所有无引用和已引用缓存" data-level="1">清空所有 Buildx 构建缓存（包含所有无引用和已引用缓存）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="清理-buildkit-共享状态">
           <a class="post-toc-link" href="#清理-buildkit-共享状态" data-level="3">清理 BuildKit 共享状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理-buildkit-的共享内存和元数据-辅助彻底清理">
-          <a class="post-toc-link" href="#清理-buildkit-的共享内存和元数据-辅助彻底清理" data-level="1">清理 BuildKit 的共享内存和元数据（辅助彻底清理）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理临时的构建输出文件">
-          <a class="post-toc-link" href="#清理临时的构建输出文件" data-level="1">清理临时的构建输出文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="windows-powershell-脚本示例">
           <a class="post-toc-link" href="#windows-powershell-脚本示例" data-level="2">Windows PowerShell 脚本示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看当前-buildx-缓存大小">
-          <a class="post-toc-link" href="#查看当前-buildx-缓存大小" data-level="1">=== 查看当前 Buildx 缓存大小 ===</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全清理-保留有效层">
-          <a class="post-toc-link" href="#安全清理-保留有效层" data-level="1">=== 安全清理（保留有效层）===</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认清理结果">
-          <a class="post-toc-link" href="#确认清理结果" data-level="1">=== 确认清理结果 ===</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="linux-macos-脚本示例">
           <a class="post-toc-link" href="#linux-macos-脚本示例" data-level="2">Linux/macOS 脚本示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-buildx-clean-sh">
-          <a class="post-toc-link" href="#docker-buildx-clean-sh" data-level="1">=== docker-buildx-clean.sh ===</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-buildx-构建缓存清理脚本">
-          <a class="post-toc-link" href="#docker-buildx-构建缓存清理脚本" data-level="1">Docker Buildx 构建缓存清理脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加执行权限">
-          <a class="post-toc-link" href="#添加执行权限" data-level="1">添加执行权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="手动执行">
-          <a class="post-toc-link" href="#手动执行" data-level="1">手动执行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或添加到-crontab-定时执行-每周日凌晨-3-点">
-          <a class="post-toc-link" href="#或添加到-crontab-定时执行-每周日凌晨-3-点" data-level="1">或添加到 crontab 定时执行（每周日凌晨 3 点）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="0-3-0-path-to-docker-buildx-clean-sh-var-log-docker-buildx-clean-log-2-1">
-          <a class="post-toc-link" href="#0-3-0-path-to-docker-buildx-clean-sh-var-log-docker-buildx-clean-log-2-1" data-level="1">0 3 * * 0 /path/to/docker-buildx-clean.sh &gt;&gt; /var/log/docker-buildx-clean.log 2&gt;&amp;1</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="ci-cd-中的使用">
@@ -2198,16 +1942,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#github-actions" data-level="3">GitHub Actions</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="github-workflows-cleanup-yml">
-          <a class="post-toc-link" href="#github-workflows-cleanup-yml" data-level="1">.github/workflows/cleanup.yml</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="gitlab-ci">
           <a class="post-toc-link" href="#gitlab-ci" data-level="3">GitLab CI</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="gitlab-ci-yml">
-          <a class="post-toc-link" href="#gitlab-ci-yml" data-level="1">.gitlab-ci.yml</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令对比">
@@ -2224,7 +1960,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2407,8 +2143,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

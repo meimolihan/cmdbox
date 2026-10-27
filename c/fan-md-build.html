@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="fan-md-build 命令">
     <meta name="twitter:description" content="fan-md 完整开发-编译-发布-部署教程 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1662,10 +1662,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#模式-1-递增新版本-正式环境-推荐" data-level="3">模式 1：递增新版本（正式环境，推荐）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或重跑一键部署脚本-会重建容器">
-              <a class="post-toc-link" href="#或重跑一键部署脚本-会重建容器" data-level="1">或重跑一键部署脚本（会重建容器）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="模式-2-删除重建同名-release-仅限内测-无人依赖">
               <a class="post-toc-link" href="#模式-2-删除重建同名-release-仅限内测-无人依赖" data-level="3">模式 2：删除重建同名 Release（仅限内测，无人依赖）</a>
             </li>
@@ -1684,30 +1680,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="发布新版本速记">
               <a class="post-toc-link" href="#发布新版本速记" data-level="3">发布新版本速记</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="等价分步">
-              <a class="post-toc-link" href="#等价分步" data-level="1">等价分步：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="vim-fan-md-version-version-go-web-package-json-版本号">
-              <a class="post-toc-link" href="#vim-fan-md-version-version-go-web-package-json-版本号" data-level="1">vim fan-md/version/version.go web/package.json   # 版本号</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="echo-更新说明-release_notes-md">
-              <a class="post-toc-link" href="#echo-更新说明-release_notes-md" data-level="1">echo &#34;更新说明&#34; &gt; RELEASE_NOTES.md</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="git-add-git-commit-m-chore-bump-version-to-1-1-0">
-              <a class="post-toc-link" href="#git-add-git-commit-m-chore-bump-version-to-1-1-0" data-level="1">git add . &amp;&amp; git commit -m &#34;chore: bump version to 1.1.0&#34;</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="git-push-origin-main">
-              <a class="post-toc-link" href="#git-push-origin-main" data-level="1">git push origin main</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="git-tag-v1-1-0-git-push-origin-v1-1-0-触发-actions">
-              <a class="post-toc-link" href="#git-tag-v1-1-0-git-push-origin-v1-1-0-触发-actions" data-level="1">git tag v1.1.0 &amp;&amp; git push origin v1.1.0          # 触发 Actions</a>
             </li>
             
           </ul>
@@ -1803,10 +1775,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#模式-1-递增新版本-正式环境-推荐" data-level="3">模式 1：递增新版本（正式环境，推荐）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或重跑一键部署脚本-会重建容器">
-          <a class="post-toc-link" href="#或重跑一键部署脚本-会重建容器" data-level="1">或重跑一键部署脚本（会重建容器）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="模式-2-删除重建同名-release-仅限内测-无人依赖">
           <a class="post-toc-link" href="#模式-2-删除重建同名-release-仅限内测-无人依赖" data-level="3">模式 2：删除重建同名 Release（仅限内测，无人依赖）</a>
         </li>
@@ -1827,37 +1795,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#发布新版本速记" data-level="3">发布新版本速记</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="等价分步">
-          <a class="post-toc-link" href="#等价分步" data-level="1">等价分步：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="vim-fan-md-version-version-go-web-package-json-版本号">
-          <a class="post-toc-link" href="#vim-fan-md-version-version-go-web-package-json-版本号" data-level="1">vim fan-md/version/version.go web/package.json   # 版本号</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="echo-更新说明-release_notes-md">
-          <a class="post-toc-link" href="#echo-更新说明-release_notes-md" data-level="1">echo &#34;更新说明&#34; &gt; RELEASE_NOTES.md</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="git-add-git-commit-m-chore-bump-version-to-1-1-0">
-          <a class="post-toc-link" href="#git-add-git-commit-m-chore-bump-version-to-1-1-0" data-level="1">git add . &amp;&amp; git commit -m &#34;chore: bump version to 1.1.0&#34;</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="git-push-origin-main">
-          <a class="post-toc-link" href="#git-push-origin-main" data-level="1">git push origin main</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="git-tag-v1-1-0-git-push-origin-v1-1-0-触发-actions">
-          <a class="post-toc-link" href="#git-tag-v1-1-0-git-push-origin-v1-1-0-触发-actions" data-level="1">git tag v1.1.0 &amp;&amp; git push origin v1.1.0          # 触发 Actions</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2040,8 +1984,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

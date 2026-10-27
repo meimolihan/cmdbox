@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="systemctl 命令">
     <meta name="twitter:description" content="systemd 服务管理工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1864,292 +1864,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#服务管理" data-level="3">服务管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-              <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-              <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置-不中断服务">
-              <a class="post-toc-link" href="#重载配置-不中断服务" data-level="1">重载配置（不中断服务）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-              <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看简要状态">
-              <a class="post-toc-link" href="#查看简要状态" data-level="1">查看简要状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务是否运行">
-              <a class="post-toc-link" href="#查看服务是否运行" data-level="1">查看服务是否运行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="尝试重启服务-如果已运行">
-              <a class="post-toc-link" href="#尝试重启服务-如果已运行" data-level="1">尝试重启服务（如果已运行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底重启服务-停止后启动">
-              <a class="post-toc-link" href="#彻底重启服务-停止后启动" data-level="1">彻底重启服务（停止后启动）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="立即终止服务">
-              <a class="post-toc-link" href="#立即终止服务" data-level="1">立即终止服务</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="开机自启">
               <a class="post-toc-link" href="#开机自启" data-level="3">开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开启开机自启">
-              <a class="post-toc-link" href="#开启开机自启" data-level="1">开启开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="关闭开机自启">
-              <a class="post-toc-link" href="#关闭开机自启" data-level="1">关闭开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看自启状态">
-              <a class="post-toc-link" href="#查看自启状态" data-level="1">查看自启状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="屏蔽服务-无法手动启动">
-              <a class="post-toc-link" href="#屏蔽服务-无法手动启动" data-level="1">屏蔽服务（无法手动启动）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消屏蔽">
-              <a class="post-toc-link" href="#取消屏蔽" data-level="1">取消屏蔽</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务预设状态">
-              <a class="post-toc-link" href="#查看服务预设状态" data-level="1">查看服务预设状态</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="服务查看">
               <a class="post-toc-link" href="#服务查看" data-level="3">服务查看</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有服务">
-              <a class="post-toc-link" href="#列出所有服务" data-level="1">列出所有服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出运行中的服务">
-              <a class="post-toc-link" href="#列出运行中的服务" data-level="1">列出运行中的服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出失败的服务">
-              <a class="post-toc-link" href="#列出失败的服务" data-level="1">列出失败的服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有单元文件">
-              <a class="post-toc-link" href="#列出所有单元文件" data-level="1">列出所有单元文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出服务单元文件">
-              <a class="post-toc-link" href="#列出服务单元文件" data-level="1">列出服务单元文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出启用的服务">
-              <a class="post-toc-link" href="#列出启用的服务" data-level="1">列出启用的服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出自启失败的服务">
-              <a class="post-toc-link" href="#列出自启失败的服务" data-level="1">列出自启失败的服务</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="查看服务详情">
               <a class="post-toc-link" href="#查看服务详情" data-level="3">查看服务详情</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务详情">
-              <a class="post-toc-link" href="#查看服务详情" data-level="1">查看服务详情</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务依赖">
-              <a class="post-toc-link" href="#查看服务依赖" data-level="1">查看服务依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务日志">
-              <a class="post-toc-link" href="#查看服务日志" data-level="1">查看服务日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务配置文件">
-              <a class="post-toc-link" href="#查看服务配置文件" data-level="1">查看服务配置文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑服务配置">
-              <a class="post-toc-link" href="#编辑服务配置" data-level="1">编辑服务配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务默认配置">
-              <a class="post-toc-link" href="#查看服务默认配置" data-level="1">查看服务默认配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="系统管理">
               <a class="post-toc-link" href="#系统管理" data-level="3">系统管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启系统">
-              <a class="post-toc-link" href="#重启系统" data-level="1">重启系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="关机">
-              <a class="post-toc-link" href="#关机" data-level="1">关机</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="挂起系统">
-              <a class="post-toc-link" href="#挂起系统" data-level="1">挂起系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="休眠">
-              <a class="post-toc-link" href="#休眠" data-level="1">休眠</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="混合睡眠">
-              <a class="post-toc-link" href="#混合睡眠" data-level="1">混合睡眠</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="退出登录">
-              <a class="post-toc-link" href="#退出登录" data-level="1">退出登录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换运行级别-rescueemergency">
-              <a class="post-toc-link" href="#切换运行级别-rescueemergency" data-level="1">切换运行级别（rescueemergency）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换运行目标">
-              <a class="post-toc-link" href="#切换运行目标" data-level="1">切换运行目标</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认目标-图形界面命令行界面">
-              <a class="post-toc-link" href="#切换默认目标-图形界面命令行界面" data-level="1">切换默认目标（图形界面命令行界面）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有目标">
-              <a class="post-toc-link" href="#查看所有目标" data-level="1">查看所有目标</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="管理单元文件">
               <a class="post-toc-link" href="#管理单元文件" data-level="3">管理单元文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务文件">
-              <a class="post-toc-link" href="#创建服务文件" data-level="1">创建服务文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-systemd-system-myapp-service">
-              <a class="post-toc-link" href="#etc-systemd-system-myapp-service" data-level="1">/etc/systemd/system/myapp.service</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置文件">
-              <a class="post-toc-link" href="#重载配置文件" data-level="1">重载配置文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建符号链接-启用服务">
-              <a class="post-toc-link" href="#创建符号链接-启用服务" data-level="1">创建符号链接（启用服务）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="服务文件示例">
               <a class="post-toc-link" href="#服务文件示例" data-level="3">服务文件示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="标准-web-服务示例">
-              <a class="post-toc-link" href="#标准-web-服务示例" data-level="1">标准 Web 服务示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="简单服务示例">
-              <a class="post-toc-link" href="#简单服务示例" data-level="1">简单服务示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="定时器服务示例">
-              <a class="post-toc-link" href="#定时器服务示例" data-level="1">定时器服务示例</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="查询命令">
               <a class="post-toc-link" href="#查询命令" data-level="3">查询命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统启动时间">
-              <a class="post-toc-link" href="#查看系统启动时间" data-level="1">查看系统启动时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动耗时">
-              <a class="post-toc-link" href="#查看启动耗时" data-level="1">查看启动耗时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动图形">
-              <a class="post-toc-link" href="#查看启动图形" data-level="1">查看启动图形</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动关键链">
-              <a class="post-toc-link" href="#查看启动关键链" data-level="1">查看启动关键链</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动最慢的服务">
-              <a class="post-toc-link" href="#查看启动最慢的服务" data-level="1">查看启动最慢的服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务启动时间">
-              <a class="post-toc-link" href="#查看服务启动时间" data-level="1">查看服务启动时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索单元">
-              <a class="post-toc-link" href="#搜索单元" data-level="1">搜索单元</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看环境变量">
-              <a class="post-toc-link" href="#查看环境变量" data-level="1">查看环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-              <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消环境变量">
-              <a class="post-toc-link" href="#取消环境变量" data-level="1">取消环境变量</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="故障排查">
               <a class="post-toc-link" href="#故障排查" data-level="3">故障排查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看失败的服务">
-              <a class="post-toc-link" href="#查看失败的服务" data-level="1">查看失败的服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看失败原因">
-              <a class="post-toc-link" href="#查看失败原因" data-level="1">查看失败原因</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细日志">
-              <a class="post-toc-link" href="#查看详细日志" data-level="1">查看详细日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务配置">
-              <a class="post-toc-link" href="#检查服务配置" data-level="1">检查服务配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重置服务失败状态">
-              <a class="post-toc-link" href="#重置服务失败状态" data-level="1">重置服务失败状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="诊断服务问题">
-              <a class="post-toc-link" href="#诊断服务问题" data-level="1">诊断服务问题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务内存限制">
-              <a class="post-toc-link" href="#查看服务内存限制" data-level="1">查看服务内存限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源使用">
-              <a class="post-toc-link" href="#查看资源使用" data-level="1">查看资源使用</a>
             </li>
             
           </ul>
@@ -2189,292 +1933,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#服务管理" data-level="3">服务管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-          <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-          <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置-不中断服务">
-          <a class="post-toc-link" href="#重载配置-不中断服务" data-level="1">重载配置（不中断服务）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-          <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看简要状态">
-          <a class="post-toc-link" href="#查看简要状态" data-level="1">查看简要状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务是否运行">
-          <a class="post-toc-link" href="#查看服务是否运行" data-level="1">查看服务是否运行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="尝试重启服务-如果已运行">
-          <a class="post-toc-link" href="#尝试重启服务-如果已运行" data-level="1">尝试重启服务（如果已运行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底重启服务-停止后启动">
-          <a class="post-toc-link" href="#彻底重启服务-停止后启动" data-level="1">彻底重启服务（停止后启动）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="立即终止服务">
-          <a class="post-toc-link" href="#立即终止服务" data-level="1">立即终止服务</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="开机自启">
           <a class="post-toc-link" href="#开机自启" data-level="3">开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开启开机自启">
-          <a class="post-toc-link" href="#开启开机自启" data-level="1">开启开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="关闭开机自启">
-          <a class="post-toc-link" href="#关闭开机自启" data-level="1">关闭开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看自启状态">
-          <a class="post-toc-link" href="#查看自启状态" data-level="1">查看自启状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="屏蔽服务-无法手动启动">
-          <a class="post-toc-link" href="#屏蔽服务-无法手动启动" data-level="1">屏蔽服务（无法手动启动）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消屏蔽">
-          <a class="post-toc-link" href="#取消屏蔽" data-level="1">取消屏蔽</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务预设状态">
-          <a class="post-toc-link" href="#查看服务预设状态" data-level="1">查看服务预设状态</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="服务查看">
           <a class="post-toc-link" href="#服务查看" data-level="3">服务查看</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有服务">
-          <a class="post-toc-link" href="#列出所有服务" data-level="1">列出所有服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出运行中的服务">
-          <a class="post-toc-link" href="#列出运行中的服务" data-level="1">列出运行中的服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出失败的服务">
-          <a class="post-toc-link" href="#列出失败的服务" data-level="1">列出失败的服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出所有单元文件">
-          <a class="post-toc-link" href="#列出所有单元文件" data-level="1">列出所有单元文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出服务单元文件">
-          <a class="post-toc-link" href="#列出服务单元文件" data-level="1">列出服务单元文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出启用的服务">
-          <a class="post-toc-link" href="#列出启用的服务" data-level="1">列出启用的服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出自启失败的服务">
-          <a class="post-toc-link" href="#列出自启失败的服务" data-level="1">列出自启失败的服务</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="查看服务详情">
           <a class="post-toc-link" href="#查看服务详情" data-level="3">查看服务详情</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务详情">
-          <a class="post-toc-link" href="#查看服务详情" data-level="1">查看服务详情</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务依赖">
-          <a class="post-toc-link" href="#查看服务依赖" data-level="1">查看服务依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务日志">
-          <a class="post-toc-link" href="#查看服务日志" data-level="1">查看服务日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务配置文件">
-          <a class="post-toc-link" href="#查看服务配置文件" data-level="1">查看服务配置文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑服务配置">
-          <a class="post-toc-link" href="#编辑服务配置" data-level="1">编辑服务配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务默认配置">
-          <a class="post-toc-link" href="#查看服务默认配置" data-level="1">查看服务默认配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="系统管理">
           <a class="post-toc-link" href="#系统管理" data-level="3">系统管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启系统">
-          <a class="post-toc-link" href="#重启系统" data-level="1">重启系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="关机">
-          <a class="post-toc-link" href="#关机" data-level="1">关机</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="挂起系统">
-          <a class="post-toc-link" href="#挂起系统" data-level="1">挂起系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="休眠">
-          <a class="post-toc-link" href="#休眠" data-level="1">休眠</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="混合睡眠">
-          <a class="post-toc-link" href="#混合睡眠" data-level="1">混合睡眠</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="退出登录">
-          <a class="post-toc-link" href="#退出登录" data-level="1">退出登录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换运行级别-rescueemergency">
-          <a class="post-toc-link" href="#切换运行级别-rescueemergency" data-level="1">切换运行级别（rescueemergency）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换运行目标">
-          <a class="post-toc-link" href="#切换运行目标" data-level="1">切换运行目标</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认目标-图形界面命令行界面">
-          <a class="post-toc-link" href="#切换默认目标-图形界面命令行界面" data-level="1">切换默认目标（图形界面命令行界面）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有目标">
-          <a class="post-toc-link" href="#查看所有目标" data-level="1">查看所有目标</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="管理单元文件">
           <a class="post-toc-link" href="#管理单元文件" data-level="3">管理单元文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建服务文件">
-          <a class="post-toc-link" href="#创建服务文件" data-level="1">创建服务文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-systemd-system-myapp-service">
-          <a class="post-toc-link" href="#etc-systemd-system-myapp-service" data-level="1">/etc/systemd/system/myapp.service</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重载配置文件">
-          <a class="post-toc-link" href="#重载配置文件" data-level="1">重载配置文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建符号链接-启用服务">
-          <a class="post-toc-link" href="#创建符号链接-启用服务" data-level="1">创建符号链接（启用服务）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="服务文件示例">
           <a class="post-toc-link" href="#服务文件示例" data-level="3">服务文件示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="标准-web-服务示例">
-          <a class="post-toc-link" href="#标准-web-服务示例" data-level="1">标准 Web 服务示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="简单服务示例">
-          <a class="post-toc-link" href="#简单服务示例" data-level="1">简单服务示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="定时器服务示例">
-          <a class="post-toc-link" href="#定时器服务示例" data-level="1">定时器服务示例</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="查询命令">
           <a class="post-toc-link" href="#查询命令" data-level="3">查询命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看系统启动时间">
-          <a class="post-toc-link" href="#查看系统启动时间" data-level="1">查看系统启动时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动耗时">
-          <a class="post-toc-link" href="#查看启动耗时" data-level="1">查看启动耗时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动图形">
-          <a class="post-toc-link" href="#查看启动图形" data-level="1">查看启动图形</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动关键链">
-          <a class="post-toc-link" href="#查看启动关键链" data-level="1">查看启动关键链</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看启动最慢的服务">
-          <a class="post-toc-link" href="#查看启动最慢的服务" data-level="1">查看启动最慢的服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务启动时间">
-          <a class="post-toc-link" href="#查看服务启动时间" data-level="1">查看服务启动时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索单元">
-          <a class="post-toc-link" href="#搜索单元" data-level="1">搜索单元</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看环境变量">
-          <a class="post-toc-link" href="#查看环境变量" data-level="1">查看环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置环境变量">
-          <a class="post-toc-link" href="#设置环境变量" data-level="1">设置环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消环境变量">
-          <a class="post-toc-link" href="#取消环境变量" data-level="1">取消环境变量</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="故障排查">
           <a class="post-toc-link" href="#故障排查" data-level="3">故障排查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看失败的服务">
-          <a class="post-toc-link" href="#查看失败的服务" data-level="1">查看失败的服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看失败原因">
-          <a class="post-toc-link" href="#查看失败原因" data-level="1">查看失败原因</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看详细日志">
-          <a class="post-toc-link" href="#查看详细日志" data-level="1">查看详细日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务配置">
-          <a class="post-toc-link" href="#检查服务配置" data-level="1">检查服务配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重置服务失败状态">
-          <a class="post-toc-link" href="#重置服务失败状态" data-level="1">重置服务失败状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="诊断服务问题">
-          <a class="post-toc-link" href="#诊断服务问题" data-level="1">诊断服务问题</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务内存限制">
-          <a class="post-toc-link" href="#查看服务内存限制" data-level="1">查看服务内存限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看资源使用">
-          <a class="post-toc-link" href="#查看资源使用" data-level="1">查看资源使用</a>
         </li>
         
       </ul>
@@ -2483,7 +1971,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2666,8 +2154,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

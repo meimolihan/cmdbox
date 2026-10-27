@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="apt 命令">
     <meta name="twitter:description" content="Debian/Ubuntu 软件包管理器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1793,40 +1793,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#1-源配置文件" data-level="3">1. 源配置文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="主源列表">
-              <a class="post-toc-link" href="#主源列表" data-level="1">主源列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="扩展源列表-推荐在此目录下拆分配置">
-              <a class="post-toc-link" href="#扩展源列表-推荐在此目录下拆分配置" data-level="1">扩展源列表（推荐在此目录下拆分配置）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-debian-12-bookworm-示例">
               <a class="post-toc-link" href="#2-debian-12-bookworm-示例" data-level="3">2. Debian 12 (Bookworm) 示例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-apt-sources-list">
-              <a class="post-toc-link" href="#etc-apt-sources-list" data-level="1">/etc/apt/sources.list</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-ubuntu-24-04-noble-示例">
               <a class="post-toc-link" href="#3-ubuntu-24-04-noble-示例" data-level="3">3. Ubuntu 24.04 (Noble) 示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="etc-apt-sources-list">
-              <a class="post-toc-link" href="#etc-apt-sources-list" data-level="1">/etc/apt/sources.list</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="4-更换国内镜像源">
               <a class="post-toc-link" href="#4-更换国内镜像源" data-level="3">4. 更换国内镜像源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="以-debian-12-清华源为例">
-              <a class="post-toc-link" href="#以-debian-12-清华源为例" data-level="1">以 Debian 12 清华源为例</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表">
-              <a class="post-toc-link" href="#更新软件包列表" data-level="1">更新软件包列表</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="二-日常操作">
@@ -1841,112 +1817,20 @@ function copied(target, str) {
               <a class="post-toc-link" href="#2-升级已安装的包" data-level="3">2. 升级已安装的包</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仅升级已安装包-不安装-删除新依赖">
-              <a class="post-toc-link" href="#仅升级已安装包-不安装-删除新依赖" data-level="1">仅升级已安装包（不安装/删除新依赖）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级并自动处理依赖变更">
-              <a class="post-toc-link" href="#升级并自动处理依赖变更" data-level="1">升级并自动处理依赖变更</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="发行版大版本升级">
-              <a class="post-toc-link" href="#发行版大版本升级" data-level="1">发行版大版本升级</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-安装软件包">
               <a class="post-toc-link" href="#3-安装软件包" data-level="3">3. 安装软件包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装单个包">
-              <a class="post-toc-link" href="#安装单个包" data-level="1">安装单个包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装多个包">
-              <a class="post-toc-link" href="#安装多个包" data-level="1">安装多个包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本">
-              <a class="post-toc-link" href="#安装指定版本" data-level="1">安装指定版本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装本地-deb-文件-自动处理依赖">
-              <a class="post-toc-link" href="#安装本地-deb-文件-自动处理依赖" data-level="1">安装本地 .deb 文件（自动处理依赖）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新安装">
-              <a class="post-toc-link" href="#重新安装" data-level="1">重新安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="仅下载不安装-缓存到-var-cache-apt-archives">
-              <a class="post-toc-link" href="#仅下载不安装-缓存到-var-cache-apt-archives" data-level="1">仅下载不安装（缓存到 /var/cache/apt/archives/）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="4-移除软件包">
               <a class="post-toc-link" href="#4-移除软件包" data-level="3">4. 移除软件包</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="移除包-保留配置文件">
-              <a class="post-toc-link" href="#移除包-保留配置文件" data-level="1">移除包（保留配置文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="完全移除-删除配置文件">
-              <a class="post-toc-link" href="#完全移除-删除配置文件" data-level="1">完全移除（删除配置文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动移除不再需要的依赖">
-              <a class="post-toc-link" href="#自动移除不再需要的依赖" data-level="1">自动移除不再需要的依赖</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="自动移除并-purge">
-              <a class="post-toc-link" href="#自动移除并-purge" data-level="1">自动移除并 purge</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="5-搜索与查看信息">
               <a class="post-toc-link" href="#5-搜索与查看信息" data-level="3">5. 搜索与查看信息</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="搜索包名和描述">
-              <a class="post-toc-link" href="#搜索包名和描述" data-level="1">搜索包名和描述</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包详细信息">
-              <a class="post-toc-link" href="#查看包详细信息" data-level="1">查看包详细信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看包依赖关系">
-              <a class="post-toc-link" href="#查看包依赖关系" data-level="1">查看包依赖关系</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看哪些包依赖此包">
-              <a class="post-toc-link" href="#查看哪些包依赖此包" data-level="1">查看哪些包依赖此包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出已安装包">
-              <a class="post-toc-link" href="#列出已安装包" data-level="1">列出已安装包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出可升级的包">
-              <a class="post-toc-link" href="#列出可升级的包" data-level="1">列出可升级的包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="列出指定仓库的包">
-              <a class="post-toc-link" href="#列出指定仓库的包" data-level="1">列出指定仓库的包</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="三-缓存与清理">
               <a class="post-toc-link" href="#三-缓存与清理" data-level="2">三、缓存与清理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看缓存占用">
-              <a class="post-toc-link" href="#查看缓存占用" data-level="1">查看缓存占用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理过时缓存-仅移除不再可用的包">
-              <a class="post-toc-link" href="#清理过时缓存-仅移除不再可用的包" data-level="1">清理过时缓存（仅移除不再可用的包）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清理全部缓存">
-              <a class="post-toc-link" href="#清理全部缓存" data-level="1">清理全部缓存</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="四-修复与排障">
@@ -1957,52 +1841,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#1-修复损坏的依赖" data-level="3">1. 修复损坏的依赖</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="尝试修复依赖问题">
-              <a class="post-toc-link" href="#尝试修复依赖问题" data-level="1">尝试修复依赖问题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修复安装中断的包">
-              <a class="post-toc-link" href="#修复安装中断的包" data-level="1">修复安装中断的包</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-gpg-密钥问题">
               <a class="post-toc-link" href="#2-gpg-密钥问题" data-level="3">2. GPG 密钥问题</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="显示错误中的密钥-id-然后添加">
-              <a class="post-toc-link" href="#显示错误中的密钥-id-然后添加" data-level="1">显示错误中的密钥 ID，然后添加</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="现代方式-推荐-将密钥放入-etc-apt-trusted-gpg-d">
-              <a class="post-toc-link" href="#现代方式-推荐-将密钥放入-etc-apt-trusted-gpg-d" data-level="1">现代方式（推荐）：将密钥放入 /etc/apt/trusted.gpg.d/</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-锁定版本-禁止升级">
               <a class="post-toc-link" href="#3-锁定版本-禁止升级" data-level="3">3. 锁定版本（禁止升级）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法一-使用-apt-mark">
-              <a class="post-toc-link" href="#方法一-使用-apt-mark" data-level="1">方法一：使用 apt-mark</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消锁定">
-              <a class="post-toc-link" href="#取消锁定" data-level="1">取消锁定</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="方法二-在-etc-apt-preferences-d-中配置优先级">
-              <a class="post-toc-link" href="#方法二-在-etc-apt-preferences-d-中配置优先级" data-level="1">方法二：在 /etc/apt/preferences.d/ 中配置优先级</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="4-下载中断恢复">
               <a class="post-toc-link" href="#4-下载中断恢复" data-level="3">4. 下载中断恢复</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重新获取不完整的包">
-              <a class="post-toc-link" href="#重新获取不完整的包" data-level="1">重新获取不完整的包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或清理缓存后重试">
-              <a class="post-toc-link" href="#或清理缓存后重试" data-level="1">或清理缓存后重试</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="五-第三方仓库配置">
@@ -2011,14 +1859,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-docker-官方仓库">
               <a class="post-toc-link" href="#1-docker-官方仓库" data-level="3">1. Docker 官方仓库</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加-gpg-密钥">
-              <a class="post-toc-link" href="#添加-gpg-密钥" data-level="1">添加 GPG 密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加仓库">
-              <a class="post-toc-link" href="#添加仓库" data-level="1">添加仓库</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-nginx-官方仓库">
@@ -2037,24 +1877,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="could-not-get-lock-var-lib-dpkg-lock">
-              <a class="post-toc-link" href="#could-not-get-lock-var-lib-dpkg-lock" data-level="3">Could not get lock /var/lib/dpkg/lock</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="另一个-apt-进程正在运行">
+              <a class="post-toc-link" href="#另一个-apt-进程正在运行" data-level="3">另一个 APT 进程正在运行：</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查找占用进程">
-              <a class="post-toc-link" href="#查找占用进程" data-level="1">查找占用进程</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="包被保留-可能因依赖变更未自动处理">
+              <a class="post-toc-link" href="#包被保留-可能因依赖变更未自动处理" data-level="3">包被保留（可能因依赖变更未自动处理）：</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认无其他进程后-手动删除锁文件">
-              <a class="post-toc-link" href="#确认无其他进程后-手动删除锁文件" data-level="1">确认无其他进程后，手动删除锁文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="the-following-packages-have-been-kept-back">
-              <a class="post-toc-link" href="#the-following-packages-have-been-kept-back" data-level="3">The following packages have been kept back</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="no_pubkey-错误">
-              <a class="post-toc-link" href="#no_pubkey-错误" data-level="3">NO_PUBKEY 错误</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="错误">
+              <a class="post-toc-link" href="#错误" data-level="3">错误</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2098,40 +1930,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#1-源配置文件" data-level="3">1. 源配置文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="主源列表">
-          <a class="post-toc-link" href="#主源列表" data-level="1">主源列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="扩展源列表-推荐在此目录下拆分配置">
-          <a class="post-toc-link" href="#扩展源列表-推荐在此目录下拆分配置" data-level="1">扩展源列表（推荐在此目录下拆分配置）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-debian-12-bookworm-示例">
           <a class="post-toc-link" href="#2-debian-12-bookworm-示例" data-level="3">2. Debian 12 (Bookworm) 示例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-apt-sources-list">
-          <a class="post-toc-link" href="#etc-apt-sources-list" data-level="1">/etc/apt/sources.list</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-ubuntu-24-04-noble-示例">
           <a class="post-toc-link" href="#3-ubuntu-24-04-noble-示例" data-level="3">3. Ubuntu 24.04 (Noble) 示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="etc-apt-sources-list">
-          <a class="post-toc-link" href="#etc-apt-sources-list" data-level="1">/etc/apt/sources.list</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="4-更换国内镜像源">
           <a class="post-toc-link" href="#4-更换国内镜像源" data-level="3">4. 更换国内镜像源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="以-debian-12-清华源为例">
-          <a class="post-toc-link" href="#以-debian-12-清华源为例" data-level="1">以 Debian 12 清华源为例</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包列表">
-          <a class="post-toc-link" href="#更新软件包列表" data-level="1">更新软件包列表</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="二-日常操作">
@@ -2146,112 +1954,20 @@ function copied(target, str) {
           <a class="post-toc-link" href="#2-升级已安装的包" data-level="3">2. 升级已安装的包</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仅升级已安装包-不安装-删除新依赖">
-          <a class="post-toc-link" href="#仅升级已安装包-不安装-删除新依赖" data-level="1">仅升级已安装包（不安装/删除新依赖）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级并自动处理依赖变更">
-          <a class="post-toc-link" href="#升级并自动处理依赖变更" data-level="1">升级并自动处理依赖变更</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="发行版大版本升级">
-          <a class="post-toc-link" href="#发行版大版本升级" data-level="1">发行版大版本升级</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-安装软件包">
           <a class="post-toc-link" href="#3-安装软件包" data-level="3">3. 安装软件包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装单个包">
-          <a class="post-toc-link" href="#安装单个包" data-level="1">安装单个包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装多个包">
-          <a class="post-toc-link" href="#安装多个包" data-level="1">安装多个包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装指定版本">
-          <a class="post-toc-link" href="#安装指定版本" data-level="1">安装指定版本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装本地-deb-文件-自动处理依赖">
-          <a class="post-toc-link" href="#安装本地-deb-文件-自动处理依赖" data-level="1">安装本地 .deb 文件（自动处理依赖）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新安装">
-          <a class="post-toc-link" href="#重新安装" data-level="1">重新安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="仅下载不安装-缓存到-var-cache-apt-archives">
-          <a class="post-toc-link" href="#仅下载不安装-缓存到-var-cache-apt-archives" data-level="1">仅下载不安装（缓存到 /var/cache/apt/archives/）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="4-移除软件包">
           <a class="post-toc-link" href="#4-移除软件包" data-level="3">4. 移除软件包</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="移除包-保留配置文件">
-          <a class="post-toc-link" href="#移除包-保留配置文件" data-level="1">移除包（保留配置文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="完全移除-删除配置文件">
-          <a class="post-toc-link" href="#完全移除-删除配置文件" data-level="1">完全移除（删除配置文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动移除不再需要的依赖">
-          <a class="post-toc-link" href="#自动移除不再需要的依赖" data-level="1">自动移除不再需要的依赖</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="自动移除并-purge">
-          <a class="post-toc-link" href="#自动移除并-purge" data-level="1">自动移除并 purge</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="5-搜索与查看信息">
           <a class="post-toc-link" href="#5-搜索与查看信息" data-level="3">5. 搜索与查看信息</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="搜索包名和描述">
-          <a class="post-toc-link" href="#搜索包名和描述" data-level="1">搜索包名和描述</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包详细信息">
-          <a class="post-toc-link" href="#查看包详细信息" data-level="1">查看包详细信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看包依赖关系">
-          <a class="post-toc-link" href="#查看包依赖关系" data-level="1">查看包依赖关系</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看哪些包依赖此包">
-          <a class="post-toc-link" href="#查看哪些包依赖此包" data-level="1">查看哪些包依赖此包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出已安装包">
-          <a class="post-toc-link" href="#列出已安装包" data-level="1">列出已安装包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出可升级的包">
-          <a class="post-toc-link" href="#列出可升级的包" data-level="1">列出可升级的包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="列出指定仓库的包">
-          <a class="post-toc-link" href="#列出指定仓库的包" data-level="1">列出指定仓库的包</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="三-缓存与清理">
           <a class="post-toc-link" href="#三-缓存与清理" data-level="2">三、缓存与清理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看缓存占用">
-          <a class="post-toc-link" href="#查看缓存占用" data-level="1">查看缓存占用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理过时缓存-仅移除不再可用的包">
-          <a class="post-toc-link" href="#清理过时缓存-仅移除不再可用的包" data-level="1">清理过时缓存（仅移除不再可用的包）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清理全部缓存">
-          <a class="post-toc-link" href="#清理全部缓存" data-level="1">清理全部缓存</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="四-修复与排障">
@@ -2262,52 +1978,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#1-修复损坏的依赖" data-level="3">1. 修复损坏的依赖</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="尝试修复依赖问题">
-          <a class="post-toc-link" href="#尝试修复依赖问题" data-level="1">尝试修复依赖问题</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修复安装中断的包">
-          <a class="post-toc-link" href="#修复安装中断的包" data-level="1">修复安装中断的包</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-gpg-密钥问题">
           <a class="post-toc-link" href="#2-gpg-密钥问题" data-level="3">2. GPG 密钥问题</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="显示错误中的密钥-id-然后添加">
-          <a class="post-toc-link" href="#显示错误中的密钥-id-然后添加" data-level="1">显示错误中的密钥 ID，然后添加</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="现代方式-推荐-将密钥放入-etc-apt-trusted-gpg-d">
-          <a class="post-toc-link" href="#现代方式-推荐-将密钥放入-etc-apt-trusted-gpg-d" data-level="1">现代方式（推荐）：将密钥放入 /etc/apt/trusted.gpg.d/</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-锁定版本-禁止升级">
           <a class="post-toc-link" href="#3-锁定版本-禁止升级" data-level="3">3. 锁定版本（禁止升级）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法一-使用-apt-mark">
-          <a class="post-toc-link" href="#方法一-使用-apt-mark" data-level="1">方法一：使用 apt-mark</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消锁定">
-          <a class="post-toc-link" href="#取消锁定" data-level="1">取消锁定</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="方法二-在-etc-apt-preferences-d-中配置优先级">
-          <a class="post-toc-link" href="#方法二-在-etc-apt-preferences-d-中配置优先级" data-level="1">方法二：在 /etc/apt/preferences.d/ 中配置优先级</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="4-下载中断恢复">
           <a class="post-toc-link" href="#4-下载中断恢复" data-level="3">4. 下载中断恢复</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重新获取不完整的包">
-          <a class="post-toc-link" href="#重新获取不完整的包" data-level="1">重新获取不完整的包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或清理缓存后重试">
-          <a class="post-toc-link" href="#或清理缓存后重试" data-level="1">或清理缓存后重试</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="五-第三方仓库配置">
@@ -2316,14 +1996,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-docker-官方仓库">
           <a class="post-toc-link" href="#1-docker-官方仓库" data-level="3">1. Docker 官方仓库</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加-gpg-密钥">
-          <a class="post-toc-link" href="#添加-gpg-密钥" data-level="1">添加 GPG 密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加仓库">
-          <a class="post-toc-link" href="#添加仓库" data-level="1">添加仓库</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-nginx-官方仓库">
@@ -2342,24 +2014,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="could-not-get-lock-var-lib-dpkg-lock">
-          <a class="post-toc-link" href="#could-not-get-lock-var-lib-dpkg-lock" data-level="3">Could not get lock /var/lib/dpkg/lock</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="另一个-apt-进程正在运行">
+          <a class="post-toc-link" href="#另一个-apt-进程正在运行" data-level="3">另一个 APT 进程正在运行：</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查找占用进程">
-          <a class="post-toc-link" href="#查找占用进程" data-level="1">查找占用进程</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="包被保留-可能因依赖变更未自动处理">
+          <a class="post-toc-link" href="#包被保留-可能因依赖变更未自动处理" data-level="3">包被保留（可能因依赖变更未自动处理）：</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认无其他进程后-手动删除锁文件">
-          <a class="post-toc-link" href="#确认无其他进程后-手动删除锁文件" data-level="1">确认无其他进程后，手动删除锁文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="the-following-packages-have-been-kept-back">
-          <a class="post-toc-link" href="#the-following-packages-have-been-kept-back" data-level="3">The following packages have been kept back</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="no_pubkey-错误">
-          <a class="post-toc-link" href="#no_pubkey-错误" data-level="3">NO_PUBKEY 错误</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="错误">
+          <a class="post-toc-link" href="#错误" data-level="3">错误</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2372,7 +2036,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2555,8 +2219,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

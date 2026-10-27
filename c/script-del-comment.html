@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="script-del-comment 命令">
     <meta name="twitter:description" content="批量删除脚本缩进注释行 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1417,34 +1417,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本">
-              <a class="post-toc-link" href="#1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本" data-level="1">1. 使用awk过滤：删除行首空白+#的独立注释行，输出到新文件（不改动原脚本）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="2-bash语法校验新脚本-无输出代表语法正常">
-              <a class="post-toc-link" href="#2-bash语法校验新脚本-无输出代表语法正常" data-level="1">2. Bash语法校验新脚本，无输出代表语法正常</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="3-清除windows-crlf换行符-m-避免运行异常">
-              <a class="post-toc-link" href="#3-清除windows-crlf换行符-m-避免运行异常" data-level="1">3. 清除Windows CRLF换行符^M，避免运行异常</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="4-备份原有脚本-命名为损坏旧文件">
-              <a class="post-toc-link" href="#4-备份原有脚本-命名为损坏旧文件" data-level="1">4. 备份原有脚本（命名为损坏旧文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="5-将处理完成的新脚本替换原脚本">
-              <a class="post-toc-link" href="#5-将处理完成的新脚本替换原脚本" data-level="1">5. 将处理完成的新脚本替换原脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="6-添加执行权限">
-              <a class="post-toc-link" href="#6-添加执行权限" data-level="1">6. 添加执行权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="7-运行脚本测试">
-              <a class="post-toc-link" href="#7-运行脚本测试" data-level="1">7. 运行脚本测试</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="规则说明">
               <a class="post-toc-link" href="#规则说明" data-level="2">规则说明</a>
             </li>
@@ -1453,24 +1425,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#风险提醒" data-level="2">⚠️ 风险提醒</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="示例高危代码-处理后会合并两行">
-              <a class="post-toc-link" href="#示例高危代码-处理后会合并两行" data-level="1">示例高危代码，处理后会合并两行</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="回滚命令-如需恢复旧脚本">
               <a class="post-toc-link" href="#回滚命令-如需恢复旧脚本" data-level="2">回滚命令（如需恢复旧脚本）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="可选附加-清理多余空白行-按需执行">
               <a class="post-toc-link" href="#可选附加-清理多余空白行-按需执行" data-level="2">可选附加：清理多余空白行（按需执行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="预览效果">
-              <a class="post-toc-link" href="#预览效果" data-level="1">预览效果</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="原地删除空行">
-              <a class="post-toc-link" href="#原地删除空行" data-level="1">原地删除空行</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -1506,34 +1466,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本">
-          <a class="post-toc-link" href="#1-使用awk过滤-删除行首空白-的独立注释行-输出到新文件-不改动原脚本" data-level="1">1. 使用awk过滤：删除行首空白+#的独立注释行，输出到新文件（不改动原脚本）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="2-bash语法校验新脚本-无输出代表语法正常">
-          <a class="post-toc-link" href="#2-bash语法校验新脚本-无输出代表语法正常" data-level="1">2. Bash语法校验新脚本，无输出代表语法正常</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="3-清除windows-crlf换行符-m-避免运行异常">
-          <a class="post-toc-link" href="#3-清除windows-crlf换行符-m-避免运行异常" data-level="1">3. 清除Windows CRLF换行符^M，避免运行异常</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="4-备份原有脚本-命名为损坏旧文件">
-          <a class="post-toc-link" href="#4-备份原有脚本-命名为损坏旧文件" data-level="1">4. 备份原有脚本（命名为损坏旧文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="5-将处理完成的新脚本替换原脚本">
-          <a class="post-toc-link" href="#5-将处理完成的新脚本替换原脚本" data-level="1">5. 将处理完成的新脚本替换原脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="6-添加执行权限">
-          <a class="post-toc-link" href="#6-添加执行权限" data-level="1">6. 添加执行权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="7-运行脚本测试">
-          <a class="post-toc-link" href="#7-运行脚本测试" data-level="1">7. 运行脚本测试</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="规则说明">
           <a class="post-toc-link" href="#规则说明" data-level="2">规则说明</a>
         </li>
@@ -1542,24 +1474,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#风险提醒" data-level="2">⚠️ 风险提醒</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="示例高危代码-处理后会合并两行">
-          <a class="post-toc-link" href="#示例高危代码-处理后会合并两行" data-level="1">示例高危代码，处理后会合并两行</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="回滚命令-如需恢复旧脚本">
           <a class="post-toc-link" href="#回滚命令-如需恢复旧脚本" data-level="2">回滚命令（如需恢复旧脚本）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="可选附加-清理多余空白行-按需执行">
           <a class="post-toc-link" href="#可选附加-清理多余空白行-按需执行" data-level="2">可选附加：清理多余空白行（按需执行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="预览效果">
-          <a class="post-toc-link" href="#预览效果" data-level="1">预览效果</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="原地删除空行">
-          <a class="post-toc-link" href="#原地删除空行" data-level="1">原地删除空行</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -1572,7 +1492,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1755,8 +1675,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

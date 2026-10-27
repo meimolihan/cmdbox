@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve-pct 命令">
     <meta name="twitter:description" content="PVE 容器 PCT 管理命令大全 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1733,284 +1733,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一-基础信息查看" data-level="3">一、基础信息查看</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看全部容器列表">
-              <a class="post-toc-link" href="#查看全部容器列表" data-level="1">查看全部容器列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看单个容器运行状态">
-              <a class="post-toc-link" href="#查看单个容器运行状态" data-level="1">查看单个容器运行状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器完整配置">
-              <a class="post-toc-link" href="#查看容器完整配置" data-level="1">查看容器完整配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器资源使用概况">
-              <a class="post-toc-link" href="#查看容器资源使用概况" data-level="1">查看容器资源使用概况</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="二-生命周期启停管理">
               <a class="post-toc-link" href="#二-生命周期启停管理" data-level="3">二、生命周期启停管理</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动容器">
-              <a class="post-toc-link" href="#启动容器" data-level="1">启动容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止容器">
-              <a class="post-toc-link" href="#停止容器" data-level="1">停止容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启容器">
-              <a class="post-toc-link" href="#重启容器" data-level="1">重启容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器控制台-类似-ssh">
-              <a class="post-toc-link" href="#进入容器控制台-类似-ssh" data-level="1">进入容器控制台（类似 SSH）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在容器内执行命令">
-              <a class="post-toc-link" href="#在容器内执行命令" data-level="1">在容器内执行命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在容器内查看内存占用">
-              <a class="post-toc-link" href="#在容器内查看内存占用" data-level="1">在容器内查看内存占用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在容器内安装软件">
-              <a class="post-toc-link" href="#在容器内安装软件" data-level="1">在容器内安装软件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="强制应急操作">
               <a class="post-toc-link" href="#强制应急操作" data-level="4">强制应急操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="强制停止容器">
-              <a class="post-toc-link" href="#强制停止容器" data-level="1">强制停止容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底删除容器并清理配置">
-              <a class="post-toc-link" href="#彻底删除容器并清理配置" data-level="1">彻底删除容器并清理配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="挂起容器-冻结进程">
-              <a class="post-toc-link" href="#挂起容器-冻结进程" data-level="1">挂起容器（冻结进程）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="恢复挂起容器">
-              <a class="post-toc-link" href="#恢复挂起容器" data-level="1">恢复挂起容器</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="三-资源与挂载配置">
               <a class="post-toc-link" href="#三-资源与挂载配置" data-level="3">三、资源与挂载配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置运行内存-mb">
-              <a class="post-toc-link" href="#设置运行内存-mb" data-level="1">设置运行内存（MB）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-swap-大小-mb-0-为禁用">
-              <a class="post-toc-link" href="#设置-swap-大小-mb-0-为禁用" data-level="1">设置 Swap 大小（MB，0 为禁用）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-核心数">
-              <a class="post-toc-link" href="#设置-cpu-核心数" data-level="1">设置 CPU 核心数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-配额限制">
-              <a class="post-toc-link" href="#设置-cpu-配额限制" data-level="1">设置 CPU 配额限制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改根目录磁盘大小-扩展">
-              <a class="post-toc-link" href="#修改根目录磁盘大小-扩展" data-level="1">修改根目录磁盘大小（扩展）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="修改根目录磁盘大小-缩小">
-              <a class="post-toc-link" href="#修改根目录磁盘大小-缩小" data-level="1">修改根目录磁盘大小（缩小）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="添加宿主机目录挂载">
-              <a class="post-toc-link" href="#添加宿主机目录挂载" data-level="1">添加宿主机目录挂载</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="挂载时为目录设置权限">
-              <a class="post-toc-link" href="#挂载时为目录设置权限" data-level="1">挂载时为目录设置权限</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="移除挂载点">
-              <a class="post-toc-link" href="#移除挂载点" data-level="1">移除挂载点</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开启开机自启">
-              <a class="post-toc-link" href="#开启开机自启" data-level="1">开启开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置容器主机名">
-              <a class="post-toc-link" href="#设置容器主机名" data-level="1">设置容器主机名</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置-dns">
-              <a class="post-toc-link" href="#设置-dns" data-level="1">设置 DNS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置网络-静态-ip">
-              <a class="post-toc-link" href="#设置网络-静态-ip" data-level="1">设置网络（静态 IP）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置网络-dhcp">
-              <a class="post-toc-link" href="#设置网络-dhcp" data-level="1">设置网络（DHCP）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="四-模板创建与容器克隆">
               <a class="post-toc-link" href="#四-模板创建与容器克隆" data-level="3">四、模板创建与容器克隆</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看可用模板列表">
-              <a class="post-toc-link" href="#查看可用模板列表" data-level="1">查看可用模板列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新模板源">
-              <a class="post-toc-link" href="#更新模板源" data-level="1">更新模板源</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载模板">
-              <a class="post-toc-link" href="#下载模板" data-level="1">下载模板</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="通过模板新建容器">
-              <a class="post-toc-link" href="#通过模板新建容器" data-level="1">通过模板新建容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="克隆现有容器">
-              <a class="post-toc-link" href="#克隆现有容器" data-level="1">克隆现有容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将容器转换为模板">
-              <a class="post-toc-link" href="#将容器转换为模板" data-level="1">将容器转换为模板</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="五-快照与备份操作">
               <a class="post-toc-link" href="#五-快照与备份操作" data-level="3">五、快照与备份操作</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建容器快照">
-              <a class="post-toc-link" href="#创建容器快照" data-level="1">创建容器快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照并包含挂起状态">
-              <a class="post-toc-link" href="#创建快照并包含挂起状态" data-level="1">创建快照并包含挂起状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="快照回滚">
-              <a class="post-toc-link" href="#快照回滚" data-level="1">快照回滚</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除快照">
-              <a class="post-toc-link" href="#删除快照" data-level="1">删除快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有快照">
-              <a class="post-toc-link" href="#查看所有快照" data-level="1">查看所有快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份容器">
-              <a class="post-toc-link" href="#整机备份容器" data-level="1">整机备份容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份任务">
-              <a class="post-toc-link" href="#查看备份任务" data-level="1">查看备份任务</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="六-高级权限配置">
               <a class="post-toc-link" href="#六-高级权限配置" data-level="3">六、高级权限配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="解除-apparmor-限制-内网环境推荐">
-              <a class="post-toc-link" href="#解除-apparmor-限制-内网环境推荐" data-level="1">解除 AppArmor 限制（内网环境推荐）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="允许所有设备访问-用于挂载磁盘">
-              <a class="post-toc-link" href="#允许所有设备访问-用于挂载磁盘" data-level="1">允许所有设备访问（用于挂载磁盘）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="移除所有能力降权-不推荐生产环境">
-              <a class="post-toc-link" href="#移除所有能力降权-不推荐生产环境" data-level="1">移除所有能力降权（不推荐生产环境）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开启嵌套虚拟化-容器内运行-docker-必备">
-              <a class="post-toc-link" href="#开启嵌套虚拟化-容器内运行-docker-必备" data-level="1">开启嵌套虚拟化（容器内运行 Docker 必备）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="挂载-fuse-文件系统">
-              <a class="post-toc-link" href="#挂载-fuse-文件系统" data-level="1">挂载 FUSE 文件系统</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="允许挂载-nfs">
-              <a class="post-toc-link" href="#允许挂载-nfs" data-level="1">允许挂载 NFS</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="开启-tun-tap-vpn-类容器需要">
-              <a class="post-toc-link" href="#开启-tun-tap-vpn-类容器需要" data-level="1">开启 TUN/TAP（VPN 类容器需要）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="七-批量运维常用脚本">
               <a class="post-toc-link" href="#七-批量运维常用脚本" data-level="3">七、批量运维常用脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量启动所有已停止的容器">
-              <a class="post-toc-link" href="#批量启动所有已停止的容器" data-level="1">批量启动所有已停止的容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量停止所有运行中的容器">
-              <a class="post-toc-link" href="#批量停止所有运行中的容器" data-level="1">批量停止所有运行中的容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量重启所有运行中的容器">
-              <a class="post-toc-link" href="#批量重启所有运行中的容器" data-level="1">批量重启所有运行中的容器</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量设置开机自启">
-              <a class="post-toc-link" href="#批量设置开机自启" data-level="1">批量设置开机自启</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量创建快照">
-              <a class="post-toc-link" href="#批量创建快照" data-level="1">批量创建快照</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="批量查看-ip-地址">
-              <a class="post-toc-link" href="#批量查看-ip-地址" data-level="1">批量查看 IP 地址</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="八-日志与故障排查">
               <a class="post-toc-link" href="#八-日志与故障排查" data-level="3">八、日志与故障排查</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器启动日志">
-              <a class="post-toc-link" href="#查看容器启动日志" data-level="1">查看容器启动日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时滚动容器日志">
-              <a class="post-toc-link" href="#实时滚动容器日志" data-level="1">实时滚动容器日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-lxc-通用日志">
-              <a class="post-toc-link" href="#查看-lxc-通用日志" data-level="1">查看 LXC 通用日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器网络调试日志">
-              <a class="post-toc-link" href="#查看容器网络调试日志" data-level="1">查看容器网络调试日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看宿主机-lxc-进程">
-              <a class="post-toc-link" href="#查看宿主机-lxc-进程" data-level="1">查看宿主机 LXC 进程</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器文件系统使用">
-              <a class="post-toc-link" href="#查看容器文件系统使用" data-level="1">查看容器文件系统使用</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器进程列表">
-              <a class="post-toc-link" href="#查看容器进程列表" data-level="1">查看容器进程列表</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="九-常用别名优化">
@@ -2054,284 +1806,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一-基础信息查看" data-level="3">一、基础信息查看</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看全部容器列表">
-          <a class="post-toc-link" href="#查看全部容器列表" data-level="1">查看全部容器列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看单个容器运行状态">
-          <a class="post-toc-link" href="#查看单个容器运行状态" data-level="1">查看单个容器运行状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器完整配置">
-          <a class="post-toc-link" href="#查看容器完整配置" data-level="1">查看容器完整配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器资源使用概况">
-          <a class="post-toc-link" href="#查看容器资源使用概况" data-level="1">查看容器资源使用概况</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="二-生命周期启停管理">
           <a class="post-toc-link" href="#二-生命周期启停管理" data-level="3">二、生命周期启停管理</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动容器">
-          <a class="post-toc-link" href="#启动容器" data-level="1">启动容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止容器">
-          <a class="post-toc-link" href="#停止容器" data-level="1">停止容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启容器">
-          <a class="post-toc-link" href="#重启容器" data-level="1">重启容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入容器控制台-类似-ssh">
-          <a class="post-toc-link" href="#进入容器控制台-类似-ssh" data-level="1">进入容器控制台（类似 SSH）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在容器内执行命令">
-          <a class="post-toc-link" href="#在容器内执行命令" data-level="1">在容器内执行命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在容器内查看内存占用">
-          <a class="post-toc-link" href="#在容器内查看内存占用" data-level="1">在容器内查看内存占用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在容器内安装软件">
-          <a class="post-toc-link" href="#在容器内安装软件" data-level="1">在容器内安装软件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="强制应急操作">
           <a class="post-toc-link" href="#强制应急操作" data-level="4">强制应急操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="强制停止容器">
-          <a class="post-toc-link" href="#强制停止容器" data-level="1">强制停止容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底删除容器并清理配置">
-          <a class="post-toc-link" href="#彻底删除容器并清理配置" data-level="1">彻底删除容器并清理配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="挂起容器-冻结进程">
-          <a class="post-toc-link" href="#挂起容器-冻结进程" data-level="1">挂起容器（冻结进程）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="恢复挂起容器">
-          <a class="post-toc-link" href="#恢复挂起容器" data-level="1">恢复挂起容器</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="三-资源与挂载配置">
           <a class="post-toc-link" href="#三-资源与挂载配置" data-level="3">三、资源与挂载配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置运行内存-mb">
-          <a class="post-toc-link" href="#设置运行内存-mb" data-level="1">设置运行内存（MB）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-swap-大小-mb-0-为禁用">
-          <a class="post-toc-link" href="#设置-swap-大小-mb-0-为禁用" data-level="1">设置 Swap 大小（MB，0 为禁用）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-核心数">
-          <a class="post-toc-link" href="#设置-cpu-核心数" data-level="1">设置 CPU 核心数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-cpu-配额限制">
-          <a class="post-toc-link" href="#设置-cpu-配额限制" data-level="1">设置 CPU 配额限制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改根目录磁盘大小-扩展">
-          <a class="post-toc-link" href="#修改根目录磁盘大小-扩展" data-level="1">修改根目录磁盘大小（扩展）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="修改根目录磁盘大小-缩小">
-          <a class="post-toc-link" href="#修改根目录磁盘大小-缩小" data-level="1">修改根目录磁盘大小（缩小）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="添加宿主机目录挂载">
-          <a class="post-toc-link" href="#添加宿主机目录挂载" data-level="1">添加宿主机目录挂载</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="挂载时为目录设置权限">
-          <a class="post-toc-link" href="#挂载时为目录设置权限" data-level="1">挂载时为目录设置权限</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="移除挂载点">
-          <a class="post-toc-link" href="#移除挂载点" data-level="1">移除挂载点</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开启开机自启">
-          <a class="post-toc-link" href="#开启开机自启" data-level="1">开启开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置容器主机名">
-          <a class="post-toc-link" href="#设置容器主机名" data-level="1">设置容器主机名</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置-dns">
-          <a class="post-toc-link" href="#设置-dns" data-level="1">设置 DNS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置网络-静态-ip">
-          <a class="post-toc-link" href="#设置网络-静态-ip" data-level="1">设置网络（静态 IP）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置网络-dhcp">
-          <a class="post-toc-link" href="#设置网络-dhcp" data-level="1">设置网络（DHCP）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="四-模板创建与容器克隆">
           <a class="post-toc-link" href="#四-模板创建与容器克隆" data-level="3">四、模板创建与容器克隆</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看可用模板列表">
-          <a class="post-toc-link" href="#查看可用模板列表" data-level="1">查看可用模板列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新模板源">
-          <a class="post-toc-link" href="#更新模板源" data-level="1">更新模板源</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载模板">
-          <a class="post-toc-link" href="#下载模板" data-level="1">下载模板</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="通过模板新建容器">
-          <a class="post-toc-link" href="#通过模板新建容器" data-level="1">通过模板新建容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="克隆现有容器">
-          <a class="post-toc-link" href="#克隆现有容器" data-level="1">克隆现有容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将容器转换为模板">
-          <a class="post-toc-link" href="#将容器转换为模板" data-level="1">将容器转换为模板</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="五-快照与备份操作">
           <a class="post-toc-link" href="#五-快照与备份操作" data-level="3">五、快照与备份操作</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建容器快照">
-          <a class="post-toc-link" href="#创建容器快照" data-level="1">创建容器快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建快照并包含挂起状态">
-          <a class="post-toc-link" href="#创建快照并包含挂起状态" data-level="1">创建快照并包含挂起状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="快照回滚">
-          <a class="post-toc-link" href="#快照回滚" data-level="1">快照回滚</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除快照">
-          <a class="post-toc-link" href="#删除快照" data-level="1">删除快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看所有快照">
-          <a class="post-toc-link" href="#查看所有快照" data-level="1">查看所有快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="整机备份容器">
-          <a class="post-toc-link" href="#整机备份容器" data-level="1">整机备份容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看备份任务">
-          <a class="post-toc-link" href="#查看备份任务" data-level="1">查看备份任务</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="六-高级权限配置">
           <a class="post-toc-link" href="#六-高级权限配置" data-level="3">六、高级权限配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="解除-apparmor-限制-内网环境推荐">
-          <a class="post-toc-link" href="#解除-apparmor-限制-内网环境推荐" data-level="1">解除 AppArmor 限制（内网环境推荐）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="允许所有设备访问-用于挂载磁盘">
-          <a class="post-toc-link" href="#允许所有设备访问-用于挂载磁盘" data-level="1">允许所有设备访问（用于挂载磁盘）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="移除所有能力降权-不推荐生产环境">
-          <a class="post-toc-link" href="#移除所有能力降权-不推荐生产环境" data-level="1">移除所有能力降权（不推荐生产环境）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开启嵌套虚拟化-容器内运行-docker-必备">
-          <a class="post-toc-link" href="#开启嵌套虚拟化-容器内运行-docker-必备" data-level="1">开启嵌套虚拟化（容器内运行 Docker 必备）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="挂载-fuse-文件系统">
-          <a class="post-toc-link" href="#挂载-fuse-文件系统" data-level="1">挂载 FUSE 文件系统</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="允许挂载-nfs">
-          <a class="post-toc-link" href="#允许挂载-nfs" data-level="1">允许挂载 NFS</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="开启-tun-tap-vpn-类容器需要">
-          <a class="post-toc-link" href="#开启-tun-tap-vpn-类容器需要" data-level="1">开启 TUN/TAP（VPN 类容器需要）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="七-批量运维常用脚本">
           <a class="post-toc-link" href="#七-批量运维常用脚本" data-level="3">七、批量运维常用脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量启动所有已停止的容器">
-          <a class="post-toc-link" href="#批量启动所有已停止的容器" data-level="1">批量启动所有已停止的容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量停止所有运行中的容器">
-          <a class="post-toc-link" href="#批量停止所有运行中的容器" data-level="1">批量停止所有运行中的容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量重启所有运行中的容器">
-          <a class="post-toc-link" href="#批量重启所有运行中的容器" data-level="1">批量重启所有运行中的容器</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量设置开机自启">
-          <a class="post-toc-link" href="#批量设置开机自启" data-level="1">批量设置开机自启</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量创建快照">
-          <a class="post-toc-link" href="#批量创建快照" data-level="1">批量创建快照</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="批量查看-ip-地址">
-          <a class="post-toc-link" href="#批量查看-ip-地址" data-level="1">批量查看 IP 地址</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="八-日志与故障排查">
           <a class="post-toc-link" href="#八-日志与故障排查" data-level="3">八、日志与故障排查</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器启动日志">
-          <a class="post-toc-link" href="#查看容器启动日志" data-level="1">查看容器启动日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时滚动容器日志">
-          <a class="post-toc-link" href="#实时滚动容器日志" data-level="1">实时滚动容器日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-lxc-通用日志">
-          <a class="post-toc-link" href="#查看-lxc-通用日志" data-level="1">查看 LXC 通用日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器网络调试日志">
-          <a class="post-toc-link" href="#查看容器网络调试日志" data-level="1">查看容器网络调试日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看宿主机-lxc-进程">
-          <a class="post-toc-link" href="#查看宿主机-lxc-进程" data-level="1">查看宿主机 LXC 进程</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器文件系统使用">
-          <a class="post-toc-link" href="#查看容器文件系统使用" data-level="1">查看容器文件系统使用</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器进程列表">
-          <a class="post-toc-link" href="#查看容器进程列表" data-level="1">查看容器进程列表</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="九-常用别名优化">
@@ -2348,7 +1852,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2531,8 +2035,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

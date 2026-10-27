@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="lx_install_opencode 命令">
     <meta name="twitter:description" content="Linux 一键安装 OpenCode AI代码助手 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2029,20 +2029,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口和密码">
-              <a class="post-toc-link" href="#指定端口和密码" data-level="1">指定端口和密码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口和无密码">
-              <a class="post-toc-link" href="#指定端口和无密码" data-level="1">指定端口和无密码</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="手动安装">
               <a class="post-toc-link" href="#手动安装" data-level="2">手动安装</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="取消密码-前台启动-0-0-0-0局域网访问8456端口">
-              <a class="post-toc-link" href="#取消密码-前台启动-0-0-0-0局域网访问8456端口" data-level="1">取消密码，前台启动，0.0.0.0局域网访问8456端口</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
@@ -2069,100 +2057,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="opencode-deploy-helper-official-install-systemd-service-generator">
-              <a class="post-toc-link" href="#opencode-deploy-helper-official-install-systemd-service-generator" data-level="1">OpenCode deploy helper: official install + systemd service generator</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="默认参数">
-              <a class="post-toc-link" href="#默认参数" data-level="1">默认参数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="判断是否无参数-开启交互">
-              <a class="post-toc-link" href="#判断是否无参数-开启交互" data-level="1">判断是否无参数，开启交互</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="参数解析">
-              <a class="post-toc-link" href="#参数解析" data-level="1">参数解析</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="交互式输入逻辑">
-              <a class="post-toc-link" href="#交互式输入逻辑" data-level="1">交互式输入逻辑</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="打印部署配置">
-              <a class="post-toc-link" href="#打印部署配置" data-level="1">打印部署配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装本体-离线优先-否则调用官方install脚本">
-              <a class="post-toc-link" href="#安装本体-离线优先-否则调用官方install脚本" data-level="1">安装本体：离线优先，否则调用官方install脚本</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="校验二进制">
-              <a class="post-toc-link" href="#校验二进制" data-level="1">校验二进制</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="处理密码环境变量-空密码则整行移除-否则填充environment">
-              <a class="post-toc-link" href="#处理密码环境变量-空密码则整行移除-否则填充environment" data-level="1">处理密码环境变量：空密码则整行移除，否则填充Environment</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="安装后取消密码登录">
               <a class="post-toc-link" href="#安装后取消密码登录" data-level="2">安装后取消密码登录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="删除环境变量-opencode_server_password-xxx-这一行">
-              <a class="post-toc-link" href="#删除环境变量-opencode_server_password-xxx-这一行" data-level="1">删除环境变量 OPENCODE_SERVER_PASSWORD=xxx 这一行</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重载systemd配置-重启服务">
-              <a class="post-toc-link" href="#重载systemd配置-重启服务" data-level="1">重载systemd配置，重启服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-              <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
               <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
-              <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
-              <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="常用运维命令">
               <a class="post-toc-link" href="#常用运维命令" data-level="2">常用运维命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-              <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-              <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-              <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志-最近100行">
-              <a class="post-toc-link" href="#查看日志-最近100行" data-level="1">查看日志（最近100行）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时跟踪日志">
-              <a class="post-toc-link" href="#实时跟踪日志" data-level="1">实时跟踪日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看开机自启状态">
-              <a class="post-toc-link" href="#查看开机自启状态" data-level="1">查看开机自启状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="禁用开机自启-如果需要">
-              <a class="post-toc-link" href="#禁用开机自启-如果需要" data-level="1">禁用开机自启（如果需要）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2198,20 +2102,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口和密码">
-          <a class="post-toc-link" href="#指定端口和密码" data-level="1">指定端口和密码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="指定端口和无密码">
-          <a class="post-toc-link" href="#指定端口和无密码" data-level="1">指定端口和无密码</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="手动安装">
           <a class="post-toc-link" href="#手动安装" data-level="2">手动安装</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="取消密码-前台启动-0-0-0-0局域网访问8456端口">
-          <a class="post-toc-link" href="#取消密码-前台启动-0-0-0-0局域网访问8456端口" data-level="1">取消密码，前台启动，0.0.0.0局域网访问8456端口</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
@@ -2238,100 +2130,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="opencode-deploy-helper-official-install-systemd-service-generator">
-          <a class="post-toc-link" href="#opencode-deploy-helper-official-install-systemd-service-generator" data-level="1">OpenCode deploy helper: official install + systemd service generator</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="默认参数">
-          <a class="post-toc-link" href="#默认参数" data-level="1">默认参数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="判断是否无参数-开启交互">
-          <a class="post-toc-link" href="#判断是否无参数-开启交互" data-level="1">判断是否无参数，开启交互</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="参数解析">
-          <a class="post-toc-link" href="#参数解析" data-level="1">参数解析</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="交互式输入逻辑">
-          <a class="post-toc-link" href="#交互式输入逻辑" data-level="1">交互式输入逻辑</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="打印部署配置">
-          <a class="post-toc-link" href="#打印部署配置" data-level="1">打印部署配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装本体-离线优先-否则调用官方install脚本">
-          <a class="post-toc-link" href="#安装本体-离线优先-否则调用官方install脚本" data-level="1">安装本体：离线优先，否则调用官方install脚本</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="校验二进制">
-          <a class="post-toc-link" href="#校验二进制" data-level="1">校验二进制</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="处理密码环境变量-空密码则整行移除-否则填充environment">
-          <a class="post-toc-link" href="#处理密码环境变量-空密码则整行移除-否则填充environment" data-level="1">处理密码环境变量：空密码则整行移除，否则填充Environment</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="安装后取消密码登录">
           <a class="post-toc-link" href="#安装后取消密码登录" data-level="2">安装后取消密码登录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="删除环境变量-opencode_server_password-xxx-这一行">
-          <a class="post-toc-link" href="#删除环境变量-opencode_server_password-xxx-这一行" data-level="1">删除环境变量 OPENCODE_SERVER_PASSWORD=xxx 这一行</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重载systemd配置-重启服务">
-          <a class="post-toc-link" href="#重载systemd配置-重启服务" data-level="1">重载systemd配置，重启服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看状态">
-          <a class="post-toc-link" href="#查看状态" data-level="1">查看状态</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="创建本地脚本">
           <a class="post-toc-link" href="#创建本地脚本" data-level="2">创建本地脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="粘贴脚本源码">
-          <a class="post-toc-link" href="#粘贴脚本源码" data-level="1">粘贴脚本源码</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保留本地脚本-去掉-rm-f-new_script">
-          <a class="post-toc-link" href="#保留本地脚本-去掉-rm-f-new_script" data-level="1">保留本地脚本，去掉 rm -f &#34;$new_script&#34;</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="常用运维命令">
           <a class="post-toc-link" href="#常用运维命令" data-level="2">常用运维命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-          <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="停止服务">
-          <a class="post-toc-link" href="#停止服务" data-level="1">停止服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="重启服务">
-          <a class="post-toc-link" href="#重启服务" data-level="1">重启服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志-最近100行">
-          <a class="post-toc-link" href="#查看日志-最近100行" data-level="1">查看日志（最近100行）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时跟踪日志">
-          <a class="post-toc-link" href="#实时跟踪日志" data-level="1">实时跟踪日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看开机自启状态">
-          <a class="post-toc-link" href="#查看开机自启状态" data-level="1">查看开机自启状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="禁用开机自启-如果需要">
-          <a class="post-toc-link" href="#禁用开机自启-如果需要" data-level="1">禁用开机自启（如果需要）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="相关命令">
@@ -2344,7 +2152,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2527,8 +2335,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

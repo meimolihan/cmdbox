@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-inspect 命令">
     <meta name="twitter:description" content="获取容器或镜像的底层信息 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1418,58 +1418,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器详细信息">
-              <a class="post-toc-link" href="#查看容器详细信息" data-level="1">查看容器详细信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器ip地址">
-              <a class="post-toc-link" href="#获取容器ip地址" data-level="1">获取容器IP地址</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器端口映射">
-              <a class="post-toc-link" href="#获取容器端口映射" data-level="1">获取容器端口映射</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器环境变量">
-              <a class="post-toc-link" href="#获取容器环境变量" data-level="1">获取容器环境变量</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器日志路径">
-              <a class="post-toc-link" href="#获取容器日志路径" data-level="1">获取容器日志路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器日志内容">
-              <a class="post-toc-link" href="#查看容器日志内容" data-level="1">查看容器日志内容</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="实时跟踪容器日志">
-              <a class="post-toc-link" href="#实时跟踪容器日志" data-level="1">实时跟踪容器日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="清空容器日志文件-不删除文件">
-              <a class="post-toc-link" href="#清空容器日志文件-不删除文件" data-level="1">清空容器日志文件（不删除文件）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器挂载信息">
-              <a class="post-toc-link" href="#获取容器挂载信息" data-level="1">获取容器挂载信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取镜像创建时间">
-              <a class="post-toc-link" href="#获取镜像创建时间" data-level="1">获取镜像创建时间</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器启动命令">
-              <a class="post-toc-link" href="#获取容器启动命令" data-level="1">获取容器启动命令</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器重启策略">
-              <a class="post-toc-link" href="#获取容器重启策略" data-level="1">获取容器重启策略</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="格式化输出为可读json">
-              <a class="post-toc-link" href="#格式化输出为可读json" data-level="1">格式化输出为可读JSON</a>
-            </li>
-            
           </ul>
         </nav>
       </div>
@@ -1511,65 +1459,13 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常用实例" data-level="3">常用实例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器详细信息">
-          <a class="post-toc-link" href="#查看容器详细信息" data-level="1">查看容器详细信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器ip地址">
-          <a class="post-toc-link" href="#获取容器ip地址" data-level="1">获取容器IP地址</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器端口映射">
-          <a class="post-toc-link" href="#获取容器端口映射" data-level="1">获取容器端口映射</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器环境变量">
-          <a class="post-toc-link" href="#获取容器环境变量" data-level="1">获取容器环境变量</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器日志路径">
-          <a class="post-toc-link" href="#获取容器日志路径" data-level="1">获取容器日志路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看容器日志内容">
-          <a class="post-toc-link" href="#查看容器日志内容" data-level="1">查看容器日志内容</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="实时跟踪容器日志">
-          <a class="post-toc-link" href="#实时跟踪容器日志" data-level="1">实时跟踪容器日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="清空容器日志文件-不删除文件">
-          <a class="post-toc-link" href="#清空容器日志文件-不删除文件" data-level="1">清空容器日志文件（不删除文件）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器挂载信息">
-          <a class="post-toc-link" href="#获取容器挂载信息" data-level="1">获取容器挂载信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取镜像创建时间">
-          <a class="post-toc-link" href="#获取镜像创建时间" data-level="1">获取镜像创建时间</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器启动命令">
-          <a class="post-toc-link" href="#获取容器启动命令" data-level="1">获取容器启动命令</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="获取容器重启策略">
-          <a class="post-toc-link" href="#获取容器重启策略" data-level="1">获取容器重启策略</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="格式化输出为可读json">
-          <a class="post-toc-link" href="#格式化输出为可读json" data-level="1">格式化输出为可读JSON</a>
-        </li>
-        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1752,8 +1648,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="openvpn 命令">
     <meta name="twitter:description" content="OpenVPN 服务端与客户端配置指南 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1960,18 +1960,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#一-安装" data-level="2">一、安装</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-              <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="rhel-centos-fedora">
-              <a class="post-toc-link" href="#rhel-centos-fedora" data-level="1">RHEL / CentOS / Fedora</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-              <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="二-pki-证书体系搭建">
               <a class="post-toc-link" href="#二-pki-证书体系搭建" data-level="2">二、PKI 证书体系搭建</a>
             </li>
@@ -1988,40 +1976,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#3-构建-ca-和证书" data-level="3">3. 构建 CA 和证书</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="初始化-pki-目录">
-              <a class="post-toc-link" href="#初始化-pki-目录" data-level="1">初始化 PKI 目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建-ca-证书-输入-pem-pass-phrase-务必牢记">
-              <a class="post-toc-link" href="#创建-ca-证书-输入-pem-pass-phrase-务必牢记" data-level="1">创建 CA 证书（输入 PEM pass phrase，务必牢记）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成服务端证书和密钥">
-              <a class="post-toc-link" href="#生成服务端证书和密钥" data-level="1">生成服务端证书和密钥</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-diffie-hellman-参数">
-              <a class="post-toc-link" href="#生成-diffie-hellman-参数" data-level="1">生成 Diffie-Hellman 参数</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成-tls-认证密钥-增强安全性">
-              <a class="post-toc-link" href="#生成-tls-认证密钥-增强安全性" data-level="1">生成 TLS 认证密钥（增强安全性）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="4-生成客户端证书">
               <a class="post-toc-link" href="#4-生成客户端证书" data-level="3">4. 生成客户端证书</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建客户端证书-无密码">
-              <a class="post-toc-link" href="#创建客户端证书-无密码" data-level="1">创建客户端证书（无密码）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="如需密码保护私钥-去掉-nopass">
-              <a class="post-toc-link" href="#如需密码保护私钥-去掉-nopass" data-level="1">如需密码保护私钥，去掉 nopass</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="easyrsa-gen-req-client1">
-              <a class="post-toc-link" href="#easyrsa-gen-req-client1" data-level="1">./easyrsa gen-req client1</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="5-整理证书文件">
@@ -2030,42 +1986,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="三-服务端配置">
               <a class="post-toc-link" href="#三-服务端配置" data-level="2">三、服务端配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="证书路径">
-              <a class="post-toc-link" href="#证书路径" data-level="1">证书路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="虚拟-ip-池">
-              <a class="post-toc-link" href="#虚拟-ip-池" data-level="1">虚拟 IP 池</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="推送路由">
-              <a class="post-toc-link" href="#推送路由" data-level="1">推送路由</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="客户端间互通">
-              <a class="post-toc-link" href="#客户端间互通" data-level="1">客户端间互通</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="保持连接">
-              <a class="post-toc-link" href="#保持连接" data-level="1">保持连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="加密">
-              <a class="post-toc-link" href="#加密" data-level="1">加密</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安全加固">
-              <a class="post-toc-link" href="#安全加固" data-level="1">安全加固</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="日志">
-              <a class="post-toc-link" href="#日志" data-level="1">日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="用户权限">
-              <a class="post-toc-link" href="#用户权限" data-level="1">用户权限</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="四-网络配置-路由转发">
@@ -2080,36 +2000,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#2-配置-nat-iptables" data-level="3">2. 配置 NAT（iptables）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="假设外网网卡为-eth0-根据实际情况修改">
-              <a class="post-toc-link" href="#假设外网网卡为-eth0-根据实际情况修改" data-level="1">假设外网网卡为 eth0，根据实际情况修改</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="持久化规则">
-              <a class="post-toc-link" href="#持久化规则" data-level="1">持久化规则</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-放行防火墙">
               <a class="post-toc-link" href="#3-放行防火墙" data-level="3">3. 放行防火墙</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="ufw">
-              <a class="post-toc-link" href="#ufw" data-level="1">ufw</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld">
-              <a class="post-toc-link" href="#firewalld" data-level="1">firewalld</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="五-启动服务端">
               <a class="post-toc-link" href="#五-启动服务端" data-level="2">五、启动服务端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟网卡">
-              <a class="post-toc-link" href="#查看虚拟网卡" data-level="1">查看虚拟网卡</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-              <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="六-客户端配置">
@@ -2120,28 +2016,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#1-生成客户端配置文件" data-level="3">1. 生成客户端配置文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="证书-嵌入方式-见下方打包脚本">
-              <a class="post-toc-link" href="#证书-嵌入方式-见下方打包脚本" data-level="1">证书（嵌入方式，见下方打包脚本）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="推送的处理-windows-路由">
-              <a class="post-toc-link" href="#推送的处理-windows-路由" data-level="1">推送的处理（Windows 路由）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-打包为单文件-ovpn-嵌入证书">
               <a class="post-toc-link" href="#2-打包为单文件-ovpn-嵌入证书" data-level="3">2. 打包为单文件 .ovpn（嵌入证书）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="打包脚本-make-client-config-sh">
-              <a class="post-toc-link" href="#打包脚本-make-client-config-sh" data-level="1">打包脚本：make-client-config.sh</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制基础配置">
-              <a class="post-toc-link" href="#复制基础配置" data-level="1">复制基础配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="嵌入证书">
-              <a class="post-toc-link" href="#嵌入证书" data-level="1">嵌入证书</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="七-客户端连接">
@@ -2154,18 +2030,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="linux">
               <a class="post-toc-link" href="#linux" data-level="3">Linux</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装客户端">
-              <a class="post-toc-link" href="#安装客户端" data-level="1">安装客户端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="连接">
-              <a class="post-toc-link" href="#连接" data-level="1">连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="或使用-systemd-管理">
-              <a class="post-toc-link" href="#或使用-systemd-管理" data-level="1">或使用 systemd 管理</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="macos">
@@ -2184,26 +2048,6 @@ function copied(target, str) {
               <a class="post-toc-link" href="#吊销客户端证书" data-level="3">吊销客户端证书</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="吊销证书">
-              <a class="post-toc-link" href="#吊销证书" data-level="1">吊销证书</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="生成证书吊销列表">
-              <a class="post-toc-link" href="#生成证书吊销列表" data-level="1">生成证书吊销列表</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="复制到服务端">
-              <a class="post-toc-link" href="#复制到服务端" data-level="1">复制到服务端</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="在-server-conf-中添加">
-              <a class="post-toc-link" href="#在-server-conf-中添加" data-level="1">在 server.conf 中添加</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="crl-verify-etc-openvpn-server-crl-pem">
-              <a class="post-toc-link" href="#crl-verify-etc-openvpn-server-crl-pem" data-level="1">crl-verify /etc/openvpn/server/crl.pem</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="查看在线客户端">
               <a class="post-toc-link" href="#查看在线客户端" data-level="3">查看在线客户端</a>
             </li>
@@ -2214,14 +2058,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="服务端配置优化">
               <a class="post-toc-link" href="#服务端配置优化" data-level="3">服务端配置优化</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="多线程-多核-cpu">
-              <a class="post-toc-link" href="#多线程-多核-cpu" data-level="1">多线程（多核 CPU）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="压缩-双方需一致">
-              <a class="post-toc-link" href="#压缩-双方需一致" data-level="1">压缩（双方需一致）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="udp-vs-tcp">
@@ -2236,60 +2072,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#客户端连接成功但无法上网" data-level="3">客户端连接成功但无法上网</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务端检查-ip-转发">
-              <a class="post-toc-link" href="#服务端检查-ip-转发" data-level="1">服务端检查 IP 转发</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-nat-规则">
-              <a class="post-toc-link" href="#检查-nat-规则" data-level="1">检查 NAT 规则</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="确认-push-redirect-gateway-已发送">
-              <a class="post-toc-link" href="#确认-push-redirect-gateway-已发送" data-level="1">确认 push redirect-gateway 已发送</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="tls-握手失败">
               <a class="post-toc-link" href="#tls-握手失败" data-level="3">TLS 握手失败</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务端-客户端时间是否同步">
-              <a class="post-toc-link" href="#检查服务端-客户端时间是否同步" data-level="1">检查服务端/客户端时间是否同步</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查证书是否匹配">
-              <a class="post-toc-link" href="#检查证书是否匹配" data-level="1">检查证书是否匹配</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="检查-ta-key-方向">
-              <a class="post-toc-link" href="#检查-ta-key-方向" data-level="1">检查 ta.key 方向</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="服务端用-0-默认-客户端用-1">
-              <a class="post-toc-link" href="#服务端用-0-默认-客户端用-1" data-level="1">服务端用 0（默认），客户端用 1</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="客户端连接断开">
               <a class="post-toc-link" href="#客户端连接断开" data-level="3">客户端连接断开</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看实时日志">
-              <a class="post-toc-link" href="#查看实时日志" data-level="1">查看实时日志</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="常见原因">
-              <a class="post-toc-link" href="#常见原因" data-level="1">常见原因：</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="keepalive-超时">
-              <a class="post-toc-link" href="#keepalive-超时" data-level="1">- keepalive 超时</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="防火墙超时无状态连接">
-              <a class="post-toc-link" href="#防火墙超时无状态连接" data-level="1">- 防火墙超时无状态连接</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="客户端-ip-变化">
-              <a class="post-toc-link" href="#客户端-ip-变化" data-level="1">- 客户端 IP 变化</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2329,18 +2117,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#一-安装" data-level="2">一、安装</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="debian-ubuntu">
-          <a class="post-toc-link" href="#debian-ubuntu" data-level="1">Debian / Ubuntu</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="rhel-centos-fedora">
-          <a class="post-toc-link" href="#rhel-centos-fedora" data-level="1">RHEL / CentOS / Fedora</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="arch-linux">
-          <a class="post-toc-link" href="#arch-linux" data-level="1">Arch Linux</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="二-pki-证书体系搭建">
           <a class="post-toc-link" href="#二-pki-证书体系搭建" data-level="2">二、PKI 证书体系搭建</a>
         </li>
@@ -2357,40 +2133,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#3-构建-ca-和证书" data-level="3">3. 构建 CA 和证书</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="初始化-pki-目录">
-          <a class="post-toc-link" href="#初始化-pki-目录" data-level="1">初始化 PKI 目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建-ca-证书-输入-pem-pass-phrase-务必牢记">
-          <a class="post-toc-link" href="#创建-ca-证书-输入-pem-pass-phrase-务必牢记" data-level="1">创建 CA 证书（输入 PEM pass phrase，务必牢记）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成服务端证书和密钥">
-          <a class="post-toc-link" href="#生成服务端证书和密钥" data-level="1">生成服务端证书和密钥</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-diffie-hellman-参数">
-          <a class="post-toc-link" href="#生成-diffie-hellman-参数" data-level="1">生成 Diffie-Hellman 参数</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成-tls-认证密钥-增强安全性">
-          <a class="post-toc-link" href="#生成-tls-认证密钥-增强安全性" data-level="1">生成 TLS 认证密钥（增强安全性）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="4-生成客户端证书">
           <a class="post-toc-link" href="#4-生成客户端证书" data-level="3">4. 生成客户端证书</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建客户端证书-无密码">
-          <a class="post-toc-link" href="#创建客户端证书-无密码" data-level="1">创建客户端证书（无密码）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="如需密码保护私钥-去掉-nopass">
-          <a class="post-toc-link" href="#如需密码保护私钥-去掉-nopass" data-level="1">如需密码保护私钥，去掉 nopass</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="easyrsa-gen-req-client1">
-          <a class="post-toc-link" href="#easyrsa-gen-req-client1" data-level="1">./easyrsa gen-req client1</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="5-整理证书文件">
@@ -2399,42 +2143,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="三-服务端配置">
           <a class="post-toc-link" href="#三-服务端配置" data-level="2">三、服务端配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="证书路径">
-          <a class="post-toc-link" href="#证书路径" data-level="1">证书路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="虚拟-ip-池">
-          <a class="post-toc-link" href="#虚拟-ip-池" data-level="1">虚拟 IP 池</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="推送路由">
-          <a class="post-toc-link" href="#推送路由" data-level="1">推送路由</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="客户端间互通">
-          <a class="post-toc-link" href="#客户端间互通" data-level="1">客户端间互通</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="保持连接">
-          <a class="post-toc-link" href="#保持连接" data-level="1">保持连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="加密">
-          <a class="post-toc-link" href="#加密" data-level="1">加密</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安全加固">
-          <a class="post-toc-link" href="#安全加固" data-level="1">安全加固</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="日志">
-          <a class="post-toc-link" href="#日志" data-level="1">日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="用户权限">
-          <a class="post-toc-link" href="#用户权限" data-level="1">用户权限</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="四-网络配置-路由转发">
@@ -2449,36 +2157,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#2-配置-nat-iptables" data-level="3">2. 配置 NAT（iptables）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="假设外网网卡为-eth0-根据实际情况修改">
-          <a class="post-toc-link" href="#假设外网网卡为-eth0-根据实际情况修改" data-level="1">假设外网网卡为 eth0，根据实际情况修改</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="持久化规则">
-          <a class="post-toc-link" href="#持久化规则" data-level="1">持久化规则</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-放行防火墙">
           <a class="post-toc-link" href="#3-放行防火墙" data-level="3">3. 放行防火墙</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="ufw">
-          <a class="post-toc-link" href="#ufw" data-level="1">ufw</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="firewalld">
-          <a class="post-toc-link" href="#firewalld" data-level="1">firewalld</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="五-启动服务端">
           <a class="post-toc-link" href="#五-启动服务端" data-level="2">五、启动服务端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看虚拟网卡">
-          <a class="post-toc-link" href="#查看虚拟网卡" data-level="1">查看虚拟网卡</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看日志">
-          <a class="post-toc-link" href="#查看日志" data-level="1">查看日志</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="六-客户端配置">
@@ -2489,28 +2173,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#1-生成客户端配置文件" data-level="3">1. 生成客户端配置文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="证书-嵌入方式-见下方打包脚本">
-          <a class="post-toc-link" href="#证书-嵌入方式-见下方打包脚本" data-level="1">证书（嵌入方式，见下方打包脚本）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="推送的处理-windows-路由">
-          <a class="post-toc-link" href="#推送的处理-windows-路由" data-level="1">推送的处理（Windows 路由）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-打包为单文件-ovpn-嵌入证书">
           <a class="post-toc-link" href="#2-打包为单文件-ovpn-嵌入证书" data-level="3">2. 打包为单文件 .ovpn（嵌入证书）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="打包脚本-make-client-config-sh">
-          <a class="post-toc-link" href="#打包脚本-make-client-config-sh" data-level="1">打包脚本：make-client-config.sh</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制基础配置">
-          <a class="post-toc-link" href="#复制基础配置" data-level="1">复制基础配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="嵌入证书">
-          <a class="post-toc-link" href="#嵌入证书" data-level="1">嵌入证书</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="七-客户端连接">
@@ -2523,18 +2187,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="linux">
           <a class="post-toc-link" href="#linux" data-level="3">Linux</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装客户端">
-          <a class="post-toc-link" href="#安装客户端" data-level="1">安装客户端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="连接">
-          <a class="post-toc-link" href="#连接" data-level="1">连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="或使用-systemd-管理">
-          <a class="post-toc-link" href="#或使用-systemd-管理" data-level="1">或使用 systemd 管理</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="macos">
@@ -2553,26 +2205,6 @@ function copied(target, str) {
           <a class="post-toc-link" href="#吊销客户端证书" data-level="3">吊销客户端证书</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="吊销证书">
-          <a class="post-toc-link" href="#吊销证书" data-level="1">吊销证书</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="生成证书吊销列表">
-          <a class="post-toc-link" href="#生成证书吊销列表" data-level="1">生成证书吊销列表</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="复制到服务端">
-          <a class="post-toc-link" href="#复制到服务端" data-level="1">复制到服务端</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="在-server-conf-中添加">
-          <a class="post-toc-link" href="#在-server-conf-中添加" data-level="1">在 server.conf 中添加</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="crl-verify-etc-openvpn-server-crl-pem">
-          <a class="post-toc-link" href="#crl-verify-etc-openvpn-server-crl-pem" data-level="1">crl-verify /etc/openvpn/server/crl.pem</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="查看在线客户端">
           <a class="post-toc-link" href="#查看在线客户端" data-level="3">查看在线客户端</a>
         </li>
@@ -2583,14 +2215,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="服务端配置优化">
           <a class="post-toc-link" href="#服务端配置优化" data-level="3">服务端配置优化</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="多线程-多核-cpu">
-          <a class="post-toc-link" href="#多线程-多核-cpu" data-level="1">多线程（多核 CPU）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="压缩-双方需一致">
-          <a class="post-toc-link" href="#压缩-双方需一致" data-level="1">压缩（双方需一致）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="udp-vs-tcp">
@@ -2605,60 +2229,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#客户端连接成功但无法上网" data-level="3">客户端连接成功但无法上网</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务端检查-ip-转发">
-          <a class="post-toc-link" href="#服务端检查-ip-转发" data-level="1">服务端检查 IP 转发</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-nat-规则">
-          <a class="post-toc-link" href="#检查-nat-规则" data-level="1">检查 NAT 规则</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="确认-push-redirect-gateway-已发送">
-          <a class="post-toc-link" href="#确认-push-redirect-gateway-已发送" data-level="1">确认 push redirect-gateway 已发送</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="tls-握手失败">
           <a class="post-toc-link" href="#tls-握手失败" data-level="3">TLS 握手失败</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查服务端-客户端时间是否同步">
-          <a class="post-toc-link" href="#检查服务端-客户端时间是否同步" data-level="1">检查服务端/客户端时间是否同步</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查证书是否匹配">
-          <a class="post-toc-link" href="#检查证书是否匹配" data-level="1">检查证书是否匹配</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="检查-ta-key-方向">
-          <a class="post-toc-link" href="#检查-ta-key-方向" data-level="1">检查 ta.key 方向</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="服务端用-0-默认-客户端用-1">
-          <a class="post-toc-link" href="#服务端用-0-默认-客户端用-1" data-level="1">服务端用 0（默认），客户端用 1</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="客户端连接断开">
           <a class="post-toc-link" href="#客户端连接断开" data-level="3">客户端连接断开</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看实时日志">
-          <a class="post-toc-link" href="#查看实时日志" data-level="1">查看实时日志</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="常见原因">
-          <a class="post-toc-link" href="#常见原因" data-level="1">常见原因：</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="keepalive-超时">
-          <a class="post-toc-link" href="#keepalive-超时" data-level="1">- keepalive 超时</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="防火墙超时无状态连接">
-          <a class="post-toc-link" href="#防火墙超时无状态连接" data-level="1">- 防火墙超时无状态连接</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="客户端-ip-变化">
-          <a class="post-toc-link" href="#客户端-ip-变化" data-level="1">- 客户端 IP 变化</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2671,7 +2247,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2854,8 +2430,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

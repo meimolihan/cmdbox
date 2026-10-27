@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_install_alpine 命令">
     <meta name="twitter:description" content="安装配置 WSL2 Alpine Linux 系统 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1e6364ed2447fd57">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=17fba0af2447fd57">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=1e6364ed2447fd57"></script>
+    <script src="../js/dt.js?v=17fba0af2447fd57"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1750,20 +1750,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#下载-alpine-wsl-包" data-level="3">下载 Alpine WSL 包</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="下载-alpine-wsl-包">
-              <a class="post-toc-link" href="#下载-alpine-wsl-包" data-level="1">下载 Alpine WSL 包</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="创建-alpine-目录并导入">
               <a class="post-toc-link" href="#创建-alpine-目录并导入" data-level="3">创建 Alpine 目录并导入</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建存放-alpine-的目录">
-              <a class="post-toc-link" href="#创建存放-alpine-的目录" data-level="1">创建存放 Alpine 的目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="导入-alpine">
-              <a class="post-toc-link" href="#导入-alpine" data-level="1">导入 Alpine</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="查看安装结果">
@@ -1782,60 +1770,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#更新-apk-并安装基础工具" data-level="3">更新 apk 并安装基础工具</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包索引">
-              <a class="post-toc-link" href="#更新软件包索引" data-level="1">更新软件包索引</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="升级已安装的软件包">
-              <a class="post-toc-link" href="#升级已安装的软件包" data-level="1">升级已安装的软件包</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装基础工具">
-              <a class="post-toc-link" href="#安装基础工具" data-level="1">安装基础工具</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置镜像加速-可选">
               <a class="post-toc-link" href="#配置镜像加速-可选" data-level="3">配置镜像加速（可选）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-etc-apk-repositories">
-              <a class="post-toc-link" href="#编辑-etc-apk-repositories" data-level="1">编辑 /etc/apk/repositories</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="更新索引">
-              <a class="post-toc-link" href="#更新索引" data-level="1">更新索引</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置-shell-为-bash">
               <a class="post-toc-link" href="#配置-shell-为-bash" data-level="3">配置 shell 为 bash</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看-bash-路径">
-              <a class="post-toc-link" href="#查看-bash-路径" data-level="1">查看 bash 路径</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认-shell">
-              <a class="post-toc-link" href="#切换默认-shell" data-level="1">切换默认 shell</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="退出重新进入即可生效">
-              <a class="post-toc-link" href="#退出重新进入即可生效" data-level="1">退出重新进入即可生效</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置时区">
               <a class="post-toc-link" href="#配置时区" data-level="3">配置时区</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="安装时区数据">
-              <a class="post-toc-link" href="#安装时区数据" data-level="1">安装时区数据</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置为上海时区">
-              <a class="post-toc-link" href="#设置为上海时区" data-level="1">设置为上海时区</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="用户与权限配置">
@@ -1846,28 +1790,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#创建普通用户" data-level="3">创建普通用户</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="创建用户-将-demo-替换为实际用户名">
-              <a class="post-toc-link" href="#创建用户-将-demo-替换为实际用户名" data-level="1">创建用户（将 demo 替换为实际用户名）</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置密码-按提示输入">
-              <a class="post-toc-link" href="#设置密码-按提示输入" data-level="1">设置密码（按提示输入）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="添加到-sudo-组">
               <a class="post-toc-link" href="#添加到-sudo-组" data-level="3">添加到 sudo 组</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="将用户添加到-wheel-组">
-              <a class="post-toc-link" href="#将用户添加到-wheel-组" data-level="1">将用户添加到 wheel 组</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-sudo-配置">
-              <a class="post-toc-link" href="#编辑-sudo-配置" data-level="1">编辑 sudo 配置</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-              <a class="post-toc-link" href="#验证" data-level="1">验证</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="包管理常用命令">
@@ -1878,36 +1802,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装常用开发工具" data-level="3">安装常用开发工具</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="node-js">
-              <a class="post-toc-link" href="#node-js" data-level="1">Node.js</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="python">
-              <a class="post-toc-link" href="#python" data-level="1">Python</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="go">
-              <a class="post-toc-link" href="#go" data-level="1">Go</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="docker-cli-仅客户端">
-              <a class="post-toc-link" href="#docker-cli-仅客户端" data-level="1">Docker CLI（仅客户端）</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="网络与文件访问">
               <a class="post-toc-link" href="#网络与文件访问" data-level="2">网络与文件访问</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="从-windows-访问-alpine-文件">
               <a class="post-toc-link" href="#从-windows-访问-alpine-文件" data-level="3">从 Windows 访问 Alpine 文件</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="进入-alpine-主目录">
-              <a class="post-toc-link" href="#进入-alpine-主目录" data-level="1">进入 Alpine 主目录</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看根目录文件">
-              <a class="post-toc-link" href="#查看根目录文件" data-level="1">查看根目录文件</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="从-alpine-访问-windows-文件">
@@ -1918,8 +1818,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="alpine-不在-wsl-l-o-列表中">
-              <a class="post-toc-link" href="#alpine-不在-wsl-l-o-列表中" data-level="3">Alpine 不在 wsl -l -o 列表中</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="alpine-不在-列表中">
+              <a class="post-toc-link" href="#alpine-不在-列表中" data-level="3">Alpine 不在  列表中</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="apk-安装速度慢">
@@ -1930,40 +1830,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#无-systemd" data-level="3">无 systemd</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-              <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-              <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="设置开机自启">
-              <a class="post-toc-link" href="#设置开机自启" data-level="1">设置开机自启</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-3" data-toc-id="忘记-root-密码">
               <a class="post-toc-link" href="#忘记-root-密码" data-level="3">忘记 root 密码</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装结果">
               <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="系统信息">
-              <a class="post-toc-link" href="#系统信息" data-level="1">系统信息</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="网络连通性">
-              <a class="post-toc-link" href="#网络连通性" data-level="1">网络连通性</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="包管理器状态">
-              <a class="post-toc-link" href="#包管理器状态" data-level="1">包管理器状态</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘使用情况">
-              <a class="post-toc-link" href="#磁盘使用情况" data-level="1">磁盘使用情况</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2051,20 +1923,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#下载-alpine-wsl-包" data-level="3">下载 Alpine WSL 包</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="下载-alpine-wsl-包">
-          <a class="post-toc-link" href="#下载-alpine-wsl-包" data-level="1">下载 Alpine WSL 包</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="创建-alpine-目录并导入">
           <a class="post-toc-link" href="#创建-alpine-目录并导入" data-level="3">创建 Alpine 目录并导入</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建存放-alpine-的目录">
-          <a class="post-toc-link" href="#创建存放-alpine-的目录" data-level="1">创建存放 Alpine 的目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="导入-alpine">
-          <a class="post-toc-link" href="#导入-alpine" data-level="1">导入 Alpine</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="查看安装结果">
@@ -2083,60 +1943,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#更新-apk-并安装基础工具" data-level="3">更新 apk 并安装基础工具</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新软件包索引">
-          <a class="post-toc-link" href="#更新软件包索引" data-level="1">更新软件包索引</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="升级已安装的软件包">
-          <a class="post-toc-link" href="#升级已安装的软件包" data-level="1">升级已安装的软件包</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装基础工具">
-          <a class="post-toc-link" href="#安装基础工具" data-level="1">安装基础工具</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置镜像加速-可选">
           <a class="post-toc-link" href="#配置镜像加速-可选" data-level="3">配置镜像加速（可选）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-etc-apk-repositories">
-          <a class="post-toc-link" href="#编辑-etc-apk-repositories" data-level="1">编辑 /etc/apk/repositories</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="更新索引">
-          <a class="post-toc-link" href="#更新索引" data-level="1">更新索引</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置-shell-为-bash">
           <a class="post-toc-link" href="#配置-shell-为-bash" data-level="3">配置 shell 为 bash</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看-bash-路径">
-          <a class="post-toc-link" href="#查看-bash-路径" data-level="1">查看 bash 路径</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="切换默认-shell">
-          <a class="post-toc-link" href="#切换默认-shell" data-level="1">切换默认 shell</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="退出重新进入即可生效">
-          <a class="post-toc-link" href="#退出重新进入即可生效" data-level="1">退出重新进入即可生效</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置时区">
           <a class="post-toc-link" href="#配置时区" data-level="3">配置时区</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="安装时区数据">
-          <a class="post-toc-link" href="#安装时区数据" data-level="1">安装时区数据</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置为上海时区">
-          <a class="post-toc-link" href="#设置为上海时区" data-level="1">设置为上海时区</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="用户与权限配置">
@@ -2147,28 +1963,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#创建普通用户" data-level="3">创建普通用户</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="创建用户-将-demo-替换为实际用户名">
-          <a class="post-toc-link" href="#创建用户-将-demo-替换为实际用户名" data-level="1">创建用户（将 demo 替换为实际用户名）</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置密码-按提示输入">
-          <a class="post-toc-link" href="#设置密码-按提示输入" data-level="1">设置密码（按提示输入）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="添加到-sudo-组">
           <a class="post-toc-link" href="#添加到-sudo-组" data-level="3">添加到 sudo 组</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="将用户添加到-wheel-组">
-          <a class="post-toc-link" href="#将用户添加到-wheel-组" data-level="1">将用户添加到 wheel 组</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="编辑-sudo-配置">
-          <a class="post-toc-link" href="#编辑-sudo-配置" data-level="1">编辑 sudo 配置</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="验证">
-          <a class="post-toc-link" href="#验证" data-level="1">验证</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="包管理常用命令">
@@ -2179,36 +1975,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装常用开发工具" data-level="3">安装常用开发工具</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="node-js">
-          <a class="post-toc-link" href="#node-js" data-level="1">Node.js</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="python">
-          <a class="post-toc-link" href="#python" data-level="1">Python</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="go">
-          <a class="post-toc-link" href="#go" data-level="1">Go</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="docker-cli-仅客户端">
-          <a class="post-toc-link" href="#docker-cli-仅客户端" data-level="1">Docker CLI（仅客户端）</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="网络与文件访问">
           <a class="post-toc-link" href="#网络与文件访问" data-level="2">网络与文件访问</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="从-windows-访问-alpine-文件">
           <a class="post-toc-link" href="#从-windows-访问-alpine-文件" data-level="3">从 Windows 访问 Alpine 文件</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="进入-alpine-主目录">
-          <a class="post-toc-link" href="#进入-alpine-主目录" data-level="1">进入 Alpine 主目录</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看根目录文件">
-          <a class="post-toc-link" href="#查看根目录文件" data-level="1">查看根目录文件</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="从-alpine-访问-windows-文件">
@@ -2219,8 +1991,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#常见问题" data-level="2">常见问题</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="alpine-不在-wsl-l-o-列表中">
-          <a class="post-toc-link" href="#alpine-不在-wsl-l-o-列表中" data-level="3">Alpine 不在 wsl -l -o 列表中</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="alpine-不在-列表中">
+          <a class="post-toc-link" href="#alpine-不在-列表中" data-level="3">Alpine 不在  列表中</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="apk-安装速度慢">
@@ -2231,40 +2003,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#无-systemd" data-level="3">无 systemd</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="查看服务状态">
-          <a class="post-toc-link" href="#查看服务状态" data-level="1">查看服务状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="启动服务">
-          <a class="post-toc-link" href="#启动服务" data-level="1">启动服务</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="设置开机自启">
-          <a class="post-toc-link" href="#设置开机自启" data-level="1">设置开机自启</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-3" data-toc-id="忘记-root-密码">
           <a class="post-toc-link" href="#忘记-root-密码" data-level="3">忘记 root 密码</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="验证安装结果">
           <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="系统信息">
-          <a class="post-toc-link" href="#系统信息" data-level="1">系统信息</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="网络连通性">
-          <a class="post-toc-link" href="#网络连通性" data-level="1">网络连通性</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="包管理器状态">
-          <a class="post-toc-link" href="#包管理器状态" data-level="1">包管理器状态</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-1" data-toc-id="磁盘使用情况">
-          <a class="post-toc-link" href="#磁盘使用情况" data-level="1">磁盘使用情况</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2281,7 +2025,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=1e6364ed2447fd57"></script>
+<script src="../js/post-toc.js?v=17fba0af2447fd57"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2464,8 +2208,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=1e6364ed2447fd57"></script>
-<script type="text/javascript" src="../js/enhance.js?v=1e6364ed2447fd57"></script>
+<script type="text/javascript" src="../js/index.js?v=17fba0af2447fd57"></script>
+<script type="text/javascript" src="../js/enhance.js?v=17fba0af2447fd57"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
