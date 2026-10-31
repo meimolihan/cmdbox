@@ -291,10 +291,10 @@ manage_opencode() {
             break_end
             ;;
         66)
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
             ;;
         99)
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_opencode.sh)
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_opencode.sh)
             ;;
         0)
             cancel_return "已是主菜单"

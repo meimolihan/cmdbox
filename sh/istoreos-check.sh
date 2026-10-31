@@ -108,7 +108,7 @@ update_script() {
     
     local update_url="https://gitee.com/meimolihan/cmdbox/raw/master/sh/check.sh"
     
-    if bash <(curl -sL "$update_url"); then
+    if bash <(curl -sSL "$update_url"); then
         echo -e "${gl_lv}脚本更新成功！${gl_bai}"
         
         if alias g >/dev/null 2>&1; then

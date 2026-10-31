@@ -104,11 +104,11 @@ docker-hub_images_delete_menu() {
         read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" rename_mode
 
         case "$rename_mode" in
-        1) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/cmdbox ;;
-        2) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/dufs-zh ;;
-        3) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/metube-zh ;;
-        4) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/random-pic-api ;;
-        5) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/speedtest-go-zh ;;
+        1) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/cmdbox ;;
+        2) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/dufs-zh ;;
+        3) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/metube-zh ;;
+        4) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/random-pic-api ;;
+        5) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/docker-hub_images_delete.sh) "${DH_TOKEN}" mobufan/speedtest-go-zh ;;
         0 | 00 | 000) exit_script ;;
         *) handle_invalid_input ;;
         esac

@@ -300,7 +300,7 @@ manage_fan_panel() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL})
             break_end
             continue
             ;;
@@ -308,7 +308,7 @@ manage_fan_panel() {
             local latest_backup
             latest_backup=$(ls -t ./fan-panel-backup-*.tar.gz 2>/dev/null | head -1)
             if [ -n "${latest_backup}" ]; then
-                bash <(curl -sL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
+                bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
             else
                 log_error "当前目录未找到 fan-panel-backup-*.tar.gz 备份文件"
             fi

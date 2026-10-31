@@ -1856,7 +1856,7 @@ docker_compose_manager() {
                 echo
                 echo -e "${gl_huang}$current_dir_name${gl_bai}服务列表 & 实时资源占用（Ctrl-C 退出）"
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                bash <(curl -sL https://cmdbox.meimolihan.eu.org/sh/docker_occupy_find.sh) $current_dir_name
+                bash <(curl -sSL https://cmdbox.meimolihan.eu.org/sh/docker_occupy_find.sh) $current_dir_name
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 ;;
             14)
@@ -2340,12 +2340,12 @@ manage_fan_video() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
             break_end
             continue
             ;;
@@ -2483,12 +2483,12 @@ manage_studybuddy() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/StudyBuddy/backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/var/lib/StudyBuddy/backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/StudyBuddy/backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/var/lib/StudyBuddy/backup"
             break_end
             continue
             ;;
@@ -2605,10 +2605,10 @@ manage_opencode() {
             break_end
             ;;
         66)
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
             ;;
         99)
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_opencode.sh)
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_opencode.sh)
             ;;
         0)
             proj_mgmt_tool
@@ -2737,11 +2737,11 @@ echo -e "${gl_bufan}3.  ${gl_bai}重启 2Panel         ${gl_bufan}4.  ${gl_bai}�
             bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/2panel-backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/2panel-backup" 6
             break_end
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) /vol2/1000/file/backup/2panel-backup
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) /vol2/1000/file/backup/2panel-backup
             break_end
             ;;
         99)
@@ -3468,12 +3468,12 @@ manage_fan_files() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL})
             break_end
             continue
             ;;
@@ -4014,12 +4014,12 @@ manage_fan_video_dl() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-video-dl/backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-video-dl/backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-video-dl/backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-video-dl/backup"
             break_end
             continue
             ;;
@@ -4293,12 +4293,12 @@ manage_fan_webssh() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-webssh/backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-webssh/backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-webssh/backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-webssh/backup"
             break_end
             continue
             ;;
@@ -4453,12 +4453,12 @@ manage_fan_imagehost() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-imagehost-backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-imagehost-backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-imagehost-backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-imagehost-backup"
             break_end
             continue
             ;;
@@ -4638,7 +4638,7 @@ manage_fan_panel() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL})
             break_end
             continue
             ;;
@@ -4646,7 +4646,7 @@ manage_fan_panel() {
             local latest_backup
             latest_backup=$(ls -t ./fan-panel-backup-*.tar.gz 2>/dev/null | head -1)
             if [ -n "${latest_backup}" ]; then
-                bash <(curl -sL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
+                bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
             else
                 log_error "当前目录未找到 fan-panel-backup-*.tar.gz 备份文件"
             fi
@@ -4923,12 +4923,12 @@ manage_fan_nginx() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-nginx/backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-nginx/backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-nginx/backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-nginx/backup"
             break_end
             continue
             ;;
@@ -5404,7 +5404,7 @@ manage_fan_panel() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL})
             break_end
             continue
             ;;
@@ -5412,7 +5412,7 @@ manage_fan_panel() {
             local latest_backup
             latest_backup=$(ls -t ./fan-panel-backup-*.tar.gz 2>/dev/null | head -1)
             if [ -n "${latest_backup}" ]; then
-                bash <(curl -sL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
+                bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "${latest_backup}"
             else
                 log_error "当前目录未找到 fan-panel-backup-*.tar.gz 备份文件"
             fi
@@ -5675,17 +5675,17 @@ manage_fan_md() {
             break_end
             ;;
         66)
-            bash <(curl -sL ${INSTALL_SCRIPT_URL})
+            bash <(curl -sSL ${INSTALL_SCRIPT_URL})
             break_end
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL})
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL})
             break_end
             continue
             ;;
@@ -5808,7 +5808,7 @@ manage_cmdbox() {
             break_end
             ;;
         66)
-            bash <(curl -sL ${INSTALL_SCRIPT_URL})
+            bash <(curl -sSL ${INSTALL_SCRIPT_URL})
             break_end
             continue
             ;;
@@ -6294,7 +6294,7 @@ manage_gitea_tea() {
             echo -e ""
             echo -e "${gl_zi}>>> 部署/升级 Gitea ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_gitea.sh) \
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_gitea.sh) \
                 "$GITEA_WEB_PORT" "$GITEA_SSH_PORT" "$GITEA_COMPOSE_DIR"
             break_end
             ;;
@@ -6319,7 +6319,7 @@ install_fan_script() {
     local BASHRC="${HOME}/.bashrc"
 
     mkdir -p "${SCRIPT_DIR}"
-    curl -sL https://gitee.com/meimolihan/cmdbox/raw/master/sh/ppm_tool.sh -o "${SCRIPT_PATH}"
+    curl -sSL https://gitee.com/meimolihan/cmdbox/raw/master/sh/ppm_tool.sh -o "${SCRIPT_PATH}"
 
     chmod +x "${SCRIPT_PATH}"
     echo "✅ 已创建：${SCRIPT_PATH}"

@@ -1547,7 +1547,7 @@ docker_compose_manager() {
                 echo
                 echo -e "${gl_huang}$current_dir_name${gl_bai}服务列表 & 实时资源占用（Ctrl-C 退出）"
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                bash <(curl -sL https://cmdbox.meimolihan.eu.org/sh/docker_occupy_find.sh) $current_dir_name
+                bash <(curl -sSL https://cmdbox.meimolihan.eu.org/sh/docker_occupy_find.sh) $current_dir_name
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 ;;
             14)
@@ -2034,12 +2034,12 @@ manage_fan_video() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
             break_end
             continue
             ;;
@@ -2156,10 +2156,10 @@ manage_opencode() {
             break_end
             ;;
         66)
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_opencode.sh)
             ;;
         99)
-            bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_opencode.sh)
+            bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_opencode.sh)
             ;;
         0)
             proj_mgmt_tool
@@ -2288,11 +2288,11 @@ echo -e "${gl_bufan}3.  ${gl_bai}重启 2Panel         ${gl_bufan}4.  ${gl_bai}�
             bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/2panel-backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/2panel-backup" 6
             break_end
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) /vol2/1000/file/backup/2panel-backup
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) /vol2/1000/file/backup/2panel-backup
             break_end
             ;;
         99)

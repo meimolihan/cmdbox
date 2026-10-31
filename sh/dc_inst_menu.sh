@@ -117,7 +117,7 @@ run_compose() {
 
     echo ""
     echo -e "${gl_huang}即将执行:${reset}"
-    local cmd="bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/compose_install_${script_name}.sh)"
+    local cmd="bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/compose_install_${script_name}.sh)"
     [ -n "$user_port" ] && cmd+=" $user_port"
     cmd+=" $user_dir"
     echo -e "  ${gl_lan}${cmd}${reset}"

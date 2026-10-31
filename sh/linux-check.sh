@@ -156,7 +156,7 @@ show_system_info() {
 main() {
     case "$1" in
         up|update|upgrade)
-            bash <(curl -sL gitee.com/meimolihan/script/raw/master/sh/install/check.sh)
+            bash <(curl -sSL gitee.com/meimolihan/script/raw/master/sh/install/check.sh)
             bash /etc/profile.d/linux-check.sh
             exit
             ;;

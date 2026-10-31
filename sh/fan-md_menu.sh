@@ -275,17 +275,17 @@ manage_fan_md() {
             break_end
             ;;
         66)
-            bash <(curl -sL ${INSTALL_SCRIPT_URL})
+            bash <(curl -sSL ${INSTALL_SCRIPT_URL})
             break_end
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL})
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL})
             break_end
             continue
             ;;

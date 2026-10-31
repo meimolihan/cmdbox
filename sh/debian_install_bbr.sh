@@ -173,7 +173,7 @@ install_packages() {
 install_latest_version() {
     log_info "正在从 GitHub 获取最新版本信息 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     BASE_URL="https://api.github.com/repos/byJoey/Actions-bbr-v3/releases"
-    RELEASE_DATA=$(curl -sL "$BASE_URL")
+    RELEASE_DATA=$(curl -sSL "$BASE_URL")
     if [[ -z "$RELEASE_DATA" ]]; then
         log_error "从 GitHub 获取版本信息失败。请检查网络连接或 API 状态。"
         return 1

@@ -97,7 +97,7 @@ install_docker() {
     echo -e "${gl_zi}>>> 安装 Docker 环境${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_info "正在在线安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
+    bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
     break_end
 }
 
@@ -106,7 +106,7 @@ uninstall_docker() {
     echo -e "${gl_zi}>>> 卸载 Docker 环境${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_info "正在在线卸载 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_docker.sh)
+    bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_docker.sh)
 }
 
 install_compose() {
@@ -114,7 +114,7 @@ install_compose() {
     echo -e "${gl_zi}>>> 安装 Compose 环境${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_info "正在在线安装 Docker Compose ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
+    bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
     break_end
 }
 
@@ -123,7 +123,7 @@ uninstall_compose() {
     echo -e "${gl_zi}>>> 卸载 Compose 环境${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_info "正在在线卸载 Docker Compose ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-    bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_compose.sh)
+    bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_uninstall_compose.sh)
 }
 
 docker_manager_menu() {

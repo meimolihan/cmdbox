@@ -1388,7 +1388,7 @@ ls -lh /tmp/1panel_full_backup.tar.gz
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 前置条件：目标主机完成全新安装1Panel，备份包上传至 /tmp</span>
 </span><span class="code-line line-number" line="2">
 </span><span class="code-line line-number" line="3"><span class="token comment"># 下载备份文件</span>
-</span><span class="code-line line-number" line="4"><span class="token builtin class-name">cd</span> /tmp <span class="token operator">&#x26;&#x26;</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_download.sh<span class="token punctuation">)</span> http://10.10.10.251:5000/1panel/backup/1panel_full_backup.tar.gz
+</span><span class="code-line line-number" line="4"><span class="token builtin class-name">cd</span> /tmp <span class="token operator">&#x26;&#x26;</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_download.sh<span class="token punctuation">)</span> http://10.10.10.251:5000/1panel/backup/1panel_full_backup.tar.gz
 </span><span class="code-line line-number" line="5">
 </span><span class="code-line line-number" line="6">1pctl stop
 </span><span class="code-line line-number" line="7">systemctl stop 1panel-core
@@ -1404,7 +1404,7 @@ ls -lh /tmp/1panel_full_backup.tar.gz
 </span></code><div onclick="copied(this)" data-code="# 前置条件：目标主机完成全新安装1Panel，备份包上传至 /tmp
 
 # 下载备份文件
-cd /tmp &#x26;&#x26; bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_download.sh) http://10.10.10.251:5000/1panel/backup/1panel_full_backup.tar.gz
+cd /tmp &#x26;&#x26; bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_download.sh) http://10.10.10.251:5000/1panel/backup/1panel_full_backup.tar.gz
 
 1pctl stop
 systemctl stop 1panel-core

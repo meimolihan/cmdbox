@@ -196,7 +196,7 @@ docker-ps-cn() {
 docker_check_env() {
     if ! command -v docker &>/dev/null; then
         log_info "Docker 未安装，开始自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
+        bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
         if ! command -v docker &>/dev/null; then
             log_error "Docker 安装失败！"
             exit 1
@@ -206,7 +206,7 @@ docker_check_env() {
     
     if ! command -v docker-compose &>/dev/null && ! docker compose version &>/dev/null; then
         log_info "Docker Compose 未安装，开始自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
-        bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
+        bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
         if ! command -v docker-compose &>/dev/null && ! docker compose version &>/dev/null; then
             log_error "Docker Compose 安装失败！"
             exit 1

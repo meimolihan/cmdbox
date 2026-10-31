@@ -315,12 +315,12 @@ manage_fan_files() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL})
             break_end
             continue
             ;;

@@ -314,12 +314,12 @@ manage_fan_video() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/vol2/1000/file/backup/fan-video-backup"
             break_end
             continue
             ;;

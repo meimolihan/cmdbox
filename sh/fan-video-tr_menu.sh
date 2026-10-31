@@ -246,7 +246,7 @@ backup_data() {
         return 1
     fi
 
-    bash <(curl -sL ${BACKUP_SCRIPT_URL}) "${data_dir}" "${BACKUP_DIR}" "${BACKUP_KEEP}"
+    bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "${data_dir}" "${BACKUP_DIR}" "${BACKUP_KEEP}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     log_ok "转码成品体积较大，备份耗时取决于 output 目录大小"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"

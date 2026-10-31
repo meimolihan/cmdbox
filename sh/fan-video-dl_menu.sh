@@ -321,12 +321,12 @@ manage_fan_video_dl() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-video-dl/backup" 6
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "/var/lib/fan-video-dl/backup" 6
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-video-dl/backup"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "/var/lib/fan-video-dl/backup"
             break_end
             continue
             ;;

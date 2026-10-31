@@ -313,10 +313,10 @@ manage_2panel() {
             bash -c "$(curl -sSL ${INSTALL_SCRIPT_URL})"
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL})
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL})
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL})
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL})
             ;;
         99)
             bash <(curl -sSL ${UNINSTALL_SCRIPT_URL})

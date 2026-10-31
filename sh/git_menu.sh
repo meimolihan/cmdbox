@@ -185,7 +185,7 @@ confirm_and_run() {
     tmp_script=$(mktemp)
     printf '%s\n' "$preamble" > "$tmp_script"
     printf '\n' >> "$tmp_script"
-    if ! curl -sL "${REMOTE_BASE}/${script_name}.sh" >> "$tmp_script"; then
+    if ! curl -sSL "${REMOTE_BASE}/${script_name}.sh" >> "$tmp_script"; then
         log_error "下载脚本失败"
         rm -f "$tmp_script"
         sleep 1

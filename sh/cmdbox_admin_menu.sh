@@ -531,14 +531,14 @@ cmdbox_admin_menu() {
         case "$rename_mode" in
         1)  enter_directory "FnOS 项目推送" ;;
         2)  go_parent_directory "FnOS 项目推送" ;;
-        3)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
-        4)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
-        5)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
-        6)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
-        7)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
-        8)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_tag_menu.sh) /vol1/1000/GitHub/cmdbox-main ;;
-        66) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) ;;
-        99) bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_pull.sh) ;;
+        3)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/cmdbox-main ;;
+        4)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/cmdbox_push.sh) /vol1/1000/GitHub/cmdbox-main /vol1/1000/GitHub/cmdbox ;;
+        5)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/cmdbox ;;
+        6)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/GitHub/sh ;;
+        7)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) /vol1/1000/Gitee/sh ;;
+        8)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_tag_menu.sh) /vol1/1000/GitHub/cmdbox-main ;;
+        66) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_push.sh) ;;
+        99) bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_pull.sh) ;;
         0 | 00 | 000) exit_script ;;
         *)  handle_invalid_input ;;
         esac

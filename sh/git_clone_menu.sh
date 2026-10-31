@@ -532,13 +532,13 @@ git_clone_menu() {
         case "$rename_mode" in
         1)   enter_directory "FnOS 项目推送" ;;
         2)   go_parent_directory "FnOS 项目推送" ;;
-        11)  cd /vol1/1000/Gitee  && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@gitee.com:meimolihan/sh.git ;;
-        12)  cd /vol1/1000/Gitee  && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@gitee.com:meimolihan/cmdbox.git ;;
-        21)  cd /vol1/1000/GitHub && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/sh.git ;;
-        22)  cd /vol1/1000/GitHub && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/cmdbox-main.git ;;
-        23)  cd /vol1/1000/GitHub && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/img.git ;;
-        24)  cd /vol1/1000/GitHub && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/random-pic-api.git ;;
-        66)  bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) ;;
+        11)  cd /vol1/1000/Gitee  && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@gitee.com:meimolihan/sh.git ;;
+        12)  cd /vol1/1000/Gitee  && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@gitee.com:meimolihan/cmdbox.git ;;
+        21)  cd /vol1/1000/GitHub && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/sh.git ;;
+        22)  cd /vol1/1000/GitHub && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/cmdbox-main.git ;;
+        23)  cd /vol1/1000/GitHub && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/img.git ;;
+        24)  cd /vol1/1000/GitHub && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) git@github.com:meimolihan/random-pic-api.git ;;
+        66)  bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/git_clone.sh) ;;
         0 | 00 | 000) exit_script ;;
         *)   handle_invalid_input ;;
         esac

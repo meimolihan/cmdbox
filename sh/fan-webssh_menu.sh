@@ -311,12 +311,12 @@ manage_fan_webssh() {
             continue
             ;;
         77)
-            bash <(curl -sL ${BACKUP_SCRIPT_URL}) "${BACKUP_DIR}" ${KEEP_NUM}
+            bash <(curl -sSL ${BACKUP_SCRIPT_URL}) "${BACKUP_DIR}" ${KEEP_NUM}
             break_end
             continue
             ;;
         88)
-            bash <(curl -sL ${RECOVER_SCRIPT_URL}) "${BACKUP_DIR}"
+            bash <(curl -sSL ${RECOVER_SCRIPT_URL}) "${BACKUP_DIR}"
             break_end
             continue
             ;;

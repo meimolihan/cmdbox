@@ -1245,7 +1245,7 @@ EOF
                 echo
                 ;;
             6)
-                cd "$BACKUP_ROOT" && bash <(curl -sL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_file_menu.sh)
+                cd "$BACKUP_ROOT" && bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_file_menu.sh)
                 ;;
             0) cancel_return; break ;;
             00 | 000 | 0000) exit_script ;;
