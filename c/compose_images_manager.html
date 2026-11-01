@@ -2546,109 +2546,162 @@ bash compose_images_manager.sh -r -c /vol1/1000/compose -b /mnt/backup_compose -
 </span><span class="code-line line-number" line="1023">
 </span><span class="code-line line-number" line="1024">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Compose 备份/迁移/还原工具<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="1025">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1026">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>备份 Compose 项目"</span>
-</span><span class="code-line line-number" line="1027">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>迁移 Compose 备份"</span>
-</span><span class="code-line line-number" line="1028">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>3.  <span class="token variable">${gl_bai}</span>恢复 Compose 备份"</span>
-</span><span class="code-line line-number" line="1029">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>4.  <span class="token variable">${gl_bai}</span>管理 Compose 备份"</span>
-</span><span class="code-line line-number" line="1030">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1031">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单"</span>
-</span><span class="code-line line-number" line="1032">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="1026">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>项目路径：<span class="token variable">${gl_bai}</span><span class="token variable">$COMPOSE_ROOT</span>"</span>
+</span><span class="code-line line-number" line="1027">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>备份路径：<span class="token variable">${gl_bai}</span><span class="token variable">$BACKUP_ROOT</span>"</span>
+</span><span class="code-line line-number" line="1028">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1029">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>备份 Compose 项目"</span>
+</span><span class="code-line line-number" line="1030">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>迁移 Compose 备份"</span>
+</span><span class="code-line line-number" line="1031">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>3.  <span class="token variable">${gl_bai}</span>恢复 Compose 备份"</span>
+</span><span class="code-line line-number" line="1032">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>4.  <span class="token variable">${gl_bai}</span>管理 Compose 备份"</span>
 </span><span class="code-line line-number" line="1033">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="1034">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入你的选择: "</span> choice
-</span><span class="code-line line-number" line="1035">        <span class="token keyword">case</span> <span class="token variable">$choice</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="1036">        <span class="token number">1</span><span class="token punctuation">)</span> backup_menu <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1037">        <span class="token number">2</span><span class="token punctuation">)</span> migrate_compose_backups<span class="token punctuation">;</span> break_end <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1038">        <span class="token number">3</span><span class="token punctuation">)</span> restore_menu <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1039">        <span class="token number">4</span><span class="token punctuation">)</span> manage_compose_backups <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1040">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1041">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1042">        *<span class="token punctuation">)</span> handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1043">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="1044">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="1045"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1046">
-</span><span class="code-line line-number" line="1047"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="1048">    <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="1049">    <span class="token parameter variable">-c</span> <span class="token operator">|</span> --compose<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1050">        <span class="token assign-left variable">COMPOSE_ROOT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="1051">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$COMPOSE_ROOT</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> log_error <span class="token string">"<span class="token variable">$1</span> 需要一个目录参数"</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1052">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1053">        <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="1054">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1055">    <span class="token parameter variable">-b</span> <span class="token operator">|</span> --backup<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1056">        <span class="token assign-left variable">BACKUP_ROOT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="1057">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$BACKUP_ROOT</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> log_error <span class="token string">"<span class="token variable">$1</span> 需要一个目录参数"</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1058">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1059">        <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="1060">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1061">    <span class="token parameter variable">-r</span> <span class="token operator">|</span> --restore<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1062">        <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"restore"</span>
-</span><span class="code-line line-number" line="1063">        <span class="token assign-left variable">ACTION_SET</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1064">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1065">        <span class="token builtin class-name">shift</span>
-</span><span class="code-line line-number" line="1066">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1067">    <span class="token parameter variable">-a</span> <span class="token operator">|</span> --all<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1068">        <span class="token assign-left variable">BATCH</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1069">        <span class="token assign-left variable">ACTION_SET</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1070">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1071">        <span class="token builtin class-name">shift</span>
-</span><span class="code-line line-number" line="1072">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1073">    <span class="token parameter variable">-p</span> <span class="token operator">|</span> --project<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1074">        <span class="token assign-left variable">PROJECT_TARGET</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span>
-</span><span class="code-line line-number" line="1075">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$PROJECT_TARGET</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> log_error <span class="token string">"<span class="token variable">$1</span> 需要一个项目名"</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="1076">        <span class="token assign-left variable">ACTION_SET</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1077">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1078">        <span class="token builtin class-name">shift</span> <span class="token number">2</span>
-</span><span class="code-line line-number" line="1079">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1080">    --dry-run<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1081">        <span class="token assign-left variable">DRY_RUN</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1082">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1083">        <span class="token builtin class-name">shift</span>
-</span><span class="code-line line-number" line="1084">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1085">    --delete-pkgs<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1086">        <span class="token assign-left variable">DELETE_IMAGE_PKGS</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1087">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
-</span><span class="code-line line-number" line="1088">        <span class="token builtin class-name">shift</span>
-</span><span class="code-line line-number" line="1089">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1090">    <span class="token parameter variable">-h</span> <span class="token operator">|</span> --help<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1091">        usage
-</span><span class="code-line line-number" line="1092">        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
-</span><span class="code-line line-number" line="1093">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1094">    *<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="1095">        log_error <span class="token string">"未知参数: <span class="token variable">$1</span>"</span>
-</span><span class="code-line line-number" line="1096">        usage
-</span><span class="code-line line-number" line="1097">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
-</span><span class="code-line line-number" line="1098">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="1099">    <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="1100"><span class="token keyword">done</span>
-</span><span class="code-line line-number" line="1101">
-</span><span class="code-line line-number" line="1102"><span class="token builtin class-name">export</span> COMPOSE_ROOT BACKUP_ROOT
-</span><span class="code-line line-number" line="1103">
-</span><span class="code-line line-number" line="1104"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$DRY_RUN</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1105">    log_warn <span class="token string">"已启用 --dry-run 试运行模式，不会实际导出/打包/启动"</span>
-</span><span class="code-line line-number" line="1106"><span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="1107">
-</span><span class="code-line line-number" line="1108"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$CLI_MODE</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token variable">$ACTION_SET</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1109">    main_menu
-</span><span class="code-line line-number" line="1110"><span class="token keyword">else</span>
-</span><span class="code-line line-number" line="1111">    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$ACTION</span>"</span> <span class="token operator">==</span> <span class="token string">"restore"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1112">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$BATCH</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1113">            restore_all_backups
-</span><span class="code-line line-number" line="1114">        <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$PROJECT_TARGET</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1115">            restore_one_named <span class="token string">"<span class="token variable">$PROJECT_TARGET</span>"</span>
-</span><span class="code-line line-number" line="1116">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="1117">            restore_menu
-</span><span class="code-line line-number" line="1118">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="1119">    <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="1120">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$BATCH</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1121">            backup_all_projects
-</span><span class="code-line line-number" line="1122">        <span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$PROJECT_TARGET</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="1123">            backup_one_named <span class="token string">"<span class="token variable">$PROJECT_TARGET</span>"</span>
-</span><span class="code-line line-number" line="1124">        <span class="token keyword">else</span>
-</span><span class="code-line line-number" line="1125">            backup_menu
-</span><span class="code-line line-number" line="1126">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="1127">    <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="1128"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1034">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单"</span>
+</span><span class="code-line line-number" line="1035">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="1036">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1037">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"请输入你的选择: "</span> choice
+</span><span class="code-line line-number" line="1038">        <span class="token keyword">case</span> <span class="token variable">$choice</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="1039">        <span class="token number">1</span><span class="token punctuation">)</span> backup_menu <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1040">        <span class="token number">2</span><span class="token punctuation">)</span> migrate_compose_backups<span class="token punctuation">;</span> break_end <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1041">        <span class="token number">3</span><span class="token punctuation">)</span> restore_menu <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1042">        <span class="token number">4</span><span class="token punctuation">)</span> manage_compose_backups <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1043">        <span class="token number">0</span><span class="token punctuation">)</span> cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1044">        00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1045">        *<span class="token punctuation">)</span> handle_invalid_input <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1046">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="1047">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="1048"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1049">
+</span><span class="code-line line-number" line="1050"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$#</span> <span class="token parameter variable">-gt</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="1051">    <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="1052">    <span class="token parameter variable">-c</span> <span class="token operator">|</span> --compose<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1053">        <span class="token assign-left variable">COMPOSE_ROOT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="1054">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$COMPOSE_ROOT</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> log_error <span class="token string">"<span class="token variable">$1</span> 需要一个目录参数"</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1055">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1056">        <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="1057">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1058">    <span class="token parameter variable">-b</span> <span class="token operator">|</span> --backup<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1059">        <span class="token assign-left variable">BACKUP_ROOT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="1060">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$BACKUP_ROOT</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> log_error <span class="token string">"<span class="token variable">$1</span> 需要一个目录参数"</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1061">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1062">        <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="1063">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1064">    <span class="token parameter variable">-r</span> <span class="token operator">|</span> --restore<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1065">        <span class="token assign-left variable">ACTION</span><span class="token operator">=</span><span class="token string">"restore"</span>
+</span><span class="code-line line-number" line="1066">        <span class="token assign-left variable">ACTION_SET</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1067">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1068">        <span class="token builtin class-name">shift</span>
+</span><span class="code-line line-number" line="1069">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1070">    <span class="token parameter variable">-a</span> <span class="token operator">|</span> --all<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1071">        <span class="token assign-left variable">BATCH</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1072">        <span class="token assign-left variable">ACTION_SET</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1073">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1074">        <span class="token builtin class-name">shift</span>
+</span><span class="code-line line-number" line="1075">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1076">    <span class="token parameter variable">-p</span> <span class="token operator">|</span> --project<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1077">        <span class="token assign-left variable">PROJECT_TARGET</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${2<span class="token operator">:-</span>}</span>"</span>
+</span><span class="code-line line-number" line="1078">        <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-z</span> <span class="token string">"<span class="token variable">$PROJECT_TARGET</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&#x26;&#x26;</span> <span class="token punctuation">{</span> log_error <span class="token string">"<span class="token variable">$1</span> 需要一个项目名"</span><span class="token punctuation">;</span> <span class="token builtin class-name">exit</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="1079">        <span class="token assign-left variable">ACTION_SET</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1080">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1081">        <span class="token builtin class-name">shift</span> <span class="token number">2</span>
+</span><span class="code-line line-number" line="1082">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1083">    --dry-run<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1084">        <span class="token assign-left variable">DRY_RUN</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1085">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1086">        <span class="token builtin class-name">shift</span>
+</span><span class="code-line line-number" line="1087">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1088">    --delete-pkgs<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1089">        <span class="token assign-left variable">DELETE_IMAGE_PKGS</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1090">        <span class="token assign-left variable">CLI_MODE</span><span class="token operator">=</span><span class="token number">1</span>
+</span><span class="code-line line-number" line="1091">        <span class="token builtin class-name">shift</span>
+</span><span class="code-line line-number" line="1092">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1093">    <span class="token parameter variable">-h</span> <span class="token operator">|</span> --help<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1094">        usage
+</span><span class="code-line line-number" line="1095">        <span class="token builtin class-name">exit</span> <span class="token number">0</span>
+</span><span class="code-line line-number" line="1096">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1097">    *<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="1098">        log_error <span class="token string">"未知参数: <span class="token variable">$1</span>"</span>
+</span><span class="code-line line-number" line="1099">        usage
+</span><span class="code-line line-number" line="1100">        <span class="token builtin class-name">exit</span> <span class="token number">1</span>
+</span><span class="code-line line-number" line="1101">        <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="1102">    <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="1103"><span class="token keyword">done</span>
+</span><span class="code-line line-number" line="1104">
+</span><span class="code-line line-number" line="1105"><span class="token builtin class-name">export</span> COMPOSE_ROOT BACKUP_ROOT
+</span><span class="code-line line-number" line="1106">
+</span><span class="code-line line-number" line="1107"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$DRY_RUN</span> <span class="token parameter variable">-eq</span> <span class="token number">1</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1108">    log_warn <span class="token string">"已启用 --dry-run 试运行模式，不会实际导出/打包/启动"</span>
+</span><span class="code-line line-number" line="1109"><span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1110">
+</span><span class="code-line line-number" line="1111"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$CLI_MODE</span> <span class="token parameter variable">-eq</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1112">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="1113">	<span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>>>> 初始化路径配置<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1114">	<span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
+</span><span class="code-line line-number" line="1115">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="1116">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>Compose 项目根目录 [默认：<span class="token variable">${gl_lv}</span><span class="token variable">${COMPOSE_ROOT}</span><span class="token variable">${gl_bai}</span>]: "</span><span class="token variable">)</span></span>"</span> input_compose
+</span><span class="code-line line-number" line="1117">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$input_compose</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1118">            <span class="token assign-left variable">COMPOSE_ROOT</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$input_compose</span>"</span>
+</span><span class="code-line line-number" line="1119">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1120">        <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token operator">!</span> <span class="token parameter variable">-d</span> <span class="token string">"<span class="token variable">$COMPOSE_ROOT</span>"</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="1121">            <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"$(echo -e "<span class="token variable">${gl_huang}</span>目录 <span class="token variable">${gl_hong}</span><span class="token variable">${COMPOSE_ROOT}</span><span class="token variable">${gl_huang}</span> 不存在，是否创建？(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token punctuation">)</span><span class="token string">" mkconfirm
+</span></span><span class="code-line line-number" line="1122"><span class="token string">            if [[ "</span><span class="token variable">$mkconfirm</span><span class="token string">" =~ ^[Yy]$ ]]; then
+</span></span><span class="code-line line-number" line="1123"><span class="token string">                mkdir -p "</span><span class="token variable">$COMPOSE_ROOT</span><span class="token string">" || {
+</span></span><span class="code-line line-number" line="1124"><span class="token string">                    log_error "</span>创建目录 <span class="token variable">$COMPOSE_ROOT</span> 失败，请检查权限<span class="token string">"
+</span></span><span class="code-line line-number" line="1125"><span class="token string">                    continue
+</span></span><span class="code-line line-number" line="1126"><span class="token string">                }
+</span></span><span class="code-line line-number" line="1127"><span class="token string">                log_ok "</span>已创建目录：<span class="token variable">$COMPOSE_ROOT</span><span class="token string">"
+</span></span><span class="code-line line-number" line="1128"><span class="token string">            else
+</span></span><span class="code-line line-number" line="1129"><span class="token string">                log_warn "</span>重新输入 Compose 项目根目录<span class="token string">"
+</span></span><span class="code-line line-number" line="1130"><span class="token string">                continue
+</span></span><span class="code-line line-number" line="1131"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="1132"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="1133"><span class="token string">        break
+</span></span><span class="code-line line-number" line="1134"><span class="token string">    done
+</span></span><span class="code-line line-number" line="1135"><span class="token string">
+</span></span><span class="code-line line-number" line="1136"><span class="token string">    while true; do
+</span></span><span class="code-line line-number" line="1137"><span class="token string">        read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>备份存储根目录 [默认：<span class="token variable">${gl_lv}</span><span class="token variable">${BACKUP_ROOT}</span><span class="token variable">${gl_bai}</span>]: "</span><span class="token variable">)</span></span><span class="token string">" input_backup
+</span></span><span class="code-line line-number" line="1138"><span class="token string">        if [[ -n "</span><span class="token variable">$input_backup</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="1139"><span class="token string">            BACKUP_ROOT="</span><span class="token variable">$input_backup</span><span class="token string">"
+</span></span><span class="code-line line-number" line="1140"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="1141"><span class="token string">        if [[ ! -d "</span><span class="token variable">$BACKUP_ROOT</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="1142"><span class="token string">            read -r -e -p "</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>目录 <span class="token variable">${gl_hong}</span><span class="token variable">${BACKUP_ROOT}</span><span class="token variable">${gl_huang}</span> 不存在，是否创建？(<span class="token variable">${gl_lv}</span>y<span class="token variable">${gl_bai}</span>/<span class="token variable">${gl_hong}</span>N<span class="token variable">${gl_bai}</span>): "</span><span class="token variable">)</span></span><span class="token string">" mkconfirm
+</span></span><span class="code-line line-number" line="1143"><span class="token string">            if [[ "</span><span class="token variable">$mkconfirm</span><span class="token string">" =~ ^[Yy]$ ]]; then
+</span></span><span class="code-line line-number" line="1144"><span class="token string">                mkdir -p "</span><span class="token variable">$BACKUP_ROOT</span><span class="token string">" || {
+</span></span><span class="code-line line-number" line="1145"><span class="token string">                    log_error "</span>创建目录 <span class="token variable">$BACKUP_ROOT</span> 失败，请检查权限<span class="token string">"
+</span></span><span class="code-line line-number" line="1146"><span class="token string">                    continue
+</span></span><span class="code-line line-number" line="1147"><span class="token string">                }
+</span></span><span class="code-line line-number" line="1148"><span class="token string">                log_ok "</span>已创建目录：<span class="token variable">$BACKUP_ROOT</span><span class="token string">"
+</span></span><span class="code-line line-number" line="1149"><span class="token string">            else
+</span></span><span class="code-line line-number" line="1150"><span class="token string">                log_warn "</span>重新输入备份根目录<span class="token string">"
+</span></span><span class="code-line line-number" line="1151"><span class="token string">                continue
+</span></span><span class="code-line line-number" line="1152"><span class="token string">            fi
+</span></span><span class="code-line line-number" line="1153"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="1154"><span class="token string">        break
+</span></span><span class="code-line line-number" line="1155"><span class="token string">    done
+</span></span><span class="code-line line-number" line="1156"><span class="token string">    log_ok "</span>路径配置完成！<span class="token string">"
+</span></span><span class="code-line line-number" line="1157"><span class="token string">    sleep_fractional 0.8
+</span></span><span class="code-line line-number" line="1158"><span class="token string">    clear
+</span></span><span class="code-line line-number" line="1159"><span class="token string">fi
+</span></span><span class="code-line line-number" line="1160"><span class="token string">
+</span></span><span class="code-line line-number" line="1161"><span class="token string">if [[ <span class="token variable">$CLI_MODE</span> -eq 0 || <span class="token variable">$ACTION_SET</span> -eq 0 ]]; then
+</span></span><span class="code-line line-number" line="1162"><span class="token string">    main_menu
+</span></span><span class="code-line line-number" line="1163"><span class="token string">else
+</span></span><span class="code-line line-number" line="1164"><span class="token string">    if [[ "</span><span class="token variable">$ACTION</span><span class="token string">" == "</span>restore<span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="1165"><span class="token string">        if [[ <span class="token variable">$BATCH</span> -eq 1 ]]; then
+</span></span><span class="code-line line-number" line="1166"><span class="token string">            restore_all_backups
+</span></span><span class="code-line line-number" line="1167"><span class="token string">        elif [[ -n "</span><span class="token variable">$PROJECT_TARGET</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="1168"><span class="token string">            restore_one_named "</span><span class="token variable">$PROJECT_TARGET</span><span class="token string">"
+</span></span><span class="code-line line-number" line="1169"><span class="token string">        else
+</span></span><span class="code-line line-number" line="1170"><span class="token string">            restore_menu
+</span></span><span class="code-line line-number" line="1171"><span class="token string">        fi
+</span></span><span class="code-line line-number" line="1172"><span class="token string">    else
+</span></span><span class="code-line line-number" line="1173"><span class="token string">        if [[ <span class="token variable">$BATCH</span> -eq 1 ]]; then
+</span></span><span class="code-line line-number" line="1174"><span class="token string">            backup_all_projects
+</span></span><span class="code-line line-number" line="1175"><span class="token string">        elif [[ -n "</span><span class="token variable">$PROJECT_TARGET</span><span class="token string">" ]]; then
+</span></span><span class="code-line line-number" line="1176"><span class="token string">            backup_one_named "</span><span class="token variable">$PROJECT_TARGET</span>"
+</span><span class="code-line line-number" line="1177">        <span class="token keyword">else</span>
+</span><span class="code-line line-number" line="1178">            backup_menu
+</span><span class="code-line line-number" line="1179">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1180">    <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="1181"><span class="token keyword">fi</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -uo pipefail
 
@@ -3674,6 +3727,9 @@ main_menu() {
 
         echo -e &#x22;${gl_zi}>>> Compose 备份/迁移/还原工具${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+        echo -e &#x22;${gl_bufan}项目路径：${gl_bai}$COMPOSE_ROOT&#x22;
+        echo -e &#x22;${gl_bufan}备份路径：${gl_bai}$BACKUP_ROOT&#x22;
+        echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}1.  ${gl_bai}备份 Compose 项目&#x22;
         echo -e &#x22;${gl_bufan}2.  ${gl_bai}迁移 Compose 备份&#x22;
         echo -e &#x22;${gl_bufan}3.  ${gl_bai}恢复 Compose 备份&#x22;
@@ -3754,6 +3810,56 @@ export COMPOSE_ROOT BACKUP_ROOT
 
 if [[ $DRY_RUN -eq 1 ]]; then
     log_warn &#x22;已启用 --dry-run 试运行模式，不会实际导出/打包/启动&#x22;
+fi
+
+if [[ $CLI_MODE -eq 0 ]]; then
+    clear
+	echo -e &#x22;${gl_huang}>>> 初始化路径配置${gl_bai}&#x22;
+	echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
+    while true; do
+        read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}Compose 项目根目录 [默认：${gl_lv}${COMPOSE_ROOT}${gl_bai}]: &#x22;)&#x22; input_compose
+        if [[ -n &#x22;$input_compose&#x22; ]]; then
+            COMPOSE_ROOT=&#x22;$input_compose&#x22;
+        fi
+        if [[ ! -d &#x22;$COMPOSE_ROOT&#x22; ]]; then
+            read -r -e -p &#x22;$(echo -e &#x22;${gl_huang}目录 ${gl_hong}${COMPOSE_ROOT}${gl_huang} 不存在，是否创建？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): &#x22;)&#x22; mkconfirm
+            if [[ &#x22;$mkconfirm&#x22; =~ ^[Yy]$ ]]; then
+                mkdir -p &#x22;$COMPOSE_ROOT&#x22; || {
+                    log_error &#x22;创建目录 $COMPOSE_ROOT 失败，请检查权限&#x22;
+                    continue
+                }
+                log_ok &#x22;已创建目录：$COMPOSE_ROOT&#x22;
+            else
+                log_warn &#x22;重新输入 Compose 项目根目录&#x22;
+                continue
+            fi
+        fi
+        break
+    done
+
+    while true; do
+        read -r -e -p &#x22;$(echo -e &#x22;${gl_bai}备份存储根目录 [默认：${gl_lv}${BACKUP_ROOT}${gl_bai}]: &#x22;)&#x22; input_backup
+        if [[ -n &#x22;$input_backup&#x22; ]]; then
+            BACKUP_ROOT=&#x22;$input_backup&#x22;
+        fi
+        if [[ ! -d &#x22;$BACKUP_ROOT&#x22; ]]; then
+            read -r -e -p &#x22;$(echo -e &#x22;${gl_huang}目录 ${gl_hong}${BACKUP_ROOT}${gl_huang} 不存在，是否创建？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): &#x22;)&#x22; mkconfirm
+            if [[ &#x22;$mkconfirm&#x22; =~ ^[Yy]$ ]]; then
+                mkdir -p &#x22;$BACKUP_ROOT&#x22; || {
+                    log_error &#x22;创建目录 $BACKUP_ROOT 失败，请检查权限&#x22;
+                    continue
+                }
+                log_ok &#x22;已创建目录：$BACKUP_ROOT&#x22;
+            else
+                log_warn &#x22;重新输入备份根目录&#x22;
+                continue
+            fi
+        fi
+        break
+    done
+    log_ok &#x22;路径配置完成！&#x22;
+    sleep_fractional 0.8
+    clear
 fi
 
 if [[ $CLI_MODE -eq 0 || $ACTION_SET -eq 0 ]]; then

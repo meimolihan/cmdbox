@@ -1023,6 +1023,9 @@ main_menu() {
 
         echo -e "${gl_zi}>>> Compose 备份/迁移/还原工具${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "${gl_bufan}项目路径：${gl_bai}$COMPOSE_ROOT"
+        echo -e "${gl_bufan}备份路径：${gl_bai}$BACKUP_ROOT"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bufan}1.  ${gl_bai}备份 Compose 项目"
         echo -e "${gl_bufan}2.  ${gl_bai}迁移 Compose 备份"
         echo -e "${gl_bufan}3.  ${gl_bai}恢复 Compose 备份"
@@ -1103,6 +1106,56 @@ export COMPOSE_ROOT BACKUP_ROOT
 
 if [[ $DRY_RUN -eq 1 ]]; then
     log_warn "已启用 --dry-run 试运行模式，不会实际导出/打包/启动"
+fi
+
+if [[ $CLI_MODE -eq 0 ]]; then
+    clear
+	echo -e "${gl_huang}>>> 初始化路径配置${gl_bai}"
+	echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    while true; do
+        read -r -e -p "$(echo -e "${gl_bai}Compose 项目根目录 [默认：${gl_lv}${COMPOSE_ROOT}${gl_bai}]: ")" input_compose
+        if [[ -n "$input_compose" ]]; then
+            COMPOSE_ROOT="$input_compose"
+        fi
+        if [[ ! -d "$COMPOSE_ROOT" ]]; then
+            read -r -e -p "$(echo -e "${gl_huang}目录 ${gl_hong}${COMPOSE_ROOT}${gl_huang} 不存在，是否创建？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" mkconfirm
+            if [[ "$mkconfirm" =~ ^[Yy]$ ]]; then
+                mkdir -p "$COMPOSE_ROOT" || {
+                    log_error "创建目录 $COMPOSE_ROOT 失败，请检查权限"
+                    continue
+                }
+                log_ok "已创建目录：$COMPOSE_ROOT"
+            else
+                log_warn "重新输入 Compose 项目根目录"
+                continue
+            fi
+        fi
+        break
+    done
+
+    while true; do
+        read -r -e -p "$(echo -e "${gl_bai}备份存储根目录 [默认：${gl_lv}${BACKUP_ROOT}${gl_bai}]: ")" input_backup
+        if [[ -n "$input_backup" ]]; then
+            BACKUP_ROOT="$input_backup"
+        fi
+        if [[ ! -d "$BACKUP_ROOT" ]]; then
+            read -r -e -p "$(echo -e "${gl_huang}目录 ${gl_hong}${BACKUP_ROOT}${gl_huang} 不存在，是否创建？(${gl_lv}y${gl_bai}/${gl_hong}N${gl_bai}): ")" mkconfirm
+            if [[ "$mkconfirm" =~ ^[Yy]$ ]]; then
+                mkdir -p "$BACKUP_ROOT" || {
+                    log_error "创建目录 $BACKUP_ROOT 失败，请检查权限"
+                    continue
+                }
+                log_ok "已创建目录：$BACKUP_ROOT"
+            else
+                log_warn "重新输入备份根目录"
+                continue
+            fi
+        fi
+        break
+    done
+    log_ok "路径配置完成！"
+    sleep_fractional 0.8
+    clear
 fi
 
 if [[ $CLI_MODE -eq 0 || $ACTION_SET -eq 0 ]]; then
