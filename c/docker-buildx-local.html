@@ -1271,7 +1271,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <p>⚠️ 注意：<code>--load</code> 一次只能加载一个架构的镜像到本地（不能同时 <code>--load</code> amd64 和 arm64）。如果需要构建多架构并保存到本地，需分别单独构建。</p>
 </blockquote>
 <h2 id="克隆项目"><a class="anchor" aria-hidden="true" tabindex="-1" href="#克隆项目"><span class="octicon octicon-link"></span></a>克隆项目</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> /vol1/1000/compose
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> /vol1/1000/compose
 </span><span class="code-line line-number" line="2"><span class="token function">rm</span> <span class="token parameter variable">-rf</span> /vol1/1000/compose/cmdbox
 </span><span class="code-line line-number" line="3"><span class="token function">git</span> clone https://github.com/meimolihan/cmdbox.git
 </span><span class="code-line line-number" line="4"><span class="token builtin class-name">cd</span> cmdbox
@@ -1284,7 +1284,7 @@ cd cmdbox
 <blockquote>
   <p>构建支持 amd64 / arm64 双架构的镜像。<code>docker buildx create</code> 只需执行一次，之后每次构建直接使用即可。</p>
 </blockquote>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 启用 experimental 模式（Docker 旧版本需要，新版本可省略）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 启用 experimental 模式（Docker 旧版本需要，新版本可省略）</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">export</span> <span class="token assign-left variable">DOCKER_CLI_EXPERIMENTAL</span><span class="token operator">=</span>enabled
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 创建新的 buildx builder</span>
@@ -1306,7 +1306,7 @@ docker buildx inspect mybuilder --bootstrap
   <p>需要先执行 <code>docker login</code> 登录 Docker Hub。</p>
 </blockquote>
 <h3 id="完整构建命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#完整构建命令"><span class="octicon octicon-link"></span></a>完整构建命令</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 首先进入项目源码目录</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 首先进入项目源码目录</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">cd</span> /vol1/1000/compose/cmdbox
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 先登录 Docker Hub</span>
@@ -1370,13 +1370,13 @@ docker buildx build \
 </table>
 <blockquote>
   <p>💡 如果只想本地构建不推送，去掉 <code>--push</code>，改为加 <code>-o type=docker</code>：</p>
-  <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> buildx build <span class="token parameter variable">--platform</span> linux/amd64,linux/arm64 <span class="token parameter variable">-t</span> mobufan/cmdbox:latest <span class="token parameter variable">-o</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>docker <span class="token builtin class-name">.</span>
+  <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> buildx build <span class="token parameter variable">--platform</span> linux/amd64,linux/arm64 <span class="token parameter variable">-t</span> mobufan/cmdbox:latest <span class="token parameter variable">-o</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>docker <span class="token builtin class-name">.</span>
 </span></code><div onclick="copied(this)" data-code="docker buildx build --platform linux/amd64,linux/arm64 -t mobufan/cmdbox:latest -o type=docker .
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 </blockquote>
 <h2 id="单独构建某一架构"><a class="anchor" aria-hidden="true" tabindex="-1" href="#单独构建某一架构"><span class="octicon octicon-link"></span></a>单独构建某一架构</h2>
 <h3 id="构建-amd64-到本地并推送"><a class="anchor" aria-hidden="true" tabindex="-1" href="#构建-amd64-到本地并推送"><span class="octicon octicon-link"></span></a>构建 amd64 到本地并推送</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 首先进入项目源码目录</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 首先进入项目源码目录</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">cd</span> /vol1/1000/compose/cmdbox
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 先登录 Docker Hub</span>
@@ -1412,7 +1412,7 @@ docker push mobufan/cmdbox:amd64
 docker push mobufan/cmdbox:2026.04.13-amd64
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="构建-arm64-到本地并推送"><a class="anchor" aria-hidden="true" tabindex="-1" href="#构建-arm64-到本地并推送"><span class="octicon octicon-link"></span></a>构建 arm64 到本地并推送</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 首先进入项目源码目录</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 首先进入项目源码目录</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">cd</span> /vol1/1000/compose/cmdbox
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 先登录 Docker Hub</span>
@@ -1472,7 +1472,7 @@ docker push mobufan/cmdbox:2026.04.13-arm64
 </table>
 <blockquote>
   <p>⚠️ 单独构建后拉取时必须指定对应标签：</p>
-  <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> pull mobufan/cmdbox:amd64  <span class="token comment"># 仅 amd64 机器</span>
+  <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> pull mobufan/cmdbox:amd64  <span class="token comment"># 仅 amd64 机器</span>
 </span><span class="code-line line-number" line="2"><span class="token function">docker</span> pull mobufan/cmdbox:arm64  <span class="token comment"># 仅 arm64 机器（如 Mac M系列）</span>
 </span><span class="code-line line-number" line="3"><span class="token function">docker</span> pull mobufan/cmdbox:latest <span class="token comment"># 自动匹配当前架构</span>
 </span></code><div onclick="copied(this)" data-code="docker pull mobufan/cmdbox:amd64  # 仅 amd64 机器
@@ -1481,7 +1481,7 @@ docker pull mobufan/cmdbox:latest # 自动匹配当前架构
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 </blockquote>
 <h2 id="运行容器"><a class="anchor" aria-hidden="true" tabindex="-1" href="#运行容器"><span class="octicon octicon-link"></span></a>运行容器</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"> <span class="token parameter variable">--name</span> cmdbox <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"> <span class="token parameter variable">--restart</span> always <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4"> <span class="token parameter variable">-p</span> <span class="token number">9665</span>:80 <span class="token punctuation">\</span>
@@ -1527,7 +1527,7 @@ docker pull mobufan/cmdbox:latest # 自动匹配当前架构
 </table>
 <h2 id="常见问题"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常见问题"><span class="octicon octicon-link"></span></a>常见问题</h2>
 <h3 id="q-构建失败怎么办"><a class="anchor" aria-hidden="true" tabindex="-1" href="#q-构建失败怎么办"><span class="octicon octicon-link"></span></a>Q: 构建失败怎么办？</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 检查 builder 状态</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 检查 builder 状态</span>
 </span><span class="code-line line-number" line="2"><span class="token function">docker</span> buildx inspect mybuilder
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 重新创建 builder</span>
@@ -1543,7 +1543,7 @@ docker buildx create --name mybuilder --use
 docker buildx inspect mybuilder --bootstrap
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="q-推送失败怎么办"><a class="anchor" aria-hidden="true" tabindex="-1" href="#q-推送失败怎么办"><span class="octicon octicon-link"></span></a>Q: 推送失败怎么办？</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 确认登录状态</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 确认登录状态</span>
 </span><span class="code-line line-number" line="2"><span class="token function">docker</span> login <span class="token parameter variable">-u</span> mobufan
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 检查镜像标签</span>
@@ -1555,11 +1555,11 @@ docker login -u mobufan
 docker images | grep cmdbox
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="q-如何查看构建日志"><a class="anchor" aria-hidden="true" tabindex="-1" href="#q-如何查看构建日志"><span class="octicon octicon-link"></span></a>Q: 如何查看构建日志？</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> buildx build <span class="token parameter variable">--progress</span><span class="token operator">=</span>plain <span class="token builtin class-name">.</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> buildx build <span class="token parameter variable">--progress</span><span class="token operator">=</span>plain <span class="token builtin class-name">.</span>
 </span></code><div onclick="copied(this)" data-code="docker buildx build --progress=plain .
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="相关命令速查"><a class="anchor" aria-hidden="true" tabindex="-1" href="#相关命令速查"><span class="octicon octicon-link"></span></a>相关命令速查</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 创建 builder（首次）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 创建 builder（首次）</span>
 </span><span class="code-line line-number" line="2"><span class="token function">docker</span> buildx create <span class="token parameter variable">--name</span> mybuilder <span class="token parameter variable">--use</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 构建 amd64 + arm64 并推送</span>

@@ -1232,7 +1232,7 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h2 id="前言"><a class="anchor" aria-hidden="true" tabindex="-1" href="#前言"><span class="octicon octicon-link"></span></a>前言</h2>
+<h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p>
   日常使用Gitee经常出现网页打不开、账号无法网页登录，但服务器SSH密钥已正常授权、<code>ssh -T git@gitee.com</code>连通成功的场景。
   原生<code>git</code>指令只能够对<strong>已存在的远程仓库</strong>实现代码拉取、推送，<strong>不能新建/重命名云端仓库</strong>；Gitee无官方apt格式CLI工具，最优方案：<strong>私人令牌Token + Curl调用Gitee开放API</strong>，全程终端操作，不用打开浏览器登录Gitee。
@@ -1242,7 +1242,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </blockquote>
 <h2 id="一环境前置操作"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一环境前置操作"><span class="octicon octicon-link"></span></a>一、环境前置操作</h2>
 <h3 id="1-校验gitee-ssh连通状态"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-校验gitee-ssh连通状态"><span class="octicon octicon-link"></span></a>1. 校验Gitee SSH连通状态</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> git@gitee.com
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">ssh</span> <span class="token parameter variable">-T</span> git@gitee.com
 </span></code><div onclick="copied(this)" data-code="ssh -T git@gitee.com
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <p>✅ 成功返回示例：</p>
@@ -1268,7 +1268,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   </p>
 </blockquote>
 <h3 id="31-创建公开仓库cmdbox"><a class="anchor" aria-hidden="true" tabindex="-1" href="#31-创建公开仓库cmdbox"><span class="octicon octicon-link"></span></a>3.1 创建【公开仓库】cmdbox</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"><span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"><span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4">https://gitee.com/api/v5/user/repos <span class="token punctuation">\</span>
@@ -1290,7 +1290,7 @@ https://gitee.com/api/v5/user/repos \
 }&#x27;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="32-创建私有仓库cmdbox"><a class="anchor" aria-hidden="true" tabindex="-1" href="#32-创建私有仓库cmdbox"><span class="octicon octicon-link"></span></a>3.2 创建【私有仓库】cmdbox</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"><span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"><span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4">https://gitee.com/api/v5/user/repos <span class="token punctuation">\</span>
@@ -1312,7 +1312,7 @@ https://gitee.com/api/v5/user/repos \
 }&#x27;
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="33-示例创建公开仓库-cmdbox-main"><a class="anchor" aria-hidden="true" tabindex="-1" href="#33-示例创建公开仓库-cmdbox-main"><span class="octicon octicon-link"></span></a>3.3 示例：创建公开仓库 cmdbox-main</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"><span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"><span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4">https://gitee.com/api/v5/user/repos <span class="token punctuation">\</span>
@@ -1371,7 +1371,7 @@ https://gitee.com/api/v5/user/repos \
 </ul>
 <h2 id="五已存在私有仓库一键转为公开实操修正项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五已存在私有仓库一键转为公开实操修正项"><span class="octicon octicon-link"></span></a>五、已存在私有仓库一键转为公开（实操修正项）</h2>
 <p>已创建仓库如果是私有，不用删库重建，直接PATCH修改可见性：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># meimolihan/cmdbox 私有转公开</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># meimolihan/cmdbox 私有转公开</span>
 </span><span class="code-line line-number" line="2"><span class="token function">curl</span> <span class="token parameter variable">-X</span> PATCH <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"><span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4"><span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> <span class="token punctuation">\</span>
@@ -1386,7 +1386,7 @@ https://gitee.com/api/v5/repos/meimolihan/cmdbox \
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="六ssh克隆仓库到本地"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六ssh克隆仓库到本地"><span class="octicon octicon-link"></span></a>六、SSH克隆仓库到本地</h2>
 <p>仓库云端创建完毕，使用SSH免密克隆到本地，无需账号密码：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 克隆cmdbox仓库</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 克隆cmdbox仓库</span>
 </span><span class="code-line line-number" line="2"><span class="token function">git</span> clone git@gitee.com:meimolihan/cmdbox.git
 </span><span class="code-line line-number" line="3"><span class="token comment"># 进入项目目录</span>
 </span><span class="code-line line-number" line="4"><span class="token builtin class-name">cd</span> cmdbox
@@ -1396,7 +1396,7 @@ git clone git@gitee.com:meimolihan/cmdbox.git
 cd cmdbox
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="七本地代码提交推送测试"><a class="anchor" aria-hidden="true" tabindex="-1" href="#七本地代码提交推送测试"><span class="octicon octicon-link"></span></a>七、本地代码提交推送测试</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 新建测试文件</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 新建测试文件</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token string">"Hello CmdBox Gitee"</span> <span class="token operator">></span> test.md
 </span><span class="code-line line-number" line="3"><span class="token comment"># 加入暂存区</span>
 </span><span class="code-line line-number" line="4"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
@@ -1415,7 +1415,7 @@ git push origin master
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="八仓库重命名操作云端改名本地配置同步"><a class="anchor" aria-hidden="true" tabindex="-1" href="#八仓库重命名操作云端改名本地配置同步"><span class="octicon octicon-link"></span></a>八、仓库重命名操作（云端改名+本地配置同步）</h2>
 <h3 id="81-api修改云端仓库名称例cmdbox--cmdbox"><a class="anchor" aria-hidden="true" tabindex="-1" href="#81-api修改云端仓库名称例cmdbox--cmdbox"><span class="octicon octicon-link"></span></a>8.1 API修改云端仓库名称（例：CmdBox → cmdbox）</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> PATCH <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> PATCH <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"><span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"><span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4">https://gitee.com/api/v5/repos/meimolihan/CmdBox <span class="token punctuation">\</span>
@@ -1430,7 +1430,7 @@ https://gitee.com/api/v5/repos/meimolihan/CmdBox \
   <p>返回200即云端改名成功</p>
 </blockquote>
 <h3 id="82-修改本地git远程地址"><a class="anchor" aria-hidden="true" tabindex="-1" href="#82-修改本地git远程地址"><span class="octicon octicon-link"></span></a>8.2 修改本地git远程地址</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> remote set-url origin git@gitee.com:meimolihan/cmdbox.git
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">git</span> remote set-url origin git@gitee.com:meimolihan/cmdbox.git
 </span><span class="code-line line-number" line="2"><span class="token comment"># 校验远程配置</span>
 </span><span class="code-line line-number" line="3"><span class="token function">git</span> remote <span class="token parameter variable">-v</span>
 </span></code><div onclick="copied(this)" data-code="git remote set-url origin git@gitee.com:meimolihan/cmdbox.git
@@ -1438,7 +1438,7 @@ https://gitee.com/api/v5/repos/meimolihan/CmdBox \
 git remote -v
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="83-可选本地文件夹同步重命名"><a class="anchor" aria-hidden="true" tabindex="-1" href="#83-可选本地文件夹同步重命名"><span class="octicon octicon-link"></span></a>8.3 （可选）本地文件夹同步重命名</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>/
 </span><span class="code-line line-number" line="2"><span class="token function">mv</span> CmdBox cmdbox
 </span><span class="code-line line-number" line="3"><span class="token builtin class-name">cd</span> cmdbox
 </span></code><div onclick="copied(this)" data-code="cd ../
@@ -1446,7 +1446,7 @@ mv CmdBox cmdbox
 cd cmdbox
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="84-查看当前仓库名称"><a class="anchor" aria-hidden="true" tabindex="-1" href="#84-查看当前仓库名称"><span class="octicon octicon-link"></span></a>8.4 查看当前仓库名称</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1.本地查看已绑定远程仓库名</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1.本地查看已绑定远程仓库名</span>
 </span><span class="code-line line-number" line="2"><span class="token function">git</span> remote <span class="token parameter variable">-v</span>
 </span><span class="code-line line-number" line="3"><span class="token comment"># 2.API查询云端真实仓库名称</span>
 </span><span class="code-line line-number" line="4"><span class="token function">curl</span> <span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> https://gitee.com/api/v5/repos/meimolihan/cmdbox
@@ -1458,7 +1458,7 @@ curl -H &#x22;Authorization: token 你的Gitee私人令牌&#x22; https://gitee.c
 <p>返回JSON中<code>name</code>字段为云端正式仓库名称。</p>
 <h2 id="九通用新建仓库模板"><a class="anchor" aria-hidden="true" tabindex="-1" href="#九通用新建仓库模板"><span class="octicon octicon-link"></span></a>九、通用新建仓库模板</h2>
 <p>只修改<code>name</code>和<code>description</code>即可一键新建任意公开仓库：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2"><span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3"><span class="token parameter variable">-H</span> <span class="token string">"Authorization: token 你的Gitee私人令牌"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4">https://gitee.com/api/v5/user/repos <span class="token punctuation">\</span>
@@ -1565,8 +1565,8 @@ function copied(target, str) {
         <nav class="post-toc-nav">
           <ul class="post-toc-list">
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="前言">
-              <a class="post-toc-link" href="#前言" data-level="2">前言</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="一-环境前置操作">
@@ -1666,8 +1666,8 @@ function copied(target, str) {
     <nav class="post-toc-nav">
       <ul class="post-toc-list">
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="前言">
-          <a class="post-toc-link" href="#前言" data-level="2">前言</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="一-环境前置操作">

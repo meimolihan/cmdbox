@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # OpenCode deploy helper: official install + systemd service generator
 set -euo pipefail
 list_color_init() {

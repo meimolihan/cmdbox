@@ -1235,7 +1235,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p>需求：删除<strong>行首带有空格 / 空白字符开头</strong>的独立注释行（<code> # 注释</code>）；保留顶格 <code>#</code> 注释；保留代码行末尾附带的注释。</p>
 <p>直接使用 <code>sed -i '/^[[:space:]]+#/d'</code> 删除行，会移除换行符破坏行结构，在反斜杠续行场景下可能引发问题，改用 awk 方案更安全：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 使用awk过滤：删除行首空白+#的独立注释行，输出到新文件（不改动原脚本）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 使用awk过滤：删除行首空白+#的独立注释行，输出到新文件（不改动原脚本）</span>
 </span><span class="code-line line-number" line="2"><span class="token function">awk</span> <span class="token string">'!/^[[:space:]]+#/'</span> /vol2/1000/tmp/mobufan.sh <span class="token operator">></span> /vol2/1000/tmp/mobufan_new.sh
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 2. Bash语法校验新脚本，无输出代表语法正常</span>
@@ -1303,7 +1303,7 @@ chmod +x /vol2/1000/tmp/mobufan.sh
 <ol>
   <li>如果脚本存在<strong>反斜杠续行中间插入缩进注释</strong>，awk 依旧会删除该注释行，可能改变代码逻辑，需要人工复核这类特殊代码段。</li>
 </ol>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 示例高危代码，处理后会合并两行</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 示例高危代码，处理后会合并两行</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token string">"hello"</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3">    <span class="token comment"># 这行会被awk删除</span>
 </span><span class="code-line line-number" line="4">    <span class="token string">"world"</span>
@@ -1316,11 +1316,11 @@ echo &#x22;hello&#x22; \
   <li>操作前务必保留备份文件，出现问题可快速回滚。</li>
 </ol>
 <h2 id="回滚命令如需恢复旧脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#回滚命令如需恢复旧脚本"><span class="octicon octicon-link"></span></a>回滚命令（如需恢复旧脚本）</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">cp</span> /vol2/1000/tmp/mobufan_old_broken.sh /vol2/1000/tmp/mobufan.sh
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">cp</span> /vol2/1000/tmp/mobufan_old_broken.sh /vol2/1000/tmp/mobufan.sh
 </span></code><div onclick="copied(this)" data-code="cp /vol2/1000/tmp/mobufan_old_broken.sh /vol2/1000/tmp/mobufan.sh
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="可选附加清理多余空白行按需执行"><a class="anchor" aria-hidden="true" tabindex="-1" href="#可选附加清理多余空白行按需执行"><span class="octicon octicon-link"></span></a>可选附加：清理多余空白行（按需执行）</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 预览效果</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 预览效果</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sed</span> <span class="token string">'/^[[:space:]]*$/d'</span> /vol2/1000/tmp/mobufan.sh
 </span><span class="code-line line-number" line="3"><span class="token comment"># 原地删除空行</span>
 </span><span class="code-line line-number" line="4"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'/^[[:space:]]*$/d'</span> /vol2/1000/tmp/mobufan.sh

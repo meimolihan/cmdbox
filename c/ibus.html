@@ -1236,7 +1236,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <p><strong>IBus</strong>（Intelligent Input Bus）是 Linux 桌面环境下广泛使用的输入法框架，是 GNOME 桌面环境的默认输入法框架，支持拼音、五笔、双拼、仓颉、Rime 等多种输入方式。</p>
 <h3 id="安装前准备"><a class="anchor" aria-hidden="true" tabindex="-1" href="#安装前准备"><span class="octicon octicon-link"></span></a>安装前准备</h3>
 <p>开始安装前，请确保系统已安装桌面环境（GNOME、KDE、XFCE 等）并已更新软件源。</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 更新软件源</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 更新软件源</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">apt</span> update          <span class="token comment"># Debian/Ubuntu</span>
 </span><span class="code-line line-number" line="3"><span class="token function">sudo</span> pacman <span class="token parameter variable">-Sy</span>          <span class="token comment"># Arch Linux</span>
 </span><span class="code-line line-number" line="4"><span class="token function">sudo</span> dnf check-update    <span class="token comment"># Fedora</span>
@@ -1247,7 +1247,7 @@ sudo dnf check-update    # Fedora
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="安装-ibus"><a class="anchor" aria-hidden="true" tabindex="-1" href="#安装-ibus"><span class="octicon octicon-link"></span></a>安装 IBus</h3>
 <h4 id="debian--ubuntu--linux-mint"><a class="anchor" aria-hidden="true" tabindex="-1" href="#debian--ubuntu--linux-mint"><span class="octicon octicon-link"></span></a>Debian / Ubuntu / Linux Mint</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 主程序和拼音输入引擎</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 主程序和拼音输入引擎</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> ibus ibus-libpinyin ibus-gtk3 ibus-qt4
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 安装词库和配置工具</span>
@@ -1259,7 +1259,7 @@ sudo apt install ibus ibus-libpinyin ibus-gtk3 ibus-qt4
 sudo apt install ibus-table ibus-clutter ibus-googlepinyin
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h4 id="arch-linux--manjaro"><a class="anchor" aria-hidden="true" tabindex="-1" href="#arch-linux--manjaro"><span class="octicon octicon-link"></span></a>Arch Linux / Manjaro</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 和中文输入引擎</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 和中文输入引擎</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> ibus ibus-libpinyin ibus-qt
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 安装五笔（可选）</span>
@@ -1271,7 +1271,7 @@ sudo pacman -S ibus ibus-libpinyin ibus-qt
 sudo pacman -S ibus-table-chinese
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h4 id="fedora"><a class="anchor" aria-hidden="true" tabindex="-1" href="#fedora"><span class="octicon octicon-link"></span></a>Fedora</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 和中文输入引擎</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 和中文输入引擎</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> dnf <span class="token function">install</span> ibus ibus-libpinyin ibus-gtk3 ibus-qt
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 安装五笔（可选）</span>
@@ -1283,13 +1283,13 @@ sudo dnf install ibus ibus-libpinyin ibus-gtk3 ibus-qt
 sudo dnf install ibus-table-chinese
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h4 id="opensuse"><a class="anchor" aria-hidden="true" tabindex="-1" href="#opensuse"><span class="octicon octicon-link"></span></a>openSUSE</h4>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 和中文输入引擎</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装 ibus 和中文输入引擎</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">zypper</span> <span class="token function">install</span> ibus ibus-libpinyin ibus-gtk ibus-qt
 </span></code><div onclick="copied(this)" data-code="# 安装 ibus 和中文输入引擎
 sudo zypper install ibus ibus-libpinyin ibus-gtk ibus-qt
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="切换-ibus-输入法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#切换-ibus-输入法"><span class="octicon octicon-link"></span></a>切换 IBus 输入法</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 指定使用 ibus 输入法</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 指定使用 ibus 输入法</span>
 </span><span class="code-line line-number" line="2">im-config <span class="token parameter variable">-n</span> ibus
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 2. 写入兼容的环境变量</span>
@@ -1332,7 +1332,7 @@ cp /usr/share/applications/ibus.desktop ~/.config/autostart/
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="配置-ibus"><a class="anchor" aria-hidden="true" tabindex="-1" href="#配置-ibus"><span class="octicon octicon-link"></span></a>配置 IBus</h3>
 <p>运行配置工具进行图形化配置：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 启动 ibus 配置界面</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 启动 ibus 配置界面</span>
 </span><span class="code-line line-number" line="2">ibus-setup
 </span></code><div onclick="copied(this)" data-code="# 启动 ibus 配置界面
 ibus-setup
@@ -1345,7 +1345,7 @@ ibus-setup
   <li><strong>候选词设置</strong>：在「输入法」选项卡中选择已添加的输入法 → 点「齿轮」图标调整候选词数量、模糊音等</li>
 </ol>
 <h3 id="使用-ibus"><a class="anchor" aria-hidden="true" tabindex="-1" href="#使用-ibus"><span class="octicon octicon-link"></span></a>使用 IBus</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 手动启动 ibus（如果未设置自启）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 手动启动 ibus（如果未设置自启）</span>
 </span><span class="code-line line-number" line="2">ibus-daemon <span class="token parameter variable">-drx</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 重启 ibus</span>
@@ -1405,7 +1405,7 @@ ps aux | grep ibus
 </table>
 <h3 id="故障排除"><a class="anchor" aria-hidden="true" tabindex="-1" href="#故障排除"><span class="octicon octicon-link"></span></a>故障排除</h3>
 <p><strong>IBus 无法启动或输入法不生效</strong>：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 检查环境变量是否正确设置</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 1. 检查环境变量是否正确设置</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token variable">$GTK_IM_MODULE</span>
 </span><span class="code-line line-number" line="3"><span class="token builtin class-name">echo</span> <span class="token variable">$QT_IM_MODULE</span>
 </span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token environment constant">$XMODIFIERS</span>
@@ -1439,7 +1439,7 @@ ibus-daemon -drx
 <p><strong>在特定应用中无法输入中文</strong>：</p>
 <ul>
   <li><strong>Electron 应用（VS Code、Chrome 等）</strong>：
-    <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 在 ~/.bashrc 中添加</span>
+    <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 在 ~/.bashrc 中添加</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">export</span> <span class="token assign-left variable">ELECTRON_USE_WAYLAND</span><span class="token operator">=</span><span class="token number">0</span>
 </span></code><div onclick="copied(this)" data-code="# 在 ~/.bashrc 中添加
 export ELECTRON_USE_WAYLAND=0
@@ -1454,7 +1454,7 @@ export ELECTRON_USE_WAYLAND=0
   <li>检查是否已安装中文字体：<code>sudo apt install fonts-noto-cjk</code></li>
 </ul>
 <h3 id="卸载-ibus"><a class="anchor" aria-hidden="true" tabindex="-1" href="#卸载-ibus"><span class="octicon octicon-link"></span></a>卸载 IBus</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Debian/Ubuntu</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># Debian/Ubuntu</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> <span class="token function">apt</span> remove ibus ibus-libpinyin
 </span><span class="code-line line-number" line="3"><span class="token function">sudo</span> <span class="token function">apt</span> autoremove
 </span><span class="code-line line-number" line="4">

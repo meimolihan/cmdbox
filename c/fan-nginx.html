@@ -1232,7 +1232,7 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h2 id="一键脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一键脚本"><span class="octicon octicon-link"></span></a>一键脚本</h2>
+<h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <table>
   <thead>
     <tr>
@@ -1255,7 +1255,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   </tbody>
 </table>
 <h2 id="docker-运行"><a class="anchor" aria-hidden="true" tabindex="-1" href="#docker-运行"><span class="octicon octicon-link"></span></a>Docker 运行</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-itd</span> <span class="token punctuation">\</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">docker</span> run <span class="token parameter variable">-itd</span> <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="2">  <span class="token parameter variable">--name</span> fan-nginx <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="3">  <span class="token parameter variable">--restart</span> always <span class="token punctuation">\</span>
 </span><span class="code-line line-number" line="4">  <span class="token parameter variable">-v</span> /home/fan-nginx:/home/fan-nginx <span class="token punctuation">\</span>
@@ -1277,7 +1277,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <li>host 网络下修改端口：改 <code>BOOT_OPTIONS</code> 里的 <code>--server.port</code> 后重建容器即可</li>
 </ul>
 <h2 id="systemd-脚本安装原生部署"><a class="anchor" aria-hidden="true" tabindex="-1" href="#systemd-脚本安装原生部署"><span class="octicon octicon-link"></span></a>systemd 脚本安装（原生部署）</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 交互式安装</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 交互式安装</span>
 </span><span class="code-line line-number" line="2"><span class="token function">bash</span> scripts/install.sh
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 静默安装：端口 8080 + 数据目录 /var/lib/fan-nginx + 初始化管理员</span>
@@ -1348,7 +1348,7 @@ bash -c &#x22;$(curl -sSL https://raw.githubusercontent.com/meimolihan/fan-nginx
 </table>
 <h2 id="内置-cli-命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#内置-cli-命令"><span class="octicon octicon-link"></span></a>内置 CLI 命令</h2>
 <p>安装后生成 <code>/usr/local/bin/fan-nginx</code>，支持：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">fan-nginx status                    <span class="token comment"># 运行方式/systemd状态/PID/端口/访问地址/运行时长/内存/路径</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">fan-nginx status                    <span class="token comment"># 运行方式/systemd状态/PID/端口/访问地址/运行时长/内存/路径</span>
 </span><span class="code-line line-number" line="2">fan-nginx credentials               <span class="token comment"># 重置并打印全部管理员账号密码（关闭两步验证）</span>
 </span><span class="code-line line-number" line="3">fan-nginx start <span class="token operator">|</span> stop <span class="token operator">|</span> restart    <span class="token comment"># 启停/重启 systemd 服务</span>
 </span><span class="code-line line-number" line="4">fan-nginx version                   <span class="token comment"># 显示版本号</span>
@@ -1363,7 +1363,7 @@ fan-nginx uninstall -y --purge      # 卸载（默认保留数据目录）
   <li>忘记管理密码：<code>fan-nginx credentials</code> 一次搞定，无需进数据库</li>
 </ul>
 <h2 id="备份与恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#备份与恢复"><span class="octicon octicon-link"></span></a>备份与恢复</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 备份（在线打包、不停服，保留 6 份，自动排除 log 目录）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 备份（在线打包、不停服，保留 6 份，自动排除 log 目录）</span>
 </span><span class="code-line line-number" line="2"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scripts/fan-nginx_backup.sh<span class="token punctuation">)</span> /vol2/1000/file/backup/fan-nginx-backup <span class="token number">6</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 恢复（自动取最新备份：停服→清空→解压→启动）</span>
@@ -1385,7 +1385,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scr
   <li>备份路径：默认为 <code>${APP_DIR}/backup</code>（systemd 安装即 <code>/var/lib/fan-nginx/backup</code>，默认保留 6 份）</li>
 </ul>
 <h2 id="服务管理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#服务管理"><span class="octicon octicon-link"></span></a>服务管理</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">sudo</span> systemctl start<span class="token operator">|</span>stop<span class="token operator">|</span>restart<span class="token operator">|</span>status fan-nginx        <span class="token comment"># 启停/状态</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">sudo</span> systemctl start<span class="token operator">|</span>stop<span class="token operator">|</span>restart<span class="token operator">|</span>status fan-nginx        <span class="token comment"># 启停/状态</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span><span class="token operator">|</span>disable fan-nginx                   <span class="token comment"># 开机自启</span>
 </span><span class="code-line line-number" line="3"><span class="token function">sudo</span> journalctl <span class="token parameter variable">-u</span> fan-nginx <span class="token parameter variable">-n</span> <span class="token number">100</span>                       <span class="token comment"># 最近100行日志</span>
 </span><span class="code-line line-number" line="4"><span class="token function">sudo</span> journalctl <span class="token parameter variable">-u</span> fan-nginx <span class="token parameter variable">-f</span>                           <span class="token comment"># 实时跟踪日志</span>
@@ -1397,7 +1397,7 @@ sudo journalctl -u fan-nginx -f                           # 实时跟踪日志
 sudo systemctl status fan-nginx --no-pager                # 查看进程 PID/状态详情
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h2 id="卸载"><a class="anchor" aria-hidden="true" tabindex="-1" href="#卸载"><span class="octicon octicon-link"></span></a>卸载</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># systemd 方式</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># systemd 方式</span>
 </span><span class="code-line line-number" line="2"><span class="token function">bash</span> <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://raw.githubusercontent.com/meimolihan/fan-nginx/main/scripts/uninstall.sh<span class="token variable">)</span></span>"</span> <span class="token parameter variable">-y</span> <span class="token parameter variable">--purge</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># Docker 方式</span>
@@ -1530,8 +1530,8 @@ function copied(target, str) {
         <nav class="post-toc-nav">
           <ul class="post-toc-list">
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
-              <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="docker-运行">
@@ -1599,8 +1599,8 @@ function copied(target, str) {
     <nav class="post-toc-nav">
       <ul class="post-toc-list">
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
-          <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="docker-运行">

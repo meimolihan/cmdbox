@@ -1232,9 +1232,9 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
-<h2 id="一现状检测"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一现状检测"><span class="octicon octicon-link"></span></a>一、现状检测</h2>
+<h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
 <p>CMD 执行 <code>nslookup google.cn</code> 域名解析测试，当前 <code>google.cn</code> 已正常解析到目标 IP：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System3<span class="token operator"><span class="token file-descriptor important">2</span>></span>nslookup google.cn
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System3<span class="token operator"><span class="token file-descriptor important">2</span>></span>nslookup google.cn
 </span><span class="code-line line-number" line="2">服务器:  UnKnown
 </span><span class="code-line line-number" line="3">Address:  <span class="token number">10.10</span>.10.252
 </span><span class="code-line line-number" line="4">
@@ -1250,7 +1250,7 @@ Address:  198.18.1.118
 <h2 id="二手动修改-hosts-文件"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二手动修改-hosts-文件"><span class="octicon octicon-link"></span></a>二、手动修改 Hosts 文件</h2>
 <h3 id="1-打开-hosts-文件"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-打开-hosts-文件"><span class="octicon octicon-link"></span></a>1. 打开 Hosts 文件</h3>
 <p>CMD 执行以下命令进入目录并打开文件：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System32<span class="token punctuation">\</span>drivers<span class="token punctuation">\</span>etc
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>Windows<span class="token punctuation">\</span>System32<span class="token punctuation">\</span>drivers<span class="token punctuation">\</span>etc
 </span><span class="code-line line-number" line="2">notepad hosts
 </span></code><div onclick="copied(this)" data-code="cd C:\Windows\System32\drivers\etc
 notepad hosts
@@ -1312,7 +1312,7 @@ notepad hosts
 <h2 id="三一键自动修复脚本推荐"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三一键自动修复脚本推荐"><span class="octicon octicon-link"></span></a>三、一键自动修复脚本（推荐）</h2>
 <h3 id="1-cmd-快速生成脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-cmd-快速生成脚本"><span class="octicon octicon-link"></span></a>1. CMD 快速生成脚本</h3>
 <p>以<strong>管理员身份</strong>打开 CMD，执行以下命令，在桌面生成 <code>fix-google-translate.bat</code> 自动修复脚本：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">@echo off
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">@echo off
 </span><span class="code-line line-number" line="2">chcp <span class="token number">65001</span> <span class="token operator">></span>nul
 </span><span class="code-line line-number" line="3">title 谷歌翻译 Hosts 自动修复
 </span><span class="code-line line-number" line="4">
@@ -1379,7 +1379,7 @@ pause >nul
 </ol>
 <h2 id="四验证是否生效"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四验证是否生效"><span class="octicon octicon-link"></span></a>四、验证是否生效</h2>
 <p>重新执行解析命令，域名解析为 <code>198.18.1.118</code> 即配置成功：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">nslookup</span> translate.googleapis.com
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">nslookup</span> translate.googleapis.com
 </span><span class="code-line line-number" line="2"><span class="token function">nslookup</span> google.cn
 </span></code><div onclick="copied(this)" data-code="nslookup translate.googleapis.com
 nslookup google.cn
@@ -1468,8 +1468,8 @@ function copied(target, str) {
         <nav class="post-toc-nav">
           <ul class="post-toc-list">
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-现状检测">
-              <a class="post-toc-link" href="#一-现状检测" data-level="2">一、现状检测</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="二-手动修改-hosts-文件">
@@ -1533,8 +1533,8 @@ function copied(target, str) {
     <nav class="post-toc-nav">
       <ul class="post-toc-list">
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-现状检测">
-          <a class="post-toc-link" href="#一-现状检测" data-level="2">一、现状检测</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="二-手动修改-hosts-文件">

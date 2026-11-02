@@ -1292,7 +1292,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <hr>
 <h2 id="一软件源配置"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一软件源配置"><span class="octicon octicon-link"></span></a>一、软件源配置</h2>
 <h3 id="1-源配置文件"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-源配置文件"><span class="octicon octicon-link"></span></a>1. 源配置文件</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 主源列表</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 主源列表</span>
 </span><span class="code-line line-number" line="2"><span class="token function">cat</span> /etc/apt/sources.list
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 扩展源列表（推荐在此目录下拆分配置）</span>
@@ -1304,7 +1304,7 @@ cat /etc/apt/sources.list
 ls /etc/apt/sources.list.d/
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="2-debian-12-bookworm-示例"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-debian-12-bookworm-示例"><span class="octicon octicon-link"></span></a>2. Debian 12 (Bookworm) 示例</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># /etc/apt/sources.list</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># /etc/apt/sources.list</span>
 </span><span class="code-line line-number" line="2">deb http://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
 </span><span class="code-line line-number" line="3">deb http://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
 </span><span class="code-line line-number" line="4">deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
@@ -1314,7 +1314,7 @@ deb http://deb.debian.org/debian bookworm-updates main contrib non-free non-free
 deb http://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="3-ubuntu-2404-noble-示例"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3-ubuntu-2404-noble-示例"><span class="octicon octicon-link"></span></a>3. Ubuntu 24.04 (Noble) 示例</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># /etc/apt/sources.list</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># /etc/apt/sources.list</span>
 </span><span class="code-line line-number" line="2">deb http://archive.ubuntu.com/ubuntu noble main restricted universe multiverse
 </span><span class="code-line line-number" line="3">deb http://archive.ubuntu.com/ubuntu noble-updates main restricted universe multiverse
 </span><span class="code-line line-number" line="4">deb http://security.ubuntu.com/ubuntu noble-security main restricted universe multiverse
@@ -1324,7 +1324,7 @@ deb http://archive.ubuntu.com/ubuntu noble-updates main restricted universe mult
 deb http://security.ubuntu.com/ubuntu noble-security main restricted universe multiverse
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="4-更换国内镜像源"><a class="anchor" aria-hidden="true" tabindex="-1" href="#4-更换国内镜像源"><span class="octicon octicon-link"></span></a>4. 更换国内镜像源</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 以 Debian 12 清华源为例</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 以 Debian 12 清华源为例</span>
 </span><span class="code-line line-number" line="2"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s|deb.debian.org|mirrors.tuna.tsinghua.edu.cn|g'</span> /etc/apt/sources.list
 </span><span class="code-line line-number" line="3"><span class="token function">sed</span> <span class="token parameter variable">-i</span> <span class="token string">'s|security.debian.org|mirrors.tuna.tsinghua.edu.cn|g'</span> /etc/apt/sources.list
 </span><span class="code-line line-number" line="4">
@@ -1372,14 +1372,14 @@ apt update
 <hr>
 <h2 id="二日常操作"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二日常操作"><span class="octicon octicon-link"></span></a>二、日常操作</h2>
 <h3 id="1-更新软件包列表"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-更新软件包列表"><span class="octicon octicon-link"></span></a>1. 更新软件包列表</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">apt</span> update
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">apt</span> update
 </span></code><div onclick="copied(this)" data-code="apt update
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <blockquote>
   <p>每次安装或升级前都应先执行 <code>apt update</code>，确保本地索引与仓库同步。</p>
 </blockquote>
 <h3 id="2-升级已安装的包"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-升级已安装的包"><span class="octicon octicon-link"></span></a>2. 升级已安装的包</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 仅升级已安装包（不安装/删除新依赖）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 仅升级已安装包（不安装/删除新依赖）</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> upgrade
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 升级并自动处理依赖变更</span>
@@ -1397,7 +1397,7 @@ apt full-upgrade
 apt dist-upgrade
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="3-安装软件包"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3-安装软件包"><span class="octicon octicon-link"></span></a>3. 安装软件包</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装单个包</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 安装单个包</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> <span class="token function">install</span> nginx
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 安装多个包</span>
@@ -1433,7 +1433,7 @@ apt install --reinstall nginx
 apt install -d nginx
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="4-移除软件包"><a class="anchor" aria-hidden="true" tabindex="-1" href="#4-移除软件包"><span class="octicon octicon-link"></span></a>4. 移除软件包</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 移除包（保留配置文件）</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 移除包（保留配置文件）</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> remove nginx
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 完全移除（删除配置文件）</span>
@@ -1457,7 +1457,7 @@ apt autoremove
 apt autoremove --purge
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="5-搜索与查看信息"><a class="anchor" aria-hidden="true" tabindex="-1" href="#5-搜索与查看信息"><span class="octicon octicon-link"></span></a>5. 搜索与查看信息</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 搜索包名和描述</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 搜索包名和描述</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> search nginx
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 查看包详细信息</span>
@@ -1501,7 +1501,7 @@ apt list --all-versions nginx
 <hr>
 <h2 id="三缓存与清理"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三缓存与清理"><span class="octicon octicon-link"></span></a>三、缓存与清理</h2>
 <p>APT 下载的 <code>.deb</code> 包缓存到 <code>/var/cache/apt/archives/</code>。定期清理可释放磁盘空间：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 查看缓存占用</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 查看缓存占用</span>
 </span><span class="code-line line-number" line="2"><span class="token function">du</span> <span class="token parameter variable">-sh</span> /var/cache/apt/archives/
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 清理过时缓存（仅移除不再可用的包）</span>
@@ -1521,7 +1521,7 @@ apt clean
 <hr>
 <h2 id="四修复与排障"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四修复与排障"><span class="octicon octicon-link"></span></a>四、修复与排障</h2>
 <h3 id="1-修复损坏的依赖"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-修复损坏的依赖"><span class="octicon octicon-link"></span></a>1. 修复损坏的依赖</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 尝试修复依赖问题</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 尝试修复依赖问题</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> --fix-broken <span class="token function">install</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 修复安装中断的包</span>
@@ -1534,7 +1534,7 @@ dpkg --configure -a
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="2-gpg-密钥问题"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-gpg-密钥问题"><span class="octicon octicon-link"></span></a>2. GPG 密钥问题</h3>
 <p>添加第三方仓库时经常遇到缺少 GPG 密钥：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 显示错误中的密钥 ID，然后添加</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 显示错误中的密钥 ID，然后添加</span>
 </span><span class="code-line line-number" line="2">apt-key adv <span class="token parameter variable">--keyserver</span> keyserver.ubuntu.com --recv-keys <span class="token operator">&#x3C;</span>KEY_ID<span class="token operator">></span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 现代方式（推荐）：将密钥放入 /etc/apt/trusted.gpg.d/</span>
@@ -1549,7 +1549,7 @@ curl -fsSL https://example.com/key.gpg | tee /etc/apt/trusted.gpg.d/example.asc
   <p><code>apt-key</code> 已弃用，推荐使用 <code>/etc/apt/trusted.gpg.d/</code> 目录方式。</p>
 </blockquote>
 <h3 id="3-锁定版本禁止升级"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3-锁定版本禁止升级"><span class="octicon octicon-link"></span></a>3. 锁定版本（禁止升级）</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 方法一：使用 apt-mark</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 方法一：使用 apt-mark</span>
 </span><span class="code-line line-number" line="2">apt-mark hold nginx
 </span><span class="code-line line-number" line="3">apt-mark showhold
 </span><span class="code-line line-number" line="4">
@@ -1573,7 +1573,7 @@ Pin: version 1.24.*
 Pin-Priority: 1001&#x22; > /etc/apt/preferences.d/pin-nginx
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="4-下载中断恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#4-下载中断恢复"><span class="octicon octicon-link"></span></a>4. 下载中断恢复</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 重新获取不完整的包</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 重新获取不完整的包</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> <span class="token function">install</span> --fix-missing nginx
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 或清理缓存后重试</span>
@@ -1587,7 +1587,7 @@ apt clean &#x26;&#x26; apt update &#x26;&#x26; apt install nginx
 <hr>
 <h2 id="五第三方仓库配置"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五第三方仓库配置"><span class="octicon octicon-link"></span></a>五、第三方仓库配置</h2>
 <h3 id="1-docker-官方仓库"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1-docker-官方仓库"><span class="octicon octicon-link"></span></a>1. Docker 官方仓库</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 添加 GPG 密钥</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 添加 GPG 密钥</span>
 </span><span class="code-line line-number" line="2"><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://download.docker.com/linux/debian/gpg <span class="token operator">|</span> <span class="token function">tee</span> /etc/apt/trusted.gpg.d/docker.asc
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 添加仓库</span>
@@ -1605,7 +1605,7 @@ apt update
 apt install docker-ce docker-ce-cli containerd.io
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="2-nginx-官方仓库"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2-nginx-官方仓库"><span class="octicon octicon-link"></span></a>2. Nginx 官方仓库</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://nginx.org/keys/nginx_signing.key <span class="token operator">|</span> <span class="token function">tee</span> /etc/apt/trusted.gpg.d/nginx.asc
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://nginx.org/keys/nginx_signing.key <span class="token operator">|</span> <span class="token function">tee</span> /etc/apt/trusted.gpg.d/nginx.asc
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">echo</span> <span class="token string">"deb [arch=amd64] https://nginx.org/packages/debian <span class="token variable"><span class="token variable">$(</span>lsb_release <span class="token parameter variable">-cs</span><span class="token variable">)</span></span> nginx"</span> <span class="token operator">></span> /etc/apt/sources.list.d/nginx.list
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token function">apt</span> update
@@ -1617,7 +1617,7 @@ apt update
 apt install nginx
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="3-添加-i386-架构运行-32-位程序"><a class="anchor" aria-hidden="true" tabindex="-1" href="#3-添加-i386-架构运行-32-位程序"><span class="octicon octicon-link"></span></a>3. 添加 i386 架构（运行 32 位程序）</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">dpkg --add-architecture i386
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">dpkg --add-architecture i386
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> update
 </span><span class="code-line line-number" line="3"><span class="token function">apt</span> <span class="token function">install</span> wine32
 </span></code><div onclick="copied(this)" data-code="dpkg --add-architecture i386
@@ -1626,7 +1626,7 @@ apt install wine32
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <hr>
 <h2 id="六一键系统更新脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六一键系统更新脚本"><span class="octicon octicon-link"></span></a>六、一键系统更新脚本</h2>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token shebang important">#!/bin/bash</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token shebang important">#!/bin/bash</span>
 </span><span class="code-line line-number" line="2"><span class="token builtin class-name">set</span> <span class="token parameter variable">-e</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token builtin class-name">echo</span> <span class="token string">"=== 系统更新 ==="</span>
@@ -1665,7 +1665,7 @@ echo &#x22;=== 完成 ===&#x22;
 <h2 id="常见问题"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常见问题"><span class="octicon octicon-link"></span></a>常见问题</h2>
 <h3 id="could-not-get-lock-varlibdpkglock"><a class="anchor" aria-hidden="true" tabindex="-1" href="#could-not-get-lock-varlibdpkglock"><span class="octicon octicon-link"></span></a><code>Could not get lock /var/lib/dpkg/lock</code></h3>
 <p>另一个 APT 进程正在运行：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 查找占用进程</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 查找占用进程</span>
 </span><span class="code-line line-number" line="2"><span class="token function">ps</span> aux <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> <span class="token function">apt</span>
 </span><span class="code-line line-number" line="3">
 </span><span class="code-line line-number" line="4"><span class="token comment"># 确认无其他进程后，手动删除锁文件</span>
@@ -1684,7 +1684,7 @@ dpkg --configure -a
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="the-following-packages-have-been-kept-back"><a class="anchor" aria-hidden="true" tabindex="-1" href="#the-following-packages-have-been-kept-back"><span class="octicon octicon-link"></span></a><code>The following packages have been kept back</code></h3>
 <p>包被保留（可能因依赖变更未自动处理）：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">apt</span> <span class="token function">install</span> <span class="token operator">&#x3C;</span>包名<span class="token operator">></span>         <span class="token comment"># 逐一安装被保留的包</span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">apt</span> <span class="token function">install</span> <span class="token operator">&#x3C;</span>包名<span class="token operator">></span>         <span class="token comment"># 逐一安装被保留的包</span>
 </span><span class="code-line line-number" line="2"><span class="token function">apt</span> full-upgrade           <span class="token comment"># 或使用全升级处理</span>
 </span><span class="code-line line-number" line="3"><span class="token function">apt</span> list <span class="token parameter variable">--upgradable</span>      <span class="token comment"># 查看被保留的包</span>
 </span></code><div onclick="copied(this)" data-code="apt install <包名>         # 逐一安装被保留的包
@@ -1693,7 +1693,7 @@ apt list --upgradable      # 查看被保留的包
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="no_pubkey-错误"><a class="anchor" aria-hidden="true" tabindex="-1" href="#no_pubkey-错误"><span class="octicon octicon-link"></span></a><code>NO_PUBKEY</code> 错误</h3>
 <p>缺少公钥：</p>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1">apt-key adv <span class="token parameter variable">--keyserver</span> keyserver.ubuntu.com --recv-keys <span class="token operator">&#x3C;</span>缺失的KEY<span class="token operator">></span>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">apt-key adv <span class="token parameter variable">--keyserver</span> keyserver.ubuntu.com --recv-keys <span class="token operator">&#x3C;</span>缺失的KEY<span class="token operator">></span>
 </span></code><div onclick="copied(this)" data-code="apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <缺失的KEY>
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <hr>
