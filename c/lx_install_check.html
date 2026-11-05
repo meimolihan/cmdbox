@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="lx_install_check 命令">
     <meta name="twitter:description" content="一键安装 Linux / iStoreOS 系统信息快捷查看命令 g - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b0fc6d89cb">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b0235db3a0">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=4655c1b0fc6d89cb"></script>
+    <script src="../js/dt.js?v=4655c1b0235db3a0"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1328,7 +1328,7 @@ bash <(curl -sSL ../sh/install-check.sh)
     <tr>
       <td align="left">更新动作</td>
       <td align="left">执行 <code>meimolihan/script</code> 仓库的安装器</td>
-      <td align="left">执行 <code>cmdbox</code> 仓库的 <code>check.sh</code></td>
+      <td align="left">执行 <code>cmdbox</code> 仓库的 <code>istoreos-check.sh</code></td>
     </tr>
   </tbody>
 </table>
@@ -1395,7 +1395,7 @@ g help       # 显示帮助信息
 <ul>
   <li>依赖 <code>curl</code> 下载脚本，需能访问 Gitee 或 <code>cmdbox.meimolihan.eu.org</code></li>
   <li>两个版本最终都落到 <code>/etc/profile.d/linux-check.sh</code>，仅内容不同，勿重复手动放置</li>
-  <li><code>g up</code> 的升级源与首次安装源不同：通用版调用 <code>meimolihan/script</code> 仓库安装器，iStoreOS 版调用 <code>cmdbox</code> 仓库的 <code>check.sh</code>，请保证对应仓库可访问</li>
+  <li><code>g up</code> 的升级源与首次安装源不同：通用版调用 <code>meimolihan/script</code> 仓库安装器，iStoreOS 版调用 <code>cmdbox</code> 仓库的 <code>istoreos-check.sh</code>，请保证对应仓库可访问</li>
   <li>iStoreOS 版取 IP 依赖 <code>ifconfig br-lan</code>（BusyBox 默认自带）；通用版优先 <code>hostname -I</code></li>
   <li>即使系统是 OpenWrt，只要 <code>/etc/os-release</code> 中 <code>ID</code> 不为 <code>istoreos</code>，仍会安装通用版</li>
   <li>下载失败或文件为空时安装器会报错返回，不会强行创建 <code>g</code> 命令</li>
@@ -2099,7 +2099,7 @@ main &#x22;$@&#x22;
 </span><span class="code-line line-number" line="106"><span class="token function-name function">update_script</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 </span><span class="code-line line-number" line="107">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>正在更新脚本 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="108">    
-</span><span class="code-line line-number" line="109">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">update_url</span><span class="token operator">=</span><span class="token string">"https://gitee.com/meimolihan/cmdbox/raw/master/sh/check.sh"</span>
+</span><span class="code-line line-number" line="109">    <span class="token builtin class-name">local</span> <span class="token assign-left variable">update_url</span><span class="token operator">=</span><span class="token string">"https://gitee.com/meimolihan/cmdbox/raw/master/sh/istoreos-check.sh"</span>
 </span><span class="code-line line-number" line="110">    
 </span><span class="code-line line-number" line="111">    <span class="token keyword">if</span> <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> <span class="token string">"<span class="token variable">$update_url</span>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="112">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_lv}</span>脚本更新成功！<span class="token variable">${gl_bai}</span>"</span>
@@ -2258,7 +2258,7 @@ show_system_info() {
 update_script() {
     echo -e &#x22;${gl_huang}正在更新脚本 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
     
-    local update_url=&#x22;https://gitee.com/meimolihan/cmdbox/raw/master/sh/check.sh&#x22;
+    local update_url=&#x22;https://gitee.com/meimolihan/cmdbox/raw/master/sh/istoreos-check.sh&#x22;
     
     if bash <(curl -sSL &#x22;$update_url&#x22;); then
         echo -e &#x22;${gl_lv}脚本更新成功！${gl_bai}&#x22;
@@ -2533,7 +2533,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=4655c1b0fc6d89cb"></script>
+<script src="../js/post-toc.js?v=4655c1b0235db3a0"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2637,7 +2637,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">866</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">888</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -2683,7 +2683,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1274</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1296</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -2716,8 +2716,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=4655c1b0fc6d89cb"></script>
-<script type="text/javascript" src="../js/enhance.js?v=4655c1b0fc6d89cb"></script>
+<script type="text/javascript" src="../js/index.js?v=4655c1b0235db3a0"></script>
+<script type="text/javascript" src="../js/enhance.js?v=4655c1b0235db3a0"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

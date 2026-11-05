@@ -1547,7 +1547,7 @@ docker_compose_manager() {
                 echo
                 echo -e "${gl_huang}$current_dir_name${gl_bai}服务列表 & 实时资源占用（Ctrl-C 退出）"
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-                bash <(curl -sSL https://cmdbox.meimolihan.eu.org/sh/docker_occupy_find.sh) $current_dir_name
+                bash <(curl -sSL https://cmdbox.meimolihan.eu.org/sh/docker_occupy_list.sh) $current_dir_name
                 echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
                 ;;
             14)

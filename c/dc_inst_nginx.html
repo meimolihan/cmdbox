@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="dc_inst_nginx 命令">
     <meta name="twitter:description" content="Compose 部署 Nginx 反向代理服务器 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b0fc6d89cb">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b0235db3a0">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=4655c1b0fc6d89cb"></script>
+    <script src="../js/dt.js?v=4655c1b0235db3a0"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1698,7 +1698,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="277">        log_info <span class="token string">"正在检查 Docker 运行环境 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="278">        log_warn <span class="token string">"Docker 未安装，即将自动安装 Docker 环境 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="279">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="280">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="280">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="281">
 </span><span class="code-line line-number" line="282">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="283">            log_error <span class="token string">"Docker 安装失败，请手动安装后重试！"</span>
@@ -1713,7 +1713,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="292">        log_info <span class="token string">"正在检查 Docker Compose 环境 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="293">        log_warn <span class="token string">"Docker Compose 未安装，即将自动安装 <span class="token variable">${gl_hong}</span>.<span class="token variable">${gl_huang}</span>.<span class="token variable">${gl_lv}</span>.<span class="token variable">${gl_bai}</span>"</span>
 </span><span class="code-line line-number" line="294">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>————————————————————————————————————————————————<span class="token variable">${gl_bai}</span>"</span>
-</span><span class="code-line line-number" line="295">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh<span class="token punctuation">)</span>
+</span><span class="code-line line-number" line="295">        <span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh<span class="token punctuation">)</span>
 </span><span class="code-line line-number" line="296">
 </span><span class="code-line line-number" line="297">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token builtin class-name">command</span> <span class="token parameter variable">-v</span> <span class="token function">docker-compose</span> <span class="token operator">&#x26;></span>/dev/null<span class="token punctuation">;</span> <span class="token keyword">then</span>
 </span><span class="code-line line-number" line="298">            log_error <span class="token string">"Docker Compose 安装失败，请手动安装后重试！"</span>
@@ -2839,7 +2839,7 @@ docker_check_env() {
         log_info &#x22;正在检查 Docker 运行环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         log_warn &#x22;Docker 未安装，即将自动安装 Docker 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_docker.sh)
+        bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_docker.sh)
 
         if ! command -v docker &#x26;>/dev/null; then
             log_error &#x22;Docker 安装失败，请手动安装后重试！&#x22;
@@ -2854,7 +2854,7 @@ docker_check_env() {
         log_info &#x22;正在检查 Docker Compose 环境 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         log_warn &#x22;Docker Compose 未安装，即将自动安装 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}&#x22;
         echo -e &#x22;${gl_bufan}————————————————————————————————————————————————${gl_bai}&#x22;
-        bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/linux_compose.sh)
+        bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/lx_install_compose.sh)
 
         if ! command -v docker-compose &#x26;>/dev/null; then
             log_error &#x22;Docker Compose 安装失败，请手动安装后重试！&#x22;
@@ -4234,7 +4234,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=4655c1b0fc6d89cb"></script>
+<script src="../js/post-toc.js?v=4655c1b0235db3a0"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -4338,7 +4338,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">866</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">888</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -4384,7 +4384,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1274</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1296</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -4417,8 +4417,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=4655c1b0fc6d89cb"></script>
-<script type="text/javascript" src="../js/enhance.js?v=4655c1b0fc6d89cb"></script>
+<script type="text/javascript" src="../js/index.js?v=4655c1b0235db3a0"></script>
+<script type="text/javascript" src="../js/enhance.js?v=4655c1b0235db3a0"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

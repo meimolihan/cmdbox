@@ -106,7 +106,7 @@ show_system_info() {
 update_script() {
     echo -e "${gl_huang}正在更新脚本 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
     
-    local update_url="https://gitee.com/meimolihan/cmdbox/raw/master/sh/check.sh"
+    local update_url="https://gitee.com/meimolihan/cmdbox/raw/master/sh/istoreos-check.sh"
     
     if bash <(curl -sSL "$update_url"); then
         echo -e "${gl_lv}脚本更新成功！${gl_bai}"
