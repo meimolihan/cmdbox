@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="kernelversion 命令">
     <meta name="twitter:description" content="打印当前内核的主版本号 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b0235db3a0">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b055bbc299">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=4655c1b0235db3a0"></script>
+    <script src="../js/dt.js?v=4655c1b055bbc299"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1233,11 +1233,33 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p><strong>kernelversion命令</strong> 用于打印当前内核的主版本号。</p>
+<p><strong>kernelversion 命令</strong> 用于打印当前运行内核的主版本号（例如 <code>6.1</code>、<code>5.15</code>）。与 <code>uname -r</code> 不同，<code>kernelversion</code> 仅输出主版本号，适合在脚本中做版本判断。</p>
 <h3 id="语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#语法"><span class="octicon octicon-link"></span></a>语法</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">kernelversion
 </span></code><div onclick="copied(this)" data-code="kernelversion
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="参数"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参数"><span class="octicon octicon-link"></span></a>参数</h3>
+<p>无。</p>
+<h3 id="示例"><a class="anchor" aria-hidden="true" tabindex="-1" href="#示例"><span class="octicon octicon-link"></span></a>示例</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 打印内核主版本号</span>
+</span><span class="code-line line-number" line="2">kernelversion
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 示例输出：</span>
+</span><span class="code-line line-number" line="5"><span class="token comment"># 6.1</span>
+</span></code><div onclick="copied(this)" data-code="# 打印内核主版本号
+kernelversion
+
+# 示例输出：
+# 6.1
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="常见问题"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常见问题"><span class="octicon octicon-link"></span></a>常见问题</h3>
+<h4 id="命令未找到"><a class="anchor" aria-hidden="true" tabindex="-1" href="#命令未找到"><span class="octicon octicon-link"></span></a>命令未找到</h4>
+<p>可能原因：该命令未安装，或不在当前环境的 <code>PATH</code> 中。</p>
+<p>解决方案：优先使用 <code>uname -r</code> 或 <code>uname -sr</code> 替代；如需使用 <code>kernelversion</code>，请安装对应的内核工具包。</p>
+<h3 id="参考链接"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参考链接"><span class="octicon octicon-link"></span></a>参考链接</h3>
+<ul>
+  <li><a href="../c/uname.html">uname</a></li>
+</ul>
 <style>markdown-style pre .copied {
   display: flex;
   position: absolute;
@@ -1324,6 +1346,26 @@ function copied(target, str) {
               <a class="post-toc-link" href="#语法" data-level="3">语法</a>
             </li>
             
+            <li class="post-toc-item post-toc-level-3" data-toc-id="参数">
+              <a class="post-toc-link" href="#参数" data-level="3">参数</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="示例">
+              <a class="post-toc-link" href="#示例" data-level="3">示例</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
+              <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-4" data-toc-id="命令未找到">
+              <a class="post-toc-link" href="#命令未找到" data-level="4">命令未找到</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="参考链接">
+              <a class="post-toc-link" href="#参考链接" data-level="3">参考链接</a>
+            </li>
+            
           </ul>
         </nav>
       </div>
@@ -1357,13 +1399,33 @@ function copied(target, str) {
           <a class="post-toc-link" href="#语法" data-level="3">语法</a>
         </li>
         
+        <li class="post-toc-item post-toc-level-3" data-toc-id="参数">
+          <a class="post-toc-link" href="#参数" data-level="3">参数</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="示例">
+          <a class="post-toc-link" href="#示例" data-level="3">示例</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常见问题">
+          <a class="post-toc-link" href="#常见问题" data-level="3">常见问题</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-4" data-toc-id="命令未找到">
+          <a class="post-toc-link" href="#命令未找到" data-level="4">命令未找到</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="参考链接">
+          <a class="post-toc-link" href="#参考链接" data-level="3">参考链接</a>
+        </li>
+        
       </ul>
     </nav>
   </div>
 </div>
 
 
-<script src="../js/post-toc.js?v=4655c1b0235db3a0"></script>
+<script src="../js/post-toc.js?v=4655c1b055bbc299"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1467,7 +1529,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">888</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">936</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -1482,7 +1544,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">304</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">369</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -1499,7 +1561,7 @@ function copied(target, str) {
         <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
         <line x1="8" y1="16" x2="14" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">Win <span class="footer-count windows">104</span></span>
+      <span class="footer-text">Win <span class="footer-count windows">152</span></span>
     </a>
     <!-- 共计统计：command + ops-script + windows 总和 -->
     <a class="footer-item footer-total wow animate__animated animate__fadeInUp" data-wow-delay="0.55s" href="../all.html">
@@ -1513,7 +1575,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1296</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1457</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1546,8 +1608,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=4655c1b0235db3a0"></script>
-<script type="text/javascript" src="../js/enhance.js?v=4655c1b0235db3a0"></script>
+<script type="text/javascript" src="../js/index.js?v=4655c1b055bbc299"></script>
+<script type="text/javascript" src="../js/enhance.js?v=4655c1b055bbc299"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>

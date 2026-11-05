@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="dc_inst_menu 命令">
     <meta name="twitter:description" content="Compose 项目管理菜单 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b0235db3a0">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=4655c1b055bbc299">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=4655c1b0235db3a0"></script>
+    <script src="../js/dt.js?v=4655c1b055bbc299"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1244,10 +1244,10 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
   <img src="../img/dc_inst_menu.webp" alt="交互菜单效果预览" title="截图演示" loading="lazy">
 </p>
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p>该脚本将 54 个 dc_inst_* 一键部署脚本整合为一个交互式菜单，无需记忆脚本名称和参数，通过编号选择即可完成安装。</p>
+<p>该脚本将 68 个 dc_inst_* 一键部署脚本整合为一个交互式菜单，无需记忆脚本名称和参数，通过编号选择即可完成安装。</p>
 <h3 id="功能特点"><a class="anchor" aria-hidden="true" tabindex="-1" href="#功能特点"><span class="octicon octicon-link"></span></a>功能特点</h3>
 <ul>
-  <li>聚合 <strong>54 个</strong> Docker Compose 部署脚本，覆盖网盘、下载、媒体、笔记、建站等常用服务</li>
+  <li>聚合 <strong>68 个</strong> Docker Compose 部署脚本，覆盖网盘、下载、媒体、笔记、建站等常用服务</li>
   <li>两列菜单布局，清晰展示所有可选服务</li>
   <li>选择后自动提示输入端口和部署目录（支持默认值）</li>
   <li>支持多端口服务（如 Gitea 需同时配置 Web 端口与 SSH 端口）</li>
@@ -1590,12 +1590,96 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
       <td>3001</td>
       <td>/vol1/1000/compose/uptime-kuma</td>
     </tr>
+    <tr>
+      <td>55</td>
+      <td>落幕文件中转站</td>
+      <td>8080</td>
+      <td>/vol1/1000/compose/fan-files</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>落幕图床服务</td>
+      <td>3000</td>
+      <td>/vol1/1000/compose/fan-imagehost</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>落幕图片文档格式转换</td>
+      <td>8681</td>
+      <td>/vol1/1000/compose/fan-image-tr</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>落幕 Markdown 编辑器</td>
+      <td>3001</td>
+      <td>/vol1/1000/compose/fan-md</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>落幕 Nginx 配置管理</td>
+      <td>8081</td>
+      <td>/vol1/1000/compose/fan-nginx</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>落幕导航面板</td>
+      <td>3002</td>
+      <td>/vol1/1000/compose/fan-panel</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>落幕随机图片 API</td>
+      <td>8588</td>
+      <td>/vol1/1000/compose/fan-random</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>落幕图片文档格式转换</td>
+      <td>8681</td>
+      <td>/vol1/1000/compose/fan-reubah</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>落幕商城</td>
+      <td>3003</td>
+      <td>/vol1/1000/compose/fan-shop</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>落幕视频服务</td>
+      <td>8082</td>
+      <td>/vol1/1000/compose/fan-video</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>落幕视频 CT 转码</td>
+      <td>8083</td>
+      <td>/vol1/1000/compose/fan-video-ct</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>落幕视频下载器</td>
+      <td>8084</td>
+      <td>/vol1/1000/compose/fan-video-dl</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>落幕视频格式转换</td>
+      <td>8085</td>
+      <td>/vol1/1000/compose/fan-video-tr</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>落幕 WebSSH 终端</td>
+      <td>8086</td>
+      <td>/vol1/1000/compose/fan-webssh</td>
+    </tr>
   </tbody>
 </table>
 <h3 id="交互流程"><a class="anchor" aria-hidden="true" tabindex="-1" href="#交互流程"><span class="octicon octicon-link"></span></a>交互流程</h3>
 <pre class="language-text"><code class="language-text code-highlight"><span class="code-line line-number" line="1">启动菜单
 </span><span class="code-line line-number" line="2">    ↓
-</span><span class="code-line line-number" line="3">显示 2 列菜单（54 项） + 退出选项
+</span><span class="code-line line-number" line="3">显示 2 列菜单（68 项） + 退出选项
 </span><span class="code-line line-number" line="4">    ↓
 </span><span class="code-line line-number" line="5">输入编号选择服务
 </span><span class="code-line line-number" line="6">    ↓
@@ -1610,7 +1694,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="15">返回菜单或退出
 </span></code><div onclick="copied(this)" data-code="启动菜单
     ↓
-显示 2 列菜单（54 项） + 退出选项
+显示 2 列菜单（68 项） + 退出选项
     ↓
 输入编号选择服务
     ↓
@@ -1815,126 +1899,161 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 </span><span class="code-line line-number" line="188"><span class="token function-name function">dc_inst_nginx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"nginx"</span> <span class="token string">"Nginx Web 服务器"</span> <span class="token string">"80"</span> <span class="token string">"/vol1/1000/compose/nginx"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="189"><span class="token function-name function">dc_inst_studybuddy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"studybuddy"</span> <span class="token string">"StudyBuddy 刷题自测系统"</span> <span class="token string">"8658"</span> <span class="token string">"/vol1/1000/compose/studybuddy"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
 </span><span class="code-line line-number" line="190"><span class="token function-name function">dc_inst_uptime-kuma</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"uptime-kuma"</span> <span class="token string">"Uptime Kuma 监控工具"</span> <span class="token string">"3001"</span> <span class="token string">"/vol1/1000/compose/uptime-kuma"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="191">
-</span><span class="code-line line-number" line="192"><span class="token function-name function">show_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="193">    <span class="token function">clear</span>
-</span><span class="code-line line-number" line="194">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Compose 一键安装菜单<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="195">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="196">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>AllinSSL证书管理工具   <span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>Caddy Web服务器"</span>
-</span><span class="code-line line-number" line="197">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>3.  <span class="token variable">${gl_bai}</span>Chromium网页版浏览器   <span class="token variable">${gl_bufan}</span>4.  <span class="token variable">${gl_bai}</span>道理鱼音乐"</span>
-</span><span class="code-line line-number" line="198">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>5.  <span class="token variable">${gl_bai}</span>DPanel Docker管理面板  <span class="token variable">${gl_bufan}</span>6.  <span class="token variable">${gl_bai}</span>Dufs私有网盘"</span>
-</span><span class="code-line line-number" line="199">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>7.  <span class="token variable">${gl_bai}</span>EasyVoice文本转语音    <span class="token variable">${gl_bufan}</span>8.  <span class="token variable">${gl_bai}</span>Emby媒体服务器"</span>
-</span><span class="code-line line-number" line="200">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>9.  <span class="token variable">${gl_bai}</span>FileBrowser文件管理器  <span class="token variable">${gl_bufan}</span>10. <span class="token variable">${gl_bai}</span>Gitea代码托管平台"</span>
-</span><span class="code-line line-number" line="201">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="202">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>11. <span class="token variable">${gl_bai}</span>Gopeed高速下载器       <span class="token variable">${gl_bufan}</span>12. <span class="token variable">${gl_bai}</span>Halo建站工具"</span>
-</span><span class="code-line line-number" line="203">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>13. <span class="token variable">${gl_bai}</span>高清图标库             <span class="token variable">${gl_bufan}</span>14. <span class="token variable">${gl_bai}</span>IT工具箱"</span>
-</span><span class="code-line line-number" line="204">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>15. <span class="token variable">${gl_bai}</span>Jellyfin媒体服务器     <span class="token variable">${gl_bufan}</span>16. <span class="token variable">${gl_bai}</span>KSpeeder私有加速代理"</span>
-</span><span class="code-line line-number" line="205">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>17. <span class="token variable">${gl_bai}</span>Litepan网盘聚合工具    <span class="token variable">${gl_bufan}</span>18. <span class="token variable">${gl_bai}</span>Lucky全能内网工具"</span>
-</span><span class="code-line line-number" line="206">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>19. <span class="token variable">${gl_bai}</span>落雪音乐服务"</span>
-</span><span class="code-line line-number" line="207">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="208">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>20. <span class="token variable">${gl_bai}</span>MinDo文档管理系统      <span class="token variable">${gl_bufan}</span>21. <span class="token variable">${gl_bai}</span>LunaTV电视直播服务"</span>
-</span><span class="code-line line-number" line="209">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>22. <span class="token variable">${gl_bai}</span>MusicTag音乐标签编辑   <span class="token variable">${gl_bufan}</span>23. <span class="token variable">${gl_bai}</span>NASTools媒体管理套件"</span>
-</span><span class="code-line line-number" line="210">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>24. <span class="token variable">${gl_bai}</span>Nginx轻量级文件服务    <span class="token variable">${gl_bufan}</span>25. <span class="token variable">${gl_bai}</span>OpenCode在线代码编辑器"</span>
-</span><span class="code-line line-number" line="211">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>26. <span class="token variable">${gl_bai}</span>Openlist媒体目录服务   <span class="token variable">${gl_bufan}</span>27. <span class="token variable">${gl_bai}</span>PanSou私人网盘搜索引擎"</span>
-</span><span class="code-line line-number" line="212">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>28. <span class="token variable">${gl_bai}</span>Portainer容器管理面板  <span class="token variable">${gl_bufan}</span>29. <span class="token variable">${gl_bai}</span>qBittorrent下载工具"</span>
-</span><span class="code-line line-number" line="213">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="214">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>30. <span class="token variable">${gl_bai}</span>随机图片 API接口       <span class="token variable">${gl_bufan}</span>31. <span class="token variable">${gl_bai}</span>Reubah图片文档格式转换"</span>
-</span><span class="code-line line-number" line="215">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>32. <span class="token variable">${gl_bai}</span>雷池WAF安全防护        <span class="token variable">${gl_bufan}</span>33. <span class="token variable">${gl_bai}</span>思源笔记"</span>
-</span><span class="code-line line-number" line="216">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>34. <span class="token variable">${gl_bai}</span>Speedtest中文网速测试  <span class="token variable">${gl_bufan}</span>35. <span class="token variable">${gl_bai}</span>Sun-Panel导航面板"</span>
-</span><span class="code-line line-number" line="217">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>36. <span class="token variable">${gl_bai}</span>TaoSync云盘同步工具    <span class="token variable">${gl_bufan}</span>37. <span class="token variable">${gl_bai}</span>Transmission下载工具"</span>
-</span><span class="code-line line-number" line="218">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>38. <span class="token variable">${gl_bai}</span>悟空盒子助手           <span class="token variable">${gl_bufan}</span>39. <span class="token variable">${gl_bai}</span>VSCode网页版"</span>
-</span><span class="code-line line-number" line="219">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="220">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>40. <span class="token variable">${gl_bai}</span>XiaoMusic小爱音箱服务  <span class="token variable">${gl_bufan}</span>41. <span class="token variable">${gl_bai}</span>迅雷下载服务"</span>
-</span><span class="code-line line-number" line="221">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>42. <span class="token variable">${gl_bai}</span>ZFile在线文件管理系统  <span class="token variable">${gl_bufan}</span>43. <span class="token variable">${gl_bai}</span>IPTV直播流代理服务"</span>
-</span><span class="code-line line-number" line="222">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>44. <span class="token variable">${gl_bai}</span>DDNS-GO动态域名解析    <span class="token variable">${gl_bufan}</span>45. <span class="token variable">${gl_bai}</span>Bujic Panel布吉岛导航"</span>
-</span><span class="code-line line-number" line="223">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>46. <span class="token variable">${gl_bai}</span>Arcane应用管理器       <span class="token variable">${gl_bufan}</span>47. <span class="token variable">${gl_bai}</span>Bark推送服务"</span>
-</span><span class="code-line line-number" line="224">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>48. <span class="token variable">${gl_bai}</span>Dufs-ZH中文版私有网盘  <span class="token variable">${gl_bufan}</span>49. <span class="token variable">${gl_bai}</span>EasyNode远程管理工具"</span>
-</span><span class="code-line line-number" line="225">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>50. <span class="token variable">${gl_bai}</span>MediaMaster媒资管理    <span class="token variable">${gl_bufan}</span>51. <span class="token variable">${gl_bai}</span>MeTube-ZH视频下载器"</span>
-</span><span class="code-line line-number" line="226">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>52. <span class="token variable">${gl_bai}</span>Nginx Web服务器        <span class="token variable">${gl_bufan}</span>53. <span class="token variable">${gl_bai}</span>StudyBuddy刷题自测"</span>
-</span><span class="code-line line-number" line="227">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>54. <span class="token variable">${gl_bai}</span>Uptime Kuma监控工具"</span>
-</span><span class="code-line line-number" line="228">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="229">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单         <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
-</span><span class="code-line line-number" line="230"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="231">
-</span><span class="code-line line-number" line="232"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-</span><span class="code-line line-number" line="233">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
-</span><span class="code-line line-number" line="234">        show_menu
-</span><span class="code-line line-number" line="235">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
-</span><span class="code-line line-number" line="236">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> choice
-</span><span class="code-line line-number" line="237">        <span class="token assign-left variable">choice</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${choice<span class="token operator">:-</span>0}</span>"</span>
-</span><span class="code-line line-number" line="238">
-</span><span class="code-line line-number" line="239">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$choice</span>"</span> <span class="token operator">=~</span> ^<span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span>+$ <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="240">            handle_invalid_input
-</span><span class="code-line line-number" line="241">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="242">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="243">
-</span><span class="code-line line-number" line="244">        <span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> choice <span class="token operator">&#x3C;</span> <span class="token number">0</span> <span class="token operator">||</span> choice <span class="token operator">></span> <span class="token number">54</span> <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-</span><span class="code-line line-number" line="245">            handle_invalid_input
-</span><span class="code-line line-number" line="246">            <span class="token builtin class-name">continue</span>
-</span><span class="code-line line-number" line="247">        <span class="token keyword">fi</span>
-</span><span class="code-line line-number" line="248">
-</span><span class="code-line line-number" line="249">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$choice</span>"</span> <span class="token keyword">in</span>
-</span><span class="code-line line-number" line="250">            <span class="token number">1</span><span class="token punctuation">)</span> dc_inst_allinssl <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="251">            <span class="token number">2</span><span class="token punctuation">)</span> dc_inst_caddy <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="252">            <span class="token number">3</span><span class="token punctuation">)</span> dc_inst_chrome <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="253">            <span class="token number">4</span><span class="token punctuation">)</span> dc_inst_daoliyu-music <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="254">            <span class="token number">5</span><span class="token punctuation">)</span> dc_inst_dpanel <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="255">            <span class="token number">6</span><span class="token punctuation">)</span> dc_inst_dufs <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="256">            <span class="token number">7</span><span class="token punctuation">)</span> dc_inst_easyvoice <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="257">            <span class="token number">8</span><span class="token punctuation">)</span> dc_inst_emby <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="258">            <span class="token number">9</span><span class="token punctuation">)</span> dc_inst_filebrowser <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="259">            <span class="token number">10</span><span class="token punctuation">)</span> dc_inst_gitea <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="260">            <span class="token number">11</span><span class="token punctuation">)</span> dc_inst_gopeed <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="261">            <span class="token number">12</span><span class="token punctuation">)</span> dc_inst_halo <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="262">            <span class="token number">13</span><span class="token punctuation">)</span> dc_inst_hd-icons <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="263">            <span class="token number">14</span><span class="token punctuation">)</span> dc_inst_ittools <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="264">            <span class="token number">15</span><span class="token punctuation">)</span> dc_inst_jellyfin <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="265">            <span class="token number">16</span><span class="token punctuation">)</span> dc_inst_kspeeder <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="266">            <span class="token number">17</span><span class="token punctuation">)</span> dc_inst_litepan <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="267">            <span class="token number">18</span><span class="token punctuation">)</span> dc_inst_lucky <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="268">            <span class="token number">19</span><span class="token punctuation">)</span> dc_inst_lxserver <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="269">            <span class="token number">20</span><span class="token punctuation">)</span> dc_inst_mindoc <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="270">            <span class="token number">21</span><span class="token punctuation">)</span> dc_inst_moontv <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="271">            <span class="token number">22</span><span class="token punctuation">)</span> dc_inst_music-tag <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="272">            <span class="token number">23</span><span class="token punctuation">)</span> dc_inst_nastools <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="273">            <span class="token number">24</span><span class="token punctuation">)</span> dc_inst_nginx-file <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="274">            <span class="token number">25</span><span class="token punctuation">)</span> dc_inst_opencode <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="275">            <span class="token number">26</span><span class="token punctuation">)</span> dc_inst_openlist <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="276">            <span class="token number">27</span><span class="token punctuation">)</span> dc_inst_pansou <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="277">            <span class="token number">28</span><span class="token punctuation">)</span> dc_inst_portainer <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="278">            <span class="token number">29</span><span class="token punctuation">)</span> dc_inst_qbittorrent <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="279">            <span class="token number">30</span><span class="token punctuation">)</span> dc_inst_random-pic-api <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="280">            <span class="token number">31</span><span class="token punctuation">)</span> dc_inst_reubah <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="281">            <span class="token number">32</span><span class="token punctuation">)</span> dc_inst_safeline <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="282">            <span class="token number">33</span><span class="token punctuation">)</span> dc_inst_siyuan <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="283">            <span class="token number">34</span><span class="token punctuation">)</span> dc_inst_speedtest <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="284">            <span class="token number">35</span><span class="token punctuation">)</span> dc_inst_sun-panel <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="285">            <span class="token number">36</span><span class="token punctuation">)</span> dc_inst_taosync <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="286">            <span class="token number">37</span><span class="token punctuation">)</span> dc_inst_transmission <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="287">            <span class="token number">38</span><span class="token punctuation">)</span> dc_inst_tvhelper <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="288">            <span class="token number">39</span><span class="token punctuation">)</span> dc_inst_vscode <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="289">            <span class="token number">40</span><span class="token punctuation">)</span> dc_inst_xiaomusic <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="290">            <span class="token number">41</span><span class="token punctuation">)</span> dc_inst_xunlei <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="291">            <span class="token number">42</span><span class="token punctuation">)</span> dc_inst_zfile <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="292">            <span class="token number">43</span><span class="token punctuation">)</span> dc_inst_iptv <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="293">            <span class="token number">44</span><span class="token punctuation">)</span> dc_inst_ddns-go <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="294">            <span class="token number">45</span><span class="token punctuation">)</span> dc_inst_bujic-panel <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="295">            <span class="token number">46</span><span class="token punctuation">)</span> dc_inst_arcane <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="296">            <span class="token number">47</span><span class="token punctuation">)</span> dc_inst_bark <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="297">            <span class="token number">48</span><span class="token punctuation">)</span> dc_inst_dufs-zh <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="298">            <span class="token number">49</span><span class="token punctuation">)</span> dc_inst_easynode <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="299">            <span class="token number">50</span><span class="token punctuation">)</span> dc_inst_mediamaster <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="300">            <span class="token number">51</span><span class="token punctuation">)</span> dc_inst_metube-zh <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="301">            <span class="token number">52</span><span class="token punctuation">)</span> dc_inst_nginx <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="302">            <span class="token number">53</span><span class="token punctuation">)</span> dc_inst_studybuddy <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="303">            <span class="token number">54</span><span class="token punctuation">)</span> dc_inst_uptime-kuma <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="304">            <span class="token number">0</span><span class="token punctuation">)</span>  cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="305">            00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
-</span><span class="code-line line-number" line="306">        <span class="token keyword">esac</span>
-</span><span class="code-line line-number" line="307">    <span class="token keyword">done</span>
-</span><span class="code-line line-number" line="308"><span class="token punctuation">}</span>
-</span><span class="code-line line-number" line="309">
-</span><span class="code-line line-number" line="310">main <span class="token string">"<span class="token variable">$@</span>"</span>
+</span><span class="code-line line-number" line="191"><span class="token function-name function">dc_inst_fan-files</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-files"</span> <span class="token string">"落幕文件中转站"</span> <span class="token string">"8080"</span> <span class="token string">"/vol1/1000/compose/fan-files"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="192"><span class="token function-name function">dc_inst_fan-imagehost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-imagehost"</span> <span class="token string">"落幕图床服务"</span> <span class="token string">"3000"</span> <span class="token string">"/vol1/1000/compose/fan-imagehost"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="193"><span class="token function-name function">dc_inst_fan-image-tr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-image-tr"</span> <span class="token string">"落幕图片文档格式转换"</span> <span class="token string">"8681"</span> <span class="token string">"/vol1/1000/compose/fan-image-tr"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="194"><span class="token function-name function">dc_inst_fan-md</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-md"</span> <span class="token string">"落幕 Markdown 编辑器"</span> <span class="token string">"3001"</span> <span class="token string">"/vol1/1000/compose/fan-md"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="195"><span class="token function-name function">dc_inst_fan-nginx</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-nginx"</span> <span class="token string">"落幕 Nginx 配置管理"</span> <span class="token string">"8081"</span> <span class="token string">"/vol1/1000/compose/fan-nginx"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="196"><span class="token function-name function">dc_inst_fan-panel</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-panel"</span> <span class="token string">"落幕导航面板"</span> <span class="token string">"3002"</span> <span class="token string">"/vol1/1000/compose/fan-panel"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="197"><span class="token function-name function">dc_inst_fan-random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-random"</span> <span class="token string">"落幕随机图片 API"</span> <span class="token string">"8588"</span> <span class="token string">"/vol1/1000/compose/fan-random"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="198"><span class="token function-name function">dc_inst_fan-reubah</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-reubah"</span> <span class="token string">"落幕图片文档格式转换"</span> <span class="token string">"8681"</span> <span class="token string">"/vol1/1000/compose/fan-reubah"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="199"><span class="token function-name function">dc_inst_fan-shop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-shop"</span> <span class="token string">"落幕商城"</span> <span class="token string">"3003"</span> <span class="token string">"/vol1/1000/compose/fan-shop"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="200"><span class="token function-name function">dc_inst_fan-video</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-video"</span> <span class="token string">"落幕视频服务"</span> <span class="token string">"8082"</span> <span class="token string">"/vol1/1000/compose/fan-video"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="201"><span class="token function-name function">dc_inst_fan-video-ct</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-video-ct"</span> <span class="token string">"落幕视频 CT 转码"</span> <span class="token string">"8083"</span> <span class="token string">"/vol1/1000/compose/fan-video-ct"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="202"><span class="token function-name function">dc_inst_fan-video-dl</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-video-dl"</span> <span class="token string">"落幕视频下载器"</span> <span class="token string">"8084"</span> <span class="token string">"/vol1/1000/compose/fan-video-dl"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="203"><span class="token function-name function">dc_inst_fan-video-tr</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-video-tr"</span> <span class="token string">"落幕视频格式转换"</span> <span class="token string">"8085"</span> <span class="token string">"/vol1/1000/compose/fan-video-tr"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="204"><span class="token function-name function">dc_inst_fan-webssh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> run_compose <span class="token string">"fan-webssh"</span> <span class="token string">"落幕 WebSSH 终端"</span> <span class="token string">"8086"</span> <span class="token string">"/vol1/1000/compose/fan-webssh"</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="205">
+</span><span class="code-line line-number" line="206"><span class="token function-name function">show_menu</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="207">    <span class="token function">clear</span>
+</span><span class="code-line line-number" line="208">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_zi}</span>>>> Compose 一键安装菜单<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="209">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="210">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>1.  <span class="token variable">${gl_bai}</span>AllinSSL证书管理工具   <span class="token variable">${gl_bufan}</span>2.  <span class="token variable">${gl_bai}</span>Caddy Web服务器"</span>
+</span><span class="code-line line-number" line="211">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>3.  <span class="token variable">${gl_bai}</span>Chromium网页版浏览器   <span class="token variable">${gl_bufan}</span>4.  <span class="token variable">${gl_bai}</span>道理鱼音乐"</span>
+</span><span class="code-line line-number" line="212">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>5.  <span class="token variable">${gl_bai}</span>DPanel Docker管理面板  <span class="token variable">${gl_bufan}</span>6.  <span class="token variable">${gl_bai}</span>Dufs私有网盘"</span>
+</span><span class="code-line line-number" line="213">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>7.  <span class="token variable">${gl_bai}</span>EasyVoice文本转语音    <span class="token variable">${gl_bufan}</span>8.  <span class="token variable">${gl_bai}</span>Emby媒体服务器"</span>
+</span><span class="code-line line-number" line="214">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>9.  <span class="token variable">${gl_bai}</span>FileBrowser文件管理器  <span class="token variable">${gl_bufan}</span>10. <span class="token variable">${gl_bai}</span>Gitea代码托管平台"</span>
+</span><span class="code-line line-number" line="215">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="216">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>11. <span class="token variable">${gl_bai}</span>Gopeed高速下载器       <span class="token variable">${gl_bufan}</span>12. <span class="token variable">${gl_bai}</span>Halo建站工具"</span>
+</span><span class="code-line line-number" line="217">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>13. <span class="token variable">${gl_bai}</span>高清图标库             <span class="token variable">${gl_bufan}</span>14. <span class="token variable">${gl_bai}</span>IT工具箱"</span>
+</span><span class="code-line line-number" line="218">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>15. <span class="token variable">${gl_bai}</span>Jellyfin媒体服务器     <span class="token variable">${gl_bufan}</span>16. <span class="token variable">${gl_bai}</span>KSpeeder私有加速代理"</span>
+</span><span class="code-line line-number" line="219">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>17. <span class="token variable">${gl_bai}</span>Litepan网盘聚合工具    <span class="token variable">${gl_bufan}</span>18. <span class="token variable">${gl_bai}</span>Lucky全能内网工具"</span>
+</span><span class="code-line line-number" line="220">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>19. <span class="token variable">${gl_bai}</span>落雪音乐服务"</span>
+</span><span class="code-line line-number" line="221">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="222">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>20. <span class="token variable">${gl_bai}</span>MinDo文档管理系统      <span class="token variable">${gl_bufan}</span>21. <span class="token variable">${gl_bai}</span>LunaTV电视直播服务"</span>
+</span><span class="code-line line-number" line="223">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>22. <span class="token variable">${gl_bai}</span>MusicTag音乐标签编辑   <span class="token variable">${gl_bufan}</span>23. <span class="token variable">${gl_bai}</span>NASTools媒体管理套件"</span>
+</span><span class="code-line line-number" line="224">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>24. <span class="token variable">${gl_bai}</span>Nginx轻量级文件服务    <span class="token variable">${gl_bufan}</span>25. <span class="token variable">${gl_bai}</span>OpenCode在线代码编辑器"</span>
+</span><span class="code-line line-number" line="225">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>26. <span class="token variable">${gl_bai}</span>Openlist媒体目录服务   <span class="token variable">${gl_bufan}</span>27. <span class="token variable">${gl_bai}</span>PanSou私人网盘搜索引擎"</span>
+</span><span class="code-line line-number" line="226">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>28. <span class="token variable">${gl_bai}</span>Portainer容器管理面板  <span class="token variable">${gl_bufan}</span>29. <span class="token variable">${gl_bai}</span>qBittorrent下载工具"</span>
+</span><span class="code-line line-number" line="227">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="228">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>30. <span class="token variable">${gl_bai}</span>随机图片 API接口       <span class="token variable">${gl_bufan}</span>31. <span class="token variable">${gl_bai}</span>Reubah图片文档格式转换"</span>
+</span><span class="code-line line-number" line="229">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>32. <span class="token variable">${gl_bai}</span>雷池WAF安全防护        <span class="token variable">${gl_bufan}</span>33. <span class="token variable">${gl_bai}</span>思源笔记"</span>
+</span><span class="code-line line-number" line="230">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>34. <span class="token variable">${gl_bai}</span>Speedtest中文网速测试  <span class="token variable">${gl_bufan}</span>35. <span class="token variable">${gl_bai}</span>Sun-Panel导航面板"</span>
+</span><span class="code-line line-number" line="231">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>36. <span class="token variable">${gl_bai}</span>TaoSync云盘同步工具    <span class="token variable">${gl_bufan}</span>37. <span class="token variable">${gl_bai}</span>Transmission下载工具"</span>
+</span><span class="code-line line-number" line="232">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>38. <span class="token variable">${gl_bai}</span>悟空盒子助手           <span class="token variable">${gl_bufan}</span>39. <span class="token variable">${gl_bai}</span>VSCode网页版"</span>
+</span><span class="code-line line-number" line="233">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="234">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>40. <span class="token variable">${gl_bai}</span>XiaoMusic小爱音箱服务  <span class="token variable">${gl_bufan}</span>41. <span class="token variable">${gl_bai}</span>迅雷下载服务"</span>
+</span><span class="code-line line-number" line="235">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>42. <span class="token variable">${gl_bai}</span>ZFile在线文件管理系统  <span class="token variable">${gl_bufan}</span>43. <span class="token variable">${gl_bai}</span>IPTV直播流代理服务"</span>
+</span><span class="code-line line-number" line="236">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>44. <span class="token variable">${gl_bai}</span>DDNS-GO动态域名解析    <span class="token variable">${gl_bufan}</span>45. <span class="token variable">${gl_bai}</span>Bujic Panel布吉岛导航"</span>
+</span><span class="code-line line-number" line="237">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>46. <span class="token variable">${gl_bai}</span>Arcane应用管理器       <span class="token variable">${gl_bufan}</span>47. <span class="token variable">${gl_bai}</span>Bark推送服务"</span>
+</span><span class="code-line line-number" line="238">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>48. <span class="token variable">${gl_bai}</span>Dufs-ZH中文版私有网盘  <span class="token variable">${gl_bufan}</span>49. <span class="token variable">${gl_bai}</span>EasyNode远程管理工具"</span>
+</span><span class="code-line line-number" line="239">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>50. <span class="token variable">${gl_bai}</span>MediaMaster媒资管理    <span class="token variable">${gl_bufan}</span>51. <span class="token variable">${gl_bai}</span>MeTube-ZH视频下载器"</span>
+</span><span class="code-line line-number" line="240">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>52. <span class="token variable">${gl_bai}</span>Nginx Web服务器        <span class="token variable">${gl_bufan}</span>53. <span class="token variable">${gl_bai}</span>StudyBuddy刷题自测"</span>
+</span><span class="code-line line-number" line="241">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>54. <span class="token variable">${gl_bai}</span>Uptime Kuma监控工具"</span>
+</span><span class="code-line line-number" line="242">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>55. <span class="token variable">${gl_bai}</span>落幕文件中转站         <span class="token variable">${gl_bufan}</span>56. <span class="token variable">${gl_bai}</span>落幕图床服务"</span>
+</span><span class="code-line line-number" line="243">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>57. <span class="token variable">${gl_bai}</span>落幕图片文档转换       <span class="token variable">${gl_bufan}</span>58. <span class="token variable">${gl_bai}</span>落幕Markdown编辑器"</span>
+</span><span class="code-line line-number" line="244">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>59. <span class="token variable">${gl_bai}</span>落幕Nginx配置管理      <span class="token variable">${gl_bufan}</span>60. <span class="token variable">${gl_bai}</span>落幕导航面板"</span>
+</span><span class="code-line line-number" line="245">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>61. <span class="token variable">${gl_bai}</span>落幕随机图片API        <span class="token variable">${gl_bufan}</span>62. <span class="token variable">${gl_bai}</span>落幕图片文档转换"</span>
+</span><span class="code-line line-number" line="246">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>63. <span class="token variable">${gl_bai}</span>落幕商城               <span class="token variable">${gl_bufan}</span>64. <span class="token variable">${gl_bai}</span>落幕视频服务"</span>
+</span><span class="code-line line-number" line="247">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>65. <span class="token variable">${gl_bai}</span>落幕视频CT转码         <span class="token variable">${gl_bufan}</span>66. <span class="token variable">${gl_bai}</span>落幕视频下载器"</span>
+</span><span class="code-line line-number" line="248">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>67. <span class="token variable">${gl_bai}</span>落幕视频格式转换       <span class="token variable">${gl_bufan}</span>68. <span class="token variable">${gl_bai}</span>落幕WebSSH终端"</span>
+</span><span class="code-line line-number" line="249">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="250">    <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_huang}</span>0.  <span class="token variable">${gl_bai}</span>返回上一级选单         <span class="token variable">${gl_hong}</span>00. <span class="token variable">${gl_bai}</span>退出脚本"</span>
+</span><span class="code-line line-number" line="251"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="252">
+</span><span class="code-line line-number" line="253"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</span><span class="code-line line-number" line="254">    <span class="token keyword">while</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+</span><span class="code-line line-number" line="255">        show_menu
+</span><span class="code-line line-number" line="256">        <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bufan}</span>─────────────────────────────────────────────────────<span class="token variable">${reset}</span>"</span>
+</span><span class="code-line line-number" line="257">        <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> <span class="token parameter variable">-e</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token variable">${gl_bai}</span>请输入你的选择: "</span><span class="token variable">)</span></span>"</span> choice
+</span><span class="code-line line-number" line="258">        <span class="token assign-left variable">choice</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${choice<span class="token operator">:-</span>0}</span>"</span>
+</span><span class="code-line line-number" line="259">
+</span><span class="code-line line-number" line="260">        <span class="token keyword">if</span> <span class="token operator">!</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$choice</span>"</span> <span class="token operator">=~</span> ^<span class="token punctuation">[</span><span class="token number">0</span>-9<span class="token punctuation">]</span>+$ <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="261">            handle_invalid_input
+</span><span class="code-line line-number" line="262">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="263">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="264">
+</span><span class="code-line line-number" line="265">        <span class="token keyword">if</span> <span class="token variable"><span class="token punctuation">((</span> choice <span class="token operator">&#x3C;</span> <span class="token number">0</span> <span class="token operator">||</span> choice <span class="token operator">></span> <span class="token number">68</span> <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+</span><span class="code-line line-number" line="266">            handle_invalid_input
+</span><span class="code-line line-number" line="267">            <span class="token builtin class-name">continue</span>
+</span><span class="code-line line-number" line="268">        <span class="token keyword">fi</span>
+</span><span class="code-line line-number" line="269">
+</span><span class="code-line line-number" line="270">        <span class="token keyword">case</span> <span class="token string">"<span class="token variable">$choice</span>"</span> <span class="token keyword">in</span>
+</span><span class="code-line line-number" line="271">            <span class="token number">1</span><span class="token punctuation">)</span> dc_inst_allinssl <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="272">            <span class="token number">2</span><span class="token punctuation">)</span> dc_inst_caddy <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="273">            <span class="token number">3</span><span class="token punctuation">)</span> dc_inst_chrome <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="274">            <span class="token number">4</span><span class="token punctuation">)</span> dc_inst_daoliyu-music <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="275">            <span class="token number">5</span><span class="token punctuation">)</span> dc_inst_dpanel <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="276">            <span class="token number">6</span><span class="token punctuation">)</span> dc_inst_dufs <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="277">            <span class="token number">7</span><span class="token punctuation">)</span> dc_inst_easyvoice <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="278">            <span class="token number">8</span><span class="token punctuation">)</span> dc_inst_emby <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="279">            <span class="token number">9</span><span class="token punctuation">)</span> dc_inst_filebrowser <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="280">            <span class="token number">10</span><span class="token punctuation">)</span> dc_inst_gitea <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="281">            <span class="token number">11</span><span class="token punctuation">)</span> dc_inst_gopeed <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="282">            <span class="token number">12</span><span class="token punctuation">)</span> dc_inst_halo <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="283">            <span class="token number">13</span><span class="token punctuation">)</span> dc_inst_hd-icons <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="284">            <span class="token number">14</span><span class="token punctuation">)</span> dc_inst_ittools <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="285">            <span class="token number">15</span><span class="token punctuation">)</span> dc_inst_jellyfin <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="286">            <span class="token number">16</span><span class="token punctuation">)</span> dc_inst_kspeeder <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="287">            <span class="token number">17</span><span class="token punctuation">)</span> dc_inst_litepan <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="288">            <span class="token number">18</span><span class="token punctuation">)</span> dc_inst_lucky <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="289">            <span class="token number">19</span><span class="token punctuation">)</span> dc_inst_lxserver <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="290">            <span class="token number">20</span><span class="token punctuation">)</span> dc_inst_mindoc <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="291">            <span class="token number">21</span><span class="token punctuation">)</span> dc_inst_moontv <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="292">            <span class="token number">22</span><span class="token punctuation">)</span> dc_inst_music-tag <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="293">            <span class="token number">23</span><span class="token punctuation">)</span> dc_inst_nastools <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="294">            <span class="token number">24</span><span class="token punctuation">)</span> dc_inst_nginx-file <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="295">            <span class="token number">25</span><span class="token punctuation">)</span> dc_inst_opencode <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="296">            <span class="token number">26</span><span class="token punctuation">)</span> dc_inst_openlist <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="297">            <span class="token number">27</span><span class="token punctuation">)</span> dc_inst_pansou <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="298">            <span class="token number">28</span><span class="token punctuation">)</span> dc_inst_portainer <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="299">            <span class="token number">29</span><span class="token punctuation">)</span> dc_inst_qbittorrent <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="300">            <span class="token number">30</span><span class="token punctuation">)</span> dc_inst_random-pic-api <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="301">            <span class="token number">31</span><span class="token punctuation">)</span> dc_inst_reubah <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="302">            <span class="token number">32</span><span class="token punctuation">)</span> dc_inst_safeline <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="303">            <span class="token number">33</span><span class="token punctuation">)</span> dc_inst_siyuan <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="304">            <span class="token number">34</span><span class="token punctuation">)</span> dc_inst_speedtest <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="305">            <span class="token number">35</span><span class="token punctuation">)</span> dc_inst_sun-panel <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="306">            <span class="token number">36</span><span class="token punctuation">)</span> dc_inst_taosync <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="307">            <span class="token number">37</span><span class="token punctuation">)</span> dc_inst_transmission <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="308">            <span class="token number">38</span><span class="token punctuation">)</span> dc_inst_tvhelper <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="309">            <span class="token number">39</span><span class="token punctuation">)</span> dc_inst_vscode <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="310">            <span class="token number">40</span><span class="token punctuation">)</span> dc_inst_xiaomusic <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="311">            <span class="token number">41</span><span class="token punctuation">)</span> dc_inst_xunlei <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="312">            <span class="token number">42</span><span class="token punctuation">)</span> dc_inst_zfile <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="313">            <span class="token number">43</span><span class="token punctuation">)</span> dc_inst_iptv <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="314">            <span class="token number">44</span><span class="token punctuation">)</span> dc_inst_ddns-go <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="315">            <span class="token number">45</span><span class="token punctuation">)</span> dc_inst_bujic-panel <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="316">            <span class="token number">46</span><span class="token punctuation">)</span> dc_inst_arcane <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="317">            <span class="token number">47</span><span class="token punctuation">)</span> dc_inst_bark <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="318">            <span class="token number">48</span><span class="token punctuation">)</span> dc_inst_dufs-zh <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="319">            <span class="token number">49</span><span class="token punctuation">)</span> dc_inst_easynode <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="320">            <span class="token number">50</span><span class="token punctuation">)</span> dc_inst_mediamaster <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="321">            <span class="token number">51</span><span class="token punctuation">)</span> dc_inst_metube-zh <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="322">            <span class="token number">52</span><span class="token punctuation">)</span> dc_inst_nginx <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="323">            <span class="token number">53</span><span class="token punctuation">)</span> dc_inst_studybuddy <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="324">            <span class="token number">54</span><span class="token punctuation">)</span> dc_inst_uptime-kuma <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="325">            <span class="token number">55</span><span class="token punctuation">)</span> dc_inst_fan-files <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="326">            <span class="token number">56</span><span class="token punctuation">)</span> dc_inst_fan-imagehost <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="327">            <span class="token number">57</span><span class="token punctuation">)</span> dc_inst_fan-image-tr <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="328">            <span class="token number">58</span><span class="token punctuation">)</span> dc_inst_fan-md <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="329">            <span class="token number">59</span><span class="token punctuation">)</span> dc_inst_fan-nginx <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="330">            <span class="token number">60</span><span class="token punctuation">)</span> dc_inst_fan-panel <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="331">            <span class="token number">61</span><span class="token punctuation">)</span> dc_inst_fan-random <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="332">            <span class="token number">62</span><span class="token punctuation">)</span> dc_inst_fan-reubah <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="333">            <span class="token number">63</span><span class="token punctuation">)</span> dc_inst_fan-shop <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="334">            <span class="token number">64</span><span class="token punctuation">)</span> dc_inst_fan-video <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="335">            <span class="token number">65</span><span class="token punctuation">)</span> dc_inst_fan-video-ct <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="336">            <span class="token number">66</span><span class="token punctuation">)</span> dc_inst_fan-video-dl <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="337">            <span class="token number">67</span><span class="token punctuation">)</span> dc_inst_fan-video-tr <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="338">            <span class="token number">68</span><span class="token punctuation">)</span> dc_inst_fan-webssh <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="339">            <span class="token number">0</span><span class="token punctuation">)</span>  cancel_return <span class="token string">"已是主菜单"</span> <span class="token operator">||</span> <span class="token builtin class-name">continue</span> <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="340">            00 <span class="token operator">|</span> 000 <span class="token operator">|</span> 0000<span class="token punctuation">)</span> exit_script <span class="token punctuation">;</span><span class="token punctuation">;</span>
+</span><span class="code-line line-number" line="341">        <span class="token keyword">esac</span>
+</span><span class="code-line line-number" line="342">    <span class="token keyword">done</span>
+</span><span class="code-line line-number" line="343"><span class="token punctuation">}</span>
+</span><span class="code-line line-number" line="344">
+</span><span class="code-line line-number" line="345">main <span class="token string">"<span class="token variable">$@</span>"</span>
 </span></code><div onclick="copied(this)" data-code="#!/bin/bash
 set -euo pipefail
 
@@ -2125,6 +2244,20 @@ dc_inst_metube-zh() { run_compose &#x22;metube-zh&#x22; &#x22;MeTube-ZH 中文�
 dc_inst_nginx() { run_compose &#x22;nginx&#x22; &#x22;Nginx Web 服务器&#x22; &#x22;80&#x22; &#x22;/vol1/1000/compose/nginx&#x22;; }
 dc_inst_studybuddy() { run_compose &#x22;studybuddy&#x22; &#x22;StudyBuddy 刷题自测系统&#x22; &#x22;8658&#x22; &#x22;/vol1/1000/compose/studybuddy&#x22;; }
 dc_inst_uptime-kuma() { run_compose &#x22;uptime-kuma&#x22; &#x22;Uptime Kuma 监控工具&#x22; &#x22;3001&#x22; &#x22;/vol1/1000/compose/uptime-kuma&#x22;; }
+dc_inst_fan-files() { run_compose &#x22;fan-files&#x22; &#x22;落幕文件中转站&#x22; &#x22;8080&#x22; &#x22;/vol1/1000/compose/fan-files&#x22;; }
+dc_inst_fan-imagehost() { run_compose &#x22;fan-imagehost&#x22; &#x22;落幕图床服务&#x22; &#x22;3000&#x22; &#x22;/vol1/1000/compose/fan-imagehost&#x22;; }
+dc_inst_fan-image-tr() { run_compose &#x22;fan-image-tr&#x22; &#x22;落幕图片文档格式转换&#x22; &#x22;8681&#x22; &#x22;/vol1/1000/compose/fan-image-tr&#x22;; }
+dc_inst_fan-md() { run_compose &#x22;fan-md&#x22; &#x22;落幕 Markdown 编辑器&#x22; &#x22;3001&#x22; &#x22;/vol1/1000/compose/fan-md&#x22;; }
+dc_inst_fan-nginx() { run_compose &#x22;fan-nginx&#x22; &#x22;落幕 Nginx 配置管理&#x22; &#x22;8081&#x22; &#x22;/vol1/1000/compose/fan-nginx&#x22;; }
+dc_inst_fan-panel() { run_compose &#x22;fan-panel&#x22; &#x22;落幕导航面板&#x22; &#x22;3002&#x22; &#x22;/vol1/1000/compose/fan-panel&#x22;; }
+dc_inst_fan-random() { run_compose &#x22;fan-random&#x22; &#x22;落幕随机图片 API&#x22; &#x22;8588&#x22; &#x22;/vol1/1000/compose/fan-random&#x22;; }
+dc_inst_fan-reubah() { run_compose &#x22;fan-reubah&#x22; &#x22;落幕图片文档格式转换&#x22; &#x22;8681&#x22; &#x22;/vol1/1000/compose/fan-reubah&#x22;; }
+dc_inst_fan-shop() { run_compose &#x22;fan-shop&#x22; &#x22;落幕商城&#x22; &#x22;3003&#x22; &#x22;/vol1/1000/compose/fan-shop&#x22;; }
+dc_inst_fan-video() { run_compose &#x22;fan-video&#x22; &#x22;落幕视频服务&#x22; &#x22;8082&#x22; &#x22;/vol1/1000/compose/fan-video&#x22;; }
+dc_inst_fan-video-ct() { run_compose &#x22;fan-video-ct&#x22; &#x22;落幕视频 CT 转码&#x22; &#x22;8083&#x22; &#x22;/vol1/1000/compose/fan-video-ct&#x22;; }
+dc_inst_fan-video-dl() { run_compose &#x22;fan-video-dl&#x22; &#x22;落幕视频下载器&#x22; &#x22;8084&#x22; &#x22;/vol1/1000/compose/fan-video-dl&#x22;; }
+dc_inst_fan-video-tr() { run_compose &#x22;fan-video-tr&#x22; &#x22;落幕视频格式转换&#x22; &#x22;8085&#x22; &#x22;/vol1/1000/compose/fan-video-tr&#x22;; }
+dc_inst_fan-webssh() { run_compose &#x22;fan-webssh&#x22; &#x22;落幕 WebSSH 终端&#x22; &#x22;8086&#x22; &#x22;/vol1/1000/compose/fan-webssh&#x22;; }
 
 show_menu() {
     clear
@@ -2162,6 +2295,13 @@ show_menu() {
     echo -e &#x22;${gl_bufan}50. ${gl_bai}MediaMaster媒资管理    ${gl_bufan}51. ${gl_bai}MeTube-ZH视频下载器&#x22;
     echo -e &#x22;${gl_bufan}52. ${gl_bai}Nginx Web服务器        ${gl_bufan}53. ${gl_bai}StudyBuddy刷题自测&#x22;
     echo -e &#x22;${gl_bufan}54. ${gl_bai}Uptime Kuma监控工具&#x22;
+    echo -e &#x22;${gl_bufan}55. ${gl_bai}落幕文件中转站         ${gl_bufan}56. ${gl_bai}落幕图床服务&#x22;
+    echo -e &#x22;${gl_bufan}57. ${gl_bai}落幕图片文档转换       ${gl_bufan}58. ${gl_bai}落幕Markdown编辑器&#x22;
+    echo -e &#x22;${gl_bufan}59. ${gl_bai}落幕Nginx配置管理      ${gl_bufan}60. ${gl_bai}落幕导航面板&#x22;
+    echo -e &#x22;${gl_bufan}61. ${gl_bai}落幕随机图片API        ${gl_bufan}62. ${gl_bai}落幕图片文档转换&#x22;
+    echo -e &#x22;${gl_bufan}63. ${gl_bai}落幕商城               ${gl_bufan}64. ${gl_bai}落幕视频服务&#x22;
+    echo -e &#x22;${gl_bufan}65. ${gl_bai}落幕视频CT转码         ${gl_bufan}66. ${gl_bai}落幕视频下载器&#x22;
+    echo -e &#x22;${gl_bufan}67. ${gl_bai}落幕视频格式转换       ${gl_bufan}68. ${gl_bai}落幕WebSSH终端&#x22;
     echo -e &#x22;${gl_bufan}─────────────────────────────────────────────────────${reset}&#x22;
     echo -e &#x22;${gl_huang}0.  ${gl_bai}返回上一级选单         ${gl_hong}00. ${gl_bai}退出脚本&#x22;
 }
@@ -2178,7 +2318,7 @@ main() {
             continue
         fi
 
-        if (( choice < 0 || choice > 54 )); then
+        if (( choice < 0 || choice > 68 )); then
             handle_invalid_input
             continue
         fi
@@ -2238,6 +2378,20 @@ main() {
             52) dc_inst_nginx ;;
             53) dc_inst_studybuddy ;;
             54) dc_inst_uptime-kuma ;;
+            55) dc_inst_fan-files ;;
+            56) dc_inst_fan-imagehost ;;
+            57) dc_inst_fan-image-tr ;;
+            58) dc_inst_fan-md ;;
+            59) dc_inst_fan-nginx ;;
+            60) dc_inst_fan-panel ;;
+            61) dc_inst_fan-random ;;
+            62) dc_inst_fan-reubah ;;
+            63) dc_inst_fan-shop ;;
+            64) dc_inst_fan-video ;;
+            65) dc_inst_fan-video-ct ;;
+            66) dc_inst_fan-video-dl ;;
+            67) dc_inst_fan-video-tr ;;
+            68) dc_inst_fan-webssh ;;
             0)  cancel_return &#x22;已是主菜单&#x22; || continue ;;
             00 | 000 | 0000) exit_script ;;
         esac
@@ -2502,7 +2656,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=4655c1b0235db3a0"></script>
+<script src="../js/post-toc.js?v=4655c1b055bbc299"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2606,7 +2760,7 @@ function copied(target, str) {
         <circle cx="12" cy="12" r="10" fill="url(#grad-cmd)"/>
         <path d="M9.5 9L14.5 12L9.5 15V9Z" fill="white"/>
       </svg>
-      <span class="footer-text">命令 <span class="footer-count command">888</span></span>
+      <span class="footer-text">命令 <span class="footer-count command">936</span></span>
     </a>
     <!-- 脚本统计：只显示 ops-script 目录 -->
     <a class="footer-item footer-script wow animate__animated animate__fadeInUp" data-wow-delay="0.4s" href="../script-list.html">
@@ -2621,7 +2775,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">304</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">369</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -2638,7 +2792,7 @@ function copied(target, str) {
         <line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"/>
         <line x1="8" y1="16" x2="14" y2="16" stroke="white" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">Win <span class="footer-count windows">104</span></span>
+      <span class="footer-text">Win <span class="footer-count windows">152</span></span>
     </a>
     <!-- 共计统计：command + ops-script + windows 总和 -->
     <a class="footer-item footer-total wow animate__animated animate__fadeInUp" data-wow-delay="0.55s" href="../all.html">
@@ -2652,7 +2806,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1296</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1457</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -2685,8 +2839,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=4655c1b0235db3a0"></script>
-<script type="text/javascript" src="../js/enhance.js?v=4655c1b0235db3a0"></script>
+<script type="text/javascript" src="../js/index.js?v=4655c1b055bbc299"></script>
+<script type="text/javascript" src="../js/enhance.js?v=4655c1b055bbc299"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
