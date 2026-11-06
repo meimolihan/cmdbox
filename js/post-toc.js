@@ -43,27 +43,32 @@
       }
     });
 
-    // 平滑滚动
+    // 平滑滚动 - 可复用
+    function scrollToTarget(href) {
+      if (!href || href.charAt(0) !== '#') return false;
+      var targetId = href.substring(1);
+      var target = document.getElementById(targetId) || document.querySelector('[id="' + targetId.replace(/"/g, '\\"') + '"]');
+      if (target) {
+        var headerOffset = 90;
+        var elementPosition = target.getBoundingClientRect().top;
+        var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        // 更新URL
+        try {
+          history.pushState(null, '', href);
+        } catch (err) {}
+        return true;
+      }
+      return false;
+    }
+
     document.querySelectorAll('.post-toc-link').forEach(function(link) {
       link.addEventListener('click', function(e) {
         e.preventDefault();
-        var href = this.getAttribute('href');
-        if (!href || href.charAt(0) !== '#') return;
-        var targetId = href.substring(1);
-        var target = document.getElementById(targetId) || document.querySelector('[id="' + targetId.replace(/"/g, '\\"') + '"]');
-        if (target) {
-          var headerOffset = 90;
-          var elementPosition = target.getBoundingClientRect().top;
-          var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-          // 更新URL
-          try {
-            history.pushState(null, '', href);
-          } catch (err) {}
-        }
+        scrollToTarget(this.getAttribute('href'));
         // 移动端关闭
         closeMobileToc();
       });
@@ -187,10 +192,12 @@
         mobileClose._tocBound = true;
       }
 
-      // 移动端目录链接点击关闭
+      // 移动端目录链接点击跳转并关闭
       document.querySelectorAll('#mobile-toc-panel .post-toc-link').forEach(function(link) {
         if (link._tocBound) return;
-        link.addEventListener('click', function() {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          scrollToTarget(this.getAttribute('href'));
           setTimeout(closeMobileToc, 300);
         });
         link._tocBound = true;
