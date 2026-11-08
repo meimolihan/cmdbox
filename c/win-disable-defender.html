@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="win-disable-defender 命令">
     <meta name="twitter:description" content="Windows Defender（Microsoft Defender）禁用指南 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1569,68 +1569,68 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底关闭-windows-defender-安全中心-实战记录">
-              <a class="post-toc-link" href="#彻底关闭-windows-defender-安全中心-实战记录" data-level="1">彻底关闭 Windows Defender 安全中心（实战记录）</a>
+            <li class="post-toc-item post-toc-level-1" data-toc-id="彻底关闭-windows-defender-安全中心实战记录">
+              <a class="post-toc-link" href="#彻底关闭-windows-defender-安全中心实战记录" data-level="1">彻底关闭 Windows Defender 安全中心（实战记录）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="前置条件">
               <a class="post-toc-link" href="#前置条件" data-level="2">前置条件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-关闭-defender-实时防护-powershell-已验证有效">
-              <a class="post-toc-link" href="#一-关闭-defender-实时防护-powershell-已验证有效" data-level="2">一、关闭 Defender 实时防护（PowerShell，已验证有效）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一关闭-defender-实时防护powershell已验证有效">
+              <a class="post-toc-link" href="#一关闭-defender-实时防护powershell已验证有效" data-level="2">一、关闭 Defender 实时防护（PowerShell，已验证有效）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="二-用注册表策略锁死-已验证有效">
-              <a class="post-toc-link" href="#二-用注册表策略锁死-已验证有效" data-level="2">二、用注册表策略锁死（已验证有效）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二用注册表策略锁死已验证有效">
+              <a class="post-toc-link" href="#二用注册表策略锁死已验证有效" data-level="2">二、用注册表策略锁死（已验证有效）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="三-隐藏-windows-安全中心界面与弹窗-组策略">
-              <a class="post-toc-link" href="#三-隐藏-windows-安全中心界面与弹窗-组策略" data-level="2">三、隐藏 Windows 安全中心界面与弹窗（组策略）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三隐藏-windows-安全中心界面与弹窗组策略">
+              <a class="post-toc-link" href="#三隐藏-windows-安全中心界面与弹窗组策略" data-level="2">三、隐藏 Windows 安全中心界面与弹窗（组策略）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="四-重启使配置彻底生效">
-              <a class="post-toc-link" href="#四-重启使配置彻底生效" data-level="2">四、重启使配置彻底生效</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四重启使配置彻底生效">
+              <a class="post-toc-link" href="#四重启使配置彻底生效" data-level="2">四、重启使配置彻底生效</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="五-验证">
-              <a class="post-toc-link" href="#五-验证" data-level="2">五、验证</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五验证">
+              <a class="post-toc-link" href="#五验证" data-level="2">五、验证</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="六-一键恢复脚本-需要时运行">
-              <a class="post-toc-link" href="#六-一键恢复脚本-需要时运行" data-level="2">六、一键恢复脚本（需要时运行）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六一键恢复脚本需要时运行">
+              <a class="post-toc-link" href="#六一键恢复脚本需要时运行" data-level="2">六、一键恢复脚本（需要时运行）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="七-想让-defender-进程也-消失">
-              <a class="post-toc-link" href="#七-想让-defender-进程也-消失" data-level="2">七、想让 Defender 进程也&#34;消失&#34;</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七想让-defender-进程也消失">
+              <a class="post-toc-link" href="#七想让-defender-进程也消失" data-level="2">七、想让 Defender 进程也&#34;消失&#34;</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="八-彻底关闭-smart-app-control-智能应用控制-windows-11-专属">
-              <a class="post-toc-link" href="#八-彻底关闭-smart-app-control-智能应用控制-windows-11-专属" data-level="2">八、彻底关闭 Smart App Control（智能应用控制，Windows 11 专属）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八彻底关闭-smart-app-control智能应用控制windows-11-专属">
+              <a class="post-toc-link" href="#八彻底关闭-smart-app-control智能应用控制windows-11-专属" data-level="2">八、彻底关闭 Smart App Control（智能应用控制，Windows 11 专属）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="方法-1-windows-安全中心-最简单">
-              <a class="post-toc-link" href="#方法-1-windows-安全中心-最简单" data-level="3">方法 1：Windows 安全中心（最简单）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法-1windows-安全中心最简单">
+              <a class="post-toc-link" href="#方法-1windows-安全中心最简单" data-level="3">方法 1：Windows 安全中心（最简单）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="方法-2-组策略-最稳-能持久-推荐">
-              <a class="post-toc-link" href="#方法-2-组策略-最稳-能持久-推荐" data-level="3">方法 2：组策略（最稳、能持久，推荐）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法-2组策略最稳能持久推荐">
+              <a class="post-toc-link" href="#方法-2组策略最稳能持久推荐" data-level="3">方法 2：组策略（最稳、能持久，推荐）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="方法-3-注册表-适合-win11-家庭版无-gpedit-的情况">
-              <a class="post-toc-link" href="#方法-3-注册表-适合-win11-家庭版无-gpedit-的情况" data-level="3">方法 3：注册表（适合 Win11 家庭版无 gpedit 的情况）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方法-3注册表适合-win11-家庭版无-gpedit-的情况">
+              <a class="post-toc-link" href="#方法-3注册表适合-win11-家庭版无-gpedit-的情况" data-level="3">方法 3：注册表（适合 Win11 家庭版无 gpedit 的情况）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="验证">
               <a class="post-toc-link" href="#验证" data-level="3">验证</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="关键警告-务必先读">
-              <a class="post-toc-link" href="#关键警告-务必先读" data-level="3">⚠️ 关键警告（务必先读）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="️-关键警告务必先读">
+              <a class="post-toc-link" href="#️-关键警告务必先读" data-level="3">⚠️ 关键警告（务必先读）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="附录-本次实测-无效-受限-的命令-仅供参考-勿纠结">
-              <a class="post-toc-link" href="#附录-本次实测-无效-受限-的命令-仅供参考-勿纠结" data-level="2">附录：本次实测&#34;无效 / 受限&#34;的命令（仅供参考，勿纠结）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="附录本次实测无效--受限的命令仅供参考勿纠结">
+              <a class="post-toc-link" href="#附录本次实测无效--受限的命令仅供参考勿纠结" data-level="2">附录：本次实测&#34;无效 / 受限&#34;的命令（仅供参考，勿纠结）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="风险提示">
@@ -1666,68 +1666,68 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底关闭-windows-defender-安全中心-实战记录">
-          <a class="post-toc-link" href="#彻底关闭-windows-defender-安全中心-实战记录" data-level="1">彻底关闭 Windows Defender 安全中心（实战记录）</a>
+        <li class="post-toc-item post-toc-level-1" data-toc-id="彻底关闭-windows-defender-安全中心实战记录">
+          <a class="post-toc-link" href="#彻底关闭-windows-defender-安全中心实战记录" data-level="1">彻底关闭 Windows Defender 安全中心（实战记录）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="前置条件">
           <a class="post-toc-link" href="#前置条件" data-level="2">前置条件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-关闭-defender-实时防护-powershell-已验证有效">
-          <a class="post-toc-link" href="#一-关闭-defender-实时防护-powershell-已验证有效" data-level="2">一、关闭 Defender 实时防护（PowerShell，已验证有效）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一关闭-defender-实时防护powershell已验证有效">
+          <a class="post-toc-link" href="#一关闭-defender-实时防护powershell已验证有效" data-level="2">一、关闭 Defender 实时防护（PowerShell，已验证有效）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="二-用注册表策略锁死-已验证有效">
-          <a class="post-toc-link" href="#二-用注册表策略锁死-已验证有效" data-level="2">二、用注册表策略锁死（已验证有效）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二用注册表策略锁死已验证有效">
+          <a class="post-toc-link" href="#二用注册表策略锁死已验证有效" data-level="2">二、用注册表策略锁死（已验证有效）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="三-隐藏-windows-安全中心界面与弹窗-组策略">
-          <a class="post-toc-link" href="#三-隐藏-windows-安全中心界面与弹窗-组策略" data-level="2">三、隐藏 Windows 安全中心界面与弹窗（组策略）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三隐藏-windows-安全中心界面与弹窗组策略">
+          <a class="post-toc-link" href="#三隐藏-windows-安全中心界面与弹窗组策略" data-level="2">三、隐藏 Windows 安全中心界面与弹窗（组策略）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="四-重启使配置彻底生效">
-          <a class="post-toc-link" href="#四-重启使配置彻底生效" data-level="2">四、重启使配置彻底生效</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四重启使配置彻底生效">
+          <a class="post-toc-link" href="#四重启使配置彻底生效" data-level="2">四、重启使配置彻底生效</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="五-验证">
-          <a class="post-toc-link" href="#五-验证" data-level="2">五、验证</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五验证">
+          <a class="post-toc-link" href="#五验证" data-level="2">五、验证</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="六-一键恢复脚本-需要时运行">
-          <a class="post-toc-link" href="#六-一键恢复脚本-需要时运行" data-level="2">六、一键恢复脚本（需要时运行）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六一键恢复脚本需要时运行">
+          <a class="post-toc-link" href="#六一键恢复脚本需要时运行" data-level="2">六、一键恢复脚本（需要时运行）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="七-想让-defender-进程也-消失">
-          <a class="post-toc-link" href="#七-想让-defender-进程也-消失" data-level="2">七、想让 Defender 进程也&#34;消失&#34;</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七想让-defender-进程也消失">
+          <a class="post-toc-link" href="#七想让-defender-进程也消失" data-level="2">七、想让 Defender 进程也&#34;消失&#34;</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="八-彻底关闭-smart-app-control-智能应用控制-windows-11-专属">
-          <a class="post-toc-link" href="#八-彻底关闭-smart-app-control-智能应用控制-windows-11-专属" data-level="2">八、彻底关闭 Smart App Control（智能应用控制，Windows 11 专属）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八彻底关闭-smart-app-control智能应用控制windows-11-专属">
+          <a class="post-toc-link" href="#八彻底关闭-smart-app-control智能应用控制windows-11-专属" data-level="2">八、彻底关闭 Smart App Control（智能应用控制，Windows 11 专属）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="方法-1-windows-安全中心-最简单">
-          <a class="post-toc-link" href="#方法-1-windows-安全中心-最简单" data-level="3">方法 1：Windows 安全中心（最简单）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法-1windows-安全中心最简单">
+          <a class="post-toc-link" href="#方法-1windows-安全中心最简单" data-level="3">方法 1：Windows 安全中心（最简单）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="方法-2-组策略-最稳-能持久-推荐">
-          <a class="post-toc-link" href="#方法-2-组策略-最稳-能持久-推荐" data-level="3">方法 2：组策略（最稳、能持久，推荐）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法-2组策略最稳能持久推荐">
+          <a class="post-toc-link" href="#方法-2组策略最稳能持久推荐" data-level="3">方法 2：组策略（最稳、能持久，推荐）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="方法-3-注册表-适合-win11-家庭版无-gpedit-的情况">
-          <a class="post-toc-link" href="#方法-3-注册表-适合-win11-家庭版无-gpedit-的情况" data-level="3">方法 3：注册表（适合 Win11 家庭版无 gpedit 的情况）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方法-3注册表适合-win11-家庭版无-gpedit-的情况">
+          <a class="post-toc-link" href="#方法-3注册表适合-win11-家庭版无-gpedit-的情况" data-level="3">方法 3：注册表（适合 Win11 家庭版无 gpedit 的情况）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="验证">
           <a class="post-toc-link" href="#验证" data-level="3">验证</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="关键警告-务必先读">
-          <a class="post-toc-link" href="#关键警告-务必先读" data-level="3">⚠️ 关键警告（务必先读）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="️-关键警告务必先读">
+          <a class="post-toc-link" href="#️-关键警告务必先读" data-level="3">⚠️ 关键警告（务必先读）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="附录-本次实测-无效-受限-的命令-仅供参考-勿纠结">
-          <a class="post-toc-link" href="#附录-本次实测-无效-受限-的命令-仅供参考-勿纠结" data-level="2">附录：本次实测&#34;无效 / 受限&#34;的命令（仅供参考，勿纠结）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="附录本次实测无效--受限的命令仅供参考勿纠结">
+          <a class="post-toc-link" href="#附录本次实测无效--受限的命令仅供参考勿纠结" data-level="2">附录：本次实测&#34;无效 / 受限&#34;的命令（仅供参考，勿纠结）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="风险提示">
@@ -1740,7 +1740,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1923,8 +1923,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -1941,7 +1941,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

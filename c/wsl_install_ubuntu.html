@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl_install_ubuntu 命令">
     <meta name="twitter:description" content="安装配置 WSL2 Ubuntu 系统 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2077,8 +2077,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#查看可用的发行版" data-level="3">查看可用的发行版</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-ubuntu">
-              <a class="post-toc-link" href="#安装-ubuntu" data-level="3">安装 Ubuntu</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="安装-ubuntu-1">
+              <a class="post-toc-link" href="#安装-ubuntu-1" data-level="3">安装 Ubuntu</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="查看安装结果">
@@ -2141,8 +2141,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#从-wsl-访问-windows-文件" data-level="3">从 WSL 访问 Windows 文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="配置静态-ip-可选">
-              <a class="post-toc-link" href="#配置静态-ip-可选" data-level="3">配置静态 IP（可选）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="配置静态-ip可选">
+              <a class="post-toc-link" href="#配置静态-ip可选" data-level="3">配置静态 IP（可选）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="安装-docker">
@@ -2169,16 +2169,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装其他常用软件" data-level="2">安装其他常用软件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="node-js-通过-nvm">
-              <a class="post-toc-link" href="#node-js-通过-nvm" data-level="3">Node.js（通过 nvm）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="nodejs通过-nvm">
+              <a class="post-toc-link" href="#nodejs通过-nvm" data-level="3">Node.js（通过 nvm）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="python">
               <a class="post-toc-link" href="#python" data-level="3">Python</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="java-openjdk">
-              <a class="post-toc-link" href="#java-openjdk" data-level="3">Java（OpenJDK）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="javaopenjdk">
+              <a class="post-toc-link" href="#javaopenjdk" data-level="3">Java（OpenJDK）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="性能优化">
@@ -2189,8 +2189,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#分配更多内存和-cpu" data-level="3">分配更多内存和 CPU</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="禁用-wsl-休眠-可选">
-              <a class="post-toc-link" href="#禁用-wsl-休眠-可选" data-level="3">禁用 WSL 休眠（可选）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="禁用-wsl-休眠可选">
+              <a class="post-toc-link" href="#禁用-wsl-休眠可选" data-level="3">禁用 WSL 休眠（可选）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="清理磁盘空间">
@@ -2237,40 +2237,40 @@ function copied(target, str) {
               <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="最常用-windows-目录-通用版">
-              <a class="post-toc-link" href="#最常用-windows-目录-通用版" data-level="2">最常用 Windows 目录（通用版）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="最常用-windows-目录通用版">
+              <a class="post-toc-link" href="#最常用-windows-目录通用版" data-level="2">最常用 Windows 目录（通用版）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="wsl-清理指南">
               <a class="post-toc-link" href="#wsl-清理指南" data-level="2">WSL 清理指南</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="一-仅卸载指定-ubuntu-实例-保留-wsl-功能">
-              <a class="post-toc-link" href="#一-仅卸载指定-ubuntu-实例-保留-wsl-功能" data-level="3">一、仅卸载指定 Ubuntu 实例（保留 WSL 功能）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一仅卸载指定-ubuntu-实例保留-wsl-功能">
+              <a class="post-toc-link" href="#一仅卸载指定-ubuntu-实例保留-wsl-功能" data-level="3">一、仅卸载指定 Ubuntu 实例（保留 WSL 功能）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="二-卸载所有-wsl-分发版-清理残留-常用彻底清理">
-              <a class="post-toc-link" href="#二-卸载所有-wsl-分发版-清理残留-常用彻底清理" data-level="3">二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="二卸载所有-wsl-分发版--清理残留常用彻底清理">
+              <a class="post-toc-link" href="#二卸载所有-wsl-分发版--清理残留常用彻底清理" data-level="3">二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows">
-              <a class="post-toc-link" href="#三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows" data-level="3">三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="三完全禁用并卸载-wsl-整套功能彻底回归纯-windows">
+              <a class="post-toc-link" href="#三完全禁用并卸载-wsl-整套功能彻底回归纯-windows" data-level="3">三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="四-修复-wsl-异常-重置默认设置-出问题时用">
-              <a class="post-toc-link" href="#四-修复-wsl-异常-重置默认设置-出问题时用" data-level="3">四、修复 WSL 异常 + 重置默认设置（出问题时用）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="四修复-wsl-异常--重置默认设置出问题时用">
+              <a class="post-toc-link" href="#四修复-wsl-异常--重置默认设置出问题时用" data-level="3">四、修复 WSL 异常 + 重置默认设置（出问题时用）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="五-针对-wslconfig-配置文件清理">
-              <a class="post-toc-link" href="#五-针对-wslconfig-配置文件清理" data-level="3">五、针对 .wslconfig 配置文件清理</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="五针对-wslconfig-配置文件清理">
+              <a class="post-toc-link" href="#五针对-wslconfig-配置文件清理" data-level="3">五、针对 .wslconfig 配置文件清理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="六-一键终极清理脚本">
-              <a class="post-toc-link" href="#六-一键终极清理脚本" data-level="3">六、一键终极清理脚本</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="六一键终极清理脚本">
+              <a class="post-toc-link" href="#六一键终极清理脚本" data-level="3">六、一键终极清理脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="补充说明">
-              <a class="post-toc-link" href="#补充说明" data-level="3">补充说明</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="补充说明-1">
+              <a class="post-toc-link" href="#补充说明-1" data-level="3">补充说明</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2350,8 +2350,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#查看可用的发行版" data-level="3">查看可用的发行版</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-ubuntu">
-          <a class="post-toc-link" href="#安装-ubuntu" data-level="3">安装 Ubuntu</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="安装-ubuntu-1">
+          <a class="post-toc-link" href="#安装-ubuntu-1" data-level="3">安装 Ubuntu</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="查看安装结果">
@@ -2414,8 +2414,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#从-wsl-访问-windows-文件" data-level="3">从 WSL 访问 Windows 文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="配置静态-ip-可选">
-          <a class="post-toc-link" href="#配置静态-ip-可选" data-level="3">配置静态 IP（可选）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="配置静态-ip可选">
+          <a class="post-toc-link" href="#配置静态-ip可选" data-level="3">配置静态 IP（可选）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="安装-docker">
@@ -2442,16 +2442,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装其他常用软件" data-level="2">安装其他常用软件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="node-js-通过-nvm">
-          <a class="post-toc-link" href="#node-js-通过-nvm" data-level="3">Node.js（通过 nvm）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="nodejs通过-nvm">
+          <a class="post-toc-link" href="#nodejs通过-nvm" data-level="3">Node.js（通过 nvm）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="python">
           <a class="post-toc-link" href="#python" data-level="3">Python</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="java-openjdk">
-          <a class="post-toc-link" href="#java-openjdk" data-level="3">Java（OpenJDK）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="javaopenjdk">
+          <a class="post-toc-link" href="#javaopenjdk" data-level="3">Java（OpenJDK）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="性能优化">
@@ -2462,8 +2462,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#分配更多内存和-cpu" data-level="3">分配更多内存和 CPU</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="禁用-wsl-休眠-可选">
-          <a class="post-toc-link" href="#禁用-wsl-休眠-可选" data-level="3">禁用 WSL 休眠（可选）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="禁用-wsl-休眠可选">
+          <a class="post-toc-link" href="#禁用-wsl-休眠可选" data-level="3">禁用 WSL 休眠（可选）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="清理磁盘空间">
@@ -2510,40 +2510,40 @@ function copied(target, str) {
           <a class="post-toc-link" href="#验证安装结果" data-level="2">验证安装结果</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="最常用-windows-目录-通用版">
-          <a class="post-toc-link" href="#最常用-windows-目录-通用版" data-level="2">最常用 Windows 目录（通用版）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="最常用-windows-目录通用版">
+          <a class="post-toc-link" href="#最常用-windows-目录通用版" data-level="2">最常用 Windows 目录（通用版）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="wsl-清理指南">
           <a class="post-toc-link" href="#wsl-清理指南" data-level="2">WSL 清理指南</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="一-仅卸载指定-ubuntu-实例-保留-wsl-功能">
-          <a class="post-toc-link" href="#一-仅卸载指定-ubuntu-实例-保留-wsl-功能" data-level="3">一、仅卸载指定 Ubuntu 实例（保留 WSL 功能）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一仅卸载指定-ubuntu-实例保留-wsl-功能">
+          <a class="post-toc-link" href="#一仅卸载指定-ubuntu-实例保留-wsl-功能" data-level="3">一、仅卸载指定 Ubuntu 实例（保留 WSL 功能）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="二-卸载所有-wsl-分发版-清理残留-常用彻底清理">
-          <a class="post-toc-link" href="#二-卸载所有-wsl-分发版-清理残留-常用彻底清理" data-level="3">二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="二卸载所有-wsl-分发版--清理残留常用彻底清理">
+          <a class="post-toc-link" href="#二卸载所有-wsl-分发版--清理残留常用彻底清理" data-level="3">二、卸载所有 WSL 分发版 + 清理残留（常用彻底清理）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows">
-          <a class="post-toc-link" href="#三-完全禁用并卸载-wsl-整套功能-彻底回归纯-windows" data-level="3">三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="三完全禁用并卸载-wsl-整套功能彻底回归纯-windows">
+          <a class="post-toc-link" href="#三完全禁用并卸载-wsl-整套功能彻底回归纯-windows" data-level="3">三、完全禁用并卸载 WSL 整套功能（彻底回归纯 Windows）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="四-修复-wsl-异常-重置默认设置-出问题时用">
-          <a class="post-toc-link" href="#四-修复-wsl-异常-重置默认设置-出问题时用" data-level="3">四、修复 WSL 异常 + 重置默认设置（出问题时用）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="四修复-wsl-异常--重置默认设置出问题时用">
+          <a class="post-toc-link" href="#四修复-wsl-异常--重置默认设置出问题时用" data-level="3">四、修复 WSL 异常 + 重置默认设置（出问题时用）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="五-针对-wslconfig-配置文件清理">
-          <a class="post-toc-link" href="#五-针对-wslconfig-配置文件清理" data-level="3">五、针对 .wslconfig 配置文件清理</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="五针对-wslconfig-配置文件清理">
+          <a class="post-toc-link" href="#五针对-wslconfig-配置文件清理" data-level="3">五、针对 .wslconfig 配置文件清理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="六-一键终极清理脚本">
-          <a class="post-toc-link" href="#六-一键终极清理脚本" data-level="3">六、一键终极清理脚本</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="六一键终极清理脚本">
+          <a class="post-toc-link" href="#六一键终极清理脚本" data-level="3">六、一键终极清理脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="补充说明">
-          <a class="post-toc-link" href="#补充说明" data-level="3">补充说明</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="补充说明-1">
+          <a class="post-toc-link" href="#补充说明-1" data-level="3">补充说明</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
@@ -2560,7 +2560,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2743,8 +2743,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2761,7 +2761,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

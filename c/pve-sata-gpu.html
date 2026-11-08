@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve-sata-gpu 命令">
     <meta name="twitter:description" content="SATA 控制器 + 核显整卡直通（NAS 虚拟机双直通方案） - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1564,12 +1564,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="前置准备-确认硬件与-iommu-支持">
-              <a class="post-toc-link" href="#前置准备-确认硬件与-iommu-支持" data-level="3">前置准备：确认硬件与 IOMMU 支持</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="前置准备确认硬件与-iommu-支持">
+              <a class="post-toc-link" href="#前置准备确认硬件与-iommu-支持" data-level="3">前置准备：确认硬件与 IOMMU 支持</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤一-开启-iommu-硬件直通">
-              <a class="post-toc-link" href="#核心步骤一-开启-iommu-硬件直通" data-level="3">核心步骤一：开启 IOMMU 硬件直通</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤一开启-iommu-硬件直通">
+              <a class="post-toc-link" href="#核心步骤一开启-iommu-硬件直通" data-level="3">核心步骤一：开启 IOMMU 硬件直通</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="1-编辑-grub-引导参数">
@@ -1584,24 +1584,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#3-验证-iommu-已启用" data-level="4">3. 验证 IOMMU 已启用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤二-虚拟机双直通配置">
-              <a class="post-toc-link" href="#核心步骤二-虚拟机双直通配置" data-level="3">核心步骤二：虚拟机双直通配置</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤二虚拟机双直通配置">
+              <a class="post-toc-link" href="#核心步骤二虚拟机双直通配置" data-level="3">核心步骤二：虚拟机双直通配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤三-启动并验证">
-              <a class="post-toc-link" href="#核心步骤三-启动并验证" data-level="3">核心步骤三：启动并验证</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤三启动并验证">
+              <a class="post-toc-link" href="#核心步骤三启动并验证" data-level="3">核心步骤三：启动并验证</a>
             </li>
             
             <li class="post-toc-item post-toc-level-4" data-toc-id="1-宿主机侧验证">
               <a class="post-toc-link" href="#1-宿主机侧验证" data-level="4">1. 宿主机侧验证</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="2-虚拟机内验证-linux-客户机-如飞牛">
-              <a class="post-toc-link" href="#2-虚拟机内验证-linux-客户机-如飞牛" data-level="4">2. 虚拟机内验证（Linux 客户机，如飞牛）</a>
+            <li class="post-toc-item post-toc-level-4" data-toc-id="2-虚拟机内验证linux-客户机如飞牛">
+              <a class="post-toc-link" href="#2-虚拟机内验证linux-客户机如飞牛" data-level="4">2. 虚拟机内验证（Linux 客户机，如飞牛）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="3-虚拟机内验证-windows-客户机">
-              <a class="post-toc-link" href="#3-虚拟机内验证-windows-客户机" data-level="4">3. 虚拟机内验证（Windows 客户机）</a>
+            <li class="post-toc-item post-toc-level-4" data-toc-id="3-虚拟机内验证windows-客户机">
+              <a class="post-toc-link" href="#3-虚拟机内验证windows-客户机" data-level="4">3. 虚拟机内验证（Windows 客户机）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="恢复直通设备给宿主机">
@@ -1649,12 +1649,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="前置准备-确认硬件与-iommu-支持">
-          <a class="post-toc-link" href="#前置准备-确认硬件与-iommu-支持" data-level="3">前置准备：确认硬件与 IOMMU 支持</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="前置准备确认硬件与-iommu-支持">
+          <a class="post-toc-link" href="#前置准备确认硬件与-iommu-支持" data-level="3">前置准备：确认硬件与 IOMMU 支持</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤一-开启-iommu-硬件直通">
-          <a class="post-toc-link" href="#核心步骤一-开启-iommu-硬件直通" data-level="3">核心步骤一：开启 IOMMU 硬件直通</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤一开启-iommu-硬件直通">
+          <a class="post-toc-link" href="#核心步骤一开启-iommu-硬件直通" data-level="3">核心步骤一：开启 IOMMU 硬件直通</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="1-编辑-grub-引导参数">
@@ -1669,24 +1669,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#3-验证-iommu-已启用" data-level="4">3. 验证 IOMMU 已启用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤二-虚拟机双直通配置">
-          <a class="post-toc-link" href="#核心步骤二-虚拟机双直通配置" data-level="3">核心步骤二：虚拟机双直通配置</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤二虚拟机双直通配置">
+          <a class="post-toc-link" href="#核心步骤二虚拟机双直通配置" data-level="3">核心步骤二：虚拟机双直通配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤三-启动并验证">
-          <a class="post-toc-link" href="#核心步骤三-启动并验证" data-level="3">核心步骤三：启动并验证</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="核心步骤三启动并验证">
+          <a class="post-toc-link" href="#核心步骤三启动并验证" data-level="3">核心步骤三：启动并验证</a>
         </li>
         
         <li class="post-toc-item post-toc-level-4" data-toc-id="1-宿主机侧验证">
           <a class="post-toc-link" href="#1-宿主机侧验证" data-level="4">1. 宿主机侧验证</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="2-虚拟机内验证-linux-客户机-如飞牛">
-          <a class="post-toc-link" href="#2-虚拟机内验证-linux-客户机-如飞牛" data-level="4">2. 虚拟机内验证（Linux 客户机，如飞牛）</a>
+        <li class="post-toc-item post-toc-level-4" data-toc-id="2-虚拟机内验证linux-客户机如飞牛">
+          <a class="post-toc-link" href="#2-虚拟机内验证linux-客户机如飞牛" data-level="4">2. 虚拟机内验证（Linux 客户机，如飞牛）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="3-虚拟机内验证-windows-客户机">
-          <a class="post-toc-link" href="#3-虚拟机内验证-windows-客户机" data-level="4">3. 虚拟机内验证（Windows 客户机）</a>
+        <li class="post-toc-item post-toc-level-4" data-toc-id="3-虚拟机内验证windows-客户机">
+          <a class="post-toc-link" href="#3-虚拟机内验证windows-客户机" data-level="4">3. 虚拟机内验证（Windows 客户机）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="恢复直通设备给宿主机">
@@ -1711,7 +1711,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1894,8 +1894,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -1912,7 +1912,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

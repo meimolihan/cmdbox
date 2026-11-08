@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="openvpn 命令">
     <meta name="twitter:description" content="OpenVPN 服务端与客户端配置指南 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1951,12 +1951,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-安装">
-              <a class="post-toc-link" href="#一-安装" data-level="2">一、安装</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一安装">
+              <a class="post-toc-link" href="#一安装" data-level="2">一、安装</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="二-pki-证书体系搭建">
-              <a class="post-toc-link" href="#二-pki-证书体系搭建" data-level="2">二、PKI 证书体系搭建</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二pki-证书体系搭建">
+              <a class="post-toc-link" href="#二pki-证书体系搭建" data-level="2">二、PKI 证书体系搭建</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-初始化-pki-环境">
@@ -1979,48 +1979,48 @@ function copied(target, str) {
               <a class="post-toc-link" href="#5-整理证书文件" data-level="3">5. 整理证书文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="三-服务端配置">
-              <a class="post-toc-link" href="#三-服务端配置" data-level="2">三、服务端配置</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三服务端配置">
+              <a class="post-toc-link" href="#三服务端配置" data-level="2">三、服务端配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="四-网络配置-路由转发">
-              <a class="post-toc-link" href="#四-网络配置-路由转发" data-level="2">四、网络配置（路由转发）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四网络配置路由转发">
+              <a class="post-toc-link" href="#四网络配置路由转发" data-level="2">四、网络配置（路由转发）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-开启-ip-转发">
               <a class="post-toc-link" href="#1-开启-ip-转发" data-level="3">1. 开启 IP 转发</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="2-配置-nat-iptables">
-              <a class="post-toc-link" href="#2-配置-nat-iptables" data-level="3">2. 配置 NAT（iptables）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-配置-natiptables">
+              <a class="post-toc-link" href="#2-配置-natiptables" data-level="3">2. 配置 NAT（iptables）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="3-放行防火墙">
               <a class="post-toc-link" href="#3-放行防火墙" data-level="3">3. 放行防火墙</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="五-启动服务端">
-              <a class="post-toc-link" href="#五-启动服务端" data-level="2">五、启动服务端</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五启动服务端">
+              <a class="post-toc-link" href="#五启动服务端" data-level="2">五、启动服务端</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="六-客户端配置">
-              <a class="post-toc-link" href="#六-客户端配置" data-level="2">六、客户端配置</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六客户端配置">
+              <a class="post-toc-link" href="#六客户端配置" data-level="2">六、客户端配置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-生成客户端配置文件">
               <a class="post-toc-link" href="#1-生成客户端配置文件" data-level="3">1. 生成客户端配置文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="2-打包为单文件-ovpn-嵌入证书">
-              <a class="post-toc-link" href="#2-打包为单文件-ovpn-嵌入证书" data-level="3">2. 打包为单文件 .ovpn（嵌入证书）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-打包为单文件-ovpn嵌入证书">
+              <a class="post-toc-link" href="#2-打包为单文件-ovpn嵌入证书" data-level="3">2. 打包为单文件 .ovpn（嵌入证书）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="七-客户端连接">
-              <a class="post-toc-link" href="#七-客户端连接" data-level="2">七、客户端连接</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七客户端连接">
+              <a class="post-toc-link" href="#七客户端连接" data-level="2">七、客户端连接</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="windows-openvpn-gui">
-              <a class="post-toc-link" href="#windows-openvpn-gui" data-level="3">Windows（OpenVPN GUI）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="windowsopenvpn-gui">
+              <a class="post-toc-link" href="#windowsopenvpn-gui" data-level="3">Windows（OpenVPN GUI）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="linux">
@@ -2035,8 +2035,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#手机端" data-level="3">手机端</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="八-管理操作">
-              <a class="post-toc-link" href="#八-管理操作" data-level="2">八、管理操作</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八管理操作">
+              <a class="post-toc-link" href="#八管理操作" data-level="2">八、管理操作</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="吊销客户端证书">
@@ -2047,8 +2047,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#查看在线客户端" data-level="3">查看在线客户端</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="九-性能调优">
-              <a class="post-toc-link" href="#九-性能调优" data-level="2">九、性能调优</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="九性能调优">
+              <a class="post-toc-link" href="#九性能调优" data-level="2">九、性能调优</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="服务端配置优化">
@@ -2108,12 +2108,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-安装">
-          <a class="post-toc-link" href="#一-安装" data-level="2">一、安装</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一安装">
+          <a class="post-toc-link" href="#一安装" data-level="2">一、安装</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="二-pki-证书体系搭建">
-          <a class="post-toc-link" href="#二-pki-证书体系搭建" data-level="2">二、PKI 证书体系搭建</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二pki-证书体系搭建">
+          <a class="post-toc-link" href="#二pki-证书体系搭建" data-level="2">二、PKI 证书体系搭建</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-初始化-pki-环境">
@@ -2136,48 +2136,48 @@ function copied(target, str) {
           <a class="post-toc-link" href="#5-整理证书文件" data-level="3">5. 整理证书文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="三-服务端配置">
-          <a class="post-toc-link" href="#三-服务端配置" data-level="2">三、服务端配置</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三服务端配置">
+          <a class="post-toc-link" href="#三服务端配置" data-level="2">三、服务端配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="四-网络配置-路由转发">
-          <a class="post-toc-link" href="#四-网络配置-路由转发" data-level="2">四、网络配置（路由转发）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四网络配置路由转发">
+          <a class="post-toc-link" href="#四网络配置路由转发" data-level="2">四、网络配置（路由转发）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-开启-ip-转发">
           <a class="post-toc-link" href="#1-开启-ip-转发" data-level="3">1. 开启 IP 转发</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="2-配置-nat-iptables">
-          <a class="post-toc-link" href="#2-配置-nat-iptables" data-level="3">2. 配置 NAT（iptables）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-配置-natiptables">
+          <a class="post-toc-link" href="#2-配置-natiptables" data-level="3">2. 配置 NAT（iptables）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="3-放行防火墙">
           <a class="post-toc-link" href="#3-放行防火墙" data-level="3">3. 放行防火墙</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="五-启动服务端">
-          <a class="post-toc-link" href="#五-启动服务端" data-level="2">五、启动服务端</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五启动服务端">
+          <a class="post-toc-link" href="#五启动服务端" data-level="2">五、启动服务端</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="六-客户端配置">
-          <a class="post-toc-link" href="#六-客户端配置" data-level="2">六、客户端配置</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六客户端配置">
+          <a class="post-toc-link" href="#六客户端配置" data-level="2">六、客户端配置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-生成客户端配置文件">
           <a class="post-toc-link" href="#1-生成客户端配置文件" data-level="3">1. 生成客户端配置文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="2-打包为单文件-ovpn-嵌入证书">
-          <a class="post-toc-link" href="#2-打包为单文件-ovpn-嵌入证书" data-level="3">2. 打包为单文件 .ovpn（嵌入证书）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-打包为单文件-ovpn嵌入证书">
+          <a class="post-toc-link" href="#2-打包为单文件-ovpn嵌入证书" data-level="3">2. 打包为单文件 .ovpn（嵌入证书）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="七-客户端连接">
-          <a class="post-toc-link" href="#七-客户端连接" data-level="2">七、客户端连接</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七客户端连接">
+          <a class="post-toc-link" href="#七客户端连接" data-level="2">七、客户端连接</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="windows-openvpn-gui">
-          <a class="post-toc-link" href="#windows-openvpn-gui" data-level="3">Windows（OpenVPN GUI）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="windowsopenvpn-gui">
+          <a class="post-toc-link" href="#windowsopenvpn-gui" data-level="3">Windows（OpenVPN GUI）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="linux">
@@ -2192,8 +2192,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#手机端" data-level="3">手机端</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="八-管理操作">
-          <a class="post-toc-link" href="#八-管理操作" data-level="2">八、管理操作</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八管理操作">
+          <a class="post-toc-link" href="#八管理操作" data-level="2">八、管理操作</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="吊销客户端证书">
@@ -2204,8 +2204,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#查看在线客户端" data-level="3">查看在线客户端</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="九-性能调优">
-          <a class="post-toc-link" href="#九-性能调优" data-level="2">九、性能调优</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="九性能调优">
+          <a class="post-toc-link" href="#九性能调优" data-level="2">九、性能调优</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="服务端配置优化">
@@ -2242,7 +2242,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2425,8 +2425,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2443,7 +2443,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

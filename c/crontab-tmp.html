@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="crontab-tmp 命令">
     <meta name="twitter:description" content="定时任务/计划任务 清理临时目录 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1824,36 +1824,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#参数解析" data-level="2">参数解析</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="mindepth-1">
-              <a class="post-toc-link" href="#mindepth-1" data-level="3">-mindepth 1</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="-mindepth-1">
+              <a class="post-toc-link" href="#-mindepth-1" data-level="3">-mindepth 1</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="atime-0-5">
-              <a class="post-toc-link" href="#atime-0-5" data-level="3">-atime +0.5</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="-atime-05">
+              <a class="post-toc-link" href="#-atime-05" data-level="3">-atime +0.5</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="delete">
-              <a class="post-toc-link" href="#delete" data-level="3">-delete</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="-delete">
+              <a class="post-toc-link" href="#-delete" data-level="3">-delete</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="行为实测">
               <a class="post-toc-link" href="#行为实测" data-level="2">行为实测</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="实测一-delete-不会-递归清空目录">
-              <a class="post-toc-link" href="#实测一-delete-不会-递归清空目录" data-level="3">实测一：-delete 不会「递归清空目录」</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测一-delete-不会递归清空目录">
+              <a class="post-toc-link" href="#实测一-delete-不会递归清空目录" data-level="3">实测一：-delete 不会「递归清空目录」</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="实测二-目录-atime-会被-find-自己刷新-空目录长期残留">
-              <a class="post-toc-link" href="#实测二-目录-atime-会被-find-自己刷新-空目录长期残留" data-level="3">实测二：目录 atime 会被 find 自己刷新 → 空目录长期残留</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测二目录-atime-会被-find-自己刷新--空目录长期残留">
+              <a class="post-toc-link" href="#实测二目录-atime-会被-find-自己刷新--空目录长期残留" data-level="3">实测二：目录 atime 会被 find 自己刷新 → 空目录长期残留</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="实测三-relatime-的-24-小时粒度会让-atime-判定偏激进">
-              <a class="post-toc-link" href="#实测三-relatime-的-24-小时粒度会让-atime-判定偏激进" data-level="3">实测三：relatime 的 24 小时粒度会让 atime 判定偏激进</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测三relatime-的-24-小时粒度会让-atime-判定偏激进">
+              <a class="post-toc-link" href="#实测三relatime-的-24-小时粒度会让-atime-判定偏激进" data-level="3">实测三：relatime 的 24 小时粒度会让 atime 判定偏激进</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="实测四-noatime-挂载下-atime-不可用">
-              <a class="post-toc-link" href="#实测四-noatime-挂载下-atime-不可用" data-level="3">实测四：noatime 挂载下 atime 不可用</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实测四noatime-挂载下-atime-不可用">
+              <a class="post-toc-link" href="#实测四noatime-挂载下-atime-不可用" data-level="3">实测四：noatime 挂载下 atime 不可用</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="风险提示">
@@ -1864,8 +1864,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#配置步骤" data-level="2">配置步骤</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="1-先干跑-dry-run-确认删除范围">
-              <a class="post-toc-link" href="#1-先干跑-dry-run-确认删除范围" data-level="3">1. 先干跑（dry-run）确认删除范围</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-先干跑dry-run确认删除范围">
+              <a class="post-toc-link" href="#1-先干跑dry-run确认删除范围" data-level="3">1. 先干跑（dry-run）确认删除范围</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-编辑-crontab">
@@ -1884,12 +1884,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#5-查看执行日志" data-level="3">5. 查看执行日志</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="6-配置日志轮转-logrotate">
-              <a class="post-toc-link" href="#6-配置日志轮转-logrotate" data-level="3">6. 配置日志轮转（logrotate）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="6-配置日志轮转logrotate">
+              <a class="post-toc-link" href="#6-配置日志轮转logrotate" data-level="3">6. 配置日志轮转（logrotate）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一键安装-推荐">
-              <a class="post-toc-link" href="#一键安装-推荐" data-level="2">一键安装（推荐）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键安装推荐">
+              <a class="post-toc-link" href="#一键安装推荐" data-level="2">一键安装（推荐）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装后的常用命令">
@@ -1916,12 +1916,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#任务没有执行" data-level="3">任务没有执行</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="目录没有被清空-只剩空壳">
-              <a class="post-toc-link" href="#目录没有被清空-只剩空壳" data-level="3">目录没有被清空（只剩空壳）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="目录没有被清空只剩空壳">
+              <a class="post-toc-link" href="#目录没有被清空只剩空壳" data-level="3">目录没有被清空（只剩空壳）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="报">
-              <a class="post-toc-link" href="#报" data-level="3">报</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="报-directory-not-empty">
+              <a class="post-toc-link" href="#报-directory-not-empty" data-level="3">报 Directory not empty</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="明明刚访问过的文件还是被删了">
@@ -1932,8 +1932,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#收到大量-cron-告警邮件" data-level="3">收到大量 cron 告警邮件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="确认当前已删除-待删除的内容">
-              <a class="post-toc-link" href="#确认当前已删除-待删除的内容" data-level="3">确认当前已删除 / 待删除的内容</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="确认当前已删除--待删除的内容">
+              <a class="post-toc-link" href="#确认当前已删除--待删除的内容" data-level="3">确认当前已删除 / 待删除的内容</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="常用配套命令">
@@ -1977,36 +1977,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#参数解析" data-level="2">参数解析</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="mindepth-1">
-          <a class="post-toc-link" href="#mindepth-1" data-level="3">-mindepth 1</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="-mindepth-1">
+          <a class="post-toc-link" href="#-mindepth-1" data-level="3">-mindepth 1</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="atime-0-5">
-          <a class="post-toc-link" href="#atime-0-5" data-level="3">-atime +0.5</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="-atime-05">
+          <a class="post-toc-link" href="#-atime-05" data-level="3">-atime +0.5</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="delete">
-          <a class="post-toc-link" href="#delete" data-level="3">-delete</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="-delete">
+          <a class="post-toc-link" href="#-delete" data-level="3">-delete</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="行为实测">
           <a class="post-toc-link" href="#行为实测" data-level="2">行为实测</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="实测一-delete-不会-递归清空目录">
-          <a class="post-toc-link" href="#实测一-delete-不会-递归清空目录" data-level="3">实测一：-delete 不会「递归清空目录」</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测一-delete-不会递归清空目录">
+          <a class="post-toc-link" href="#实测一-delete-不会递归清空目录" data-level="3">实测一：-delete 不会「递归清空目录」</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="实测二-目录-atime-会被-find-自己刷新-空目录长期残留">
-          <a class="post-toc-link" href="#实测二-目录-atime-会被-find-自己刷新-空目录长期残留" data-level="3">实测二：目录 atime 会被 find 自己刷新 → 空目录长期残留</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测二目录-atime-会被-find-自己刷新--空目录长期残留">
+          <a class="post-toc-link" href="#实测二目录-atime-会被-find-自己刷新--空目录长期残留" data-level="3">实测二：目录 atime 会被 find 自己刷新 → 空目录长期残留</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="实测三-relatime-的-24-小时粒度会让-atime-判定偏激进">
-          <a class="post-toc-link" href="#实测三-relatime-的-24-小时粒度会让-atime-判定偏激进" data-level="3">实测三：relatime 的 24 小时粒度会让 atime 判定偏激进</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测三relatime-的-24-小时粒度会让-atime-判定偏激进">
+          <a class="post-toc-link" href="#实测三relatime-的-24-小时粒度会让-atime-判定偏激进" data-level="3">实测三：relatime 的 24 小时粒度会让 atime 判定偏激进</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="实测四-noatime-挂载下-atime-不可用">
-          <a class="post-toc-link" href="#实测四-noatime-挂载下-atime-不可用" data-level="3">实测四：noatime 挂载下 atime 不可用</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实测四noatime-挂载下-atime-不可用">
+          <a class="post-toc-link" href="#实测四noatime-挂载下-atime-不可用" data-level="3">实测四：noatime 挂载下 atime 不可用</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="风险提示">
@@ -2017,8 +2017,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#配置步骤" data-level="2">配置步骤</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="1-先干跑-dry-run-确认删除范围">
-          <a class="post-toc-link" href="#1-先干跑-dry-run-确认删除范围" data-level="3">1. 先干跑（dry-run）确认删除范围</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-先干跑dry-run确认删除范围">
+          <a class="post-toc-link" href="#1-先干跑dry-run确认删除范围" data-level="3">1. 先干跑（dry-run）确认删除范围</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-编辑-crontab">
@@ -2037,12 +2037,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#5-查看执行日志" data-level="3">5. 查看执行日志</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="6-配置日志轮转-logrotate">
-          <a class="post-toc-link" href="#6-配置日志轮转-logrotate" data-level="3">6. 配置日志轮转（logrotate）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="6-配置日志轮转logrotate">
+          <a class="post-toc-link" href="#6-配置日志轮转logrotate" data-level="3">6. 配置日志轮转（logrotate）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一键安装-推荐">
-          <a class="post-toc-link" href="#一键安装-推荐" data-level="2">一键安装（推荐）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键安装推荐">
+          <a class="post-toc-link" href="#一键安装推荐" data-level="2">一键安装（推荐）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装后的常用命令">
@@ -2069,12 +2069,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#任务没有执行" data-level="3">任务没有执行</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="目录没有被清空-只剩空壳">
-          <a class="post-toc-link" href="#目录没有被清空-只剩空壳" data-level="3">目录没有被清空（只剩空壳）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="目录没有被清空只剩空壳">
+          <a class="post-toc-link" href="#目录没有被清空只剩空壳" data-level="3">目录没有被清空（只剩空壳）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="报">
-          <a class="post-toc-link" href="#报" data-level="3">报</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="报-directory-not-empty">
+          <a class="post-toc-link" href="#报-directory-not-empty" data-level="3">报 Directory not empty</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="明明刚访问过的文件还是被删了">
@@ -2085,8 +2085,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#收到大量-cron-告警邮件" data-level="3">收到大量 cron 告警邮件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="确认当前已删除-待删除的内容">
-          <a class="post-toc-link" href="#确认当前已删除-待删除的内容" data-level="3">确认当前已删除 / 待删除的内容</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="确认当前已删除--待删除的内容">
+          <a class="post-toc-link" href="#确认当前已删除--待删除的内容" data-level="3">确认当前已删除 / 待删除的内容</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="常用配套命令">
@@ -2103,7 +2103,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2286,8 +2286,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2304,7 +2304,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

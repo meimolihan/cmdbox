@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="valgrind 命令">
     <meta name="twitter:description" content="内存调试工具 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1779,8 +1779,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="内存检测-memcheck">
-              <a class="post-toc-link" href="#内存检测-memcheck" data-level="3">内存检测（memcheck）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="内存检测memcheck">
+              <a class="post-toc-link" href="#内存检测memcheck" data-level="3">内存检测（memcheck）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="内存泄漏类型">
@@ -1795,24 +1795,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#gdb-集成" data-level="3">GDB 集成</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="callgrind-调用图">
-              <a class="post-toc-link" href="#callgrind-调用图" data-level="3">Callgrind（调用图）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="callgrind调用图">
+              <a class="post-toc-link" href="#callgrind调用图" data-level="3">Callgrind（调用图）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="cachegrind-缓存分析">
-              <a class="post-toc-link" href="#cachegrind-缓存分析" data-level="3">Cachegrind（缓存分析）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="cachegrind缓存分析">
+              <a class="post-toc-link" href="#cachegrind缓存分析" data-level="3">Cachegrind（缓存分析）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="helgrind-线程分析">
-              <a class="post-toc-link" href="#helgrind-线程分析" data-level="3">Helgrind（线程分析）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="helgrind线程分析">
+              <a class="post-toc-link" href="#helgrind线程分析" data-level="3">Helgrind（线程分析）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="drd-线程分析">
-              <a class="post-toc-link" href="#drd-线程分析" data-level="3">DRD（线程分析）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="drd线程分析">
+              <a class="post-toc-link" href="#drd线程分析" data-level="3">DRD（线程分析）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="massif-堆分析">
-              <a class="post-toc-link" href="#massif-堆分析" data-level="3">Massif（堆分析）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="massif堆分析">
+              <a class="post-toc-link" href="#massif堆分析" data-level="3">Massif（堆分析）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
@@ -1876,8 +1876,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#基本用法" data-level="3">基本用法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="内存检测-memcheck">
-          <a class="post-toc-link" href="#内存检测-memcheck" data-level="3">内存检测（memcheck）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="内存检测memcheck">
+          <a class="post-toc-link" href="#内存检测memcheck" data-level="3">内存检测（memcheck）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="内存泄漏类型">
@@ -1892,24 +1892,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#gdb-集成" data-level="3">GDB 集成</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="callgrind-调用图">
-          <a class="post-toc-link" href="#callgrind-调用图" data-level="3">Callgrind（调用图）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="callgrind调用图">
+          <a class="post-toc-link" href="#callgrind调用图" data-level="3">Callgrind（调用图）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="cachegrind-缓存分析">
-          <a class="post-toc-link" href="#cachegrind-缓存分析" data-level="3">Cachegrind（缓存分析）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="cachegrind缓存分析">
+          <a class="post-toc-link" href="#cachegrind缓存分析" data-level="3">Cachegrind（缓存分析）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="helgrind-线程分析">
-          <a class="post-toc-link" href="#helgrind-线程分析" data-level="3">Helgrind（线程分析）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="helgrind线程分析">
+          <a class="post-toc-link" href="#helgrind线程分析" data-level="3">Helgrind（线程分析）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="drd-线程分析">
-          <a class="post-toc-link" href="#drd-线程分析" data-level="3">DRD（线程分析）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="drd线程分析">
+          <a class="post-toc-link" href="#drd线程分析" data-level="3">DRD（线程分析）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="massif-堆分析">
-          <a class="post-toc-link" href="#massif-堆分析" data-level="3">Massif（堆分析）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="massif堆分析">
+          <a class="post-toc-link" href="#massif堆分析" data-level="3">Massif（堆分析）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="常用示例">
@@ -1942,7 +1942,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2125,8 +2125,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2143,7 +2143,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

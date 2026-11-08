@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="github-offline-ssh-repo 命令">
     <meta name="twitter:description" content="GitHub 服务器 SSH 仓库管理 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1547,24 +1547,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-环境前置操作">
-              <a class="post-toc-link" href="#一-环境前置操作" data-level="2">一、环境前置操作</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一环境前置操作">
+              <a class="post-toc-link" href="#一环境前置操作" data-level="2">一、环境前置操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装github-cli-gh">
-              <a class="post-toc-link" href="#1-安装github-cli-gh" data-level="3">1. 安装GitHub CLI（gh）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装github-cligh">
+              <a class="post-toc-link" href="#1-安装github-cligh" data-level="3">1. 安装GitHub CLI（gh）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-验证ssh连通性">
               <a class="post-toc-link" href="#2-验证ssh连通性" data-level="3">2. 验证SSH连通性</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="二-前期准备-获取github个人classic-token">
-              <a class="post-toc-link" href="#二-前期准备-获取github个人classic-token" data-level="2">二、前期准备：获取GitHub个人Classic Token</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二前期准备获取github个人classic-token">
+              <a class="post-toc-link" href="#二前期准备获取github个人classic-token" data-level="2">二、前期准备：获取GitHub个人Classic Token</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="三-方案一-gh-cli静默token登录-推荐-后续可通过gh命令管理仓库">
-              <a class="post-toc-link" href="#三-方案一-gh-cli静默token登录-推荐-后续可通过gh命令管理仓库" data-level="2">三、方案一：gh CLI静默Token登录（推荐，后续可通过gh命令管理仓库）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三方案一gh-cli静默token登录推荐后续可通过gh命令管理仓库">
+              <a class="post-toc-link" href="#三方案一gh-cli静默token登录推荐后续可通过gh命令管理仓库" data-level="2">三、方案一：gh CLI静默Token登录（推荐，后续可通过gh命令管理仓库）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-gh使用token非交互式登录">
@@ -1575,8 +1575,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#2-gh命令创建cmdbox仓库" data-level="3">2. gh命令创建CmdBox仓库</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="四-方案二-curl-api一键创建远程仓库-无依赖gh也可使用">
-              <a class="post-toc-link" href="#四-方案二-curl-api一键创建远程仓库-无依赖gh也可使用" data-level="2">四、方案二：Curl API一键创建远程仓库（无依赖gh也可使用）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四方案二curl-api一键创建远程仓库无依赖gh也可使用">
+              <a class="post-toc-link" href="#四方案二curl-api一键创建远程仓库无依赖gh也可使用" data-level="2">四、方案二：Curl API一键创建远程仓库（无依赖gh也可使用）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-创建公开仓库">
@@ -1587,44 +1587,44 @@ function copied(target, str) {
               <a class="post-toc-link" href="#2-创建私有仓库" data-level="3">2. 创建私有仓库</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="五-执行结果判断">
-              <a class="post-toc-link" href="#五-执行结果判断" data-level="2">五、执行结果判断</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五执行结果判断">
+              <a class="post-toc-link" href="#五执行结果判断" data-level="2">五、执行结果判断</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="六-本地克隆仓库-ssh方式">
-              <a class="post-toc-link" href="#六-本地克隆仓库-ssh方式" data-level="2">六、本地克隆仓库（SSH方式）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六本地克隆仓库ssh方式">
+              <a class="post-toc-link" href="#六本地克隆仓库ssh方式" data-level="2">六、本地克隆仓库（SSH方式）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="七-常规代码推送测试">
-              <a class="post-toc-link" href="#七-常规代码推送测试" data-level="2">七、常规代码推送测试</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七常规代码推送测试">
+              <a class="post-toc-link" href="#七常规代码推送测试" data-level="2">七、常规代码推送测试</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="八-仓库重命名教程-cmdbox-cmdbox-重点">
-              <a class="post-toc-link" href="#八-仓库重命名教程-cmdbox-cmdbox-重点" data-level="2">八、仓库重命名教程（CmdBox → cmdbox，重点）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八仓库重命名教程cmdbox--cmdbox重点">
+              <a class="post-toc-link" href="#八仓库重命名教程cmdbox--cmdbox重点" data-level="2">八、仓库重命名教程（CmdBox → cmdbox，重点）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="8-1-api云端修改仓库名称">
-              <a class="post-toc-link" href="#8-1-api云端修改仓库名称" data-level="3">8.1 API云端修改仓库名称</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="81-api云端修改仓库名称">
+              <a class="post-toc-link" href="#81-api云端修改仓库名称" data-level="3">8.1 API云端修改仓库名称</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="8-2-修改本地git远程配置">
-              <a class="post-toc-link" href="#8-2-修改本地git远程配置" data-level="3">8.2 修改本地git远程配置</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="82-修改本地git远程配置">
+              <a class="post-toc-link" href="#82-修改本地git远程配置" data-level="3">8.2 修改本地git远程配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="8-3-可选-本地文件夹同步改名">
-              <a class="post-toc-link" href="#8-3-可选-本地文件夹同步改名" data-level="3">8.3（可选）本地文件夹同步改名</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="83可选本地文件夹同步改名">
+              <a class="post-toc-link" href="#83可选本地文件夹同步改名" data-level="3">8.3（可选）本地文件夹同步改名</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="8-4-查看当前仓库名称方法">
-              <a class="post-toc-link" href="#8-4-查看当前仓库名称方法" data-level="3">8.4 查看当前仓库名称方法</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="84-查看当前仓库名称方法">
+              <a class="post-toc-link" href="#84-查看当前仓库名称方法" data-level="3">8.4 查看当前仓库名称方法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="九-收尾清理-可选">
-              <a class="post-toc-link" href="#九-收尾清理-可选" data-level="2">九、收尾清理（可选）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="九收尾清理可选">
+              <a class="post-toc-link" href="#九收尾清理可选" data-level="2">九、收尾清理（可选）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="十-总结">
-              <a class="post-toc-link" href="#十-总结" data-level="2">十、总结</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十总结">
+              <a class="post-toc-link" href="#十总结" data-level="2">十、总结</a>
             </li>
             
           </ul>
@@ -1656,24 +1656,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-环境前置操作">
-          <a class="post-toc-link" href="#一-环境前置操作" data-level="2">一、环境前置操作</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一环境前置操作">
+          <a class="post-toc-link" href="#一环境前置操作" data-level="2">一、环境前置操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装github-cli-gh">
-          <a class="post-toc-link" href="#1-安装github-cli-gh" data-level="3">1. 安装GitHub CLI（gh）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-安装github-cligh">
+          <a class="post-toc-link" href="#1-安装github-cligh" data-level="3">1. 安装GitHub CLI（gh）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-验证ssh连通性">
           <a class="post-toc-link" href="#2-验证ssh连通性" data-level="3">2. 验证SSH连通性</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="二-前期准备-获取github个人classic-token">
-          <a class="post-toc-link" href="#二-前期准备-获取github个人classic-token" data-level="2">二、前期准备：获取GitHub个人Classic Token</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二前期准备获取github个人classic-token">
+          <a class="post-toc-link" href="#二前期准备获取github个人classic-token" data-level="2">二、前期准备：获取GitHub个人Classic Token</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="三-方案一-gh-cli静默token登录-推荐-后续可通过gh命令管理仓库">
-          <a class="post-toc-link" href="#三-方案一-gh-cli静默token登录-推荐-后续可通过gh命令管理仓库" data-level="2">三、方案一：gh CLI静默Token登录（推荐，后续可通过gh命令管理仓库）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三方案一gh-cli静默token登录推荐后续可通过gh命令管理仓库">
+          <a class="post-toc-link" href="#三方案一gh-cli静默token登录推荐后续可通过gh命令管理仓库" data-level="2">三、方案一：gh CLI静默Token登录（推荐，后续可通过gh命令管理仓库）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-gh使用token非交互式登录">
@@ -1684,8 +1684,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#2-gh命令创建cmdbox仓库" data-level="3">2. gh命令创建CmdBox仓库</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="四-方案二-curl-api一键创建远程仓库-无依赖gh也可使用">
-          <a class="post-toc-link" href="#四-方案二-curl-api一键创建远程仓库-无依赖gh也可使用" data-level="2">四、方案二：Curl API一键创建远程仓库（无依赖gh也可使用）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四方案二curl-api一键创建远程仓库无依赖gh也可使用">
+          <a class="post-toc-link" href="#四方案二curl-api一键创建远程仓库无依赖gh也可使用" data-level="2">四、方案二：Curl API一键创建远程仓库（无依赖gh也可使用）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-创建公开仓库">
@@ -1696,44 +1696,44 @@ function copied(target, str) {
           <a class="post-toc-link" href="#2-创建私有仓库" data-level="3">2. 创建私有仓库</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="五-执行结果判断">
-          <a class="post-toc-link" href="#五-执行结果判断" data-level="2">五、执行结果判断</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五执行结果判断">
+          <a class="post-toc-link" href="#五执行结果判断" data-level="2">五、执行结果判断</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="六-本地克隆仓库-ssh方式">
-          <a class="post-toc-link" href="#六-本地克隆仓库-ssh方式" data-level="2">六、本地克隆仓库（SSH方式）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六本地克隆仓库ssh方式">
+          <a class="post-toc-link" href="#六本地克隆仓库ssh方式" data-level="2">六、本地克隆仓库（SSH方式）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="七-常规代码推送测试">
-          <a class="post-toc-link" href="#七-常规代码推送测试" data-level="2">七、常规代码推送测试</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七常规代码推送测试">
+          <a class="post-toc-link" href="#七常规代码推送测试" data-level="2">七、常规代码推送测试</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="八-仓库重命名教程-cmdbox-cmdbox-重点">
-          <a class="post-toc-link" href="#八-仓库重命名教程-cmdbox-cmdbox-重点" data-level="2">八、仓库重命名教程（CmdBox → cmdbox，重点）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八仓库重命名教程cmdbox--cmdbox重点">
+          <a class="post-toc-link" href="#八仓库重命名教程cmdbox--cmdbox重点" data-level="2">八、仓库重命名教程（CmdBox → cmdbox，重点）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="8-1-api云端修改仓库名称">
-          <a class="post-toc-link" href="#8-1-api云端修改仓库名称" data-level="3">8.1 API云端修改仓库名称</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="81-api云端修改仓库名称">
+          <a class="post-toc-link" href="#81-api云端修改仓库名称" data-level="3">8.1 API云端修改仓库名称</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="8-2-修改本地git远程配置">
-          <a class="post-toc-link" href="#8-2-修改本地git远程配置" data-level="3">8.2 修改本地git远程配置</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="82-修改本地git远程配置">
+          <a class="post-toc-link" href="#82-修改本地git远程配置" data-level="3">8.2 修改本地git远程配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="8-3-可选-本地文件夹同步改名">
-          <a class="post-toc-link" href="#8-3-可选-本地文件夹同步改名" data-level="3">8.3（可选）本地文件夹同步改名</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="83可选本地文件夹同步改名">
+          <a class="post-toc-link" href="#83可选本地文件夹同步改名" data-level="3">8.3（可选）本地文件夹同步改名</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="8-4-查看当前仓库名称方法">
-          <a class="post-toc-link" href="#8-4-查看当前仓库名称方法" data-level="3">8.4 查看当前仓库名称方法</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="84-查看当前仓库名称方法">
+          <a class="post-toc-link" href="#84-查看当前仓库名称方法" data-level="3">8.4 查看当前仓库名称方法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="九-收尾清理-可选">
-          <a class="post-toc-link" href="#九-收尾清理-可选" data-level="2">九、收尾清理（可选）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="九收尾清理可选">
+          <a class="post-toc-link" href="#九收尾清理可选" data-level="2">九、收尾清理（可选）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="十-总结">
-          <a class="post-toc-link" href="#十-总结" data-level="2">十、总结</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十总结">
+          <a class="post-toc-link" href="#十总结" data-level="2">十、总结</a>
         </li>
         
       </ul>
@@ -1742,7 +1742,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1925,8 +1925,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -1943,7 +1943,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

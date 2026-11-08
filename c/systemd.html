@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="systemd 命令">
     <meta name="twitter:description" content="systemd 服务单元与定时器配置指南 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2068,8 +2068,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-单元文件结构">
-              <a class="post-toc-link" href="#一-单元文件结构" data-level="2">一、单元文件结构</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一单元文件结构">
+              <a class="post-toc-link" href="#一单元文件结构" data-level="2">一、单元文件结构</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="service-单元示例">
@@ -2080,28 +2080,28 @@ function copied(target, str) {
               <a class="post-toc-link" href="#关键字段说明" data-level="3">关键字段说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="二-service-类型详解">
-              <a class="post-toc-link" href="#二-service-类型详解" data-level="2">二、Service 类型详解</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二service-类型详解">
+              <a class="post-toc-link" href="#二service-类型详解" data-level="2">二、Service 类型详解</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="1-oneshot-一次性任务">
-              <a class="post-toc-link" href="#1-oneshot-一次性任务" data-level="3">1. oneshot — 一次性任务</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-oneshot--一次性任务">
+              <a class="post-toc-link" href="#1-oneshot--一次性任务" data-level="3">1. oneshot — 一次性任务</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="2-forking-传统守护进程">
-              <a class="post-toc-link" href="#2-forking-传统守护进程" data-level="3">2. forking — 传统守护进程</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2-forking--传统守护进程">
+              <a class="post-toc-link" href="#2-forking--传统守护进程" data-level="3">2. forking — 传统守护进程</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="3-notify-通知式启动">
-              <a class="post-toc-link" href="#3-notify-通知式启动" data-level="3">3. notify — 通知式启动</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-notify--通知式启动">
+              <a class="post-toc-link" href="#3-notify--通知式启动" data-level="3">3. notify — 通知式启动</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="4-exec-执行式">
-              <a class="post-toc-link" href="#4-exec-执行式" data-level="3">4. exec — 执行式</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="4-exec--执行式">
+              <a class="post-toc-link" href="#4-exec--执行式" data-level="3">4. exec — 执行式</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="三-定时器-timer-单元">
-              <a class="post-toc-link" href="#三-定时器-timer-单元" data-level="2">三、定时器（Timer）单元</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三定时器timer单元">
+              <a class="post-toc-link" href="#三定时器timer单元" data-level="2">三、定时器（Timer）单元</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="基本示例">
@@ -2116,32 +2116,32 @@ function copied(target, str) {
               <a class="post-toc-link" href="#管理定时器" data-level="3">管理定时器</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="四-path-单元-文件监控">
-              <a class="post-toc-link" href="#四-path-单元-文件监控" data-level="2">四、Path 单元（文件监控）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四path-单元文件监控">
+              <a class="post-toc-link" href="#四path-单元文件监控" data-level="2">四、Path 单元（文件监控）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="五-资源限制与隔离">
-              <a class="post-toc-link" href="#五-资源限制与隔离" data-level="2">五、资源限制与隔离</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五资源限制与隔离">
+              <a class="post-toc-link" href="#五资源限制与隔离" data-level="2">五、资源限制与隔离</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="1-cpu-内存限制">
-              <a class="post-toc-link" href="#1-cpu-内存限制" data-level="3">1. CPU / 内存限制</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-cpu--内存限制">
+              <a class="post-toc-link" href="#1-cpu--内存限制" data-level="3">1. CPU / 内存限制</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-安全隔离">
               <a class="post-toc-link" href="#2-安全隔离" data-level="3">2. 安全隔离</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="六-常用-systemctl-管理">
-              <a class="post-toc-link" href="#六-常用-systemctl-管理" data-level="2">六、常用 systemctl 管理</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六常用-systemctl-管理">
+              <a class="post-toc-link" href="#六常用-systemctl-管理" data-level="2">六、常用 systemctl 管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="七-用户级-systemd">
-              <a class="post-toc-link" href="#七-用户级-systemd" data-level="2">七、用户级 systemd</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七用户级-systemd">
+              <a class="post-toc-link" href="#七用户级-systemd" data-level="2">七、用户级 systemd</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="八-综合实战-部署-web-应用">
-              <a class="post-toc-link" href="#八-综合实战-部署-web-应用" data-level="2">八、综合实战：部署 Web 应用</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八综合实战部署-web-应用">
+              <a class="post-toc-link" href="#八综合实战部署-web-应用" data-level="2">八、综合实战：部署 Web 应用</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="创建目录和脚本">
@@ -2213,8 +2213,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-单元文件结构">
-          <a class="post-toc-link" href="#一-单元文件结构" data-level="2">一、单元文件结构</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一单元文件结构">
+          <a class="post-toc-link" href="#一单元文件结构" data-level="2">一、单元文件结构</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="service-单元示例">
@@ -2225,28 +2225,28 @@ function copied(target, str) {
           <a class="post-toc-link" href="#关键字段说明" data-level="3">关键字段说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="二-service-类型详解">
-          <a class="post-toc-link" href="#二-service-类型详解" data-level="2">二、Service 类型详解</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二service-类型详解">
+          <a class="post-toc-link" href="#二service-类型详解" data-level="2">二、Service 类型详解</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="1-oneshot-一次性任务">
-          <a class="post-toc-link" href="#1-oneshot-一次性任务" data-level="3">1. oneshot — 一次性任务</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-oneshot--一次性任务">
+          <a class="post-toc-link" href="#1-oneshot--一次性任务" data-level="3">1. oneshot — 一次性任务</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="2-forking-传统守护进程">
-          <a class="post-toc-link" href="#2-forking-传统守护进程" data-level="3">2. forking — 传统守护进程</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2-forking--传统守护进程">
+          <a class="post-toc-link" href="#2-forking--传统守护进程" data-level="3">2. forking — 传统守护进程</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="3-notify-通知式启动">
-          <a class="post-toc-link" href="#3-notify-通知式启动" data-level="3">3. notify — 通知式启动</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-notify--通知式启动">
+          <a class="post-toc-link" href="#3-notify--通知式启动" data-level="3">3. notify — 通知式启动</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="4-exec-执行式">
-          <a class="post-toc-link" href="#4-exec-执行式" data-level="3">4. exec — 执行式</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="4-exec--执行式">
+          <a class="post-toc-link" href="#4-exec--执行式" data-level="3">4. exec — 执行式</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="三-定时器-timer-单元">
-          <a class="post-toc-link" href="#三-定时器-timer-单元" data-level="2">三、定时器（Timer）单元</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三定时器timer单元">
+          <a class="post-toc-link" href="#三定时器timer单元" data-level="2">三、定时器（Timer）单元</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="基本示例">
@@ -2261,32 +2261,32 @@ function copied(target, str) {
           <a class="post-toc-link" href="#管理定时器" data-level="3">管理定时器</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="四-path-单元-文件监控">
-          <a class="post-toc-link" href="#四-path-单元-文件监控" data-level="2">四、Path 单元（文件监控）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四path-单元文件监控">
+          <a class="post-toc-link" href="#四path-单元文件监控" data-level="2">四、Path 单元（文件监控）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="五-资源限制与隔离">
-          <a class="post-toc-link" href="#五-资源限制与隔离" data-level="2">五、资源限制与隔离</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五资源限制与隔离">
+          <a class="post-toc-link" href="#五资源限制与隔离" data-level="2">五、资源限制与隔离</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="1-cpu-内存限制">
-          <a class="post-toc-link" href="#1-cpu-内存限制" data-level="3">1. CPU / 内存限制</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-cpu--内存限制">
+          <a class="post-toc-link" href="#1-cpu--内存限制" data-level="3">1. CPU / 内存限制</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-安全隔离">
           <a class="post-toc-link" href="#2-安全隔离" data-level="3">2. 安全隔离</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="六-常用-systemctl-管理">
-          <a class="post-toc-link" href="#六-常用-systemctl-管理" data-level="2">六、常用 systemctl 管理</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六常用-systemctl-管理">
+          <a class="post-toc-link" href="#六常用-systemctl-管理" data-level="2">六、常用 systemctl 管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="七-用户级-systemd">
-          <a class="post-toc-link" href="#七-用户级-systemd" data-level="2">七、用户级 systemd</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七用户级-systemd">
+          <a class="post-toc-link" href="#七用户级-systemd" data-level="2">七、用户级 systemd</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="八-综合实战-部署-web-应用">
-          <a class="post-toc-link" href="#八-综合实战-部署-web-应用" data-level="2">八、综合实战：部署 Web 应用</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八综合实战部署-web-应用">
+          <a class="post-toc-link" href="#八综合实战部署-web-应用" data-level="2">八、综合实战：部署 Web 应用</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="创建目录和脚本">
@@ -2335,7 +2335,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2518,8 +2518,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2536,7 +2536,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

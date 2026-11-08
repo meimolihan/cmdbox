@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="istoreos-install-wireguard 命令">
     <meta name="twitter:description" content="iStoreOS/OpenWrt 安装 WireGuard - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2190,12 +2190,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#安装-wireguard-组件" data-level="2">安装 WireGuard 组件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="新版-istoreos-openwrt-apk">
-              <a class="post-toc-link" href="#新版-istoreos-openwrt-apk" data-level="3">新版 iStoreOS/OpenWrt（apk）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="新版-istoreosopenwrtapk">
+              <a class="post-toc-link" href="#新版-istoreosopenwrtapk" data-level="3">新版 iStoreOS/OpenWrt（apk）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="旧版-openwrt-istoreos-opkg">
-              <a class="post-toc-link" href="#旧版-openwrt-istoreos-opkg" data-level="3">旧版 OpenWrt/iStoreOS（opkg）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="旧版-openwrtistoreosopkg">
+              <a class="post-toc-link" href="#旧版-openwrtistoreosopkg" data-level="3">旧版 OpenWrt/iStoreOS（opkg）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="配置前备份">
@@ -2210,16 +2210,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#生成服务端密钥" data-level="3">生成服务端密钥</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="创建-wireguard-接口-wg0">
-              <a class="post-toc-link" href="#创建-wireguard-接口-wg0" data-level="3">创建 WireGuard 接口（wg0）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="创建-wireguard-接口wg0">
+              <a class="post-toc-link" href="#创建-wireguard-接口wg0" data-level="3">创建 WireGuard 接口（wg0）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="启动接口并查看状态">
               <a class="post-toc-link" href="#启动接口并查看状态" data-level="3">启动接口并查看状态</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="添加客户端-phone-peer">
-              <a class="post-toc-link" href="#添加客户端-phone-peer" data-level="2">添加客户端（Phone Peer）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="添加客户端phone-peer">
+              <a class="post-toc-link" href="#添加客户端phone-peer" data-level="2">添加客户端（Phone Peer）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="生成客户端密钥对">
@@ -2246,8 +2246,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#生成二维码并导入手机" data-level="3">生成二维码并导入手机</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="防火墙配置-fw4">
-              <a class="post-toc-link" href="#防火墙配置-fw4" data-level="2">防火墙配置（fw4）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="防火墙配置fw4">
+              <a class="post-toc-link" href="#防火墙配置fw4" data-level="2">防火墙配置（fw4）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="创建-wg-区域">
@@ -2302,16 +2302,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#提示-device-wg0-does-not-exist" data-level="3">提示 Device &#34;wg0&#34; does not exist</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="手机显示已连接-但没有握手">
-              <a class="post-toc-link" href="#手机显示已连接-但没有握手" data-level="3">手机显示已连接，但没有握手</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="手机显示已连接但没有握手">
+              <a class="post-toc-link" href="#手机显示已连接但没有握手" data-level="3">手机显示已连接，但没有握手</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="能访问路由器-但无法访问-nas-或其他内网设备">
-              <a class="post-toc-link" href="#能访问路由器-但无法访问-nas-或其他内网设备" data-level="3">能访问路由器，但无法访问 NAS 或其他内网设备</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="能访问路由器但无法访问-nas-或其他内网设备">
+              <a class="post-toc-link" href="#能访问路由器但无法访问-nas-或其他内网设备" data-level="3">能访问路由器，但无法访问 NAS 或其他内网设备</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="能访问内网-但无法通过域名解析内网设备">
-              <a class="post-toc-link" href="#能访问内网-但无法通过域名解析内网设备" data-level="3">能访问内网，但无法通过域名解析内网设备</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="能访问内网但无法通过域名解析内网设备">
+              <a class="post-toc-link" href="#能访问内网但无法通过域名解析内网设备" data-level="3">能访问内网，但无法通过域名解析内网设备</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="修改密钥后所有客户端都连不上">
@@ -2379,12 +2379,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#安装-wireguard-组件" data-level="2">安装 WireGuard 组件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="新版-istoreos-openwrt-apk">
-          <a class="post-toc-link" href="#新版-istoreos-openwrt-apk" data-level="3">新版 iStoreOS/OpenWrt（apk）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="新版-istoreosopenwrtapk">
+          <a class="post-toc-link" href="#新版-istoreosopenwrtapk" data-level="3">新版 iStoreOS/OpenWrt（apk）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="旧版-openwrt-istoreos-opkg">
-          <a class="post-toc-link" href="#旧版-openwrt-istoreos-opkg" data-level="3">旧版 OpenWrt/iStoreOS（opkg）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="旧版-openwrtistoreosopkg">
+          <a class="post-toc-link" href="#旧版-openwrtistoreosopkg" data-level="3">旧版 OpenWrt/iStoreOS（opkg）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="配置前备份">
@@ -2399,16 +2399,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#生成服务端密钥" data-level="3">生成服务端密钥</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="创建-wireguard-接口-wg0">
-          <a class="post-toc-link" href="#创建-wireguard-接口-wg0" data-level="3">创建 WireGuard 接口（wg0）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="创建-wireguard-接口wg0">
+          <a class="post-toc-link" href="#创建-wireguard-接口wg0" data-level="3">创建 WireGuard 接口（wg0）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="启动接口并查看状态">
           <a class="post-toc-link" href="#启动接口并查看状态" data-level="3">启动接口并查看状态</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="添加客户端-phone-peer">
-          <a class="post-toc-link" href="#添加客户端-phone-peer" data-level="2">添加客户端（Phone Peer）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="添加客户端phone-peer">
+          <a class="post-toc-link" href="#添加客户端phone-peer" data-level="2">添加客户端（Phone Peer）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="生成客户端密钥对">
@@ -2435,8 +2435,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#生成二维码并导入手机" data-level="3">生成二维码并导入手机</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="防火墙配置-fw4">
-          <a class="post-toc-link" href="#防火墙配置-fw4" data-level="2">防火墙配置（fw4）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="防火墙配置fw4">
+          <a class="post-toc-link" href="#防火墙配置fw4" data-level="2">防火墙配置（fw4）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="创建-wg-区域">
@@ -2491,16 +2491,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#提示-device-wg0-does-not-exist" data-level="3">提示 Device &#34;wg0&#34; does not exist</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="手机显示已连接-但没有握手">
-          <a class="post-toc-link" href="#手机显示已连接-但没有握手" data-level="3">手机显示已连接，但没有握手</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="手机显示已连接但没有握手">
+          <a class="post-toc-link" href="#手机显示已连接但没有握手" data-level="3">手机显示已连接，但没有握手</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="能访问路由器-但无法访问-nas-或其他内网设备">
-          <a class="post-toc-link" href="#能访问路由器-但无法访问-nas-或其他内网设备" data-level="3">能访问路由器，但无法访问 NAS 或其他内网设备</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="能访问路由器但无法访问-nas-或其他内网设备">
+          <a class="post-toc-link" href="#能访问路由器但无法访问-nas-或其他内网设备" data-level="3">能访问路由器，但无法访问 NAS 或其他内网设备</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="能访问内网-但无法通过域名解析内网设备">
-          <a class="post-toc-link" href="#能访问内网-但无法通过域名解析内网设备" data-level="3">能访问内网，但无法通过域名解析内网设备</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="能访问内网但无法通过域名解析内网设备">
+          <a class="post-toc-link" href="#能访问内网但无法通过域名解析内网设备" data-level="3">能访问内网，但无法通过域名解析内网设备</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="修改密钥后所有客户端都连不上">
@@ -2533,7 +2533,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2716,8 +2716,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2734,7 +2734,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

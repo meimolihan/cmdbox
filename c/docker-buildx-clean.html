@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker-buildx-clean 命令">
     <meta name="twitter:description" content="清理 Docker Buildx 构建缓存 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1728,36 +1728,36 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="buildx-节点错乱修复-适配-fnos">
-              <a class="post-toc-link" href="#buildx-节点错乱修复-适配-fnos" data-level="2">Buildx 节点错乱修复（适配 FnOS）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="buildx-节点错乱修复适配-fnos">
+              <a class="post-toc-link" href="#buildx-节点错乱修复适配-fnos" data-level="2">Buildx 节点错乱修复（适配 FnOS）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="一-问题现象">
-              <a class="post-toc-link" href="#一-问题现象" data-level="3">一、问题现象</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="一问题现象">
+              <a class="post-toc-link" href="#一问题现象" data-level="3">一、问题现象</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="二-问题根因">
-              <a class="post-toc-link" href="#二-问题根因" data-level="3">二、问题根因</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="二问题根因">
+              <a class="post-toc-link" href="#二问题根因" data-level="3">二、问题根因</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="三-临时安全清理方案-日常使用-推荐">
-              <a class="post-toc-link" href="#三-临时安全清理方案-日常使用-推荐" data-level="3">三、临时安全清理方案（日常使用 | 推荐）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="三临时安全清理方案日常使用--推荐">
+              <a class="post-toc-link" href="#三临时安全清理方案日常使用--推荐" data-level="3">三、临时安全清理方案（日常使用 | 推荐）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="四-彻底根治修复方案-重置错乱索引">
-              <a class="post-toc-link" href="#四-彻底根治修复方案-重置错乱索引" data-level="3">四、彻底根治修复方案（重置错乱索引）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="四彻底根治修复方案重置错乱索引">
+              <a class="post-toc-link" href="#四彻底根治修复方案重置错乱索引" data-level="3">四、彻底根治修复方案（重置错乱索引）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="五-万能替代清理命令-绕开所有-buildx-bug">
-              <a class="post-toc-link" href="#五-万能替代清理命令-绕开所有-buildx-bug" data-level="3">五、万能替代清理命令（绕开所有 Buildx Bug）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="五万能替代清理命令绕开所有-buildx-bug">
+              <a class="post-toc-link" href="#五万能替代清理命令绕开所有-buildx-bug" data-level="3">五、万能替代清理命令（绕开所有 Buildx Bug）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="六-最佳使用规范-后续永久不报错">
-              <a class="post-toc-link" href="#六-最佳使用规范-后续永久不报错" data-level="3">六、最佳使用规范（后续永久不报错）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="六最佳使用规范后续永久不报错">
+              <a class="post-toc-link" href="#六最佳使用规范后续永久不报错" data-level="3">六、最佳使用规范（后续永久不报错）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="七-当前环境状态总结">
-              <a class="post-toc-link" href="#七-当前环境状态总结" data-level="3">七、当前环境状态总结</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="七当前环境状态总结">
+              <a class="post-toc-link" href="#七当前环境状态总结" data-level="3">七、当前环境状态总结</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="查看构建缓存使用情况">
@@ -1772,8 +1772,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#详细查看缓存内容" data-level="3">详细查看缓存内容</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="安全清理-推荐">
-              <a class="post-toc-link" href="#安全清理-推荐" data-level="2">安全清理（推荐）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="安全清理推荐">
+              <a class="post-toc-link" href="#安全清理推荐" data-level="2">安全清理（推荐）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="删除无引用缓存">
@@ -1800,12 +1800,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#windows-powershell-脚本示例" data-level="2">Windows PowerShell 脚本示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="linux-macos-脚本示例">
-              <a class="post-toc-link" href="#linux-macos-脚本示例" data-level="2">Linux/macOS 脚本示例</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="linuxmacos-脚本示例">
+              <a class="post-toc-link" href="#linuxmacos-脚本示例" data-level="2">Linux/macOS 脚本示例</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="ci-cd-中的使用">
-              <a class="post-toc-link" href="#ci-cd-中的使用" data-level="2">CI/CD 中的使用</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="cicd-中的使用">
+              <a class="post-toc-link" href="#cicd-中的使用" data-level="2">CI/CD 中的使用</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="github-actions">
@@ -1853,36 +1853,36 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="buildx-节点错乱修复-适配-fnos">
-          <a class="post-toc-link" href="#buildx-节点错乱修复-适配-fnos" data-level="2">Buildx 节点错乱修复（适配 FnOS）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="buildx-节点错乱修复适配-fnos">
+          <a class="post-toc-link" href="#buildx-节点错乱修复适配-fnos" data-level="2">Buildx 节点错乱修复（适配 FnOS）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="一-问题现象">
-          <a class="post-toc-link" href="#一-问题现象" data-level="3">一、问题现象</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="一问题现象">
+          <a class="post-toc-link" href="#一问题现象" data-level="3">一、问题现象</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="二-问题根因">
-          <a class="post-toc-link" href="#二-问题根因" data-level="3">二、问题根因</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="二问题根因">
+          <a class="post-toc-link" href="#二问题根因" data-level="3">二、问题根因</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="三-临时安全清理方案-日常使用-推荐">
-          <a class="post-toc-link" href="#三-临时安全清理方案-日常使用-推荐" data-level="3">三、临时安全清理方案（日常使用 | 推荐）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="三临时安全清理方案日常使用--推荐">
+          <a class="post-toc-link" href="#三临时安全清理方案日常使用--推荐" data-level="3">三、临时安全清理方案（日常使用 | 推荐）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="四-彻底根治修复方案-重置错乱索引">
-          <a class="post-toc-link" href="#四-彻底根治修复方案-重置错乱索引" data-level="3">四、彻底根治修复方案（重置错乱索引）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="四彻底根治修复方案重置错乱索引">
+          <a class="post-toc-link" href="#四彻底根治修复方案重置错乱索引" data-level="3">四、彻底根治修复方案（重置错乱索引）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="五-万能替代清理命令-绕开所有-buildx-bug">
-          <a class="post-toc-link" href="#五-万能替代清理命令-绕开所有-buildx-bug" data-level="3">五、万能替代清理命令（绕开所有 Buildx Bug）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="五万能替代清理命令绕开所有-buildx-bug">
+          <a class="post-toc-link" href="#五万能替代清理命令绕开所有-buildx-bug" data-level="3">五、万能替代清理命令（绕开所有 Buildx Bug）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="六-最佳使用规范-后续永久不报错">
-          <a class="post-toc-link" href="#六-最佳使用规范-后续永久不报错" data-level="3">六、最佳使用规范（后续永久不报错）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="六最佳使用规范后续永久不报错">
+          <a class="post-toc-link" href="#六最佳使用规范后续永久不报错" data-level="3">六、最佳使用规范（后续永久不报错）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="七-当前环境状态总结">
-          <a class="post-toc-link" href="#七-当前环境状态总结" data-level="3">七、当前环境状态总结</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="七当前环境状态总结">
+          <a class="post-toc-link" href="#七当前环境状态总结" data-level="3">七、当前环境状态总结</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="查看构建缓存使用情况">
@@ -1897,8 +1897,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#详细查看缓存内容" data-level="3">详细查看缓存内容</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="安全清理-推荐">
-          <a class="post-toc-link" href="#安全清理-推荐" data-level="2">安全清理（推荐）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="安全清理推荐">
+          <a class="post-toc-link" href="#安全清理推荐" data-level="2">安全清理（推荐）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="删除无引用缓存">
@@ -1925,12 +1925,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#windows-powershell-脚本示例" data-level="2">Windows PowerShell 脚本示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="linux-macos-脚本示例">
-          <a class="post-toc-link" href="#linux-macos-脚本示例" data-level="2">Linux/macOS 脚本示例</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="linuxmacos-脚本示例">
+          <a class="post-toc-link" href="#linuxmacos-脚本示例" data-level="2">Linux/macOS 脚本示例</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="ci-cd-中的使用">
-          <a class="post-toc-link" href="#ci-cd-中的使用" data-level="2">CI/CD 中的使用</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="cicd-中的使用">
+          <a class="post-toc-link" href="#cicd-中的使用" data-level="2">CI/CD 中的使用</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="github-actions">
@@ -1955,7 +1955,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2138,8 +2138,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2156,7 +2156,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

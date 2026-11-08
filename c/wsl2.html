@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="wsl2 命令">
     <meta name="twitter:description" content="WSL2 高级配置与使用技巧 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1612,12 +1612,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-wsl1-与-wsl2-切换">
-              <a class="post-toc-link" href="#一-wsl1-与-wsl2-切换" data-level="2">一、WSL1 与 WSL2 切换</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一wsl1-与-wsl2-切换">
+              <a class="post-toc-link" href="#一wsl1-与-wsl2-切换" data-level="2">一、WSL1 与 WSL2 切换</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="二-资源限制-内存-cpu-swap">
-              <a class="post-toc-link" href="#二-资源限制-内存-cpu-swap" data-level="2">二、资源限制（内存 / CPU /  Swap）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二资源限制内存--cpu---swap">
+              <a class="post-toc-link" href="#二资源限制内存--cpu---swap" data-level="2">二、资源限制（内存 / CPU / Swap）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件位置">
@@ -1628,20 +1628,20 @@ function copied(target, str) {
               <a class="post-toc-link" href="#使配置生效" data-level="3">使配置生效</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="三-网络代理配置">
-              <a class="post-toc-link" href="#三-网络代理配置" data-level="2">三、网络代理配置</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三网络代理配置">
+              <a class="post-toc-link" href="#三网络代理配置" data-level="2">三、网络代理配置</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="方案一-windows-代理转发到-wsl2">
-              <a class="post-toc-link" href="#方案一-windows-代理转发到-wsl2" data-level="3">方案一：Windows 代理转发到 WSL2</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方案一windows-代理转发到-wsl2">
+              <a class="post-toc-link" href="#方案一windows-代理转发到-wsl2" data-level="3">方案一：Windows 代理转发到 WSL2</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="方案二-wsl2-镜像网络模式-win11-22h2">
-              <a class="post-toc-link" href="#方案二-wsl2-镜像网络模式-win11-22h2" data-level="3">方案二：WSL2 镜像网络模式（Win11 22H2+）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="方案二wsl2-镜像网络模式win11-22h2">
+              <a class="post-toc-link" href="#方案二wsl2-镜像网络模式win11-22h2" data-level="3">方案二：WSL2 镜像网络模式（Win11 22H2+）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="四-跨系统互操作">
-              <a class="post-toc-link" href="#四-跨系统互操作" data-level="2">四、跨系统互操作</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四跨系统互操作">
+              <a class="post-toc-link" href="#四跨系统互操作" data-level="2">四、跨系统互操作</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-在-wsl2-中调用-windows-程序">
@@ -1660,24 +1660,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#4-从-windows-访问-wsl2-文件" data-level="3">4. 从 Windows 访问 WSL2 文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="五-磁盘与虚拟硬盘管理">
-              <a class="post-toc-link" href="#五-磁盘与虚拟硬盘管理" data-level="2">五、磁盘与虚拟硬盘管理</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五磁盘与虚拟硬盘管理">
+              <a class="post-toc-link" href="#五磁盘与虚拟硬盘管理" data-level="2">五、磁盘与虚拟硬盘管理</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="1-查看虚拟硬盘-vhdx-位置">
-              <a class="post-toc-link" href="#1-查看虚拟硬盘-vhdx-位置" data-level="3">1. 查看虚拟硬盘（VHDX）位置</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1-查看虚拟硬盘vhdx位置">
+              <a class="post-toc-link" href="#1-查看虚拟硬盘vhdx位置" data-level="3">1. 查看虚拟硬盘（VHDX）位置</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="2-压缩虚拟硬盘">
               <a class="post-toc-link" href="#2-压缩虚拟硬盘" data-level="3">2. 压缩虚拟硬盘</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="3-导出与导入-备份-迁移">
-              <a class="post-toc-link" href="#3-导出与导入-备份-迁移" data-level="3">3. 导出与导入（备份 / 迁移）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="3-导出与导入备份--迁移">
+              <a class="post-toc-link" href="#3-导出与导入备份--迁移" data-level="3">3. 导出与导入（备份 / 迁移）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="六-自定义-wsl2-内核">
-              <a class="post-toc-link" href="#六-自定义-wsl2-内核" data-level="2">六、自定义 WSL2 内核</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六自定义-wsl2-内核">
+              <a class="post-toc-link" href="#六自定义-wsl2-内核" data-level="2">六、自定义 WSL2 内核</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-查看当前内核版本">
@@ -1688,8 +1688,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#2-使用自定义内核" data-level="3">2. 使用自定义内核</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="七-wsl2-中运行-docker">
-              <a class="post-toc-link" href="#七-wsl2-中运行-docker" data-level="2">七、WSL2 中运行 Docker</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七wsl2-中运行-docker">
+              <a class="post-toc-link" href="#七wsl2-中运行-docker" data-level="2">七、WSL2 中运行 Docker</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="安装-docker-engine">
@@ -1700,8 +1700,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#启动-docker" data-level="3">启动 Docker</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="八-常见问题">
-              <a class="post-toc-link" href="#八-常见问题" data-level="2">八、常见问题</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八常见问题">
+              <a class="post-toc-link" href="#八常见问题" data-level="2">八、常见问题</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="内存占用过高">
@@ -1753,12 +1753,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-wsl1-与-wsl2-切换">
-          <a class="post-toc-link" href="#一-wsl1-与-wsl2-切换" data-level="2">一、WSL1 与 WSL2 切换</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一wsl1-与-wsl2-切换">
+          <a class="post-toc-link" href="#一wsl1-与-wsl2-切换" data-level="2">一、WSL1 与 WSL2 切换</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="二-资源限制-内存-cpu-swap">
-          <a class="post-toc-link" href="#二-资源限制-内存-cpu-swap" data-level="2">二、资源限制（内存 / CPU /  Swap）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二资源限制内存--cpu---swap">
+          <a class="post-toc-link" href="#二资源限制内存--cpu---swap" data-level="2">二、资源限制（内存 / CPU / Swap）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="配置文件位置">
@@ -1769,20 +1769,20 @@ function copied(target, str) {
           <a class="post-toc-link" href="#使配置生效" data-level="3">使配置生效</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="三-网络代理配置">
-          <a class="post-toc-link" href="#三-网络代理配置" data-level="2">三、网络代理配置</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三网络代理配置">
+          <a class="post-toc-link" href="#三网络代理配置" data-level="2">三、网络代理配置</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="方案一-windows-代理转发到-wsl2">
-          <a class="post-toc-link" href="#方案一-windows-代理转发到-wsl2" data-level="3">方案一：Windows 代理转发到 WSL2</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方案一windows-代理转发到-wsl2">
+          <a class="post-toc-link" href="#方案一windows-代理转发到-wsl2" data-level="3">方案一：Windows 代理转发到 WSL2</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="方案二-wsl2-镜像网络模式-win11-22h2">
-          <a class="post-toc-link" href="#方案二-wsl2-镜像网络模式-win11-22h2" data-level="3">方案二：WSL2 镜像网络模式（Win11 22H2+）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="方案二wsl2-镜像网络模式win11-22h2">
+          <a class="post-toc-link" href="#方案二wsl2-镜像网络模式win11-22h2" data-level="3">方案二：WSL2 镜像网络模式（Win11 22H2+）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="四-跨系统互操作">
-          <a class="post-toc-link" href="#四-跨系统互操作" data-level="2">四、跨系统互操作</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四跨系统互操作">
+          <a class="post-toc-link" href="#四跨系统互操作" data-level="2">四、跨系统互操作</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-在-wsl2-中调用-windows-程序">
@@ -1801,24 +1801,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#4-从-windows-访问-wsl2-文件" data-level="3">4. 从 Windows 访问 WSL2 文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="五-磁盘与虚拟硬盘管理">
-          <a class="post-toc-link" href="#五-磁盘与虚拟硬盘管理" data-level="2">五、磁盘与虚拟硬盘管理</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五磁盘与虚拟硬盘管理">
+          <a class="post-toc-link" href="#五磁盘与虚拟硬盘管理" data-level="2">五、磁盘与虚拟硬盘管理</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="1-查看虚拟硬盘-vhdx-位置">
-          <a class="post-toc-link" href="#1-查看虚拟硬盘-vhdx-位置" data-level="3">1. 查看虚拟硬盘（VHDX）位置</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1-查看虚拟硬盘vhdx位置">
+          <a class="post-toc-link" href="#1-查看虚拟硬盘vhdx位置" data-level="3">1. 查看虚拟硬盘（VHDX）位置</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="2-压缩虚拟硬盘">
           <a class="post-toc-link" href="#2-压缩虚拟硬盘" data-level="3">2. 压缩虚拟硬盘</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="3-导出与导入-备份-迁移">
-          <a class="post-toc-link" href="#3-导出与导入-备份-迁移" data-level="3">3. 导出与导入（备份 / 迁移）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="3-导出与导入备份--迁移">
+          <a class="post-toc-link" href="#3-导出与导入备份--迁移" data-level="3">3. 导出与导入（备份 / 迁移）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="六-自定义-wsl2-内核">
-          <a class="post-toc-link" href="#六-自定义-wsl2-内核" data-level="2">六、自定义 WSL2 内核</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六自定义-wsl2-内核">
+          <a class="post-toc-link" href="#六自定义-wsl2-内核" data-level="2">六、自定义 WSL2 内核</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-查看当前内核版本">
@@ -1829,8 +1829,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#2-使用自定义内核" data-level="3">2. 使用自定义内核</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="七-wsl2-中运行-docker">
-          <a class="post-toc-link" href="#七-wsl2-中运行-docker" data-level="2">七、WSL2 中运行 Docker</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七wsl2-中运行-docker">
+          <a class="post-toc-link" href="#七wsl2-中运行-docker" data-level="2">七、WSL2 中运行 Docker</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="安装-docker-engine">
@@ -1841,8 +1841,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#启动-docker" data-level="3">启动 Docker</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="八-常见问题">
-          <a class="post-toc-link" href="#八-常见问题" data-level="2">八、常见问题</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八常见问题">
+          <a class="post-toc-link" href="#八常见问题" data-level="2">八、常见问题</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="内存占用过高">
@@ -1871,7 +1871,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2054,8 +2054,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2072,7 +2072,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

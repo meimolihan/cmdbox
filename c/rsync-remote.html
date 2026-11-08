@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="rsync-remote 命令">
     <meta name="twitter:description" content="Rsync 远程同步命令 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1657,28 +1657,28 @@ function copied(target, str) {
               <a class="post-toc-link" href="#源路径结尾斜杠的区别" data-level="3">源路径结尾斜杠的区别</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败-远端找不到-rsync">
-              <a class="post-toc-link" href="#常见失败-远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败远端找不到-rsync">
+              <a class="post-toc-link" href="#常见失败远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="更安全的密码传递">
               <a class="post-toc-link" href="#更安全的密码传递" data-level="3">更安全的密码传递</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接-tmux">
-              <a class="post-toc-link" href="#保持长连接-tmux" data-level="2">保持长连接（tmux）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接tmux">
+              <a class="post-toc-link" href="#保持长连接tmux" data-level="2">保持长连接（tmux）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="常用增强参数">
               <a class="post-toc-link" href="#常用增强参数" data-level="2">常用增强参数</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="反向同步-远端-本地">
-              <a class="post-toc-link" href="#反向同步-远端-本地" data-level="2">反向同步（远端 → 本地）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="反向同步远端--本地">
+              <a class="post-toc-link" href="#反向同步远端--本地" data-level="2">反向同步（远端 → 本地）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步-cron">
-              <a class="post-toc-link" href="#定时同步-cron" data-level="2">定时同步（cron）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步cron">
+              <a class="post-toc-link" href="#定时同步cron" data-level="2">定时同步（cron）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
@@ -1746,28 +1746,28 @@ function copied(target, str) {
           <a class="post-toc-link" href="#源路径结尾斜杠的区别" data-level="3">源路径结尾斜杠的区别</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败-远端找不到-rsync">
-          <a class="post-toc-link" href="#常见失败-远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常见失败远端找不到-rsync">
+          <a class="post-toc-link" href="#常见失败远端找不到-rsync" data-level="3">常见失败：远端找不到 rsync</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="更安全的密码传递">
           <a class="post-toc-link" href="#更安全的密码传递" data-level="3">更安全的密码传递</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接-tmux">
-          <a class="post-toc-link" href="#保持长连接-tmux" data-level="2">保持长连接（tmux）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="保持长连接tmux">
+          <a class="post-toc-link" href="#保持长连接tmux" data-level="2">保持长连接（tmux）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="常用增强参数">
           <a class="post-toc-link" href="#常用增强参数" data-level="2">常用增强参数</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="反向同步-远端-本地">
-          <a class="post-toc-link" href="#反向同步-远端-本地" data-level="2">反向同步（远端 → 本地）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="反向同步远端--本地">
+          <a class="post-toc-link" href="#反向同步远端--本地" data-level="2">反向同步（远端 → 本地）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步-cron">
-          <a class="post-toc-link" href="#定时同步-cron" data-level="2">定时同步（cron）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="定时同步cron">
+          <a class="post-toc-link" href="#定时同步cron" data-level="2">定时同步（cron）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="故障排查">
@@ -1788,7 +1788,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1971,8 +1971,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -1989,7 +1989,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>

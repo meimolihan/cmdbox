@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="docker_daily_scripts 命令">
     <meta name="twitter:description" content="Docker 40个高频运维脚本合集 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adb55bbc299">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=f8956adbc2e86e56">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=f8956adb55bbc299"></script>
+    <script src="../js/dt.js?v=f8956adbc2e86e56"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -2233,8 +2233,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#通用说明" data-level="2">通用说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="一-容器启停-批量管理-1-10">
-              <a class="post-toc-link" href="#一-容器启停-批量管理-1-10" data-level="2">一、容器启停 &amp; 批量管理（1–10）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一容器启停--批量管理110">
+              <a class="post-toc-link" href="#一容器启停--批量管理110" data-level="2">一、容器启停 &amp; 批量管理（1–10）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="1-批量启动所有容器">
@@ -2253,16 +2253,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#4-批量删除已停止容器" data-level="3">4. 批量删除已停止容器</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="5-删除单个容器-传参">
-              <a class="post-toc-link" href="#5-删除单个容器-传参" data-level="3">5. 删除单个容器（传参）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="5-删除单个容器传参">
+              <a class="post-toc-link" href="#5-删除单个容器传参" data-level="3">5. 删除单个容器（传参）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="6-强制停止并删除容器">
               <a class="post-toc-link" href="#6-强制停止并删除容器" data-level="3">6. 强制停止并删除容器</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="7-临时容器-退出自动删除">
-              <a class="post-toc-link" href="#7-临时容器-退出自动删除" data-level="3">7. 临时容器（退出自动删除）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="7-临时容器退出自动删除">
+              <a class="post-toc-link" href="#7-临时容器退出自动删除" data-level="3">7. 临时容器（退出自动删除）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="8-容器设置自动重启">
@@ -2277,8 +2277,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#10-批量给所有容器开启自启" data-level="3">10. 批量给所有容器开启自启</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="二-镜像管理-清理-11-20">
-              <a class="post-toc-link" href="#二-镜像管理-清理-11-20" data-level="2">二、镜像管理 &amp; 清理（11–20）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二镜像管理--清理1120">
+              <a class="post-toc-link" href="#二镜像管理--清理1120" data-level="2">二、镜像管理 &amp; 清理（11–20）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="11-拉取镜像">
@@ -2289,16 +2289,16 @@ function copied(target, str) {
               <a class="post-toc-link" href="#12-删除单个镜像" data-level="3">12. 删除单个镜像</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="13-清理悬空镜像-无用残片">
-              <a class="post-toc-link" href="#13-清理悬空镜像-无用残片" data-level="3">13. 清理悬空镜像（无用残片）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="13-清理悬空镜像无用残片">
+              <a class="post-toc-link" href="#13-清理悬空镜像无用残片" data-level="3">13. 清理悬空镜像（无用残片）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="14-一键全量清理-docker-垃圾">
               <a class="post-toc-link" href="#14-一键全量清理-docker-垃圾" data-level="3">14. 一键全量清理 Docker 垃圾</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="15-清理镜像-容器-网络-数据卷">
-              <a class="post-toc-link" href="#15-清理镜像-容器-网络-数据卷" data-level="3">15. 清理镜像+容器+网络+数据卷</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="15-清理镜像容器网络数据卷">
+              <a class="post-toc-link" href="#15-清理镜像容器网络数据卷" data-level="3">15. 清理镜像+容器+网络+数据卷</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="16-导出镜像为本地文件">
@@ -2321,8 +2321,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#20-按名称过滤镜像" data-level="3">20. 按名称过滤镜像</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="三-日志查看-日志管控-21-28">
-              <a class="post-toc-link" href="#三-日志查看-日志管控-21-28" data-level="2">三、日志查看 &amp; 日志管控（21–28）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三日志查看--日志管控2128">
+              <a class="post-toc-link" href="#三日志查看--日志管控2128" data-level="2">三、日志查看 &amp; 日志管控（21–28）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="21-查看容器实时日志">
@@ -2341,24 +2341,24 @@ function copied(target, str) {
               <a class="post-toc-link" href="#24-进入容器终端交互" data-level="3">24. 进入容器终端交互</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="25-容器内执行单次命令-不进入终端">
-              <a class="post-toc-link" href="#25-容器内执行单次命令-不进入终端" data-level="3">25. 容器内执行单次命令（不进入终端）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="25-容器内执行单次命令不进入终端">
+              <a class="post-toc-link" href="#25-容器内执行单次命令不进入终端" data-level="3">25. 容器内执行单次命令（不进入终端）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="26-手动清空容器日志文件">
               <a class="post-toc-link" href="#26-手动清空容器日志文件" data-level="3">26. 手动清空容器日志文件</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="27-全局限制容器日志大小-永久配置">
-              <a class="post-toc-link" href="#27-全局限制容器日志大小-永久配置" data-level="3">27. 全局限制容器日志大小（永久配置）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="27-全局限制容器日志大小永久配置">
+              <a class="post-toc-link" href="#27-全局限制容器日志大小永久配置" data-level="3">27. 全局限制容器日志大小（永久配置）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="28-查看容器日志文件路径">
               <a class="post-toc-link" href="#28-查看容器日志文件路径" data-level="3">28. 查看容器日志文件路径</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="四-备份-迁移-文件互传-29-34">
-              <a class="post-toc-link" href="#四-备份-迁移-文件互传-29-34" data-level="2">四、备份、迁移 &amp; 文件互传（29–34）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四备份迁移--文件互传2934">
+              <a class="post-toc-link" href="#四备份迁移--文件互传2934" data-level="2">四、备份、迁移 &amp; 文件互传（29–34）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="29-容器文件拷贝到宿主机">
@@ -2385,8 +2385,8 @@ function copied(target, str) {
               <a class="post-toc-link" href="#34-数据卷恢复" data-level="3">34. 数据卷恢复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="五-网络-端口-资源监控-35-40">
-              <a class="post-toc-link" href="#五-网络-端口-资源监控-35-40" data-level="2">五、网络、端口、资源监控（35–40）</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五网络端口资源监控3540">
+              <a class="post-toc-link" href="#五网络端口资源监控3540" data-level="2">五、网络、端口、资源监控（35–40）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="35-查看所有容器端口映射">
@@ -2405,12 +2405,12 @@ function copied(target, str) {
               <a class="post-toc-link" href="#38-查看容器资源实时占用" data-level="3">38. 查看容器资源实时占用</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="39-一次性统计容器资源-不刷新">
-              <a class="post-toc-link" href="#39-一次性统计容器资源-不刷新" data-level="3">39. 一次性统计容器资源（不刷新）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="39-一次性统计容器资源不刷新">
+              <a class="post-toc-link" href="#39-一次性统计容器资源不刷新" data-level="3">39. 一次性统计容器资源（不刷新）</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="40-一键集群启停综合脚本-整合版">
-              <a class="post-toc-link" href="#40-一键集群启停综合脚本-整合版" data-level="3">40. 一键集群启停综合脚本（整合版）</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="40-一键集群启停综合脚本整合版">
+              <a class="post-toc-link" href="#40-一键集群启停综合脚本整合版" data-level="3">40. 一键集群启停综合脚本（整合版）</a>
             </li>
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="通用补充说明">
@@ -2450,8 +2450,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#通用说明" data-level="2">通用说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="一-容器启停-批量管理-1-10">
-          <a class="post-toc-link" href="#一-容器启停-批量管理-1-10" data-level="2">一、容器启停 &amp; 批量管理（1–10）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一容器启停--批量管理110">
+          <a class="post-toc-link" href="#一容器启停--批量管理110" data-level="2">一、容器启停 &amp; 批量管理（1–10）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="1-批量启动所有容器">
@@ -2470,16 +2470,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#4-批量删除已停止容器" data-level="3">4. 批量删除已停止容器</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="5-删除单个容器-传参">
-          <a class="post-toc-link" href="#5-删除单个容器-传参" data-level="3">5. 删除单个容器（传参）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="5-删除单个容器传参">
+          <a class="post-toc-link" href="#5-删除单个容器传参" data-level="3">5. 删除单个容器（传参）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="6-强制停止并删除容器">
           <a class="post-toc-link" href="#6-强制停止并删除容器" data-level="3">6. 强制停止并删除容器</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="7-临时容器-退出自动删除">
-          <a class="post-toc-link" href="#7-临时容器-退出自动删除" data-level="3">7. 临时容器（退出自动删除）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="7-临时容器退出自动删除">
+          <a class="post-toc-link" href="#7-临时容器退出自动删除" data-level="3">7. 临时容器（退出自动删除）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="8-容器设置自动重启">
@@ -2494,8 +2494,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#10-批量给所有容器开启自启" data-level="3">10. 批量给所有容器开启自启</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="二-镜像管理-清理-11-20">
-          <a class="post-toc-link" href="#二-镜像管理-清理-11-20" data-level="2">二、镜像管理 &amp; 清理（11–20）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二镜像管理--清理1120">
+          <a class="post-toc-link" href="#二镜像管理--清理1120" data-level="2">二、镜像管理 &amp; 清理（11–20）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="11-拉取镜像">
@@ -2506,16 +2506,16 @@ function copied(target, str) {
           <a class="post-toc-link" href="#12-删除单个镜像" data-level="3">12. 删除单个镜像</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="13-清理悬空镜像-无用残片">
-          <a class="post-toc-link" href="#13-清理悬空镜像-无用残片" data-level="3">13. 清理悬空镜像（无用残片）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="13-清理悬空镜像无用残片">
+          <a class="post-toc-link" href="#13-清理悬空镜像无用残片" data-level="3">13. 清理悬空镜像（无用残片）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="14-一键全量清理-docker-垃圾">
           <a class="post-toc-link" href="#14-一键全量清理-docker-垃圾" data-level="3">14. 一键全量清理 Docker 垃圾</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="15-清理镜像-容器-网络-数据卷">
-          <a class="post-toc-link" href="#15-清理镜像-容器-网络-数据卷" data-level="3">15. 清理镜像+容器+网络+数据卷</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="15-清理镜像容器网络数据卷">
+          <a class="post-toc-link" href="#15-清理镜像容器网络数据卷" data-level="3">15. 清理镜像+容器+网络+数据卷</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="16-导出镜像为本地文件">
@@ -2538,8 +2538,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#20-按名称过滤镜像" data-level="3">20. 按名称过滤镜像</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="三-日志查看-日志管控-21-28">
-          <a class="post-toc-link" href="#三-日志查看-日志管控-21-28" data-level="2">三、日志查看 &amp; 日志管控（21–28）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三日志查看--日志管控2128">
+          <a class="post-toc-link" href="#三日志查看--日志管控2128" data-level="2">三、日志查看 &amp; 日志管控（21–28）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="21-查看容器实时日志">
@@ -2558,24 +2558,24 @@ function copied(target, str) {
           <a class="post-toc-link" href="#24-进入容器终端交互" data-level="3">24. 进入容器终端交互</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="25-容器内执行单次命令-不进入终端">
-          <a class="post-toc-link" href="#25-容器内执行单次命令-不进入终端" data-level="3">25. 容器内执行单次命令（不进入终端）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="25-容器内执行单次命令不进入终端">
+          <a class="post-toc-link" href="#25-容器内执行单次命令不进入终端" data-level="3">25. 容器内执行单次命令（不进入终端）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="26-手动清空容器日志文件">
           <a class="post-toc-link" href="#26-手动清空容器日志文件" data-level="3">26. 手动清空容器日志文件</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="27-全局限制容器日志大小-永久配置">
-          <a class="post-toc-link" href="#27-全局限制容器日志大小-永久配置" data-level="3">27. 全局限制容器日志大小（永久配置）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="27-全局限制容器日志大小永久配置">
+          <a class="post-toc-link" href="#27-全局限制容器日志大小永久配置" data-level="3">27. 全局限制容器日志大小（永久配置）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="28-查看容器日志文件路径">
           <a class="post-toc-link" href="#28-查看容器日志文件路径" data-level="3">28. 查看容器日志文件路径</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="四-备份-迁移-文件互传-29-34">
-          <a class="post-toc-link" href="#四-备份-迁移-文件互传-29-34" data-level="2">四、备份、迁移 &amp; 文件互传（29–34）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四备份迁移--文件互传2934">
+          <a class="post-toc-link" href="#四备份迁移--文件互传2934" data-level="2">四、备份、迁移 &amp; 文件互传（29–34）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="29-容器文件拷贝到宿主机">
@@ -2602,8 +2602,8 @@ function copied(target, str) {
           <a class="post-toc-link" href="#34-数据卷恢复" data-level="3">34. 数据卷恢复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="五-网络-端口-资源监控-35-40">
-          <a class="post-toc-link" href="#五-网络-端口-资源监控-35-40" data-level="2">五、网络、端口、资源监控（35–40）</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五网络端口资源监控3540">
+          <a class="post-toc-link" href="#五网络端口资源监控3540" data-level="2">五、网络、端口、资源监控（35–40）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="35-查看所有容器端口映射">
@@ -2622,12 +2622,12 @@ function copied(target, str) {
           <a class="post-toc-link" href="#38-查看容器资源实时占用" data-level="3">38. 查看容器资源实时占用</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="39-一次性统计容器资源-不刷新">
-          <a class="post-toc-link" href="#39-一次性统计容器资源-不刷新" data-level="3">39. 一次性统计容器资源（不刷新）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="39-一次性统计容器资源不刷新">
+          <a class="post-toc-link" href="#39-一次性统计容器资源不刷新" data-level="3">39. 一次性统计容器资源（不刷新）</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="40-一键集群启停综合脚本-整合版">
-          <a class="post-toc-link" href="#40-一键集群启停综合脚本-整合版" data-level="3">40. 一键集群启停综合脚本（整合版）</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="40-一键集群启停综合脚本整合版">
+          <a class="post-toc-link" href="#40-一键集群启停综合脚本整合版" data-level="3">40. 一键集群启停综合脚本（整合版）</a>
         </li>
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="通用补充说明">
@@ -2644,7 +2644,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=f8956adb55bbc299"></script>
+<script src="../js/post-toc.js?v=f8956adbc2e86e56"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -2827,8 +2827,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=f8956adb55bbc299"></script>
-<script type="text/javascript" src="../js/enhance.js?v=f8956adb55bbc299"></script>
+<script type="text/javascript" src="../js/index.js?v=f8956adbc2e86e56"></script>
+<script type="text/javascript" src="../js/enhance.js?v=f8956adbc2e86e56"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -2845,7 +2845,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.0.4</span>
+  <span>CmdBox v2.0.5</span>
 </div>
 </body>
 </html>
