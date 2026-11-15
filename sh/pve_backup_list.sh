@@ -35,21 +35,100 @@ column_if_available() {
     fi
 }
 
-list_beautify_pve_backup() {
-    local storage_name="$1"
-    local filter_vmid="$2"
+# PVE环境检测函数，非PVE直接报错并退出
+check_pve_env() {
+    clear
+    local miss=0
+    if ! command -v pvesm &>/dev/null; then miss=1; fi
+    if ! command -v qm &>/dev/null; then miss=1; fi
 
-    if ! command -v pvesm &> /dev/null; then
-        clear
+    if [[ ${miss} -eq 1 ]]; then
         echo ""
         echo -e "${gl_zi}>>> PVE 存储备份列表${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        log_error "未检测到 Proxmox VE 环境，请确保脚本在 PVE 节点上运行"
+        log_error "当前系统不是 Proxmox VE，缺少 pvesm/qm 命令，脚本终止！"
+        log_info "本脚本仅允许在 Proxmox VE 节点运行。"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         break_end
-        return 1
+        exit 1
+    fi
+}
+
+parse_backup_list() {
+    local storage_name="$1"
+    local dump_base="$2"
+    local filter_vmid="$3"
+
+    local raw
+    raw=$(pvesm list "${storage_name}" --content backup 2>/dev/null)
+    local data
+    data=$(echo "$raw" | tail -n +2)
+    if [ -z "$data" ]; then
+        return
     fi
 
+    echo "$data" | while read -r line; do
+        local volid
+        volid=$(echo "$line" | awk '{print $1}')
+        local bk_type
+        bk_type=$(echo "$line" | awk '{print $2}')
+        local size_byte
+        size_byte=$(echo "$line" | awk '{print $4}')
+        local vmid
+        vmid=$(echo "$line" | awk '{print $5}')
+
+        if [[ ! "$bk_type" =~ ^vma ]]; then
+            continue
+        fi
+
+        if [[ -n "${filter_vmid}" && "${vmid}" != "${filter_vmid}" ]]; then
+            continue
+        fi
+
+        local bk_filename="${volid#*${storage_name}:backup/}"
+        local note_file="${dump_base}/${bk_filename}.notes"
+        local notes=""
+        if [[ -f "$note_file" ]]; then
+            notes=$(cat "$note_file" | xargs)
+        else
+            notes="(无备注)"
+        fi
+
+        local size_mb=$(( size_byte / 1024 / 1024 ))
+        echo -e "${gl_huang}备份${reset}\t${gl_lan}${vmid}${reset}\t${gl_bufan}${bk_filename}${reset}\t${gl_zi}${size_mb} MB${reset}\t${gl_lv}${notes}${reset}"
+    done
+}
+
+show_backup_list() {
+    local arg1="$1"
+    local arg2="$2"
+
+    # 优先执行环境校验
+    check_pve_env
+
+    # 默认值
+    local storage_name="local"
+    local filter_vmid=""
+
+    # 判断参数1
+    if [[ -n "${arg1}" ]]; then
+        if [[ "${arg1}" =~ ^[0-9]+$ ]]; then
+            filter_vmid="${arg1}"
+        else
+            storage_name="${arg1}"
+        fi
+    fi
+
+    # 判断参数2
+    if [[ -n "${arg2}" ]]; then
+        if [[ "${arg2}" =~ ^[0-9]+$ ]]; then
+            filter_vmid="${arg2}"
+        else
+            storage_name="${arg2}"
+        fi
+    fi
+
+    # 校验存储是否存在
     if ! pvesm status | awk '{print $1}' | grep -q "^${storage_name}$"; then
         clear
         echo ""
@@ -63,12 +142,13 @@ list_beautify_pve_backup() {
         return 1
     fi
 
+    # VMID格式校验
     if [[ -n "${filter_vmid}" && ! "${filter_vmid}" =~ ^[0-9]+$ ]]; then
         clear
         echo ""
         echo -e "${gl_zi}>>> PVE 存储备份列表${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-        log_error "VMID 必须为数字！"
+        log_error "VMID必须为数字！"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         break_end
         return 1
@@ -80,63 +160,19 @@ list_beautify_pve_backup() {
 
     clear
     if [[ -n "${filter_vmid}" ]]; then
-        echo -e "${gl_zi}>>> PVE 存储【${storage_name}】备份列表，仅显示 VMID=${filter_vmid}${gl_bai}"
+        echo -e "${gl_zi}>>> PVE 存储【${storage_name}】备份列表，仅显示VMID=${filter_vmid}${gl_bai}"
     else
         echo -e "${gl_zi}>>> PVE 存储【${storage_name}】全部备份列表${gl_bai}"
     fi
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-
     {
         printf "%s%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "类型" "VMID" "备份文件名" "大小" "备注" "$reset"
         printf "%s%s\t%s\t%s\t%s\t%s%s\n" "$gl_hui" "----" "----" "----------" "----" "----" "$reset"
-
-        local raw
-        raw=$(pvesm list "${storage_name}" --content backup 2>/dev/null)
-        local data
-        data=$(echo "$raw" | tail -n +2)
-        if [ -n "$data" ]; then
-            echo "$data" | while read -r line; do
-                local volid
-                volid=$(echo "$line" | awk '{print $1}')
-                local bk_type
-                bk_type=$(echo "$line" | awk '{print $2}')
-                local size_byte
-                size_byte=$(echo "$line" | awk '{print $4}')
-                local vmid
-                vmid=$(echo "$line" | awk '{print $5}')
-
-                [[ ! "$bk_type" =~ ^vma ]] && continue
-                [[ -n "${filter_vmid}" && "${vmid}" != "${filter_vmid}" ]] && continue
-
-                local bk_filename="${volid#*${storage_name}:backup/}"
-                local note_file="${dump_base}/${bk_filename}.notes"
-                local notes=""
-                if [[ -f "$note_file" ]]; then
-                    notes=$(cat "$note_file" | xargs)
-                else
-                    notes="(无备注)"
-                fi
-
-                local size_mb=$(( size_byte / 1024 / 1024 ))
-                echo -e "${gl_huang}备份${reset}\t${gl_lan}${vmid}${reset}\t${gl_bufan}${bk_filename}${reset}\t${gl_zi}${size_mb} MB${reset}\t${gl_lv}${notes}${reset}"
-            done
-        fi
+        parse_backup_list "${storage_name}" "${dump_base}" "${filter_vmid}"
     } | column_if_available
 
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     break_end
 }
 
-# 参数解析：支持互换位置（存储名/VMID 任意顺序）
-storage_name="local"
-filter_vmid=""
-
-for arg in "$@"; do
-    if [[ "$arg" =~ ^[0-9]+$ ]]; then
-        filter_vmid="$arg"
-    else
-        storage_name="$arg"
-    fi
-done
-
-list_beautify_pve_backup "${storage_name}" "${filter_vmid}"
+show_backup_list "${1:-}" "${2:-}"

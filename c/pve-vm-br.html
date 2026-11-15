@@ -32,7 +32,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="pve-vm-br 命令">
     <meta name="twitter:description" content="PVE 虚拟机/容器备份与恢复命令大全 - 最专业的命令大全，值得收藏的命令速查手册。">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=3644f18520190097">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=3644f1855bfd970e">
     <!-- WOW.js 动画依赖 -->
     <link rel="stylesheet" type="text/css" href="../assets/animate.min.css">
     <!-- 跳转到主内容（无障碍） -->
@@ -146,7 +146,7 @@
         color: #c9d1d9 !important;
       }
     </style>
-    <script src="../js/dt.js?v=3644f18520190097"></script>
+    <script src="../js/dt.js?v=3644f1855bfd970e"></script>
     <!-- 壁纸切换功能 -->
     <style>
       /* 壁纸背景层 - 独立 fixed 层解决移动端 background-attachment:fixed bug */
@@ -1102,7 +1102,7 @@ function syncWallpaperUI(isOn) {
       </div>
   </div>
 </div>
-<script type="text/javascript" src="../js/copy-to-clipboard.js?v=3644f18520190097"></script>
+<script type="text/javascript" src="../js/copy-to-clipboard.js?v=3644f1855bfd970e"></script>
 
 <style>
 /* 壁纸模式详情页 - body 顶部间距 */
@@ -1228,13 +1228,17 @@ class MarkdownStyle extends HTMLElement {
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
 <h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p>本文整理了 Proxmox VE（PVE）环境下 LXC 容器和 KVM 虚拟机的备份与恢复命令，涵盖 <code>vzdump</code>、<code>pct restore</code>、<code>qmrestore</code> 等核心工具。</p>
-<h3 id="lxc-容器备份"><a class="anchor" aria-hidden="true" tabindex="-1" href="#lxc-容器备份"><span class="octicon octicon-link"></span></a>LXC 容器备份</h3>
-<h4 id="基础语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#基础语法"><span class="octicon octicon-link"></span></a>基础语法</h4>
+<p>本文整理了 Proxmox VE（PVE）环境下 LXC 容器和 KVM 虚拟机的备份与恢复命令，涵盖 <code>vzdump</code>、<code>pct restore</code>、<code>qmrestore</code> 等核心工具，并结合 PVE 9.X 实操给出定时自动备份、修剪策略与恢复流程。</p>
+<blockquote>
+  <p>⚠️ 重要提醒：虚拟机快照 ≠ 备份。快照是存储层临时状态记录，用于快速回滚测试，不能当做灾难备份；磁盘损坏、存储故障时快照会一同丢失。真正的离线备份请使用 <code>vzdump</code>。</p>
+</blockquote>
+<hr>
+<h2 id="一lxc-容器备份"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一lxc-容器备份"><span class="octicon octicon-link"></span></a>一、LXC 容器备份</h2>
+<h3 id="基础语法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#基础语法"><span class="octicon octicon-link"></span></a>基础语法</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">vzdump <span class="token punctuation">[</span>容器ID<span class="token punctuation">]</span> <span class="token punctuation">[</span>参数<span class="token punctuation">]</span>
 </span></code><div onclick="copied(this)" data-code="vzdump [容器ID] [参数]
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h4 id="常用参数"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常用参数"><span class="octicon octicon-link"></span></a>常用参数</h4>
+<h3 id="常用参数"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常用参数"><span class="octicon octicon-link"></span></a>常用参数</h3>
 <table>
   <thead>
     <tr>
@@ -1273,7 +1277,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     </tr>
   </tbody>
 </table>
-<h4 id="实战命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令"><span class="octicon octicon-link"></span></a>实战命令</h4>
+<h3 id="实战命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令"><span class="octicon octicon-link"></span></a>实战命令</h3>
 <p>单容器不停机备份（推荐）：</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">vzdump <span class="token number">236</span> <span class="token parameter variable">--mode</span> snapshot <span class="token parameter variable">--compress</span> lzo
 </span></code><div onclick="copied(this)" data-code="vzdump 236 --mode snapshot --compress lzo
@@ -1286,12 +1290,13 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">vzdump all <span class="token parameter variable">--mode</span> snapshot <span class="token parameter variable">--storage</span> local-lvm
 </span></code><div onclick="copied(this)" data-code="vzdump all --mode snapshot --storage local-lvm
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h3 id="lxc-容器恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#lxc-容器恢复"><span class="octicon octicon-link"></span></a>LXC 容器恢复</h3>
-<h4 id="基础语法-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#基础语法-1"><span class="octicon octicon-link"></span></a>基础语法</h4>
+<hr>
+<h2 id="二lxc-容器恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#二lxc-容器恢复"><span class="octicon octicon-link"></span></a>二、LXC 容器恢复</h2>
+<h3 id="基础语法-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#基础语法-1"><span class="octicon octicon-link"></span></a>基础语法</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">pct restore <span class="token punctuation">[</span>目标容器ID<span class="token punctuation">]</span> <span class="token punctuation">[</span>备份文件路径<span class="token punctuation">]</span> <span class="token punctuation">[</span>参数<span class="token punctuation">]</span>
 </span></code><div onclick="copied(this)" data-code="pct restore [目标容器ID] [备份文件路径] [参数]
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h4 id="常用参数-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常用参数-1"><span class="octicon octicon-link"></span></a>常用参数</h4>
+<h3 id="常用参数-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常用参数-1"><span class="octicon octicon-link"></span></a>常用参数</h3>
 <table>
   <thead>
     <tr>
@@ -1314,7 +1319,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     </tr>
   </tbody>
 </table>
-<h4 id="实战命令-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令-1"><span class="octicon octicon-link"></span></a>实战命令</h4>
+<h3 id="实战命令-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令-1"><span class="octicon octicon-link"></span></a>实战命令</h3>
 <p>恢复到新容器（推荐，不覆盖原容器）：</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">pct restore <span class="token number">237</span> /var/lib/vz/dump/vzdump-lxc-236-2026_05_19-13_13_17.tar.lzo
 </span></code><div onclick="copied(this)" data-code="pct restore 237 /var/lib/vz/dump/vzdump-lxc-236-2026_05_19-13_13_17.tar.lzo
@@ -1327,7 +1332,7 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">pct restore <span class="token number">237</span> /var/lib/vz/dump/vzdump-lxc-236-2026_05_19-13_13_17.tar.lzo <span class="token parameter variable">--storage</span> local-lvm
 </span></code><div onclick="copied(this)" data-code="pct restore 237 /var/lib/vz/dump/vzdump-lxc-236-2026_05_19-13_13_17.tar.lzo --storage local-lvm
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h4 id="恢复后操作"><a class="anchor" aria-hidden="true" tabindex="-1" href="#恢复后操作"><span class="octicon octicon-link"></span></a>恢复后操作</h4>
+<h3 id="恢复后操作"><a class="anchor" aria-hidden="true" tabindex="-1" href="#恢复后操作"><span class="octicon octicon-link"></span></a>恢复后操作</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">pct start <span class="token number">237</span>      <span class="token comment"># 启动容器</span>
 </span><span class="code-line line-number" line="2">pct status <span class="token number">237</span>     <span class="token comment"># 查看状态</span>
 </span><span class="code-line line-number" line="3">pct enter <span class="token number">237</span>      <span class="token comment"># 进入容器验证数据</span>
@@ -1335,9 +1340,10 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 pct status 237     # 查看状态
 pct enter 237      # 进入容器验证数据
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h3 id="kvm-虚拟机备份"><a class="anchor" aria-hidden="true" tabindex="-1" href="#kvm-虚拟机备份"><span class="octicon octicon-link"></span></a>KVM 虚拟机备份</h3>
+<hr>
+<h2 id="三kvm-虚拟机备份"><a class="anchor" aria-hidden="true" tabindex="-1" href="#三kvm-虚拟机备份"><span class="octicon octicon-link"></span></a>三、KVM 虚拟机备份</h2>
 <p>KVM 备份与 LXC 共用 <code>vzdump</code> 命令，参数基本一致。</p>
-<h4 id="核心参数补充"><a class="anchor" aria-hidden="true" tabindex="-1" href="#核心参数补充"><span class="octicon octicon-link"></span></a>核心参数补充</h4>
+<h3 id="核心参数补充"><a class="anchor" aria-hidden="true" tabindex="-1" href="#核心参数补充"><span class="octicon octicon-link"></span></a>核心参数补充</h3>
 <table>
   <thead>
     <tr>
@@ -1360,7 +1366,7 @@ pct enter 237      # 进入容器验证数据
     </tr>
   </tbody>
 </table>
-<h4 id="实战命令-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令-2"><span class="octicon octicon-link"></span></a>实战命令</h4>
+<h3 id="实战命令-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令-2"><span class="octicon octicon-link"></span></a>实战命令</h3>
 <p>单虚拟机不停机备份（推荐）：</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">vzdump <span class="token number">100</span> <span class="token parameter variable">--mode</span> snapshot <span class="token parameter variable">--compress</span> lzo
 </span></code><div onclick="copied(this)" data-code="vzdump 100 --mode snapshot --compress lzo
@@ -1373,15 +1379,16 @@ pct enter 237      # 进入容器验证数据
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">vzdump all <span class="token parameter variable">--mode</span> snapshot <span class="token parameter variable">--storage</span> nfs-backup
 </span></code><div onclick="copied(this)" data-code="vzdump all --mode snapshot --storage nfs-backup
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h3 id="kvm-虚拟机恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#kvm-虚拟机恢复"><span class="octicon octicon-link"></span></a>KVM 虚拟机恢复</h3>
+<hr>
+<h2 id="四kvm-虚拟机恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#四kvm-虚拟机恢复"><span class="octicon octicon-link"></span></a>四、KVM 虚拟机恢复</h2>
 <blockquote>
   <p>KVM 恢复命令为 <code>qmrestore</code>，与 LXC 的 <code>pct restore</code> 不同。</p>
 </blockquote>
-<h4 id="基础语法-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#基础语法-2"><span class="octicon octicon-link"></span></a>基础语法</h4>
+<h3 id="基础语法-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#基础语法-2"><span class="octicon octicon-link"></span></a>基础语法</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">qmrestore <span class="token punctuation">[</span>备份文件路径<span class="token punctuation">]</span> <span class="token punctuation">[</span>目标虚拟机ID<span class="token punctuation">]</span> <span class="token punctuation">[</span>参数<span class="token punctuation">]</span>
 </span></code><div onclick="copied(this)" data-code="qmrestore [备份文件路径] [目标虚拟机ID] [参数]
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h4 id="常用参数-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常用参数-2"><span class="octicon octicon-link"></span></a>常用参数</h4>
+<h3 id="常用参数-2"><a class="anchor" aria-hidden="true" tabindex="-1" href="#常用参数-2"><span class="octicon octicon-link"></span></a>常用参数</h3>
 <table>
   <thead>
     <tr>
@@ -1404,7 +1411,7 @@ pct enter 237      # 进入容器验证数据
     </tr>
   </tbody>
 </table>
-<h4 id="实战命令-3"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令-3"><span class="octicon octicon-link"></span></a>实战命令</h4>
+<h3 id="实战命令-3"><a class="anchor" aria-hidden="true" tabindex="-1" href="#实战命令-3"><span class="octicon octicon-link"></span></a>实战命令</h3>
 <p>恢复到新虚拟机（推荐）：</p>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">qmrestore /var/lib/vz/dump/vzdump-qemu-100-2026_05_19-14_00_00.vma.lzo <span class="token number">101</span>
 </span></code><div onclick="copied(this)" data-code="qmrestore /var/lib/vz/dump/vzdump-qemu-100-2026_05_19-14_00_00.vma.lzo 101
@@ -1417,7 +1424,7 @@ pct enter 237      # 进入容器验证数据
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">qmrestore /var/lib/vz/dump/vzdump-qemu-100-2026_05_19-14_00_00.vma.lzo <span class="token number">101</span> <span class="token parameter variable">--storage</span> local-lvm
 </span></code><div onclick="copied(this)" data-code="qmrestore /var/lib/vz/dump/vzdump-qemu-100-2026_05_19-14_00_00.vma.lzo 101 --storage local-lvm
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h4 id="恢复后操作-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#恢复后操作-1"><span class="octicon octicon-link"></span></a>恢复后操作</h4>
+<h3 id="恢复后操作-1"><a class="anchor" aria-hidden="true" tabindex="-1" href="#恢复后操作-1"><span class="octicon octicon-link"></span></a>恢复后操作</h3>
 <pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">qm start <span class="token number">101</span>      <span class="token comment"># 启动虚拟机</span>
 </span><span class="code-line line-number" line="2">qm status <span class="token number">101</span>     <span class="token comment"># 查看状态</span>
 </span><span class="code-line line-number" line="3">qm console <span class="token number">101</span>    <span class="token comment"># 连接控制台验证</span>
@@ -1425,13 +1432,194 @@ pct enter 237      # 进入容器验证数据
 qm status 101     # 查看状态
 qm console 101    # 连接控制台验证
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<h3 id="通用注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#通用注意事项"><span class="octicon octicon-link"></span></a>通用注意事项</h3>
+<hr>
+<h2 id="五pve-9x-备份实操补充"><a class="anchor" aria-hidden="true" tabindex="-1" href="#五pve-9x-备份实操补充"><span class="octicon octicon-link"></span></a>五、PVE 9.X 备份实操补充</h2>
+<h3 id="vzdump-三种备份模式对比"><a class="anchor" aria-hidden="true" tabindex="-1" href="#vzdump-三种备份模式对比"><span class="octicon octicon-link"></span></a>vzdump 三种备份模式对比</h3>
+<table>
+  <thead>
+    <tr>
+      <th>模式</th>
+      <th>工作原理</th>
+      <th>业务影响</th>
+      <th>适用场景</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>stop</td>
+      <td>关闭虚拟机后做完整备份</td>
+      <td>业务停机中断</td>
+      <td>数据一致性最高；对停机可接受的业务；底层存储不支持快照时强制选用</td>
+    </tr>
+    <tr>
+      <td>suspend</td>
+      <td>将虚拟机挂起写入内存镜像，完成备份后唤醒</td>
+      <td>短暂业务中断几秒</td>
+      <td>追求短停机；注意部分 Windows 业务挂起后可能异常</td>
+    </tr>
+    <tr>
+      <td>snapshot</td>
+      <td>存储快照 + 写时复制 CoW，配合 Qemu‑Guest‑Agent 冻结文件系统</td>
+      <td>几乎无停机</td>
+      <td>✅ 生产环境首选；依赖底层存储支持快照：LVM‑thin、ZFS、Ceph</td>
+    </tr>
+  </tbody>
+</table>
+<blockquote>
+  <p>普通目录/NFS 无快照能力，不能使用 snapshot 模式，请改用 stop 模式。</p>
+</blockquote>
+<h3 id="pve-9-推荐压缩算法zstd"><a class="anchor" aria-hidden="true" tabindex="-1" href="#pve-9-推荐压缩算法zstd"><span class="octicon octicon-link"></span></a>PVE 9 推荐压缩算法：zstd</h3>
+<p>PVE 9 默认推荐使用 <code>zstd</code> 压缩，速度与压缩比均衡：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 对 VMID=100 虚拟机在线快照备份（PVE 9 推荐）</span>
+</span><span class="code-line line-number" line="2">vzdump <span class="token number">100</span> <span class="token parameter variable">--storage</span> <span class="token builtin class-name">local</span> <span class="token parameter variable">--mode</span> snapshot <span class="token parameter variable">--compress</span> zstd --notes-template <span class="token string">'{{guestname}}'</span>
+</span></code><div onclick="copied(this)" data-code="# 对 VMID=100 虚拟机在线快照备份（PVE 9 推荐）
+vzdump 100 --storage local --mode snapshot --compress zstd --notes-template &#x27;{{guestname}}&#x27;
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="-最佳实践部署-qemuguestagent"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-最佳实践部署-qemuguestagent"><span class="octicon octicon-link"></span></a>💡 最佳实践：部署 qemu‑guest‑agent</h3>
+<p>在虚拟机内安装 <code>qemu-guest-agent</code>，snapshot 模式下会自动冻结文件系统，大幅提升文件一致性。</p>
+<hr>
+<h2 id="六定时自动备份"><a class="anchor" aria-hidden="true" tabindex="-1" href="#六定时自动备份"><span class="octicon octicon-link"></span></a>六、定时自动备份</h2>
+<h3 id="webui-方式推荐"><a class="anchor" aria-hidden="true" tabindex="-1" href="#webui-方式推荐"><span class="octicon octicon-link"></span></a>WebUI 方式（推荐）</h3>
+<p>在 PVE 管理界面路径：<strong>数据中心 → 备份 → 添加任务</strong></p>
+<ul>
+  <li>设置执行时间、需要备份的虚拟机</li>
+  <li>选择存储、备份模式、压缩方式</li>
+  <li>在「修剪 (Prune)」配置备份保留策略</li>
+</ul>
+<h3 id="命令行-cron-配置"><a class="anchor" aria-hidden="true" tabindex="-1" href="#命令行-cron-配置"><span class="octicon octicon-link"></span></a>命令行 cron 配置</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">cat</span> <span class="token operator">></span> /etc/cron.d/pve-backup <span class="token operator">&#x3C;&#x3C;</span><span class="token string">'EOF'
+</span></span><span class="code-line line-number" line="2"><span class="token string"># 每日凌晨 2 点，全部虚拟机备份
+</span></span><span class="code-line line-number" line="3"><span class="token string">0 2 * * * root vzdump --all --mode snapshot --storage local --compress zstd --quiet 1 --prune-backups keep-last=7
+</span></span><span class="code-line line-number" line="4"><span class="token string">EOF</span>
+</span></code><div onclick="copied(this)" data-code="cat > /etc/cron.d/pve-backup <<&#x27;EOF&#x27;
+# 每日凌晨 2 点，全部虚拟机备份
+0 2 * * * root vzdump --all --mode snapshot --storage local --compress zstd --quiet 1 --prune-backups keep-last=7
+EOF
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="备份保留修剪策略-prune"><a class="anchor" aria-hidden="true" tabindex="-1" href="#备份保留修剪策略-prune"><span class="octicon octicon-link"></span></a>备份保留修剪策略 Prune</h3>
+<p>不要手动 <code>rm</code> 删除备份文件，优先使用 PVE 自带修剪，会同步清理备份元数据与 notes 备注。</p>
+<p>两种配置位置：</p>
+<ol>
+  <li>WebUI 备份任务内直接配置 <code>prune-backups</code></li>
+  <li>命令参数示例：<code>--prune-backups keep-last=7,keep-weekly=4,keep-monthly=6</code></li>
+</ol>
+<table>
+  <thead>
+    <tr>
+      <th>策略参数</th>
+      <th>说明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>keep-last=7</code></td>
+      <td>保留最近 7 份备份</td>
+    </tr>
+    <tr>
+      <td><code>keep-weekly=4</code></td>
+      <td>保留最近 4 周，每周一份</td>
+    </tr>
+    <tr>
+      <td><code>keep-monthly=6</code></td>
+      <td>保留最近 6 个月，每月一份</td>
+    </tr>
+  </tbody>
+</table>
+<blockquote>
+  <p>根据业务合规、磁盘空间调整，注意监控存储使用率，避免备份打满磁盘导致节点异常。</p>
+</blockquote>
+<hr>
+<h2 id="七备份文件查看"><a class="anchor" aria-hidden="true" tabindex="-1" href="#七备份文件查看"><span class="octicon octicon-link"></span></a>七、备份文件查看</h2>
+<h3 id="使用优化脚本查看彩色带备注参数位置可互换"><a class="anchor" aria-hidden="true" tabindex="-1" href="#使用优化脚本查看彩色带备注参数位置可互换"><span class="octicon octicon-link"></span></a>使用优化脚本查看（彩色，带备注，参数位置可互换）</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 查看 local 存储全部备份</span>
+</span><span class="code-line line-number" line="2">./pve_backup_list.sh
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 查看指定 VMID=100 的备份（存储名与 VMID 位置可互换）</span>
+</span><span class="code-line line-number" line="5">./pve_backup_list.sh <span class="token builtin class-name">local</span> <span class="token number">100</span>
+</span><span class="code-line line-number" line="6">./pve_backup_list.sh <span class="token number">100</span> <span class="token builtin class-name">local</span>
+</span></code><div onclick="copied(this)" data-code="# 查看 local 存储全部备份
+./pve_backup_list.sh
+
+# 查看指定 VMID=100 的备份（存储名与 VMID 位置可互换）
+./pve_backup_list.sh local 100
+./pve_backup_list.sh 100 local
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>脚本源码位置：<code>template/sh/pve_backup_list.sh</code></p>
+<h3 id="原生-pvesm-查看"><a class="anchor" aria-hidden="true" tabindex="-1" href="#原生-pvesm-查看"><span class="octicon octicon-link"></span></a>原生 pvesm 查看</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">pvesm list <span class="token builtin class-name">local</span> <span class="token parameter variable">--content</span> backup <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">100</span>
+</span></code><div onclick="copied(this)" data-code="pvesm list local --content backup | grep 100
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h3 id="local-存储真实-dump-目录"><a class="anchor" aria-hidden="true" tabindex="-1" href="#local-存储真实-dump-目录"><span class="octicon octicon-link"></span></a>local 存储真实 dump 目录</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">ls</span> <span class="token parameter variable">-lh</span> /var/lib/vz/dump/
+</span></code><div onclick="copied(this)" data-code="ls -lh /var/lib/vz/dump/
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>备份文件格式：<code>vzdump-qemu-VMID-时间.vma.zst</code>，配套 <code>.notes</code> 保存备份备注信息。</p>
+<hr>
+<h2 id="八完整恢复流程"><a class="anchor" aria-hidden="true" tabindex="-1" href="#八完整恢复流程"><span class="octicon octicon-link"></span></a>八、完整恢复流程</h2>
+<h3 id="-恢复最佳实践"><a class="anchor" aria-hidden="true" tabindex="-1" href="#-恢复最佳实践"><span class="octicon octicon-link"></span></a>✅ 恢复最佳实践</h3>
+<p>优先恢复到全新 VMID，确认业务正常后再决定是否替换原业务机，<strong>禁止直接覆盖生产虚拟机</strong>。</p>
+<h3 id="1整机恢复虚拟机"><a class="anchor" aria-hidden="true" tabindex="-1" href="#1整机恢复虚拟机"><span class="octicon octicon-link"></span></a>1）整机恢复虚拟机</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 格式：qmrestore 备份卷ID 新VMID</span>
+</span><span class="code-line line-number" line="2">qmrestore local:backup/vzdump-qemu-100-2026_11_01-02_00_00.vma.zst <span class="token number">200</span> <span class="token parameter variable">--storage</span> local-lvm
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 启动恢复后的虚拟机</span>
+</span><span class="code-line line-number" line="5">qm start <span class="token number">200</span>
+</span></code><div onclick="copied(this)" data-code="# 格式：qmrestore 备份卷ID 新VMID
+qmrestore local:backup/vzdump-qemu-100-2026_11_01-02_00_00.vma.zst 200 --storage local-lvm
+
+# 启动恢复后的虚拟机
+qm start 200
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<ul>
+  <li><code>--storage local-lvm</code>：指定虚拟机磁盘存放的目标存储</li>
+  <li>如需强制覆盖原有虚拟机（高危！）增加参数 <code>--overwrite 1</code></li>
+</ul>
+<h3 id="2单文件提取恢复"><a class="anchor" aria-hidden="true" tabindex="-1" href="#2单文件提取恢复"><span class="octicon octicon-link"></span></a>2）单文件提取恢复</h3>
+<p>整机恢复开销大，如果只需要个别文件，直接解压 vma 备份包：</p>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 创建临时目录</span>
+</span><span class="code-line line-number" line="2"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /tmp/vma_tmp
+</span><span class="code-line line-number" line="3">
+</span><span class="code-line line-number" line="4"><span class="token comment"># 解开备份镜像</span>
+</span><span class="code-line line-number" line="5">vma extract /var/lib/vz/dump/vzdump-qemu-100-2026_11_01-02_00_00.vma.zst /tmp/vma_tmp
+</span></code><div onclick="copied(this)" data-code="# 创建临时目录
+mkdir -p /tmp/vma_tmp
+
+# 解开备份镜像
+vma extract /var/lib/vz/dump/vzdump-qemu-100-2026_11_01-02_00_00.vma.zst /tmp/vma_tmp
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<p>解压后可看到虚拟机磁盘 raw 镜像，可通过 <code>losetup</code> 挂载磁盘镜像，直接拷贝需要的文件，完成单文件找回。</p>
+<h3 id="恢复后验证"><a class="anchor" aria-hidden="true" tabindex="-1" href="#恢复后验证"><span class="octicon octicon-link"></span></a>恢复后验证</h3>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1">qm start <span class="token number">200</span>      <span class="token comment"># 启动虚拟机</span>
+</span><span class="code-line line-number" line="2">qm status <span class="token number">200</span>     <span class="token comment"># 查看状态</span>
+</span><span class="code-line line-number" line="3">qm console <span class="token number">200</span>    <span class="token comment"># 连接控制台验证</span>
+</span></code><div onclick="copied(this)" data-code="qm start 200      # 启动虚拟机
+qm status 200     # 查看状态
+qm console 200    # 连接控制台验证
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<hr>
+<h2 id="九通用注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#九通用注意事项"><span class="octicon octicon-link"></span></a>九、通用注意事项</h2>
 <ul>
   <li>备份文件默认存放于 <code>/var/lib/vz/dump/</code>，可通过 <code>ls -lh /var/lib/vz/dump/</code> 查看</li>
   <li>所有命令需用 <code>root</code> 用户执行，或加 <code>sudo</code></li>
   <li>备份/恢复前使用 <code>pvesm status</code> 确认目标存储有足够空间</li>
   <li>LXC 备份格式为 <code>.tar.lzo</code> / <code>.tar.gz</code>，KVM 为 <code>.vma.lzo</code> / <code>.vma.gz</code></li>
   <li>集群环境中备份会同步到所有节点，恢复可在任意节点执行</li>
+</ul>
+<hr>
+<h2 id="十常见坑点总结"><a class="anchor" aria-hidden="true" tabindex="-1" href="#十常见坑点总结"><span class="octicon octicon-link"></span></a>十、常见坑点总结</h2>
+<ol>
+  <li><strong>快照 ≠ 备份</strong>：快照依附原存储，存储损坏快照全部丢失，快照只适合测试回滚，不能替代 <code>vzdump</code> 备份。</li>
+  <li><strong>snapshot 模式强依赖存储能力</strong>：普通 NFS/目录存储会报错，请切换 <code>stop</code> 模式。</li>
+  <li><strong>不要直接 <code>rm</code> 删除备份文件</strong>：优先用 <code>pvesm free</code> 或 <code>prune</code> 修剪，防止元数据残留。</li>
+  <li><strong>备份磁盘空间需持续监控</strong>：磁盘占满会导致节点、虚拟机异常。</li>
+  <li><strong>恢复优先恢复到新 VMID</strong>：验证业务完整性后再操作原业务虚拟机。</li>
+</ol>
+<hr>
+<h2 id="参考链接"><a class="anchor" aria-hidden="true" tabindex="-1" href="#参考链接"><span class="octicon octicon-link"></span></a>参考链接</h2>
+<ul>
+  <li><a href="https://pve.proxmox.com/wiki/Backup_and_Restore">Proxmox VE 官方文档 - Backup and Restore</a></li>
+  <li><a href="https://pve.proxmox.com/wiki/Proxmox_Backup_and_Restore#vzdump">Proxmox VE 官方文档 - vzdump</a></li>
+  <li><a href="./pve_backup_list.html"><code>pve_backup_list</code></a> — PVE 存储备份美化列表脚本</li>
 </ul>
 <style>markdown-style pre .copied {
   display: flex;
@@ -1515,76 +1703,152 @@ function copied(target, str) {
               <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="lxc-容器备份">
-              <a class="post-toc-link" href="#lxc-容器备份" data-level="3">LXC 容器备份</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一lxc-容器备份">
+              <a class="post-toc-link" href="#一lxc-容器备份" data-level="2">一、LXC 容器备份</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="基础语法">
-              <a class="post-toc-link" href="#基础语法" data-level="4">基础语法</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基础语法">
+              <a class="post-toc-link" href="#基础语法" data-level="3">基础语法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="常用参数">
-              <a class="post-toc-link" href="#常用参数" data-level="4">常用参数</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用参数">
+              <a class="post-toc-link" href="#常用参数" data-level="3">常用参数</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令">
-              <a class="post-toc-link" href="#实战命令" data-level="4">实战命令</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令">
+              <a class="post-toc-link" href="#实战命令" data-level="3">实战命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="lxc-容器恢复">
-              <a class="post-toc-link" href="#lxc-容器恢复" data-level="3">LXC 容器恢复</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="二lxc-容器恢复">
+              <a class="post-toc-link" href="#二lxc-容器恢复" data-level="2">二、LXC 容器恢复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="基础语法-1">
-              <a class="post-toc-link" href="#基础语法-1" data-level="4">基础语法</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基础语法-1">
+              <a class="post-toc-link" href="#基础语法-1" data-level="3">基础语法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="常用参数-1">
-              <a class="post-toc-link" href="#常用参数-1" data-level="4">常用参数</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用参数-1">
+              <a class="post-toc-link" href="#常用参数-1" data-level="3">常用参数</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令-1">
-              <a class="post-toc-link" href="#实战命令-1" data-level="4">实战命令</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令-1">
+              <a class="post-toc-link" href="#实战命令-1" data-level="3">实战命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="恢复后操作">
-              <a class="post-toc-link" href="#恢复后操作" data-level="4">恢复后操作</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="恢复后操作">
+              <a class="post-toc-link" href="#恢复后操作" data-level="3">恢复后操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="kvm-虚拟机备份">
-              <a class="post-toc-link" href="#kvm-虚拟机备份" data-level="3">KVM 虚拟机备份</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="三kvm-虚拟机备份">
+              <a class="post-toc-link" href="#三kvm-虚拟机备份" data-level="2">三、KVM 虚拟机备份</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="核心参数补充">
-              <a class="post-toc-link" href="#核心参数补充" data-level="4">核心参数补充</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="核心参数补充">
+              <a class="post-toc-link" href="#核心参数补充" data-level="3">核心参数补充</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令-2">
-              <a class="post-toc-link" href="#实战命令-2" data-level="4">实战命令</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令-2">
+              <a class="post-toc-link" href="#实战命令-2" data-level="3">实战命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="kvm-虚拟机恢复">
-              <a class="post-toc-link" href="#kvm-虚拟机恢复" data-level="3">KVM 虚拟机恢复</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="四kvm-虚拟机恢复">
+              <a class="post-toc-link" href="#四kvm-虚拟机恢复" data-level="2">四、KVM 虚拟机恢复</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="基础语法-2">
-              <a class="post-toc-link" href="#基础语法-2" data-level="4">基础语法</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="基础语法-2">
+              <a class="post-toc-link" href="#基础语法-2" data-level="3">基础语法</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="常用参数-2">
-              <a class="post-toc-link" href="#常用参数-2" data-level="4">常用参数</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="常用参数-2">
+              <a class="post-toc-link" href="#常用参数-2" data-level="3">常用参数</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令-3">
-              <a class="post-toc-link" href="#实战命令-3" data-level="4">实战命令</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令-3">
+              <a class="post-toc-link" href="#实战命令-3" data-level="3">实战命令</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-4" data-toc-id="恢复后操作-1">
-              <a class="post-toc-link" href="#恢复后操作-1" data-level="4">恢复后操作</a>
+            <li class="post-toc-item post-toc-level-3" data-toc-id="恢复后操作-1">
+              <a class="post-toc-link" href="#恢复后操作-1" data-level="3">恢复后操作</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-3" data-toc-id="通用注意事项">
-              <a class="post-toc-link" href="#通用注意事项" data-level="3">通用注意事项</a>
+            <li class="post-toc-item post-toc-level-2" data-toc-id="五pve-9x-备份实操补充">
+              <a class="post-toc-link" href="#五pve-9x-备份实操补充" data-level="2">五、PVE 9.X 备份实操补充</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="vzdump-三种备份模式对比">
+              <a class="post-toc-link" href="#vzdump-三种备份模式对比" data-level="3">vzdump 三种备份模式对比</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="pve-9-推荐压缩算法zstd">
+              <a class="post-toc-link" href="#pve-9-推荐压缩算法zstd" data-level="3">PVE 9 推荐压缩算法：zstd</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="-最佳实践部署-qemuguestagent">
+              <a class="post-toc-link" href="#-最佳实践部署-qemuguestagent" data-level="3">💡 最佳实践：部署 qemu‑guest‑agent</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="六定时自动备份">
+              <a class="post-toc-link" href="#六定时自动备份" data-level="2">六、定时自动备份</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="webui-方式推荐">
+              <a class="post-toc-link" href="#webui-方式推荐" data-level="3">WebUI 方式（推荐）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="命令行-cron-配置">
+              <a class="post-toc-link" href="#命令行-cron-配置" data-level="3">命令行 cron 配置</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="备份保留修剪策略-prune">
+              <a class="post-toc-link" href="#备份保留修剪策略-prune" data-level="3">备份保留修剪策略 Prune</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="七备份文件查看">
+              <a class="post-toc-link" href="#七备份文件查看" data-level="2">七、备份文件查看</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="使用优化脚本查看彩色带备注参数位置可互换">
+              <a class="post-toc-link" href="#使用优化脚本查看彩色带备注参数位置可互换" data-level="3">使用优化脚本查看（彩色，带备注，参数位置可互换）</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="原生-pvesm-查看">
+              <a class="post-toc-link" href="#原生-pvesm-查看" data-level="3">原生 pvesm 查看</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="local-存储真实-dump-目录">
+              <a class="post-toc-link" href="#local-存储真实-dump-目录" data-level="3">local 存储真实 dump 目录</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="八完整恢复流程">
+              <a class="post-toc-link" href="#八完整恢复流程" data-level="2">八、完整恢复流程</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="-恢复最佳实践">
+              <a class="post-toc-link" href="#-恢复最佳实践" data-level="3">✅ 恢复最佳实践</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="1整机恢复虚拟机">
+              <a class="post-toc-link" href="#1整机恢复虚拟机" data-level="3">1）整机恢复虚拟机</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="2单文件提取恢复">
+              <a class="post-toc-link" href="#2单文件提取恢复" data-level="3">2）单文件提取恢复</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-3" data-toc-id="恢复后验证">
+              <a class="post-toc-link" href="#恢复后验证" data-level="3">恢复后验证</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="九通用注意事项">
+              <a class="post-toc-link" href="#九通用注意事项" data-level="2">九、通用注意事项</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="十常见坑点总结">
+              <a class="post-toc-link" href="#十常见坑点总结" data-level="2">十、常见坑点总结</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+              <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
             </li>
             
           </ul>
@@ -1616,76 +1880,152 @@ function copied(target, str) {
           <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="lxc-容器备份">
-          <a class="post-toc-link" href="#lxc-容器备份" data-level="3">LXC 容器备份</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一lxc-容器备份">
+          <a class="post-toc-link" href="#一lxc-容器备份" data-level="2">一、LXC 容器备份</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="基础语法">
-          <a class="post-toc-link" href="#基础语法" data-level="4">基础语法</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基础语法">
+          <a class="post-toc-link" href="#基础语法" data-level="3">基础语法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="常用参数">
-          <a class="post-toc-link" href="#常用参数" data-level="4">常用参数</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用参数">
+          <a class="post-toc-link" href="#常用参数" data-level="3">常用参数</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令">
-          <a class="post-toc-link" href="#实战命令" data-level="4">实战命令</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令">
+          <a class="post-toc-link" href="#实战命令" data-level="3">实战命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="lxc-容器恢复">
-          <a class="post-toc-link" href="#lxc-容器恢复" data-level="3">LXC 容器恢复</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="二lxc-容器恢复">
+          <a class="post-toc-link" href="#二lxc-容器恢复" data-level="2">二、LXC 容器恢复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="基础语法-1">
-          <a class="post-toc-link" href="#基础语法-1" data-level="4">基础语法</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基础语法-1">
+          <a class="post-toc-link" href="#基础语法-1" data-level="3">基础语法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="常用参数-1">
-          <a class="post-toc-link" href="#常用参数-1" data-level="4">常用参数</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用参数-1">
+          <a class="post-toc-link" href="#常用参数-1" data-level="3">常用参数</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令-1">
-          <a class="post-toc-link" href="#实战命令-1" data-level="4">实战命令</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令-1">
+          <a class="post-toc-link" href="#实战命令-1" data-level="3">实战命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="恢复后操作">
-          <a class="post-toc-link" href="#恢复后操作" data-level="4">恢复后操作</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="恢复后操作">
+          <a class="post-toc-link" href="#恢复后操作" data-level="3">恢复后操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="kvm-虚拟机备份">
-          <a class="post-toc-link" href="#kvm-虚拟机备份" data-level="3">KVM 虚拟机备份</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="三kvm-虚拟机备份">
+          <a class="post-toc-link" href="#三kvm-虚拟机备份" data-level="2">三、KVM 虚拟机备份</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="核心参数补充">
-          <a class="post-toc-link" href="#核心参数补充" data-level="4">核心参数补充</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="核心参数补充">
+          <a class="post-toc-link" href="#核心参数补充" data-level="3">核心参数补充</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令-2">
-          <a class="post-toc-link" href="#实战命令-2" data-level="4">实战命令</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令-2">
+          <a class="post-toc-link" href="#实战命令-2" data-level="3">实战命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="kvm-虚拟机恢复">
-          <a class="post-toc-link" href="#kvm-虚拟机恢复" data-level="3">KVM 虚拟机恢复</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="四kvm-虚拟机恢复">
+          <a class="post-toc-link" href="#四kvm-虚拟机恢复" data-level="2">四、KVM 虚拟机恢复</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="基础语法-2">
-          <a class="post-toc-link" href="#基础语法-2" data-level="4">基础语法</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="基础语法-2">
+          <a class="post-toc-link" href="#基础语法-2" data-level="3">基础语法</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="常用参数-2">
-          <a class="post-toc-link" href="#常用参数-2" data-level="4">常用参数</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="常用参数-2">
+          <a class="post-toc-link" href="#常用参数-2" data-level="3">常用参数</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="实战命令-3">
-          <a class="post-toc-link" href="#实战命令-3" data-level="4">实战命令</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="实战命令-3">
+          <a class="post-toc-link" href="#实战命令-3" data-level="3">实战命令</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-4" data-toc-id="恢复后操作-1">
-          <a class="post-toc-link" href="#恢复后操作-1" data-level="4">恢复后操作</a>
+        <li class="post-toc-item post-toc-level-3" data-toc-id="恢复后操作-1">
+          <a class="post-toc-link" href="#恢复后操作-1" data-level="3">恢复后操作</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-3" data-toc-id="通用注意事项">
-          <a class="post-toc-link" href="#通用注意事项" data-level="3">通用注意事项</a>
+        <li class="post-toc-item post-toc-level-2" data-toc-id="五pve-9x-备份实操补充">
+          <a class="post-toc-link" href="#五pve-9x-备份实操补充" data-level="2">五、PVE 9.X 备份实操补充</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="vzdump-三种备份模式对比">
+          <a class="post-toc-link" href="#vzdump-三种备份模式对比" data-level="3">vzdump 三种备份模式对比</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="pve-9-推荐压缩算法zstd">
+          <a class="post-toc-link" href="#pve-9-推荐压缩算法zstd" data-level="3">PVE 9 推荐压缩算法：zstd</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="-最佳实践部署-qemuguestagent">
+          <a class="post-toc-link" href="#-最佳实践部署-qemuguestagent" data-level="3">💡 最佳实践：部署 qemu‑guest‑agent</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="六定时自动备份">
+          <a class="post-toc-link" href="#六定时自动备份" data-level="2">六、定时自动备份</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="webui-方式推荐">
+          <a class="post-toc-link" href="#webui-方式推荐" data-level="3">WebUI 方式（推荐）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="命令行-cron-配置">
+          <a class="post-toc-link" href="#命令行-cron-配置" data-level="3">命令行 cron 配置</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="备份保留修剪策略-prune">
+          <a class="post-toc-link" href="#备份保留修剪策略-prune" data-level="3">备份保留修剪策略 Prune</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="七备份文件查看">
+          <a class="post-toc-link" href="#七备份文件查看" data-level="2">七、备份文件查看</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="使用优化脚本查看彩色带备注参数位置可互换">
+          <a class="post-toc-link" href="#使用优化脚本查看彩色带备注参数位置可互换" data-level="3">使用优化脚本查看（彩色，带备注，参数位置可互换）</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="原生-pvesm-查看">
+          <a class="post-toc-link" href="#原生-pvesm-查看" data-level="3">原生 pvesm 查看</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="local-存储真实-dump-目录">
+          <a class="post-toc-link" href="#local-存储真实-dump-目录" data-level="3">local 存储真实 dump 目录</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="八完整恢复流程">
+          <a class="post-toc-link" href="#八完整恢复流程" data-level="2">八、完整恢复流程</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="-恢复最佳实践">
+          <a class="post-toc-link" href="#-恢复最佳实践" data-level="3">✅ 恢复最佳实践</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="1整机恢复虚拟机">
+          <a class="post-toc-link" href="#1整机恢复虚拟机" data-level="3">1）整机恢复虚拟机</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="2单文件提取恢复">
+          <a class="post-toc-link" href="#2单文件提取恢复" data-level="3">2）单文件提取恢复</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-3" data-toc-id="恢复后验证">
+          <a class="post-toc-link" href="#恢复后验证" data-level="3">恢复后验证</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="九通用注意事项">
+          <a class="post-toc-link" href="#九通用注意事项" data-level="2">九、通用注意事项</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="十常见坑点总结">
+          <a class="post-toc-link" href="#十常见坑点总结" data-level="2">十、常见坑点总结</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="参考链接">
+          <a class="post-toc-link" href="#参考链接" data-level="2">参考链接</a>
         </li>
         
       </ul>
@@ -1694,7 +2034,7 @@ function copied(target, str) {
 </div>
 
 
-<script src="../js/post-toc.js?v=3644f18520190097"></script>
+<script src="../js/post-toc.js?v=3644f1855bfd970e"></script>
 
 <!-- Cmdbox 命令搜索引擎：https://github.com/meimolihan/cmdbox -->
 <div class="footer ">
@@ -1813,7 +2153,7 @@ function copied(target, str) {
         <polyline points="8 8 11 12 8 16" stroke="#333" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         <line x1="13" y1="16" x2="16" y2="16" stroke="#333" stroke-width="2" stroke-linecap="round"/>
       </svg>
-      <span class="footer-text">脚本 <span class="footer-count script">372</span></span>
+      <span class="footer-text">脚本 <span class="footer-count script">374</span></span>
     </a>
     
     <!-- Win 统计：只显示 windows 目录 -->
@@ -1844,7 +2184,7 @@ function copied(target, str) {
         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" fill="url(#grad-total)"/>
         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" fill="url(#grad-total)"/>
       </svg>
-      <span class="footer-text">共计 <span class="footer-count total">1460</span></span>
+      <span class="footer-text">共计 <span class="footer-count total">1462</span></span>
     </a>
     <!-- Gitee 链接 -->
     <a class="footer-item footer-gitee wow animate__animated animate__fadeInUp" data-wow-delay="0.6s" href="https://gitee.com/meimolihan/cmdbox" target="_blank">
@@ -1877,8 +2217,8 @@ function copied(target, str) {
   </div>
 </div>
 
-<script type="text/javascript" src="../js/index.js?v=3644f18520190097"></script>
-<script type="text/javascript" src="../js/enhance.js?v=3644f18520190097"></script>
+<script type="text/javascript" src="../js/index.js?v=3644f1855bfd970e"></script>
+<script type="text/javascript" src="../js/enhance.js?v=3644f1855bfd970e"></script>
 <!-- WOW.js 滚动动画 -->
 <script type="text/javascript" src="../assets/wow.min.js"></script>
 <script>
@@ -1895,7 +2235,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.1.0</span>
+  <span>CmdBox v2.1.1</span>
 </div>
 </body>
 </html>
