@@ -19,7 +19,6 @@ log_ok() { echo -e "${gl_lv}[成功]${gl_bai} $*"; }
 log_warn() { echo -e "${gl_huang}[警告]${gl_bai} $*"; }
 log_error() { echo -e "${gl_hong}[错误]${gl_bai} $*" >&2; }
 
-# 暂停函数
 sleep_fractional() {
     local seconds=$1
     if sleep "$seconds" 2>/dev/null; then return 0; fi
@@ -30,7 +29,6 @@ sleep_fractional() {
     sleep "$int_seconds"
 }
 
-# 退出动画函数
 exit_animation() {
     local frames=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
     local dots=(
@@ -58,7 +56,6 @@ exit_animation() {
     clear
 }
 
-# 按任意键继续...
 break_end() {
     echo -e "${gl_lv}操作完成${gl_bai}"
     echo -e "${gl_bai}按任意键继续 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
@@ -67,7 +64,6 @@ break_end() {
     clear
 }
 
-# 无效的输入,请重新输入!
 handle_invalid_input() {
     echo -ne "\r${gl_hong}无效的输入，请重新输入 ${gl_zi} 2 ${gl_hong}秒后返回 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.3
@@ -75,10 +71,9 @@ handle_invalid_input() {
     sleep_fractional 0.3
     echo -e "\r${gl_lv}无效的输入，请重新输入 ${gl_zi} 0 ${gl_lv}秒后返回 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
-    return 2 # 2 表示“输入非法”
+    return 2
 }
 
-# 无效的输入,请输入(y或N)。
 handle_y_n() {
     echo -ne "\r${gl_hong}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.3
@@ -86,10 +81,9 @@ handle_y_n() {
     sleep_fractional 0.3
     echo -ne "\r${gl_lv}无效的选择，请输入 ${gl_bai}(${gl_lv}y${gl_bai}或${gl_hong}N${gl_bai}) ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}\c"
     sleep_fractional 0.6
-    return 2 # 2 表示“输入非法”
+    return 2
 }
 
-# 退出脚本
 exit_script() {
     local frames=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
     local dots=(
@@ -118,7 +112,6 @@ exit_script() {
     exit 0
 }
 
-# 返回上一级
 cancel_empty() {
     local menu_name="${1:-上一级选单}"
     local frames=("⠋" "⠙" "⠹" "⠸" "⠼" "⠴" "⠦" "⠧" "⠇" "⠏")
@@ -245,8 +238,123 @@ safe_read() {
             return 1
             ;;
         esac
-        printf -v "$var_name" "%s" "$raw" # 原样赋值
+        printf -v "$var_name" "%s" "$raw"
         return 0
+    done
+}
+
+declare -A _compose_state_color=()
+_compose_state_ok=0
+
+_compose_project_ids() {
+    local dir="$1"
+    [[ -d "$dir" ]] || return 0
+    (
+        cd "$dir" 2>/dev/null || exit 0
+        if docker compose version &>/dev/null 2>&1; then
+            docker compose ps --all --quiet 2>/dev/null
+        fi
+        if command -v docker-compose &>/dev/null 2>&1; then
+            docker-compose ps --quiet 2>/dev/null
+        fi
+    )
+}
+
+collect_compose_states() {
+    local base_path="$1"
+    shift
+    local -a names=("$@")
+    local item
+
+    if (( ${#names[@]} == 0 )); then
+        while IFS= read -r -d '' item; do
+            names+=("$(basename "$item")")
+        done < <(find "$base_path" -mindepth 1 -maxdepth 1 -type d ! -name '.*' -print0 | sort -z)
+    fi
+
+    local -A id_level=() name_level=() dir_level=() proj_level=()
+    local -a level_color=("${gl_hong}" "${gl_lv}" "${gl_huang}")
+    local snapshot=""
+    local cid cname wd proj status lvl id_key d_key p_key
+    local name dir path color_lvl v found max_lvl
+
+    _compose_state_color=()
+    _compose_state_ok=0
+
+    command -v docker >/dev/null 2>&1 || return 0
+    if snapshot=$(docker ps -a --format \
+        '{{.ID}}|{{.Names}}|{{.Label "com.docker.compose.project.working_dir"}}|{{.Label "com.docker.compose.project"}}|{{.Status}}' 2>/dev/null); then
+        _compose_state_ok=1
+    else
+        return 0
+    fi
+
+    while IFS='|' read -r cid cname wd proj status; do
+        [[ -z "$cid" ]] && continue
+        if [[ "$status" == Restarting* ]]; then
+            lvl=2
+        elif [[ "$status" == Up* && "$status" != *Paused* ]]; then
+            lvl=1
+        else
+            lvl=0
+        fi
+
+        id_key="${cid:0:12}"
+        if (( lvl > ${id_level["$id_key"]:-0} )); then id_level["$id_key"]=$lvl; fi
+        if [[ -n "$cname" ]]; then
+            if (( lvl > ${name_level["$cname"]:-0} )); then name_level["$cname"]=$lvl; fi
+        fi
+
+        [[ -z "$wd" && -z "$proj" ]] && continue
+        if [[ -n "$wd" ]]; then
+            d_key="${wd%/}"
+            if (( lvl > ${dir_level["$d_key"]:-0} )); then dir_level["$d_key"]=$lvl; fi
+        fi
+        if [[ -n "$proj" ]]; then
+            p_key="${proj,,}"
+            p_key="${p_key//[^a-z0-9_-]/}"
+            if [[ -n "$p_key" ]]; then
+                if (( lvl > ${proj_level["$p_key"]:-0} )); then proj_level["$p_key"]=$lvl; fi
+            fi
+        fi
+    done <<< "$snapshot"
+
+    for name in "${names[@]}"; do
+        dir="$base_path/$name"
+        path="$(realpath "$dir" 2>/dev/null || printf '%s' "${dir%/}")"
+        p_key="${name,,}"
+        p_key="${p_key//[^a-z0-9_-]/}"
+
+        if [[ -n "${dir_level["$path"]:-}" ]]; then
+            color_lvl="${dir_level["$path"]}"
+        elif [[ -n "$p_key" ]] && [[ -n "${proj_level["$p_key"]:-}" ]]; then
+            color_lvl="${proj_level["$p_key"]}"
+        elif [[ -n "${name_level["$name"]:-}" ]]; then
+            color_lvl="${name_level["$name"]}"
+        else
+            local f has_yml=0
+            for f in "$dir"/*.yml "$dir"/*.yaml; do
+                [[ -f "$f" ]] && { has_yml=1; break; }
+            done
+            if (( has_yml )); then
+                found=0
+                max_lvl=0
+                while IFS= read -r cid; do
+                    [[ -z "$cid" ]] && continue
+                    id_key="${cid:0:12}"
+                    [[ -z "${id_level["$id_key"]:-}" ]] && continue
+                    found=1
+                    v="${id_level["$id_key"]}"
+                    if (( v > max_lvl )); then max_lvl=$v; fi
+                done < <(_compose_project_ids "$dir")
+                color_lvl=0
+                if (( found )); then color_lvl=$max_lvl; fi
+            else
+                color_lvl=0
+            fi
+        fi
+
+        _compose_state_color["$name"]="${level_color[$color_lvl]:-${gl_bufan}}"
     done
 }
 
@@ -254,8 +362,9 @@ show_directory_list() {
     local base_path="${1:-.}"
     local items_per_line="${2:-4}"
     local show_hidden="${3:-false}"
-    local exit_on_empty="${4:-true}"  # 新增：控制是否在空目录时退出
-    local return_array_var="$5"  # 第5个参数是返回数组变量名
+    local exit_on_empty="${4:-true}"
+    local return_array_var="${5:-}"
+    local status_mode="${6:-}"
 
     local dir_array=()
     for dir in "$base_path"/*/; do
@@ -281,6 +390,10 @@ show_directory_list() {
     fi
 
     mapfile -t dir_array < <(printf '%s\n' "${dir_array[@]}" | sort)
+
+    if [[ "$status_mode" == "compose" && ${#_compose_state_color[@]} -eq 0 ]]; then
+        collect_compose_states "$base_path" "${dir_array[@]}"
+    fi
 
     if [[ -n "$return_array_var" ]]; then
         eval "$return_array_var=($(printf '%q ' "${dir_array[@]}"))"
@@ -338,7 +451,11 @@ show_directory_list() {
 
         local padding=$((column_width - current_width))
 
-        printf "${gl_bufan}%s${gl_bai} %s" "$index_str" "${dir_array[i]}"
+        local idx_color="${gl_bufan}"
+        if [[ "$status_mode" == "compose" && ${_compose_state_ok:-0} -eq 1 ]]; then
+            idx_color="${_compose_state_color["${dir_array[i]}"]:-${gl_hong}}"
+        fi
+        printf "%s%s${gl_bai} %s" "$idx_color" "$index_str" "${dir_array[i]}"
 
         for ((s = 0; s < padding; s++)); do
             printf " "
@@ -355,7 +472,6 @@ show_directory_list() {
     return 0
 }
 
-# 支持指定基础路径：show_compose_project_menu [base_path]
 show_compose_project_menu() {
     local base_path
     base_path="${1:-$(pwd)}"
@@ -366,7 +482,6 @@ show_compose_project_menu() {
         return 1
     fi
 
-    # 保证后续相对路径操作都基于 base_path
     cd "$base_path" 2>/dev/null || {
         echo -e "${gl_huang}错误: 无法进入路径 $base_path${gl_bai}"
         exit_animation
@@ -379,10 +494,16 @@ show_compose_project_menu() {
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bai}当前工作目录: ${gl_huang}$base_path${gl_bai}"
         echo -e "${gl_bai}内网 IP 地址: ${gl_huang}$(get_internal_ip)${gl_bai}"
+        collect_compose_states "$base_path"
+        if (( ${_compose_state_ok:-0} )); then
+            echo -e "${gl_bai}状态: ${gl_lv}● 运行中${gl_bai}   ${gl_huang}● 重启中${gl_bai}   ${gl_hong}● 已停止/未启动${gl_bai}"
+        else
+            echo -e "${gl_hui}⚠ 无法获取容器状态，序号保持默认颜色${gl_bai}"
+        fi
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
         local projects
-        if ! show_directory_list "$base_path" 2 false true projects; then
+        if ! show_directory_list "$base_path" 2 false true projects compose; then
             log_info "没有找到Git项目，按任意键返回 ${gl_hong}.${gl_huang}.${gl_lv}.${gl_bai}"
             exit_animation
             return 1
@@ -391,9 +512,14 @@ show_compose_project_menu() {
         local count=${#projects[@]}
 
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+        echo -e "输入 ${gl_lv}序号   ${gl_bai}进入并管理项目"
+        echo -e "输入 ${gl_lv}目录名 ${gl_bai}创建新项目"
+        echo -e "输入 ${gl_hong}0${gl_bai}      退出脚本"
+        echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
         local project_choice
-        read -r -e -p "$(echo -e "${gl_bai}请输入序号进入项目(${gl_huang}0${gl_bai}返回，或直接输入目录名创建新文件夹）: ")" project_choice
+
+        read -r -e -p "$(echo -e "${gl_bai}请输入你的选择: ")" project_choice
 
         if [ "$project_choice" = "q" ] || [ "$project_choice" = "quit" ] || [ "$project_choice" = "exit" ]; then
             echo -e "${gl_huang}退出操作${gl_bai}"
@@ -471,9 +597,6 @@ show_compose_project_menu() {
     done
 }
 
-
-# 打印当前目录 docker-compose.yml 里第一个 "HOST:PORT" 映射，
-# 并拼接成完整内网访问链接
 show_inner_url() {
     local yml="docker-compose.yml"
     [[ -f $yml ]] || {
@@ -498,7 +621,6 @@ show_inner_url() {
     echo -e "${gl_bufan}服务访问链接：${gl_lv}http://${ip}:${port}${gl_bai}"
 }
 
-# 函数：显示Compose命令菜单
 show_compose_commands_menu() {
     local current_dir="$(pwd)"
     while true; do
@@ -506,7 +628,7 @@ show_compose_commands_menu() {
         echo -e ""
         local current_dir_name=$(basename "$PWD")
 
-        echo -e "${gl_zi}>>> Compose项目菜单${gl_bai}"
+        echo -e "${gl_zi}>>> Compose 项目菜单${gl_bai}"
         echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
         echo -e "${gl_bai}当前工作目录: ${gl_huang}$current_dir${gl_bai}"
         echo -e "${gl_bai}当前项目名称: ${gl_huang}$current_dir_name${gl_bai}"
@@ -522,19 +644,19 @@ show_compose_commands_menu() {
             printf "${gl_bai}当前容器状态：${gl_hui}容器 ${gl_huang}%s${gl_hui} 不存在(${gl_huang}确保容器名和文件夹名称一致${gl_hui})${gl_bai}\n" "$current_dir_name"
         }
 
-        show_inner_url # 访问链接
+        show_inner_url
 
         echo -e "${gl_bai}公网访问链接：${gl_lv}https://$current_dir_name.mobufan.eu.org:666${gl_bai}"
 
         check_container_status() {
             if docker inspect "$1" &>/dev/null; then
                 if docker inspect -f '{{.State.Running}}' "$1" 2>/dev/null | grep -q "true"; then
-                    echo "${gl_lv}" # 容器存在且正在运行
+                    echo "${gl_lv}"
                 else
-                    echo "${gl_hong}" # 容器存在但已停止
+                    echo "${gl_hong}"
                 fi
             else
-                echo "${gl_hui}" # 容器不存在
+                echo "${gl_hui}"
             fi
         }
 
@@ -661,7 +783,6 @@ show_compose_commands_menu() {
             break_end
             ;;
         12)
-            # docker-compose images
             list_beautify_all
             ;;
         13)
@@ -965,7 +1086,6 @@ show_compose_commands_menu() {
     done
 }
 
-# ============ 新增：帮助 & 主入口 ============
 show_help() {
     cat <<EOF
 用法: $(basename "$0") [选项] [compose项目根目录]
@@ -1009,16 +1129,13 @@ main() {
         abs_path="$(pwd)"
 
         if [[ -f "docker-compose.yml" || -f "docker-compose.yaml" ]]; then
-            # 直接命中一个 Compose 项目
             log_ok "已选择项目: $(basename "$abs_path")"
             log_info "项目路径: $abs_path"
             sleep_fractional 0.5
             show_compose_commands_menu
-            # 用户按 0 返回时，直接退出（没有上一级菜单）
             exit_animation
             exit 0
         else
-            # 当作项目根目录，进入交互式选择
             log_info "未在该目录发现 docker-compose 文件，作为根目录进入交互式选择"
             sleep_fractional 0.5
             show_compose_project_menu "$abs_path"

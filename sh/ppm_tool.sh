@@ -1712,7 +1712,7 @@ docker_compose_manager() {
         while true; do
             clear
             echo -e ""
-            echo -e "${gl_zi}>>> Compose项目菜单 ${gl_bai}"
+            echo -e "${gl_zi}>>> Compose 项目菜单${gl_bai}"
             echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
             echo -e "${gl_bai}当前工作目录: ${gl_huang}$current_dir${gl_bai}"
             echo -e "${gl_bai}当前项目名称: ${gl_huang}$current_dir_name${gl_bai}"
@@ -2147,7 +2147,7 @@ docker_compose_manager() {
                 break_end
                 ;;
         0)
-            proj_mgmt_tool
+            cd /vol1/1000/compose && file_list_menu
             ;;
         00 | 000 | 0000)
             exit_script
@@ -6336,6 +6336,8 @@ install_fan_script() {
     echo ""
     echo "🎉 安装完成！输入  ff  即可运行脚本"
     echo "   若当前终端未生效，请新开终端或执行： source ~/.bashrc"
+
+    bash /usr/local/bin/fan-script
 }
 
 CLONE_TIMEOUT="${CLONE_TIMEOUT:-120}"
@@ -6749,9 +6751,25 @@ git_clone_menu() {
 
 git_push_mobufan_sh() {
     echo -e ""
+    echo -e "${gl_huang}>>> Gitee 生成 .sha256${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    cd /vol1/1000/Gitee/sh
+
+    sha256sum mobufan.sh | sed 's/ \*/  /' > mobufan.sh.sha256
+
+    sha256sum -c mobufan.sh.sha256
+    echo -e ""
     echo -e "${gl_huang}>>> 推送 /vol1/1000/Gitee/sh${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     git_push_pro /vol1/1000/Gitee/sh
+    echo -e ""
+    echo -e "${gl_huang}>>> GitHub 生成 .sha256${gl_bai}"
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
+    cd /vol1/1000/GitHub/sh
+
+    sha256sum mobufan.sh | sed 's/ \*/  /' > mobufan.sh.sha256
+
+    sha256sum -c mobufan.sh.sha256
     echo -e ""
     echo -e "${gl_huang}>>> 推送 /vol1/1000/GitHub/sh${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
@@ -6775,6 +6793,19 @@ git_push_Gitee_cmdbox() {
     return 1
 }
 
+# 列出指定 Compose 项目的全部容器 ID（含已停止的），用于标签缺失时的状态回退判断
+_compose_project_ids() {
+    local dir="$1" mode="$2"
+    [[ -d "$dir" && -n "$mode" ]] || return 0
+    (
+        cd "$dir" 2>/dev/null || exit 0
+        case "$mode" in
+            v2) docker compose ps --all --quiet 2>/dev/null ;;
+            v1) docker-compose ps --quiet 2>/dev/null ;;
+        esac
+    )
+}
+
 file_list_menu() {
     local base_dir
     base_dir="$(pwd)"
@@ -6789,29 +6820,129 @@ file_list_menu() {
         return 1
     fi
 
+    local -A id_level=() dir_level=() proj_level=()
+    local -a level_color=("${gl_hong}" "${gl_lv}" "${gl_huang}")
+    local docker_ok=0 compose_mode="" snapshot=""
+    local cid wd proj status lvl id_key dir_key proj_key
+
+    if command -v docker >/dev/null 2>&1; then
+        if snapshot=$(docker ps -a --format \
+            '{{.ID}}|{{.Label "com.docker.compose.project.working_dir"}}|{{.Label "com.docker.compose.project"}}|{{.Status}}' 2>/dev/null); then
+            docker_ok=1
+        fi
+        if docker compose version &>/dev/null 2>&1; then
+            compose_mode="v2"
+        elif command -v docker-compose &>/dev/null 2>&1; then
+            compose_mode="v1"
+        fi
+    fi
+
+    if (( docker_ok )); then
+        while IFS='|' read -r cid wd proj status; do
+            [[ -z "$cid" ]] && continue
+            if [[ "$status" == Restarting* ]]; then
+                lvl=2
+            elif [[ "$status" == Up* && "$status" != *Paused* ]]; then
+                lvl=1
+            else
+                lvl=0
+            fi
+
+            id_key="${cid:0:12}"
+            if (( lvl > ${id_level["$id_key"]:-0} )); then
+                id_level["$id_key"]=$lvl
+            fi
+
+            [[ -z "$wd" && -z "$proj" ]] && continue
+
+            if [[ -n "$wd" ]]; then
+                dir_key="${wd%/}"
+                if (( lvl > ${dir_level["$dir_key"]:-0} )); then
+                    dir_level["$dir_key"]=$lvl
+                fi
+            fi
+            if [[ -n "$proj" ]]; then
+                proj_key="${proj,,}"
+                proj_key="${proj_key//[^a-z0-9_-]/}"
+                if (( lvl > ${proj_level["$proj_key"]:-0} )); then
+                    proj_level["$proj_key"]=$lvl
+                fi
+            fi
+        done <<< "$snapshot"
+    fi
+
+    local total=${#dir_list[@]}
+    local -a dir_color=()
+    local i dir name color_lvl v found max_lvl
+    for ((i=0; i < total; i++)); do
+        if (( ! docker_ok )); then
+            dir_color[$i]="${gl_bufan}"
+            continue
+        fi
+
+        dir="${dir_list[$i]}"
+        name="$(basename "$dir")"
+        dir_key="$(realpath "$dir" 2>/dev/null || printf '%s' "${dir%/}")"
+        proj_key="${name,,}"
+        proj_key="${proj_key//[^a-z0-9_-]/}"
+
+        if [[ -n "${dir_level["$dir_key"]:-}" ]]; then
+            color_lvl="${dir_level["$dir_key"]}"
+        elif [[ -n "${proj_level["$proj_key"]:-}" ]]; then
+            color_lvl="${proj_level["$proj_key"]}"
+        else
+            found=0
+            max_lvl=0
+            while IFS= read -r cid; do
+                [[ -z "$cid" ]] && continue
+                id_key="${cid:0:12}"
+                [[ -z "${id_level["$id_key"]:-}" ]] && continue
+                found=1
+                v="${id_level["$id_key"]}"
+                if (( v > max_lvl )); then
+                    max_lvl=$v
+                fi
+            done < <(_compose_project_ids "$dir" "$compose_mode")
+            color_lvl=0
+            if (( found )); then
+                color_lvl=$max_lvl
+            fi
+        fi
+
+        dir_color[$i]="${level_color[$color_lvl]:-${gl_bufan}}"
+    done
+
     clear
     echo -e "${gl_huang}>>> Compose 项目列表${gl_bai}"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    local total=${#dir_list[@]}
+    if (( docker_ok )); then
+        echo -e "  ${gl_bai}状态: ${gl_lv}● 运行中${gl_bai}   ${gl_huang}● 重启中${gl_bai}   ${gl_hong}● 已停止/未启动${gl_bai}"
+    else
+        echo -e "  ${gl_hui}⚠ Docker 不可用，序号保持默认颜色${gl_bai}"
+    fi
+    echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
     local half=$(( (total + 1) / 2 ))
 
     for ((i=0; i < half; i++)); do
         local left_idx=$((i + 1))
+        local left_color="${dir_color[$i]}"
         local left_name
         left_name="$(basename "${dir_list[$i]}")"
 
         local right_idx=$((i + half + 1))
         local right_name=""
         if (( right_idx <= total )); then
+            local right_color="${dir_color[$((right_idx - 1))]}"
             right_name="$(basename "${dir_list[$right_idx - 1]}")"
-            printf "${gl_bufan}%2d.${gl_bai} %-20s    ${gl_bufan}%2d.${gl_bai} %s\n" "$left_idx" "$left_name" "$right_idx" "$right_name"
+            printf "%s%2d.${gl_bai} %-20s    %s%2d.${gl_bai} %s\n" \
+                "$left_color" "$left_idx" "$left_name" "$right_color" "$right_idx" "$right_name"
         else
-            printf "${gl_bufan}%2d.${gl_bai} %s\n" "$left_idx" "$left_name"
+            printf "%s%2d.${gl_bai} %s\n" "$left_color" "$left_idx" "$left_name"
         fi
     done
 
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
-    echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单${gl_bai}"
+    echo -e "${gl_huang}0.  ${gl_bai}返回上一级选单      ${gl_hong}00. ${gl_bai}退出脚本"
     echo -e "${gl_bufan}————————————————————————————————————————————————${gl_bai}"
 
     local input
@@ -6820,7 +6951,11 @@ file_list_menu() {
     fi
 
     if [[ "$input" == "0" ]]; then
-        return 0
+        proj_mgmt_tool
+    fi
+
+    if [[ "$input" == "00" ]]; then
+        exit_script
     fi
 
     local target_path=""
