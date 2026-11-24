@@ -50,15 +50,51 @@ disk_bench() {
     echo -e "${gl_bufan}─────────────────────────────────────────────────────${reset}"
 }
 
+run_with_timeout() {
+    local secs="$1"
+    shift
+    if command -v timeout &>/dev/null; then
+        timeout "$secs" "$@"
+    else
+        "$@"
+    fi
+}
+
 network_bench() {
     echo -e "${gl_zi}>>> 网络基准测试${reset}"
-    if command -v speedtest-cli &>/dev/null; then
-        speedtest-cli --simple 2>/dev/null || true
-    elif command -v curl &>/dev/null; then
-        curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 - --simple 2>/dev/null || true
-    else
-        log_warn "未安装 speedtest-cli，跳过网络测试"
+    if ! command -v curl &>/dev/null; then
+        log_warn "未安装 curl，跳过网络测试"
+        echo -e "${gl_bufan}─────────────────────────────────────────────────────${reset}"
+        return 0
     fi
+
+    if command -v speedtest-cli &>/dev/null; then
+        log_info "使用 speedtest-cli 测速（限时 30 秒）"
+        run_with_timeout 30 speedtest-cli --simple --timeout 5 --retries 0 2>/dev/null \
+            || log_warn "speedtest-cli 测速超时或失败，改用 curl 测试"
+    fi
+
+    local latency_url="" latency=""
+    local url
+    for url in https://gitee.com https://www.cloudflare.com; do
+        latency=$(curl -s -o /dev/null -w '%{time_total}' --connect-timeout 3 --max-time 8 "$url" 2>/dev/null) || continue
+        [ -n "$latency" ] && [ "$latency" != "0" ] && { latency_url="$url"; break; }
+    done
+    if [ -n "$latency_url" ]; then
+        awk -v t="$latency" -v u="$latency_url" 'BEGIN {printf "延迟(%s): %.0f ms\n", u, t*1000}'
+    else
+        log_warn "延迟测试失败，所有目标均连接超时"
+    fi
+
+    local speed=""
+    speed=$(curl -s -o /dev/null -w '%{speed_download}' --connect-timeout 3 --max-time 12 \
+        'https://speed.cloudflare.com/__down?bytes=10485760' 2>/dev/null) || speed=""
+    if [ -n "$speed" ] && [ "$speed" != "0" ]; then
+        awk -v s="$speed" 'BEGIN {printf "下载速度: %.2f MB/s (%.1f Mbps)\n", s/1048576, s*8/1000000}'
+    else
+        log_warn "下载测速失败或超时，已跳过"
+    fi
+
     echo -e "${gl_bufan}─────────────────────────────────────────────────────${reset}"
 }
 
