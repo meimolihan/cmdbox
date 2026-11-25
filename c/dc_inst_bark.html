@@ -1227,6 +1227,11 @@ class MarkdownStyle extends HTMLElement {
     }
 }
 customElements.define('markdown-style', MarkdownStyle);</script><markdown-style style="max-width: 960px; margin: 0 auto 60px auto; padding: 8px;" class="markdown-style">
+<h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
+<p><strong>Bark Server</strong> 是一款开源的 iOS 推送服务，基于 <code>finab/bark-server</code> 镜像构建。部署后即可通过自建 Bark 服务向 iOS 设备推送自定义消息，支持自定义 key、加密、图标、分组等功能，适用于告警、监控、自动化脚本等各类通知场景。</p>
+<ul>
+  <li><strong>Docker 镜像地址：<a href="https://hub.docker.com/r/finab/bark-server">https://hub.docker.com/r/finab/bark-server</a></strong></li>
+</ul>
 <h2 id="一键脚本"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一键脚本"><span class="octicon octicon-link"></span></a>一键脚本</h2>
 <pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_bark.sh<span class="token punctuation">)</span> <span class="token number">8380</span> /vol1/1000/compose/bark
 </span></code><div onclick="copied(this)" data-code="bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_bark.sh) 8380 /vol1/1000/compose/bark
@@ -1270,11 +1275,6 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     </tr>
   </tbody>
 </table>
-<h2 id="项目简介"><a class="anchor" aria-hidden="true" tabindex="-1" href="#项目简介"><span class="octicon octicon-link"></span></a>项目简介</h2>
-<p><strong>Bark Server</strong> 是一款开源的 iOS 推送服务，基于 <code>finab/bark-server</code> 镜像构建。部署后即可通过自建 Bark 服务向 iOS 设备推送自定义消息，支持自定义 key、加密、图标、分组等功能，适用于告警、监控、自动化脚本等各类通知场景。</p>
-<ul>
-  <li><strong>Docker 镜像地址：<a href="https://hub.docker.com/r/finab/bark-server">https://hub.docker.com/r/finab/bark-server</a></strong></li>
-</ul>
 <h2 id="效果预览"><a class="anchor" aria-hidden="true" tabindex="-1" href="#效果预览"><span class="octicon octicon-link"></span></a>效果预览</h2>
 <p>
   <img src="../img/dc_inst_bark-01.webp" alt="执行脚本效果预览" title="截图演示" loading="lazy">
@@ -1282,8 +1282,6 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
 <p>
   <img src="../img/dc_inst_bark-02.webp" alt="WEB效果预览" title="截图演示" loading="lazy">
 </p>
-<h2 id="补充说明"><a class="anchor" aria-hidden="true" tabindex="-1" href="#补充说明"><span class="octicon octicon-link"></span></a>补充说明</h2>
-<p>该脚本用于通过 Docker Compose 一键部署 Bark 推送服务，适合需要自建 iOS 消息推送服务的场景。</p>
 <h3 id="功能特点"><a class="anchor" aria-hidden="true" tabindex="-1" href="#功能特点"><span class="octicon octicon-link"></span></a>功能特点</h3>
 <ul>
   <li>交互式部署：支持参数传入或交互式输入部署目录和端口</li>
@@ -1332,21 +1330,6 @@ customElements.define('markdown-style', MarkdownStyle);</script><markdown-style 
     </tr>
   </tbody>
 </table>
-<h3 id="使用方法"><a class="anchor" aria-hidden="true" tabindex="-1" href="#使用方法"><span class="octicon octicon-link"></span></a>使用方法</h3>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token comment"># 交互式安装（会提示输入目录和端口）</span>
-</span><span class="code-line line-number" line="2"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_bark.sh<span class="token punctuation">)</span>
-</span><span class="code-line line-number" line="3">
-</span><span class="code-line line-number" line="4"><span class="token comment"># 指定目录和端口安装</span>
-</span><span class="code-line line-number" line="5"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_bark.sh<span class="token punctuation">)</span> <span class="token number">8380</span> /vol1/1000/compose/bark
-</span></code><div onclick="copied(this)" data-code="# 交互式安装（会提示输入目录和端口）
-bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_bark.sh)
-
-# 指定目录和端口安装
-bash <(curl -sSL gitee.com/meimolihan/cmdbox/raw/master/sh/dc_inst_bark.sh) 8380 /vol1/1000/compose/bark
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
-<pre class="language-bash"><code class="language-bash code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> <span class="token punctuation">..</span>/sh/dc_inst_bark.sh<span class="token punctuation">)</span>
-</span></code><div onclick="copied(this)" data-code="bash <(curl -sSL ../sh/dc_inst_bark.sh)
-" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <h3 id="注意事项"><a class="anchor" aria-hidden="true" tabindex="-1" href="#注意事项"><span class="octicon octicon-link"></span></a>注意事项</h3>
 <ul>
   <li>需要系统已安装 Docker 和 Docker Compose</li>
@@ -1752,6 +1735,10 @@ services:
     tty: true
 
 " class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+<h2 id="一键完全卸载命令"><a class="anchor" aria-hidden="true" tabindex="-1" href="#一键完全卸载命令"><span class="octicon octicon-link"></span></a>一键完全卸载命令</h2>
+<pre class="language-shell"><code class="language-shell code-highlight"><span class="code-line line-number" line="1"><span class="token function">bash</span> <span class="token operator">&#x3C;</span><span class="token punctuation">(</span><span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://cmdbox.mobufan.eu.org:666/sh/compose_purge_dir.sh<span class="token punctuation">)</span> /vol1/1000/compose/bark
+</span></code><div onclick="copied(this)" data-code="bash <(curl -sSL https://cmdbox.mobufan.eu.org:666/sh/compose_purge_dir.sh) /vol1/1000/compose/bark
+" class="copied" style="opacity:1!important;visibility:visible!important;display:flex!important;"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
 <style>markdown-style pre .copied {
   display: flex;
   position: absolute;
@@ -1830,20 +1817,16 @@ function copied(target, str) {
         <nav class="post-toc-nav">
           <ul class="post-toc-list">
             
+            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+            </li>
+            
             <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
               <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
             </li>
             
-            <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
-              <a class="post-toc-link" href="#项目简介" data-level="2">项目简介</a>
-            </li>
-            
             <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
               <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
-              <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
@@ -1852,10 +1835,6 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="部署说明">
               <a class="post-toc-link" href="#部署说明" data-level="3">部署说明</a>
-            </li>
-            
-            <li class="post-toc-item post-toc-level-3" data-toc-id="使用方法">
-              <a class="post-toc-link" href="#使用方法" data-level="3">使用方法</a>
             </li>
             
             <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1868,6 +1847,10 @@ function copied(target, str) {
             
             <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
               <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
+            </li>
+            
+            <li class="post-toc-item post-toc-level-2" data-toc-id="一键完全卸载命令">
+              <a class="post-toc-link" href="#一键完全卸载命令" data-level="2">一键完全卸载命令</a>
             </li>
             
           </ul>
@@ -1895,20 +1878,16 @@ function copied(target, str) {
     <nav class="post-toc-nav">
       <ul class="post-toc-list">
         
+        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
+          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
+        </li>
+        
         <li class="post-toc-item post-toc-level-2" data-toc-id="一键脚本">
           <a class="post-toc-link" href="#一键脚本" data-level="2">一键脚本</a>
         </li>
         
-        <li class="post-toc-item post-toc-level-2" data-toc-id="项目简介">
-          <a class="post-toc-link" href="#项目简介" data-level="2">项目简介</a>
-        </li>
-        
         <li class="post-toc-item post-toc-level-2" data-toc-id="效果预览">
           <a class="post-toc-link" href="#效果预览" data-level="2">效果预览</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-2" data-toc-id="补充说明">
-          <a class="post-toc-link" href="#补充说明" data-level="2">补充说明</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="功能特点">
@@ -1917,10 +1896,6 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="部署说明">
           <a class="post-toc-link" href="#部署说明" data-level="3">部署说明</a>
-        </li>
-        
-        <li class="post-toc-item post-toc-level-3" data-toc-id="使用方法">
-          <a class="post-toc-link" href="#使用方法" data-level="3">使用方法</a>
         </li>
         
         <li class="post-toc-item post-toc-level-3" data-toc-id="注意事项">
@@ -1933,6 +1908,10 @@ function copied(target, str) {
         
         <li class="post-toc-item post-toc-level-2" data-toc-id="脚本源码">
           <a class="post-toc-link" href="#脚本源码" data-level="2">脚本源码</a>
+        </li>
+        
+        <li class="post-toc-item post-toc-level-2" data-toc-id="一键完全卸载命令">
+          <a class="post-toc-link" href="#一键完全卸载命令" data-level="2">一键完全卸载命令</a>
         </li>
         
       </ul>
@@ -2142,7 +2121,7 @@ function copied(target, str) {
 </script>
 <!-- 页脚版本号 -->
 <div class="footer-version">
-  <span>CmdBox v2.1.9</span>
+  <span>CmdBox v2.2.0</span>
 </div>
 </body>
 </html>
